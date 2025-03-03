@@ -1927,6 +1927,13 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_X, cc) < 0 | cdata(CDATA_X, cc) >= mdata(MDATA_WIDTH) | cdata(CDATA_Y, cc) < 0 | cdata(CDATA_Y, cc) >= mdata(MDATA_HEIGHT) ) {
+		dialog "Character with invalid position taking a turn.\nCharacter name: " + cdatan(CDATAN_NAME, cc) + "\nState:" + cdata(CDATA_EXIST, cc) + "\nHired:" + cbit(CHARA_BIT_HIRED, cc)
+		rc = cc
+		cxinit = cdata(CDATA_X, CHARA_PLAYER)
+		cyinit = cdata(CDATA_Y, CHARA_PLAYER)
+		gosub *place_chara
+	}
 	tc = cc
 	if ( map(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), 8) != 0 ) {
 		ef = map(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), 8) - 1
