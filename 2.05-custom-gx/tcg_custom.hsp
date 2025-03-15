@@ -20,6 +20,7 @@
 		if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, cnt)) & TCG_SKILL_TYPE_ONGOING) ) {
 			effac@tcg = cnt
 			eff@tcg = card@tcg(TCG_CARD_EFFECT, cnt)
+			efftrigger@tcg = TCG_SKILL_TYPE_ONGOING
 			gosub *card_action_choose_target
 		}
 	loop
@@ -30,6 +31,7 @@
 		if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, cnt)) & TCG_SKILL_TYPE_ONGOINGHAND) ) {
 			effac@tcg = cnt
 			eff@tcg = card@tcg(TCG_CARD_EFFECT, cnt)
+			efftrigger@tcg = TCG_SKILL_TYPE_ONGOINGHAND
 			cdbitmod TCG_BIT_FACE_UP, effac@tcg, 1
 			gosub *card_action_choose_target
 		}
@@ -41,6 +43,7 @@
 		if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, cnt)) & TCG_SKILL_TYPE_ONGOINGGRAVE) ) {
 			effac@tcg = cnt
 			eff@tcg = card@tcg(TCG_CARD_EFFECT, cnt)
+			efftrigger@tcg = TCG_SKILL_TYPE_ONGOINGGRAVE
 			cdbitmod TCG_BIT_FACE_UP, effac@tcg, 1
 			gosub *card_action_choose_target
 		}
@@ -52,6 +55,7 @@
 		if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, cnt)) & TCG_SKILL_TYPE_ONGOINGFINAL) ) {
 			effac@tcg = cnt
 			eff@tcg = card@tcg(TCG_CARD_EFFECT, cnt)
+			efftrigger@tcg = TCG_SKILL_TYPE_ONGOINGFINAL
 			gosub *card_action_choose_target
 		}
 	loop
@@ -418,6 +422,9 @@
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) >= TCG_SKILL_FILTER_ATKGREATEROREQUAL & effref@tcg(TCG_SKILL_FILTER, eff@tcg) < TCG_SKILL_FILTER_ATKGREATEROREQUAL + 20 ) {
 					if ( card@tcg(TCG_CARD_ATTACK, cnt) < effref@tcg(TCG_SKILL_FILTER, eff@tcg) - TCG_SKILL_FILTER_ATKGREATEROREQUAL ) { continue }
 				}
+				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) >= TCG_SKILL_FILTER_ATKLESSEROREQUAL & effref@tcg(TCG_SKILL_FILTER, eff@tcg) < TCG_SKILL_FILTER_ATKLESSEROREQUAL + 20 ) {
+					if ( card@tcg(TCG_CARD_ATTACK, cnt) > effref@tcg(TCG_SKILL_FILTER, eff@tcg) - TCG_SKILL_FILTER_ATKLESSEROREQUAL ) { continue }
+				}
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) >= TCG_SKILL_FILTER_BIT & effref@tcg(TCG_SKILL_FILTER, eff@tcg) < TCG_SKILL_FILTER_BIT + 200 ) {
 					if ( cdbit(effref@tcg(TCG_SKILL_FILTER, eff@tcg) - TCG_SKILL_FILTER_BIT, cnt) != 1 ) { continue }
 				}
@@ -593,7 +600,7 @@
 			if ( targettype@tcg == TCG_SKILL_TARGET_SELF_AND_COMBAT_OPPONENT & cnt == 1 & attacktarget@tcg == effac@tcg ) { target@tcg(cnt) = attackingcard@tcg }
 			if ( target@tcg(cnt) == (-1) ) { continue }
 
-			cardstack@tcg(TCG_STACK, stack@tcg) = effac@tcg, effref@tcg(TCG_SKILL_EFF, eff@tcg), card@tcg(TCG_CARD_CONTROLLER, effac@tcg), eff@tcg, target@tcg(cnt), effref@tcg(TCG_SKILL_POWER, eff@tcg), cnt
+			cardstack@tcg(TCG_STACK, stack@tcg) = effac@tcg, effref@tcg(TCG_SKILL_EFF, eff@tcg), card@tcg(TCG_CARD_CONTROLLER, effac@tcg), eff@tcg, target@tcg(cnt), effref@tcg(TCG_SKILL_POWER, eff@tcg), cnt, efftrigger@tcg
 			stack@tcg++
 			efffired@tcg = 1
 		loop
@@ -2563,6 +2570,63 @@
 		if ( gdata(GDATA_FLAG_MAIN) >= 715 ) {
 			deck_opponent(CREATURE_ID_ENTHUMESIS) = 1
 		}
+		return 1
+	}
+	if ( cdata(CDATA_ID, tc) == CREATURE_ID_EILA_THE_FUGITIVE_KUNOICHI | cdata(CDATA_ID, tc) == CREATURE_ID_NEW_CITIZEN | cdata(CDATA_ID, tc) == CREATURE_ID_GETUEI_THE_NINJA_MASTER | cdata(CDATA_ID, tc) == CREATURE_ID_FASHIONABLE_KUNOICHI | cdata(CDATA_ID, tc) == CREATURE_ID_AIKAGE_THE_SHINOBI_MASK ) {
+		deck_opponent(CREATURE_ID_RAPHAEL_THE_WOMANIZER) = 1
+		deck_opponent(CREATURE_ID_SHENA_THE_DRAW) = 1
+		deck_opponent(CREATURE_ID_ELDER) = 1
+		deck_opponent(CREATURE_ID_BOUNTY_HUNTER) = 2
+		deck_opponent(CREATURE_ID_EXILE) = 2
+		deck_opponent(CREATURE_ID_ICE_ENT) = 3
+		deck_opponent(CREATURE_ID_NURSE) = 4
+		deck_opponent(CREATURE_ID_BARD) = 2
+		deck_opponent(CREATURE_ID_GOLD_SHEEP) = 4
+		deck_opponent(CREATURE_ID_NINJA) = 4
+		deck_opponent(CREATURE_ID_RED_NINJA) = 4
+		deck_opponent(CREATURE_ID_MIRAGE_GRYPHON) = 3
+		deck_opponent(CREATURE_ID_ZAP_MANDRAKE) = 4
+		deck_opponent(CREATURE_ID_NIN_NINZIN) = 4
+		deck_opponent(CREATURE_ID_KAMIHIKOUKI) = 2
+
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_GETUEI_THE_NINJA_MASTER ) {
+			deck_opponent(CREATURE_ID_GETUEI_THE_NINJA_MASTER) = 1
+			deck_opponent(CREATURE_ID_EILA_THE_FUGITIVE_KUNOICHI) = 1
+			deck_opponent(CREATURE_ID_ESCAPEGOAT) = 4
+			deck_opponent(CREATURE_ID_ATLAS) = 1
+		}
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_EILA_THE_FUGITIVE_KUNOICHI ) {
+			deck_opponent(CREATURE_ID_GETUEI_THE_NINJA_MASTER) = 1
+			deck_opponent(CREATURE_ID_EILA_THE_FUGITIVE_KUNOICHI) = 1
+			deck_opponent(CREATURE_ID_MOYER_THE_CROOKED) = 1
+			deck_opponent(CREATURE_ID_PART_TIME_WORKER) = 1
+			deck_opponent(CREATURE_ID_ANGRY_BURGER) = 1
+		}
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_NEW_CITIZEN ) {
+			deck_opponent(CREATURE_ID_NEW_CITIZEN) = 1
+			deck_opponent(CREATURE_ID_GETUEI_THE_NINJA_MASTER) = 1
+			deck_opponent(CREATURE_ID_PART_TIME_WORKER) = 1
+			deck_opponent(CREATURE_ID_ANGRY_BURGER) = 1
+			deck_opponent(CREATURE_ID_ESCAPEGOAT) = 4
+		}
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_FASHIONABLE_KUNOICHI ) {
+			deck_opponent(CREATURE_ID_EILA_THE_FUGITIVE_KUNOICHI) = 2
+			deck_opponent(CREATURE_ID_FASHIONABLE_KUNOICHI) = 2
+			deck_opponent(CREATURE_ID_NEW_CITIZEN) = 1
+			deck_opponent(CREATURE_ID_PART_TIME_WORKER) = 1
+			deck_opponent(CREATURE_ID_ANGRY_BURGER) = 1
+			deck_opponent(CREATURE_ID_ESCAPEGOAT) = 4
+		}
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_AIKAGE_THE_SHINOBI_MASK ) {
+			deck_opponent(CREATURE_ID_AIKAGE_THE_SHINOBI_MASK) = 2
+			deck_opponent(CREATURE_ID_KAMIHIKOUKI) = 2
+			deck_opponent(CREATURE_ID_OLD_PERSON) = 2
+			deck_opponent(CREATURE_ID_NOBLE_CHILD) = 2
+			deck_opponent(CREATURE_ID_ELDER) = 0
+			deck_opponent(CREATURE_ID_BOUNTY_HUNTER) = 0
+			deck_opponent(CREATURE_ID_ATLAS) = 1
+		}
+		
 		return 1
 	}
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_IRMA_THE_INDOMITABLE_SMITH ) {
@@ -8484,10 +8548,10 @@
 		cardreflvl = 119
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 1
-		cardrefcost = 5
-		cardrefattack = 5
+		cardrefcost = 4
+		cardrefattack = 3
 		cardrefhp = 5
-		cardrefskillid = TCG_EFF_BATTLECRY_CONFUSEDALLENEMYINHAND
+		cardrefskillid = TCG_EFF_BATTLEDRAKE
 		cardrefbits = ""
 		return 1
 	}
@@ -8526,7 +8590,7 @@
 		cardrefcost = 2
 		cardrefattack = 3
 		cardrefhp = 3
-		cardrefskillid = TCG_EFF_BATTLECRY_CONFUSEDRANDOM3ENEMY
+		cardrefskillid = TCG_EFF_SACDRAKE
 		cardrefbits = ""
 		return 1
 	}
@@ -9243,7 +9307,7 @@
 		cardrefdomain = 1
 		cardrefcost = 6
 		cardrefattack = 4
-		cardrefhp = 8
+		cardrefhp = 6
 		cardrefskillid = TCG_EFF_BATTLECRY_SUMMON2COPY0X
 		cardrefbits = "7,11,21"
 		return 1
@@ -13749,7 +13813,7 @@
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
 		cardrefcost = 7
-		cardrefattack = 3
+		cardrefattack = 0
 		cardrefhp = 3
 		cardrefskillid = TCG_EFF_AIKAGE
 		cardrefbits = ""
@@ -14029,10 +14093,10 @@
 		cardreflvl = 165
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 6
-		cardrefattack = 7
-		cardrefhp = 8
-		cardrefskillid = TCG_EFF_CHUPACABURA
+		cardrefcost = 7
+		cardrefattack = 8
+		cardrefhp = 6
+		cardrefskillid = TCG_EFF_EILAFASHIONABLE
 		cardrefbits = "23"
 		return 1
 	}
@@ -14172,10 +14236,10 @@
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 2
 		cardrefcost = 4
-		cardrefattack = 3
+		cardrefattack = 2
 		cardrefhp = 4
 		cardrefskillid = TCG_EFF_BATTLECRY_SUMMON2COPY0X
-		cardrefbits = "79"
+		cardrefbits = "11,15,79"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_EILA_THE_FUGITIVE_KUNOICHI ) {
@@ -14185,10 +14249,10 @@
 		cardreflvl = 45
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 4
-		cardrefattack = 6
-		cardrefhp = 5
-		cardrefskillid = TCG_EFF_CHUPACABURA
+		cardrefcost = 5
+		cardrefattack = 0
+		cardrefhp = 4
+		cardrefskillid = TCG_EFF_EILA
 		cardrefbits = "23,79"
 		return 1
 	}
@@ -14200,10 +14264,10 @@
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
 		cardrefcost = 5
-		cardrefattack = 2
-		cardrefhp = 2
-		cardrefskillid = TCG_EFF_AIKAGE
-		cardrefbits = "79"
+		cardrefattack = 0
+		cardrefhp = 4
+		cardrefskillid = TCG_EFF_GETUEI
+		cardrefbits = "11,79"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_NINJA ) {
@@ -14215,10 +14279,10 @@
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 2
 		cardrefcost = 3
-		cardrefattack = 3
+		cardrefattack = 2
 		cardrefhp = 3
 		cardrefskillid = TCG_EFF_BATTLECRY_SUMMONACOPY0X
-		cardrefbits = "79"
+		cardrefbits = "11,15,79"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_RICH_PERSON_STOKE ) {
@@ -14564,7 +14628,7 @@
 		cardrefattack = 1
 		cardrefhp = 3
 		cardrefskillid = TCG_EFF_QURUIZA
-		cardrefbits = ""
+		cardrefbits = "66"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_FALLEN_SOLDIER ) {
