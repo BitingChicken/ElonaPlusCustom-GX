@@ -1,6 +1,14 @@
-# Upcoming
+# 2.26.1.0
+
+# Added
+- Ported all changes from Elona+ 2.26.
+
+# Fixed
+- (Plus) Cut-in speed lines not disappearing / not moving during animation.
 
 # TCG
+- Changed effect of Act II ninjas and gave them decks.
+- Fixed Quruiza card logic and buffed her by a little.
 - Fixed crash after winning lethal tcg with 0 hp.
 
 # 2.25.1.1

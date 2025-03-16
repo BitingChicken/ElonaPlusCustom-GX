@@ -774,7 +774,7 @@
 					gosub *effect
 					tc = tcbk
 					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
-						dmghp tc, (sdata(SKILL_WEAPON_THROWING, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_MAGIC_CAPACITY, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_CONTROL_MAGIC, cc) * 2 + 5) + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) / 2, cc, SKILL_RESDMG_CRUSH, 1000
+						dmghp tc, (sdata(SKILL_WEAPON_THROWING, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_MAGIC_CAPACITY, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_CONTROL_MAGIC, cc) * 2 + 5) + (calcLevelDmg(cc) + 1) / 2, cc, SKILL_RESDMG_CRUSH, 1000
 					}
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_ECHINOBOX ) {

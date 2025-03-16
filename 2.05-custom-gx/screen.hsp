@@ -4902,6 +4902,12 @@
 			pos 0, 0
 			gmode 0
 			gcopy BUFFER_BUF, 0, 0, windoww, windowh
+			if ( waza == 1 ) {
+				gosub *screen_cutin1
+			}
+			if ( waza == (-1) ) {
+				gosub *screen_cutin2
+			}
 			af = 0
 			repeat am
 				if ( ap(cnt) >= 10 ) {

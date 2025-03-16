@@ -19697,7 +19697,7 @@
 			snd SOUNDLIST_CARD1
 			animeid = ANIMATION_SHOWDOWN_HIGH_CARD
 			gosub *anime
-			dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) + 10
+			dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + (calcLevelDmg(cc) + 1) + 10
 			dmg = dmg / 10 * raise / 10
 			dmghp tc, dmg, cc, SKILL_RESDMG_CONSTITUTION, 1000
 		}
@@ -19791,7 +19791,7 @@
 						if ( cdata(CDATA_RELATION, tc) >= RELATION_DISLIKE ) {
 							continue
 						}
-						dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) + 10
+						dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + (calcLevelDmg(cc) + 1) + 10
 						dmg = dmg / 10 * straight / 10
 						if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 							if ( tc != CHARA_PLAYER ) {
@@ -19859,7 +19859,7 @@
 				if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
 					continue
 				}
-				dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) + 10
+				dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + (calcLevelDmg(cc) + 1) + 10
 				dmg = dmg / 10 * flash / 10
 				dmghp tc, dmg, cc, SKILL_RESDMG_CONSTITUTION, 1000
 			loop
@@ -19908,7 +19908,7 @@
 				if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
 					continue
 				}
-				dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) + 10
+				dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + (calcLevelDmg(cc) + 1) + 10
 				dmg = dmg / 10 * (straight + flash) / 10
 				dmghp tc, dmg, cc, SKILL_RESDMG_CONSTITUTION, 1000
 			loop
@@ -22285,7 +22285,7 @@
 								txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
 							}
 						}
-						dmg = (sdata(SKILL_ATTR_DEX, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_TACTICS, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_TACTICS, cc) * 2 + 5) + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) / 2
+						dmg = (sdata(SKILL_ATTR_DEX, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_TACTICS, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_TACTICS, cc) * 2 + 5) + (calcLevelDmg(cc) + 1) / 2
 						if ( synccheck(tc, -1) ) {
 							txtmore
 							if ( tc >= MAX_CHARA_FOLLOWER ) {
@@ -24225,7 +24225,7 @@
 			snd SOUNDLIST_CRACK
 			txt lang(name(cc) + "は倒れている" + name(tc) + "を尻で押し潰した！", name(cc) + " crushes " + name(tc) + " with hip!")
 			cdata(CDATA_CONDITION_INVERT, tc)++
-			dmg = (sdata(SKILL_ATTR_STR, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_TACTICS, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_TACTICS, cc) * 2 + 5) + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) / 2
+			dmg = (sdata(SKILL_ATTR_STR, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_TACTICS, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_TACTICS, cc) * 2 + 5) + (calcLevelDmg(cc) + 1) / 2
 			if ( cdata(CDATA_ID, cc) == CREATURE_ID_SHENA_THE_DRAW ) {
 				dmg = dmg * 3 / 2
 			}

@@ -340,6 +340,7 @@
 	return 1
 
 #defcfunc cardcanuseskill int cardcanuseskill_arg1
+	return 0
 	if ( card@tcg(TCG_CARD_LOCATION, cardcanuseskill_arg1) != TCG_LOCATION_FIELD ) {
 		return 0
 	}
@@ -723,6 +724,7 @@
 								drawnatk@tcg = card@tcg(TCG_CARD_REF_ATTACK, tcgdrawcard_arg1)
 								drawncost@tcg = card@tcg(TCG_CARD_REF_COST, tcgdrawcard_arg1)
 							}
+							drawntag@tcg = cardn@tcg(TCG_CARDN_REF_TAG, tcgdrawcard_arg1) 
 							gmode 2
 							pos x@tcg, y@tcg + 81
 							gzoom 21, 15, 7, 0, 96, 35, 25
@@ -759,6 +761,20 @@
 									} else {
 										bmes "" + drawncost@tcg, 125, 235, 125
 									}
+								}
+							}
+							if ( drawntag@tcg != "" ) {
+								pos x@tcg + 48, y@tcg
+								gzoom 24, 24, 7, 192, 96, 32, 32
+								if ( strmid(drawntag@tcg, 0, 1) == "-" ) {
+									drawntag@tcg = strmid(drawntag@tcg, 1, strlen(drawntag@tcg))
+									pos x@tcg + 48 + 12 - 3 * strlen(str(drawntag@tcg)), y@tcg + 4
+									color 0, 0, 0
+									bmes "" + drawntag@tcg, 235, 125, 125
+								} else {
+									pos x@tcg + 48 + 12 - 3 * strlen(str(drawntag@tcg)), y@tcg + 4
+									color 0, 0, 0
+									bmes "" + drawntag@tcg, 235, 235, 235
 								}
 							}
 						}
@@ -3778,15 +3794,21 @@
 						snd SOUNDLIST_FAIL1
 						goto *select_deck_loop_WEND2
 					}
-					if ( deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) >= 2 & card@tcg(TCG_CARD_REF_DOMAIN, cc@tcg) == 4 & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOLIMIT & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOVICE ) {
+					if ( deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) >= 2 & card@tcg(TCG_CARD_REF_DOMAIN, cc@tcg) == 4 & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOLIMIT & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_POKER & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOVICE ) {
 						cardhelp lang("デッキに同じ中立のカードを1枚しか入れることができない。", "You can only put 2 copy of the same Neutral Card in your deck."), 40
 						deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) = 2
 						snd SOUNDLIST_FAIL1
 						goto *select_deck_loop_WEND2
 					}
-					if ( deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) >= 4 & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOLIMIT & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOVICE ) {
+					if ( deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) >= 4                                              & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOLIMIT & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_POKER & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOVICE ) {
 						cardhelp lang("デッキに同じカードを4枚しか入れることができない。", "You can only put 4 copy of the same Card in your deck."), 40
 						deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) = 4
+						snd SOUNDLIST_FAIL1
+						goto *select_deck_loop_WEND2
+					}
+					if ( deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) >= 13                                              & card@tcg(TCG_CARD_EFFECT, cc@tcg) == TCG_EFF_POKER ) {
+						cardhelp lang("デッキに同じカードを13枚しか入れることができない。", "You can only put 13 copy of the same suit Card in your deck."), 40
+						deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) = 13
 						snd SOUNDLIST_FAIL1
 						goto *select_deck_loop_WEND2
 					}
