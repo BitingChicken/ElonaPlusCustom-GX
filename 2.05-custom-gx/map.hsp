@@ -20,29 +20,21 @@
 			if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS | gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
 				if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
 					if ( gdata(GDATA_AREA) != AREA_MELUGAS ) {
-						if ( rnd(100) == 0 ) {
-							dbid = CREATURE_ID_WEREWOLF
-							return
+						if ( findchara(CREATURE_ID_KYU_BI) == 0 ) {
+							if ( rnd(100) == 0 ) {
+								dbid = CREATURE_ID_WEREWOLF
+								return
+							}
 						}
-					}
-				}
-			}
-			if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS | gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
-				if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
-					if ( gdata(GDATA_AREA) != AREA_MELUGAS ) {
 						if ( rnd(100) == 0 ) {
 							dbid = CREATURE_ID_SUNBARARIAN
 							return
 						}
-					}
-				}
-			}
-			if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS | gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
-				if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
-					if ( gdata(GDATA_AREA) != AREA_MELUGAS ) {
-						if ( rnd(300) == 0 ) {
-							dbid = CREATURE_ID_FOX_SPIRIT
-							return
+						if ( findchara(CREATURE_ID_GODWOLF) == 0 ) {
+							if ( rnd(300) == 0 ) {
+								dbid = CREATURE_ID_FOX_SPIRIT
+								return
+							}
 						}
 					}
 				}
@@ -3843,6 +3835,15 @@
 					flt
 					characreate -1, CREATURE_ID_BUG, -3, 0
 				loop
+			}
+		}
+		if ( gdata(GDATA_WEATHER) == WEATHER_HARD_RAIN ) {
+			if ( gdata(GDATA_WORLD) != AREA_AIMWELL & gdata(GDATA_WORLD) != AREA_OCEAN ) {
+				if ( rnd(2) == 0 ) {
+					flt
+					itemcreate -1, ITEM_ID_LIGHTNING_DISCHARGER, -1, -1, 0
+					inv(INV_ITEM_PROPERTY, ci) = PROP_NPC
+				}
 			}
 		}
 		if ( encounter == ENCOUNTER_ELEA_REPARATION ) {

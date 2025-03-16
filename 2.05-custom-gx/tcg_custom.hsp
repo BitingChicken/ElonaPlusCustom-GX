@@ -15732,6 +15732,33 @@
 		return 1
 	}
 	// doggod
+	if ( dbid == CREATURE_ID_GODWOLF ) {
+		cardrefrace = "doggod"
+		cardrefclass = "warrior"
+		cardreflvl = 170
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 5
+		cardrefcost = 9
+		cardrefattack = 9
+		cardrefhp = 15
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_KYU_BI ) {
+		cardrefrace = "doggod"
+		cardrefclass = "warmage"
+		cardrefsex = "female"
+		cardreflvl = 180
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 5
+		cardrefcost = 9
+		cardrefattack = 9
+		cardrefhp = 14
+		cardrefskillid = TCG_EFF_BATTLECRY_DRAW1CARD
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_SAIMEF_THE_DOGGOD ) {
 		cardrefrace = "doggod"
 		cardrefclass = "priest"
@@ -17306,6 +17333,59 @@
 		return 1
 	}
 	// spirit
+	if ( dbid == CREATURE_ID_HEART_WITCH ) {
+		cardrefrace = "spirit"
+		cardrefclass = "wizard"
+		cardrefsex = "female"
+		cardreflvl = 20
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 2
+		cardrefattack = 3
+		cardrefhp = 3
+		cardrefskillid = TCG_EFF_BATTLECRY_DRAW1CARD
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_DIAMOND_EYES ) {
+		cardrefrace = "spirit"
+		cardrefclass = "priest"
+		cardreflvl = 20
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 2
+		cardrefattack = 3
+		cardrefhp = 3
+		cardrefskillid = TCG_EFF_BATTLECRY_HEALPLAYER2DAMAGE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_CLUB_FEATHER ) {
+		cardrefrace = "spirit"
+		cardrefclass = "predator"
+		cardreflvl = 20
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 2
+		cardrefattack = 3
+		cardrefhp = 3
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_SPADE_WARRIOR ) {
+		cardrefrace = "spirit"
+		cardrefclass = "warrior"
+		cardreflvl = 20
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 2
+		cardrefattack = 3
+		cardrefhp = 4
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_KAMIKAKUSHI_THE_HIDDEN_SHIKIORIGAMI ) {
 		cardrefrace = "spirit"
 		cardrefclass = "warmage"

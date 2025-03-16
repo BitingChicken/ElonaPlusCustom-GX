@@ -2938,6 +2938,10 @@
 	}
 	if ( _switch_val == ANIMATION_HYPER_PLUG_BURST | _switch_sw ) {
 		_switch_sw = 0
+		_switch_sw++
+	}
+	if ( _switch_val == ANIMATION_SHOWDOWN_HIGH_CARD | _switch_sw ) {
+		_switch_sw = 0
 		if ( synccheck(cc, -1) == 0 ) {
 			goto *anime_SWEND1
 		}
@@ -2962,6 +2966,10 @@
 		if ( animeid == ANIMATION_LINEAR_LAUNCHER ) {
 			preparePicItem inv(INV_ITEM_PIC, aniref), inv(INV_ITEM_COL, aniref)
 			snd SOUNDLIST_BOLT1
+		}
+		if ( animeid == ANIMATION_SHOWDOWN_HIGH_CARD ) {
+			preparePicItem xy2pic(24, 39), COLOR_DEFAULT
+			snd SOUNDLIST_ATK_FIRE
 		}
 		if ( animeid == ANIMATION_BURN_SCROLLS ) {
 			preparePicItem xy2pic(22, 36), COLOR_DEFAULT
@@ -3452,7 +3460,9 @@
 		if ( animode == 1 ) {
 			preparePicItem xy2pic(32, 35), COLOR_PINK
 		}
-
+		if ( animode == 2 ) {
+			preparePicItem xy2pic(24, 39), COLOR_DEFAULT
+		}
 		anix = cdata(CDATA_X, tc)
 		aniy = cdata(CDATA_Y, tc)
 		ax = (cdata(CDATA_X, cc) - scx) * inf_tiles
@@ -3755,6 +3765,10 @@
 			gsel BUFFER_PIC
 			picload exedir + "graphic\\anime90.bmp"
 		}
+		if ( animode == 9 ) {
+			gsel BUFFER_PIC
+			picload exedir + "graphic\\anime95.bmp"
+		}
 		gsel BUFFER_BUF
 		gmode 0
 		pos 0, 0
@@ -3766,7 +3780,7 @@
 			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
 				continue
 			}
-			if ( animode == 0 | animode == 2 | animode == 7 ) {
+			if ( animode == 0 | animode == 2 | animode == 7 | animode == 9 ) {
 				if ( cnt == cc ) {
 					continue
 				}
@@ -3878,6 +3892,9 @@
 						if ( animode == 8 ) {
 							snd SOUNDLIST_ATK_MIND
 						}
+						if ( animode == 9 ) {
+							snd SOUNDLIST_ENC
+						}
 					}
 				}
 			}
@@ -3892,6 +3909,9 @@
 			}
 			if ( animode == 8 ) {
 				await cfg_animewait + 5
+			}
+			if ( animode == 9 ) {
+				await cfg_animewait + 15
 			}
 			redraw 1
 		loop
@@ -4570,6 +4590,10 @@
 			gsel BUFFER_PIC
 			picload exedir + "graphic\\anime91.bmp"
 		}
+		if ( animode == 7 ) {
+			gsel BUFFER_PIC
+			picload exedir + "graphic\\anime93.bmp"
+		}
 		gsel 4
 		pos 0, 0
 		gmode 0
@@ -4629,6 +4653,10 @@
 						}
 						if ( animode == 6 ) {
 							snd SOUNDLIST_SONIC
+						}
+						if ( animode == 7 ) {
+							snd SOUNDLIST_CARD1
+							snd SOUNDLIST_ENC
 						}
 					}
 				}
@@ -4847,6 +4875,167 @@
 		gmode 2
 		redraw 1
 		goto *anime_SWEND1
+	}
+	if ( _switch_val == ANIMATION_CUT_IN | _switch_sw ) {
+		_switch_sw = 0
+		pic = cdata(CDATA_PIC, anic) \ 1000 + cdata(CDATA_CHARA_PIC, anic) * 1000 + refchara(cdata(CDATA_ID, anic), DBSPEC_CHARA_COL) * 10000
+		if ( anic == CHARA_PLAYER ) {
+			pic = -1
+		}
+		gsel BUFFER_PIC
+		picload exedir + "user\\graphic2\\cutin" + pic + ".bmp"
+		gsel BUFFER_BUF
+		pos 0, 0
+		gmode 0
+		gcopy BUFFER_SCREEN, 0, 0, windoww, windowh
+		gsel BUFFER_SCREEN
+		snd SOUNDLIST_MECHA20
+		am = 0
+		repeat 10
+			ax(am) = 0
+			ay(am) = 0
+			ap(am) = 0
+			am++
+		loop
+		repeat
+			redraw 0
+			pos 0, 0
+			gmode 0
+			gcopy BUFFER_BUF, 0, 0, windoww, windowh
+			af = 0
+			repeat am
+				if ( ap(cnt) >= 10 ) {
+					continue
+				}
+				af = 1
+				color 0, 0, 0
+				if ( ap(cnt) == 0 ) {
+					gmode 4, 100, 100, 250
+					color 0, 0, 0
+					ax(cnt) = windoww - 300 + 200
+					if ( waza == (-1) ) {
+						ax(cnt) = 100
+					}
+					ay(cnt) = windowh - 88 - 250 + 150
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 200 * waza, 200
+				}
+				if ( ap(cnt) == 1 ) {
+					gmode 4, 200, 200, 250
+					color 0, 0, 0
+					ax(cnt) = windoww - 300 + 100
+					if ( waza == (-1) ) {
+						ax(cnt) = 200
+					}
+					ay(cnt) = windowh - 88 - 250 + 50
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 400 * waza, 400
+				}
+				if ( ap(cnt) == 2 ) {
+					gmode 4, 250, 250, 250
+					color 0, 0, 0
+					ax(cnt) = windoww - 300 + 50
+					if ( waza == (-1) ) {
+						ax(cnt) = 250
+					}
+					ay(cnt) = windowh - 88 - 250
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 500 * waza, 500
+				}
+				if ( ap(cnt) == 3 ) {
+					gmode 4, 300, 250, 250
+					color 0, 0, 0
+					ax(cnt) = windoww - 300
+					if ( waza == (-1) ) {
+						ax(cnt) = 300
+					}
+					ay(cnt) = windowh - 88 - 250
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 600 * waza, 500
+				}
+				if ( ap(cnt) == 4 ) {
+					gmode 4, 300, 240, 200
+					color 0, 0, 0
+					ax(cnt) = windoww - 300
+					if ( waza == (-1) ) {
+						ax(cnt) = 300
+					}
+					ay(cnt) = windowh - 88 - 250 + 10
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 600 * waza, 480
+				}
+				if ( ap(cnt) == 5 ) {
+					gmode 4, 300, 230, 150
+					color 0, 0, 0
+					ax(cnt) = windoww - 300
+					if ( waza == (-1) ) {
+						ax(cnt) = 300
+					}
+					ay(cnt) = windowh - 88 - 250 + 20
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 600 * waza, 460
+				}
+				if ( ap(cnt) == 6 ) {
+					gmode 4, 300, 230, 100
+					color 0, 0, 0
+					ax(cnt) = windoww - 300 - 15
+					if ( waza == (-1) ) {
+						ax(cnt) = 300 + 15
+					}
+					ay(cnt) = windowh - 88 - 250 + 20 - 23
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 630 * waza, 460 + 23 * 2
+				}
+				if ( ap(cnt) == 7 ) {
+					gmode 4, 300, 230, 50
+					color 0, 0, 0
+					ax(cnt) = windoww - 300 - 15 * 2
+					if ( waza == (-1) ) {
+						ax(cnt) = 300 + 15 * 2
+					}
+					ay(cnt) = windowh - 88 - 250 + 20 - 23
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 660 * waza, 460 + 23 * 2
+				}
+				if ( ap(cnt) == 8 ) {
+					gmode 4, 300, 230, 10
+					color 0, 0, 0
+					ax(cnt) = windoww - 300 - 15 * 3
+					if ( waza == (-1) ) {
+						ax(cnt) = 300 + 15 * 3
+					}
+					ay(cnt) = windowh - 88 - 250 + 20 - 23 * 2
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 690 * waza, 460 + 23 * 4
+				}
+				if ( ap(cnt) == 9 ) {
+					gmode 4, 300, 230, 5
+					color 0, 0, 0
+					ax(cnt) = windoww - 300 - 15 * 3
+					if ( waza == (-1) ) {
+						ax(cnt) = 300 + 15 * 3
+					}
+					ay(cnt) = windowh - 88 - 250 + 20 - 23 * 2
+					pos ax(cnt), ay(cnt)
+					grotate BUFFER_PIC, 0, 0, 0, 690 * waza, 460 + 23 * 4
+				}
+				ap(cnt)++
+			loop
+			if ( af == 0 ) {
+				break
+			}
+			await cfg_animewait + 100
+			redraw 1
+		loop
+		await cfg_animewait
+		redraw 0
+		pos 0, 0
+		gmode 0
+		gcopy BUFFER_BUF, 0, 0, windoww, windowh
+		gmode 2
+		redraw 1
+		goto *anime_SWEND1
+		_switch_sw++
 	}
 	if ( _switch_val == ANIMATION_STARS | _switch_sw ) {
 		_switch_sw = 0
@@ -5416,6 +5605,12 @@
 			if ( gdata(GDATA_WEATHER) == WEATHER_ETHER ) {
 				gosub *screen_ether
 			}
+			if ( waza == 1 ) {
+				gosub *screen_cutin1
+			}
+			if ( waza == (-1) ) {
+				gosub *screen_cutin2
+			}
 		}
 		if ( gdata(GDATA_WORLD) == AREA_OCEAN & gdata(GDATA_AREA) == AREA_WILDERNESS ) {
 			gosub *screen_ocean
@@ -5618,6 +5813,52 @@
 		gcopy 3, rainx(cnt) \ 2 * 8, 600 + cnt \ 6 * 8
 	loop
 	weatherbk = gdata(GDATA_WEATHER)
+	gmode 2
+	return
+
+*screen_cutin1
+	repeat maxrain
+		if ( rainpx(cnt) == 0 ) {
+			rainpy(cnt) = rnd(windowh) - 120
+			rainpx(cnt) = rnd(windoww) + 1
+		}
+		else {
+			rainpx(cnt) += cnt \ 10 + 150
+			if ( rainpx(cnt) > windoww - 100 ) {
+				rainpx(cnt) = 0
+				rainpy(cnt) = 0
+			}
+		}
+		if ( rainpx(cnt) != 0 ) {
+			if ( rainpy(cnt) != 0 ) {
+				pos rainpx(cnt), rainpy(cnt)
+				gcopy BUFFER_INF, 264, 96, 100, rainpy(cnt) \ 3 + 1
+			}
+		}
+	loop
+	gmode 2
+	return
+
+*screen_cutin2
+	repeat maxrain
+		if ( rainpx(cnt) == 0 ) {
+			rainpy(cnt) = rnd(windowh) - 120
+			rainpx(cnt) = rnd(windoww) - 100
+		}
+		else {
+			rainpx(cnt) -= cnt \ 10 + 15
+			if ( rainpx(cnt) <= 0 ) {
+				rainpx(cnt) = 0
+				rainpy(cnt) = 0
+			}
+		}
+		if ( rainpx(cnt) != 0 ) {
+			if ( rainpy(cnt) != 0 ) {
+				pos rainpx(cnt), rainpy(cnt)
+				gcopy BUFFER_INF, 264, 96, 100, rainpy(cnt) \ 3 + 1
+			}
+		}
+	loop
 	gmode 2
 	return
 
@@ -7781,7 +8022,7 @@
 			if ( inv(INV_ITEM_ID, rp) == ITEM_ID_CLAYMORE | inv(INV_ITEM_ID, rp) == ITEM_ID_DRAGON_SLAYER | inv(INV_ITEM_ID, rp) == ITEM_ID_CLAYMORE2 | inv(INV_ITEM_ID, rp) == ITEM_ID_KINDNESS_BLADE | inv(INV_ITEM_ID, rp) == ITEM_ID_FLAME_EDGE | inv(INV_ITEM_ID, rp) == ITEM_ID_GRANDEL ) {
 				cdata(CDATA_WEAPON_STYLE_TYPE, r1) = WEAPON_STYLE_LONGSWORD2
 			}
-			if ( inv(INV_ITEM_ID, rp) == ITEM_ID_HAND_AXE | inv(INV_ITEM_ID, rp) == ITEM_ID_BATTLE_AXE | inv(INV_ITEM_ID, rp) == ITEM_ID_BARDISH | inv(INV_ITEM_ID, rp) == ITEM_ID_AXE_OF_DESTRUCTION | inv(INV_ITEM_ID, rp) == ITEM_ID_NEGATIVE_EDGE | inv(INV_ITEM_ID, rp) == ITEM_ID_GOD_BREAKER | inv(INV_ITEM_ID, rp) == ITEM_ID_GRAVITY_AXE | inv(INV_ITEM_ID, rp) == ITEM_ID_GULIWELZEN | inv(INV_ITEM_ID, rp) == ITEM_ID_TOMAHAWK | inv(INV_ITEM_ID, rp) == ITEM_ID_CHAINSAW | inv(INV_ITEM_ID, rp) == ITEM_ID_DGT_101 ) {
+			if ( inv(INV_ITEM_ID, rp) == ITEM_ID_HAND_AXE | inv(INV_ITEM_ID, rp) == ITEM_ID_BATTLE_AXE | inv(INV_ITEM_ID, rp) == ITEM_ID_BARDISH | inv(INV_ITEM_ID, rp) == ITEM_ID_AXE_OF_DESTRUCTION | inv(INV_ITEM_ID, rp) == ITEM_ID_NEGATIVE_EDGE | inv(INV_ITEM_ID, rp) == ITEM_ID_GOD_BREAKER | inv(INV_ITEM_ID, rp) == ITEM_ID_GRAVITY_AXE | inv(INV_ITEM_ID, rp) == ITEM_ID_GULIWELZEN | inv(INV_ITEM_ID, rp) == ITEM_ID_TOMAHAWK | inv(INV_ITEM_ID, rp) == ITEM_ID_CHAINSAW | inv(INV_ITEM_ID, rp) == ITEM_ID_DGT_101 | inv(INV_ITEM_ID, rp) == ITEM_ID_HONEGUM ) {
 				cdata(CDATA_WEAPON_STYLE_TYPE, r1) = WEAPON_STYLE_AXE
 			}
 			if ( inv(INV_ITEM_ID, rp) == ITEM_ID_CLUB | inv(INV_ITEM_ID, rp) == ITEM_ID_HAMMER | inv(INV_ITEM_ID, rp) == ITEM_ID_BLOOD_MOON | inv(INV_ITEM_ID, rp) == ITEM_ID_GAIA_HAMMER | inv(INV_ITEM_ID, rp) == ITEM_ID_BUSTER_BOOK | inv(INV_ITEM_ID, rp) == ITEM_ID_NAIL_STRADIVARIUS | inv(INV_ITEM_ID, rp) == ITEM_ID_SOCKS | inv(INV_ITEM_ID, rp) == ITEM_ID_LUCKY_ALMONDS | inv(INV_ITEM_ID, rp) == ITEM_ID_ZUGAIKURAI | inv(INV_ITEM_ID, rp) == ITEM_ID_GRAVITAIL | inv(INV_ITEM_ID, rp) == ITEM_ID_WAR_HAMMER | inv(INV_ITEM_ID, rp) == ITEM_ID_STAR_HAMMER | inv(INV_ITEM_ID, rp) == ITEM_ID_NAZUNAS_SOX ) {

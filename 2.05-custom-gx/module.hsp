@@ -2357,6 +2357,54 @@
 			}
 		}
 	}
+	// Draw card spirit ranks
+	// base x: 40,  y: -10
+	if ( cell_draw_arg_c >= 16 ) {
+		if ( cdata(CDATA_ID, cell_draw_arg_c) >= CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, cell_draw_arg_c) <= CREATURE_ID_HEART_WITCH ) {
+			pos cell_draw_arg_dx + 40, cell_draw_arg_dy - 10
+			color 0, 0, 0
+			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) >= 2 & cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) <= 10 ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "" + cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) + "", 100, 100, 100
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "" + cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) + "", 255, 25, 25
+				}
+			}
+			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) == 1 ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "A", 100, 100, 100
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "A", 255, 25, 25
+				}
+			}
+			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) == 11 ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "J", 100, 100, 100
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "J", 255, 25, 25
+				}
+			}
+			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) == 12 ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "Q", 100, 100, 100
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "Q", 255, 25, 25
+				}
+			}
+			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) == 13 ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "K", 100, 100, 100
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "K", 255, 25, 25
+				}
+			}
+		}
+	}
 	// Draw magnetism icons
 	// base x: 9,  y: 25 - 9
 	// CDATA_IN_TAGTEAM == 1:	x + 13

@@ -466,6 +466,8 @@
 						break
 					}
 				}
+				cxx = cdata(CDATA_X, p)
+				cyy = cdata(CDATA_Y, p)
 				if ( cdata(CDATA_EXIST, p) == CHAR_STATE_ALIVE ) {
 					mdata(MDATA_WEREWOLF_PROGRESS) += cdata(CDATA_LEVEL, p)
 					chatc@DP = p
@@ -498,7 +500,7 @@
 		kitune = 0
 		txtef COLOR_RED
 		txt lang("【人狼遊儀が進行:" + mdata(MDATA_WEREWOLF_PROGRESS) + "/200】", "< Werewolf-RitualGame in progress: " + mdata(MDATA_WEREWOLF_PROGRESS) + "/200 > ")
-		if ( mdata(MDATA_WEREWOLF_PROGRESS) == 200 ) {
+		if ( mdata(MDATA_WEREWOLF_PROGRESS) >= 200 ) {
 			kitune = 0
 			repeat MAX_CHARA_TOTAL
 				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
@@ -520,14 +522,86 @@
 			loop
 			if ( kitune == 0 ) {
 				txtef COLOR_RED
-				txt lang("合計レベルが200以上になるように生贄が捧げられたことにより、神狼が降臨（未実装）。狼陣営の勝利です。", "The sacrifice of 200 levels was made, so a wolfgod descended (not implemented). It's a victory for the wolves.")
+				txt lang("合計レベルが200以上になるように生贄が捧げられたことにより、神狼が降臨しました。狼陣営の勝利です。", "The sacrifice was made so that the total level was 200 or more, so a wolfgod descended. It's a victory for the wolves.")
+				snd SOUNDLIST_SIREN
+				flt
+				characreate -1, CREATURE_ID_GODWOLF, cxx, cyy
+				repeat 245
+					if ( cnt < 16 ) {
+						continue
+					}
+					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF ) {
+						if ( cdata(CDATA_PIC, cnt) == xy2pic(4, 4) | cdata(CDATA_PIC, cnt) == xy2pic(21, 4) ) {
+							cdata(CDATA_PIC, cnt) = xy2pic(0, 23)
+						}
+						if ( cdata(CDATA_PIC, cnt) == xy2pic(5, 4) | cdata(CDATA_PIC, cnt) == xy2pic(23, 9) ) {
+							cdata(CDATA_PIC, cnt) = xy2pic(1, 23)
+						}
+						evname = lang("人狼", "werewolf")
+						evold = lang("市民", "citizen")
+						if ( strmid(cdatan(CDATAN_NAME, cnt), 0, strlen(evold)) == evold ) {
+							cdatan(CDATAN_NAME, cnt) = evname + strmid(cdatan(CDATAN_NAME, cnt), strlen(evold), strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold))
+						}
+						if ( strmid(cdatan(CDATAN_NAME, cnt), strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold), strlen(evold)) == evold & strmid(cdatan(CDATAN_NAME, cnt), strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold), strlen(evname)) != evname ) {
+							cdatan(CDATAN_NAME, cnt) = strmid(cdatan(CDATAN_NAME, cnt), 0, strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold)) + evname
+						}
+						cdata(CDATA_RELATION_ORG, cnt) = RELATION_ENEMY
+						cdata(CDATA_RELATION, cnt) = RELATION_ENEMY
+						cdata(CDATA_TARGET, cnt) = 0
+					}
+					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
+						if ( cdata(CDATA_PIC, cnt) == xy2pic(22, 23) ) {
+							if ( cdata(CDATA_SEX, cnt) == 0 ) {
+								cdata(CDATA_PIC, cnt) = 759 + 6 * 1000
+							}
+							else {
+								cdata(CDATA_PIC, cnt) = 760 + 6 * 1000
+							}
+						}
+						evname = lang("人狼探偵", "werewolf detective")
+						evold = lang("探偵", "detective")
+						if ( strmid(cdatan(CDATAN_NAME, cnt), 0, strlen(evold)) == evold ) {
+							cdatan(CDATAN_NAME, cnt) = evname + strmid(cdatan(CDATAN_NAME, cnt), strlen(evold), strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold))
+						}
+						if ( strmid(cdatan(CDATAN_NAME, cnt), strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold), strlen(evold)) == evold & strmid(cdatan(CDATAN_NAME, cnt), strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold), strlen(evname)) != evname ) {
+							cdatan(CDATAN_NAME, cnt) = strmid(cdatan(CDATAN_NAME, cnt), 0, strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold)) + evname
+						}
+						cdata(CDATA_RELATION_ORG, cnt) = RELATION_ENEMY
+						cdata(CDATA_RELATION, cnt) = RELATION_ENEMY
+						cdata(CDATA_TARGET, cnt) = 0
+					}
+				loop
 			}
 			if ( kitune > 0 ) {
 				txtef COLOR_RED
-				txt lang("潜伏していた妖狐が人狼遊儀を乗っ取ったことにより、九尾が降臨（未実装）。狐陣営の勝利です。", "A fox that had been hiding out takes over Werewolf-RitualGame, so a foxgod descended (not yet implemented). It's a victory for the fox.")
+				txt lang("潜伏していた妖狐が人狼遊儀を乗っ取ったことにより、九尾が降臨しました。狐陣営の勝利です。", "A fox that had been hiding out takes over Werewolf-RitualGame, so a foxgod descended. It's a victory for the fox.")
+				snd SOUNDLIST_SIREN
+				flt
+				characreate -1, CREATURE_ID_KYU_BI, cxx, cyy
+				repeat 245
+					if ( cnt < 16 ) {
+						continue
+					}
+					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_FOX_SPIRIT ) {
+						if ( cdata(CDATA_PIC, cnt) == xy2pic(4, 4) | cdata(CDATA_PIC, cnt) == xy2pic(21, 4) | cdata(CDATA_PIC, cnt) == xy2pic(5, 4) | cdata(CDATA_PIC, cnt) == xy2pic(23, 9) ) {
+							cdata(CDATA_PIC, cnt) = xy2pic(5, 23)
+						}
+						evname = lang("妖狐", "fox")
+						evold = lang("市民", "citizen")
+						if ( strmid(cdatan(CDATAN_NAME, cnt), 0, strlen(evold)) == evold ) {
+							cdatan(CDATAN_NAME, cnt) = evname + strmid(cdatan(CDATAN_NAME, cnt), strlen(evold), strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold))
+						}
+						if ( strmid(cdatan(CDATAN_NAME, cnt), strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold), strlen(evold)) == evold & strmid(cdatan(CDATAN_NAME, cnt), strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold), strlen(evname)) != evname ) {
+							cdatan(CDATAN_NAME, cnt) = strmid(cdatan(CDATAN_NAME, cnt), 0, strlen(cdatan(CDATAN_NAME, cnt)) - strlen(evold)) + evname
+						}
+						cdata(CDATA_PORTRAIT, cnt) = -1
+					}
+				loop
 			}
 			kitune = 0
 		}
+		cxx = 0
+		cyy = 0
 		goto *random_eventProc_SWEND1
 	}
 	if ( _switch_val == RANDOM_EVENT_MURDER | _switch_sw ) {

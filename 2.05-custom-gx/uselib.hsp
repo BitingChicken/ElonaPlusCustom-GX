@@ -6,6 +6,7 @@
 ; use the version in hspda.dll for compatability reasons, so rename it to
 ; "sortnote2" to prevent name clashes.
 #uselib "hspda.dll"
+#func sortval2 "_sortval@16" pexinfo, nullptr, nullptr, nullptr
 #func sortnote2 "_sortnote@16" pexinfo, nullptr, nullptr, nullptr
 #ifndef _DEBUG
 #func xnotesel "_xnotesel@16" pval, int, int, int

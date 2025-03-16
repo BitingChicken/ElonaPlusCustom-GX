@@ -2159,6 +2159,61 @@
 	loop
 	return
 
+#deffunc txtsetpforce int txtsetpforce_arg1
+	repeat 8
+		i = cnt
+		p(cnt) = p(i)
+		p(i) = cnt
+	loop
+	repeat txtsetpforce_arg1
+		if ( p(cnt) == 0 ) {
+			s(cnt) = lang("ショウダウン・ハイカード　精霊リセット/威力" + raise + "%/単体", "<Showdown High Card>  Spirits reset /Attack")
+		}
+		if ( p(cnt) == 1 ) {
+			if ( pair <= 0 ) {
+				s(cnt) = lang("未成立", "Not established")
+			}
+			else {
+				s(cnt) = lang("ショウダウン・ペアカード　精霊リセット/回復" + pair + "%/全体", "<Showdown Pair Cards> Spirits reset /Ally recovery")
+			}
+		}
+		if ( p(cnt) == 2 ) {
+			if ( straight <= 0 ) {
+				s(cnt) = lang("未成立", "Not established")
+			}
+			else {
+				s(cnt) = lang("ショウダウン・ストレート　精霊リセット/威力" + straight + "%/直線", "<Showdown Straight>   Spirits reset /Attack(line) ")
+			}
+		}
+		if ( p(cnt) == 3 ) {
+			if ( flash <= 0 ) {
+				s(cnt) = lang("未成立", "Not established")
+			}
+			else {
+				s(cnt) = lang("ショウダウン・フラッシュ　精霊リセット/威力" + flash + "%/広範囲", "<Showdown Flash>      Spirits reset /Attack(wide) ")
+			}
+		}
+		if ( p(cnt) == 4 ) {
+			sflash = straight + flash
+			if ( straight <= 0 | flash <= 0 ) {
+				s(cnt) = lang("未成立", "Not established")
+			}
+			else {
+				s(cnt) = lang("ショウダウンＳフラッシュ　精霊リセット/威力" + sflash + "%/全域", "<Showdown S-Flash>    Spirits reset /Attack(all) ")
+			}
+		}
+		if ( p(cnt) == 5 ) {
+			s(cnt) = lang("【ワイルドカードチェンジ】ゲージ50％/未実装", "[Wild Card Change]    gauge50% /Not implemented")
+		}
+		if ( p(cnt) == 6 ) {
+			s(cnt) = lang("ランクレイズマジック　　　ゲージ5％/ランクを2つ上げる", "<Rank Raise Magic>    gauge5% /Raise rank by 2")
+		}
+		if ( p(cnt) == 7 ) {
+			s(cnt) = lang("フォールド　　　　　　　　やっぱりやめる", "<Fold>                Cancel")
+		}
+	loop
+	return
+
 #deffunc txtsetabyss int txtsetabyss_arg1
 	repeat 10
 		i = cnt
@@ -7633,6 +7688,14 @@
 		if ( cdata(CDATA_ID, tc) == CREATURE_ID_DETECTIVE | cdata(CDATA_ID, tc) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
 			p = instr(buff, 0, "%DETECTIVE," + lang("JP", "EN"))
 			break
+		}
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_FOX_SPIRIT ) {
+			if ( cdata(CDATA_ALLIED, tc) == 0 ) {
+				if ( cdata(CDATA_PIC, tc) == xy2pic(5, 23) ) {
+					p = instr(buff, 0, "%YOUKO," + lang("JP", "EN"))
+					break
+				}
+			}
 		}
 		if ( cbit(CHARA_BIT_LABOR_CAMP, tc) == TRUE & gdata(GDATA_AREA) != AREA_SHOW_HOUSE & cdata(CDATA_MASTER_SERVANT, tc) < 100 ) {
 			p = instr(buff, 0, "%INMATE," + lang("JP", "EN"))

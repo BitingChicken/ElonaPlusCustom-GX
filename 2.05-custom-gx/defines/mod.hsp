@@ -617,8 +617,9 @@
 #define global	SKILL_SPACT_BRAIN_PARASITIZE	865
 #define global	SKILL_SPACT_KAMIKAKUSHI	866
 #define global	SKILL_SPACT_HIP_ATTACK	867
+#define global	SKILL_SPACT_POKER_FORCE	868
 
-#define global	MAX_SKILL	(SKILL_SPACT_HIP_ATTACK + 1)
+#define global	MAX_SKILL	(SKILL_SPACT_POKER_FORCE + 1)
 
 // Absolute skill limits
 #define global	MAX_SPACT_COUNT	500 // Maximum number of spact slots available in the array, beginning at STARTING_SKILL_SPACT, meaning the effective max skillid is 1099 (1100 if you really push it)
@@ -2914,6 +2915,8 @@
 #define global	ANIMATION_HYPER_PLUG_BURST	63
 #define global	ANIMATION_GOD_CHARGE_ROD	64
 #define global	ANIMATION_SHIKIKAMI_BREATH	65
+#define global	ANIMATION_CUT_IN	66
+#define global	ANIMATION_SHOWDOWN_HIGH_CARD	67
 
 #define global	ANIMATION_UNUSED1	108
 #define global	ANIMATION_UNUSED2	109
@@ -5981,8 +5984,12 @@
 #define global	ITEM_ID_POTION_PLUG	1299
 #define global	ITEM_ID_TRAINING_TICKET	1300
 #define global	ITEM_ID_HIDEN_MASHI	1301
+#define global	ITEM_ID_KONMOU_HAPPA	1302
+#define global	ITEM_ID_HONEGUM	1303
+#define global	ITEM_ID_ECHINOBOX	1304
+#define global	ITEM_ID_LIGHTNING_DISCHARGER	1305
 
-#define global	MAX_ITEM_ID	(ITEM_ID_HIDEN_MASHI + 3)
+#define global	MAX_ITEM_ID	(ITEM_ID_LIGHTNING_DISCHARGER + 3)
 
 // Creatures
 #define global	CREATURE_ID_BUG	0 // Also doubles as RANDOM
@@ -7110,8 +7117,14 @@
 #define global	CREATURE_ID_ULTIMATE_EXPERIMENTAL	1122
 #define global	CREATURE_ID_SAIKYO_NEZUMI	1123
 #define global	CREATURE_ID_KAMIKAKUSHI_THE_HIDDEN_SHIKIORIGAMI	1124
+#define global	CREATURE_ID_KYU_BI	1125
+#define global	CREATURE_ID_GODWOLF	1126
+#define global	CREATURE_ID_SPADE_WARRIOR	1127
+#define global	CREATURE_ID_CLUB_FEATHER	1128
+#define global	CREATURE_ID_DIAMOND_EYES	1129
+#define global	CREATURE_ID_HEART_WITCH	1130
 
-#define global	MAX_CREATURE_ID	(CREATURE_ID_KAMIKAKUSHI_THE_HIDDEN_SHIKIORIGAMI + 3)
+#define global	MAX_CREATURE_ID	(CREATURE_ID_HEART_WITCH + 3)
 
 // Buffer
 #define global	BUFFER_SCREEN	0

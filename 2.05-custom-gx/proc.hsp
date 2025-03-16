@@ -6315,6 +6315,15 @@
 			else {
 				dmg = rnd(dmg * 100 / (100 + sdata(SKILL_NORMAL_CONTROL_MAGIC, calcmagiccontrol_arg1) * 10 + sdata(SKILL_NORMAL_CONTROL_MAGIC, calcmagiccontrol_arg2) * 2) + 1)
 			}
+			if ( dmg > 0 ) {
+				if ( cdata(CDATA_ID, calcmagiccontrol_arg1) == CREATURE_ID_HEART_WITCH ) {
+					if ( cdata(CDATA_ALLIED, calcmagiccontrol_arg1) == 0 ) {
+						if ( rnd(100) < cdata(CDATA_EVOLUTION_STAGE, calcmagiccontrol_arg1) * 5 ) {
+							dmg = 0
+						}
+					}
+				}
+			}
 			if ( dmg < 1 ) {
 				if ( synccheck(calcmagiccontrol_arg2, -1) ) {
 					txt lang(name(calcmagiccontrol_arg2) + "は巻き込みを免れた。", "The spell passes through " + name(calcmagiccontrol_arg2) + ".")
@@ -8990,6 +8999,7 @@
 								gdata(GDATA_TIME_STOP_TIME) = 2
 							}
 						}
+						chara_cutin cc
 						animeload ANIMATION_FIREWORK, cc
 						snd SOUNDLIST_BOLT1
 					}
@@ -11782,6 +11792,7 @@
 		animeload 40, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_YELLOW
 		txt lang("*" + skillname(efid) + "*　", "*" + skillname(efid) + "* ")
 		if ( cc == CHARA_PLAYER ) {
@@ -11868,6 +11879,7 @@
 		animeload 40, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は魔力を周囲のマナと同調させて放った！", name(cc) + " attune" + _s(cc) + " " + yourself(cc) + " with the mana in the air and let" + _s(cc) + " out a blast!")
 		snd SOUNDLIST_ENC
@@ -12429,6 +12441,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		zero2 = 200
 		motox = cdata(CDATA_X, cc)
 		motoy = cdata(CDATA_Y, cc)
@@ -12509,6 +12522,7 @@
 		animeload 40, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		snd SOUNDLIST_BOLT1
 		animeload 29, cc
 		txtef COLOR_GREEN
@@ -12592,6 +12606,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は鎌で大きく薙ぎ払った！", name(cc) + " mow" + _s(cc) + " " + name(tc) + " down!")
 		if ( cdata(CDATA_WEAPON_STYLE_TYPE, tc) == WEAPON_STYLE_SICKLE & cbit(CHARA_BIT_SANDBAG, tc) != 1 ) {
@@ -12660,6 +12675,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は目にもとまらぬ速さで" + name(tc) + "を斬りつけた！", name(cc) + " slashed " + name(tc) + " in the blink of an eye!")
 		snd SOUNDLIST_THROW1
@@ -12743,6 +12759,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は武器を逆手で振り上げると" + name(tc) + "に勢いよく突き刺した！", name(cc) + " hold" + _s(cc) + " " + his(cc) + " weapon overhead in a reverse grip and vigorously stab" + _s(cc) + " " + name(tc) + "!")
 		snd SOUNDLIST_THROW1
@@ -12814,6 +12831,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は重さを乗せた斬撃を" + name(tc) + "に叩き込んだ！", name(cc) + " drive" + _s(cc) + " a heavy slash into " + name(tc) + "!")
 		if ( cdata(CDATA_WEAPON_STYLE_TYPE, tc) == WEAPON_STYLE_LONGSWORD2 | cdata(CDATA_WEAPON_STYLE_TYPE, tc) == WEAPON_STYLE_AXE ) {
@@ -12892,6 +12910,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は矢を束ねて上空へ放った！", name(cc) + " shoot" + _s(cc) + " a bundle of arrows into the sky!")
 		repeat 8
@@ -13006,6 +13025,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は矢を束ねて" + name(tc) + "の頭部へ放った！", name(cc) + " fire" + _s(cc) + " a bundle of bolts at " + name(tc) + your(tc) + " head!")
 		snd SOUNDLIST_BOLT1
@@ -13086,6 +13106,7 @@
 		animeload 68, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		if ( rnd(sdata(SKILL_NORMAL_GREATER_EVASION, tc) + 1000) > rnd(4000) ) {
 			if ( cbit(CHARA_BIT_SANDBAG, tc) != TRUE ) {
 				txtef COLOR_RED
@@ -13164,6 +13185,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は反動に備えながら" + name(tc) + "へ発砲した！", name(cc) + " brace" + _s(cc) + " for recoil and fire" + _s(cc) + " at " + name(tc) + "!")
 		snd SOUNDLIST_GUNSHOT3
@@ -13234,6 +13256,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は正確無比に" + name(tc) + "へ弾丸を放った！", name(cc) + " fire" + _s(cc) + " a bullet at " + name(tc) + " with perfect accuracy!")
 		snd SOUNDLIST_GUNSHOT1
@@ -13300,6 +13323,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		ele = SKILL_RES_FIRE
 		repeat MAX_SKILL_RESIST - STARTING_SKILL_RESIST, STARTING_SKILL_RESIST
 			if ( sdata(cnt, cc) >= sdata(ele, cc) ) {
@@ -13708,6 +13732,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は力任せの豪快な一撃を" + name(tc) + "に叩き込んだ！", name(cc) + " drive" + _s(cc) + " a heroic blow into " + name(tc) + " with all " + his(cc) + " might!")
 		snd SOUNDLIST_THROW1
@@ -13768,6 +13793,7 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
+		chara_cutin cc
 		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
@@ -13855,6 +13881,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は" + name(tc) + "に怒涛の連続攻撃を仕掛けた！", name(cc) + " hit" + _s(cc) + " " + name(tc) + " with a furious succession of attacks!")
 		if ( cdata(CDATA_WEAPON_STYLE_TYPE, tc) == WEAPON_STYLE_STAVE2 & cbit(CHARA_BIT_SANDBAG, tc) != 1 ) {
@@ -13934,6 +13961,7 @@
 			animeload ANIMATION_UNISON_IMPACT2, cc
 			customtalk cc, DBMODE_FLAVOR_SPECIAL
 			gosub *convert_word
+			chara_cutin cc
 			if ( synccheck(cc, -1) ) {
 				txt lang(name(cc) + "は盾で" + name(tc) + "を殴りつけた。", name(cc) + " bash" + _s(cc) + " " + name(tc) + " with " + his(cc) + " shield.")
 			}
@@ -13998,6 +14026,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は闘志を極限にまで高め" + name(tc) + "に打ち込んだ！", name(cc) + " unleash" + _s(cc, 1) + " the utmost limit of " + his(cc) + " fighting spirit and pummel" + _s(cc) + " " + name(tc) + "!")
 		if ( exgauge != 100 ) {
@@ -16043,6 +16072,7 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
+		chara_cutin cc
 		animeid = ANIMATION_HOLY
 		animode = 0
 		gosub *anime
@@ -16099,6 +16129,7 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
+		chara_cutin cc
 		snd SOUNDLIST_CRUSH1
 		animeload ANIMATION_BALL_NUKE, tc
 		if ( tc >= MAX_CHARA_FOLLOWER & cdatan(CDATAN_RACE, tc) == "god" ) {
@@ -16142,6 +16173,7 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
+		chara_cutin cc
 		snd SOUNDLIST_OFFER2
 		animeload ANIMATION_OFFER, tc
 		snd SOUNDLIST_BALL1
@@ -16186,6 +16218,7 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
+		chara_cutin cc
 		animeid = ANIMATION_HEAL
 		gosub *anime
 		if ( tc >= MAX_CHARA_FOLLOWER & cdatan(CDATAN_RACE, tc) == "god" ) {
@@ -16229,6 +16262,7 @@
 				goto *effect_end
 			}
 		}
+		chara_cutin cc
 		animeid = ANIMATION_HOLY
 		animode = 100 + tc
 		gosub *anime
@@ -16270,6 +16304,7 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
+		chara_cutin cc
 		animeload ANIMATION_SAND, tc
 		snd SOUNDLIST_BOLT1
 		if ( tc >= MAX_CHARA_FOLLOWER & cdatan(CDATAN_RACE, tc) == "god" ) {
@@ -16315,6 +16350,7 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
+		chara_cutin cc
 		addbuff tc, BUFF_SPEED, 9999, 30
 		addbuff tc, BUFF_HERO, 9999, 30
 		addbuff tc, BUFF_CONTINGENCY, 9999, 30
@@ -17748,6 +17784,7 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
+		chara_cutin cc
 		addbuff cc, BUFF_BLACK_MIRROR, 300, 300
 		snd SOUNDLIST_ATK_DARK
 		repeat mdata(MDATA_HEIGHT)
@@ -17801,6 +17838,7 @@
 				goto *effect_end
 			}
 		}
+		chara_cutin cc
 		snd SOUNDLIST_CURSE3
 		animeload ANIMATION_GARDEN, tc
 		snd SOUNDLIST_OFFER2
@@ -19411,6 +19449,562 @@
 		}
 		p = 0
 		np = 0
+		goto *effect_end
+		_switch_sw++
+	}
+	
+	if ( _switch_val == SKILL_SPACT_POKER_FORCE | _switch_sw ) {
+		_switch_sw = 0
+		raise = 0
+		pair = 0
+		straight = 0
+		flash = 0
+		high = 0
+		tc1 = 0
+		tc2 = 0
+		tc3 = 0
+		tc4 = 0
+		tc5 = 0
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( 0 == cnt ) {
+				continue
+			}
+			if ( cbit(CHARA_BIT_NECRO, cnt) != TRUE ) {
+				continue
+			}
+			if ( cdata(CDATA_ID, cnt) != CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, cnt) != CREATURE_ID_CLUB_FEATHER & cdata(CDATA_ID, cnt) != CREATURE_ID_DIAMOND_EYES & cdata(CDATA_ID, cnt) != CREATURE_ID_HEART_WITCH ) {
+				continue
+			}
+			raise++
+			if ( tc1 == 0 ) {
+				tc1 = cnt
+				continue
+			}
+			if ( tc2 == 0 ) {
+				tc2 = cnt
+				continue
+			}
+			if ( tc3 == 0 ) {
+				tc3 = cnt
+				continue
+			}
+			if ( tc4 == 0 ) {
+				tc4 = cnt
+				continue
+			}
+			if ( tc5 == 0 ) {
+				tc5 = cnt
+				continue
+			}
+		loop
+		if ( tc5 == 0 ) {
+			snd SOUNDLIST_FAIL1
+			txt lang("カード精霊が5体必要だ。", "Requires 5 card spirits.")
+			goto *effect_end
+		}
+		if ( cdata(CDATA_EVOLUTION_STAGE, tc1) == cdata(CDATA_EVOLUTION_STAGE, tc2) | cdata(CDATA_EVOLUTION_STAGE, tc1) == cdata(CDATA_EVOLUTION_STAGE, tc3) | cdata(CDATA_EVOLUTION_STAGE, tc1) == cdata(CDATA_EVOLUTION_STAGE, tc4) | cdata(CDATA_EVOLUTION_STAGE, tc1) == cdata(CDATA_EVOLUTION_STAGE, tc5) ) {
+			pair += cdata(CDATA_EVOLUTION_STAGE, tc1) + 20
+		}
+		if ( cdata(CDATA_EVOLUTION_STAGE, tc2) == cdata(CDATA_EVOLUTION_STAGE, tc3) | cdata(CDATA_EVOLUTION_STAGE, tc2) == cdata(CDATA_EVOLUTION_STAGE, tc4) | cdata(CDATA_EVOLUTION_STAGE, tc2) == cdata(CDATA_EVOLUTION_STAGE, tc5) ) {
+			pair += cdata(CDATA_EVOLUTION_STAGE, tc2) + 20
+		}
+		if ( cdata(CDATA_EVOLUTION_STAGE, tc3) == cdata(CDATA_EVOLUTION_STAGE, tc4) | cdata(CDATA_EVOLUTION_STAGE, tc3) == cdata(CDATA_EVOLUTION_STAGE, tc5) ) {
+			pair += cdata(CDATA_EVOLUTION_STAGE, tc3) + 20
+		}
+		if ( cdata(CDATA_EVOLUTION_STAGE, tc4) == cdata(CDATA_EVOLUTION_STAGE, tc5) ) {
+			pair += cdata(CDATA_EVOLUTION_STAGE, tc4) + 20
+		}
+		dim n, 5
+		n(0) = cdata(CDATA_EVOLUTION_STAGE, tc1)
+		n(1) = cdata(CDATA_EVOLUTION_STAGE, tc2)
+		n(2) = cdata(CDATA_EVOLUTION_STAGE, tc3)
+		n(3) = cdata(CDATA_EVOLUTION_STAGE, tc4)
+		n(4) = cdata(CDATA_EVOLUTION_STAGE, tc5)
+		sortval2 n, 1
+		if ( n(0) == n(1) + 1 & n(1) == n(2) + 1 & n(2) == n(3) + 1 & n(3) == n(4) + 1 ) {
+			straight = cdata(CDATA_EVOLUTION_STAGE, tc1) + cdata(CDATA_EVOLUTION_STAGE, tc2) + cdata(CDATA_EVOLUTION_STAGE, tc3) + cdata(CDATA_EVOLUTION_STAGE, tc4) + cdata(CDATA_EVOLUTION_STAGE, tc5) + 200
+		}
+		if ( cdata(CDATA_ID, tc1) == cdata(CDATA_ID, tc2) & cdata(CDATA_ID, tc2) == cdata(CDATA_ID, tc3) & cdata(CDATA_ID, tc3) == cdata(CDATA_ID, tc4) & cdata(CDATA_ID, tc4) == cdata(CDATA_ID, tc5) ) {
+			flash = cdata(CDATA_EVOLUTION_STAGE, tc1) + cdata(CDATA_EVOLUTION_STAGE, tc2) + cdata(CDATA_EVOLUTION_STAGE, tc3) + cdata(CDATA_EVOLUTION_STAGE, tc4) + cdata(CDATA_EVOLUTION_STAGE, tc5) + 200
+		}
+		raise = cdata(CDATA_EVOLUTION_STAGE, tc1) + 50
+		if ( cdata(CDATA_EVOLUTION_STAGE, tc1) < cdata(CDATA_EVOLUTION_STAGE, tc2) ) {
+			raise = cdata(CDATA_EVOLUTION_STAGE, tc2) + 50
+		}
+		if ( cdata(CDATA_EVOLUTION_STAGE, tc2) < cdata(CDATA_EVOLUTION_STAGE, tc3) ) {
+			raise = cdata(CDATA_EVOLUTION_STAGE, tc3) + 50
+		}
+		if ( cdata(CDATA_EVOLUTION_STAGE, tc3) < cdata(CDATA_EVOLUTION_STAGE, tc4) ) {
+			raise = cdata(CDATA_EVOLUTION_STAGE, tc4) + 50
+		}
+		if ( cdata(CDATA_EVOLUTION_STAGE, tc4) < cdata(CDATA_EVOLUTION_STAGE, tc5) ) {
+			raise = cdata(CDATA_EVOLUTION_STAGE, tc5) + 50
+		}
+		txtsetpforce 8
+		repeat 8
+			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
+			promptmax++
+		loop
+		val = promptx, prompty, 470, 1
+		gosub *prompt_key
+		if ( stat == 0 ) {
+			return 0
+		}
+		if ( rtval == 7 ) {
+			return 0
+		}
+		if ( rtval == 6 ) {
+			if ( cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) < 5 ) {
+				snd SOUNDLIST_FAIL1
+				txt lang("パワーゲージが足りない。", "Insufficient power gauge.")
+				goto *effect_end
+			}
+			cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) -= 5
+			allyctrl = 6
+			gosub *com_listNpc
+			if ( stat != (-1) ) {
+				tc = stat
+				snd SOUNDLIST_POWER
+				animeload 11, tc
+				cdata(CDATA_EVOLUTION_STAGE, tc) += 2
+				if ( cdata(CDATA_EVOLUTION_STAGE, tc) >= 13 ) {
+					cdata(CDATA_EVOLUTION_STAGE, tc) = 13
+				}
+				repeat 245
+					if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+						continue
+					}
+					if ( cdata(CDATA_ALLIED, cnt) != 0 ) {
+						continue
+					}
+					if ( cnt == tc ) {
+						continue
+					}
+					if ( cdata(CDATA_ID, cnt) == cdata(CDATA_ID, tc) & cdata(CDATA_EVOLUTION_STAGE, cnt) == cdata(CDATA_EVOLUTION_STAGE, tc) ) {
+						cdata(CDATA_EVOLUTION_STAGE, tc)--
+						break
+					}
+				loop
+				repeat 245
+					if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+						continue
+					}
+					if ( cdata(CDATA_ALLIED, cnt) != 0 ) {
+						continue
+					}
+					if ( cnt == tc ) {
+						continue
+					}
+					if ( cdata(CDATA_ID, cnt) == cdata(CDATA_ID, tc) & cdata(CDATA_EVOLUTION_STAGE, cnt) == cdata(CDATA_EVOLUTION_STAGE, tc) ) {
+						cdata(CDATA_EVOLUTION_STAGE, tc)--
+						break
+					}
+				loop
+				if ( cdata(CDATA_ID, tc) == CREATURE_ID_SPADE_WARRIOR ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, tc) > 5 ) {
+						cdata(CDATA_PIC, tc) = xy2pic(10, 36)
+						cdata(CDATA_HEIGHT, tc) = rnd(5) + 140
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, tc) > 10 ) {
+						cdata(CDATA_PIC, tc) = xy2pic(11, 35)
+						cdata(CDATA_HEIGHT, tc) = rnd(20) + 770
+					}
+				}
+				if ( cdata(CDATA_ID, tc) == CREATURE_ID_CLUB_FEATHER ) {
+					refreshspeed cnt
+					if ( cdata(CDATA_EVOLUTION_STAGE, tc) > 5 ) {
+						cdata(CDATA_PIC, tc) = xy2pic(12, 36)
+						cdata(CDATA_HEIGHT, tc) = rnd(5) + 140
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, tc) > 10 ) {
+						cdata(CDATA_PIC, tc) = xy2pic(13, 35)
+						cdata(CDATA_HEIGHT, tc) = rnd(20) + 770
+					}
+				}
+				if ( cdata(CDATA_ID, tc) == CREATURE_ID_DIAMOND_EYES ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, tc) > 5 ) {
+						cdata(CDATA_PIC, tc) = xy2pic(14, 36)
+						cdata(CDATA_HEIGHT, tc) = rnd(5) + 140
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, tc) > 10 ) {
+						cdata(CDATA_PIC, tc) = xy2pic(15, 35)
+						cdata(CDATA_HEIGHT, tc) = rnd(20) + 770
+					}
+				}
+				if ( cdata(CDATA_ID, tc) == CREATURE_ID_HEART_WITCH ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, tc) > 5 ) {
+						cdata(CDATA_PIC, tc) = xy2pic(16, 36)
+						cdata(CDATA_HEIGHT, tc) = rnd(5) + 140
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, tc) > 10 ) {
+						cdata(CDATA_PIC, tc) = xy2pic(17, 35)
+						cdata(CDATA_HEIGHT, tc) = rnd(10) + 160
+					}
+				}
+			}
+			raise = 0
+			pair = 0
+			straight = 0
+			flash = 0
+			high = 0
+			goto *effect_end
+		}
+		if ( rtval == 5 ) {
+			if ( cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) < 50 ) {
+				snd SOUNDLIST_FAIL1
+				txt lang("パワーゲージが足りない。", "Your power gauge is insufficient.")
+				goto *effect_end
+			}
+			allyctrl = 6
+			gosub *com_listNpc
+			if ( stat != (-1) ) {
+				tc = stat
+				animeid = ANIMATION_GENE
+				anic = tc
+				gosub *anime
+				txt lang("何もおきない… ", "Nothing happens...")
+			}
+			raise = 0
+			pair = 0
+			straight = 0
+			flash = 0
+			high = 0
+			goto *effect_end
+		}
+		if ( rtval < 5 ) {
+			if ( cdata(CDATA_TARGET, CHARA_PLAYER) == 0 ) {
+				gosub *findTarget
+				gosub *com_findTarget
+				if ( listmax == 0 ) {
+					txt lang("視界内にターゲットは存在しない。", "You look around and find nothing.")
+					raise = 0
+					pair = 0
+					straight = 0
+					flash = 0
+					high = 0
+					goto *effect_end
+				}
+				tc = list(0, rnd(listmax))
+			}
+			else {
+				tc = cdata(CDATA_TARGET, CHARA_PLAYER)
+			}
+		}
+		if ( rtval == 0 ) {
+			snd SOUNDLIST_CARD1
+			animeid = ANIMATION_SHOWDOWN_HIGH_CARD
+			gosub *anime
+			dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) + 10
+			dmg = dmg / 10 * raise / 10
+			dmghp tc, dmg, cc, SKILL_RESDMG_CONSTITUTION, 1000
+		}
+		if ( rtval == 1 ) {
+			if ( pair <= 0 ) {
+				snd SOUNDLIST_FAIL1
+				txt lang("役が成立していない。", "Your hand ranking is not established.")
+				raise = 0
+				pair = 0
+				straight = 0
+				flash = 0
+				high = 0
+				goto *effect_end
+			}
+			skillexp SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER, pair + 50
+			snd SOUNDLIST_CARD1
+			animeload 94, 0
+			animeid = ANIMATION_HEALING_RAIN
+			animode = 1
+			gosub *anime
+			repeat 245
+				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+					continue
+				}
+				if ( cdata(CDATA_RELATION, cnt) < RELATION_NEUTRAL ) {
+					continue
+				}
+				tc = cnt
+				dx = cdata(CDATA_X, tc)
+				dy = cdata(CDATA_Y, tc)
+				if ( dist(cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+					continue
+				}
+				if ( dist(cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPELL_HEALING_RAIN) \ 1000 + 1 ) {
+					continue
+				}
+				if ( fov_los(cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), dx, dy) == 0 ) {
+					continue
+				}
+				healhp cnt, cdata(CDATA_MAX_HP, cnt) * pair / 100
+			loop
+		}
+		if ( rtval == 2 ) {
+			if ( straight <= 0 ) {
+				snd SOUNDLIST_FAIL1
+				txt lang("役が成立していない。", "Your hand ranking is not established.")
+				raise = 0
+				pair = 0
+				straight = 0
+				flash = 0
+				high = 0
+				goto *effect_end
+			}
+			skillexp SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER, straight
+			snd SOUNDLIST_CARD1
+			animeid = ANIMATION_ACID_HURRICANE
+			animode = 2
+			gosub *anime
+			get_route cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, tc), cdata(CDATA_Y, tc)
+			if ( stat == 0 ) {
+				goto *effect_end
+			}
+			dx = cdata(CDATA_X, cc)
+			dy = cdata(CDATA_Y, cc)
+			repeat 20
+				route_info dx, dy, cnt
+				if ( stat == 0 ) {
+					break
+				}
+				else {
+					if ( stat == (-1) ) {
+						continue
+					}
+				}
+				if ( dist(dx, dy, cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) > sdataref(SKILL_DATAREF_TG, efid) \ 1000 + 1 ) {
+					break
+				}
+				if ( dx == cdata(CDATA_X, cc) & dy == cdata(CDATA_Y, cc) ) {
+					continue
+				}
+				if ( map(dx, dy, MAP_CHARA_INDEX_PLUS_ONE) != 0 ) {
+					tc = map(dx, dy, MAP_CHARA_INDEX_PLUS_ONE) - 1
+					if ( cc != tc ) {
+						if ( gdata(GDATA_RIDER) != 0 ) {
+							if ( gdata(GDATA_RIDER) == cc ) {
+								if ( tc == CHARA_PLAYER ) {
+									continue
+								}
+							}
+						}
+						if ( cdata(CDATA_RELATION, tc) >= RELATION_DISLIKE ) {
+							continue
+						}
+						dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) + 10
+						dmg = dmg / 10 * straight / 10
+						if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
+							if ( tc != CHARA_PLAYER ) {
+								if ( rnd(cdata(CDATA_HP, tc) + 1) < rnd(cdata(CDATA_HP, cdata(CDATA_TAGTEAM_PARTNER, tc)) + 1) ) {
+									tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
+								}
+								txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
+							}
+						}
+						if ( synccheck(tc, -1) ) {
+							txtmore
+							if ( tc >= MAX_CHARA_FOLLOWER ) {
+								gdata(GDATA_DMG_TYPE) = 2
+								txt3rd = 1
+								txt lang("カードは" + name(tc) + "に命中し", "Cards hits " + name(tc) + " and")
+							}
+							else {
+								txt lang("カードが" + name(tc) + "に命中した。", "Cards hits " + name(tc) + ".")
+							}
+						}
+						dmghp tc, dmg, cc, SKILL_RESDMG_CONSTITUTION, 1000
+					}
+				}
+			loop
+		}
+		if ( rtval == 3 ) {
+			if ( flash <= 0 ) {
+				snd SOUNDLIST_FAIL1
+				txt lang("役が成立していない。", "Your hand ranking is not established.")
+				raise = 0
+				pair = 0
+				straight = 0
+				flash = 0
+				high = 0
+				goto *effect_end
+			}
+			skillexp SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER, flash + 50
+			snd SOUNDLIST_CARD1
+			animeid = ANIMATION_HEALING_RAIN
+			animode = 9
+			gosub *anime
+			repeat 245
+				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+					continue
+				}
+				if ( cc == cnt ) {
+					continue
+				}
+				if ( cc < MAX_CHARA_FOLLOWER ) {
+					if ( cdata(CDATA_RELATION, cnt) != RELATION_ENEMY ) {
+						continue
+					}
+				}
+				if ( cc >= MAX_CHARA_FOLLOWER ) {
+					if ( cdata(CDATA_RELATION_ORG, cnt) == cdata(CDATA_RELATION_ORG, cc) | cdata(CDATA_RELATION, cnt) == cdata(CDATA_RELATION, cc) | (cdata(CDATA_RELATION, cc) >= RELATION_DISLIKE & cdata(CDATA_RELATION, cnt) >= RELATION_DISLIKE) ) {
+						continue
+					}
+				}
+				tc = cnt
+				dx = cdata(CDATA_X, tc)
+				dy = cdata(CDATA_Y, tc)
+				if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+					continue
+				}
+				if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+					continue
+				}
+				dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) + 10
+				dmg = dmg / 10 * flash / 10
+				dmghp tc, dmg, cc, SKILL_RESDMG_CONSTITUTION, 1000
+			loop
+			goto *effect_end
+		}
+		if ( rtval == 4 ) {
+			if ( straight <= 0 | flash <= 0 ) {
+				snd SOUNDLIST_FAIL1
+				txt lang("役が成立していない。", "Your hand ranking is not established.")
+				raise = 0
+				pair = 0
+				straight = 0
+				flash = 0
+				high = 0
+				goto *effect_end
+			}
+			skillexp SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER, straight + flash + 50
+			snd SOUNDLIST_ENC
+			animeload 15, 0
+			animeid = ANIMATION_GARDEN
+			animode = 7
+			gosub *anime
+			repeat 245
+				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+					continue
+				}
+				if ( cc == cnt ) {
+					continue
+				}
+				if ( cc < MAX_CHARA_FOLLOWER ) {
+					if ( cdata(CDATA_RELATION, cnt) != RELATION_ENEMY ) {
+						continue
+					}
+				}
+				if ( cc >= MAX_CHARA_FOLLOWER ) {
+					if ( cdata(CDATA_RELATION, cnt) == cdata(CDATA_RELATION, cc) ) {
+						continue
+					}
+				}
+				tc = cnt
+				dx = cdata(CDATA_X, tc)
+				dy = cdata(CDATA_Y, tc)
+				if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+					continue
+				}
+				if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+					continue
+				}
+				dmg = (sdata(SKILL_ATTR_DEX, CHARA_PLAYER) / 5 + 5) * ((sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 1) / 5 + 5) + sdata(SKILL_ATTR_DEX, CHARA_PLAYER) * 2 + 5 + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) + 10
+				dmg = dmg / 10 * (straight + flash) / 10
+				dmghp tc, dmg, cc, SKILL_RESDMG_CONSTITUTION, 1000
+			loop
+		}
+		if ( rtval < 5 ) {
+			snd SOUNDLIST_CARD1
+			repeat 245
+				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+					continue
+				}
+				if ( cdata(CDATA_ALLIED, cnt) != 0 ) {
+					continue
+				}
+				if ( cdata(CDATA_ID, cnt) >= CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, cnt) <= CREATURE_ID_HEART_WITCH ) {
+					chara_vanquish cnt
+				}
+			loop
+			necrolv = sdata(SKILL_NORMAL_MAGIC_DEVICE, CHARA_PLAYER) + (sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 10) / 2
+			if ( necrolv > gdata(GDATA_DEEPEST_LEVEL) * 3 / 2 ) {
+				necrolv = gdata(GDATA_DEEPEST_LEVEL) * 3 / 2
+			}
+			np = 0
+			repeat 500
+				suit = 1127 + rnd(4)
+				rank = rnd(13) + 1
+				repeat 245
+					if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+						continue
+					}
+					if ( cdata(CDATA_ALLIED, cnt) != 0 ) {
+						continue
+					}
+					if ( cdata(CDATA_ID, cnt) == suit & cdata(CDATA_EVOLUTION_STAGE, cnt) == rank ) {
+						rank = -1
+						break
+					}
+				loop
+				if ( rank == (-1) ) {
+					continue
+				}
+				flt
+				initlv = necrolv
+				novoidlv = 1
+				fixlv = FIX_QUALITY_GOOD
+				characreate -1, suit, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER)
+				cdata(CDATA_EVOLUTION_STAGE, rc) = rank
+				cdata(CDATA_DIRECTIVE_MODE, rc) = DIRECTIVE_MODE_DEFENSIVE
+				cdata(CDATA_RELATION, rc) = RELATION_ALLY
+				cdata(CDATA_RELATION_ORG, rc) = RELATION_ALLY
+				cbitmod CHARA_BIT_NECRO, rc, TRUE
+				cbitmod CHARA_BIT_SHADOW_CLONE, rc, TRUE
+				cdatan(CDATAN_NAME, rc) += " Lv" + cdata(CDATA_LEVEL, rc)
+				np++
+				if ( cdata(CDATA_ID, rc) == CREATURE_ID_SPADE_WARRIOR ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 5 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(10, 36)
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 10 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(11, 35)
+					}
+				}
+				if ( cdata(CDATA_ID, rc) == CREATURE_ID_CLUB_FEATHER ) {
+					refreshspeed rc
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 5 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(12, 36)
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 10 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(13, 35)
+					}
+				}
+				if ( cdata(CDATA_ID, rc) == CREATURE_ID_DIAMOND_EYES ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 5 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(14, 36)
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 10 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(15, 35)
+					}
+				}
+				if ( cdata(CDATA_ID, rc) == CREATURE_ID_HEART_WITCH ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 5 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(16, 36)
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 10 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(17, 35)
+					}
+				}
+				if ( np == 5 ) {
+					break
+				}
+			loop
+		}
+		raise = 0
+		pair = 0
+		straight = 0
+		flash = 0
+		high = 0
 		goto *effect_end
 		_switch_sw++
 	}
@@ -22849,6 +23443,7 @@
 		}
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "は収束させたエネルギーを" + name(tc) + "に向けて放った！", name(cc) + " release" + _s(cc) + " the converged energy towards " + name(tc) + "!")
 		ele = SKILL_RES_FIRE
@@ -23987,6 +24582,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		inv_getheader cc
 		eqlv = 1
 		eqbui = 0
@@ -24556,6 +25152,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		txtef COLOR_GREEN
 		txt lang(name(cc) + "の眼から眩い光が放たれた！", name(cc) + "'s eye shot a dazzling light.")
 		snd SOUNDLIST_CRUSH2
@@ -24622,6 +25219,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		if ( cdata(CDATA_ID, cc) == CREATURE_ID_MAILE_THE_MARIONETTE_SHAMAN ) {
 			txtef COLOR_YELLOW
 			txt lang("「くっ…やはり合意がないと充分な力が出ませんね」", "Maile seems to not have enough power.")
@@ -24671,6 +25269,7 @@
 		animeload 40, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		snd SOUNDLIST_WAVE
 		animeload 23, tc
 		txtef COLOR_GREEN
@@ -24760,6 +25359,7 @@
 		animeload ANIMATION_UNISON_IMPACT2, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
+		chara_cutin cc
 		snd SOUNDLIST_BOLT1
 		animeload 59, tc
 		txtef COLOR_GREEN
@@ -25066,6 +25666,7 @@
 		goto *effect_end
 	}
 	*effect_end
+	waza = 0
 	ci = efcibk
 	efstatus = 0
 	efsource = 0

@@ -1109,6 +1109,7 @@
 	chipi(CHIPI_HEIGHT, xy2pic(9, 38)) = inf_tiles * 2, inf_tiles + 16
 	chipi(CHIPI_HEIGHT, xy2pic(10, 38)) = inf_tiles * 2, inf_tiles + 16
 	chipi(CHIPI_HEIGHT, xy2pic(11, 38)) = inf_tiles * 2, inf_tiles + 16
+	chipi(CHIPI_HEIGHT, xy2pic(27, 38)) = inf_tiles * 2, inf_tiles + 16
 	chipi(CHIPI_HEIGHT, xy2pic(30, 33)) = inf_tiles * 2, inf_tiles + 16, 40
 	chipi(CHIPI_HEIGHT, xy2pic(18, 36)) = inf_tiles * 2, inf_tiles + 16, 40
 	chipi(CHIPI_ANIM, xy2pic(4, 0)) = 2
@@ -1309,6 +1310,10 @@
 	chipc(CHIPC_HEIGHT, xy2pic(7, 35)) = inf_tiles * 2, inf_tiles + 16
 	chipc(CHIPC_HEIGHT, xy2pic(8, 35)) = inf_tiles * 2, inf_tiles + 16
 	chipc(CHIPC_HEIGHT, xy2pic(9, 35)) = inf_tiles * 2, inf_tiles + 16
+	chipc(CHIPC_HEIGHT, xy2pic(11, 35)) = inf_tiles * 2, inf_tiles + 16
+	chipc(CHIPC_HEIGHT, xy2pic(13, 35)) = inf_tiles * 2, inf_tiles + 16
+	chipc(CHIPC_HEIGHT, xy2pic(15, 35)) = inf_tiles * 2, inf_tiles + 16
+	chipc(CHIPC_HEIGHT, xy2pic(17, 35)) = inf_tiles * 2, inf_tiles + 16
 	dim deco, 3, 300
 	repeat 16
 		deco(0, 1 + cnt * 16) = 0, 1

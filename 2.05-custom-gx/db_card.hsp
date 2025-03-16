@@ -1,4 +1,82 @@
 *db_card
+	if ( dbid == CREATURE_ID_HEART_WITCH ) {
+		cardreftype = 10
+		cardrefskill = lang("カードに宿る精霊。カードを通じて使い手とシンクロすることでパワーアップし、姿を変えていく。ラブリーな仕草で笑顔をふりまき人の心を惑わす魔女。仲間外のこのモンスターは通常の魔力制御判定とは別にランク×5％の確率で味方の巻き込みを無効にする。", "Spirits that inhabit the cards. By synchronising with the user through the card, it powers up and changes its appearance. A witch who bewitches people's hearts with her lovely gestures and smiles. Apart from the normal magic control judgement, this monster has a rank x 5% chance to not hit allies.")
+		cardrefdomain = 6
+		cardrefrare = 50
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("ハート・ウィッチ", "heart witch")
+		cardrefpic = xy2pic(16, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1130 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_DIAMOND_EYES ) {
+		cardreftype = 10
+		cardrefskill = lang("カードに宿る精霊。カードを通じて使い手とシンクロすることでパワーアップし、姿を変えていく。身体についている真紅のダイヤは、眼としての機能も持つらしい。仲間外のこのモンスターが受けるダメージはランク×2％ダウンする。", "Spirits that inhabit the cards. By synchronising with the user through the card, it powers up and changes its appearance. The crimson diamonds on its body are said to function as eyes. Damage taken by this monster is reduced by rank x 2%.")
+		cardrefdomain = 6
+		cardrefrare = 50
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("ダイヤアイズ", "diamond eyes")
+		cardrefpic = xy2pic(14, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1129 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_CLUB_FEATHER ) {
+		cardreftype = 10
+		cardrefskill = lang("カードに宿る精霊。カードを通じて使い手とシンクロすることでパワーアップし、姿を変えていく。魔力を帯びた翼で凄まじい風を巻き起こし敵を攻撃する怪鳥。仲間外のこのモンスターの速度はランク×2％アップする。", "Spirits that inhabit the cards. By synchronising with the user through the card, it powers up and changes its appearance. Monstrous bird that attacks enemies by creating tremendous winds with its magical wings. The speed of this monster is increased by rank x 2%.")
+		cardrefdomain = 6
+		cardrefrare = 50
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("クラブフェザー", "club feather")
+		cardrefpic = xy2pic(12, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1128 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_SPADE_WARRIOR ) {
+		cardreftype = 10
+		cardrefskill = lang("カードに宿る精霊。カードを通じて使い手とシンクロすることでパワーアップし、姿を変えていく。スペード状の剣を振るう鎧の戦士。スピードには特に興味がない。仲間外のこのモンスターが与えるダメージはランク×2％アップする。", "Spirits that inhabit the cards. By synchronising with the user through the card, it powers up and changes its appearance. Armoured warrior wielding a spade-shaped sword. Not particularly interested in speed. Damage inflicted by this monster is increased by rank x 2%.")
+		cardrefdomain = 6
+		cardrefrare = 50
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("スペード・ウォリアー", "spade warrior")
+		cardrefpic = xy2pic(10, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1127 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_GODWOLF ) {
+		cardreftype = 10
+		cardrefskill = lang("巨大な青い狼の神様。骨をバリバリかみ砕いて骨髄をすするのが好き。神々の大戦時に結構な数の神をかみ殺した結果、危険視されて封印されてしまった。人狼たちはその封印を解くため、暗躍しているのだ。", "Giant blue wolf god. Likes to crunch bones and sip marrow. As a result of chewing up quite a few gods during the War of the Gods, he was regarded as dangerous and sealed away. The werewolves are working in the dark to break the seal.")
+		cardrefdomain = 6
+		cardrefrare = 30
+		cardrefcost = 0
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("『神狼』", "<Godwolf>")
+		cardrefpic = xy2pic(17, 26) + COLOR_LIGHT_BLUE * COLOR_TINT_MULT
+		cardrefrace = "1126 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_KYU_BI ) {
+		cardreftype = 10
+		cardrefskill = lang("もふもふの九本の尻尾を持つ、妖狐の神様。それぞれの尻尾を別々に動かすのは難しいらしい。力を失って石になっていたが、人狼の儀式を乗っ取って復活できることが判明。子分の妖狐たちによって今日も人と狼を相手に騙しあいが行われている。", "Fox god with nine fluffy tails. It is apparently difficult to move each tail separately. It lost its power and turned to stone, but was found to be able to revive itself by taking over the rituals of the werewolves. Today, the foxes, continue to deceive people and wolves alike.")
+		cardrefdomain = 6
+		cardrefrare = 30
+		cardrefcost = 0
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("『金毛九尾』", "<Kyu-bi>")
+		cardrefpic = xy2pic(11, 28) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1125 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
 	if ( dbid == CREATURE_ID_KAMIKAKUSHI_THE_HIDDEN_SHIKIORIGAMI ) {
 		cardreftype = 10
 		cardrefskill = lang("秘伝の技によって高位の精霊を宿らせた折り紙。式折神の上位存在。周囲の式折神を一瞬で取り込み、強大な力を発揮する。", "Origami in which a higher spirit is imbued by a hidden technique. A higher level being of the Shiki-Origami. It instantly absorbs in the surrounding Shiki-Origami and displays its mighty power.")

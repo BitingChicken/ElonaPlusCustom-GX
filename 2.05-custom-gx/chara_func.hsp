@@ -1437,6 +1437,13 @@
 			cdata(CDATA_SPEED, refreshspeed_arg1) = cdata(CDATA_SPEED, refreshspeed_arg1) * 9 / 10
 		}
 	}
+	if ( cdata(CDATA_ID, refreshspeed_arg1) == CREATURE_ID_CLUB_FEATHER ) {
+		if ( cdata(CDATA_ALLIED, refreshspeed_arg1) == 0 ) {
+			if ( cdata(CDATA_SPEED, refreshspeed_arg1) >= 50 ) {
+				cdata(CDATA_SPEED, refreshspeed_arg1) = cdata(CDATA_SPEED, refreshspeed_arg1) / 50 * (50 + cdata(CDATA_EVOLUTION_STAGE, refreshspeed_arg1))
+			}
+		}
+	}
 	if ( cdata(CDATA_IN_TAGTEAM, refreshspeed_arg1) != 0 ) {
 		cdata(CDATA_SPEED, cdata(CDATA_TAGTEAM_PARTNER, refreshspeed_arg1)) = sdata(SKILL_ATTR_SPD, cdata(CDATA_TAGTEAM_PARTNER, refreshspeed_arg1))
 		if ( cdata(CDATA_BODY_SPEED_FIX, cdata(CDATA_TAGTEAM_PARTNER, refreshspeed_arg1)) != 0 ) {
@@ -5872,6 +5879,25 @@
 				locvar_dmghp_dmg = locvar_dmghp_dmg / 100 * (100 + limit(cdata(CDATA_SANITY, dmghp_source), 0, 100))
 			}
 		}
+		if ( cdata(CDATA_ID, dmghp_source) == CREATURE_ID_SPADE_WARRIOR ) {
+			if ( cdata(CDATA_ALLIED, dmghp_source) == 0 ) {
+				if ( locvar_dmghp_dmg >= 50 ) {
+					locvar_dmghp_dmg = locvar_dmghp_dmg / 50 * (50 + cdata(CDATA_EVOLUTION_STAGE, dmghp_source))
+				}
+			}
+		}
+		if ( cdata(CDATA_ID, dmghp_source) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, dmghp_source) == CREATURE_ID_CLUB_FEATHER | cdata(CDATA_ID, dmghp_source) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, dmghp_source) == CREATURE_ID_HEART_WITCH ) {
+			if ( cdata(CDATA_ALLIED, dmghp_source) == 0 ) {
+				cdata(CDATA_DIRECTIVE_MODE, dmghp_source) = DIRECTIVE_MODE_DEFENSIVE
+			}
+		}
+	}
+	if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_DIAMOND_EYES ) {
+		if ( cdata(CDATA_ALLIED, dmghp_charid) == 0 ) {
+			if ( locvar_dmghp_dmg >= 50 ) {
+				locvar_dmghp_dmg = locvar_dmghp_dmg / 50 * (50 - cdata(CDATA_EVOLUTION_STAGE, dmghp_charid))
+			}
+		}
 	}
 	if ( cdata(CDATA_DIRECTIVE_MODE, dmghp_charid) == DIRECTIVE_MODE_DEFENSIVE ) {
 		locvar_dmghp_dmg = locvar_dmghp_dmg / 3
@@ -8553,6 +8579,34 @@
 		}
 	}
 	return FALSE
+
+#deffunc chara_cutin int chara_cutin_charidx
+	if ( chara_cutin_charidx < 0 | chara_cutin_charidx >= MAX_CHARA_TOTAL) {
+		return
+	}
+	if ( cdata(CDATA_RELATION, chara_cutin_charidx) == RELATION_ENEMY ) {
+		waza = -1
+	}
+	else {
+		waza = 1
+	}
+	pic = cdata(CDATA_PIC, chara_cutin_charidx) \ 1000 + cdata(CDATA_CHARA_PIC, chara_cutin_charidx) * 1000 + refchara(cdata(CDATA_ID, chara_cutin_charidx), DBSPEC_CHARA_COL) * 10000
+	if ( chara_cutin_charidx == CHARA_PLAYER ) {
+		pic = -1
+	}
+	exist exedir + "user\\graphic2\\cutin" + pic + ".bmp"
+	if ( strsize == (-1) ) {
+		snd SOUNDLIST_MECHA20
+		repeat 2
+			animeload 92, chara_cutin_charidx
+		loop
+	}
+	else {
+		animeid = ANIMATION_CUT_IN
+		anic = chara_cutin_charidx
+		gosub *anime
+	}
+	return
 
 #deffunc chara_guardbreak int chara_guardbreak_charidx, int chara_guardbreak_amount
 	if ( chara_guardbreak_charidx < 0 | chara_guardbreak_charidx >= MAX_CHARA_TOTAL) {

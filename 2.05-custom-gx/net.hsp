@@ -403,7 +403,10 @@
 			if ( cbit(CHARA_BIT_NECRO, cnt) ) {
 				continue
 			}
-			if ( cbit(CHARA_BIT_GUARD_TEMP, cnt) == 1 ) {
+			if ( cbit(CHARA_BIT_GUARD_TEMP, cnt) == TRUE ) {
+				continue
+			}
+			if ( cnt == 0 ) {
 				continue
 			}
 			if ( cdata(CDATA_ROLE, cnt) == ROLE_NONE ) {
@@ -425,10 +428,16 @@
 		if ( cbit(CHARA_BIT_NECRO, cnt) ) {
 			continue
 		}
-		if ( cbit(CHARA_BIT_GUARD_TEMP, cnt) == 1 ) {
+		if ( cbit(CHARA_BIT_GUARD_TEMP, cnt) == TRUE ) {
 			continue
 		}
-		if ( cdata(CDATA_RELATION, cnt) == (-1) ) {
+		if ( cdata(CDATA_RELATION, cnt) == RELATION_ENEMY ) {
+			continue
+		}
+		if ( cnt == 0 ) {
+			continue
+		}
+		if ( cdata(CDATA_RELATION, cnt) == RELATION_DISLIKE ) {
 			continue
 		}
 		if ( mdata(MDATA_WEREWOLF_STAGE) == 1 & votep > 0 ) {

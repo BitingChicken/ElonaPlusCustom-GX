@@ -1472,6 +1472,10 @@
 	skillname(SKILL_SPACT_BODY_BLOW) = lang("ボディブロー", "Body Blow")
 	skilldesc(SKILL_SPACT_BODY_BLOW) = lang("通常格闘攻撃にボディブロー追加", "Add body blow to martial")
 
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_POKER_FORCE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 0, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
+	skillname(SKILL_SPACT_POKER_FORCE) = lang("ポーカーフォース", "Poker Force")
+	skilldesc(SKILL_SPACT_POKER_FORCE) = lang("カード精霊制御", "Control card spirits")
+	
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_NECRO_FORCE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 0, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_NECRO_FORCE) = lang("ネクロフォース", "Necro Force")
 	skilldesc(SKILL_SPACT_NECRO_FORCE) = lang("使役アンデッド制御", "Control coffin undead")
@@ -1886,11 +1890,11 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_JUMPING_DROP) = SKILL_ATTR_PER, SKILL_TYPE_SP, 35, TARGET_TYPE_SELF, 0
 	skillname(SKILL_SPACT_JUMPING_DROP) = lang("飛跳殺法", "Jumping Drop")
-	skilldesc(SKILL_SPACT_JUMPING_DROP) = lang("5ターン後視界外でも強攻撃", "Chase PVDV atk after 5turns")
+	skilldesc(SKILL_SPACT_JUMPING_DROP) = lang("5ターン後距離5以内なら強攻撃", "Close Homing PVDV atk after 5turns")
 	
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_DIVING_DRILL) = SKILL_ATTR_CON, SKILL_TYPE_SP, 35, TARGET_TYPE_SELF, 0
 	skillname(SKILL_SPACT_DIVING_DRILL) = lang("奇襲穿孔", "Diving Drill")
-	skilldesc(SKILL_SPACT_DIVING_DRILL) = lang("10ターン後視界外でも強攻撃", "Chase PVDV atk after 10turns")
+	skilldesc(SKILL_SPACT_DIVING_DRILL) = lang("10ターン後距離5以内なら強攻撃", "Close Homing PVDV atk after 10turns")
 	
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SAINT_BLADE) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 15, 2000 + 3, 0
 	skillname(SKILL_SPACT_SAINT_BLADE) = lang("聖者の光刃", "Saint Blade")

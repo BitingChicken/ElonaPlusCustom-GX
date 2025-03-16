@@ -18,9 +18,9 @@
 #include "mock_defines.hsp"
 #endif
 
-#define global VARIANT_NAME "ElonaPlus Custom-GX 2.25.1.1"
-#define global VARIANT_TITLE "Elona+ Custom-GX 2.25.1.1"
-#define global VERSION_STRING "6.35"
+#define global VARIANT_NAME "ElonaPlus Custom-GX 2.26.1.0"
+#define global VARIANT_TITLE "Elona+ Custom-GX 2.26.1.0"
+#define global VERSION_STRING "6.36"
 #define global VERSION_NUMBER int(double(VERSION_STRING) * 1000)
 #define global NET_VERSION	200000
 
@@ -2227,6 +2227,11 @@
 							}
 							cdata(CDATA_AI_AGGRO, tc) = 20
 							cdata(CDATA_TARGET, tc) = cc
+							cdata(CDATA_EMO_ICON, tc) = 18 + 100 * 2
+							chatc@DP = cc
+							txt lang("「なんだ、やんのか」", cnvtalk("What, don't like it?")), lang("「飲めないってのか？」", cnvtalk("You can't drink?")), lang("「これだから冗談の通じないやつは」", cnvtalk("Just a prank bro.")), lang("「よーしケンカだー」", cnvtalk("Alright, let's fight!"))
+							cdata(CDATA_AI_AGGRO, cc) = 20
+							cdata(CDATA_TARGET, cc) = tc
 							cdata(CDATA_EMO_ICON, tc) = 18 + 100 * 2
 						}
 					}

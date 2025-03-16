@@ -13931,7 +13931,7 @@
 			gdata(GDATA_FLAG_TRAINING_COURSE_STATE)++
 		}
 		if ( chatval == 2 ) {
-			chatMore lang("料理スキルがあるなら、調理器具を使うことで料理ができます。料理すると、腐るまでのタイムリミットと心身を鍛える効果が大幅に伸びるので、できるようになっておきたいですね。腐ったもので料理の練習をしてもいいでしょう。調理器具によって、どこまでの料理を作れるか限界があるので一度道具説明欄を見て下さい。", "If you have the Cooking skill, you can cook using cooking utensils. Cooked food decays much more slowly and strengthens you more, so it's a useful skill. Depending on the cooking utensils, there is a limit to how good of a dish you can make, so use [X] to examine them.")
+			chatMore lang("料理スキルがあるなら、調理器具を使うことで料理ができます。料理すると、腐るまでのタイムリミットと心身を鍛える効果が大幅に伸びるので、できるようになっておきたいですね。料理の達人になれば、ひとつの素材から複数の料理を作ることができます。腐ったものも料理の練習台にするくらいの気持ちで頑張りましょう。調理器具によって、どこまでの料理を作れるか限界があるので一度道具説明欄を見て下さい。", "If you have the Cooking skill, you can cook using cooking utensils. Cooked food decays much more slowly and strengthens you more, so it's a useful skill. Depending on the cooking utensils, there is a limit to how good of a dish you can make, so use [X] to examine them.")
 			chatMore lang("料理とは少し違うけれど、ミキサーを使えば野菜や果物をジュースにすることもできますよ。お腹はあまり膨れませんが、その分多く栄養を摂取できます。呪われていたり腐っている物でも無害化して有効活用できます。", "It's a little different from cooking, but you can also turn fruits and vegetables into juice with a juice mixer. Although they aren't particularly filling, they're still nutritious. Even cursed or rotten things can be made into juice without any problems.")
 			gdata(GDATA_FLAG_TRAINING_COURSE_STATE)++
 		}
@@ -15594,8 +15594,40 @@
 	}
 	if ( _switch_val == CREATURE_ID_TALKA_THE_LONG_TWINTAIL | _switch_sw ) {
 		_switch_sw = 0
-		chatMore lang("なんですか、ジロジロと…わたしの顔に何かついてます？", "under development!"), strbye
+		chatMore lang("なんですか、ジロジロと…わたしの顔に何かついてます？", "Wha.. why are you staring at me... is there something weird on my face?"), strbye
 		goto *chat_end
+	}
+	if ( _switch_val == CREATURE_ID_KYU_BI | _switch_sw ) {
+		_switch_sw = 0
+		chatMore lang("この街が人狼どもの餌場になるくらいなら、狐に支配されたほうが幸せじゃろう？", "Wouldn't it be better for this town to be ruled by foxes than to become a feeding ground for werewolves?"), strmore
+		item_find ITEM_ID_FRIED_TOFU, ITEM_FIND_MODE_DBID, ITEM_FIND_LOCATION_CHARAS
+		if ( stat != (-1) ) {
+			ci = stat
+			if ( inv(INV_ITEM_NUM, ci) >= 1 ) {
+				chatList 1, lang("油揚げをお供えする", "Here, have some fried tofu.")
+			}
+		}
+		chatList 0, lang("今度持ってきます", "I'll bring it next time.")
+		buff = lang("この街はわしの支配下にあるぞ。ほれほれ、崇め奉るがよい。そして、わしに油揚げを献上するのじゃ。", "This city is under my control. Come on, worship me. Gimme some fried tofu.")
+		gosub *chat_select
+		if ( chatval == 1 ) {
+			snd SOUNDLIST_DROP1
+			inv(INV_ITEM_NUM, ci) -= 1
+			chatMore lang("やったぁー！…コホン。褒美をくれてやろう、有効活用するがよい。そして、油揚げを手に入れたらまた献上するのじゃ。", "Yay!...Oops. Offer it to me as many times as you like. I'll give you a reward, so make good use of it. Return to me when you've got more tofu in your pockets."), strbye
+			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			flt
+			itemcreate -1, ITEM_ID_ECHINOBOX, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+			cdata(CDATA_EMO_ICON, tc) = 6 + 100 * 3
+			goto *chat_end
+		}
+		else {
+			chatMore lang("用意の悪いやつじゃのう。油揚げを常備しておらんのか？", "Ah, what a pity. It's common sense to have tofus in your pockets you know?"), strbye
+			goto *chat_end
+		}
+		goto *chat_end
+		goto *chat_unique_SWEND1
+		_switch_sw++
 	}
 	if ( _switch_val == CREATURE_ID_BOYCIANA | _switch_sw ) {
 		_switch_sw = 0

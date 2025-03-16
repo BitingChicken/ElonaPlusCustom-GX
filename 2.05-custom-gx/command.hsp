@@ -139,10 +139,11 @@
 		locvar_txttargetnpc_dy++
 		bmes "Target: " + cdatan(CDATAN_NAME, cdata(CDATA_TARGET, txttargetnpc_arg_tc)) + "(" + cdata(CDATA_AI_AGGRO, txttargetnpc_arg_tc) + ")", 255, 2552, 255
 	}
+	locvar_txttargetnpc_pic = cdata(CDATA_PIC, locvar_txttargetnpc_i) \ 1000 + cdata(CDATA_CHARA_PIC, locvar_txttargetnpc_i) * 1000
 	color 0, 0, 0
 	pos 100, windowh - inf_verh - 45 - locvar_txttargetnpc_dy * 20
 	locvar_txttargetnpc_dy++
-	bmes lang("ｷｬﾗﾁｯﾌﾟ番号：" + cdata(CDATA_PIC, txttargetnpc_arg_tc) + " / 色番号：" + refchara(cdata(CDATA_ID, txttargetnpc_arg_tc), DBSPEC_CHARA_COL) * 1000 + " ", "SpriteID: " + cdata(CDATA_PIC, txttargetnpc_arg_tc) + " / ColorID: " + refchara(cdata(CDATA_ID, txttargetnpc_arg_tc), DBSPEC_CHARA_COL) * 1000 + " "), 255, 2552, 255
+	bmes lang("ｷｬﾗﾁｯﾌﾟ番号：" + locvar_txttargetnpc_pic + " / 色番号：" + refchara(cdata(CDATA_ID, txttargetnpc_arg_tc), DBSPEC_CHARA_COL) * 1000 + " ", "SpriteID: " + cdata(CDATA_PIC, txttargetnpc_arg_tc) + " / ColorID: " + refchara(cdata(CDATA_ID, txttargetnpc_arg_tc), DBSPEC_CHARA_COL) * 1000 + " "), 255, 2552, 255
 	if ( trait(TRAIT_NORMAL_DISCERNMENT) != 0 ) {
 		tcbkinfo = tc
 		tc = txttargetnpc_arg_tc
@@ -3482,6 +3483,17 @@
 				continue
 			}
 		}
+		if ( allyctrl == 6 ) {
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cbit(CHARA_BIT_NECRO, cnt) != TRUE ) {
+				continue
+			}
+			if ( cdata(CDATA_ID, cnt) != CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, cnt) != CREATURE_ID_CLUB_FEATHER & cdata(CDATA_ID, cnt) != CREATURE_ID_DIAMOND_EYES & cdata(CDATA_ID, cnt) != CREATURE_ID_HEART_WITCH ) {
+				continue
+			}
+		}
 		if ( allyctrl != 5 ) {
 			if ( cnt == 0 ) {
 				continue
@@ -3588,11 +3600,40 @@
 				s += lang("ガードブレイク" + cdata(CDATA_GUARD_BREAK, i) + "%", " GuardBreak:" + cdata(CDATA_GUARD_BREAK, i) + "%")
 			}
 		}
-		if ( allyctrl != 4 ) {
+		if ( allyctrl != 4 & allyctrl != 6 ) {
 			s = "Lv." + cdata(CDATA_LEVEL, i) + " "
 			s += gendername(i)
 			if ( allyctrl != 5 ) {
 				s += lang(" ", "(") + calcage(i) + "" + lang("歳", ")")
+			}
+		}
+		if ( allyctrl == 6 ) {
+			s = "Rank." + cdata(CDATA_EVOLUTION_STAGE, i) + " "
+			if ( cdatan(CDATAN_NEWSEX, i) == lang("両性具有", "bisexual") ) {
+				s += lang("両性具有", "bisexual")
+			}
+			if ( cdatan(CDATAN_NEWSEX, i) == lang("なし", "none") ) {
+				s += lang("性別不明", "unknown")
+			}
+			if ( cdatan(CDATAN_NEWSEX, i) == lang("男性", "male") ) {
+				s += lang("男性", "male")
+			}
+			if ( cdatan(CDATAN_NEWSEX, i) == lang("女性", "female") ) {
+				s += lang("女性", "female")
+			}
+			if ( cdatan(CDATAN_NEWSEX, i) == lang("自称男性", "male?") ) {
+				s += lang("自称男性", "male?")
+			}
+			if ( cdatan(CDATAN_NEWSEX, i) == lang("自称女性", "female?") ) {
+				s += lang("自称女性", "female?")
+			}
+			if ( cdatan(CDATAN_NEWSEX, i) == "" ) {
+				if ( cdata(CDATA_SEX, i) == 0 ) {
+					s += cnven(strmale)
+				}
+				else {
+					s += cnven(strfemale)
+				}
 			}
 		}
 		pos wx + 372, wy + 66 + cnt * 19 + 2

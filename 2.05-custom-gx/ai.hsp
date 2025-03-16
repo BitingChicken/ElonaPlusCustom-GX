@@ -2749,19 +2749,10 @@
 				}
 			}
 		}
-		if ( cdata(CDATA_ID, cc) == CREATURE_ID_LIZARD_MAN | cdata(CDATA_ID, cc) == CREATURE_ID_LIZARD_MAGE | cdata(CDATA_ID, cc) == CREATURE_ID_BISQUE_DOLL | cdata(CDATA_ID, cc) == CREATURE_ID_GODA_THE_CAPTAIN_OF_ORC ) {
+		if ( cdata(CDATA_ID, cc) == CREATURE_ID_LIZARD_MAN | cdata(CDATA_ID, cc) == CREATURE_ID_LIZARD_MAGE | cdata(CDATA_ID, cc) == CREATURE_ID_BISQUE_DOLL ) {
 			if ( cdata(CDATA_POWER_GAUGE, cc) < 95 ) {
 				if ( cdata(CDATA_POWER_GAUGE, cc) >= 75 ) {
 					if ( rnd(10) == 0 ) {
-						act = SKILL_SPACT_SHADOW_RUSH
-					}
-				}
-			}
-		}
-		if ( cdata(CDATA_ID, cc) == CREATURE_ID_KING_COCKROACH ) {
-			if ( cdata(CDATA_POWER_GAUGE, cc) < 95 ) {
-				if ( cdata(CDATA_POWER_GAUGE, cc) >= 75 ) {
-					if ( rnd(4) == 0 ) {
 						act = SKILL_SPACT_SHADOW_RUSH
 					}
 				}
@@ -3166,6 +3157,15 @@
 		if ( cdata(CDATA_ID, cc) == CREATURE_ID_YOUNG_LADY ) {
 			if ( rnd(10) == 0 ) {
 				act = SKILL_SPACT_DRAIN_BLOOD
+			}
+		}
+	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_KING_COCKROACH | cdata(CDATA_ID, cc) == CREATURE_ID_GODA_THE_CAPTAIN_OF_ORC ) {
+		if ( cdata(CDATA_POWER_GAUGE, cc) < 95 ) {
+			if ( cdata(CDATA_POWER_GAUGE, cc) >= 75 ) {
+				if ( rnd(4) == 0 ) {
+					act = SKILL_SPACT_SHADOW_RUSH
+				}
 			}
 		}
 	}

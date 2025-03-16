@@ -2349,6 +2349,8 @@ if instr(s,0,%1)!-1{	%c\
 	maxrain = windoww * windowh / 3500
 	dim rainx, maxrain * 2
 	dim rainy, maxrain * 2
+	dim rainpx, maxrain * 2
+	dim rainpy, maxrain * 2
 	sdim fltnrace
 	dim card, 4, MAX_CARD
 	dim deck, MAX_CARD

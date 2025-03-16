@@ -704,7 +704,7 @@
 				}
 			}
 			else {
-				if ( inv(INV_ITEM_ID, ci) != ITEM_ID_BOMB_BARREL & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_TRISMAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_OHUDA & inv(INV_ITEM_ID, ci) != ITEM_ID_PRESENT & inv(INV_ITEM_ID, ci) != ITEM_ID_WILD_FLOWER ) {
+				if ( inv(INV_ITEM_ID, ci) != ITEM_ID_BOMB_BARREL & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_TRISMAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_OHUDA & inv(INV_ITEM_ID, ci) != ITEM_ID_PRESENT & inv(INV_ITEM_ID, ci) != ITEM_ID_WILD_FLOWER & inv(INV_ITEM_ID, ci) != ITEM_ID_ECHINOBOX & inv(INV_ITEM_ID, ci) != ITEM_ID_LIGHTNING_DISCHARGER ) {
 					dmghp tc, limit(sdata(SKILL_WEAPON_THROWING, cc) / 5, 1, 200) * limit(inv(INV_ITEM_WEIGHT, ci) / 1000, 1, 500) + rnd(inv(INV_ITEM_WEIGHT, ci) / 1000 + sdata(SKILL_WEAPON_THROWING, cc) + 1), cc
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_SKULL_SWORD | inv(INV_ITEM_ID, ci) == ITEM_ID_VIOLENT_SKULL_SWORD ) {
@@ -760,11 +760,34 @@
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_BOMB_BARREL ) {
 					tcbk = tc
-					efpori = (sdata(SKILL_NORMAL_DISARM_TRAP, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					efpori = (sdata(SKILL_NORMAL_CARPENTRY, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
 					efid = SKILL_SPELL_FIRE_BALL
+					efp = (sdata(SKILL_NORMAL_CARPENTRY, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					gosub *effect
+					tc = tcbk
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_LIGHTNING_DISCHARGER ) {
+					tcbk = tc
+					efpori = (sdata(SKILL_NORMAL_MAGIC_CAPACITY, CHARA_PLAYER) + sdata(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					efid = SKILL_SPELL_THUNDER_VORTEX
+					efp = (sdata(SKILL_NORMAL_MAGIC_CAPACITY, CHARA_PLAYER) + sdata(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					gosub *effect
+					tc = tcbk
+					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
+						dmghp tc, (sdata(SKILL_WEAPON_THROWING, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_MAGIC_CAPACITY, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_CONTROL_MAGIC, cc) * 2 + 5) + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) / 2, cc, SKILL_RESDMG_CRUSH, 1000
+					}
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_ECHINOBOX ) {
+					tcbk = tc
+					efpori = (sdata(SKILL_NORMAL_DISARM_TRAP, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					efid = SKILL_SPELL_ILLUSION_ROAR
 					efp = (sdata(SKILL_NORMAL_DISARM_TRAP, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
 					gosub *effect
 					tc = tcbk
+					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
+						txt lang(name(tc) + "の脳で何かがうごめきだした！", "Something began to stir in " + name(tc) + "'s brain!")
+						gosub *brainParasite_effect
+					}
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MAGISTUS ) {
 					tcbk = tc
@@ -5780,7 +5803,7 @@
 										efid = SKILL_SPACT_BISECTION
 										gosub *effect
 									}
-									if ( inv(INV_ITEM_ID, cw) == ITEM_ID_HAND_AXE | inv(INV_ITEM_ID, cw) == ITEM_ID_BATTLE_AXE | inv(INV_ITEM_ID, cw) == ITEM_ID_BARDISH | inv(INV_ITEM_ID, cw) == ITEM_ID_AXE_OF_DESTRUCTION | inv(INV_ITEM_ID, cw) == ITEM_ID_NEGATIVE_EDGE | inv(INV_ITEM_ID, cw) == ITEM_ID_GOD_BREAKER | inv(INV_ITEM_ID, cw) == ITEM_ID_GRAVITY_AXE | inv(INV_ITEM_ID, cw) == ITEM_ID_GULIWELZEN | inv(INV_ITEM_ID, cw) == ITEM_ID_TOMAHAWK | inv(INV_ITEM_ID, cw) == ITEM_ID_CHAINSAW | inv(INV_ITEM_ID, cw) == ITEM_ID_DGT_101 ) {
+									if ( inv(INV_ITEM_ID, cw) == ITEM_ID_HAND_AXE | inv(INV_ITEM_ID, cw) == ITEM_ID_BATTLE_AXE | inv(INV_ITEM_ID, cw) == ITEM_ID_BARDISH | inv(INV_ITEM_ID, cw) == ITEM_ID_AXE_OF_DESTRUCTION | inv(INV_ITEM_ID, cw) == ITEM_ID_NEGATIVE_EDGE | inv(INV_ITEM_ID, cw) == ITEM_ID_GOD_BREAKER | inv(INV_ITEM_ID, cw) == ITEM_ID_GRAVITY_AXE | inv(INV_ITEM_ID, cw) == ITEM_ID_GULIWELZEN | inv(INV_ITEM_ID, cw) == ITEM_ID_TOMAHAWK | inv(INV_ITEM_ID, cw) == ITEM_ID_CHAINSAW | inv(INV_ITEM_ID, cw) == ITEM_ID_DGT_101 | inv(INV_ITEM_ID, cw) == ITEM_ID_HONEGUM ) {
 										weap = sdata(SKILL_WEAPON_AXE, cc)
 										efid = SKILL_SPACT_BISECTION
 										gosub *effect
@@ -14387,7 +14410,7 @@
 				continue
 			}
 			if ( cdatan(CDATAN_RACE, tc) == "doggod" | cdatan(CDATAN_RACE, tc) == "dog" | cdatan(CDATAN_CUSTOM_RACE, tc) == "犬" | cdatan(CDATAN_CUSTOM_RACE, tc) == "犬の神" | cdata(CDATA_ID, tc) == CREATURE_ID_OLDER_DOG_SISTER | cdata(CDATA_ID, tc) == CREATURE_ID_FOX_BROTHER ) {
-				if ( rnd(2) == 0 ) {
+				if ( rnd(10) >= 1 ) {
 					cdata(CDATA_EMO_ICON, tc) = 21 + 100
 				}
 			}
@@ -14397,7 +14420,192 @@
 	if ( _switch_val == EFFECT_MASTER_OF | _switch_sw ) {
 		_switch_sw = 0
 		snd SOUNDLIST_POWER07
-		txt lang("開発中。", "Under development.")
+		if ( spact(SKILL_SPACT_POKER_FORCE - STARTING_SKILL_SPACT) == 0 ) {
+			spact(SKILL_SPACT_POKER_FORCE - STARTING_SKILL_SPACT) = 1
+			txtmore
+			txtef COLOR_YELLOW
+			txt lang("あなたは「" + skillname(SKILL_SPACT_POKER_FORCE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_POKER_FORCE) + ".")
+		}
+		np = 0
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cdata(CDATA_ALLIED, cnt) != 0 ) {
+				continue
+			}
+			if ( cdata(CDATA_ID, cnt) >= CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, cnt) <= CREATURE_ID_HEART_WITCH ) {
+				np++
+			}
+		loop
+		if ( np >= 5 ) {
+			repeat 245
+				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+					continue
+				}
+				if ( cdata(CDATA_ALLIED, cnt) != 0 ) {
+					continue
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MASTER_OF_DIAMOND ) {
+					if ( cdata(CDATA_ID, cnt) != CREATURE_ID_DIAMOND_EYES ) {
+						continue
+					}
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MASTER_OF_HEART ) {
+					if ( cdata(CDATA_ID, cnt) != CREATURE_ID_HEART_WITCH ) {
+						continue
+					}
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MASTER_OF_CLUB ) {
+					if ( cdata(CDATA_ID, cnt) != CREATURE_ID_CLUB_FEATHER ) {
+						continue
+					}
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MASTER_OF_SPADE ) {
+					if ( cdata(CDATA_ID, cnt) != CREATURE_ID_SPADE_WARRIOR ) {
+						continue
+					}
+				}
+				tc = cnt
+				cdata(CDATA_EVOLUTION_STAGE, tc)++
+				if ( cdata(CDATA_EVOLUTION_STAGE, tc) >= 13 ) {
+					cdata(CDATA_EVOLUTION_STAGE, tc) = 13
+				}
+				repeat 245
+					if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+						continue
+					}
+					if ( cdata(CDATA_ALLIED, cnt) != 0 ) {
+						continue
+					}
+					if ( cnt == tc ) {
+						continue
+					}
+					if ( cdata(CDATA_ID, cnt) == cdata(CDATA_ID, tc) & cdata(CDATA_EVOLUTION_STAGE, cnt) == cdata(CDATA_EVOLUTION_STAGE, tc) ) {
+						cdata(CDATA_EVOLUTION_STAGE, tc)--
+						break
+					}
+				loop
+				cdata(CDATA_DIRECTIVE_MODE, cnt) = DIRECTIVE_MODE_OFFENSIVE
+				if ( cdata(CDATA_ID, cnt) == CREATURE_ID_SPADE_WARRIOR ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, cnt) > 5 ) {
+						cdata(CDATA_PIC, cnt) = xy2pic(10, 36)
+						cdata(CDATA_HEIGHT, cnt) = rnd(5) + 140
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, cnt) > 10 ) {
+						cdata(CDATA_PIC, cnt) = xy2pic(11, 35)
+						cdata(CDATA_HEIGHT, cnt) = rnd(20) + 770
+					}
+				}
+				if ( cdata(CDATA_ID, cnt) == CREATURE_ID_CLUB_FEATHER ) {
+					refreshspeed cnt
+					if ( cdata(CDATA_EVOLUTION_STAGE, cnt) > 5 ) {
+						cdata(CDATA_PIC, cnt) = xy2pic(12, 36)
+						cdata(CDATA_HEIGHT, cnt) = rnd(5) + 140
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, cnt) > 10 ) {
+						cdata(CDATA_PIC, cnt) = xy2pic(13, 35)
+						cdata(CDATA_HEIGHT, cnt) = rnd(20) + 770
+					}
+				}
+				if ( cdata(CDATA_ID, cnt) == CREATURE_ID_DIAMOND_EYES ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, cnt) > 5 ) {
+						cdata(CDATA_PIC, cnt) = xy2pic(14, 36)
+						cdata(CDATA_HEIGHT, cnt) = rnd(5) + 140
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, cnt) > 10 ) {
+						cdata(CDATA_PIC, cnt) = xy2pic(15, 35)
+						cdata(CDATA_HEIGHT, cnt) = rnd(20) + 770
+					}
+				}
+				if ( cdata(CDATA_ID, cnt) == CREATURE_ID_HEART_WITCH ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, cnt) > 5 ) {
+						cdata(CDATA_PIC, cnt) = xy2pic(16, 36)
+						cdata(CDATA_HEIGHT, cnt) = rnd(5) + 140
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, cnt) > 10 ) {
+						cdata(CDATA_PIC, cnt) = xy2pic(17, 35)
+						cdata(CDATA_HEIGHT, cnt) = rnd(10) + 160
+					}
+				}
+			loop
+		}
+		else {
+			necrolv = sdata(SKILL_NORMAL_MAGIC_DEVICE, CHARA_PLAYER) + (sdata(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) + 10) / 2
+			if ( necrolv > gdata(GDATA_DEEPEST_LEVEL) * 3 / 2 ) {
+				necrolv = gdata(GDATA_DEEPEST_LEVEL) * 3 / 2
+			}
+			np = 0
+			repeat 500
+				suit = 1127 + rnd(4)
+				rank = rnd(13) + 1
+				repeat 245
+					if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+						continue
+					}
+					if ( cdata(CDATA_ALLIED, cnt) != 0 ) {
+						continue
+					}
+					if ( cdata(CDATA_ID, cnt) == suit & cdata(CDATA_EVOLUTION_STAGE, cnt) == rank ) {
+						rank = -1
+						break
+					}
+				loop
+				if ( rank == (-1) ) {
+					continue
+				}
+				flt
+				initlv = necrolv
+				novoidlv = 1
+				fixlv = FIX_QUALITY_GOOD
+				characreate -1, suit, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER)
+				cdata(CDATA_EVOLUTION_STAGE, rc) = rank
+				cdata(CDATA_DIRECTIVE_MODE, rc) = DIRECTIVE_MODE_DEFENSIVE
+				cdata(CDATA_RELATION, rc) = RELATION_ALLY
+				cdata(CDATA_RELATION_ORG, rc) = RELATION_ALLY
+				cbitmod CHARA_BIT_NECRO, rc, TRUE
+				cbitmod CHARA_BIT_SHADOW_CLONE, rc, TRUE
+				cdatan(CDATAN_NAME, rc) += " Lv" + cdata(CDATA_LEVEL, rc)
+				np++
+				if ( cdata(CDATA_ID, rc) == CREATURE_ID_SPADE_WARRIOR ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 5 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(10, 36)
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 10 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(11, 35)
+					}
+				}
+				if ( cdata(CDATA_ID, rc) == CREATURE_ID_CLUB_FEATHER ) {
+					refreshspeed rc
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 5 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(12, 36)
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 10 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(13, 35)
+					}
+				}
+				if ( cdata(CDATA_ID, rc) == CREATURE_ID_DIAMOND_EYES ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 5 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(14, 36)
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 10 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(15, 35)
+					}
+				}
+				if ( cdata(CDATA_ID, rc) == CREATURE_ID_HEART_WITCH ) {
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 5 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(16, 36)
+					}
+					if ( cdata(CDATA_EVOLUTION_STAGE, rc) > 10 ) {
+						cdata(CDATA_PIC, rc) = xy2pic(17, 35)
+					}
+				}
+				if ( np == 5 ) {
+					break
+				}
+			loop
+		}
+		dmgmp CHARA_PLAYER, cdata(CDATA_MAX_MP, CHARA_PLAYER) / 10 + 1
 		goto *act_use_SWEND1
 		_switch_sw++
 	}

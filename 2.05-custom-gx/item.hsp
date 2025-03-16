@@ -1396,6 +1396,12 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_ID, rc) == CREATURE_ID_FOX_SPIRIT ) {
+		if ( rnd(9) == 0 ) {
+			flt
+			itemcreate -1, ITEM_ID_ECHINOBOX, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+		}
+	}
 	if ( cdata(CDATA_ID, rc) == CREATURE_ID_NOEL_THE_BOMBER ) {
 		if ( gdata(GDATA_FLAG_SUB_NUKE) == 1000 ) {
 			if ( rnd(25) == 0 ) {
@@ -3785,7 +3791,7 @@
 		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_FRIED_TOFU ) {
-		if ( cdata(CDATA_ID, cc) == CREATURE_ID_SILVER_FOX_BROTHER | cdata(CDATA_ID, cc) == CREATURE_ID_FOX_SPIRIT | cdata(CDATA_ID, cc) == CREATURE_ID_FOX_BROTHER ) {
+		if ( cdata(CDATA_ID, cc) == CREATURE_ID_SILVER_FOX_BROTHER | cdata(CDATA_ID, cc) == CREATURE_ID_FOX_SPIRIT | cdata(CDATA_ID, cc) == CREATURE_ID_FOX_BROTHER | cdata(CDATA_ID, cc) == CREATURE_ID_KYU_BI ) {
 			kaiwa = rnd(4)
 			txtef COLOR_GREEN
 			chatc@DP = cc
