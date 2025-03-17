@@ -3638,12 +3638,12 @@
 				card@tcg(TCG_CARD_HP, aeft@tcg) += 1
 				if ( pokerrank@tcg == 1 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_SACRIFICE_HEALTARGET }
 				if ( pokerrank@tcg == 2 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_HEALPLAYER2DAMAGE }
-				if ( pokerrank@tcg == 3 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_TURN_START_HEALPLAYER2DAMAGE }
-				if ( pokerrank@tcg == 4 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_SACRIFICE_SETTARGETHEALTHTO1 }
-				if ( pokerrank@tcg == 5 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_TURN_START_HEALPLAYER5DAMAGE }
+				if ( pokerrank@tcg == 3 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_NURSE2 }
+				if ( pokerrank@tcg == 4 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_NURSE1 }
+				if ( pokerrank@tcg == 5 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_TURN_START_HEALPLAYER2DAMAGE }
 				if ( pokerrank@tcg == 6 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_HEALPLAYER6DAMAGE }
 				if ( pokerrank@tcg == 7 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_4MANA77CONVERTION }
-				if ( pokerrank@tcg == 8 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_HEALALLCARD }
+				if ( pokerrank@tcg == 8 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_SIST }
 				if ( pokerrank@tcg == 9 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_TURN_START_HEALPLAYER5DAMAGE }
 				if ( pokerrank@tcg == 10 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_BOUNCEALOT }
 				if ( pokerrank@tcg == 11 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_GILPHEM }
@@ -3664,23 +3664,23 @@
 				if ( pokerrank@tcg == 7 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_TURN_START_DRAW1CARD }
 				if ( pokerrank@tcg == 8 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_DISCOVER8 }
 				if ( pokerrank@tcg == 9 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BLACKCAT }
-				if ( pokerrank@tcg == 10 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_COPYTARGETCARDONFIELDNOLIMIT }
-				if ( pokerrank@tcg == 11 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_EXILE }
-				if ( pokerrank@tcg == 12 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OLDBELL }
-				if ( pokerrank@tcg == 13 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OLDHUMAN }
+				if ( pokerrank@tcg == 10 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_EXILE }
+				if ( pokerrank@tcg == 11 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_DUNGEONCLEANER }
+				if ( pokerrank@tcg == 12 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OLDHUMAN }
+				if ( pokerrank@tcg == 13 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OLDBELL }
 			}
 			if ( pokersuit@tcg == 3 ) { // Club
 				card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) += 1
 				card@tcg(TCG_CARD_ATTACK, aeft@tcg) += 1
 				if ( pokerrank@tcg == 1 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_WEAKENALLENEMY }
 				if ( pokerrank@tcg == 2 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_TURN_START_DEBUFFRANDOMENEMY }
-				if ( pokerrank@tcg == 3 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_TALONSOLDIER }
+				if ( pokerrank@tcg == 3 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_PERFORMAIDDESWEEPER }
 				if ( pokerrank@tcg == 4 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_PERFORMAIDCOCRUEL }
-				if ( pokerrank@tcg == 5 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_ONGOING_INCREASE5ATTACKWHENWOUNDED }
-				if ( pokerrank@tcg == 6 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_ARAONIBI }
+				if ( pokerrank@tcg == 5 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_DEBUFFALLENEMY }
+				if ( pokerrank@tcg == 6 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_DEBUFFALLENEMYHAND }
 				if ( pokerrank@tcg == 7 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_TURN_START_PARALYSERANDOMENEMY }
 				if ( pokerrank@tcg == 8 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_MOYER }
-				if ( pokerrank@tcg == 9 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OBLIVIONBEAST1 }
+				if ( pokerrank@tcg == 9 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OBLIVIONBEAST2 }
 				if ( pokerrank@tcg == 10 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BLAZELION }
 				if ( pokerrank@tcg == 11 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_YOUNGLADYBLACK }
 				if ( pokerrank@tcg == 12 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_SHELLKING }
@@ -3697,7 +3697,7 @@
 				if ( pokerrank@tcg == 4 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_DEALOPPONENT4DAMAGE }
 				if ( pokerrank@tcg == 5 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_MUTANT }
 				if ( pokerrank@tcg == 6 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_DEALRANDOMENEMY6DAMAGE }
-				if ( pokerrank@tcg == 7 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_AFTERCOMBAT_SETTARGETHEALTHTO1 }
+				if ( pokerrank@tcg == 7 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BLACKANGEL }
 				if ( pokerrank@tcg == 8 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_HUNGRYSEALION }
 				if ( pokerrank@tcg == 9 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_LEIKI }
 				if ( pokerrank@tcg == 10 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_AFTERCOMBAT_DEALENEMY3DAMAGE }
