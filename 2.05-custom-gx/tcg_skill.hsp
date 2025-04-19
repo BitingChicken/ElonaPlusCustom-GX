@@ -3647,7 +3647,7 @@
 				if ( pokerrank@tcg == 9 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_TURN_START_HEALPLAYER5DAMAGE }
 				if ( pokerrank@tcg == 10 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_BOUNCEALOT }
 				if ( pokerrank@tcg == 11 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_GILPHEM }
-				if ( pokerrank@tcg == 12 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OBLIVIONBEAST2 }
+				if ( pokerrank@tcg == 12 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_PROVIDENCE }
 				if ( pokerrank@tcg == 13 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_SERAPH }
 			}
 			if ( pokersuit@tcg == 2 ) { // Diamond
@@ -3666,8 +3666,15 @@
 				if ( pokerrank@tcg == 9 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BLACKCAT }
 				if ( pokerrank@tcg == 10 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_EXILE }
 				if ( pokerrank@tcg == 11 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_DUNGEONCLEANER }
-				if ( pokerrank@tcg == 12 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OLDHUMAN }
-				if ( pokerrank@tcg == 13 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OLDBELL }
+				if ( pokerrank@tcg == 12 ) { 
+					card@tcg(TCG_CARD_REF_COST, aeft@tcg) += 3
+					card@tcg(TCG_CARD_COST, aeft@tcg) += 3
+					card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OLDHUMAN 
+				}
+				if ( pokerrank@tcg == 13 ) { 
+					cdbitmod TCG_BIT_TEMPO, aeft@tcg, 1
+					card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_OLDBELL 
+				}
 			}
 			if ( pokersuit@tcg == 3 ) { // Club
 				card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) += 1
@@ -3698,7 +3705,11 @@
 				if ( pokerrank@tcg == 5 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_MUTANT }
 				if ( pokerrank@tcg == 6 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_DEALRANDOMENEMY6DAMAGE }
 				if ( pokerrank@tcg == 7 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BLACKANGEL }
-				if ( pokerrank@tcg == 8 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_HUNGRYSEALION }
+				if ( pokerrank@tcg == 8 ) { 
+					card@tcg(TCG_CARD_REF_COST, aeft@tcg) += 3
+					card@tcg(TCG_CARD_COST, aeft@tcg) += 3
+					card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_HUNGRYSEALION 
+				}
 				if ( pokerrank@tcg == 9 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_LEIKI }
 				if ( pokerrank@tcg == 10 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_AFTERCOMBAT_DEALENEMY3DAMAGE }
 				if ( pokerrank@tcg == 11 ) { card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_BATTLECRY_DEALALLENEMY2DAMAGE }
