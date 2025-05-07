@@ -5366,7 +5366,9 @@
 		else {
 			bakucut = 0
 			bakuretu = 0
+			dmgbugbk = dmg
 			gosub *act_attackSub
+			dmg = dmgbugbk
 		}
 		if ( trait(TRAIT_ETHER_TENTACLES) != 0 ) {
 			if ( cc == CHARA_PLAYER ) {
