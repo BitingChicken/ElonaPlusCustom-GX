@@ -6374,6 +6374,7 @@
 				}
 			}
 		}
+		if ( TweakData(TWEAK_GAMEPLAY_DISABLE_CLEMENTIA, TWEAK_CATEGORY_GAMEPLAY) <= FALSE ) {
 		if ( cdata(CDATA_HP, dmghp_charid) < cdata(CDATA_MAX_HP, dmghp_charid) / 10 ) {
 			if ( dmghp_charid != CHARA_PLAYER ) {
 				if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, dmghp_charid) == FALSE ) {
@@ -6392,6 +6393,7 @@
 					}
 				}
 			}
+		}
 		}
 		if ( TweakData(TWEAK_GAMEPLAY_REVERT_POST_208_ELEMENT_CHANGE, TWEAK_CATEGORY_GAMEPLAY) != FALSE ) {
 			// BEGINNING - Pre-2.08 behavior, do not apply changes here.

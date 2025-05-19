@@ -799,16 +799,16 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	listn(0, 14) = "Revert post-2.22 ranged ammo nerf." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_AMMO_NERF)
 	listn(0, 15) = "Go back."
 	
-	listn(0, 16) = "=== EXP/Progression related changes ==="
-	listn(0, 17) = "Sandbag training." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SANDBAG_TRAINING)
-	listn(0, 18) = "Summoned monster training." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SUMMONED_MONSTER_TRAINING)
-	listn(0, 19) = "Increase Dojo EXP gain: " + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_INCREASED_DOJO_EXP) + "% increase."
-	listn(0, 20) = "Revert post-1.90 weapon skill exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_190_EXP_CHANGES)
-	listn(0, 21) = "Disable study days (triple skill exp)" + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_STUDY_DAYS)
-	listn(0, 22) = "Disable DESTINY." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_DESTINY)
-	listn(0, 23) = "Revert post-2.13 combat exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_213_EXP_CHANGES)
-	listn(0, 24) = "Revert post-2.17 skill exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_217_EXP_CHANGES)
-	listn(0, 25) = "" 
+	listn(0, 16) = "Disable Mob begging-for-life System post-2.27." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_CLEMENTIA)
+	listn(0, 17) = "=== EXP/Progression related changes ==="
+	listn(0, 18) = "Sandbag training." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SANDBAG_TRAINING)
+	listn(0, 19) = "Summoned monster training." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SUMMONED_MONSTER_TRAINING)
+	listn(0, 20) = "Increase Dojo EXP gain: " + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_INCREASED_DOJO_EXP) + "% increase."
+	listn(0, 21) = "Revert post-1.90 weapon skill exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_190_EXP_CHANGES)
+	listn(0, 22) = "Disable study days (triple skill exp)" + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_STUDY_DAYS)
+	listn(0, 23) = "Disable DESTINY." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_DESTINY)
+	listn(0, 24) = "Revert post-2.13 combat exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_213_EXP_CHANGES)
+	listn(0, 25) = "Revert post-2.17 skill exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_217_EXP_CHANGES)
 	listn(0, 26) = "" 
 	listn(0, 27) = "" 
 	listn(0, 28) = "" 
@@ -906,28 +906,31 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 				s = "Return to the previous menu."
 			}
 
-			if ( p == 17 ) {
-				s = "Sandbagged monsters will give experience."
+			if ( p == 16 ) {
+				s = "Revert Post-2.27 Begging-for-life-Flag setting.\nThis flag will change hostile mob NPCs into a pacified state.\nWhere your bump melee is changed into dialog with the pacified mob."
 			}
 			if ( p == 18 ) {
-				s = "Summoned monsters and monsters that split up will give experience."
+				s = "Sandbagged monsters will give experience."
 			}
 			if ( p == 19 ) {
-				s = "Increase Dojo EXP gain. \nDojo EXP is gained by traveling on world map, at ~3.5 EXP per tile.\nWhile slightly higher than travel EXP, it may be underwhelming for \nthose who doesn't visit Dojo very often."
+				s = "Summoned monsters and monsters that split up will give experience."
 			}
 			if ( p == 20 ) {
-				s = "Reverts changes to the weapon skill experience formula after version 1.90.\nThis mainly addresses the three-fold increase in player weapon skill exp gain.\nIt does not change the study day triple exp bonus."
+				s = "Increase Dojo EXP gain. \nDojo EXP is gained by traveling on world map, at ~3.5 EXP per tile.\nWhile slightly higher than travel EXP, it may be underwhelming for \nthose who doesn't visit Dojo very often."
 			}
 			if ( p == 21 ) {
-				s = "Disables the \"study day bonus\" feature.\nThis will prevent certain skills from gaining triple skill experience based on the\nstudy day type."
+				s = "Reverts changes to the weapon skill experience formula after version 1.90.\nThis mainly addresses the three-fold increase in player weapon skill exp gain.\nIt does not change the study day triple exp bonus."
 			}
 			if ( p == 22 ) {
-				s = "Disables the \"DESTINY\" feature.\nThis restores the chances of godly equipment being generated, regardless of\nDESTINY triggers."
+				s = "Disables the \"study day bonus\" feature.\nThis will prevent certain skills from gaining triple skill experience based on the\nstudy day type."
 			}
 			if ( p == 23 ) {
-				s = "Reverts changes to the killing experience formula after version 2.13.\nAddresses \"increased EXP multipliers when defeating enemies above the PC's level\".\nToggling this also reverts the changes to the taxation mechanic."
+				s = "Disables the \"DESTINY\" feature.\nThis restores the chances of godly equipment being generated, regardless of\nDESTINY triggers."
 			}
 			if ( p == 24 ) {
+				s = "Reverts changes to the killing experience formula after version 2.13.\nAddresses \"increased EXP multipliers when defeating enemies above the PC's level\".\nToggling this also reverts the changes to the taxation mechanic."
+			}
+			if ( p == 25 ) {
 				s = "Reverts changes to the skill experience formula after version 2.17.\nThis will lock your growth rate at 400% (100% compared to growth in 2.17)."
 			}
 
@@ -1064,45 +1067,50 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 		return
 	}
 	
-	if ( p == 17 ) {
+	if ( p == 16 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
-		tn = TWEAK_GAMEPLAY_SANDBAG_TRAINING
+		tn = TWEAK_GAMEPLAY_DISABLE_CLEMENTIA
 		gosub *ToggleTweak
 	}
 	if ( p == 18 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
-		tn = TWEAK_GAMEPLAY_SUMMONED_MONSTER_TRAINING
+		tn = TWEAK_GAMEPLAY_SANDBAG_TRAINING
 		gosub *ToggleTweak
 	}
 	if ( p == 19 ) {
+		tc = TWEAK_CATEGORY_GAMEPLAY
+		tn = TWEAK_GAMEPLAY_SUMMONED_MONSTER_TRAINING
+		gosub *ToggleTweak
+	}
+	if ( p == 20 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_INCREASED_DOJO_EXP
 		ts = 100 // Increments by
 		tm = 1900 // Max
 		gosub *IncrementTweak
 	}
-	if ( p == 20 ) {
+	if ( p == 21 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_REVERT_POST_190_EXP_CHANGES
 		gosub *ToggleTweak
 	}
-	if ( p == 21 ) {
+	if ( p == 22 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_DISABLE_STUDY_DAYS
 		gosub *ToggleTweak
 	}
-	if ( p == 22 ) {
+	if ( p == 23 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_DISABLE_DESTINY
 		gosub *ToggleTweak
 		gosub *ApplyCGSkillTweak
 	}
-	if ( p == 23 ) {
+	if ( p == 24 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_REVERT_POST_213_EXP_CHANGES
 		gosub *ToggleTweak
 	}
-	if ( p == 24 ) {
+	if ( p == 25 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_REVERT_POST_217_EXP_CHANGES
 		gosub *ToggleTweak
@@ -1765,7 +1773,7 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	listn(0, 0) = "Permanent Etherwind." + GetTStatusProgress(TWEAK_CATEGORY_CHALLENGE, TWEAK_CHALLENGE_ALWAYS_ETHERWIND, "Days Survived")
 	listn(0, 1) = "Double your tax each month." + GetTStatusProgress(TWEAK_CATEGORY_CHALLENGE, TWEAK_CHALLENGE_DOUBLE_TAX_EACH_MONTH, "Months Paid")
 	listn(0, 2) = "Nuke the beggar-cave." + GetTStatusProgress(TWEAK_CATEGORY_CHALLENGE, TWEAK_CHALLENGE_NUKE_BEGGAR_CAVE, "Eleas Obliterated")
-	listn(0, 3) = "Make travelling harder." + GetTStatusProgress(TWEAK_CATEGORY_CHALLENGE, TWEAK_CHALLENGE_HARCORE_TRAVELLING, "Miles Travelled")
+	listn(0, 3) = "(DISABLED) Make travelling harder."
 	listn(0, 4) = "Pets die permanently." + GetTStatusProgress(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_PETS_DIE_PERMANENTLY, "Friends Buried")
 	listn(0, 5) = "Split Monsters split (like in Vanilla)." + GetTStatusProgress(TWEAK_CATEGORY_CHALLENGE, TWEAK_CHALLENGE_VANILLA_MONSTER_SPLIT, "Copies Summoned")
 	listn(0, 6) = "Powerful ambush spawns (like during Etherwind)." + GetTStatusProgress(TWEAK_CATEGORY_CHALLENGE, TWEAK_CHALLENGE_SUPERAMBUSH, "Godly Encounters")
@@ -1802,7 +1810,7 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 				s = "You can nuke your home again. \nThis will prevent you from entering Vernis until you nuked your cave. \nYou can leave home without triggering main quest. \nNoel quest no longer require 7000 fame."
 			}
 			if ( p == 3 ) {
-				s = "Remove the traveling needs reduction. \nYou get hungry/thirsty/tired on world map like regular maps. \nYou miles travelled (exp/idea gain) on a vehicle won't count."
+				s = "Traveling is revamped in 2.27. This tweak is now disabled."
 			}
 			if ( p == 4 ) {
 				s = "Pets now have permadeath.\nOn the bright side, they now drop figurine and corpses!\n(Only if they have high impression.)"

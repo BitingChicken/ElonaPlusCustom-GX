@@ -183,9 +183,9 @@
 	buffname(BUFF_CONCENTRATION) = lang("集中", "Concentration")
 	bufftxt(0, BUFF_CONCENTRATION) = lang("の集中力が向上した。", " feel"), " concentrated."
 
-	bdataref(BDATAREF_BUFF_TYPE, MAX_BUFF) = BUFF_TYPE_HEX, 1, 0
-	buffname(MAX_BUFF) = lang("冥界の瘴気", "Miasma of Hell")
-	bufftxt(0, MAX_BUFF) = lang("は瘴気に包み込まれた。", "surrounded"), " in miasma."
+	bdataref(BDATAREF_BUFF_TYPE, BUFF_MIASMA_OF_HELL) = BUFF_TYPE_HEX, 1, 0
+	buffname(BUFF_MIASMA_OF_HELL) = lang("冥界の瘴気", "Miasma of Hell")
+	bufftxt(0, BUFF_MIASMA_OF_HELL) = lang("は瘴気に包み込まれた。", "surrounded"), " in miasma."
 
 	bdataref(0, BUFF_FORM_SHIFT_ALPHA) = BUFF_TYPE_BUFF, 1, 0
 	buffname(BUFF_FORM_SHIFT_ALPHA) = lang("フォルムシフト", "Form Shift (A)")

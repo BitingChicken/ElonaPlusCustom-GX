@@ -1308,9 +1308,6 @@
 	gosub *item_rot
 	gosub *calcThirst
 	if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
-		if ( rnd(3) == 0 & TweakData(TWEAK_CHALLENGE_HARCORE_TRAVELLING, TWEAK_CATEGORY_CHALLENGE) <= 0 ) {
-			gdata(GDATA_SLEEP)++
-		}
 		if ( TweakData(TWEAK_GAMEPLAY_NO_NAPS_WHILE_TRAVELING, TWEAK_CATEGORY_GAMEPLAY) == 0 & rnd(15) == 0 ) {
 			if ( gdata(GDATA_SLEEP) >= 13 ) {
 				if ( TweakData(TWEAK_GAMEPLAY_CG_DISABLE_SLEEP_PREVENTION, TWEAK_CATEGORY_GAMEPLAY) == TRUE | gdata(GDATA_FLAG_SLEEP_PREVENTION) <= 0 ) {

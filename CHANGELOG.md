@@ -2,9 +2,11 @@
 
 # Added
 - Ported all changes from Elona+ 2.27.
+- Tweak to disable the begging for life system for enemies.
 
 # Fixed
 - (Plus) Fixed reflect damage calculated using the wrong damage number
+- (Plus) Pet target reset due to begging-bitflag bug.
 
 # 2.26.1.0
 

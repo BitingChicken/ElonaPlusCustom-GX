@@ -568,7 +568,7 @@
 			if ( cdata(CDATA_RELATION, cdata(CDATA_TARGET, cc)) > (-3) ) {
 				cdata(CDATA_TARGET, cc) = 0
 			}
-			if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cc) != TRUE ) {
+			if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cc) == TRUE ) {
 				cdata(CDATA_TARGET, cc) = 0
 			}
 			if ( cdata(CDATA_TARGET, cc) == 0 ) {

@@ -1634,7 +1634,7 @@
 
 *calcThirst // and hunger
 	haraheri = 8 * 50
-	if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD & TweakData(TWEAK_CHALLENGE_HARCORE_TRAVELLING, TWEAK_CATEGORY_CHALLENGE) <= 0 ) {
+	if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
 		haraheri = 8 * 10
 	}
 	if ( gdata(GDATA_AREA) == AREA_VALM ) {
