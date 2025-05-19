@@ -1396,6 +1396,22 @@
 			}
 		}
 	}
+	if ( cdatan(CDATAN_CLASS, rc) == "wizard" ) {
+		if ( rnd(100) == 0 ) {
+			if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {
+				flt
+				itemcreate -1, ITEM_ID_SNOW_CRYSTAL, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+		}
+	}
+	if ( cdatan(CDATAN_CLASS, rc) == "gunner" ) {
+		if ( rnd(100) == 0 ) {
+			if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {
+				flt
+				itemcreate -1, ITEM_ID_DARKNESSBANG, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+		}
+	}
 	if ( cdata(CDATA_ID, rc) == CREATURE_ID_FOX_SPIRIT ) {
 		if ( rnd(9) == 0 ) {
 			flt

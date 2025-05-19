@@ -3769,6 +3769,10 @@
 			gsel BUFFER_PIC
 			picload exedir + "graphic\\anime95.bmp"
 		}
+		if ( animode == 10 ) {
+			gsel BUFFER_PIC
+			picload exedir + "graphic\\anime8.bmp"
+		}
 		gsel BUFFER_BUF
 		gmode 0
 		pos 0, 0
@@ -3780,7 +3784,7 @@
 			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
 				continue
 			}
-			if ( animode == 0 | animode == 2 | animode == 7 | animode == 9 ) {
+			if ( animode == 0 | animode == 2 | animode == 7 | animode == 9 | animode == 10 ) {
 				if ( cnt == cc ) {
 					continue
 				}
@@ -3895,6 +3899,9 @@
 						if ( animode == 9 ) {
 							snd SOUNDLIST_ENC
 						}
+						if ( animode == 10 ) {
+							snd SOUNDLIST_FIZZLE
+						}
 					}
 				}
 			}
@@ -3912,6 +3919,9 @@
 			}
 			if ( animode == 9 ) {
 				await cfg_animewait + 15
+			}
+			if ( animode == 10 ) {
+				await cfg_animewait + 5
 			}
 			redraw 1
 		loop
@@ -4878,6 +4888,9 @@
 	}
 	if ( _switch_val == ANIMATION_CUT_IN | _switch_sw ) {
 		_switch_sw = 0
+		if ( cfg_cutin_select != 0 ) {
+			goto *anime_SWEND1
+		}
 		pic = cdata(CDATA_PIC, anic) \ 1000 + cdata(CDATA_CHARA_PIC, anic) * 1000 + refchara(cdata(CDATA_ID, anic), DBSPEC_CHARA_COL) * 10000
 		if ( anic == CHARA_PLAYER ) {
 			pic = -1
@@ -5611,11 +5624,13 @@
 			if ( gdata(GDATA_WEATHER) == WEATHER_ETHER ) {
 				gosub *screen_ether
 			}
-			if ( waza == 1 ) {
-				gosub *screen_cutin1
-			}
-			if ( waza == (-1) ) {
-				gosub *screen_cutin2
+			if ( cfg_cutin_select == 0 ) {
+				if ( waza == 1 ) {
+					gosub *screen_cutin1
+				}
+				if ( waza == (-1) ) {
+					gosub *screen_cutin2
+				}
 			}
 		}
 		if ( gdata(GDATA_WORLD) == AREA_OCEAN & gdata(GDATA_AREA) == AREA_WILDERNESS ) {

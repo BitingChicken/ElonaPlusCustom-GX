@@ -118,8 +118,9 @@
 #define global	BUFF_CHAIN_OF_MANA	68
 #define global	BUFF_FLAME_OF_LIFE	69
 #define global	BUFF_ENERGY_MAX	70
+#define global	BUFF_MIASMA_OF_HELL	71
 
-#define global	MAX_BUFF	(BUFF_ENERGY_MAX + 1)
+#define global	MAX_BUFF	(BUFF_MIASMA_OF_HELL + 1)
 
 // calcbuff information type
 #define global	CALCBUFF_DESCRIPTION	-2
@@ -618,8 +619,10 @@
 #define global	SKILL_SPACT_KAMIKAKUSHI	866
 #define global	SKILL_SPACT_HIP_ATTACK	867
 #define global	SKILL_SPACT_POKER_FORCE	868
+#define global	SKILL_SPACT_CLEMENTIA	869
+#define global	SKILL_SPACT_MIASMA_OF_HELL	870
 
-#define global	MAX_SKILL	(SKILL_SPACT_POKER_FORCE + 1)
+#define global	MAX_SKILL	(SKILL_SPACT_MIASMA_OF_HELL + 1)
 
 // Absolute skill limits
 #define global	MAX_SPACT_COUNT	500 // Maximum number of spact slots available in the array, beginning at STARTING_SKILL_SPACT, meaning the effective max skillid is 1099 (1100 if you really push it)
@@ -753,6 +756,7 @@
 #define global	ACTION_BEGGING	29
 #define global	ACTION_JUMPING_DROP	30
 #define global	ACTION_DIVING_DRILL	31
+#define global	ACTION_SEX_2	32
 #define global	ACTION_SLAVE_SPINNER	107
 #define global	ACTION_SLAVE_WHEEL	108
 
@@ -2221,6 +2225,8 @@
 #define global	CHARA_BIT_BRAIN_PARASITE	1045
 #define global	CHARA_BIT_SEALED_MAGIC	1046
 #define global	CHARA_BIT_SEALED_ABILITY	1047
+#define global	CHARA_BIT_HAS_CLEMENTIAD	1048
+#define global	CHARA_BIT_BEGGING_FOR_LIFE	1049
 
 // Database modes
 #define global	DBMODE_NONE	0
@@ -2292,6 +2298,7 @@
 #define global	DBMODE_FLAVOR_TAG	146
 #define global	DBMODE_FLAVOR_TAG_EVO	147
 #define global	DBMODE_FLAVOR_LEADING	148
+#define global	DBMODE_FLAVOR_CLEMENTIA	149
 
 // Database specs
 #define global	DBSPEC_CAN_READ	2
@@ -5988,8 +5995,10 @@
 #define global	ITEM_ID_HONEGUM	1303
 #define global	ITEM_ID_ECHINOBOX	1304
 #define global	ITEM_ID_LIGHTNING_DISCHARGER	1305
+#define global	ITEM_ID_DARKNESSBANG	1306
+#define global	ITEM_ID_SNOW_CRYSTAL	1307
 
-#define global	MAX_ITEM_ID	(ITEM_ID_LIGHTNING_DISCHARGER + 3)
+#define global	MAX_ITEM_ID	(ITEM_ID_SNOW_CRYSTAL + 3)
 
 // Creatures
 #define global	CREATURE_ID_BUG	0 // Also doubles as RANDOM

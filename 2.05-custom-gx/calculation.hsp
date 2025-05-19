@@ -1603,6 +1603,9 @@
 	if ( cbit(CHARA_BIT_HAS_SEPPUKUED, r2) == TRUE ) {
 		return 0
 	}
+	if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, r2) == TRUE ) {
+		return 0
+	}
 	if ( map(cdata(CDATA_X, r2), cdata(CDATA_Y, r2), 5) != 0 ) {
 		if ( mapitemfind(cdata(CDATA_X, r2), cdata(CDATA_Y, r2), ITEM_ID_LULWYS_PHOTO_COLLECTION) != (-1) ) {
 			if ( cdata(CDATA_ID, cc) != CREATURE_ID_LULWY & cdata(CDATA_ID, cc) != CREATURE_ID_DEVASTATE_LULWY ) {
@@ -1790,6 +1793,25 @@
 			cdata(CDATA_CONDITION_POISON, r1) = 100
 		}
 		dmghp r1, cdata(CDATA_MAX_HP, r1) / 15 + 2, DAMAGE_FROM_POISON
+		if ( findbuff(r1, BUFF_MIASMA_OF_HELL) != (-1) ) {
+			if ( cdata(CDATA_EXIST, r1) == CHAR_STATE_ALIVE & cdata(CDATA_QUALITY, r1) < FIX_QUALITY_MIRACLE ) {
+				p = 10, 11, 12, 17, 18, 14, 13, 16, 15, 19, -1
+				repeat
+					if ( p(cnt) == (-1) ) {
+						break
+					}
+					i = p(cnt) + 240 - 10
+					cdata(i, r1) -= sorg(p(cnt), r1) / 100 + 1
+				loop
+				if ( synccheck(r1, -1) ) {
+					txtmore
+					txtef COLOR_LIGHT_GREEN
+					txt lang(name(r1) + "は瘴気の毒で弱くなった。", name(r1) + " " + is(r1) + " weakened.")
+				}
+				r1 = r1
+				gosub *charaRefresh
+			}
+		}
 		healcon r1, CONDITION_POISON, 1
 		if ( cdata(CDATA_CONDITION_POISON, r1) > 0 ) {
 			cdata(CDATA_EMO_ICON, r1) = 8 + 100
@@ -1801,6 +1823,28 @@
 			cdata(CDATA_CONDITION_MPOISON, r1) = 100
 		}
 		dmgmp r1, rnd(2 + sdata(SKILL_ATTR_MAG, r1) / 10)
+		if ( cdata(CDATA_SP, r1) > 0 ) {
+			cdata(CDATA_SP, r1)--
+		}
+		if ( findbuff(r1, BUFF_MIASMA_OF_HELL) != (-1) ) {
+			if ( cdata(CDATA_EXIST, r1) == CHAR_STATE_ALIVE & cdata(CDATA_QUALITY, r1) < FIX_QUALITY_MIRACLE ) {
+				p = 10, 11, 12, 17, 18, 14, 13, 16, 15, 19, -1
+				repeat
+					if ( p(cnt) == (-1) ) {
+						break
+					}
+					i = p(cnt) + 240 - 10
+					cdata(i, r1) -= sorg(p(cnt), r1) / 100 + 1
+				loop
+				if ( synccheck(r1, -1) ) {
+					txtmore
+					txtef COLOR_BLUE
+					txt lang(name(r1) + "は瘴気に蝕まれて弱くなった。", name(r1) + " " + is(r1) + " weakened.")
+				}
+				r1 = r1
+				gosub *charaRefresh
+			}
+		}
 		healcon r1, CONDITION_MPOISON, 1
 		if ( cdata(CDATA_CONDITION_MPOISON, r1) > 0 ) {
 			cdata(CDATA_EMO_ICON, r1) = 27 + 100

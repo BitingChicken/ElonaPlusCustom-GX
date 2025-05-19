@@ -704,7 +704,7 @@
 				}
 			}
 			else {
-				if ( inv(INV_ITEM_ID, ci) != ITEM_ID_BOMB_BARREL & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_TRISMAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_OHUDA & inv(INV_ITEM_ID, ci) != ITEM_ID_PRESENT & inv(INV_ITEM_ID, ci) != ITEM_ID_WILD_FLOWER & inv(INV_ITEM_ID, ci) != ITEM_ID_ECHINOBOX & inv(INV_ITEM_ID, ci) != ITEM_ID_LIGHTNING_DISCHARGER ) {
+				if ( inv(INV_ITEM_ID, ci) != ITEM_ID_BOMB_BARREL & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_TRISMAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_OHUDA & inv(INV_ITEM_ID, ci) != ITEM_ID_PRESENT & inv(INV_ITEM_ID, ci) != ITEM_ID_WILD_FLOWER & inv(INV_ITEM_ID, ci) != ITEM_ID_ECHINOBOX & inv(INV_ITEM_ID, ci) != ITEM_ID_LIGHTNING_DISCHARGER & inv(INV_ITEM_ID, ci) != ITEM_ID_DARKNESSBANG & inv(INV_ITEM_ID, ci) != ITEM_ID_SNOW_CRYSTAL ) {
 					dmghp tc, limit(sdata(SKILL_WEAPON_THROWING, cc) / 5, 1, 200) * limit(inv(INV_ITEM_WEIGHT, ci) / 1000, 1, 500) + rnd(inv(INV_ITEM_WEIGHT, ci) / 1000 + sdata(SKILL_WEAPON_THROWING, cc) + 1), cc
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_SKULL_SWORD | inv(INV_ITEM_ID, ci) == ITEM_ID_VIOLENT_SKULL_SWORD ) {
@@ -762,15 +762,36 @@
 					tcbk = tc
 					efpori = (sdata(SKILL_NORMAL_CARPENTRY, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
 					efid = SKILL_SPELL_FIRE_BALL
-					efp = (sdata(SKILL_NORMAL_CARPENTRY, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					efp = efpori
 					gosub *effect
 					tc = tcbk
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_SNOW_CRYSTAL ) {
+					tcbk = tc
+					efpori = (sdata(SKILL_NORMAL_JEWELER, CHARA_PLAYER) + sdata(SKILL_NORMAL_MEDITATION, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					efid = SKILL_SPELL_ICE_BALL
+					efp = efpori
+					gosub *effect
+					tc = tcbk
+					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
+						addbuff tc, BUFF_ELEMENT_SCAR, efpori / 3, 30
+					}
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_DARKNESSBANG ) {
+					tcbk = tc
+					efpori = (sdata(SKILL_NORMAL_TACTICS, CHARA_PLAYER) + sdata(SKILL_NORMAL_MARKSMAN, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					gdata(GDATA_TEMPORARY_FLAGS2) = 4771
+					efid = SKILL_SPELL_ECLIPSE
+					efp = efpori
+					gosub *effect
+					tc = tcbk
+					gdata(GDATA_TEMPORARY_FLAGS2) = 0
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_LIGHTNING_DISCHARGER ) {
 					tcbk = tc
 					efpori = (sdata(SKILL_NORMAL_MAGIC_CAPACITY, CHARA_PLAYER) + sdata(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
 					efid = SKILL_SPELL_THUNDER_VORTEX
-					efp = (sdata(SKILL_NORMAL_MAGIC_CAPACITY, CHARA_PLAYER) + sdata(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					efp = efpori
 					gosub *effect
 					tc = tcbk
 					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
@@ -781,7 +802,7 @@
 					tcbk = tc
 					efpori = (sdata(SKILL_NORMAL_DISARM_TRAP, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
 					efid = SKILL_SPELL_ILLUSION_ROAR
-					efp = (sdata(SKILL_NORMAL_DISARM_TRAP, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					efp = efpori
 					gosub *effect
 					tc = tcbk
 					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
@@ -1995,32 +2016,38 @@
 				goto *pc_turn
 			}
 		}
-		if ( cdata(CDATA_RELATION, tc) <= (-1) ) {
-			cdata(CDATA_TARGET, CHARA_PLAYER) = tc
-			if ( charaIsVisible(tc) == 0 ) {
-				cdata(CDATA_TARGET, CHARA_PLAYER) = 0
-			}
-			if ( keybd_attacking == 0 ) {
-				keybd_wait = 1
-				keybd_attacking = 1
-			}
-
-			/********** ORIGINAL - BEGINNING **********
-
-			gosub *act_melee
+		if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, tc) == TRUE ) {
+			gosub *chat
 			goto *turn_end
+		}
+		else {
+			if ( cdata(CDATA_RELATION, tc) <= (-1) ) {
+				cdata(CDATA_TARGET, CHARA_PLAYER) = tc
+				if ( charaIsVisible(tc) == 0 ) {
+					cdata(CDATA_TARGET, CHARA_PLAYER) = 0
+				}
+				if ( keybd_attacking == 0 ) {
+					keybd_wait = 1
+					keybd_attacking = 1
+				}
 
-			 ********** ORIGINAL - ENDING **********/
+				/********** ORIGINAL - BEGINNING **********
 
-			/********** BLOODYSHADE CUSTOM - BEGINNING **********/ // Prevent bump attacking
-
-			if ( TweakData(TWEAK_MISC_PREVENT_BUMP_ATTACK, TWEAK_CATEGORY_MISC) == 0 ) {
 				gosub *act_melee
+				goto *turn_end
+
+				********** ORIGINAL - ENDING **********/
+
+				/********** BLOODYSHADE CUSTOM - BEGINNING **********/ // Prevent bump attacking
+
+				if ( TweakData(TWEAK_MISC_PREVENT_BUMP_ATTACK, TWEAK_CATEGORY_MISC) == 0 ) {
+					gosub *act_melee
+				}
+				goto *turn_end
+
+				/********** BLOODYSHADE CUSTOM - ENDING **********/
+
 			}
-			goto *turn_end
-
-			/********** BLOODYSHADE CUSTOM - ENDING **********/
-
 		}
 		gosub *chat
 		if ( chatteleport == 1 ) {
@@ -7720,14 +7747,14 @@
 			gosub *screen_draw
 			goto *pc_turn
 		}
-		if ( gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) > 100 ) {
-			gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) = 100
+		if ( gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) > 999 ) {
+			gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) = 999
 		}
 		if ( gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) <= 0 ) {
 			gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) = 0
 		}
 		promptAdd lang("何もしない", "Cancel"), "null", 0
-		promptAdd lang("原稿の制作(ネタ：" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + ")", "Manuscript production (" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + " ideas) "), "null", 1
+		promptAdd lang("原稿の制作(インスピレーション：" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + ")", "Manuscript production (" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + " inspiration) "), "null", 1
 		promptAdd lang("限定自費出版(指定原稿＋30000gold)", "Self-publishing (30000 gold) "), "null", 2
 		promptAdd lang("魔法書変換(指定ストック半減)", "Spellbook conversion (halves stock) "), "null", 3
 		val = promptx, prompty, 350, 1
@@ -7740,7 +7767,7 @@
 		}
 		if ( rtval == 1 ) {
 			if ( gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) <= 0 ) {
-				txt lang("ネタが切れている…。", "You're out of ideas...")
+				txt lang("インスピレーションが足りない…。", "You're out of ideas...")
 				goto *act_use_SWEND1
 			}
 			snd SOUNDLIST_ATK_FIRE
@@ -9145,72 +9172,51 @@
 		if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
 			goto *act_use_SWEND1
 		}
-		txt lang("誰に使用させる？", "Who should use it?")
-		gosub *screen_draw
-		val = 0
-		gosub *prompt_direction
-		if ( stat == 0 ) {
-			txt_impossible
-			gosub *screen_draw
-			goto *pc_turn
-		}
-		if ( map(x, y, MAP_CHARA_INDEX_PLUS_ONE) > 0 ) {
-			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
-		}
-		else {
-			txt_impossible
-			gosub *screen_draw
-			goto *pc_turn
-		}
-		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
-			promptTagTeam
-			if ( stat == 0 ) {
-				gosub *screen_draw
-				goto *pc_turn
-			}
-			if ( rtval == 1 ) {
-				tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
-			}
-		}
-		if ( tc >= MAX_CHARA_FOLLOWER ) {
-			txt_impossible
-			gosub *screen_draw
-			goto *pc_turn
-		}
 		if ( inv(INV_ITEM_PARAM1, ci) == 0 ) {
 			inv(INV_ITEM_PARAM1, ci) = 165
 		}
 		if ( inv(INV_ITEM_PARAM2, ci) == 0 ) {
 			inv(INV_ITEM_PARAM2, ci) = 1
 		}
-		if ( sorg(inv(INV_ITEM_PARAM1, ci), tc) == 0 ) {
+		repeat 16
+			if ( cnt >= 16 ) {
+				continue
+			}
+			if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_DEAD ) {
+				continue
+			}
+			tc = cnt
+			if ( sorg(inv(INV_ITEM_PARAM1, ci), tc) == 0 ) {
+				snd SOUNDLIST_OFFER2
+				animeload 23, tc
+				txtef COLOR_PINK
+				txt lang(name(tc) + "の頭に情報が流れ込んだ。", "Memories flow into " + name(tc) + your(tc) + " head!")
+				p = inv(INV_ITEM_PARAM1, ci)
+				skillgain tc, p, 1
+				modgrowth tc, p, limit(inv(INV_ITEM_PARAM2, ci), 1, 300)
+				txtef COLOR_GREEN
+				txt lang("" + name(tc) + "は" + skillname(p) + "の技術を獲得した！", name(tc) + " gain" + _s(tc) + " the skill " + skillname(p) + "!")
+				dmgsan tc, 5
+				inv(INV_ITEM_NUM, ci)--
+				cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+				r1 = tc
+				gosub *charaRefresh
+				gosub *calcBurdenPc
+				continue
+			}
+			modgrowth tc, inv(INV_ITEM_PARAM1, ci), sqrt(inv(INV_ITEM_PARAM2, ci) + 1) + 10
 			snd SOUNDLIST_OFFER2
-			animeload 23, tc
+			if ( synccheck(tc, -1) ) {
+				animeload 23, tc
+			}
 			txtef COLOR_PINK
-			txt lang(name(tc) + "の頭に情報が流れ込んだ。", "Memories flow into " + name(tc) + your(tc) + " head!")
-			p = inv(INV_ITEM_PARAM1, ci)
-			skillgain tc, p, 1
-			modgrowth tc, p, limit(inv(INV_ITEM_PARAM2, ci), 1, 300)
-			txtef COLOR_GREEN
-			txt lang("" + name(tc) + "は" + skillname(p) + "の技術を獲得した！", name(tc) + " gain" + _s(tc) + " the skill " + skillname(p) + "!")
+			txt lang(name(tc) + "の頭に情報が流れ込んだ。", "Memories pour into " + name(tc) + your(tc) + " head!")
+			gdata(GDATA_SENSE_OBJECT) = 1
+			skillexp inv(INV_ITEM_PARAM1, ci), tc, 200 + (sqrt(inv(INV_ITEM_PARAM2, ci) * 2000) + limit(sdata(SKILL_NORMAL_MEMORIZATION, tc) / 2, 0, 500)) * 2
+			skillexp SKILL_NORMAL_MEMORIZATION, tc, 200 + sqrt(inv(INV_ITEM_PARAM2, ci) * 1000) * 2
 			dmgsan tc, 5
-			inv(INV_ITEM_NUM, ci)--
-			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
-			r1 = tc
-			gosub *charaRefresh
-			gosub *calcBurdenPc
-			goto *act_use_SWEND1
-		}
-		modgrowth tc, inv(INV_ITEM_PARAM1, ci), sqrt(inv(INV_ITEM_PARAM2, ci) + 1) + 10
-		snd SOUNDLIST_OFFER2
-		animeload 23, tc
-		txtef COLOR_PINK
-		txt lang(name(tc) + "の頭に情報が流れ込んだ。", "Memories pour into " + name(tc) + your(tc) + " head!")
-		gdata(GDATA_SENSE_OBJECT) = 1
-		skillexp inv(INV_ITEM_PARAM1, ci), tc, 200 + (sqrt(inv(INV_ITEM_PARAM2, ci) * 2000) + limit(sdata(SKILL_NORMAL_MEMORIZATION, tc) / 2, 0, 500)) * 2
-		skillexp SKILL_NORMAL_MEMORIZATION, tc, 200 + sqrt(inv(INV_ITEM_PARAM2, ci) * 1000) * 2
-		dmgsan tc, 5
-		gdata(GDATA_SENSE_OBJECT) = 0
+			gdata(GDATA_SENSE_OBJECT) = 0
+		loop
 		inv(INV_ITEM_NUM, ci)--
 		cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 		r1 = tc
@@ -10215,7 +10221,7 @@
 				cdata(CDATA_ENVIRONMENT_EFFECT, cnt) = ENVIRONMENT_EFFECT_NONE
 				hostileaction cc, cnt
 				dmghp cnt, rnd(efp / 10 + 1) + efp / 2 + 1, DAMAGE_FROM_FIRE, SKILL_RES_FIRE, efp
-				addbuff cnt, BUFF_ELEMENT_SCAR, 500, 5
+				addbuff cnt, BUFF_ELEMENT_SCAR, sdata(SKILL_NORMAL_MARKSMAN, cc) * 10 + 40, 15
 			}
 			cdata(CDATA_ENVIRONMENT_EFFECT, cnt) = ENVIRONMENT_EFFECT_NONE
 		loop
@@ -10472,6 +10478,7 @@
 					}
 				}
 				animeload ANIMATION_FIZZLE, tc
+				cbitmod CHARA_BIT_BEGGING_FOR_LIFE, tc, FALSE
 				f = 1
 			}
 		}
@@ -14429,12 +14436,16 @@
 			txt lang("あなたは「" + skillname(SKILL_SPACT_POKER_FORCE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_POKER_FORCE) + ".")
 		}
 		np = 0
+		joker = 0
 		repeat 245
 			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
 				continue
 			}
 			if ( cdata(CDATA_ALLIED, cnt) != 0 ) {
 				continue
+			}
+			if ( cdata(CDATA_PIC, cnt) == xy2pic(18, 35) ) {
+				joker = 1
 			}
 			if ( cdata(CDATA_ID, cnt) >= CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, cnt) <= CREATURE_ID_HEART_WITCH ) {
 				np++
@@ -14467,6 +14478,9 @@
 					if ( cdata(CDATA_ID, cnt) != CREATURE_ID_SPADE_WARRIOR ) {
 						continue
 					}
+				}
+				if ( cdata(CDATA_PIC, cnt) == xy2pic(18, 35) ) {
+					continue
 				}
 				tc = cnt
 				cdata(CDATA_EVOLUTION_STAGE, tc)++
@@ -14602,8 +14616,15 @@
 						cdata(CDATA_PIC, rc) = xy2pic(17, 35)
 					}
 				}
-				if ( np == 5 ) {
-					break
+				if ( joker == 1 ) {
+					if ( np >= 4 ) {
+						break
+					}
+				}
+				if ( joker != 1 ) {
+					if ( np >= 5 ) {
+						break
+					}
 				}
 			loop
 		}

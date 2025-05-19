@@ -1468,6 +1468,10 @@
 	skillname(SKILL_SPACT_TAG_FORCE) = lang("タッグフォース", "Tag Force")
 	skilldesc(SKILL_SPACT_TAG_FORCE) = lang("タッグ強化回復/ゲージ50％消費", "Strengthen tag teams/Consumes 50% gauge")
 
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_CLEMENTIA) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 10, 3000 + 6, 500
+	skillname(SKILL_SPACT_CLEMENTIA) = lang("【命乞い】", "<Clementia>")
+	skilldesc(SKILL_SPACT_CLEMENTIA) = lang("どうにかして見逃してもらう", "Somehow beg for forgiveness")
+
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_BODY_BLOW) = SKILL_ATTR_STR, SKILL_TYPE_SP, 10, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_BODY_BLOW) = lang("ボディブロー", "Body Blow")
 	skilldesc(SKILL_SPACT_BODY_BLOW) = lang("通常格闘攻撃にボディブロー追加", "Add body blow to martial")
@@ -1840,6 +1844,10 @@
 	skillname(SKILL_SPACT_ANAPHYLAXIS) = lang("アナフィラキシー", "Anaphylaxis")
 	skilldesc(SKILL_SPACT_ANAPHYLAXIS) = lang("視界内毒状態の敵に大ダメージ", "Attack enemies of the poison state")
 
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_MIASMA_OF_HELL) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 20, 3000 + 6, 500
+	skillname(SKILL_SPACT_MIASMA_OF_HELL) = lang("冥界の瘴気", "Miasma of Hell")
+	skilldesc(SKILL_SPACT_MIASMA_OF_HELL) = lang("視界内の敵を毒と侵蝕で弱らせる", "Weakens enemies with poison and erosion")
+	
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_DESTINY_DICE) = SKILL_ATTR_LUC, SKILL_TYPE_SP, 9, TARGET_TYPE_SELF + 6, 500
 	skillname(SKILL_SPACT_DESTINY_DICE) = lang("荒ぶるダイス", "Destiny dice")
 	skilldesc(SKILL_SPACT_DESTINY_DICE) = lang("判定に応じて視界内投擲ダメージ", "Attack enemies when successful")

@@ -18,9 +18,9 @@
 #include "mock_defines.hsp"
 #endif
 
-#define global VARIANT_NAME "ElonaPlus Custom-GX 2.26.1.0"
-#define global VARIANT_TITLE "Elona+ Custom-GX 2.26.1.0"
-#define global VERSION_STRING "6.36"
+#define global VARIANT_NAME "ElonaPlus Custom-GX 2.27.1.0"
+#define global VARIANT_TITLE "Elona+ Custom-GX 2.27.1.0"
+#define global VERSION_STRING "6.37"
 #define global VERSION_NUMBER int(double(VERSION_STRING) * 1000)
 #define global NET_VERSION	200000
 
@@ -2344,6 +2344,10 @@
 			at 50
 			gosub *sexsex
 		}
+		if ( cdata(CDATA_ROW_ACT, cc) == ACTION_SEX_2 ) {
+			at 50
+			gosub *sexsex2
+		}
 		if ( cdata(CDATA_ROW_ACT, cc) == ACTION_TUIN_DER_LUSTEN ) {
 			at 50
 			gosub *skill_tuin_der_lusten
@@ -3069,6 +3073,16 @@
 	key_check 1
 	if ( ginfo(2) != 0 ) {
 		goto *pc_turn
+	}
+	if ( cdata(CDATA_HP, CHARA_PLAYER) < cdata(CDATA_MAX_HP, CHARA_PLAYER) / 5 ) {
+		if ( spact(SKILL_SPACT_CLEMENTIA - STARTING_SKILL_SPACT) == 0 ) {
+			if ( spact(SKILL_SPACT_CLEMENTIA - STARTING_SKILL_SPACT) == 0 ) {
+				spact(SKILL_SPACT_CLEMENTIA - STARTING_SKILL_SPACT) = 1
+				txtmore
+				txtef COLOR_YELLOW
+				txt lang("あなたは「" + skillname(SKILL_SPACT_CLEMENTIA) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_CLEMENTIA) + ".")
+			}
+		}
 	}
 
 	/********** ORIGINAL - BEGINNING **********
@@ -6768,7 +6782,7 @@
 				kazu++
 			}
 			flt
-			itemcreate -1, ITEM_ID_MEMORY_FRAGMENT, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 5 + kazu
+			itemcreate -1, ITEM_ID_MEMORY_FRAGMENT, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 1 + kazu
 			inv(INV_ITEM_PARAM1, ci) = gskill
 			inv(INV_ITEM_PARAM2, ci) = limit(gdata(GDATA_LEVEL), 1, 999)
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
@@ -6874,6 +6888,12 @@
 		}
 		txtef COLOR_RED2
 		txt lang("【 刻死紋状態で死亡すると能力値が永続低下する。睡眠を取るまで消えない。 】", "< If you die with the Death-Crest engraved, your stats will permanently drop. It doesn't go away until you sleep. >")
+		if ( spact(SKILL_SPACT_CLEMENTIA - STARTING_SKILL_SPACT) == 0 ) {
+			spact(SKILL_SPACT_CLEMENTIA - STARTING_SKILL_SPACT) = 1
+			txtmore
+			txtef COLOR_YELLOW
+			txt lang("あなたは「" + skillname(SKILL_SPACT_CLEMENTIA) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_CLEMENTIA) + ".")
+		}
 		/********** JAMES CUSTOM - CHALLENGE - PERMANENT ETHERWIND - BEGINNING **********/
 		if ( TweakData(TWEAK_CHALLENGE_ALWAYS_ETHERWIND, TWEAK_CATEGORY_CHALLENGE) > 0 ) {
 			gdata(GDATA_WEATHER) = WEATHER_CLEAR
@@ -6885,6 +6905,20 @@
 		if ( gdata(GDATA_CORRUPTION) >= 20000 ) {
 			modcorrupt -2000
 		}
+		inv_getheader 0
+		repeat invrange, invhead
+			if ( inv(INV_ITEM_ID, cnt) == ITEM_ID_TRAVELERS_FOOD ) {
+				continue
+			}
+			if ( inv(INV_ITEM_NUM, cnt) > 0 ) {
+				if ( refitem(inv(INV_ITEM_ID, cnt), DBSPEC_CARGO) == 1 ) {
+					txtmore
+					txt lang(itemname(cnt) + "を失った。", "You lost " + itemname(cnt) + ".")
+					inv(INV_ITEM_NUM, cnt) = 0
+				}
+			}
+		loop
+		gosub *calcBurdenPc
 		decfame CHARA_PLAYER, 10
 		r1 = CHARA_PLAYER
 		gosub *charaRefresh
@@ -8313,6 +8347,60 @@
 			txtef COLOR_SKY_BLUE
 			txt lang("「おかえり」", cnvtalk("Welcome home!")), lang("「よう戻ったか」", cnvtalk("Hey, dear.")), lang("「無事で何よりです」", cnvtalk("You're back safely!")), lang("「おかか♪」", cnvtalk("Welcome back♪")), lang("「待ってたよ」", cnvtalk("I was waiting for you.")), lang("「おかえりなさい！」", cnvtalk("Nice to see you again."))
 		loop
+		if ( gdata(GDATA_TRAVEL_DISTANCE) > 99999 ) {
+			gdata(GDATA_TRAVEL_DISTANCE) = 99999
+		}
+		if ( cfg_travelexp_select == 0 ) {
+			if ( gdata(GDATA_TRAVEL_DISTANCE) >= 10 ) {
+				if ( gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, CHARA_PLAYER) * 30 + sdata(SKILL_ATTR_LER, CHARA_PLAYER) * 10 > cdata(CDATA_SEALED_MAGIC, CHARA_PLAYER) + 900 ) {
+					snd SOUNDLIST_LOG
+					txtef COLOR_LIGHT_GREEN
+					txt lang("蓄積した" + gdata(GDATA_TRAVEL_DISTANCE) + "の旅経験を整理・共有しようか？", "Organize and share your accumulated " + gdata(GDATA_TRAVEL_DISTANCE) + " travelExp?")
+					promptYesNo
+					if ( rtval == 0 ) {
+						p = 0
+						repeat 16
+							if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+								continue
+							}
+							if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_ALLY_WORK ) {
+								continue
+							}
+							tc = cnt
+							gain1 = gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, tc) * 30 + sdata(SKILL_ATTR_LER, tc) * 10
+							gain2 = gain1 - cdata(CDATA_SEALED_MAGIC, tc)
+							if ( 0 ) {
+								txt lang(name(tc) + "は、" + gain1 + "で" + gain2 + "だ。", name(tc) + " didn't seem to have anything to gain from the travel.")
+							}
+							if ( gain2 < 900 ) {
+								txt lang(name(tc) + "は特に得るものが無かったようだ。", name(tc) + " didn't seem to have anything to gain from the travel.")
+								continue
+							}
+							repeat 112 - 100, 100
+								if ( sorg(cnt, tc) == 0 ) {
+									continue
+								}
+								skillexp cnt, tc, gain2, 9999
+							loop
+							repeat 191 - 150, 150
+								if ( sorg(cnt, tc) == 0 ) {
+									continue
+								}
+								skillexp cnt, tc, gain2, 9999
+							loop
+							repeat 302 - 300, 300
+								if ( sorg(cnt, tc) == 0 ) {
+									continue
+								}
+								skillexp cnt, tc, gain2, 9999
+							loop
+							snd SOUNDLIST_WRITE1
+							cdata(CDATA_SEALED_MAGIC, tc) = gain1
+						loop
+					}
+				}
+			}
+		}
 		if ( gdata(GDATA_GUEST) > 0 ) {
 			tc = CHARA_PLAYER
 			repeat MAX_CHARA_TOTAL

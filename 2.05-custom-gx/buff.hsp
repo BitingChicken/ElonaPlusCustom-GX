@@ -183,6 +183,10 @@
 	buffname(BUFF_CONCENTRATION) = lang("集中", "Concentration")
 	bufftxt(0, BUFF_CONCENTRATION) = lang("の集中力が向上した。", " feel"), " concentrated."
 
+	bdataref(BDATAREF_BUFF_TYPE, MAX_BUFF) = BUFF_TYPE_HEX, 1, 0
+	buffname(MAX_BUFF) = lang("冥界の瘴気", "Miasma of Hell")
+	bufftxt(0, MAX_BUFF) = lang("は瘴気に包み込まれた。", "surrounded"), " in miasma."
+
 	bdataref(0, BUFF_FORM_SHIFT_ALPHA) = BUFF_TYPE_BUFF, 1, 0
 	buffname(BUFF_FORM_SHIFT_ALPHA) = lang("フォルムシフト", "Form Shift (A)")
 	bufftxt(0, BUFF_FORM_SHIFT_ALPHA) = lang("に変化した。", " change"), " form."
@@ -854,6 +858,20 @@
 			}
 			else {
 				buffdesc = lang("飢えと渇きが激しくなる", "Increase rate of hunger and thirst")
+				return
+			}
+		}
+		return
+	}
+	if ( calcbuff_buffid == BUFF_MIASMA_OF_HELL ) {
+		dur = 100
+		locvar_calcbuff_p = calcbuff_power
+		if ( calcbuff_charid < CHARA_PLAYER ) {
+			if ( calcbuff_charid == CALCBUFF_DURATION ) {
+				return
+			}
+			else {
+				buffdesc = lang("毒や侵蝕によって弱体化する", "Weakened by Poison and Erosion")
 				return
 			}
 		}

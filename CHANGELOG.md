@@ -1,3 +1,26 @@
+# 2.27.1.0
+
+# Added
+- Ported all changes from Elona+ 2.27.
+
+# Fixed
+- (Plus) Fixed reflect damage calculated using the wrong damage number
+
+# 2.26.1.0
+
+# Added
+- Ported all changes from Elona+ 2.26.
+
+# Fixed
+- (Plus) Cut-in speed lines not disappearing / not moving during animation.
+- (2025/4/20) Stamina regen is 0.3 lower when wetting.
+- (2025/4/30) (Plus) Sp-act buffs using skill id instead of skill stats during effect power calculation
+
+# TCG
+- Changed effect of Act II ninjas and gave them decks.
+- Fixed Quruiza card logic and buffed her by a little.
+- Fixed crash after winning lethal tcg with 0 hp.
+
 # 2.26.1.0
 
 # Added

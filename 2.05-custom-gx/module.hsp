@@ -386,22 +386,36 @@
 	if ( skillexp_amount == 0 ) {
 		return
 	}
-	if ( sdataref(SKILL_DATAREF_USE, skillexp_skillid) != 0 ) {
-		skillexp sdataref(SKILL_DATAREF_USE, skillexp_skillid), skillexp_charid, skillexp_amount / (2 + skillexp_arg4)
+	if ( skillexp_arg4 != 9999 ) {
+		if ( sdataref(SKILL_DATAREF_USE, skillexp_skillid) != SKILL_NONE ) {
+			skillexp sdataref(SKILL_DATAREF_USE, skillexp_skillid), skillexp_charid, skillexp_amount / (2 + skillexp_arg4)
+		}
 	}
 	locvar_skillmod_lv = sorg(skillexp_skillid, skillexp_charid)
 	locvar_skillexp_lvs = limit(sorg(skillexp_skillid, skillexp_charid), 1, 400)
 	locvar_skillexp_lvli = sqrt(locvar_skillexp_lvs * 10) * 2
 	locvar_skillmod_growth = sgrowth(skillexp_skillid, skillexp_charid)
-	if ( locvar_skillmod_growth == 0 ) {
-		return
+	if ( skillexp_arg4 != 9999 ) {
+		if ( locvar_skillmod_growth == 0 ) {
+			return
+		}
 	}
 	if ( skillexp_amount > 0 ) {
-		if ( locvar_skillmod_lv >= cdata(CDATA_INIT_SPEED, skillexp_charid) + 100 ) {
-			locvar_skillmod_exp = (skillexp_amount + 16000 / (cdata(CDATA_INIT_LIFEMANA, skillexp_charid) + cdata(CDATA_INIT_ATTR, skillexp_charid) + 500) + 1) * locvar_skillmod_growth / (100 + locvar_skillexp_lvli * 10)
+		if ( skillexp_arg4 == 9999 ) {
+			if ( locvar_skillmod_lv >= cdata(CDATA_INIT_SPEED, skillexp_charid) + 100 ) {
+				locvar_skillmod_exp = (skillexp_amount + 16000 / (cdata(CDATA_INIT_LIFEMANA, skillexp_charid) + cdata(CDATA_INIT_ATTR, skillexp_charid) + 500) + 1) * 100 / (100 + locvar_skillexp_lvli * 10)
+			}
+			else {
+				locvar_skillmod_exp = skillexp_amount * 100 / (100 + locvar_skillexp_lvli * 10)
+			}
 		}
 		else {
-			locvar_skillmod_exp = skillexp_amount * locvar_skillmod_growth / (100 + locvar_skillexp_lvli * 10)
+			if ( locvar_skillmod_lv >= cdata(CDATA_INIT_SPEED, skillexp_charid) + 100 ) {
+				locvar_skillmod_exp = (skillexp_amount + 16000 / (cdata(CDATA_INIT_LIFEMANA, skillexp_charid) + cdata(CDATA_INIT_ATTR, skillexp_charid) + 500) + 1) * locvar_skillmod_growth / (100 + locvar_skillexp_lvli * 10)
+			}
+			else {
+				locvar_skillmod_exp = skillexp_amount * locvar_skillmod_growth / (100 + locvar_skillexp_lvli * 10)
+			}
 		}
 		if ( skillexp_skillid >= STARTING_SKILL_ATTR ) {
 			if ( skillexp_skillid < MAX_SKILL_ATTR ) {
@@ -460,35 +474,37 @@
 	}
 	if ( gdata(GDATA_SENSE_OBJECT) == 0 & TweakData(TWEAK_GAMEPLAY_DISABLE_STUDY_DAYS, TWEAK_CATEGORY_GAMEPLAY) == FALSE ) {
 		if ( skillexp_charid < MAX_CHARA_FOLLOWER ) {
-			if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 0 ) {
-				if ( skillexp_skillid == SKILL_NORMAL_WEIGHT_LIFTING | skillexp_skillid == SKILL_NORMAL_HEALING | skillexp_skillid == SKILL_NORMAL_MEDITATION | skillexp_skillid == SKILL_NORMAL_MAGIC_CAPACITY | skillexp_skillid == SKILL_NORMAL_HEAVY_ARMOR | skillexp_skillid == SKILL_NORMAL_MEDIUM_ARMOR | skillexp_skillid == SKILL_NORMAL_LIGHT_ARMOR | skillexp_skillid == SKILL_NORMAL_FAITH ) {
-					locvar_skillmod_exp = locvar_skillmod_exp * 3
-				}
-			}
-			if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 1 ) {
-				if ( skillexp_skillid == SKILL_NORMAL_TACTICS | skillexp_skillid == SKILL_NORMAL_DUAL_WIELD | skillexp_skillid == SKILL_NORMAL_TWO_HAND | skillexp_skillid == SKILL_NORMAL_SHIELD | skillexp_skillid == SKILL_NORMAL_EVASION | skillexp_skillid == SKILL_NORMAL_EYE_OF_MIND | skillexp_skillid == SKILL_NORMAL_GREATER_EVASION | skillexp_skillid == SKILL_NORMAL_MARKSMAN | (skillexp_skillid >= SKILL_WEAPON_LONGSWORD & skillexp_skillid < MAX_SKILL_WEAPON) ) {
-					locvar_skillmod_exp = locvar_skillmod_exp * 3
-				}
-			}
-			if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 2 ) {
-				if ( skillexp_skillid == SKILL_NORMAL_NEGOTIATION | skillexp_skillid == SKILL_NORMAL_INVESTING | skillexp_skillid == SKILL_NORMAL_CARPENTRY | skillexp_skillid == SKILL_NORMAL_TAILORING | skillexp_skillid == SKILL_NORMAL_ALCHEMY | skillexp_skillid == SKILL_NORMAL_JEWELER | skillexp_skillid == SKILL_NORMAL_GARDENING | skillexp_skillid == SKILL_NORMAL_PERFORMER | skillexp_skillid == SKILL_NORMAL_COOKING | skillexp_skillid == SKILL_NORMAL_FISHING | skillexp_skillid == SKILL_ACTIVE_PICKPOCKET ) {
-					locvar_skillmod_exp = locvar_skillmod_exp * 3
-				}
-			}
-			if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 3 ) {
-				if ( skillexp_skillid == SKILL_NORMAL_STEALTH | skillexp_skillid == SKILL_NORMAL_LOCK_PICKING | skillexp_skillid == SKILL_NORMAL_DETECTION | skillexp_skillid == SKILL_NORMAL_MINING | skillexp_skillid == SKILL_NORMAL_DISARM_TRAP | skillexp_skillid == SKILL_NORMAL_TRAVELING | skillexp_skillid == SKILL_NORMAL_SWIMMING | skillexp_skillid == SKILL_ACTIVE_RIDING ) {
-					locvar_skillmod_exp = locvar_skillmod_exp * 3
-				}
-			}
-			if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 4 ) {
-				if ( skillexp_skillid == SKILL_NORMAL_LITERACY | skillexp_skillid == SKILL_NORMAL_GENE_ENGINEER | skillexp_skillid == SKILL_NORMAL_ANATOMY | skillexp_skillid == SKILL_NORMAL_SENSE_QUALITY | skillexp_skillid == SKILL_NORMAL_MEMORIZATION | skillexp_skillid == SKILL_NORMAL_CASTING | skillexp_skillid == SKILL_NORMAL_MAGIC_DEVICE | skillexp_skillid == SKILL_NORMAL_CONTROL_MAGIC ) {
-					locvar_skillmod_exp = locvar_skillmod_exp * 3
-				}
-			}
-			if ( skillexp_skillid >= SKILL_SPELL_HEAL_LIGHT & skillexp_skillid < MAX_SPELL ) {
-				if ( cdata(CDATA_ADVANCED_CASTING_ENABLED, CHARA_PLAYER) == TRUE ) {
-					if ( gdata(GDATA_TEMPORARY_FLAGS) != 11111111 ) {
+			if ( skillexp_arg4 != 9999 ) {
+				if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 0 ) {
+					if ( skillexp_skillid == SKILL_NORMAL_WEIGHT_LIFTING | skillexp_skillid == SKILL_NORMAL_HEALING | skillexp_skillid == SKILL_NORMAL_MEDITATION | skillexp_skillid == SKILL_NORMAL_MAGIC_CAPACITY | skillexp_skillid == SKILL_NORMAL_HEAVY_ARMOR | skillexp_skillid == SKILL_NORMAL_MEDIUM_ARMOR | skillexp_skillid == SKILL_NORMAL_LIGHT_ARMOR | skillexp_skillid == SKILL_NORMAL_FAITH ) {
 						locvar_skillmod_exp = locvar_skillmod_exp * 3
+					}
+				}
+				if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 1 ) {
+					if ( skillexp_skillid == SKILL_NORMAL_TACTICS | skillexp_skillid == SKILL_NORMAL_DUAL_WIELD | skillexp_skillid == SKILL_NORMAL_TWO_HAND | skillexp_skillid == SKILL_NORMAL_SHIELD | skillexp_skillid == SKILL_NORMAL_EVASION | skillexp_skillid == SKILL_NORMAL_EYE_OF_MIND | skillexp_skillid == SKILL_NORMAL_GREATER_EVASION | skillexp_skillid == SKILL_NORMAL_MARKSMAN | (skillexp_skillid >= SKILL_WEAPON_LONGSWORD & skillexp_skillid < MAX_SKILL_WEAPON) ) {
+						locvar_skillmod_exp = locvar_skillmod_exp * 3
+					}
+				}
+				if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 2 ) {
+					if ( skillexp_skillid == SKILL_NORMAL_NEGOTIATION | skillexp_skillid == SKILL_NORMAL_INVESTING | skillexp_skillid == SKILL_NORMAL_CARPENTRY | skillexp_skillid == SKILL_NORMAL_TAILORING | skillexp_skillid == SKILL_NORMAL_ALCHEMY | skillexp_skillid == SKILL_NORMAL_JEWELER | skillexp_skillid == SKILL_NORMAL_GARDENING | skillexp_skillid == SKILL_NORMAL_PERFORMER | skillexp_skillid == SKILL_NORMAL_COOKING | skillexp_skillid == SKILL_NORMAL_FISHING | skillexp_skillid == SKILL_ACTIVE_PICKPOCKET ) {
+						locvar_skillmod_exp = locvar_skillmod_exp * 3
+					}
+				}
+				if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 3 ) {
+					if ( skillexp_skillid == SKILL_NORMAL_STEALTH | skillexp_skillid == SKILL_NORMAL_LOCK_PICKING | skillexp_skillid == SKILL_NORMAL_DETECTION | skillexp_skillid == SKILL_NORMAL_MINING | skillexp_skillid == SKILL_NORMAL_DISARM_TRAP | skillexp_skillid == SKILL_NORMAL_TRAVELING | skillexp_skillid == SKILL_NORMAL_SWIMMING | skillexp_skillid == SKILL_ACTIVE_RIDING ) {
+						locvar_skillmod_exp = locvar_skillmod_exp * 3
+					}
+				}
+				if ( gdata(GDATA_FLAG_STUDY_BONUS_KIND) == 4 ) {
+					if ( skillexp_skillid == SKILL_NORMAL_LITERACY | skillexp_skillid == SKILL_NORMAL_GENE_ENGINEER | skillexp_skillid == SKILL_NORMAL_ANATOMY | skillexp_skillid == SKILL_NORMAL_SENSE_QUALITY | skillexp_skillid == SKILL_NORMAL_MEMORIZATION | skillexp_skillid == SKILL_NORMAL_CASTING | skillexp_skillid == SKILL_NORMAL_MAGIC_DEVICE | skillexp_skillid == SKILL_NORMAL_CONTROL_MAGIC ) {
+						locvar_skillmod_exp = locvar_skillmod_exp * 3
+					}
+				}
+				if ( skillexp_skillid >= SKILL_SPELL_HEAL_LIGHT & skillexp_skillid < MAX_SPELL ) {
+					if ( cdata(CDATA_ADVANCED_CASTING_ENABLED, CHARA_PLAYER) == TRUE ) {
+						if ( gdata(GDATA_TEMPORARY_FLAGS) != 11111111 ) {
+							locvar_skillmod_exp = locvar_skillmod_exp * 3
+						}
 					}
 				}
 			}
@@ -601,15 +617,17 @@
 		locvar_skillmod_exp = locvar_skillmod_exp \ 1000
 		locvar_skillmod_lv += locvar_skillmod_lvchange
 		repeat locvar_skillmod_lvchange
-			if ( gdata(GDATA_FLAG_GAME_MODE) != GAMEMODE_OVERDOSE & gdata(GDATA_FLAG_GAME_MODE) != GAMEMODE_PURGE ) {
-				locvar_skillmod_growth = int(double(locvar_skillmod_growth) * 0.9)
-				locvar_skillmod_growth = int(double(locvar_skillmod_growth) * 0.9)
-			}
-			locvar_skillmod_growth -= 5
-			if ( locvar_skillmod_growth <= 1 ) {
-				locvar_skillmod_growth = 0
-				if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_PURGE ) {
-					locvar_skillmod_growth = 1
+			if ( skillexp_arg4 != 9999 ) {
+				if ( gdata(GDATA_FLAG_GAME_MODE) != GAMEMODE_OVERDOSE & gdata(GDATA_FLAG_GAME_MODE) != GAMEMODE_PURGE ) {
+					locvar_skillmod_growth = int(double(locvar_skillmod_growth) * 0.9)
+					locvar_skillmod_growth = int(double(locvar_skillmod_growth) * 0.9)
+				}
+				locvar_skillmod_growth -= 5
+				if ( locvar_skillmod_growth <= 1 ) {
+					locvar_skillmod_growth = 0
+					if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_PURGE ) {
+						locvar_skillmod_growth = 1
+					}
 				}
 			}
 		loop
@@ -2364,43 +2382,73 @@
 			pos cell_draw_arg_dx + 40, cell_draw_arg_dy - 10
 			color 0, 0, 0
 			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) >= 2 & cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) <= 10 ) {
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
-					bmes "" + cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) + "", 100, 100, 100
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR ) {
+					bmes "" + cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) + "", 80, 100, 150
 				}
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "" + cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) + "", 90, 120, 90
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES ) {
 					bmes "" + cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) + "", 255, 25, 25
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "" + cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) + "", 255, 90, 200
 				}
 			}
 			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) == 1 ) {
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
-					bmes "A", 100, 100, 100
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR ) {
+					bmes "A", 80, 100, 150
 				}
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "A", 90, 120, 90
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES ) {
 					bmes "A", 255, 25, 25
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "A", 255, 90, 200
 				}
 			}
 			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) == 11 ) {
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
-					bmes "J", 100, 100, 100
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR ) {
+					bmes "J", 80, 100, 150
 				}
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "J", 90, 120, 90
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES ) {
 					bmes "J", 255, 25, 25
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "J", 255, 90, 200
 				}
 			}
 			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) == 12 ) {
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
-					bmes "Q", 100, 100, 100
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR ) {
+					bmes "Q", 80, 100, 150
 				}
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "Q", 90, 120, 90
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES ) {
 					bmes "Q", 255, 25, 25
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "Q", 255, 90, 200
 				}
 			}
 			if ( cdata(CDATA_EVOLUTION_STAGE, cell_draw_arg_c) == 13 ) {
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
-					bmes "K", 100, 100, 100
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_SPADE_WARRIOR ) {
+					bmes "K", 80, 100, 150
 				}
-				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_CLUB_FEATHER ) {
+					bmes "K", 90, 120, 90
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_DIAMOND_EYES ) {
 					bmes "K", 255, 25, 25
+				}
+				if ( cdata(CDATA_ID, cell_draw_arg_c) == CREATURE_ID_HEART_WITCH ) {
+					bmes "K", 255, 90, 200
 				}
 			}
 		}

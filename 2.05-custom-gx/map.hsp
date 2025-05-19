@@ -11921,7 +11921,7 @@
 		}
 	}
 	if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN | gdata(GDATA_AREA) == AREA_HOME | mdata(MDATA_TYPE) == MAP_TYPE_VILLAGE ) {
-		if ( gdata(GDATA_TRAVEL_DISTANCE) >= 300 ) {
+		if ( gdata(GDATA_TRAVEL_DISTANCE) < -300 ) {
 			p = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 - gdata(GDATA_TRAVEL_TIME)
 			txtmore
 			txt lang(cnvdate(gdata(GDATA_TRAVEL_TIME)) + "に" + mapname(gdata(GDATA_LAST_TOWN)) + "を発ってから、" + p / 24 + "日と" + p \ 24 + "時間の旅を終えた。", "" + p / 24 + " days and " + p \ 24 + " hours have passed since you left " + mapname(gdata(GDATA_LAST_TOWN)) + ".")

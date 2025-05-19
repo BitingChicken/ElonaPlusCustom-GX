@@ -281,6 +281,8 @@
 		cfgRead "record.", cfg_record = int(rtvaln)
 		cfgRead "atk_select.", cfg_atk_select = int(rtvaln)
 		cfgRead "dust_select.", cfg_dust_select = int(rtvaln)
+		cfgRead "cutin_select.", cfg_cutin_select = int(rtvaln)
+		cfgRead "travelExp_select.", cfg_travelexp_select = int(rtvaln)
 
 		/********** RUIN0X11 CUSTOM - BEGINNING **********/
 
@@ -579,7 +581,7 @@
 	}
 	if ( submenu == 1 ) {
 		q = lang("ゲームの設定", "Game Setting")
-		s = lang("ノルンの冒険ガイド", "Extra Help"), lang("非好戦的NPCを無視", "Neutral Npcs"), lang("zキーの割当て", "Assign z key"), lang("xキーの割当て", "Assign x key"), lang("走り始める歩数", "Start Running After"), lang("歩きの速さ", "Walk Speed"), lang("攻撃の間隔", "Attack Interval"), lang("レコード表示", "Record"), lang("「攻撃する」選択肢", "Attack Select"), lang("汚物生成の阻止", "Block dust generation"), ""
+		s = lang("ノルンの冒険ガイド", "Extra Help"), lang("非好戦的NPCを無視", "Neutral Npcs"), lang("zキーの割当て", "Assign z key"), lang("xキーの割当て", "Assign x key"), lang("走り始める歩数", "Start Running After"), lang("歩きの速さ", "Walk Speed"), lang("攻撃の間隔", "Attack Interval"), lang("レコード表示", "Record"), lang("「攻撃する」選択肢", "Attack Select"), lang("汚物生成の阻止", "Block defecate generation"), lang("ゲージ技演出", "Gauge-Action Animation"), lang("旅経験の整理確認", "TravelExp Confirmation"), ""
 		dx = 440
 		dy = 370
 	}
@@ -784,6 +786,14 @@
 			if ( cnt == 9 ) {
 				s = lang("特になし", "No Block"), lang("阻止あり", "Block")
 				mes s(cfg_dust_select)
+			}
+			if ( cnt == 10 ) {
+				s = lang("全表示", "Show"), lang("省略", "Don't show")
+				mes s(cfg_cutin_select)
+			}
+			if ( cnt == 11 ) {
+				s = lang("条件達成時", "Confirm"), lang("確認なし", "Don't Use")
+				mes s(cfg_travelexp_select)
 			}
 		}
 		if ( submenu == 2 ) {
@@ -1279,6 +1289,36 @@
 				}
 				snd SOUNDLIST_OK1
 				valn = "dust_select.", str(cfg_dust_select)
+				gosub *cfg_write
+				goto *com_config_loop
+			}
+			if ( cs == 10 ) {
+				cfg_cutin_select += p
+				if ( cfg_cutin_select > 1 ) {
+					cfg_cutin_select = 1
+				}
+				else {
+					if ( cfg_cutin_select < 0 ) {
+						cfg_cutin_select = 0
+					}
+				}
+				snd SOUNDLIST_OK1
+				valn = "cutin_select.", str(cfg_cutin_select)
+				gosub *cfg_write
+				goto *com_config_loop
+			}
+			if ( cs == 11 ) {
+				cfg_travelexp_select += p
+				if ( cfg_travelexp_select > 1 ) {
+					cfg_travelexp_select = 1
+				}
+				else {
+					if ( cfg_travelexp_select < 0 ) {
+						cfg_travelexp_select = 0
+					}
+				}
+				snd SOUNDLIST_OK1
+				valn = "travelExp_select.", str(cfg_travelexp_select)
 				gosub *cfg_write
 				goto *com_config_loop
 			}

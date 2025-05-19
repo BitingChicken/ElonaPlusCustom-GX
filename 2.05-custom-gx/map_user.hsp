@@ -430,6 +430,7 @@
 	txtnew
 	txt lang("何をする？", "What do you want to do?")
 	p = 0
+	promptAdd lang("旅経験の整理・共有", "Organize and share travelExp"), "null", 27
 	if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_SHOP ) {
 		if ( getworker(gdata(GDATA_AREA)) != (-1) ) {
 			kunren = 0
@@ -660,6 +661,56 @@
 			}
 		loop
 		goto *turn_end
+	}
+	if ( _switch_val == 27 | _switch_sw ) {
+		_switch_sw = 0
+		if ( gdata(GDATA_TRAVEL_DISTANCE) > 99999 ) {
+			gdata(GDATA_TRAVEL_DISTANCE) = 99999
+		}
+		snd SOUNDLIST_LOG
+		txtef COLOR_LIGHT_GREEN
+		txt lang("蓄積した" + gdata(GDATA_TRAVEL_DISTANCE) + "の旅経験を整理・共有しようか？", "Organize and share your accumulated " + gdata(GDATA_TRAVEL_DISTANCE) + " travelExp?")
+		promptYesNo
+		if ( rtval == 0 ) {
+			p = 0
+			repeat 16
+				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+					continue
+				}
+				if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_ALLY_WORK ) {
+					continue
+				}
+				tc = cnt
+				gain1 = gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, tc) * 30 + sdata(SKILL_ATTR_LER, tc) * 10
+				gain2 = gain1 - cdata(CDATA_SEALED_MAGIC, tc)
+				if ( gain2 < 900 ) {
+					txt lang(name(tc) + "は特に得るものが無かったようだ。", name(tc) + " didn't seem to have anything to gain from the travel.")
+					continue
+				}
+				repeat 112 - 100, 100
+					if ( sorg(cnt, tc) == 0 ) {
+						continue
+					}
+					skillexp cnt, tc, gain2, 9999
+				loop
+				repeat 191 - 150, 150
+					if ( sorg(cnt, tc) == 0 ) {
+						continue
+					}
+					skillexp cnt, tc, gain2, 9999
+				loop
+				repeat 302 - 300, 300
+					if ( sorg(cnt, tc) == 0 ) {
+						continue
+					}
+					skillexp cnt, tc, gain2, 9999
+				loop
+				snd SOUNDLIST_WRITE1
+				cdata(CDATA_SEALED_MAGIC, tc) = gain1
+			loop
+		}
+		goto *com_home_SWEND1
+		_switch_sw++
 	}
 	if ( _switch_val == 10 | _switch_sw ) {
 		_switch_sw = 0

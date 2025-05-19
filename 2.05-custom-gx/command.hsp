@@ -3493,6 +3493,9 @@
 			if ( cdata(CDATA_ID, cnt) != CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, cnt) != CREATURE_ID_CLUB_FEATHER & cdata(CDATA_ID, cnt) != CREATURE_ID_DIAMOND_EYES & cdata(CDATA_ID, cnt) != CREATURE_ID_HEART_WITCH ) {
 				continue
 			}
+			if ( cdata(CDATA_PIC, cnt) == xy2pic(18, 35) ) {
+				continue
+			}
 		}
 		if ( allyctrl != 5 ) {
 			if ( cnt == 0 ) {
@@ -5855,6 +5858,23 @@
 	}
 	p = 0
 	if ( tc != CHARA_PLAYER ) {
+		if ( cdata(CDATA_PIC, tc) == xy2pic(18, 35) ) {
+			if ( cdata(CDATA_ALLIED, tc) == 0 ) {
+				promptAdd lang("【ランクチェンジ】", "<Rank Change>"), "null", 31
+				if ( cdata(CDATA_ID, tc) != CREATURE_ID_SPADE_WARRIOR ) {
+					promptAdd lang("[スペードチェンジ]", "[Spade Change]"), "null", 32
+				}
+				if ( cdata(CDATA_ID, tc) != CREATURE_ID_CLUB_FEATHER ) {
+					promptAdd lang("[クラブチェンジ]", "[Club Change]"), "null", 33
+				}
+				if ( cdata(CDATA_ID, tc) != CREATURE_ID_DIAMOND_EYES ) {
+					promptAdd lang("[ダイヤチェンジ]", "[Diamond Change]"), "null", 34
+				}
+				if ( cdata(CDATA_ID, tc) != CREATURE_ID_HEART_WITCH ) {
+					promptAdd lang("[ハートチェンジ]", "[Heart Change]"), "null", 35
+				}
+			}
+		}
 		if ( cdata(CDATA_CONDITION_CONFUSE, CHARA_PLAYER) == 0 ) {
 			promptAdd lang("話しかける", "Talk"), "null", 0
 			if ( tc >= MAX_CHARA_FOLLOWER ) {
@@ -6502,6 +6522,53 @@
 	}
 	if ( p == 10 ) {
 		gosub *com_tone
+	}
+	if ( p == 31 ) {
+		txt lang("変化後のランクは？", "Which rank?")
+		display_msg screenmsgy, 1
+		val = (windoww - 200) / 2 + inf_screenx, winposy(60), 8, 1, 13
+		inputlog = "" + cdata(CDATA_EVOLUTION_STAGE, tc)
+		gosub *prompt_word
+		in = int(inputlog)
+		if ( in > 13 ) {
+			in = 13
+		}
+		if ( in == 0 | rtval == (-1) ) {
+			gosub *screen_draw
+			goto *pc_turn
+		}
+		cdata(CDATA_EVOLUTION_STAGE, tc) = in
+		snd SOUNDLIST_POWER07
+		gosub *screen_draw
+		goto *pc_turn
+	}
+	if ( p == 32 ) {
+		snd SOUNDLIST_POWER07
+		txt lang(cdatan(CDATAN_NAME, tc) + "の効果を発動。このカード精霊は「スペード・ウォリアー」として扱う。", cdatan(CDATAN_NAME, tc) + " is treated as a spade warrior.")
+		cdata(CDATA_ID, tc) = CREATURE_ID_SPADE_WARRIOR
+		gosub *screen_draw
+		goto *pc_turn
+	}
+	if ( p == 33 ) {
+		snd SOUNDLIST_POWER07
+		txt lang(cdatan(CDATAN_NAME, tc) + "の効果を発動。このカード精霊は「クラブフェザー」として扱う。", cdatan(CDATAN_NAME, tc) + " is treated as a club feather.")
+		cdata(CDATA_ID, tc) = CREATURE_ID_CLUB_FEATHER
+		gosub *screen_draw
+		goto *pc_turn
+	}
+	if ( p == 34 ) {
+		snd SOUNDLIST_POWER07
+		txt lang(cdatan(CDATAN_NAME, tc) + "の効果を発動。このカード精霊は「ダイヤアイズ」として扱う。", cdatan(CDATAN_NAME, tc) + " is treated as a diamond eyes.")
+		cdata(CDATA_ID, tc) = CREATURE_ID_DIAMOND_EYES
+		gosub *screen_draw
+		goto *pc_turn
+	}
+	if ( p == 35 ) {
+		snd SOUNDLIST_POWER07
+		txt lang(cdatan(CDATAN_NAME, tc) + "の効果を発動。このカード精霊は「ハート・ウィッチ」として扱う。", cdatan(CDATAN_NAME, tc) + " is treated as a heart witch.")
+		cdata(CDATA_ID, tc) = CREATURE_ID_HEART_WITCH
+		gosub *screen_draw
+		goto *pc_turn
 	}
 	if ( p == 23 ) {
 		gosub *screen_draw
@@ -14642,13 +14709,13 @@
 				rc = tc
 				gosub *chara_item
 				if ( refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_ITEM_ROD ) {
-					cdata(CDATA_AI_ITEM, tc) = ci
+					cdata(CDATA_MATERIAL1_COUNTER, tc) = ci
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_LASER_BAZOOKA | inv(INV_ITEM_ID, ci) == ITEM_ID_M202_SPECIAL | inv(INV_ITEM_ID, ci) == ITEM_ID_PANZERFAUST_X ) {
-					cdata(CDATA_AI_ITEM, tc) = ci
+					cdata(CDATA_MATERIAL1_COUNTER, tc) = ci
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CF_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_CRUSH_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_BATTLE_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_SUPER_POTIOMAN ) {
-					cdata(CDATA_AI_ITEM, tc) = ci
+					cdata(CDATA_MATERIAL1_COUNTER, tc) = ci
 				}
 				if ( inv(INV_ITEM_KNOWN, ci) == ITEM_KNOWN_FULL ) {
 					inv(INV_ITEM_IDENTIFY_LEVEL, ci) = 0

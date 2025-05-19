@@ -356,6 +356,9 @@
 		if ( customtalk_dbmode == DBMODE_FLAVOR_LEADING ) {
 			locvar_customtalk_s = "%txtLeading"
 		}
+		if ( customtalk_dbmode == DBMODE_FLAVOR_CLEMENTIA ) {
+			locvar_customtalk_s = "%txtClementia"
+		}
 		/********** OOMSESTEPNC - EXTRA CNPC CONFIG - CUSTOM TALK - BEGINNING **********/
 		if ( customtalk_dbmode == 401 ) { locvar_customtalk_s = "%txtsorosu" }
 		if ( customtalk_dbmode == 402 ) { locvar_customtalk_s = "%txtturusu" }
@@ -5888,7 +5891,9 @@
 		}
 		if ( cdata(CDATA_ID, dmghp_source) == CREATURE_ID_SPADE_WARRIOR | cdata(CDATA_ID, dmghp_source) == CREATURE_ID_CLUB_FEATHER | cdata(CDATA_ID, dmghp_source) == CREATURE_ID_DIAMOND_EYES | cdata(CDATA_ID, dmghp_source) == CREATURE_ID_HEART_WITCH ) {
 			if ( cdata(CDATA_ALLIED, dmghp_source) == 0 ) {
-				cdata(CDATA_DIRECTIVE_MODE, dmghp_source) = DIRECTIVE_MODE_DEFENSIVE
+				if ( cdata(CDATA_PIC, dmghp_source) != xy2pic(18, 35) ) {
+					cdata(CDATA_DIRECTIVE_MODE, dmghp_source) = DIRECTIVE_MODE_DEFENSIVE
+				}
 			}
 		}
 	}
@@ -6338,6 +6343,9 @@
 			if ( dmghp_charid != CHARA_PLAYER ) {
 				if ( cdata(CDATA_CONDITION_FEAR, dmghp_charid) == 0 ) {
 					if ( cbit(CHARA_BIT_RES_FEAR, dmghp_charid) == 0 ) {
+						if ( cdata(CDATA_QUALITY, dmghp_charid) >= FIX_QUALITY_MIRACLE ) {
+							locvar_dmghp_f = 0
+						}
 						if ( locvar_dmghp_dmg * 100 / cdata(CDATA_MAX_HP, dmghp_charid) + 10 > rnd(200) ) {
 							locvar_dmghp_f = 1
 						}
@@ -6361,6 +6369,25 @@
 									}
 								}
 							}
+						}
+					}
+				}
+			}
+		}
+		if ( cdata(CDATA_HP, dmghp_charid) < cdata(CDATA_MAX_HP, dmghp_charid) / 10 ) {
+			if ( dmghp_charid != CHARA_PLAYER ) {
+				if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, dmghp_charid) == FALSE ) {
+					locvar_dmghp_f = 1
+					if ( cdata(CDATA_RELATION, dmghp_charid) == RELATION_ALLY | dmghp_charid < MAX_CHARA_FOLLOWER | cbit(CHARA_BIT_NECRO, dmghp_charid) == TRUE | cdata(CDATA_QUALITY, dmghp_charid) >= FIX_QUALITY_MIRACLE | cdata(CDATA_ROLE, dmghp_charid) != ROLE_NONE | cbit(CHARA_BIT_PRECIOUS, dmghp_charid) == TRUE | cdata(CDATA_CHARACTER_TIER, dmghp_charid) == CHARACTER_TIER_SUMMONED_NORMAL | cbit(CHARA_BIT_BODYGUARD, dmghp_charid) == TRUE | gdata(GDATA_FLAG_DUEL_TARGET) == dmghp_charid ) {
+						locvar_dmghp_f = 0
+					}
+					if ( locvar_dmghp_f ) {
+						if ( cbit(CHARA_BIT_SANDBAG, dmghp_charid) != TRUE ) {
+							cdata(CDATA_CONDITION_FEAR, dmghp_charid) = rnd(20) + 50
+							txtmore
+							txtef COLOR_SKY_BLUE
+							txt lang(name(dmghp_charid) + "は恐怖のあまり命乞いを始めた。話を聞いてやろうか？", name(dmghp_charid) + " was frightened and began to beg for their lives. Maybe I could talk to " + name(dmghp_charid) + " now.")
+							cbitmod CHARA_BIT_BEGGING_FOR_LIFE, dmghp_charid, TRUE
 						}
 					}
 				}

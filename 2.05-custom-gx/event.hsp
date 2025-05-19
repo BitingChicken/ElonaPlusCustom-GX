@@ -394,6 +394,12 @@
 		mdata(MDATA_CITY_PROPERTY_VALUE) += 5
 		txtef COLOR_GREEN
 		txt lang("街属性値が5上昇した（現在" + mdata(MDATA_CITY_PROPERTY_VALUE) + "）", "City property value was increased 5. (Total: " + mdata(MDATA_CITY_PROPERTY_VALUE) + ")")
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("処刑の時間", "Time of execution")
 		file = "bg_re7"
 		buff = lang("街のどこかから、処刑対象の微かな悲鳴が聞こえてきた。", "From somewhere in the town, a faint painful shriek of execution could be heard.")
@@ -492,6 +498,12 @@
 		mdata(MDATA_WEREWOLF_STAGE) = 1
 		txtef COLOR_RED2
 		txt lang("[人狼による被害が出ました。有権者の皆さんは怪しい人物に処刑投票してください] ", "[A werewolf has caused havoc. People should vote on whom they suspect it being.] ")
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("狼の襲撃", "Werewolf")
 		file = "bg_re9"
 		buff = lang("街のどこかから、狼の遠吠えと微かな悲鳴が聞こえてきた。", "Suddenly, a painful shriek and the howling of a wolf rises from somewhere in the town. You see several guards hastily running by.")
@@ -618,6 +630,12 @@
 				break
 			}
 		loop
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("殺人鬼", "Murderer")
 		file = "bg_re9"
 		buff = lang("街のどこかで悲鳴があがった。あなたはガードが慌しく走っていくのを目撃した。「人殺し、人殺しだ！！」", "Suddenly, a painful shriek rises from somewhere in the town. You see several guards hastily run by.")
@@ -685,6 +703,9 @@
 		if ( sorg(SKILL_NORMAL_COOKING, tc) != 0 ) {
 			skillexp SKILL_NORMAL_COOKING, tc, 1000
 		}
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("朝のひととき", "Breakfast")
 		file = "bg_re10"
 		if ( mtc == 1 ) {
@@ -844,6 +865,9 @@
 				skillexp SKILL_NORMAL_CARPENTRY, cnt, 500
 			}
 		loop
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("手作りのプレゼント", "Handmade gifts")
 		file = "bg_re3"
 		if ( mtc == 1 ) {
@@ -979,6 +1003,9 @@
 				skillexp SKILL_NORMAL_TAILORING, cnt, 500
 			}
 		loop
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("手編みのプレゼント", "Hand-knitted gifts")
 		file = "bg_re14"
 		if ( mtc == 1 ) {
@@ -1050,6 +1077,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_HUNGRY | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("ご馳走の匂い", "Smell of Food")
 		file = "bg_re10"
 		buff = lang("どこからともなく漂うご馳走の匂いで、あなたの胃は不満を叫び始めた。", "A sweet smell of food floats from nowhere. Your stomach growls but you can't find out where it comes from.")
@@ -1060,6 +1093,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_LUCKY | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("不運の回避", "Avoiding Misfortune")
 		file = "bg_re8"
 		buff = lang("あなたは一瞬嫌な予感がしたが、それはやがて消えた。", "You sense a bad feeling for a moment but it fades away quickly.")
@@ -1072,6 +1111,9 @@
 		efid = SKILL_EFFECT_POTION_POTENTIAL
 		tc = CHARA_PLAYER
 		gosub *effect
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("才能の開花", "Your Potential")
 		file = "bg_re4"
 		buff = lang("突然あなたの才能は開花した！", "Suddenly you develop your gift!")
@@ -1082,6 +1124,9 @@
 	if ( _switch_val == RANDOM_EVENT_FAITH | _switch_sw ) {
 		_switch_sw = 0
 		skillexp SKILL_NORMAL_FAITH, CHARA_PLAYER, 1000, 6, 1000
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("信仰の深まり", "Gaining Faith")
 		file = "bg_re12"
 		if ( cdata(CDATA_GOD, CHARA_PLAYER) == GOD_MANI ) {
@@ -1116,6 +1161,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_GAIN_MATERIAL | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("マテリアルの発見", "Small Luck")
 		file = "bg_re3"
 		buff = lang("石ころにつまずいて転んだ拍子に、あなたは幾つかのマテリアルを見つけた。", "You stumble over a stone and find some materials on the ground.")
@@ -1129,6 +1180,9 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_DREAM_MATERIAL | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		efid = SKILL_EFFECT_CREATE_MATERIAL
 		efp = 200
 		tc = CHARA_PLAYER
@@ -1153,6 +1207,9 @@
 			milk = 0
 		}
 		snd SOUNDLIST_CHANDLER23
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("原因は何だ？", "Cause Unknown")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "が突然泣き始めた！", cdatan(CDATAN_NAME, child) + " suddenly started crying out loud!")
@@ -1252,6 +1309,9 @@
 		_switch_sw = 0
 		tc = child
 		snd SOUNDLIST_CHANDLER23
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("子供の自己表現", "Child Self-Expression")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "が突然座り込んで、駄々をこね始めた！", cdatan(CDATAN_NAME, child) + " suddenly sat down and started whining!")
@@ -1358,6 +1418,9 @@
 		if ( pvar == 17 ) {
 			yume = lang("カッパ巻き", "a california roll")
 		}
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("将来の夢", "Dream for the Future")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "は将来、" + yume + "になりたいと言っている…。", cdatan(CDATAN_NAME, child) + " seems to want to be " + yume + " in the future.")
@@ -1437,29 +1500,32 @@
 		}
 		bvar = 0
 		if ( pvar == 10 ) {
-			yume = lang("ツルツルな石ころ", "the smooth stone")
+			yume = lang("ツルツルな石ころ", "a smooth stone")
 		}
 		if ( pvar == 11 ) {
-			yume = lang("何かのネジ", "the screw of something")
+			yume = lang("何かのネジ", "a screw of something")
 		}
 		if ( pvar == 12 ) {
-			yume = lang("セミの抜け殻", "the cicada shell")
+			yume = lang("セミの抜け殻", "a cicada shell")
 		}
 		if ( pvar == 13 ) {
-			yume = lang("鮮やかな落ち葉", "the vivid leave")
+			yume = lang("鮮やかな落ち葉", "a vivid leave")
 		}
 		if ( pvar == 14 ) {
-			yume = lang("謎の綿毛", "the mystery fluff")
+			yume = lang("謎の綿毛", "a mystery fluff")
 		}
 		if ( pvar == 15 ) {
-			yume = lang("抜け羽根", "the fallen feather")
+			yume = lang("抜け羽根", "a fallen feather")
 		}
 		if ( pvar == 16 ) {
-			yume = lang("むしった花びら", "the small petal")
+			yume = lang("むしった花びら", "a small petal")
 		}
 		if ( pvar == 17 ) {
-			yume = lang("ダンゴムシ", "the wood lousel")
+			yume = lang("ダンゴムシ", "a wood lousel")
 		}
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("お宝発見", "Treasure Discovery")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "は満面の笑みで" + yume + "を差し出してきた…。", cdatan(CDATAN_NAME, child) + " handed you " + yume + " with a big smile...")
@@ -1508,6 +1574,9 @@
 		_switch_sw = 0
 		tc = child
 		snd SOUNDLIST_PORT
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("自分のルーツ", "Roots")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "は、自分がどこから来たのかを知りたがっている…。", cdatan(CDATAN_NAME, child) + " wants to know where a baby came from...")
@@ -1555,6 +1624,9 @@
 		_switch_sw = 0
 		tc = child
 		snd SOUNDLIST_PORT
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("脳内バトル", "Battle in the brain")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "は、空想上の敵と戦っているようだ…。", cdatan(CDATAN_NAME, child) + " seems to be fighting an imaginary enemy...")
@@ -1602,6 +1674,9 @@
 		_switch_sw = 0
 		tc = child
 		snd SOUNDLIST_PORT
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("この世はキャンバス", "This world is canvas")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "は、黙々と地面に絵を描いている…。", cdatan(CDATAN_NAME, child) + " silently draws on the ground...")
@@ -1650,6 +1725,9 @@
 		_switch_sw = 0
 		tc = child
 		snd SOUNDLIST_PORT
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("勉強の意味", "Meaning of Study")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "が、どうして子供は勉強しないといけないのか問い詰めてきた！", cdatan(CDATAN_NAME, child) + " asked why children should study!")
@@ -1697,6 +1775,9 @@
 		_switch_sw = 0
 		tc = child
 		snd SOUNDLIST_PORT
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("自己顕示", "Self Revelation")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "は、自分の異名を自分で考えているようだ…。", cdatan(CDATAN_NAME, child) + " seems to be thinking of own aka...")
@@ -1744,6 +1825,9 @@
 		_switch_sw = 0
 		tc = child
 		snd SOUNDLIST_PORT
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("自意識", "Self Awareness")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "は、自分の格好が周りと比べてダサいのではないかと気にしている…。", cdatan(CDATAN_NAME, child) + " worried that own clothes aren't as good as those arounds...")
@@ -1792,6 +1876,9 @@
 		_switch_sw = 0
 		tc = child
 		snd SOUNDLIST_PORT
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("マージナルマン", "Marginal Man")
 		file = "bg_re21"
 		buff = lang(cdatan(CDATAN_NAME, child) + "は、子供扱いしないでほしいと強く主張している！", cdatan(CDATAN_NAME, child) + " doesn't like being treated like a child by you...")
@@ -1837,6 +1924,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_REMAINS_CAMP | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("野営跡の発見", "Camping Site")
 		file = "bg_re3"
 		buff = lang("あなたは何者かが野営した跡を見つけた。辺りには食べ残しやがらくたが散らばっている。もしかしたら、何か役に立つものがあるかもしれない。", "You discover a camping site someone left behind. Chunks of leftovers and junks remain here. You may possibly find some usefull items.")
@@ -1893,6 +1986,9 @@
 				f++
 			}
 		}
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("不気味な夢", "Creepy Dream")
 		file = "bg_re5"
 		buff = lang("あなたは不気味な夢をみた。陰気な幾つもの瞳があなたを凝視し、どこからともなく笑い声がこだました。「ケラケラケラ…ミツケタヨ…ケラケラ」あなたが二度寝返りをうった後、その夢は終わった。", "In your dreams, several pairs of gloomy eyes stare at you and laughter seemingly from nowhere echoes around you.  \"Keh-la keh-la keh-la I found you...I found you.. keh-la keh-la keh-la\" After tossing around a couple times, the dream is gone.")
@@ -1916,6 +2012,9 @@
 		efp = 100
 		tc = CHARA_PLAYER
 		gosub *effect
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("怪物の夢", "Monster Dream")
 		file = "bg_re2"
 		buff = lang("あなたは怪物と戦っていた。醜い化け物に斬りかかろうとした時、怪物は悲鳴をあげた。「オレハオマエダ！オマエハオレダ！」あなたは自分の呻き声に起こされた。", "You are fighting an ugly monster. You are about to thrust a dagger into the neck of the monster. And the monster screams. \"You are me! I am you!\" You are awakened by your own low moan.")
@@ -1925,6 +2024,9 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_DREAM_STRANGE_STAIRS | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		if ( gdata(GDATA_FLAG_STRANGE_STAIRS_DREAM) == 0 ) {
 			s = lang("奇妙な階段の夢", "Strange Stairs Dream")
 			file = "bg_re18"
@@ -2044,6 +2146,9 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_DREAM_SHEEP_NIGHTMARE | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("羊の悪夢", "Sheep Nightmare")
 		file = "bg_re5"
 		buff = lang("あなたは羊の群れに取り囲まれていた。辺りは見渡す限り、妙にカラフルな羊で埋め尽くされている。あちこちでメェメェと鳴き声が響き、死ぬほどうるさい…。", "You were surrounded by a flock of sheep.As far as the eye can see, filled with strangely colorful sheeps. Here and there in the noisy echoing the sheep cry...")
@@ -2101,6 +2206,9 @@
 		}
 		snd SOUNDLIST_OFFER2
 		modimp tc, 20
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("繋がる夢廻廊", "Dream Connect")
 		file = "bg_re14"
 		buff = lang("あなたの夢に、" + cdatan(CDATAN_AKA, tc) + cdatan(CDATAN_NAME, tc) + "が出てきた。夢なので、普段は話せないようなことを話したり、普段はできないようなことをして盛り上がった。", cdatan(CDATAN_AKA, tc) + cdatan(CDATAN_NAME, tc) + " came out in your dream. Because it was your dream, You talked about things you couldn't usually talk about, and did something that you couldn't usually do.")
@@ -2111,6 +2219,9 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_DREAM_BUTTERFLY | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("胡蝶の夢", "Dream?")
 		file = "bg_re17"
 		buff = lang("夢の中のあなたは違う姿をしていた。あなたがあなたの生活を眺めていた。夢の中のあなたは、今いる場所が現実だと思い込んでいた。あなたはコンピュータの画面を見て文章を読んでいる…。それを見ている、もう一人のあなたには気づかずに。", "In the dream you had a different appearance. You were watching your life. In a dream you convinced that it is reality. You are reading the text on the computer screen. You are unaware that you are being seen by another you.")
@@ -2192,6 +2303,9 @@
 				}
 			loop
 		}
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("添い寝", "Sleep Sharing")
 		file = "bg_re16"
 		buff = lang("添い寝中だ…。", "You notice that " + name(tc) + " " + is(tc) + " laying down beside you...")
@@ -2370,6 +2484,9 @@
 		cbitmod CHARA_BIT_MAKE_GENE, tc, 0
 		cdata(CDATA_POWER_GAUGE, tc) = 0
 		cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("強制添い寝", "Force Sleep Sharing")
 		file = "bg_re16"
 		buff = lang("どうしてやろうか。", "What do you try...")
@@ -2575,6 +2692,9 @@
 		flt
 		itemcreate 0, ITEM_ID_TREASURE_MAP, -1, -1, 0
 		txt lang(itemname(ci, 1) + "をバックパックに入れた。", "You put " + itemname(ci, 1) + " in your backpack.")
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("宝を埋める夢", "Treasure of Dream")
 		file = "bg_re15"
 		buff = lang("あなたは夢の中で宝を埋めた。あなたはすぐに飛び起き、その場所を紙に書き留めた", "You buried treasure in your dream. You quickly get up and write down the location.")
@@ -2585,6 +2705,9 @@
 	if ( _switch_val == RANDOM_EVENT_DREAM_LUCKY | _switch_sw ) {
 		_switch_sw = 0
 		addbuff tc, BUFF_LUCK, 777, 1500
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("幸運の日", "Lucky Day")
 		file = "bg_re12"
 		buff = lang("うみみゃぁ！", "Mewmewmew!")
@@ -2594,6 +2717,9 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_DREAM_EHEKATL | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("運命の気まぐれ", "Quirk of Fate")
 		file = "bg_re15"
 		buff = lang("うみみゃっ、見つけたね！", "Mewmew? You've found me!")
@@ -2606,6 +2732,9 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_DREAM_CURSE | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("呪いのつぶやき", "Cursed Whispering")
 		file = "bg_re5"
 		buff = lang("どこからともなく聞こえる呪いのつぶやきが、あなたの眠りを妨げた。", "Your sleep is disturbed by harsh whispers that seem to come from nowhere.")
@@ -2640,6 +2769,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_THIEF | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("悪意ある手", "Malicious Hand")
 		file = "bg_re9"
 		buff = lang("悪意のある手が忍び寄り、あなたが気付かない間に金貨を奪って逃げた。", "A malicious hand slips and steals your money.")
@@ -2660,6 +2795,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_REMAINS_ADV | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("冒険者の遺骸", "Corpse")
 		file = "bg_re7"
 		buff = lang("この場所で力尽きた冒険者の遺骸を見つけた。既に朽ちかけている骨と、身に着けていたと思われる幾つかの装備が散らばっている。", "You find a corpse of an adventurer. There're bones and equipment scatters on the ground waiting to decay.")
@@ -2689,6 +2830,9 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_DREAM_MAGIC | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("魔法使いの夢", "Wizard's Dream")
 		file = "bg_re6"
 		buff = lang("夢の中であなたは赤い髪の魔法使いに出会った。「誰じゃ、お主は？ふむ、間違った者の夢に現れてしまったようじゃ。すまぬな。お詫びといってはなんじゃが…」魔法使いは指をくるりと回した。あなたは軽い頭痛を覚えた。", "In your dream, you meet a wizard with a red mustache. \"Who are you? Hmm, I guess I picked the wrong person's dream. My apologies for disturbing your sleep. To make up for this...\" The wizard draws a circle in the air and vanishes. You feel the effects of a faint headache.")
@@ -2711,6 +2855,9 @@
 				modgrowth CHARA_PLAYER, cnt, 15
 			}
 		loop
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("成長のきざし", "Development")
 		file = "bg_re4"
 		buff = lang("長年の鍛錬の成果が実ったようだ。なかなか眠りにつけず考えごとをしていたあなたは、ふと、自らの技術に関する新しいアイデアを思いついた。", "You lie awake, sunk deep into thought. As memories of your journey flow from one into another, you chance upon a new theory to improve one of your skills.")
@@ -2728,6 +2875,9 @@
 	if ( _switch_val == RANDOM_EVENT_DREAM_REGEN_HP | _switch_sw ) {
 		_switch_sw = 0
 		skillexp SKILL_NORMAL_HEALING, CHARA_PLAYER, 1000
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("自然治癒力の向上", "Regeneration")
 		file = "bg_re4"
 		buff = lang("身体が妙に火照ってあなたは目を覚ました。気がつくと、腕にあった傷跡が完全に消えていた。", "You suddenly awaken to find your entire body strangely flushed. You also notice a scar on your arm is gone.")
@@ -2738,6 +2888,9 @@
 	if ( _switch_val == RANDOM_EVENT_DREAM_REGEN_MP | _switch_sw ) {
 		_switch_sw = 0
 		skillexp SKILL_NORMAL_MEDITATION, CHARA_PLAYER, 1000
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 		s = lang("瞑想力の向上", "Meditation")
 		file = "bg_re4"
 		buff = lang("あなたは、夢の中でも驚くほど理性を保っていた。まるで瞑想を行っている時のように、あなたは心の平和を感じた。", "In your dream, you meditate and feel inner peace.")
@@ -2748,6 +2901,12 @@
 	if ( _switch_val == RANDOM_EVENT_GAIN_PLATINUM | _switch_sw ) {
 		_switch_sw = 0
 		cdata(CDATA_PLATINUM, CHARA_PLAYER)++
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("路上に転がる幸運", "Great Luck")
 		file = "bg_re1"
 		buff = lang("下を向いて歩いていると、幸運にもプラチナ硬貨を見つけた。", "You stumble over a stone and find a platinum coin.")
@@ -2757,6 +2916,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_GAIN_GOLD | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("発狂した金持ち", "Mad Millionaire")
 		file = "bg_re1"
 		buff = lang("発狂した金持ちが、何か叫びながら金貨をばらまいている…", "A rich mad man is scattering his money all over the ground.")
@@ -2773,6 +2938,12 @@
 		efp = 800
 		tc = CHARA_PLAYER
 		gosub *effect
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("辻プリースト", "Wandering Priest")
 		file = "bg_re11"
 		buff = lang("突然、向かいからやって来た一人の神官が、すれ違いざまにあなたに魔法をかけた。「ノープロブレム」", "A priest comes up to you and casts a spell on you. \"No problem.\"")
@@ -2783,6 +2954,12 @@
 	
 	if ( _switch_val == RANDOM_EVENT_SEA_RAGING_SEA | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("荒れ狂う海", "Raging Sea")
 		file = "bg_re22"
 		buff = lang("悲鳴のような轟音、身体をゆさぶる波の振動…まるで悪魔がもたらしたような突風の中であなたは呟いた。", "The sound of sky-shattering thunder and violent waves slam you... You mutter a faint curse under your breath.")
@@ -2822,6 +2999,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_BIG_CATCH | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("大漁の予感", "Premonition of a big catch")
 		file = "bg_re23"
 		buff = lang("魚群が見える…今なら魚が大量に獲れそうだ！", "You saw schools of fish... you can catch a lot of fish now!")
@@ -2911,6 +3094,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_SHIP | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("謎の船影", "Shadow of a Ship")
 		file = "bg_re24"
 		buff = lang("前方に船影を発見した。ここからでは何の船かよく分からない。", "You spot a ship's shadow ahead. You don't quite know what ship it is from here.")
@@ -2992,6 +3181,12 @@
 				tabikate = 1
 			}
 		}
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("流される者", "Swept Away")
 		file = "bg_re4"
 		buff = lang("波間にもがいている漂流者を発見した。「高波にさらわれてこんなところまで流されてしまったよ！」", "You found a drifter drowning in the waves.")
@@ -3035,6 +3230,12 @@
 				tabikate = 1
 			}
 		}
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("脱出、その後", "After Escape")
 		file = "bg_re4"
 		buff = lang("小さなイカダに乗った漂流者を発見した。「無人島から自力で脱出してきたけれど、もう限界…」", "You found a drifter on a small raft that escaped from an uninhabited island.")
@@ -3078,6 +3279,12 @@
 				tabikate = 1
 			}
 		}
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("漂流者たち", "Drifters")
 		file = "bg_re4"
 		buff = lang("漂流者複数名を発見した。「船が沈んでこのザマです…」", "You found drifters thrown out of the wrecked ship.")
@@ -3117,6 +3324,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_SEA_AERIAL_THREAT | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("上空の脅威", "Aerial Threat")
 		file = "bg_re5"
 		buff = lang("急に空が薄暗くなり、船が何度も衝撃を受ける…。外を見たあなたの視界に飛び込んできたのは…海鳥だ。巨大な海鳥達が、群れをなして船を襲ってきたのだ！", "The sky suddenly darkens, and your ship receives repeated shocks... When you look outside, what jumps into your sight is...seabirds. A flock of giant seabirds is attacking your ship!")
@@ -3162,6 +3375,12 @@
 	}
 	if ( _switch_val == RANDOM_EVENT_SEA_UNDERSEA_THREAT | _switch_sw ) {
 		_switch_sw = 0
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE)++
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You got travelExp.[Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		s = lang("海中の脅威", "Undersea Threat")
 		file = "bg_re23"
 		buff = lang("突如、海中から突き上げられるように船が大きく揺れた…。何事かと海中に目を凝らしたあなたは、サメが船底に体当たりしているのを目撃した！", "Suddenly, your ship shook violently as if it was pushed up from the sea... As you peek into the sea, you see a shark ramming the bottom of the ship!")

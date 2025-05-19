@@ -2598,7 +2598,7 @@
 					}
 				} else {
 					if ( locvar_colorres_i == SKILL_NORMAL_LITERACY ) { locvar_equipinfo_s = "Read" }
-					if ( locvar_colorres_i == SKILL_NORMAL_WEIGHT_LIFTING ) { locvar_equipinfo_s = "Cary" }
+					if ( locvar_colorres_i == SKILL_NORMAL_WEIGHT_LIFTING ) { locvar_equipinfo_s = "Wt-L" }
 					if ( locvar_colorres_i == SKILL_NORMAL_MINING ) { locvar_equipinfo_s = "Mine" }
 					if ( locvar_colorres_i == SKILL_NORMAL_MAGIC_CAPACITY ) { locvar_equipinfo_s = "M-Cp" }
 					if ( locvar_colorres_i == SKILL_NORMAL_DUAL_WIELD ) { locvar_equipinfo_s = "D-Wd" }
@@ -2610,7 +2610,7 @@
 					if ( locvar_colorres_i == SKILL_NORMAL_MAGIC_DEVICE ) { locvar_equipinfo_s = "M-Dv" }
 					if ( locvar_colorres_i == SKILL_NORMAL_DISARM_TRAP ) { locvar_equipinfo_s = "Trap" }
 					if ( locvar_colorres_i == SKILL_NORMAL_EYE_OF_MIND ) { locvar_equipinfo_s = "EoMn" }
-					if ( locvar_colorres_i == SKILL_NORMAL_GREATER_EVASION ) { locvar_equipinfo_s = "GEva" }
+					if ( locvar_colorres_i == SKILL_NORMAL_GREATER_EVASION ) { locvar_equipinfo_s = "G-Ev" }
 					if ( locvar_colorres_i == SKILL_NORMAL_CONTROL_MAGIC ) { locvar_equipinfo_s = "Ct-M" }
 				}
 				if ( strlen(locvar_equipinfo_s) > 4 ) {

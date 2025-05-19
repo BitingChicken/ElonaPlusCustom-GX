@@ -168,15 +168,18 @@
 	cdata(CDATA_ROLE, rc) = ROLE_NONE
 	cdata(CDATA_BRUSH_LEVEL, rc) = 0
 	cdata(CDATA_HIRE_DATE, rc) = 0
-	cbitmod CHARA_BIT_QUEST_TARGET, rc, 0
-	cbitmod CHARA_BIT_NO_TARGET, rc, 0
-	cbitmod CHARA_BIT_SANDBAG, rc, 0
-	cbitmod CHARA_BIT_SUMMONED, rc, 0
-	cbitmod CHARA_BIT_FESTIVAL, rc, 0
-	cbitmod CHARA_BIT_BRUSHED, rc, 0
-	cbitmod CHARA_BIT_LIVESTOCK, rc, 0
-	cbitmod CHARA_BIT_LABOR_CAMP, rc, 0
+	cbitmod CHARA_BIT_QUEST_TARGET, rc, FALSE
+	cbitmod CHARA_BIT_NO_TARGET, rc, FALSE
+	cbitmod CHARA_BIT_SANDBAG, rc, FALSE
+	cbitmod CHARA_BIT_SUMMONED, rc, FALSE
+	cbitmod CHARA_BIT_FESTIVAL, rc, FALSE
+	cbitmod CHARA_BIT_BRUSHED, rc, FALSE
+	cbitmod CHARA_BIT_LIVESTOCK, rc, FALSE
+	cbitmod CHARA_BIT_LABOR_CAMP, rc, FALSE
+	cbitmod CHARA_BIT_HAS_CLEMENTIAD, rc, FALSE
+	cbitmod CHARA_BIT_BEGGING_FOR_LIFE, rc, FALSE
 	cdata(CDATA_ALLIED, rc) = 100
+	cdata(CDATA_MATERIAL1_COUNTER, rc) = 0
 	if ( cdata(CDATA_JOIN_DATE_MONTH, rc) == 0 ) {
 		cdata(CDATA_JOIN_DATE_MONTH, rc) = gdata(GDATA_MONTH)
 	}
