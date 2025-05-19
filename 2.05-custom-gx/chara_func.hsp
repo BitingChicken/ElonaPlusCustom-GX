@@ -2016,9 +2016,12 @@
 				txtmore
 				txt lang(name(hostileaction_target) + "は激怒した。", name(hostileaction_target) + " gets furious!")
 			}
-			cdata(CDATA_RELATION, hostileaction_target) = -3
-			cdata(CDATA_AI_AGGRO, hostileaction_target) = 80
-			cdata(CDATA_TARGET, hostileaction_target) = hostileaction_source
+			if ( cdata(CDATA_AI_AGGRO, hostileaction_target) <= 0 ) {
+				cdata(CDATA_RELATION, hostileaction_target) = -3
+				cdata(CDATA_AI_AGGRO, hostileaction_target) = 80
+				cdata(CDATA_TARGET, hostileaction_target) = hostileaction_source
+				// DamagePopupAdd "Hostile Action Aggro: " + cdatan(CDATAN_NAME, cdata(CDATA_TARGET, hostileaction_target)) + "/" + cdata(CDATA_AI_AGGRO, hostileaction_target), hostileaction_target, DMGPOPUP_MISS, 0
+			}
 		}
 		if ( cdata(CDATA_ID, hostileaction_target) != CREATURE_ID_RAIZEL_THE_OLD_WIZARD | cdata(CDATA_ALLIED, hostileaction_target) != 0 | gdata(GDATA_FLAG_MAIN) < 760 ) {
 			if ( gdata(GDATA_TEMPORARY_FLAGS2) < 1000 & jamesangerhack == 0 ) {

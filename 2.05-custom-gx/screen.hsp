@@ -7023,6 +7023,7 @@
 				cdata(CDATA_TARGET, tc) = cc
 				cdata(CDATA_AI_AGGRO, tc) = 80
 				critical = 1
+				// DamagePopupAdd "Backstab Aggro: " + cdatan(CDATAN_NAME, cdata(CDATA_TARGET, tc)) + "/" + cdata(CDATA_AI_AGGRO, tc), tc, DMGPOPUP_MISS, 0
 				return 1
 			}
 		}

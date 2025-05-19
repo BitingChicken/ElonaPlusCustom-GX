@@ -7,6 +7,8 @@
 # Fixed
 - (Plus) Fixed reflect damage calculated using the wrong damage number
 - (Plus) Pet target reset due to begging-bitflag bug.
+- (Plus) Fixed crashes due to shared item/material field.
+- (Plus) Fixed player hostile action overwrites aggro.
 
 # 2.26.1.0
 

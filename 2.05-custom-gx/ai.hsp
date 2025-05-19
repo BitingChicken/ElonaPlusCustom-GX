@@ -971,12 +971,12 @@
 	cdata(CDATA_AI_ITEM, cc) = 0
 
 *ai_item_combat
-	if ( cdata(CDATA_MATERIAL1_COUNTER, cc) <= 0 ) {
+	if ( cdata(CDATA_AI_ITEM, cc) <= 0 ) {
 		goto *ai_action
 	}
-	ci = cdata(CDATA_MATERIAL1_COUNTER, cc)
+	ci = cdata(CDATA_AI_ITEM, cc)
 	if ( inv(INV_ITEM_NUM, ci) == 0 | (refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_ITEM_ROD & inv(INV_ITEM_CHARGE, ci) <= 0) ) {
-		cdata(CDATA_MATERIAL1_COUNTER, cc) = 0
+		cdata(CDATA_AI_ITEM, cc) = 0
 		goto *ai_action
 	}
 	a = refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE)
@@ -989,7 +989,7 @@
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CF_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_CRUSH_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_BATTLE_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_SUPER_POTIOMAN ) {
 		goto *act_use
 	}
-	cdata(CDATA_MATERIAL1_COUNTER, cc) = 0
+	cdata(CDATA_AI_ITEM, cc) = 0
 
 *ai_action
 	retreat = 0
