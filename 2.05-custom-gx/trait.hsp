@@ -422,7 +422,7 @@
 			}
 			return 1
 		}
-		cdata(CDATA_MATERIAL2_COUNTER, CHARA_PLAYER) = 1
+		cdata(CDATA_SPEED_TRAIT, CHARA_PLAYER) = 1
 		return 1
 	}
 	if ( tid == TRAIT_NORMAL_STAT_PV ) {

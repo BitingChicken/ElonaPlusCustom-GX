@@ -3949,6 +3949,16 @@
 #define global	CDATA_TONE_SEX	188
 #define global	CDATA_SPINDLE_COMBINATION_A	189
 #define global	CDATA_SPINDLE_COMBINATION_B	190
+#define global	CDATA_AI_ITEM_OFFENSIVE	191
+#define global	CDATA_RENT_REFRESH	191
+// Field 190-195 is being used differently for players/pets/npcs
+#define global	CDATA_DAILY_QUEST2	190
+#define global	CDATA_DAILY_QUEST1	191
+#define global	CDATA_SPEED_TRAIT	192
+#define global	CDATA_SISTER_ENERGY_TYPE	193
+#define global	CDATA_DAILY_QUEST_CURRENT_COUNT	194
+#define global	CDATA_DAILY_QUEST_TARGET_COUNT	195
+// These 5 material counter is not available anymore after the 2.27 travel revamp.
 #define global	CDATA_MATERIAL1_COUNTER	191
 #define global	CDATA_MATERIAL2_COUNTER	192
 #define global	CDATA_MATERIAL3_COUNTER	193

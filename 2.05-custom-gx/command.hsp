@@ -6087,340 +6087,341 @@
 
 	/********** BLOODYSHADE CUSTOM - BEGINNING **********/ // Add option to collect materials from all pets at once.
 
-	if ( p == 666 ) {
-		repeat MAX_CHARA_FOLLOWER - 1
-			tc = cnt
+	// Travel material is removed in 2.27
+	; if ( p == 666 ) {
+	; 	repeat MAX_CHARA_FOLLOWER - 1
+	; 		tc = cnt
 
-			if ( tc == CHARA_PLAYER ) {
-				continue
-			}
+	; 		if ( tc == CHARA_PLAYER ) {
+	; 			continue
+	; 		}
 
-			if ( cbit(CHARA_BIT_BODYGUARD, tc) == 0 & cbit(CHARA_BIT_GUARD_TEMP, tc) == 0 & cbit(CHARA_BIT_NECRO, tc) == 0 & cbit(CHARA_BIT_LIVESTOCK, tc) == 0 ) {
-				if ( cdata(CDATA_MATERIAL1_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL2_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL3_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL4_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL5_COUNTER, tc) > 200 ) {
-					txt lang(name(tc) + "は冒険の途中で集めたマテリアルを手渡してきた。", name(tc) + " handed over the materials " + he(tc) + " has gathered during your adventures.")
+	; 		if ( cbit(CHARA_BIT_BODYGUARD, tc) == 0 & cbit(CHARA_BIT_GUARD_TEMP, tc) == 0 & cbit(CHARA_BIT_NECRO, tc) == 0 & cbit(CHARA_BIT_LIVESTOCK, tc) == 0 ) {
+	; 			if ( cdata(CDATA_MATERIAL1_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL2_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL3_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL4_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL5_COUNTER, tc) > 200 ) {
+	; 				txt lang(name(tc) + "は冒険の途中で集めたマテリアルを手渡してきた。", name(tc) + " handed over the materials " + he(tc) + " has gathered during your adventures.")
 
-					m1 = 0
-					m2 = 0
-					m3 = 0
-					m4 = 0
-					m5 = 0
+	; 				m1 = 0
+	; 				m2 = 0
+	; 				m3 = 0
+	; 				m4 = 0
+	; 				m5 = 0
 
-					repeat 500
-						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) < 40 ) {
-							break
-						}
-						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 40 ) {
-							matgetmain MATERIAL_PEBBLE, 1, 6
-							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 40
-							m1++
-						}
-						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 100 ) {
-							matgetmain MATERIAL_FINE_STONE, 1, 6
-							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 100
-							m2++
-						}
-						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 120 ) {
-							matgetmain MATERIAL_ETHER_FRAGMENT, 1, 6
-							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 120
-							m3++
-						}
-						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 150 ) {
-							matgetmain MATERIAL_ELEMENT_FRAGMENT, 1, 6
-							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 150
-							m4++
-						}
-						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 150 ) {
-							matgetmain MATERIAL_CHAOS_STONE, 1, 6
-							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 150
-							m5++
-						}
-					loop
+	; 				repeat 500
+	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) < 40 ) {
+	; 						break
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 40 ) {
+	; 						matgetmain MATERIAL_PEBBLE, 1, 6
+	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 40
+	; 						m1++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 100 ) {
+	; 						matgetmain MATERIAL_FINE_STONE, 1, 6
+	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 100
+	; 						m2++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 120 ) {
+	; 						matgetmain MATERIAL_ETHER_FRAGMENT, 1, 6
+	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 120
+	; 						m3++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 150 ) {
+	; 						matgetmain MATERIAL_ELEMENT_FRAGMENT, 1, 6
+	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 150
+	; 						m4++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 150 ) {
+	; 						matgetmain MATERIAL_CHAOS_STONE, 1, 6
+	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 150
+	; 						m5++
+	; 					}
+	; 				loop
 
-					if ( m1 > 0 ) {
-						txtef COLOR_BROWN
-						txt lang("マテリアル:石ころを" + m1 + "個受け取った。", "You get " + m1 + " Pebble.")
-					}
-					if ( m2 > 0 ) {
-						txtef COLOR_BROWN
-						txt lang("マテリアル:上等な石を" + m2 + "個受け取った。", "You get " + m2 + " Fine stone.")
-					}
-					if ( m3 > 0 ) {
-						txtef COLOR_BROWN
-						txt lang("マテリアル:エーテルの欠片を" + m3 + "個受け取った。", "You get " + m3 + " Ether fragment.")
-					}
-					if ( m4 > 0 ) {
-						txtef COLOR_BROWN
-						txt lang("マテリアル:風切石を" + m4 + "個受け取った。", "You get " + m4 + " Element fragment.")
-					}
-					if ( m5 > 0 ) {
-						txtef COLOR_BROWN
-						txt lang("マテリアル:混沌の石を" + m5 + "個受け取った。", "You get " + m5 + " Chaos stone.")
-					}
+	; 				if ( m1 > 0 ) {
+	; 					txtef COLOR_BROWN
+	; 					txt lang("マテリアル:石ころを" + m1 + "個受け取った。", "You get " + m1 + " Pebble.")
+	; 				}
+	; 				if ( m2 > 0 ) {
+	; 					txtef COLOR_BROWN
+	; 					txt lang("マテリアル:上等な石を" + m2 + "個受け取った。", "You get " + m2 + " Fine stone.")
+	; 				}
+	; 				if ( m3 > 0 ) {
+	; 					txtef COLOR_BROWN
+	; 					txt lang("マテリアル:エーテルの欠片を" + m3 + "個受け取った。", "You get " + m3 + " Ether fragment.")
+	; 				}
+	; 				if ( m4 > 0 ) {
+	; 					txtef COLOR_BROWN
+	; 					txt lang("マテリアル:風切石を" + m4 + "個受け取った。", "You get " + m4 + " Element fragment.")
+	; 				}
+	; 				if ( m5 > 0 ) {
+	; 					txtef COLOR_BROWN
+	; 					txt lang("マテリアル:混沌の石を" + m5 + "個受け取った。", "You get " + m5 + " Chaos stone.")
+	; 				}
 
-					m1 = 0
-					m2 = 0
-					m3 = 0
-					m4 = 0
-					m5 = 0
-					m6 = 0
-					m7 = 0
+	; 				m1 = 0
+	; 				m2 = 0
+	; 				m3 = 0
+	; 				m4 = 0
+	; 				m5 = 0
+	; 				m6 = 0
+	; 				m7 = 0
 
-					repeat 500
-						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) < 20 ) {
-							break
-						}
-						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 20 ) {
-							matgetmain MATERIAL_WATERDROP, 1, 6
-							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 20
-							m1++
-						}
-						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 60 ) {
-							matgetmain MATERIAL_HOT_WATER, 1, 6
-							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 40
-							m2++
-						}
-						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 80 ) {
-							matgetmain MATERIAL_SNOW, 1, 6
-							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 80
-							m3++
-						}
-						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 100 ) {
-							matgetmain MATERIAL_WITCHS_TEAR, 1, 6
-							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 100
-							m4++
-						}
-						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 120 ) {
-							matgetmain MATERIAL_ANGELS_TEAR, 1, 6
-							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 120
-							m5++
-						}
-					loop
+	; 				repeat 500
+	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) < 20 ) {
+	; 						break
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 20 ) {
+	; 						matgetmain MATERIAL_WATERDROP, 1, 6
+	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 20
+	; 						m1++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 60 ) {
+	; 						matgetmain MATERIAL_HOT_WATER, 1, 6
+	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 40
+	; 						m2++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 80 ) {
+	; 						matgetmain MATERIAL_SNOW, 1, 6
+	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 80
+	; 						m3++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 100 ) {
+	; 						matgetmain MATERIAL_WITCHS_TEAR, 1, 6
+	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 100
+	; 						m4++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 120 ) {
+	; 						matgetmain MATERIAL_ANGELS_TEAR, 1, 6
+	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 120
+	; 						m5++
+	; 					}
+	; 				loop
 
-					if ( m1 > 0 ) {
-						txtef COLOR_SKY_BLUE
-						txt lang("マテリアル:水滴を" + m1 + "個受け取った。", "You get " + m1 + " Waterdrop.")
-					}
-					if ( m2 > 0 ) {
-						txtef COLOR_SKY_BLUE
-						txt lang("マテリアル:お湯を" + m2 + "個受け取った。", "You get " + m2 + " Hot water.")
-					}
-					if ( m3 > 0 ) {
-						txtef COLOR_SKY_BLUE
-						txt lang("マテリアル:雪を" + m3 + "個受け取った。", "You get " + m3 + " Snow.")
-					}
-					if ( m4 > 0 ) {
-						txtef COLOR_SKY_BLUE
-						txt lang("マテリアル:魔女の涙を" + m4 + "個受け取った。", "You get " + m4 + " Witch's tear.")
-					}
-					if ( m5 > 0 ) {
-						txtef COLOR_SKY_BLUE
-						txt lang("マテリアル:天使の涙を" + m5 + "個受け取った。", "You get " + m5 + " Angel's tear.")
-					}
+	; 				if ( m1 > 0 ) {
+	; 					txtef COLOR_SKY_BLUE
+	; 					txt lang("マテリアル:水滴を" + m1 + "個受け取った。", "You get " + m1 + " Waterdrop.")
+	; 				}
+	; 				if ( m2 > 0 ) {
+	; 					txtef COLOR_SKY_BLUE
+	; 					txt lang("マテリアル:お湯を" + m2 + "個受け取った。", "You get " + m2 + " Hot water.")
+	; 				}
+	; 				if ( m3 > 0 ) {
+	; 					txtef COLOR_SKY_BLUE
+	; 					txt lang("マテリアル:雪を" + m3 + "個受け取った。", "You get " + m3 + " Snow.")
+	; 				}
+	; 				if ( m4 > 0 ) {
+	; 					txtef COLOR_SKY_BLUE
+	; 					txt lang("マテリアル:魔女の涙を" + m4 + "個受け取った。", "You get " + m4 + " Witch's tear.")
+	; 				}
+	; 				if ( m5 > 0 ) {
+	; 					txtef COLOR_SKY_BLUE
+	; 					txt lang("マテリアル:天使の涙を" + m5 + "個受け取った。", "You get " + m5 + " Angel's tear.")
+	; 				}
 
-					m1 = 0
-					m2 = 0
-					m3 = 0
-					m4 = 0
-					m5 = 0
+	; 				m1 = 0
+	; 				m2 = 0
+	; 				m3 = 0
+	; 				m4 = 0
+	; 				m5 = 0
 
-					repeat 500
-						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) < 30 ) {
-							break
-						}
-						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 30 ) {
-							matgetmain MATERIAL_STICK, 1, 6
-							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 30
-							m1++
-						}
-						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 100 ) {
-							matgetmain MATERIAL_BRANCH, 1, 6
-							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 40
-							m2++
-						}
-						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 120 ) {
-							matgetmain MATERIAL_HOLY_WEED, 1, 6
-							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 120
-							m3++
-						}
-						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 130 ) {
-							matgetmain MATERIAL_SHINING_WEED, 1, 6
-							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 130
-							m4++
-						}
-						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 150 ) {
-							matgetmain MATERIAL_SAP_OF_YAGGDRASIL, 1, 6
-							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 150
-							m5++
-						}
-					loop
+	; 				repeat 500
+	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) < 30 ) {
+	; 						break
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 30 ) {
+	; 						matgetmain MATERIAL_STICK, 1, 6
+	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 30
+	; 						m1++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 100 ) {
+	; 						matgetmain MATERIAL_BRANCH, 1, 6
+	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 40
+	; 						m2++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 120 ) {
+	; 						matgetmain MATERIAL_HOLY_WEED, 1, 6
+	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 120
+	; 						m3++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 130 ) {
+	; 						matgetmain MATERIAL_SHINING_WEED, 1, 6
+	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 130
+	; 						m4++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 150 ) {
+	; 						matgetmain MATERIAL_SAP_OF_YAGGDRASIL, 1, 6
+	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 150
+	; 						m5++
+	; 					}
+	; 				loop
 
-					if ( m1 > 0 ) {
-						txtef COLOR_LIGHT_GREEN
-						txt lang("マテリアル:杖を" + m1 + "個受け取った。", "You get " + m1 + " Stick.")
-					}
-					if ( m2 > 0 ) {
-						txtef COLOR_LIGHT_GREEN
-						txt lang("マテリアル:枝を" + m2 + "個受け取った。", "You get " + m2 + " Branch.")
-					}
-					if ( m3 > 0 ) {
-						txtef COLOR_LIGHT_GREEN
-						txt lang("マテリアル:聖なる草を" + m3 + "個受け取った。", "You get " + m3 + " Holy weed.")
-					}
-					if ( m4 > 0 ) {
-						txtef COLOR_LIGHT_GREEN
-						txt lang("マテリアル:ヒカリソウを" + m4 + "個受け取った。", "You get " + m4 + " Shining weed.")
-					}
-					if ( m5 > 0 ) {
-						txtef COLOR_LIGHT_GREEN
-						txt lang("マテリアル:世界樹の樹液を" + m5 + "個受け取った。", "You get " + m5 + " Sap of Yaggdrasil.")
-					}
+	; 				if ( m1 > 0 ) {
+	; 					txtef COLOR_LIGHT_GREEN
+	; 					txt lang("マテリアル:杖を" + m1 + "個受け取った。", "You get " + m1 + " Stick.")
+	; 				}
+	; 				if ( m2 > 0 ) {
+	; 					txtef COLOR_LIGHT_GREEN
+	; 					txt lang("マテリアル:枝を" + m2 + "個受け取った。", "You get " + m2 + " Branch.")
+	; 				}
+	; 				if ( m3 > 0 ) {
+	; 					txtef COLOR_LIGHT_GREEN
+	; 					txt lang("マテリアル:聖なる草を" + m3 + "個受け取った。", "You get " + m3 + " Holy weed.")
+	; 				}
+	; 				if ( m4 > 0 ) {
+	; 					txtef COLOR_LIGHT_GREEN
+	; 					txt lang("マテリアル:ヒカリソウを" + m4 + "個受け取った。", "You get " + m4 + " Shining weed.")
+	; 				}
+	; 				if ( m5 > 0 ) {
+	; 					txtef COLOR_LIGHT_GREEN
+	; 					txt lang("マテリアル:世界樹の樹液を" + m5 + "個受け取った。", "You get " + m5 + " Sap of Yaggdrasil.")
+	; 				}
 
-					m1 = 0
-					m2 = 0
-					m3 = 0
-					m4 = 0
-					m5 = 0
+	; 				m1 = 0
+	; 				m2 = 0
+	; 				m3 = 0
+	; 				m4 = 0
+	; 				m5 = 0
 
-					repeat 500
-						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) < 40 ) {
-							break
-						}
-						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 40 ) {
-							matgetmain MATERIAL_HUMAN_GENE, 1, 6
-							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 40
-							m1++
-						}
-						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 100 ) {
-							matgetmain MATERIAL_TROLL_GENE, 1, 6
-							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 100
-							m2++
-						}
-						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 120 ) {
-							matgetmain MATERIAL_RABBITS_TAIL, 1, 6
-							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 120
-							m3++
-						}
-						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 120 ) {
-							matgetmain MATERIAL_WITCHS_EYE, 1, 6
-							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 120
-							m4++
-						}
-						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 130 ) {
-							matgetmain MATERIAL_FAIRY_DUST, 1, 6
-							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 130
-							m5++
-						}
-					loop
+	; 				repeat 500
+	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) < 40 ) {
+	; 						break
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 40 ) {
+	; 						matgetmain MATERIAL_HUMAN_GENE, 1, 6
+	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 40
+	; 						m1++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 100 ) {
+	; 						matgetmain MATERIAL_TROLL_GENE, 1, 6
+	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 100
+	; 						m2++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 120 ) {
+	; 						matgetmain MATERIAL_RABBITS_TAIL, 1, 6
+	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 120
+	; 						m3++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 120 ) {
+	; 						matgetmain MATERIAL_WITCHS_EYE, 1, 6
+	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 120
+	; 						m4++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 130 ) {
+	; 						matgetmain MATERIAL_FAIRY_DUST, 1, 6
+	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 130
+	; 						m5++
+	; 					}
+	; 				loop
 
-					if ( m1 > 0 ) {
-						txtef COLOR_PINK
-						txt lang("マテリアル:ヒトの遺伝子を" + m1 + "個受け取った。", "You get " + m1 + " Human gene.")
-					}
-					if ( m2 > 0 ) {
-						txtef COLOR_PINK
-						txt lang("マテリアル:トロールの遺伝子を" + m2 + "個受け取った。", "You get " + m2 + " Troll gene.")
-					}
-					if ( m3 > 0 ) {
-						txtef COLOR_PINK
-						txt lang("マテリアル:ウサギの尻尾を" + m3 + "個受け取った。", "You get " + m3 + " Rabbit's tail.")
-					}
-					if ( m4 > 0 ) {
-						txtef COLOR_PINK
-						txt lang("マテリアル:魔女の瞳を" + m4 + "個受け取った。", "You get " + m4 + " Witch's eye.")
-					}
-					if ( m5 > 0 ) {
-						txtef COLOR_PINK
-						txt lang("マテリアル:フェアリーダストを" + m5 + "個受け取った。", "You get " + m5 + " Fairy dust.")
-					}
+	; 				if ( m1 > 0 ) {
+	; 					txtef COLOR_PINK
+	; 					txt lang("マテリアル:ヒトの遺伝子を" + m1 + "個受け取った。", "You get " + m1 + " Human gene.")
+	; 				}
+	; 				if ( m2 > 0 ) {
+	; 					txtef COLOR_PINK
+	; 					txt lang("マテリアル:トロールの遺伝子を" + m2 + "個受け取った。", "You get " + m2 + " Troll gene.")
+	; 				}
+	; 				if ( m3 > 0 ) {
+	; 					txtef COLOR_PINK
+	; 					txt lang("マテリアル:ウサギの尻尾を" + m3 + "個受け取った。", "You get " + m3 + " Rabbit's tail.")
+	; 				}
+	; 				if ( m4 > 0 ) {
+	; 					txtef COLOR_PINK
+	; 					txt lang("マテリアル:魔女の瞳を" + m4 + "個受け取った。", "You get " + m4 + " Witch's eye.")
+	; 				}
+	; 				if ( m5 > 0 ) {
+	; 					txtef COLOR_PINK
+	; 					txt lang("マテリアル:フェアリーダストを" + m5 + "個受け取った。", "You get " + m5 + " Fairy dust.")
+	; 				}
 
-					m1 = 0
-					m2 = 0
-					m3 = 0
-					m4 = 0
-					m5 = 0
+	; 				m1 = 0
+	; 				m2 = 0
+	; 				m3 = 0
+	; 				m4 = 0
+	; 				m5 = 0
 
-					repeat 500
-						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) < 40 ) {
-							break
-						}
-						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 40 ) {
-							matgetmain MATERIAL_CLOTH, 1, 6
-							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 40
-							m1++
-						}
-						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 50 ) {
-							matgetmain MATERIAL_PAPER, 1, 6
-							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 50
-							m2++
-						}
-						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 100 ) {
-							matgetmain MATERIAL_YELLING_MADMAN, 1, 6
-							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 100
-							m3++
-						}
-						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 120 ) {
-							matgetmain MATERIAL_MAGIC_INK, 1, 6
-							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 120
-							m4++
-						}
-						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 120 ) {
-							matgetmain MATERIAL_MAGIC_MASS, 1, 6
-							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 120
-							m5++
-						}
-						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 150 ) {
-							matgetmain MATERIAL_GENERATOR, 1, 6
-							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 150
-							m6++
-						}
-						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 150 ) {
-							matgetmain MATERIAL_ELECTRICITY, 1, 6
-							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 150
-							m7++
-						}
-					loop
+	; 				repeat 500
+	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) < 40 ) {
+	; 						break
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 40 ) {
+	; 						matgetmain MATERIAL_CLOTH, 1, 6
+	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 40
+	; 						m1++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 50 ) {
+	; 						matgetmain MATERIAL_PAPER, 1, 6
+	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 50
+	; 						m2++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 100 ) {
+	; 						matgetmain MATERIAL_YELLING_MADMAN, 1, 6
+	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 100
+	; 						m3++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 120 ) {
+	; 						matgetmain MATERIAL_MAGIC_INK, 1, 6
+	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 120
+	; 						m4++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 120 ) {
+	; 						matgetmain MATERIAL_MAGIC_MASS, 1, 6
+	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 120
+	; 						m5++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 150 ) {
+	; 						matgetmain MATERIAL_GENERATOR, 1, 6
+	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 150
+	; 						m6++
+	; 					}
+	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 150 ) {
+	; 						matgetmain MATERIAL_ELECTRICITY, 1, 6
+	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 150
+	; 						m7++
+	; 					}
+	; 				loop
 
-					if ( m1 > 0 ) {
-						txtef COLOR_YELLOW
-						txt lang("マテリアル:布きれを" + m1 + "個受け取った。", "You get " + m1 + " Cloth.")
-					}
-					if ( m2 > 0 ) {
-						txtef COLOR_YELLOW
-						txt lang("マテリアル:紙を" + m2 + "個受け取った。", "You get " + m2 + " Paper.")
-					}
-					if ( m3 > 0 ) {
-						txtef COLOR_YELLOW
-						txt lang("マテリアル:わめく狂人を" + m3 + "個受け取った。", "You get " + m3 + " Yelling madman.")
-					}
-					if ( m4 > 0 ) {
-						txtef COLOR_YELLOW
-						txt lang("マテリアル:魔法のインクを" + m4 + "個受け取った。", "You get " + m4 + " Magic ink.")
-					}
-					if ( m5 > 0 ) {
-						txtef COLOR_YELLOW
-						txt lang("マテリアル:マジックマスを" + m5 + "個受け取った。", "You get " + m5 + " Magic mass.")
-					}
-					if ( m6 > 0 ) {
-						txtef COLOR_YELLOW
-						txt lang("マテリアル:生成機械を" + m6 + "個受け取った。", "You get " + m6 + " Generator.")
-					}
-					if ( m7 > 0 ) {
-						txtef COLOR_YELLOW
-						txt lang("マテリアル:電気を" + m7 + "個受け取った。", "You get " + m7 + " Electricity.")
-					}
+	; 				if ( m1 > 0 ) {
+	; 					txtef COLOR_YELLOW
+	; 					txt lang("マテリアル:布きれを" + m1 + "個受け取った。", "You get " + m1 + " Cloth.")
+	; 				}
+	; 				if ( m2 > 0 ) {
+	; 					txtef COLOR_YELLOW
+	; 					txt lang("マテリアル:紙を" + m2 + "個受け取った。", "You get " + m2 + " Paper.")
+	; 				}
+	; 				if ( m3 > 0 ) {
+	; 					txtef COLOR_YELLOW
+	; 					txt lang("マテリアル:わめく狂人を" + m3 + "個受け取った。", "You get " + m3 + " Yelling madman.")
+	; 				}
+	; 				if ( m4 > 0 ) {
+	; 					txtef COLOR_YELLOW
+	; 					txt lang("マテリアル:魔法のインクを" + m4 + "個受け取った。", "You get " + m4 + " Magic ink.")
+	; 				}
+	; 				if ( m5 > 0 ) {
+	; 					txtef COLOR_YELLOW
+	; 					txt lang("マテリアル:マジックマスを" + m5 + "個受け取った。", "You get " + m5 + " Magic mass.")
+	; 				}
+	; 				if ( m6 > 0 ) {
+	; 					txtef COLOR_YELLOW
+	; 					txt lang("マテリアル:生成機械を" + m6 + "個受け取った。", "You get " + m6 + " Generator.")
+	; 				}
+	; 				if ( m7 > 0 ) {
+	; 					txtef COLOR_YELLOW
+	; 					txt lang("マテリアル:電気を" + m7 + "個受け取った。", "You get " + m7 + " Electricity.")
+	; 				}
 
-					m1 = 0
-					m2 = 0
-					m3 = 0
-					m4 = 0
-					m5 = 0
-					m6 = 0
-					m7 = 0
-				}
-			}
-		loop
-		goto *pc_turn
-	}
+	; 				m1 = 0
+	; 				m2 = 0
+	; 				m3 = 0
+	; 				m4 = 0
+	; 				m5 = 0
+	; 				m6 = 0
+	; 				m7 = 0
+	; 			}
+	; 		}
+	; 	loop
+	; 	goto *pc_turn
+	; }
 	
 	/********** JAMES CUSTOM - TCG - BEGINNING **********/
 	if ( p == 69100 | p == 69101 ) {
@@ -6620,11 +6621,11 @@
 			txt lang(cdatan(CDATAN_NAME, tc) + "はあなたが何を伝えようとしたのか、すごく気になっている…。", cdatan(CDATAN_NAME, tc) + " becomes very curious about what you were wanting to tell " + him(tc) + "...")
 			cdata(CDATA_EMO_ICON, tc) = 21 + 100 * 3
 		}
-		if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 5 ) {
+		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 5 ) {
 			snd SOUNDLIST_WRITE1
 			txtef COLOR_GREEN
 			txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-			cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+			cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 		}
 		cdata(CDATA_INTEREST, tc) -= 80
 		cdata(CDATA_INTEREST_RENEW, tc) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 + 12
@@ -14709,13 +14710,13 @@
 				rc = tc
 				gosub *chara_item
 				if ( refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_ITEM_ROD ) {
-					cdata(CDATA_MATERIAL1_COUNTER, tc) = ci
+					cdata(CDATA_AI_ITEM_OFFENSIVE, tc) = ci
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_LASER_BAZOOKA | inv(INV_ITEM_ID, ci) == ITEM_ID_M202_SPECIAL | inv(INV_ITEM_ID, ci) == ITEM_ID_PANZERFAUST_X ) {
-					cdata(CDATA_MATERIAL1_COUNTER, tc) = ci
+					cdata(CDATA_AI_ITEM_OFFENSIVE, tc) = ci
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CF_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_CRUSH_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_BATTLE_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_SUPER_POTIOMAN ) {
-					cdata(CDATA_MATERIAL1_COUNTER, tc) = ci
+					cdata(CDATA_AI_ITEM_OFFENSIVE, tc) = ci
 				}
 				if ( inv(INV_ITEM_KNOWN, ci) == ITEM_KNOWN_FULL ) {
 					inv(INV_ITEM_IDENTIFY_LEVEL, ci) = 0

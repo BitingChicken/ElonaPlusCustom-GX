@@ -4078,7 +4078,7 @@
 		snd SOUNDLIST_WRITE1
 		txtef COLOR_GREEN
 		txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-		cdata(CDATA_MATERIAL4_COUNTER, CHARA_PLAYER)++
+		cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER)++
 	}
 	redraw 0
 	gosub *sleep_draw_init
@@ -4659,11 +4659,11 @@
 		}
 		return
 	}
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 2 ) {
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 2 ) {
 		snd SOUNDLIST_WRITE1
 		txtef COLOR_GREEN
 		txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-		cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+		cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 	}
 	if ( cdata(CDATA_HUNGER, CHARA_PLAYER) <= 1600 & rnd(10) == 0 ) {
 		inv_getheader cc
@@ -5682,11 +5682,11 @@
 			}
 			cdata(CDATA_THIRST, cc) += 2000
 			if ( cc == CHARA_PLAYER ) {
-				if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 1 ) {
+				if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
 					snd SOUNDLIST_WRITE1
 					txtef COLOR_GREEN
 					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-					cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+					cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 				}
 			}
 		}
@@ -6694,11 +6694,11 @@
 		cc = ccthrowpotion
 	}
 	if ( tc == CHARA_PLAYER ) {
-		if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 1 ) {
+		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
 			snd SOUNDLIST_WRITE1
 			txtef COLOR_GREEN
 			txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-			cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+			cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 		}
 	}
 	if ( potionspill | potionthrow ) {
@@ -6805,11 +6805,11 @@
 		txtmore
 	}
 	if ( cc == CHARA_PLAYER ) {
-		if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 1 ) {
+		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
 			snd SOUNDLIST_WRITE1
 			txtef COLOR_GREEN
 			txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-			cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+			cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 		}
 	}
 	tc = cc
@@ -8621,11 +8621,11 @@
 								}
 							}
 							if ( cc == CHARA_PLAYER ) {
-								if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 1 ) {
+								if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
 									snd SOUNDLIST_WRITE1
 									txtef COLOR_GREEN
 									txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-									cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+									cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 								}
 							}
 							gain_iden tc, cc, 5
@@ -25250,11 +25250,11 @@
 		loop
 		anepower = cdata(CDATA_LEVEL, cc) * 10
 		if ( cc == CHARA_PLAYER ) {
-			cdata(CDATA_MATERIAL3_COUNTER, CHARA_PLAYER)++
-			if ( cdata(CDATA_MATERIAL3_COUNTER, CHARA_PLAYER) > cdata(CDATA_LEVEL, CHARA_PLAYER) ) {
-				cdata(CDATA_MATERIAL3_COUNTER, CHARA_PLAYER) = cdata(CDATA_LEVEL, CHARA_PLAYER)
+			cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER)++
+			if ( cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER) > cdata(CDATA_LEVEL, CHARA_PLAYER) ) {
+				cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER) = cdata(CDATA_LEVEL, CHARA_PLAYER)
 			}
-			anepower = (cdata(CDATA_MATERIAL3_COUNTER, CHARA_PLAYER) + 13) / 13 * 10
+			anepower = (cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER) + 13) / 13 * 10
 		}
 		tcbk = tc
 		tc = cc

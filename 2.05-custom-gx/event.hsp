@@ -3962,25 +3962,25 @@
 		item_compress -1
 	}
 	mode = MODELIST_SHOP
-	if ( cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) / 10 \ 7 == 2 ) {
+	if ( cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) / 10 \ 7 == 2 ) {
 		dbid = 1271
 	}
-	if ( cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) / 10 \ 7 == 3 ) {
+	if ( cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) / 10 \ 7 == 3 ) {
 		dbid = 1270
 	}
-	if ( cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) / 10 \ 7 == 4 ) {
+	if ( cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) / 10 \ 7 == 4 ) {
 		dbid = 1269
 	}
-	if ( cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) / 10 \ 7 == 5 ) {
+	if ( cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) / 10 \ 7 == 5 ) {
 		dbid = 1270
 	}
-	if ( cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) / 10 \ 7 == 6 ) {
+	if ( cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) / 10 \ 7 == 6 ) {
 		dbid = 1269
 	}
-	if ( cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) / 10 \ 7 == 0 ) {
+	if ( cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) / 10 \ 7 == 0 ) {
 		dbid = 1270
 	}
-	if ( cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) / 10 \ 7 == 1 ) {
+	if ( cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) / 10 \ 7 == 1 ) {
 		dbid = 1269
 	}
 	flt

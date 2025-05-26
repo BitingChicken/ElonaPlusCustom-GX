@@ -3893,11 +3893,11 @@
 	if ( check_talk_arg1 >= 0 ) {
 		if ( check_talk_arg1 == 0 | cdata(CDATA_RELATION, check_talk_arg1) >= 10 ) {
 			if ( cdata(CDATA_LEVEL, CHARA_PLAYER) < cdata(CDATA_LEVEL, check_talk_arg2) ) {
-				if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 4 ) {
+				if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 4 ) {
 					snd SOUNDLIST_WRITE1
 					txtef COLOR_GREEN
 					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-					cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+					cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 				}
 			}
 			if ( cbit(CHARA_BIT_NECRO, check_talk_arg2) != TRUE & cdata(CDATA_RELATION, check_talk_arg2) != RELATION_ALLY & gdata(GDATA_FLAG_MAIN) != 900 ) {
@@ -4001,11 +4001,11 @@
 	if ( check_kill_arg1 >= 0 ) {
 		if ( check_kill_arg1 == 0 | cdata(CDATA_RELATION, check_kill_arg1) >= 10 ) {
 			if ( cdata(CDATA_LEVEL, CHARA_PLAYER) < cdata(CDATA_LEVEL, check_kill_arg2) ) {
-				if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 4 ) {
+				if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 4 ) {
 					snd SOUNDLIST_WRITE1
 					txtef COLOR_GREEN
 					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-					cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+					cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 				}
 			}
 			if ( cbit(CHARA_BIT_NECRO, check_kill_arg2) != TRUE & cdata(CDATA_RELATION, check_kill_arg2) != RELATION_ALLY & gdata(GDATA_FLAG_MAIN) != 900 ) {
@@ -7134,36 +7134,36 @@
 			}
 			cdata(CDATA_AI_AGGRO, dmghp_source) = 0
 		}
-		if ( dmghp_source >= DAMAGE_FROM_CHARA ) {
-			if ( charaIsSummoned(dmghp_charid) == FALSE ) {
-				if ( dmghp_source < MAX_CHARA_FOLLOWER ) {
-					if ( dmghp_source != DAMAGE_FROM_CHARA ) {
-						if ( cdata(CDATA_IMPRESSION, dmghp_source) >= 100 ) {
-							if ( sdata(SKILL_NORMAL_MINING, dmghp_source) > 0 ) {
-								cdata(CDATA_MATERIAL1_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_MINING, dmghp_source) / 5, 1, 10)
-								skillexp SKILL_NORMAL_MINING, dmghp_source, 5
-							}
-							if ( sdata(SKILL_NORMAL_FISHING, dmghp_source) > 0 ) {
-								cdata(CDATA_MATERIAL2_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_FISHING, dmghp_source) / 5, 1, 10)
-								skillexp SKILL_NORMAL_FISHING, dmghp_source, 5
-							}
-							if ( sdata(SKILL_NORMAL_GARDENING, dmghp_source) > 0 ) {
-								cdata(CDATA_MATERIAL3_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_GARDENING, dmghp_source) / 5, 1, 10)
-								skillexp SKILL_NORMAL_GARDENING, dmghp_source, 5
-							}
-							if ( sdata(SKILL_NORMAL_GENE_ENGINEER, dmghp_source) > 0 ) {
-								cdata(CDATA_MATERIAL4_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_GENE_ENGINEER, dmghp_source) / 5, 1, 10)
-								skillexp SKILL_NORMAL_GENE_ENGINEER, dmghp_source, 5
-							}
-							if ( sdata(SKILL_NORMAL_DETECTION, dmghp_source) > 0 ) {
-								cdata(CDATA_MATERIAL5_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_DETECTION, dmghp_source) / 5, 1, 10)
-								skillexp SKILL_NORMAL_DETECTION, dmghp_source, 5
-							}
-						}
-					}
-				}
-			}
-		}
+		; if ( dmghp_source >= DAMAGE_FROM_CHARA ) {
+		; 	if ( charaIsSummoned(dmghp_charid) == FALSE ) {
+		; 		if ( dmghp_source < MAX_CHARA_FOLLOWER ) {
+		; 			if ( dmghp_source != DAMAGE_FROM_CHARA ) {
+		; 				if ( cdata(CDATA_IMPRESSION, dmghp_source) >= 100 ) {
+		; 					if ( sdata(SKILL_NORMAL_MINING, dmghp_source) > 0 ) {
+		; 						cdata(CDATA_MATERIAL1_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_MINING, dmghp_source) / 5, 1, 10)
+		; 						skillexp SKILL_NORMAL_MINING, dmghp_source, 5
+		; 					}
+		; 					if ( sdata(SKILL_NORMAL_FISHING, dmghp_source) > 0 ) {
+		; 						cdata(CDATA_MATERIAL2_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_FISHING, dmghp_source) / 5, 1, 10)
+		; 						skillexp SKILL_NORMAL_FISHING, dmghp_source, 5
+		; 					}
+		; 					if ( sdata(SKILL_NORMAL_GARDENING, dmghp_source) > 0 ) {
+		; 						cdata(CDATA_MATERIAL3_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_GARDENING, dmghp_source) / 5, 1, 10)
+		; 						skillexp SKILL_NORMAL_GARDENING, dmghp_source, 5
+		; 					}
+		; 					if ( sdata(SKILL_NORMAL_GENE_ENGINEER, dmghp_source) > 0 ) {
+		; 						cdata(CDATA_MATERIAL4_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_GENE_ENGINEER, dmghp_source) / 5, 1, 10)
+		; 						skillexp SKILL_NORMAL_GENE_ENGINEER, dmghp_source, 5
+		; 					}
+		; 					if ( sdata(SKILL_NORMAL_DETECTION, dmghp_source) > 0 ) {
+		; 						cdata(CDATA_MATERIAL5_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_DETECTION, dmghp_source) / 5, 1, 10)
+		; 						skillexp SKILL_NORMAL_DETECTION, dmghp_source, 5
+		; 					}
+		; 				}
+		; 			}
+		; 		}
+		; 	}
+		; }
 		if ( dmghp_charid != CHARA_PLAYER ) {
 			if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
 				if ( cbit(CHARA_BIT_LIVESTOCK, dmghp_charid) != 1 ) {
@@ -8355,9 +8355,9 @@
 	if ( gain_ap_source == "kill" ) {
 		if ( cbit(CHARA_BIT_NECRO, gain_ap_chara_id) == 1 & gain_ap_chara_id != CHARA_PLAYER ) {
 			skillexp SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER, limit(cdata(CDATA_LEVEL, gain_ap_chara_id) + 200, 200, 1000)
-			gain_ap (gain_ap_source + " of your necro-minion"), CHARA_PLAYER, gain_ap_enemy_attr, gain_ap_enemy_lifemana, gain_ap_enemy_speed, gain_ap_enemy_orgspd,  1, 3, 3, 3, 2,   0, 0, 0, 0, 0
+			gain_ap (gain_ap_source + " of your minion"), CHARA_PLAYER, gain_ap_enemy_attr, gain_ap_enemy_lifemana, gain_ap_enemy_speed, gain_ap_enemy_orgspd,  1, 3, 3, 3, 2,   0, 0, 0, 0, 0
 			if ( cdata(CDATA_IN_TAGTEAM, gain_ap_chara_id) != 0 ) {
-				gain_ap (gain_ap_source + " of your necro-minion"), cdata(CDATA_TAGTEAM_PARTNER, CHARA_PLAYER), gain_ap_enemy_attr, gain_ap_enemy_lifemana, gain_ap_enemy_speed, 0,   1, 1, 1, 1, 1,   0, 0, 0, 0, 0
+				gain_ap (gain_ap_source + " of your minion"), cdata(CDATA_TAGTEAM_PARTNER, CHARA_PLAYER), gain_ap_enemy_attr, gain_ap_enemy_lifemana, gain_ap_enemy_speed, 0,   1, 1, 1, 1, 1,   0, 0, 0, 0, 0
 			}
 		}
 		if ( gdata(GDATA_RIDER) != 0 ) {

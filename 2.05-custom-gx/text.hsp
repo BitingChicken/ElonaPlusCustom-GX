@@ -8249,104 +8249,104 @@
 	return
 
 *daily_info
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 9 | cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 0 ) {
-		cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) = 1
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 9 | cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 0 ) {
+		cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) = 1
 	}
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 9 | cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 0 ) {
-		cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) = 1
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 9 | cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 0 ) {
+		cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) = 1
 	}
 	if ( val == 0 ) {
 		noteadd ""
 		noteadd lang("@QD[デイリークエスト]", "@QD[Daily Quest]")
 	}
-	noteadd lang("@QD<現在：" + cdata(CDATA_MATERIAL4_COUNTER, CHARA_PLAYER) + " / 目標ポイント：" + cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) + ">", "@QD<Now " + cdata(CDATA_MATERIAL4_COUNTER, CHARA_PLAYER) + " / RewardGet " + cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) + ">")
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) >= 1000 ) {
+	noteadd lang("@QD<現在：" + cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER) + " / 目標ポイント：" + cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) + ">", "@QD<Now " + cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER) + " / RewardGet " + cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) + ">")
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) >= 1000 ) {
 		s3 = lang("[達成]", "[Done]")
 		talk_conv s3, 40 - en * 4
 		buff += s3
 	}
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 1 ) {
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 1 ) {
 		s3 = lang("・何か飲み物を飲もう。", "I will drink something.")
 		talk_conv s3, 40 - en * 4
 		buff += s3
 	}
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 2 ) {
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 2 ) {
 		s3 = lang("・ワールドマップを歩こう。", "I will walk on the world map.")
 		talk_conv s3, 40 - en * 4
 		buff += s3
 	}
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 3 ) {
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 3 ) {
 		s3 = lang("・誰かと会話しよう。", "I wll have a conversation with someone.")
 		talk_conv s3, 40 - en * 4
 		buff += s3
 	}
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 4 ) {
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 4 ) {
 		s3 = lang("・高レベルの相手を倒そう。", "I will defeat a higher level enemy.")
 		talk_conv s3, 40 - en * 4
 		buff += s3
 	}
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 5 ) {
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 5 ) {
 		s3 = lang("・誰かに自分の気持ちを伝えよう。", "I will tell someone how I feel.")
 		talk_conv s3, 40 - en * 4
 		buff += s3
 	}
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 6 ) {
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 6 ) {
 		s3 = lang("・ランダムネフィアを訪れよう。", "I will visit a Random Nefia.")
 		talk_conv s3, 40 - en * 4
 		buff += s3
 	}
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 7 ) {
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 7 ) {
 		s3 = lang("・野外を訪れよう。", "I will visit the Wilderness.")
 		talk_conv s3, 40 - en * 4
 		buff += s3
 	}
-	if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 == 8 ) {
+	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 == 8 ) {
 		s3 = lang("・軽疲労になるまで運動しよう。", "I will exercise until I feel somewhat tired.")
 		talk_conv s3, 40 - en * 4
 		buff += s3
 	}
 	noteadd ""
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) >= 1000 ) {
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) >= 1000 ) {
 		s4 = lang("[達成]", "[Done]")
 		talk_conv s4, 40 - en * 4
 		buff += s4
 	}
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 1 ) {
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 1 ) {
 		s4 = lang("・肉を食べよう。", "I will eat some meat.")
 		talk_conv s4, 40 - en * 4
 		buff += s4
 	}
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 2 ) {
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 2 ) {
 		s4 = lang("・卵を食べよう。", "I will eat an egg.")
 		talk_conv s4, 40 - en * 4
 		buff += s4
 	}
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 3 ) {
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 3 ) {
 		s4 = lang("・野菜を食べよう。", "I will eat some vegetable.")
 		talk_conv s4, 40 - en * 4
 		buff += s4
 	}
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 4 ) {
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 4 ) {
 		s4 = lang("・果物を食べよう。", "I will eat some fruit.")
 		talk_conv s4, 40 - en * 4
 		buff += s4
 	}
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 5 ) {
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 5 ) {
 		s4 = lang("・パンを食べよう。", "I will eat some bread.")
 		talk_conv s4, 40 - en * 4
 		buff += s4
 	}
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 6 ) {
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 6 ) {
 		s4 = lang("・木の実を食べよう。", "I will eat some nuts.")
 		talk_conv s4, 40 - en * 4
 		buff += s4
 	}
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 7 ) {
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 7 ) {
 		s4 = lang("・魚介を食べよう。", "I will eat some seafood.")
 		talk_conv s4, 40 - en * 4
 		buff += s4
 	}
-	if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 == 8 ) {
+	if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 == 8 ) {
 		s4 = lang("・麺を食べよう。", "I will eat some noodles.")
 		talk_conv s4, 40 - en * 4
 		buff += s4

@@ -8219,11 +8219,11 @@
 				}
 			}
 			if ( cc == CHARA_PLAYER ) {
-				if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 1 ) {
+				if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
 					snd SOUNDLIST_WRITE1
 					txtef COLOR_GREEN
 					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-					cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+					cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 				}
 			}
 			snd SOUNDLIST_DRINK1
@@ -8850,7 +8850,7 @@
 			}
 		}
 		snd SOUNDLIST_OFFER2
-		anepower = (cdata(CDATA_MATERIAL3_COUNTER, CHARA_PLAYER) + 13) / 13 * 10
+		anepower = (cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER) + 13) / 13 * 10
 		healmp tc, anepower
 		animeid = ANIMATION_HEAL
 		gosub *anime

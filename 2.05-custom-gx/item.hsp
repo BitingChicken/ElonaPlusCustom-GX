@@ -3012,11 +3012,11 @@
 		}
 		nutrition = 2000
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 1 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 1 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
@@ -3035,11 +3035,11 @@
 		}
 		nutrition = 2000
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 2 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 2 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
@@ -3054,11 +3054,11 @@
 		}
 		nutrition = 2000
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 3 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 3 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
@@ -3077,11 +3077,11 @@
 		}
 		nutrition = 1500
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 4 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 4 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
@@ -3104,11 +3104,11 @@
 		}
 		nutrition = 2800
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 5 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 5 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
@@ -3127,11 +3127,11 @@
 		}
 		nutrition = 1500
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 6 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 6 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
@@ -3150,11 +3150,11 @@
 		}
 		nutrition = 3000
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 7 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 7 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
@@ -3169,71 +3169,71 @@
 		}
 		nutrition = 3500
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 8 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 8 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_B_JERKY | inv(INV_ITEM_ID, ci) == ITEM_ID_FORBIDDEN_MEAT ) {
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 1 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 1 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_JACK_LANTERN | inv(INV_ITEM_ID, ci) == ITEM_ID_MANDRAKE_SALAD | inv(INV_ITEM_ID, ci) == ITEM_ID_FRIED_POTATO | inv(INV_ITEM_ID, ci) == ITEM_ID_POP_CORN ) {
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 3 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 3 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MAGIC_FRUIT | inv(INV_ITEM_ID, ci) == ITEM_ID_HAPPY_APPLE ) {
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 4 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 4 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_STICK_BREAD | inv(INV_ITEM_ID, ci) == ITEM_ID_PUFF_PUFF_BREAD ) {
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 5 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 5 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_GOLD_ACORN | inv(INV_ITEM_ID, ci) == ITEM_ID_CRIMBERRY ) {
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 6 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 6 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_DEAD_FISH ) {
 		if ( cc == CHARA_PLAYER ) {
-			if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) == 7 ) {
+			if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) == 7 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) += 1000
 			}
 		}
 	}

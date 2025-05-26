@@ -1401,11 +1401,11 @@
 		}
 		txtef COLOR_YELLOW
 		txt lang("一日が終わり、日付が変わった。", "A day passes and a new day begins.")
-		if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) >= 1000 ) {
-			cdata(CDATA_MATERIAL4_COUNTER, CHARA_PLAYER)++
+		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) >= 1000 ) {
+			cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER)++
 		}
-		if ( cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) >= 1000 ) {
-			cdata(CDATA_MATERIAL4_COUNTER, CHARA_PLAYER)++
+		if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) >= 1000 ) {
+			cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER)++
 		}
 		snd SOUNDLIST_WRITE1
 		txtef COLOR_GREEN
@@ -1413,27 +1413,27 @@
 		repeat 10
 			randomize gdata(GDATA_DAY) + gdata(GDATA_MONTH) + gdata(GDATA_YEAR) + cnt
 			daily = rnd(8) + 1
-			if ( daily != cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) \ 1000 ) {
-				cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) = daily
+			if ( daily != cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) \ 1000 ) {
+				cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) = daily
 				break
 			}
 		loop
 		repeat 10
 			randomize gdata(GDATA_DAY) + gdata(GDATA_MONTH) * 2 + gdata(GDATA_YEAR) * 2 + cnt
 			dailyf = rnd(8) + 1
-			if ( dailyf != cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) \ 1000 ) {
-				cdata(CDATA_SPINDLE_COMBINATION_B, CHARA_PLAYER) = dailyf
+			if ( dailyf != cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) \ 1000 ) {
+				cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) = dailyf
 				break
 			}
 		loop
 		randomize
-		if ( cdata(CDATA_MATERIAL4_COUNTER, CHARA_PLAYER) >= cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) ) {
-			cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) += 10
+		if ( cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER) >= cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) ) {
+			cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) += 10
 			gosub *daily_quest_reward
 		}
-		if ( cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) <= 0 | cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) >= 1010 ) {
-			cdata(CDATA_MATERIAL5_COUNTER, CHARA_PLAYER) = 10
-			cdata(CDATA_MATERIAL4_COUNTER, CHARA_PLAYER) = 0
+		if ( cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) <= 0 | cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) >= 1010 ) {
+			cdata(CDATA_DAILY_QUEST_TARGET_COUNT, CHARA_PLAYER) = 10
+			cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER) = 0
 		}
 		if ( TweakData(TWEAK_GAMEPLAY_DISABLE_STUDY_DAYS, TWEAK_CATEGORY_GAMEPLAY) == FALSE ) {
 			repeat 2
@@ -2542,12 +2542,12 @@
 			sandturn = 0
 			sanddmg = 0
 		}
-		if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 8 ) {
+		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 8 ) {
 			if ( cdata(CDATA_SP, CHARA_PLAYER) < 50 ) {
 				snd SOUNDLIST_WRITE1
 				txtef COLOR_GREEN
 				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-				cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+				cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 			}
 		}
 		if ( gdata(GDATA_SLEEP_GENE) != 0 ) {
