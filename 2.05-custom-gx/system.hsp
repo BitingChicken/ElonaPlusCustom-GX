@@ -968,7 +968,12 @@
 		gdata(GDATA_TRAVEL_DISTANCE) = 0
 		repeat 245
 			cdata(CDATA_SEALED_MAGIC, cnt) = 0
-			cdata(CDATA_MATERIAL1_COUNTER, cnt) = 0
+			cdata(CDATA_CHARACTER_TIER, cnt) = CHARACTER_TIER_NONE
+		loop
+	}
+	if ( gdata(GDATA_VERSION) < 6380 ) {
+		repeat 16
+			cdata(CDATA_CHARACTER_TIER, cnt) = CHARACTER_TIER_NONE
 		loop
 	}
 	if ( gdata(GDATA_VERSION) != VERSION_NUMBER ) {

@@ -1256,8 +1256,10 @@
 #define global	SOUNDLIST_BURST00	306
 #define global	SOUNDLIST_GORO05	307
 #define global	SOUNDLIST_MECHA15	308
+#define global	SOUNDLIST_CAT03	309
+#define global	SOUNDLIST_DOG02	310
 
-#define global	SOUNDLIST_MAX	(SOUNDLIST_MECHA15 + 1)
+#define global	SOUNDLIST_MAX	(SOUNDLIST_DOG02 + 1)
 
 // Item effects
 #define global	EFFECT_NONE	0
@@ -3949,16 +3951,18 @@
 #define global	CDATA_TONE_SEX	188
 #define global	CDATA_SPINDLE_COMBINATION_A	189
 #define global	CDATA_SPINDLE_COMBINATION_B	190
-#define global	CDATA_AI_ITEM_OFFENSIVE	191
+// Field 190-195 is being used differently for pets/npcs
 #define global	CDATA_RENT_REFRESH	191
-// Field 190-195 is being used differently for players/pets/npcs
+#define global	CDATA_AI_ITEM_OFFENSIVE	197
+// PLAYER FIELD
 #define global	CDATA_DAILY_QUEST2	190
 #define global	CDATA_DAILY_QUEST1	191
 #define global	CDATA_SPEED_TRAIT	192
 #define global	CDATA_SISTER_ENERGY_TYPE	193
 #define global	CDATA_DAILY_QUEST_CURRENT_COUNT	194
 #define global	CDATA_DAILY_QUEST_TARGET_COUNT	195
-// These 5 material counter is not available anymore after the 2.27 travel revamp.
+#define global	CDATA_SHIP_HULL_HP	197
+// End duplicate field
 #define global	CDATA_MATERIAL1_COUNTER	191
 #define global	CDATA_MATERIAL2_COUNTER	192
 #define global	CDATA_MATERIAL3_COUNTER	193

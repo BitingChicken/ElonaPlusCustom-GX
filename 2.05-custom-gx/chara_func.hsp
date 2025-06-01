@@ -7134,36 +7134,36 @@
 			}
 			cdata(CDATA_AI_AGGRO, dmghp_source) = 0
 		}
-		; if ( dmghp_source >= DAMAGE_FROM_CHARA ) {
-		; 	if ( charaIsSummoned(dmghp_charid) == FALSE ) {
-		; 		if ( dmghp_source < MAX_CHARA_FOLLOWER ) {
-		; 			if ( dmghp_source != DAMAGE_FROM_CHARA ) {
-		; 				if ( cdata(CDATA_IMPRESSION, dmghp_source) >= 100 ) {
-		; 					if ( sdata(SKILL_NORMAL_MINING, dmghp_source) > 0 ) {
-		; 						cdata(CDATA_MATERIAL1_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_MINING, dmghp_source) / 5, 1, 10)
-		; 						skillexp SKILL_NORMAL_MINING, dmghp_source, 5
-		; 					}
-		; 					if ( sdata(SKILL_NORMAL_FISHING, dmghp_source) > 0 ) {
-		; 						cdata(CDATA_MATERIAL2_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_FISHING, dmghp_source) / 5, 1, 10)
-		; 						skillexp SKILL_NORMAL_FISHING, dmghp_source, 5
-		; 					}
-		; 					if ( sdata(SKILL_NORMAL_GARDENING, dmghp_source) > 0 ) {
-		; 						cdata(CDATA_MATERIAL3_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_GARDENING, dmghp_source) / 5, 1, 10)
-		; 						skillexp SKILL_NORMAL_GARDENING, dmghp_source, 5
-		; 					}
-		; 					if ( sdata(SKILL_NORMAL_GENE_ENGINEER, dmghp_source) > 0 ) {
-		; 						cdata(CDATA_MATERIAL4_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_GENE_ENGINEER, dmghp_source) / 5, 1, 10)
-		; 						skillexp SKILL_NORMAL_GENE_ENGINEER, dmghp_source, 5
-		; 					}
-		; 					if ( sdata(SKILL_NORMAL_DETECTION, dmghp_source) > 0 ) {
-		; 						cdata(CDATA_MATERIAL5_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_DETECTION, dmghp_source) / 5, 1, 10)
-		; 						skillexp SKILL_NORMAL_DETECTION, dmghp_source, 5
-		; 					}
-		; 				}
-		; 			}
-		; 		}
-		; 	}
-		; }
+		if ( dmghp_source >= DAMAGE_FROM_CHARA ) {
+			if ( charaIsSummoned(dmghp_charid) == FALSE ) {
+				if ( dmghp_source < MAX_CHARA_FOLLOWER ) {
+					if ( dmghp_source != DAMAGE_FROM_CHARA ) {
+						if ( cdata(CDATA_IMPRESSION, dmghp_source) >= 100 ) {
+							if ( sdata(SKILL_NORMAL_MINING, dmghp_source) > 0 ) {
+								cdata(CDATA_MATERIAL1_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_MINING, dmghp_source) / 5, 1, 10)
+								skillexp SKILL_NORMAL_MINING, dmghp_source, 5
+							}
+							if ( sdata(SKILL_NORMAL_FISHING, dmghp_source) > 0 ) {
+								cdata(CDATA_MATERIAL2_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_FISHING, dmghp_source) / 5, 1, 10)
+								skillexp SKILL_NORMAL_FISHING, dmghp_source, 5
+							}
+							if ( sdata(SKILL_NORMAL_GARDENING, dmghp_source) > 0 ) {
+								cdata(CDATA_MATERIAL3_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_GARDENING, dmghp_source) / 5, 1, 10)
+								skillexp SKILL_NORMAL_GARDENING, dmghp_source, 5
+							}
+							if ( sdata(SKILL_NORMAL_GENE_ENGINEER, dmghp_source) > 0 ) {
+								cdata(CDATA_MATERIAL4_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_GENE_ENGINEER, dmghp_source) / 5, 1, 10)
+								skillexp SKILL_NORMAL_GENE_ENGINEER, dmghp_source, 5
+							}
+							if ( sdata(SKILL_NORMAL_DETECTION, dmghp_source) > 0 ) {
+								cdata(CDATA_MATERIAL5_COUNTER, dmghp_source) += limit(sdata(SKILL_NORMAL_DETECTION, dmghp_source) / 5, 1, 10)
+								skillexp SKILL_NORMAL_DETECTION, dmghp_source, 5
+							}
+						}
+					}
+				}
+			}
+		}
 		if ( dmghp_charid != CHARA_PLAYER ) {
 			if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
 				if ( cbit(CHARA_BIT_LIVESTOCK, dmghp_charid) != 1 ) {

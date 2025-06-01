@@ -6087,341 +6087,340 @@
 
 	/********** BLOODYSHADE CUSTOM - BEGINNING **********/ // Add option to collect materials from all pets at once.
 
-	// Travel material is removed in 2.27
-	; if ( p == 666 ) {
-	; 	repeat MAX_CHARA_FOLLOWER - 1
-	; 		tc = cnt
+	if ( p == 666 ) {
+		repeat MAX_CHARA_FOLLOWER - 1
+			tc = cnt
 
-	; 		if ( tc == CHARA_PLAYER ) {
-	; 			continue
-	; 		}
+			if ( tc == CHARA_PLAYER ) {
+				continue
+			}
 
-	; 		if ( cbit(CHARA_BIT_BODYGUARD, tc) == 0 & cbit(CHARA_BIT_GUARD_TEMP, tc) == 0 & cbit(CHARA_BIT_NECRO, tc) == 0 & cbit(CHARA_BIT_LIVESTOCK, tc) == 0 ) {
-	; 			if ( cdata(CDATA_MATERIAL1_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL2_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL3_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL4_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL5_COUNTER, tc) > 200 ) {
-	; 				txt lang(name(tc) + "は冒険の途中で集めたマテリアルを手渡してきた。", name(tc) + " handed over the materials " + he(tc) + " has gathered during your adventures.")
+			if ( cbit(CHARA_BIT_BODYGUARD, tc) == 0 & cbit(CHARA_BIT_GUARD_TEMP, tc) == 0 & cbit(CHARA_BIT_NECRO, tc) == 0 & cbit(CHARA_BIT_LIVESTOCK, tc) == 0 ) {
+				if ( cdata(CDATA_MATERIAL1_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL2_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL3_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL4_COUNTER, tc) > 200 | cdata(CDATA_MATERIAL5_COUNTER, tc) > 200 ) {
+					txt lang(name(tc) + "は冒険の途中で集めたマテリアルを手渡してきた。", name(tc) + " handed over the materials " + he(tc) + " has gathered during your adventures.")
 
-	; 				m1 = 0
-	; 				m2 = 0
-	; 				m3 = 0
-	; 				m4 = 0
-	; 				m5 = 0
+					m1 = 0
+					m2 = 0
+					m3 = 0
+					m4 = 0
+					m5 = 0
 
-	; 				repeat 500
-	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) < 40 ) {
-	; 						break
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 40 ) {
-	; 						matgetmain MATERIAL_PEBBLE, 1, 6
-	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 40
-	; 						m1++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 100 ) {
-	; 						matgetmain MATERIAL_FINE_STONE, 1, 6
-	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 100
-	; 						m2++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 120 ) {
-	; 						matgetmain MATERIAL_ETHER_FRAGMENT, 1, 6
-	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 120
-	; 						m3++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 150 ) {
-	; 						matgetmain MATERIAL_ELEMENT_FRAGMENT, 1, 6
-	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 150
-	; 						m4++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 150 ) {
-	; 						matgetmain MATERIAL_CHAOS_STONE, 1, 6
-	; 						cdata(CDATA_MATERIAL1_COUNTER, tc) -= 150
-	; 						m5++
-	; 					}
-	; 				loop
+					repeat 500
+						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) < 40 ) {
+							break
+						}
+						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 40 ) {
+							matgetmain MATERIAL_PEBBLE, 1, 6
+							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 40
+							m1++
+						}
+						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 100 ) {
+							matgetmain MATERIAL_FINE_STONE, 1, 6
+							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 100
+							m2++
+						}
+						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 120 ) {
+							matgetmain MATERIAL_ETHER_FRAGMENT, 1, 6
+							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 120
+							m3++
+						}
+						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 150 ) {
+							matgetmain MATERIAL_ELEMENT_FRAGMENT, 1, 6
+							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 150
+							m4++
+						}
+						if ( cdata(CDATA_MATERIAL1_COUNTER, tc) >= 150 ) {
+							matgetmain MATERIAL_CHAOS_STONE, 1, 6
+							cdata(CDATA_MATERIAL1_COUNTER, tc) -= 150
+							m5++
+						}
+					loop
 
-	; 				if ( m1 > 0 ) {
-	; 					txtef COLOR_BROWN
-	; 					txt lang("マテリアル:石ころを" + m1 + "個受け取った。", "You get " + m1 + " Pebble.")
-	; 				}
-	; 				if ( m2 > 0 ) {
-	; 					txtef COLOR_BROWN
-	; 					txt lang("マテリアル:上等な石を" + m2 + "個受け取った。", "You get " + m2 + " Fine stone.")
-	; 				}
-	; 				if ( m3 > 0 ) {
-	; 					txtef COLOR_BROWN
-	; 					txt lang("マテリアル:エーテルの欠片を" + m3 + "個受け取った。", "You get " + m3 + " Ether fragment.")
-	; 				}
-	; 				if ( m4 > 0 ) {
-	; 					txtef COLOR_BROWN
-	; 					txt lang("マテリアル:風切石を" + m4 + "個受け取った。", "You get " + m4 + " Element fragment.")
-	; 				}
-	; 				if ( m5 > 0 ) {
-	; 					txtef COLOR_BROWN
-	; 					txt lang("マテリアル:混沌の石を" + m5 + "個受け取った。", "You get " + m5 + " Chaos stone.")
-	; 				}
+					if ( m1 > 0 ) {
+						txtef COLOR_BROWN
+						txt lang("マテリアル:石ころを" + m1 + "個受け取った。", "You get " + m1 + " Pebble.")
+					}
+					if ( m2 > 0 ) {
+						txtef COLOR_BROWN
+						txt lang("マテリアル:上等な石を" + m2 + "個受け取った。", "You get " + m2 + " Fine stone.")
+					}
+					if ( m3 > 0 ) {
+						txtef COLOR_BROWN
+						txt lang("マテリアル:エーテルの欠片を" + m3 + "個受け取った。", "You get " + m3 + " Ether fragment.")
+					}
+					if ( m4 > 0 ) {
+						txtef COLOR_BROWN
+						txt lang("マテリアル:風切石を" + m4 + "個受け取った。", "You get " + m4 + " Element fragment.")
+					}
+					if ( m5 > 0 ) {
+						txtef COLOR_BROWN
+						txt lang("マテリアル:混沌の石を" + m5 + "個受け取った。", "You get " + m5 + " Chaos stone.")
+					}
 
-	; 				m1 = 0
-	; 				m2 = 0
-	; 				m3 = 0
-	; 				m4 = 0
-	; 				m5 = 0
-	; 				m6 = 0
-	; 				m7 = 0
+					m1 = 0
+					m2 = 0
+					m3 = 0
+					m4 = 0
+					m5 = 0
+					m6 = 0
+					m7 = 0
 
-	; 				repeat 500
-	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) < 20 ) {
-	; 						break
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 20 ) {
-	; 						matgetmain MATERIAL_WATERDROP, 1, 6
-	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 20
-	; 						m1++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 60 ) {
-	; 						matgetmain MATERIAL_HOT_WATER, 1, 6
-	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 40
-	; 						m2++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 80 ) {
-	; 						matgetmain MATERIAL_SNOW, 1, 6
-	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 80
-	; 						m3++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 100 ) {
-	; 						matgetmain MATERIAL_WITCHS_TEAR, 1, 6
-	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 100
-	; 						m4++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 120 ) {
-	; 						matgetmain MATERIAL_ANGELS_TEAR, 1, 6
-	; 						cdata(CDATA_MATERIAL2_COUNTER, tc) -= 120
-	; 						m5++
-	; 					}
-	; 				loop
+					repeat 500
+						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) < 20 ) {
+							break
+						}
+						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 20 ) {
+							matgetmain MATERIAL_WATERDROP, 1, 6
+							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 20
+							m1++
+						}
+						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 60 ) {
+							matgetmain MATERIAL_HOT_WATER, 1, 6
+							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 40
+							m2++
+						}
+						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 80 ) {
+							matgetmain MATERIAL_SNOW, 1, 6
+							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 80
+							m3++
+						}
+						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 100 ) {
+							matgetmain MATERIAL_WITCHS_TEAR, 1, 6
+							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 100
+							m4++
+						}
+						if ( cdata(CDATA_MATERIAL2_COUNTER, tc) >= 120 ) {
+							matgetmain MATERIAL_ANGELS_TEAR, 1, 6
+							cdata(CDATA_MATERIAL2_COUNTER, tc) -= 120
+							m5++
+						}
+					loop
 
-	; 				if ( m1 > 0 ) {
-	; 					txtef COLOR_SKY_BLUE
-	; 					txt lang("マテリアル:水滴を" + m1 + "個受け取った。", "You get " + m1 + " Waterdrop.")
-	; 				}
-	; 				if ( m2 > 0 ) {
-	; 					txtef COLOR_SKY_BLUE
-	; 					txt lang("マテリアル:お湯を" + m2 + "個受け取った。", "You get " + m2 + " Hot water.")
-	; 				}
-	; 				if ( m3 > 0 ) {
-	; 					txtef COLOR_SKY_BLUE
-	; 					txt lang("マテリアル:雪を" + m3 + "個受け取った。", "You get " + m3 + " Snow.")
-	; 				}
-	; 				if ( m4 > 0 ) {
-	; 					txtef COLOR_SKY_BLUE
-	; 					txt lang("マテリアル:魔女の涙を" + m4 + "個受け取った。", "You get " + m4 + " Witch's tear.")
-	; 				}
-	; 				if ( m5 > 0 ) {
-	; 					txtef COLOR_SKY_BLUE
-	; 					txt lang("マテリアル:天使の涙を" + m5 + "個受け取った。", "You get " + m5 + " Angel's tear.")
-	; 				}
+					if ( m1 > 0 ) {
+						txtef COLOR_SKY_BLUE
+						txt lang("マテリアル:水滴を" + m1 + "個受け取った。", "You get " + m1 + " Waterdrop.")
+					}
+					if ( m2 > 0 ) {
+						txtef COLOR_SKY_BLUE
+						txt lang("マテリアル:お湯を" + m2 + "個受け取った。", "You get " + m2 + " Hot water.")
+					}
+					if ( m3 > 0 ) {
+						txtef COLOR_SKY_BLUE
+						txt lang("マテリアル:雪を" + m3 + "個受け取った。", "You get " + m3 + " Snow.")
+					}
+					if ( m4 > 0 ) {
+						txtef COLOR_SKY_BLUE
+						txt lang("マテリアル:魔女の涙を" + m4 + "個受け取った。", "You get " + m4 + " Witch's tear.")
+					}
+					if ( m5 > 0 ) {
+						txtef COLOR_SKY_BLUE
+						txt lang("マテリアル:天使の涙を" + m5 + "個受け取った。", "You get " + m5 + " Angel's tear.")
+					}
 
-	; 				m1 = 0
-	; 				m2 = 0
-	; 				m3 = 0
-	; 				m4 = 0
-	; 				m5 = 0
+					m1 = 0
+					m2 = 0
+					m3 = 0
+					m4 = 0
+					m5 = 0
 
-	; 				repeat 500
-	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) < 30 ) {
-	; 						break
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 30 ) {
-	; 						matgetmain MATERIAL_STICK, 1, 6
-	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 30
-	; 						m1++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 100 ) {
-	; 						matgetmain MATERIAL_BRANCH, 1, 6
-	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 40
-	; 						m2++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 120 ) {
-	; 						matgetmain MATERIAL_HOLY_WEED, 1, 6
-	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 120
-	; 						m3++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 130 ) {
-	; 						matgetmain MATERIAL_SHINING_WEED, 1, 6
-	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 130
-	; 						m4++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 150 ) {
-	; 						matgetmain MATERIAL_SAP_OF_YAGGDRASIL, 1, 6
-	; 						cdata(CDATA_MATERIAL3_COUNTER, tc) -= 150
-	; 						m5++
-	; 					}
-	; 				loop
+					repeat 500
+						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) < 30 ) {
+							break
+						}
+						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 30 ) {
+							matgetmain MATERIAL_STICK, 1, 6
+							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 30
+							m1++
+						}
+						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 100 ) {
+							matgetmain MATERIAL_BRANCH, 1, 6
+							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 40
+							m2++
+						}
+						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 120 ) {
+							matgetmain MATERIAL_HOLY_WEED, 1, 6
+							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 120
+							m3++
+						}
+						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 130 ) {
+							matgetmain MATERIAL_SHINING_WEED, 1, 6
+							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 130
+							m4++
+						}
+						if ( cdata(CDATA_MATERIAL3_COUNTER, tc) >= 150 ) {
+							matgetmain MATERIAL_SAP_OF_YAGGDRASIL, 1, 6
+							cdata(CDATA_MATERIAL3_COUNTER, tc) -= 150
+							m5++
+						}
+					loop
 
-	; 				if ( m1 > 0 ) {
-	; 					txtef COLOR_LIGHT_GREEN
-	; 					txt lang("マテリアル:杖を" + m1 + "個受け取った。", "You get " + m1 + " Stick.")
-	; 				}
-	; 				if ( m2 > 0 ) {
-	; 					txtef COLOR_LIGHT_GREEN
-	; 					txt lang("マテリアル:枝を" + m2 + "個受け取った。", "You get " + m2 + " Branch.")
-	; 				}
-	; 				if ( m3 > 0 ) {
-	; 					txtef COLOR_LIGHT_GREEN
-	; 					txt lang("マテリアル:聖なる草を" + m3 + "個受け取った。", "You get " + m3 + " Holy weed.")
-	; 				}
-	; 				if ( m4 > 0 ) {
-	; 					txtef COLOR_LIGHT_GREEN
-	; 					txt lang("マテリアル:ヒカリソウを" + m4 + "個受け取った。", "You get " + m4 + " Shining weed.")
-	; 				}
-	; 				if ( m5 > 0 ) {
-	; 					txtef COLOR_LIGHT_GREEN
-	; 					txt lang("マテリアル:世界樹の樹液を" + m5 + "個受け取った。", "You get " + m5 + " Sap of Yaggdrasil.")
-	; 				}
+					if ( m1 > 0 ) {
+						txtef COLOR_LIGHT_GREEN
+						txt lang("マテリアル:杖を" + m1 + "個受け取った。", "You get " + m1 + " Stick.")
+					}
+					if ( m2 > 0 ) {
+						txtef COLOR_LIGHT_GREEN
+						txt lang("マテリアル:枝を" + m2 + "個受け取った。", "You get " + m2 + " Branch.")
+					}
+					if ( m3 > 0 ) {
+						txtef COLOR_LIGHT_GREEN
+						txt lang("マテリアル:聖なる草を" + m3 + "個受け取った。", "You get " + m3 + " Holy weed.")
+					}
+					if ( m4 > 0 ) {
+						txtef COLOR_LIGHT_GREEN
+						txt lang("マテリアル:ヒカリソウを" + m4 + "個受け取った。", "You get " + m4 + " Shining weed.")
+					}
+					if ( m5 > 0 ) {
+						txtef COLOR_LIGHT_GREEN
+						txt lang("マテリアル:世界樹の樹液を" + m5 + "個受け取った。", "You get " + m5 + " Sap of Yaggdrasil.")
+					}
 
-	; 				m1 = 0
-	; 				m2 = 0
-	; 				m3 = 0
-	; 				m4 = 0
-	; 				m5 = 0
+					m1 = 0
+					m2 = 0
+					m3 = 0
+					m4 = 0
+					m5 = 0
 
-	; 				repeat 500
-	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) < 40 ) {
-	; 						break
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 40 ) {
-	; 						matgetmain MATERIAL_HUMAN_GENE, 1, 6
-	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 40
-	; 						m1++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 100 ) {
-	; 						matgetmain MATERIAL_TROLL_GENE, 1, 6
-	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 100
-	; 						m2++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 120 ) {
-	; 						matgetmain MATERIAL_RABBITS_TAIL, 1, 6
-	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 120
-	; 						m3++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 120 ) {
-	; 						matgetmain MATERIAL_WITCHS_EYE, 1, 6
-	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 120
-	; 						m4++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 130 ) {
-	; 						matgetmain MATERIAL_FAIRY_DUST, 1, 6
-	; 						cdata(CDATA_MATERIAL4_COUNTER, tc) -= 130
-	; 						m5++
-	; 					}
-	; 				loop
+					repeat 500
+						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) < 40 ) {
+							break
+						}
+						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 40 ) {
+							matgetmain MATERIAL_HUMAN_GENE, 1, 6
+							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 40
+							m1++
+						}
+						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 100 ) {
+							matgetmain MATERIAL_TROLL_GENE, 1, 6
+							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 100
+							m2++
+						}
+						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 120 ) {
+							matgetmain MATERIAL_RABBITS_TAIL, 1, 6
+							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 120
+							m3++
+						}
+						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 120 ) {
+							matgetmain MATERIAL_WITCHS_EYE, 1, 6
+							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 120
+							m4++
+						}
+						if ( cdata(CDATA_MATERIAL4_COUNTER, tc) >= 130 ) {
+							matgetmain MATERIAL_FAIRY_DUST, 1, 6
+							cdata(CDATA_MATERIAL4_COUNTER, tc) -= 130
+							m5++
+						}
+					loop
 
-	; 				if ( m1 > 0 ) {
-	; 					txtef COLOR_PINK
-	; 					txt lang("マテリアル:ヒトの遺伝子を" + m1 + "個受け取った。", "You get " + m1 + " Human gene.")
-	; 				}
-	; 				if ( m2 > 0 ) {
-	; 					txtef COLOR_PINK
-	; 					txt lang("マテリアル:トロールの遺伝子を" + m2 + "個受け取った。", "You get " + m2 + " Troll gene.")
-	; 				}
-	; 				if ( m3 > 0 ) {
-	; 					txtef COLOR_PINK
-	; 					txt lang("マテリアル:ウサギの尻尾を" + m3 + "個受け取った。", "You get " + m3 + " Rabbit's tail.")
-	; 				}
-	; 				if ( m4 > 0 ) {
-	; 					txtef COLOR_PINK
-	; 					txt lang("マテリアル:魔女の瞳を" + m4 + "個受け取った。", "You get " + m4 + " Witch's eye.")
-	; 				}
-	; 				if ( m5 > 0 ) {
-	; 					txtef COLOR_PINK
-	; 					txt lang("マテリアル:フェアリーダストを" + m5 + "個受け取った。", "You get " + m5 + " Fairy dust.")
-	; 				}
+					if ( m1 > 0 ) {
+						txtef COLOR_PINK
+						txt lang("マテリアル:ヒトの遺伝子を" + m1 + "個受け取った。", "You get " + m1 + " Human gene.")
+					}
+					if ( m2 > 0 ) {
+						txtef COLOR_PINK
+						txt lang("マテリアル:トロールの遺伝子を" + m2 + "個受け取った。", "You get " + m2 + " Troll gene.")
+					}
+					if ( m3 > 0 ) {
+						txtef COLOR_PINK
+						txt lang("マテリアル:ウサギの尻尾を" + m3 + "個受け取った。", "You get " + m3 + " Rabbit's tail.")
+					}
+					if ( m4 > 0 ) {
+						txtef COLOR_PINK
+						txt lang("マテリアル:魔女の瞳を" + m4 + "個受け取った。", "You get " + m4 + " Witch's eye.")
+					}
+					if ( m5 > 0 ) {
+						txtef COLOR_PINK
+						txt lang("マテリアル:フェアリーダストを" + m5 + "個受け取った。", "You get " + m5 + " Fairy dust.")
+					}
 
-	; 				m1 = 0
-	; 				m2 = 0
-	; 				m3 = 0
-	; 				m4 = 0
-	; 				m5 = 0
+					m1 = 0
+					m2 = 0
+					m3 = 0
+					m4 = 0
+					m5 = 0
 
-	; 				repeat 500
-	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) < 40 ) {
-	; 						break
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 40 ) {
-	; 						matgetmain MATERIAL_CLOTH, 1, 6
-	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 40
-	; 						m1++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 50 ) {
-	; 						matgetmain MATERIAL_PAPER, 1, 6
-	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 50
-	; 						m2++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 100 ) {
-	; 						matgetmain MATERIAL_YELLING_MADMAN, 1, 6
-	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 100
-	; 						m3++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 120 ) {
-	; 						matgetmain MATERIAL_MAGIC_INK, 1, 6
-	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 120
-	; 						m4++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 120 ) {
-	; 						matgetmain MATERIAL_MAGIC_MASS, 1, 6
-	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 120
-	; 						m5++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 150 ) {
-	; 						matgetmain MATERIAL_GENERATOR, 1, 6
-	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 150
-	; 						m6++
-	; 					}
-	; 					if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 150 ) {
-	; 						matgetmain MATERIAL_ELECTRICITY, 1, 6
-	; 						cdata(CDATA_MATERIAL5_COUNTER, tc) -= 150
-	; 						m7++
-	; 					}
-	; 				loop
+					repeat 500
+						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) < 40 ) {
+							break
+						}
+						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 40 ) {
+							matgetmain MATERIAL_CLOTH, 1, 6
+							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 40
+							m1++
+						}
+						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 50 ) {
+							matgetmain MATERIAL_PAPER, 1, 6
+							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 50
+							m2++
+						}
+						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 100 ) {
+							matgetmain MATERIAL_YELLING_MADMAN, 1, 6
+							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 100
+							m3++
+						}
+						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 120 ) {
+							matgetmain MATERIAL_MAGIC_INK, 1, 6
+							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 120
+							m4++
+						}
+						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 120 ) {
+							matgetmain MATERIAL_MAGIC_MASS, 1, 6
+							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 120
+							m5++
+						}
+						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 150 ) {
+							matgetmain MATERIAL_GENERATOR, 1, 6
+							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 150
+							m6++
+						}
+						if ( cdata(CDATA_MATERIAL5_COUNTER, tc) >= 150 ) {
+							matgetmain MATERIAL_ELECTRICITY, 1, 6
+							cdata(CDATA_MATERIAL5_COUNTER, tc) -= 150
+							m7++
+						}
+					loop
 
-	; 				if ( m1 > 0 ) {
-	; 					txtef COLOR_YELLOW
-	; 					txt lang("マテリアル:布きれを" + m1 + "個受け取った。", "You get " + m1 + " Cloth.")
-	; 				}
-	; 				if ( m2 > 0 ) {
-	; 					txtef COLOR_YELLOW
-	; 					txt lang("マテリアル:紙を" + m2 + "個受け取った。", "You get " + m2 + " Paper.")
-	; 				}
-	; 				if ( m3 > 0 ) {
-	; 					txtef COLOR_YELLOW
-	; 					txt lang("マテリアル:わめく狂人を" + m3 + "個受け取った。", "You get " + m3 + " Yelling madman.")
-	; 				}
-	; 				if ( m4 > 0 ) {
-	; 					txtef COLOR_YELLOW
-	; 					txt lang("マテリアル:魔法のインクを" + m4 + "個受け取った。", "You get " + m4 + " Magic ink.")
-	; 				}
-	; 				if ( m5 > 0 ) {
-	; 					txtef COLOR_YELLOW
-	; 					txt lang("マテリアル:マジックマスを" + m5 + "個受け取った。", "You get " + m5 + " Magic mass.")
-	; 				}
-	; 				if ( m6 > 0 ) {
-	; 					txtef COLOR_YELLOW
-	; 					txt lang("マテリアル:生成機械を" + m6 + "個受け取った。", "You get " + m6 + " Generator.")
-	; 				}
-	; 				if ( m7 > 0 ) {
-	; 					txtef COLOR_YELLOW
-	; 					txt lang("マテリアル:電気を" + m7 + "個受け取った。", "You get " + m7 + " Electricity.")
-	; 				}
+					if ( m1 > 0 ) {
+						txtef COLOR_YELLOW
+						txt lang("マテリアル:布きれを" + m1 + "個受け取った。", "You get " + m1 + " Cloth.")
+					}
+					if ( m2 > 0 ) {
+						txtef COLOR_YELLOW
+						txt lang("マテリアル:紙を" + m2 + "個受け取った。", "You get " + m2 + " Paper.")
+					}
+					if ( m3 > 0 ) {
+						txtef COLOR_YELLOW
+						txt lang("マテリアル:わめく狂人を" + m3 + "個受け取った。", "You get " + m3 + " Yelling madman.")
+					}
+					if ( m4 > 0 ) {
+						txtef COLOR_YELLOW
+						txt lang("マテリアル:魔法のインクを" + m4 + "個受け取った。", "You get " + m4 + " Magic ink.")
+					}
+					if ( m5 > 0 ) {
+						txtef COLOR_YELLOW
+						txt lang("マテリアル:マジックマスを" + m5 + "個受け取った。", "You get " + m5 + " Magic mass.")
+					}
+					if ( m6 > 0 ) {
+						txtef COLOR_YELLOW
+						txt lang("マテリアル:生成機械を" + m6 + "個受け取った。", "You get " + m6 + " Generator.")
+					}
+					if ( m7 > 0 ) {
+						txtef COLOR_YELLOW
+						txt lang("マテリアル:電気を" + m7 + "個受け取った。", "You get " + m7 + " Electricity.")
+					}
 
-	; 				m1 = 0
-	; 				m2 = 0
-	; 				m3 = 0
-	; 				m4 = 0
-	; 				m5 = 0
-	; 				m6 = 0
-	; 				m7 = 0
-	; 			}
-	; 		}
-	; 	loop
-	; 	goto *pc_turn
-	; }
+					m1 = 0
+					m2 = 0
+					m3 = 0
+					m4 = 0
+					m5 = 0
+					m6 = 0
+					m7 = 0
+				}
+			}
+		loop
+		goto *pc_turn
+	}
 	
 	/********** JAMES CUSTOM - TCG - BEGINNING **********/
 	if ( p == 69100 | p == 69101 ) {
@@ -9235,7 +9234,7 @@
 		s = lang("平穏な日々を過ごしていた。", "You spent your days in peace.")
 	}
 	if ( ohanasi1 == 8 ) {
-		s = lang("子供の頃から虐待されていた。", "You've been abused since childhood.")
+		s = lang("子供の頃から虐待されていた。", "You have been abused since childhood.")
 	}
 	if ( ohanasi1 == 9 ) {
 		s = lang("自分の出生を隠している。", "Your birth was kept secret.")
@@ -9308,6 +9307,45 @@
 	}
 	if ( ohanasi1 == 32 ) {
 		s = lang("跡継ぎとして厳しく育てられた。", "You were raised as your family's heir.")
+	}
+	if ( ohanasi1 == 33 ) {
+		s = lang("心に傷を負った元軍人。", "You are a traumatized ex-soldier.")
+	}
+	if ( ohanasi1 == 34 ) {
+		s = lang("悪の組織の手先。", "You are a minion of an evil organization.")
+	}
+	if ( ohanasi1 == 35 ) {
+		s = lang("ある人物のクローン。", "You are a clone of a certain person.")
+	}
+	if ( ohanasi1 == 36 ) {
+		s = lang("禁断の技術で生みだされた兵器。", "You are a weapon created with forbidden technology.")
+	}
+	if ( ohanasi1 == 37 ) {
+		s = lang("幼い頃、遺跡で発見・保護された。", "You were discovered and rescued in ruins as a child.")
+	}
+	if ( ohanasi1 == 38 ) {
+		s = lang("おぞましい因習のある村で育った。", "You grew up in a village with horrific customs.")
+	}
+	if ( ohanasi1 == 39 ) {
+		s = lang("バケモノと人の間に生まれた。", "You were born between a monster and a human.")
+	}
+	if ( ohanasi1 == 40 ) {
+		s = lang("浮気で生まれた隠し子。", "You are the illegitimate child of an affair.")
+	}
+	if ( ohanasi1 == 41 ) {
+		s = lang("実は親の仇に育てられていた。", "You were actually being raised by your parents' enemy.")
+	}
+	if ( ohanasi1 == 42 ) {
+		s = lang("秘めた力が原因で隔離されていた。", "You were isolated because of your hidden powers.")
+	}
+	if ( ohanasi1 == 43 ) {
+		s = lang("故郷を大災害で失った。", "You lost your hometown in a great disaster.")
+	}
+	if ( ohanasi1 == 44 ) {
+		s = lang("故郷を魔物に滅ぼされた。", "Your hometown was destroyed by monsters.")
+	}
+	if ( ohanasi1 == 45 ) {
+		s = lang("故郷を悪い冒険者に滅ぼされた。", "Your hometown was destroyed by an evil adventurer.")
 	}
 	return s
 
@@ -9399,6 +9437,54 @@
 	if ( ohanasi2 == 29 ) {
 		s = lang("なぜ旅しているのかも思い出せない。", "You can not remember the reason of your travel.")
 	}
+	if ( ohanasi2 == 30 ) {
+		s = lang("命を落とし気づくと船に乗っていた。", "You suddenly find yourself on a ship when you are about to die.")
+	}
+	if ( ohanasi2 == 31 ) {
+		s = lang("知人に勧められて冒険者になった。", "You become an adventurer at the recommendation of an acquaintance.")
+	}
+	if ( ohanasi2 == 32 ) {
+		s = lang("呪いを解く方法を探して旅に出る。", "You set out on a journey to find a way to lift a curse.")
+	}
+	if ( ohanasi2 == 33 ) {
+		s = lang("復讐相手を追って旅に出る。", "You set out on a journey to track down the person you want revenge on.")
+	}
+	if ( ohanasi2 == 34 ) {
+		s = lang("情報収集のため各地の調査を開始。", "You are investigating various places to gather intelligence.")
+	}
+	if ( ohanasi2 == 35 ) {
+		s = lang("人生失敗し冒険に出るしかなかった。", "You have failed in life and have no choice but to set out on an adventure.")
+	}
+	if ( ohanasi2 == 36 ) {
+		s = lang("謎のゲートを通ってやってきた。", "You have walked through a mysterious gate.")
+	}
+	if ( ohanasi2 == 37 ) {
+		s = lang("時空の歪みに呑まれ迷い込んだ。", "You got swallowed up and lost in a distortion in space-time.")
+	}
+	if ( ohanasi2 == 38 ) {
+		s = lang("最悪な未来を変えるために旅に出る。", "You set out on a journey to change a terrible future.")
+	}
+	if ( ohanasi2 == 39 ) {
+		s = lang("まだ見ぬ結婚相手を求めて旅に出る。", "You set out on a journey in search of a marriage partner you have yet to meet.")
+	}
+	if ( ohanasi2 == 40 ) {
+		s = lang("広い世界を見たくて各地を観光中。", "You are traveling around the world, wanting to see a wider world.")
+	}
+	if ( ohanasi2 == 41 ) {
+		s = lang("役立たずと判断されて追放された。", "You were deemed useless and banished.")
+	}
+	if ( ohanasi2 == 42 ) {
+		s = lang("不労所得を夢見て冒険に出る。", "You set out on an adventure, dreaming of passive income.")
+	}
+	if ( ohanasi2 == 43 ) {
+		s = lang("一族再興のため旅に出る。", "You set out on a journey to restore your clan.")
+	}
+	if ( ohanasi2 == 44 ) {
+		s = lang("一発逆転を夢見て冒険者になる。", "You became an adventurer, dreaming of a sudden turnaround.")
+	}
+	if ( ohanasi2 == 45 ) {
+		s = lang("自分をみせびらかすため旅に出る。", "You went on a journey to show yourself off.")
+	}
 	return s
 
 *setHistory3
@@ -9424,7 +9510,7 @@
 		s = lang("冷静沈着で判断力もあるが、", "Though you are calm and collected,")
 	}
 	if ( ohanasi3 == 8 ) {
-		s = lang("陽気でムードメーカーだが、", "Though you're the life of the party,")
+		s = lang("陽気でムードメーカーだが、", "Though you are the life of the party,")
 	}
 	if ( ohanasi3 == 9 ) {
 		s = lang("基本的に平凡だが、", "Though you are ordinary,")
@@ -9440,6 +9526,102 @@
 	}
 	if ( ohanasi3 == 13 ) {
 		s = lang("根がまっすぐで熱い性格だが、", "Though you are passionate,")
+	}
+	if ( ohanasi3 == 14 ) {
+		s = lang("とにかく行動力が高いが、", "Though highly proactive,")
+	}
+	if ( ohanasi3 == 15 ) {
+		s = lang("大胆で度胸もあるが、", "Though bold and courageous,")
+	}
+	if ( ohanasi3 == 16 ) {
+		s = lang("誰かをサポートするのが得意だが、", "Though good at supporting others,")
+	}
+	if ( ohanasi3 == 17 ) {
+		s = lang("苦難に耐え抜く根性があるが、", "Though enduring hardships,")
+	}
+	if ( ohanasi3 == 18 ) {
+		s = lang("好奇心旺盛で人懐っこいが、", "Though curious and sociable,")
+	}
+	if ( ohanasi3 == 19 ) {
+		s = lang("バツグンの記憶力を持つが、", "Though have an excellent memory,")
+	}
+	if ( ohanasi3 == 20 ) {
+		s = lang("異なる環境にもすぐ適応できるが、", "Though adapt to different environments,")
+	}
+	if ( ohanasi3 == 21 ) {
+		s = lang("人並外れた発想力を持つが、", "Though have extraordinary imagination,")
+	}
+	if ( ohanasi3 == 22 ) {
+		s = lang("困った人を放っておかないが、", "Though doesn't leave people in trouble alone,")
+	}
+	if ( ohanasi3 == 23 ) {
+		s = lang("ピンチの時でも堂々としているが、", "Though remains confident even in times of crisis,")
+	}
+	if ( ohanasi3 == 24 ) {
+		s = lang("誰よりも責任感が強いが、", "Though have a strong sense of responsibility,")
+	}
+	if ( ohanasi3 == 25 ) {
+		s = lang("皆をまとめあげる統率力があるが、", "Though have the ability to bring everyone together,")
+	}
+	if ( ohanasi3 == 26 ) {
+		s = lang("人徳があり皆から慕われるが、", "Though have virtue and is loved by everyone,")
+	}
+	if ( ohanasi3 == 27 ) {
+		s = lang("義理堅く人情味があるが、", "Though have strong loyalty and kindness,")
+	}
+	if ( ohanasi3 == 28 ) {
+		s = lang("状況に応じて柔軟に思考できるが、", "Though think flexibly according to the situation,")
+	}
+	if ( ohanasi3 == 29 ) {
+		s = lang("いつも飄々としているが、", "Though always easygoing,")
+	}
+	if ( ohanasi3 == 30 ) {
+		s = lang("強い覚悟を秘めているが、", "Though have a strong resolve,")
+	}
+	if ( ohanasi3 == 31 ) {
+		s = lang("裏表がなくさっぱりしているが、", "Though have no ulterior motives and are straightforward,")
+	}
+	if ( ohanasi3 == 32 ) {
+		s = lang("情報収集が得意だが、", "Though good at gathering information,")
+	}
+	if ( ohanasi3 == 33 ) {
+		s = lang("嫌な事があっても落ち込まないが、", "Though doesn't get depressed even when unpleasant things happen,")
+	}
+	if ( ohanasi3 == 34 ) {
+		s = lang("他人の長所を見抜くのが得意だが、", "Though good at identifying the good points of others,")
+	}
+	if ( ohanasi3 == 35 ) {
+		s = lang("強いリーダーシップを持つが、", "Though possesses strong leadership,")
+	}
+	if ( ohanasi3 == 36 ) {
+		s = lang("細かいことは気にしないが、", "Though doesn't sweat the small stuff,")
+	}
+	if ( ohanasi3 == 37 ) {
+		s = lang("なんだかんだで面倒見が良いが、", "Though good at taking care of others,")
+	}
+	if ( ohanasi3 == 38 ) {
+		s = lang("格下相手にも決して油断しないが、", "Though never let guard down,")
+	}
+	if ( ohanasi3 == 39 ) {
+		s = lang("窮地の時こそ真価を発揮するが、", "Though show true worth in times of crisis,")
+	}
+	if ( ohanasi3 == 40 ) {
+		s = lang("優しくて包容力があるが、", "Though kind and tolerant,")
+	}
+	if ( ohanasi3 == 41 ) {
+		s = lang("細かな気づかいが得意だが、", "Though good at paying attention to small details,")
+	}
+	if ( ohanasi3 == 42 ) {
+		s = lang("誰かのためになら頑張れるが、", "Though work hard for others,")
+	}
+	if ( ohanasi3 == 43 ) {
+		s = lang("大局を見る力があるが、", "Though have the ability to see the big picture,")
+	}
+	if ( ohanasi3 == 44 ) {
+		s = lang("他者との絆を大事にしているが、", "Though value bonds with others,")
+	}
+	if ( ohanasi3 == 45 ) {
+		s = lang("誰にも頼らない強さを持つが、", "Though have the strength to not rely on anyone,")
 	}
 	return s
 
@@ -9469,7 +9651,7 @@
 		s = lang("刃物を持つと性格が変わる。", "your personality changes when you hold a knife.")
 	}
 	if ( ohanasi4 == 9 ) {
-		s = lang("大きなトラウマを持つ。", "you've experienced major trauma.")
+		s = lang("大きなトラウマを持つ。", "you have experienced major trauma.")
 	}
 	if ( ohanasi4 == 10 ) {
 		s = lang("他人を信用していない。", "you do not trust others.")
@@ -9517,7 +9699,7 @@
 		s = lang("自分に自信が無い。", "you have no confidence in yourself.")
 	}
 	if ( ohanasi4 == 25 ) {
-		s = lang("実はとてつもない変態。", "you're actually a gigantic pervert.")
+		s = lang("実はとてつもない変態。", "you are actually a gigantic pervert.")
 	}
 	if ( ohanasi4 == 26 ) {
 		s = lang("方向音痴ですぐ迷子になる。", "you have no sense of direction.")
@@ -9559,13 +9741,25 @@
 		s = lang("存在感が薄い。", "you don't have much of a presence.")
 	}
 	if ( ohanasi4 == 39 ) {
-		s = lang("極めてプライドが高い。", "you're very prideful.")
+		s = lang("極めてプライドが高い。", "you are very prideful.")
 	}
 	if ( ohanasi4 == 40 ) {
 		s = lang("いかがわしいことが大好き。", "you love shady things.")
 	}
 	if ( ohanasi4 == 41 ) {
 		s = lang("別の人格を隠し持つ。", "you have a hidden personality.")
+	}
+	if ( ohanasi4 == 42 ) {
+		s = lang("5行以上の文章が読めない。", "You can't read texts longer than five lines.")
+	}
+	if ( ohanasi4 == 43 ) {
+		s = lang("かなりの食いしん坊。", "You are big foodie.")
+	}
+	if ( ohanasi4 == 44 ) {
+		s = lang("他人の顔と名前を覚えるのは苦手。", "You are bad at remembering other people's names.")
+	}
+	if ( ohanasi4 == 45 ) {
+		s = lang("嫌なことは後回しにしがち。", "You tend to put off things you don't like.")
 	}
 	return s
 
@@ -9652,13 +9846,13 @@
 		s = lang("趣味は昼寝。", "You like to nap.")
 	}
 	if ( ohanasi5 == 28 ) {
-		s = lang("嘘をつくのが下手。", "You're bad at lying.")
+		s = lang("嘘をつくのが下手。", "You are bad at lying.")
 	}
 	if ( ohanasi5 == 29 ) {
 		s = lang("惚れっぽいところがある。", "You easily fall in love.")
 	}
 	if ( ohanasi5 == 30 ) {
-		s = lang("仕事熱心。", "You're a hard worker.")
+		s = lang("仕事熱心。", "You are a hard worker.")
 	}
 	if ( ohanasi5 == 31 ) {
 		s = lang("果たせなかった使命がある。", "You had a mission you failed to achieve.")
@@ -9677,6 +9871,33 @@
 	}
 	if ( ohanasi5 == 36 ) {
 		s = lang("ガラクタを集めるのが好き。", "You like to collect junk.")
+	}
+	if ( ohanasi5 == 37 ) {
+		s = lang("本当は静かに暮らしたい。", "You actually want to live quietly.")
+	}
+	if ( ohanasi5 == 38 ) {
+		s = lang("めちゃくちゃにされたい願望がある。", "You have a desire to be messed up.")
+	}
+	if ( ohanasi5 == 39 ) {
+		s = lang("心臓が複数ある。", "You have multiple hearts.")
+	}
+	if ( ohanasi5 == 40 ) {
+		s = lang("時々不自然に記憶がなくなる。", "You sometimes have unnatural memory loss.")
+	}
+	if ( ohanasi5 == 41 ) {
+		s = lang("食べ物の恨みは忘れない。", "You never forget food grudges.")
+	}
+	if ( ohanasi5 == 42 ) {
+		s = lang("他人の物をすぐに欲しがる。", "You are quick to covet other people's things.")
+	}
+	if ( ohanasi5 == 43 ) {
+		s = lang("人類は滅ぶべきだと思っている。", "You think humanity should be destroyed.")
+	}
+	if ( ohanasi5 == 44 ) {
+		s = lang("きのこよりもたけのこが好き。", "You prefer bamboo shoots to mushrooms.")
+	}
+	if ( ohanasi5 == 45 ) {
+		s = lang("母性に飢えている。", "You are starving for motherhood.")
 	}
 	return s
 
@@ -10073,26 +10294,56 @@
 		ohanasi5 = cdata(CDATA_BACKGROUND_PART_B3, cc)
 		if ( ohanasi1 >= 0 ) {
 			gosub *setHistory1
+			if ( c != 0 ) {
+				if ( en ) {
+					cnv_str s, "your", his(c, 1)
+					cnv_str s, "you", him(c, 1)
+				}
+			}
 			pos wx + 220, wy + 290
 			mes s
 		}
 		if ( ohanasi2 != 0 ) {
 			gosub *setHistory2
+			if ( c != 0 ) {
+				if ( en ) {
+					cnv_str s, "your", his(c, 1)
+					cnv_str s, "you", him(c, 1)
+				}
+			}
 			pos wx + 220, wy + 290 + 1 * 15
 			mes s
 		}
 		if ( ohanasi3 != 0 ) {
 			gosub *setHistory3
+			if ( c != 0 ) {
+				if ( en ) {
+					cnv_str s, "your", his(c, 1)
+					cnv_str s, "you", him(c, 1)
+				}
+			}
 			pos wx + 220, wy + 290 + 2 * 15
 			mes s
 		}
 		if ( ohanasi4 != 0 ) {
 			gosub *setHistory4
+			if ( c != 0 ) {
+				if ( en ) {
+					cnv_str s, "your", his(c, 1)
+					cnv_str s, "you", him(c, 1)
+				}
+			}
 			pos wx + 220, wy + 290 + 3 * 15
 			mes s
 		}
 		if ( ohanasi5 != 0 ) {
 			gosub *setHistory5
+			if ( c != 0 ) {
+				if ( en ) {
+					cnv_str s, "your", his(c, 1)
+					cnv_str s, "you", him(c, 1)
+				}
+			}
 			pos wx + 220, wy + 290 + 4 * 15
 			mes s
 		}

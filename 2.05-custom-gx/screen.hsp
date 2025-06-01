@@ -1209,10 +1209,10 @@
 		pos inf_clockw + 230, inf_clocky + 37
 		color 0, 0, 0
 		if ( jp ) {
-			bmes "船の状態：" + _shiphp(cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER)) + " ", 35, 235, 235
+			bmes "船の状態：" + _shiphp(cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER)) + " ", 35, 235, 235
 		}
 		if ( en ) {
-			bmes "Ship-Condition < " + _shiphp(cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER)) + " > ", 35, 235, 235
+			bmes "Ship-Condition < " + _shiphp(cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER)) + " > ", 35, 235, 235
 		}
 		if ( enemyhp > 0 ) {
 			pos inf_clockw + 230, inf_clocky + 77

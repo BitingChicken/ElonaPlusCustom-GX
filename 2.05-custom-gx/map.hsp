@@ -11938,33 +11938,33 @@
 				}
 				tc = cnt
 				skillexp SKILL_NORMAL_TRAVELING, tc, 5 + gdata(GDATA_TRAVEL_DISTANCE) * 2 / 5, 0, 1000
-				; if ( cdata(CDATA_IMPRESSION, cnt) >= 100 ) {
-				; 	if ( sdata(SKILL_NORMAL_MINING, cnt) > 0 ) {
-				; 		if ( limit(sdata(SKILL_NORMAL_MINING, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
-				; 			cdata(CDATA_MATERIAL1_COUNTER, cnt) += 50
-				; 		}
-				; 	}
-				; 	if ( sdata(SKILL_NORMAL_FISHING, cnt) > 0 ) {
-				; 		if ( limit(sdata(SKILL_NORMAL_FISHING, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
-				; 			cdata(CDATA_MATERIAL2_COUNTER, cnt) += 50
-				; 		}
-				; 	}
-				; 	if ( sdata(SKILL_NORMAL_GARDENING, cnt) > 0 ) {
-				; 		if ( limit(sdata(SKILL_NORMAL_GARDENING, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
-				; 			cdata(CDATA_MATERIAL3_COUNTER, cnt) += 50
-				; 		}
-				; 	}
-				; 	if ( sdata(SKILL_NORMAL_GENE_ENGINEER, cnt) > 0 ) {
-				; 		if ( limit(sdata(SKILL_NORMAL_GENE_ENGINEER, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
-				; 			cdata(CDATA_MATERIAL4_COUNTER, cnt) += 50
-				; 		}
-				; 	}
-				; 	if ( sdata(SKILL_NORMAL_DETECTION, cnt) > 0 ) {
-				; 		if ( limit(sdata(SKILL_NORMAL_DETECTION, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
-				; 			cdata(CDATA_MATERIAL5_COUNTER, cnt) += 50
-				; 		}
-				; 	}
-				; }
+				if ( cdata(CDATA_IMPRESSION, cnt) >= 100 ) {
+					if ( sdata(SKILL_NORMAL_MINING, cnt) > 0 ) {
+						if ( limit(sdata(SKILL_NORMAL_MINING, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
+							cdata(CDATA_MATERIAL1_COUNTER, cnt) += 50
+						}
+					}
+					if ( sdata(SKILL_NORMAL_FISHING, cnt) > 0 ) {
+						if ( limit(sdata(SKILL_NORMAL_FISHING, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
+							cdata(CDATA_MATERIAL2_COUNTER, cnt) += 50
+						}
+					}
+					if ( sdata(SKILL_NORMAL_GARDENING, cnt) > 0 ) {
+						if ( limit(sdata(SKILL_NORMAL_GARDENING, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
+							cdata(CDATA_MATERIAL3_COUNTER, cnt) += 50
+						}
+					}
+					if ( sdata(SKILL_NORMAL_GENE_ENGINEER, cnt) > 0 ) {
+						if ( limit(sdata(SKILL_NORMAL_GENE_ENGINEER, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
+							cdata(CDATA_MATERIAL4_COUNTER, cnt) += 50
+						}
+					}
+					if ( sdata(SKILL_NORMAL_DETECTION, cnt) > 0 ) {
+						if ( limit(sdata(SKILL_NORMAL_DETECTION, cnt), 0, 100) + gdata(GDATA_TRAVEL_DISTANCE) > rnd(1000) ) {
+							cdata(CDATA_MATERIAL5_COUNTER, cnt) += 50
+						}
+					}
+				}
 				skillexp SKILL_ATTR_STR, tc, limit(sdata(SKILL_NORMAL_TRAVELING, tc) * 1 / 10 + gdata(GDATA_TRAVEL_DISTANCE) / 2 + sdata(SKILL_ATTR_LER, tc) / 4 + 50, 1, 2000)
 				skillexp SKILL_ATTR_CON, tc, limit(sdata(SKILL_NORMAL_TRAVELING, tc) * 1 / 10 + gdata(GDATA_TRAVEL_DISTANCE) / 2 + sdata(SKILL_ATTR_LER, tc) / 4 + 50, 1, 2000)
 				skillexp SKILL_ATTR_DEX, tc, limit(sdata(SKILL_NORMAL_TRAVELING, tc) * 1 / 10 + gdata(GDATA_TRAVEL_DISTANCE) / 2 + sdata(SKILL_ATTR_LER, tc) / 4 + 50, 1, 2000)

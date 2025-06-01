@@ -18,9 +18,9 @@
 #include "mock_defines.hsp"
 #endif
 
-#define global VARIANT_NAME "ElonaPlus Custom-GX 2.27.1.0"
-#define global VARIANT_TITLE "Elona+ Custom-GX 2.27.1.0"
-#define global VERSION_STRING "6.37"
+#define global VARIANT_NAME "ElonaPlus Custom-GX 2.27.2.0"
+#define global VARIANT_TITLE "Elona+ Custom-GX 2.27.2.0"
+#define global VERSION_STRING "6.38"
 #define global VERSION_NUMBER int(double(VERSION_STRING) * 1000)
 #define global NET_VERSION	200000
 
@@ -8373,6 +8373,7 @@
 								txt lang(name(tc) + "は特に得るものが無かったようだ。", name(tc) + " didn't seem to have anything to gain from the travel.")
 								continue
 							}
+							skillexp SKILL_NORMAL_TRAVELING, tc, limit(gdata(GDATA_TRAVEL_DISTANCE) / 10 + 500, 0, 2000), 9999
 							repeat 112 - 100, 100
 								if ( sorg(cnt, tc) == 0 ) {
 									continue

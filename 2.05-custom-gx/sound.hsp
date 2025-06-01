@@ -320,6 +320,8 @@
 	sndload folder + "burst00.wav", SOUNDLIST_BURST00
 	sndload folder + "goro05.wav", SOUNDLIST_GORO05
 	sndload folder + "mecha15.wav", SOUNDLIST_MECHA15
+	sndload folder + "cat03.wav", SOUNDLIST_CAT03
+	sndload folder + "dog02.wav", SOUNDLIST_DOG02
 
 	folder = exedir + "user\\sound\\"
 	sndload folder + "se0.wav", SOUNDLIST_USER_SE00

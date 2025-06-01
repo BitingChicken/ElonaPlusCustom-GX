@@ -179,7 +179,7 @@
 	cbitmod CHARA_BIT_HAS_CLEMENTIAD, rc, FALSE
 	cbitmod CHARA_BIT_BEGGING_FOR_LIFE, rc, FALSE
 	cdata(CDATA_ALLIED, rc) = 100
-	cdata(CDATA_MATERIAL1_COUNTER, rc) = 0
+	cdata(CDATA_CHARACTER_TIER, rc) = 0
 	if ( cdata(CDATA_JOIN_DATE_MONTH, rc) == 0 ) {
 		cdata(CDATA_JOIN_DATE_MONTH, rc) = gdata(GDATA_MONTH)
 	}
@@ -224,11 +224,11 @@
 	cdatan(CDATAN_NAME, rc) = randomname()
 	cdatan(CDATAN_AKA, rc) = random_title()
 	cdata(CDATA_ROLE, rc) = ROLE_ADVENTURER
-	cdata(CDATA_BACKGROUND_PART_A1, rc) = rnd(32) + 1
-	cdata(CDATA_BACKGROUND_PART_A2, rc) = rnd(28) + 1
-	cdata(CDATA_BACKGROUND_PART_B1, rc) = rnd(13) + 1
-	cdata(CDATA_BACKGROUND_PART_B2, rc) = rnd(41) + 1
-	cdata(CDATA_BACKGROUND_PART_B3, rc) = rnd(36) + 1
+	cdata(CDATA_BACKGROUND_PART_A1, rc) = rnd(45) + 1
+	cdata(CDATA_BACKGROUND_PART_A2, rc) = rnd(45) + 1
+	cdata(CDATA_BACKGROUND_PART_B1, rc) = rnd(45) + 1
+	cdata(CDATA_BACKGROUND_PART_B2, rc) = rnd(45) + 1
+	cdata(CDATA_BACKGROUND_PART_B3, rc) = rnd(45) + 1
 	p = rnd(STARTING_RANDOM_AREA)
 	if ( adata(ADATA_ID, p) == AREA_NONE | adata(ADATA_ID, p) == AREA_HOME | adata(ADATA_TYPE, p) == MAP_TYPE_QUEST ) {
 		p = AREA_NORTH_TYRIS

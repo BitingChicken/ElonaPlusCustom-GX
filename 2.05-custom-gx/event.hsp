@@ -475,7 +475,7 @@
 				cxx = cdata(CDATA_X, p)
 				cyy = cdata(CDATA_Y, p)
 				if ( cdata(CDATA_EXIST, p) == CHAR_STATE_ALIVE ) {
-					mdata(MDATA_WEREWOLF_PROGRESS) += cdata(CDATA_LEVEL, p)
+					mdata(MDATA_WEREWOLF_PROGRESS) += limit(cdata(CDATA_LEVEL, p), 1, 50)
 					chatc@DP = p
 					txt lang(name(p) + "「ぎゃぁーー！」", name(p) + " screams, " + cnvtalk("Ahhhhhhh!"))
 					dmghp p, 99999, DAMAGE_FROM_UNSEEN
@@ -2971,9 +2971,9 @@
 		}
 		gosub *re_select
 		snd SOUNDLIST_BOLT1
-		if ( cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER) > CHARACTER_TIER_NONE ) {
-			cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER)--
-			if ( cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER) <= CHARACTER_TIER_NONE ) {
+		if ( cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER) > CHARACTER_TIER_NONE ) {
+			cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER)--
+			if ( cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER) <= CHARACTER_TIER_NONE ) {
 				txtef COLOR_RED
 				txt lang("波の重壁が何もかもを押しつぶし、あなたが祈る間もなく船は海にのまれていった。", "Then... without so much as a moment's warning, the hull and you are swept into the oceans.")
 				snd SOUNDLIST_CRUSH1
@@ -2983,7 +2983,7 @@
 				create_pcpic 0, 1
 			}
 		}
-		if ( cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER) <= CHARACTER_TIER_NONE ) {
+		if ( cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER) <= CHARACTER_TIER_NONE ) {
 			repeat 16
 				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
 					continue
@@ -3347,7 +3347,7 @@
 			else {
 				txt lang("どうにか逃げきれたが、船がそれなりに損傷を受けた。", "Your ship managed to escape, but suffered some damage...")
 				snd SOUNDLIST_PUNISH1
-				cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER)--
+				cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER)--
 			}
 		}
 		if ( rtval == 2 ) {
@@ -3358,10 +3358,10 @@
 			else {
 				txt lang("どうにか追い払えたが、船がそれなりに損傷を受けた。", "Your ship managed to drive off the seabirds, but suffered some damage...")
 				snd SOUNDLIST_PUNISH1
-				cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER)--
+				cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER)--
 			}
 		}
-		if ( cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER) <= CHARACTER_TIER_NONE ) {
+		if ( cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER) <= CHARACTER_TIER_NONE ) {
 			txtef COLOR_RED
 			txt lang("度重なる損傷により、あなたの船は大破した。", "Your ship is wrecked due to repeated damage...")
 			snd SOUNDLIST_CRUSH1
@@ -3398,7 +3398,7 @@
 			else {
 				txt lang("どうにか逃げきれたが、船がそれなりに損傷を受けた。", "Your ship managed to escape, but suffered some damage...")
 				snd SOUNDLIST_PUNISH1
-				cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER)--
+				cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER)--
 			}
 		}
 		if ( rtval == 2 ) {
@@ -3409,10 +3409,10 @@
 			else {
 				txt lang("どうにかサメを仕留めたが、船がそれなりに損傷を受けた。", "Your ship managed to kill the shark, but suffered some damage...")
 				snd SOUNDLIST_PUNISH1
-				cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER)--
+				cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER)--
 			}
 		}
-		if ( cdata(CDATA_CHARACTER_TIER, CHARA_PLAYER) <= CHARACTER_TIER_NONE ) {
+		if ( cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER) <= CHARACTER_TIER_NONE ) {
 			txtef COLOR_RED
 			txt lang("度重なる損傷により、あなたの船は大破した。", "Your ship is wrecked due to repeated damage...")
 			snd SOUNDLIST_CRUSH1

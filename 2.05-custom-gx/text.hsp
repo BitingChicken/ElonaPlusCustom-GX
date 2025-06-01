@@ -7052,6 +7052,1051 @@
 				s = ""
 				break
 			}
+			if ( s == "seChangePage" ) {
+				snd SOUNDLIST_POP1
+				s = ""
+				break
+			}
+			if ( s == "seMelee1" ) {
+				snd SOUNDLIST_ATK1
+				s = ""
+				break
+			}
+			if ( s == "seMelee2" ) {
+				snd SOUNDLIST_ATK2
+				s = ""
+				break
+			}
+			if ( s == "seMiss" ) {
+				snd SOUNDLIST_MISS
+				s = ""
+				break
+			}
+			if ( s == "seCursor1" ) {
+				snd SOUNDLIST_CURSOR1
+				s = ""
+				break
+			}
+			if ( s == "seFire" ) {
+				snd SOUNDLIST_FIRE1
+				s = ""
+				break
+			}
+			if ( s == "seKill" ) {
+				snd SOUNDLIST_KILL1
+				s = ""
+				break
+			}
+			if ( s == "seKill2" ) {
+				snd SOUNDLIST_KILL2
+				s = ""
+				break
+			}
+			if ( s == "seMore" ) {
+				snd SOUNDLIST_MORE1
+				s = ""
+				break
+			}
+			if ( s == "seGetGold" ) {
+				snd SOUNDLIST_GETGOLD1
+				s = ""
+				break
+			}
+			if ( s == "sePayGold" ) {
+				snd SOUNDLIST_PAYGOLD1
+				s = ""
+				break
+			}
+			if ( s == "seEquip" ) {
+				snd SOUNDLIST_EQUIP1
+				s = ""
+				break
+			}
+			if ( s == "seGet" ) {
+				snd SOUNDLIST_GET1
+				s = ""
+				break
+			}
+			if ( s == "seGet2" ) {
+				snd SOUNDLIST_GET2
+				s = ""
+				break
+			}
+			if ( s == "seDrop" ) {
+				snd SOUNDLIST_DROP1
+				s = ""
+				break
+			}
+			if ( s == "seDrink" ) {
+				snd SOUNDLIST_DRINK1
+				s = ""
+				break
+			}
+			if ( s == "seEat" ) {
+				snd SOUNDLIST_EAT1
+				s = ""
+				break
+			}
+			if ( s == "seSpend" ) {
+				snd SOUNDLIST_SPEND1
+				s = ""
+				break
+			}
+			if ( s == "seOk" ) {
+				snd SOUNDLIST_OK1
+				s = ""
+				break
+			}
+			if ( s == "seAlert" ) {
+				snd SOUNDLIST_ALERT1
+				s = ""
+				break
+			}
+			if ( s == "seLocked" ) {
+				snd SOUNDLIST_LOCKED1
+				s = ""
+				break
+			}
+			if ( s == "seOpenChest" ) {
+				snd SOUNDLIST_CHEST1
+				s = ""
+				break
+			}
+			if ( s == "seNice" ) {
+				snd SOUNDLIST_DING2
+				s = ""
+				break
+			}
+			if ( s == "seCook" ) {
+				snd SOUNDLIST_COOK1
+				s = ""
+				break
+			}
+			if ( s == "sePop1" ) {
+				snd SOUNDLIST_POP2
+				s = ""
+				break
+			}
+			if ( s == "seFail1" ) {
+				snd SOUNDLIST_FAIL1
+				s = ""
+				break
+			}
+			if ( s == "seFile" ) {
+				snd SOUNDLIST_SCENE_SOUND
+				s = ""
+				break
+			}
+			if ( s == "seBow1" ) {
+				snd SOUNDLIST_BOW1
+				s = ""
+				break
+			}
+			if ( s == "seGun1" ) {
+				snd SOUNDLIST_GUN1
+				s = ""
+				break
+			}
+			if ( s == "seThrow1" ) {
+				snd SOUNDLIST_THROW1
+				s = ""
+				break
+			}
+			if ( s == "seHeart1" ) {
+				snd SOUNDLIST_HEART1
+				s = ""
+				break
+			}
+			if ( s == "seHeal1" ) {
+				snd SOUNDLIST_HEAL1
+				s = ""
+				break
+			}
+			if ( s == "seBall1" ) {
+				snd SOUNDLIST_BALL1
+				s = ""
+				break
+			}
+			if ( s == "seBreath1" ) {
+				snd SOUNDLIST_BREATH1
+				s = ""
+				break
+			}
+			if ( s == "seArrow1" ) {
+				snd SOUNDLIST_ARROW1
+				s = ""
+				break
+			}
+			if ( s == "seBolt1" ) {
+				snd SOUNDLIST_BOLT1
+				s = ""
+				break
+			}
+			if ( s == "seCurse1" ) {
+				snd SOUNDLIST_CURSE1
+				s = ""
+				break
+			}
+			if ( s == "sePop2" ) {
+				snd SOUNDLIST_POP3
+				s = ""
+				break
+			}
+			if ( s == "seClick1" ) {
+				snd SOUNDLIST_CLICK1
+				s = ""
+				break
+			}
+			if ( s == "seGet3" ) {
+				snd SOUNDLIST_GET3
+				s = ""
+				break
+			}
+			if ( s == "seLaser1" ) {
+				snd SOUNDLIST_LASER1
+				s = ""
+				break
+			}
+			if ( s == "seFoot" ) {
+				snd SOUNDLIST_FOOT
+				s = ""
+				break
+			}
+			if ( s == "seSave" ) {
+				snd SOUNDLIST_WRITE1
+				s = ""
+				break
+			}
+			if ( s == "seCrush1" ) {
+				snd SOUNDLIST_CRUSH1
+				s = ""
+				break
+			}
+			if ( s == "seWater" ) {
+				snd SOUNDLIST_WATER2
+				s = ""
+				break
+			}
+			if ( s == "seCrush2" ) {
+				snd SOUNDLIST_CRUSH2
+				s = ""
+				break
+			}
+			if ( s == "seOpenDoor" ) {
+				snd SOUNDLIST_DOOR1
+				s = ""
+				break
+			}
+			if ( s == "seExitMap" ) {
+				snd SOUNDLIST_EXITMAP1
+				s = ""
+				break
+			}
+			if ( s == "seDead" ) {
+				snd SOUNDLIST_DEAD1
+				s = ""
+				break
+			}
+			if ( s == "seComplete" ) {
+				snd SOUNDLIST_COMPLETE1
+				s = ""
+				break
+			}
+			if ( s == "seDig" ) {
+				snd SOUNDLIST_DIG1
+				s = ""
+				break
+			}
+			if ( s == "seChime1" ) {
+				snd SOUNDLIST_CHIME
+				s = ""
+				break
+			}
+			if ( s == "seDig2" ) {
+				snd SOUNDLIST_DIG2
+				s = ""
+				break
+			}
+			if ( s == "seBush1" ) {
+				snd SOUNDLIST_BUSH1
+				s = ""
+				break
+			}
+			if ( s == "seGasha" ) {
+				snd SOUNDLIST_GASHA
+				s = ""
+				break
+			}
+			if ( s == "seFishing1" ) {
+				snd SOUNDLIST_WATER
+				s = ""
+				break
+			}
+			if ( s == "seBuild1" ) {
+				snd SOUNDLIST_BUILD1
+				s = ""
+				break
+			}
+			if ( s == "seOpenBook" ) {
+				snd SOUNDLIST_BOOK1
+				s = ""
+				break
+			}
+			if ( s == "seDing" ) {
+				snd SOUNDLIST_DING1
+				s = ""
+				break
+			}
+			if ( s == "seDing2" ) {
+				snd SOUNDLIST_DING3
+				s = ""
+				break
+			}
+			if ( s == "sePop3" ) {
+				snd SOUNDLIST_POP4
+				s = ""
+				break
+			}
+			if ( s == "sePunish" ) {
+				snd SOUNDLIST_PUNISH1
+				s = ""
+				break
+			}
+			if ( s == "sePray" ) {
+				snd SOUNDLIST_PRAY1
+				s = ""
+				break
+			}
+			if ( s == "seOffer" ) {
+				snd SOUNDLIST_OFFER1
+				s = ""
+				break
+			}
+			if ( s == "seFizzle" ) {
+				snd SOUNDLIST_FIZZLE
+				s = ""
+				break
+			}
+			if ( s == "seOpenDoor2" ) {
+				snd SOUNDLIST_DOOR2
+				s = ""
+				break
+			}
+			if ( s == "seWeb" ) {
+				snd SOUNDLIST_WEB
+				s = ""
+				break
+			}
+			if ( s == "seCheer" ) {
+				snd SOUNDLIST_CHEER
+				s = ""
+				break
+			}
+			if ( s == "seTrap" ) {
+				snd SOUNDLIST_TRAP1
+				s = ""
+				break
+			}
+			if ( s == "seCard1" ) {
+				snd SOUNDLIST_CARD1
+				s = ""
+				break
+			}
+			if ( s == "seTeleport1" ) {
+				snd SOUNDLIST_TELEPORT1
+				s = ""
+				break
+			}
+			if ( s == "seBash" ) {
+				snd SOUNDLIST_BASH1
+				s = ""
+				break
+			}
+			if ( s == "seNight" ) {
+				snd SOUNDLIST_NIGHT
+				s = ""
+				break
+			}
+			if ( s == "seBgRain" ) {
+				snd SOUNDLIST_BG_RAIN
+				s = ""
+				break
+			}
+			if ( s == "seBgThunder" ) {
+				snd SOUNDLIST_BG_THUNDER
+				s = ""
+				break
+			}
+			if ( s == "seBgWind" ) {
+				snd SOUNDLIST_BG_WIND
+				s = ""
+				break
+			}
+			if ( s == "seBgSea" ) {
+				snd SOUNDLIST_BG_SEA
+				s = ""
+				break
+			}
+			if ( s == "seBgTown" ) {
+				snd SOUNDLIST_BG_TOWN
+				s = ""
+				break
+			}
+			if ( s == "seBgFire" ) {
+				snd SOUNDLIST_BG_FIRE
+				s = ""
+				break
+			}
+			if ( s == "seFoot1a" ) {
+				snd SOUNDLIST_FOOT1A
+				s = ""
+				break
+			}
+			if ( s == "seFoot1b" ) {
+				snd SOUNDLIST_FOOT1B
+				s = ""
+				break
+			}
+			if ( s == "seFoot2a" ) {
+				snd SOUNDLIST_FOOT2A
+				s = ""
+				break
+			}
+			if ( s == "seFoot2b" ) {
+				snd SOUNDLIST_FOOT2B
+				s = ""
+				break
+			}
+			if ( s == "seFoot2c" ) {
+				snd SOUNDLIST_FOOT2C
+				s = ""
+				break
+			}
+			if ( s == "seSnow" ) {
+				snd SOUNDLIST_SNOW
+				s = ""
+				break
+			}
+			if ( s == "seFishCast" ) {
+				snd SOUNDLIST_FISH_CAST
+				s = ""
+				break
+			}
+			if ( s == "seFishGet" ) {
+				snd SOUNDLIST_FISH_GET
+				s = ""
+				break
+			}
+			if ( s == "seFishFight" ) {
+				snd SOUNDLIST_FISH_FIGHT
+				s = ""
+				break
+			}
+			if ( s == "seAmmo" ) {
+				snd SOUNDLIST_AMMO
+				s = ""
+				break
+			}
+			if ( s == "seThrow2" ) {
+				snd SOUNDLIST_THROW2
+				s = ""
+				break
+			}
+			if ( s == "seScroll" ) {
+				snd SOUNDLIST_SCROLL
+				s = ""
+				break
+			}
+			if ( s == "seLog" ) {
+				snd SOUNDLIST_LOG
+				s = ""
+				break
+			}
+			if ( s == "seChara" ) {
+				snd SOUNDLIST_CHARA
+				s = ""
+				break
+			}
+			if ( s == "seWear" ) {
+				snd SOUNDLIST_WEAR
+				s = ""
+				break
+			}
+			if ( s == "seFeat" ) {
+				snd SOUNDLIST_FEAT
+				s = ""
+				break
+			}
+			if ( s == "sePort" ) {
+				snd SOUNDLIST_PORT
+				s = ""
+				break
+			}
+			if ( s == "seUnpop1" ) {
+				snd SOUNDLIST_UNPOP1
+				s = ""
+				break
+			}
+			if ( s == "seChat" ) {
+				snd SOUNDLIST_CHAT
+				s = ""
+				break
+			}
+			if ( s == "seInv" ) {
+				snd SOUNDLIST_INV
+				s = ""
+				break
+			}
+			if ( s == "seSkill" ) {
+				snd SOUNDLIST_SKILL
+				s = ""
+				break
+			}
+			if ( s == "seSpell" ) {
+				snd SOUNDLIST_SPELL
+				s = ""
+				break
+			}
+			if ( s == "seDice" ) {
+				snd SOUNDLIST_DICE
+				s = ""
+				break
+			}
+			if ( s == "seVomit" ) {
+				snd SOUNDLIST_VOMIT
+				s = ""
+				break
+			}
+			if ( s == "seAtkSword" ) {
+				snd SOUNDLIST_ATKSWORD
+				s = ""
+				break
+			}
+			if ( s == "seAtkIce" ) {
+				snd SOUNDLIST_ATK_ICE
+				s = ""
+				break
+			}
+			if ( s == "seAtkElec" ) {
+				snd SOUNDLIST_ATK_ELEC
+				s = ""
+				break
+			}
+			if ( s == "seAtkFire" ) {
+				snd SOUNDLIST_ATK_FIRE
+				s = ""
+				break
+			}
+			if ( s == "seAtkHell" ) {
+				snd SOUNDLIST_ATK_HELL
+				s = ""
+				break
+			}
+			if ( s == "seAtkPoison" ) {
+				snd SOUNDLIST_ATK_POISON
+				s = ""
+				break
+			}
+			if ( s == "seAtkNerve" ) {
+				snd SOUNDLIST_ATK_NERVE
+				s = ""
+				break
+			}
+			if ( s == "seAtkSound" ) {
+				snd SOUNDLIST_ATK_SOUND
+				s = ""
+				break
+			}
+			if ( s == "seAtkMind" ) {
+				snd SOUNDLIST_ATK_MIND
+				s = ""
+				break
+			}
+			if ( s == "seAtkChaos" ) {
+				snd SOUNDLIST_ATK_CHAOS
+				s = ""
+				break
+			}
+			if ( s == "seAtkDark" ) {
+				snd SOUNDLIST_ATK_DARK
+				s = ""
+				break
+			}
+			if ( s == "seCurse2" ) {
+				snd SOUNDLIST_CURSE2
+				s = ""
+				break
+			}
+			if ( s == "seCurse3" ) {
+				snd SOUNDLIST_CURSE3
+				s = ""
+				break
+			}
+			if ( s == "seEnc" ) {
+				snd SOUNDLIST_ENC
+				s = ""
+				break
+			}
+			if ( s == "seEnc2" ) {
+				snd SOUNDLIST_ENC2
+				s = ""
+				break
+			}
+			if ( s == "sePray2" ) {
+				snd SOUNDLIST_PRAY2
+				s = ""
+				break
+			}
+			if ( s == "seOffer2" ) {
+				snd SOUNDLIST_OFFER2
+				s = ""
+				break
+			}
+			if ( s == "seGong" ) {
+				snd SOUNDLIST_GONG
+				s = ""
+				break
+			}
+			if ( s == "seSlap" ) {
+				snd SOUNDLIST_SLAP
+				s = ""
+				break
+			}
+			if ( s == "seCeffet" ) {
+				snd SOUNDLIST_CEFFECT
+				s = ""
+				break
+			}
+			if ( s == "seRain" ) {
+				snd SOUNDLIST_RAIN
+				s = ""
+				break
+			}
+			if ( s == "seWave" ) {
+				snd SOUNDLIST_WAVE
+				s = ""
+				break
+			}
+			if ( s == "seWhistle" ) {
+				snd SOUNDLIST_WHISTLE
+				s = ""
+				break
+			}
+			if ( s == "seQuizBad" ) {
+				snd SOUNDLIST_QUIZBAD
+				s = ""
+				break
+			}
+			if ( s == "sePower" ) {
+				snd SOUNDLIST_POWER
+				s = ""
+				break
+			}
+			if ( s == "sePiano1" ) {
+				snd SOUNDLIST_PIANO1
+				s = ""
+				break
+			}
+			if ( s == "sePiano2" ) {
+				snd SOUNDLIST_PIANO2B
+				s = ""
+				break
+			}
+			if ( s == "sePiano3" ) {
+				snd SOUNDLIST_PIANO3
+				s = ""
+				break
+			}
+			if ( s == "sePiano4" ) {
+				snd SOUNDLIST_PIANO4B
+				s = ""
+				break
+			}
+			if ( s == "sePiano5" ) {
+				snd SOUNDLIST_PIANO5
+				s = ""
+				break
+			}
+			if ( s == "sePiano6" ) {
+				snd SOUNDLIST_PIANO6
+				s = ""
+				break
+			}
+			if ( s == "sePiano7" ) {
+				snd SOUNDLIST_PIANO7B
+				s = ""
+				break
+			}
+			if ( s == "sePiano8" ) {
+				snd SOUNDLIST_PIANO8
+				s = ""
+				break
+			}
+			if ( s == "sePiano9" ) {
+				snd SOUNDLIST_PIANO9B
+				s = ""
+				break
+			}
+			if ( s == "sePiano10" ) {
+				snd SOUNDLIST_PIANO10
+				s = ""
+				break
+			}
+			if ( s == "sePiano11" ) {
+				snd SOUNDLIST_PIANO11B
+				s = ""
+				break
+			}
+			if ( s == "sePiano12" ) {
+				snd SOUNDLIST_PIANO12
+				s = ""
+				break
+			}
+			if ( s == "sePiano13" ) {
+				snd SOUNDLIST_PIANO13
+				s = ""
+				break
+			}
+			if ( s == "sePiano14" ) {
+				snd SOUNDLIST_PIANO14B
+				s = ""
+				break
+			}
+			if ( s == "sePiano15" ) {
+				snd SOUNDLIST_PIANO15
+				s = ""
+				break
+			}
+			if ( s == "sePiano16" ) {
+				snd SOUNDLIST_PIANO16B
+				s = ""
+				break
+			}
+			if ( s == "sePiano17" ) {
+				snd SOUNDLIST_PIANO17
+				s = ""
+				break
+			}
+			if ( s == "sePiano18" ) {
+				snd SOUNDLIST_PIANO18
+				s = ""
+				break
+			}
+			if ( s == "sePiano19" ) {
+				snd SOUNDLIST_PIANO19B
+				s = ""
+				break
+			}
+			if ( s == "sePiano20" ) {
+				snd SOUNDLIST_PIANO20
+				s = ""
+				break
+			}
+			if ( s == "sePiano21" ) {
+				snd SOUNDLIST_PIANO21B
+				s = ""
+				break
+			}
+			if ( s == "sePiano22" ) {
+				snd SOUNDLIST_PIANO22
+				s = ""
+				break
+			}
+			if ( s == "sePiano23" ) {
+				snd SOUNDLIST_PIANO23B
+				s = ""
+				break
+			}
+			if ( s == "sePiano24" ) {
+				snd SOUNDLIST_PIANO24
+				s = ""
+				break
+			}
+			if ( s == "seSonic" ) {
+				snd SOUNDLIST_SONIC
+				s = ""
+				break
+			}
+			if ( s == "seShots" ) {
+				snd SOUNDLIST_SHOTS
+				s = ""
+				break
+			}
+			if ( s == "seStab" ) {
+				snd SOUNDLIST_STAB
+				s = ""
+				break
+			}
+			if ( s == "seMizu" ) {
+				snd SOUNDLIST_MIZU
+				s = ""
+				break
+			}
+			if ( s == "seBuble" ) {
+				snd SOUNDLIST_BUBLE
+				s = ""
+				break
+			}
+			if ( s == "seScream" ) {
+				snd SOUNDLIST_SCREAM
+				s = ""
+				break
+			}
+			if ( s == "seSwing" ) {
+				snd SOUNDLIST_SWING
+				s = ""
+				break
+			}
+			if ( s == "seGrowl" ) {
+				snd SOUNDLIST_BEAST02
+				s = ""
+				break
+			}
+			if ( s == "seChatF" ) {
+				snd SOUNDLIST_MIND000
+				s = ""
+				break
+			}
+			if ( s == "seChatH" ) {
+				snd SOUNDLIST_LOAD
+				s = ""
+				break
+			}
+			if ( s == "seHanabi" ) {
+				snd SOUNDLIST_EXPLOSION
+				s = ""
+				break
+			}
+			if ( s == "seClap2f" ) {
+				snd SOUNDLIST_CLAP2F
+				s = ""
+				break
+			}
+			if ( s == "seClap4f" ) {
+				snd SOUNDLIST_CLAP4F
+				s = ""
+				break
+			}
+			if ( s == "seChime2" ) {
+				snd SOUNDLIST_CHIME000R
+				s = ""
+				break
+			}
+			if ( s == "seGunshot1" ) {
+				snd SOUNDLIST_GUNSHOT1
+				s = ""
+				break
+			}
+			if ( s == "seGunshot3" ) {
+				snd SOUNDLIST_GUNSHOT3
+				s = ""
+				break
+			}
+			if ( s == "seCrack" ) {
+				snd SOUNDLIST_CRACK
+				s = ""
+				break
+			}
+			if ( s == "seCrack2" ) {
+				snd SOUNDLIST_CRACK2
+				s = ""
+				break
+			}
+			if ( s == "seBreak" ) {
+				snd SOUNDLIST_ATTACK00
+				s = ""
+				break
+			}
+			if ( s == "seBomH" ) {
+				snd SOUNDLIST_BOM03
+				s = ""
+				break
+			}
+			if ( s == "seBomS" ) {
+				snd SOUNDLIST_BOM06
+				s = ""
+				break
+			}
+			if ( s == "seBomN" ) {
+				snd SOUNDLIST_BOM15
+				s = ""
+				break
+			}
+			if ( s == "sePusyu" ) {
+				snd SOUNDLIST_SWING39
+				s = ""
+				break
+			}
+			if ( s == "seMecha" ) {
+				snd SOUNDLIST_MECHA20
+				s = ""
+				break
+			}
+			if ( s == "seWaterm" ) {
+				snd SOUNDLIST_WATERM
+				s = ""
+				break
+			}
+			if ( s == "seGoto" ) {
+				snd SOUNDLIST_DRAG01
+				s = ""
+				break
+			}
+			if ( s == "seInanaki" ) {
+				snd SOUNDLIST_INANAKI
+				s = ""
+				break
+			}
+			if ( s == "seCar" ) {
+				snd SOUNDLIST_CAR_HORN1
+				s = ""
+				break
+			}
+			if ( s == "seLocomo" ) {
+				snd SOUNDLIST_LOCOMO
+				s = ""
+				break
+			}
+			if ( s == "seSiren" ) {
+				snd SOUNDLIST_SIREN
+				s = ""
+				break
+			}
+			if ( s == "sePipipi" ) {
+				snd SOUNDLIST_POWER07
+				s = ""
+				break
+			}
+			if ( s == "seTaore" ) {
+				snd SOUNDLIST_TAORE08
+				s = ""
+				break
+			}
+			if ( s == "seReload" ) {
+				snd SOUNDLIST_TM2_SWITCH001
+				s = ""
+				break
+			}
+			if ( s == "sePshot" ) {
+				snd SOUNDLIST_TM2_HIT000
+				s = ""
+				break
+			}
+			if ( s == "seFreeze" ) {
+				snd SOUNDLIST_FREEZE01
+				s = ""
+				break
+			}
+			if ( s == "seTea" ) {
+				snd SOUNDLIST_TM2_ALCHEMIST000
+				s = ""
+				break
+			}
+			if ( s == "seTea2" ) {
+				snd SOUNDLIST_KACHI08
+				s = ""
+				break
+			}
+			if ( s == "seSmoke" ) {
+				snd SOUNDLIST_SMOKE03
+				s = ""
+				break
+			}
+			if ( s == "seBgRiver" ) {
+				snd SOUNDLIST_TM2_RIVER000
+				s = ""
+				break
+			}
+			if ( s == "seBgRiver2" ) {
+				snd SOUNDLIST_TM2_RIVER001
+				s = ""
+				break
+			}
+			if ( s == "seSemi1" ) {
+				snd SOUNDLIST_SEMI1
+				s = ""
+				break
+			}
+			if ( s == "seSemi2" ) {
+				snd SOUNDLIST_SEMI2
+				s = ""
+				break
+			}
+			if ( s == "seSemi3" ) {
+				snd SOUNDLIST_SEMI3
+				s = ""
+				break
+			}
+			if ( s == "seSemi4" ) {
+				snd SOUNDLIST_SEMI4
+				s = ""
+				break
+			}
+			if ( s == "seSemi5" ) {
+				snd SOUNDLIST_SEMI5
+				s = ""
+				break
+			}
+			if ( s == "seGBreak" ) {
+				snd SOUNDLIST_CRASH14
+				s = ""
+				break
+			}
+			if ( s == "seWhistleShort" ) {
+				snd SOUNDLIST_WHISTLE00
+				s = ""
+				break
+			}
+			if ( s == "seLbazooka" ) {
+				snd SOUNDLIST_GUN10
+				s = ""
+				break
+			}
+			if ( s == "seBaby" ) {
+				snd SOUNDLIST_CHANDLER23
+				s = ""
+				break
+			}
+			if ( s == "seHawk" ) {
+				snd SOUNDLIST_HAWK1
+				s = ""
+				break
+			}
+			if ( s == "seBgSeabed" ) {
+				snd SOUNDLIST_UMINADO
+				s = ""
+				break
+			}
+			if ( s == "seMizu2" ) {
+				snd SOUNDLIST_MIZU2
+				s = ""
+				break
+			}
+			if ( s == "seAtkfall" ) {
+				snd SOUNDLIST_BURST00
+				s = ""
+				break
+			}
+			if ( s == "seGoro" ) {
+				snd SOUNDLIST_GORO05
+				s = ""
+				break
+			}
+			if ( s == "seAtkDrill" ) {
+				snd SOUNDLIST_MECHA15
+				s = ""
+				break
+			}
+			if ( s == "seCat" ) {
+				snd SOUNDLIST_CAT03
+				s = ""
+				break
+			}
+			if ( s == "seDog" ) {
+				snd SOUNDLIST_DOG02
+				s = ""
+				break
+			}
 			if ( s == "n" ) {
 				s = "\n"
 				break
@@ -7207,506 +8252,1063 @@
 				sg = ""
 				break
 			}
-			if ( sg == "se0" ) {
-				snd SOUNDLIST_USER_SE00
+			if ( sg == "seChangePage" ) {
+				snd SOUNDLIST_POP1
 				sg = ""
 				break
 			}
-			if ( sg == "se1" ) {
-				snd SOUNDLIST_USER_SE01
+			if ( sg == "seMelee1" ) {
+				snd SOUNDLIST_ATK1
 				sg = ""
 				break
 			}
-			if ( sg == "se2" ) {
-				snd SOUNDLIST_USER_SE02
+			if ( sg == "seMelee2" ) {
+				snd SOUNDLIST_ATK2
 				sg = ""
 				break
 			}
-			if ( sg == "se3" ) {
-				snd SOUNDLIST_USER_SE03
+			if ( sg == "seMiss" ) {
+				snd SOUNDLIST_MISS
 				sg = ""
 				break
 			}
-			if ( sg == "se4" ) {
-				snd SOUNDLIST_USER_SE04
+			if ( sg == "seCursor1" ) {
+				snd SOUNDLIST_CURSOR1
 				sg = ""
 				break
 			}
-			if ( sg == "se5" ) {
-				snd SOUNDLIST_USER_SE05
+			if ( sg == "seFire" ) {
+				snd SOUNDLIST_FIRE1
 				sg = ""
 				break
 			}
-			if ( sg == "se6" ) {
-				snd SOUNDLIST_USER_SE06
+			if ( sg == "seKill" ) {
+				snd SOUNDLIST_KILL1
 				sg = ""
 				break
 			}
-			if ( sg == "se7" ) {
-				snd SOUNDLIST_USER_SE07
+			if ( sg == "seKill2" ) {
+				snd SOUNDLIST_KILL2
 				sg = ""
 				break
 			}
-			if ( sg == "se8" ) {
-				snd SOUNDLIST_USER_SE08
+			if ( sg == "seMore" ) {
+				snd SOUNDLIST_MORE1
 				sg = ""
 				break
 			}
-			if ( sg == "se9" ) {
-				snd SOUNDLIST_USER_SE09
+			if ( sg == "seGetGold" ) {
+				snd SOUNDLIST_GETGOLD1
 				sg = ""
 				break
 			}
-			if ( sg == "se10" ) {
-				snd SOUNDLIST_USER_SE10
+			if ( sg == "sePayGold" ) {
+				snd SOUNDLIST_PAYGOLD1
 				sg = ""
 				break
 			}
-			if ( sg == "se11" ) {
-				snd SOUNDLIST_USER_SE11
+			if ( sg == "seEquip" ) {
+				snd SOUNDLIST_EQUIP1
 				sg = ""
 				break
 			}
-			if ( sg == "se12" ) {
-				snd SOUNDLIST_USER_SE12
+			if ( sg == "seGet" ) {
+				snd SOUNDLIST_GET1
 				sg = ""
 				break
 			}
-			if ( sg == "se13" ) {
-				snd SOUNDLIST_USER_SE13
+			if ( sg == "seGet2" ) {
+				snd SOUNDLIST_GET2
 				sg = ""
 				break
 			}
-			if ( sg == "se14" ) {
-				snd SOUNDLIST_USER_SE14
+			if ( sg == "seDrop" ) {
+				snd SOUNDLIST_DROP1
 				sg = ""
 				break
 			}
-			if ( sg == "se15" ) {
-				snd SOUNDLIST_USER_SE15
+			if ( sg == "seDrink" ) {
+				snd SOUNDLIST_DRINK1
 				sg = ""
 				break
 			}
-			if ( sg == "se16" ) {
-				snd SOUNDLIST_USER_SE16
+			if ( sg == "seEat" ) {
+				snd SOUNDLIST_EAT1
 				sg = ""
 				break
 			}
-			if ( sg == "se17" ) {
-				snd SOUNDLIST_USER_SE17
+			if ( sg == "seSpend" ) {
+				snd SOUNDLIST_SPEND1
 				sg = ""
 				break
 			}
-			if ( sg == "se18" ) {
-				snd SOUNDLIST_USER_SE18
+			if ( sg == "seOk" ) {
+				snd SOUNDLIST_OK1
 				sg = ""
 				break
 			}
-			if ( sg == "se19" ) {
-				snd SOUNDLIST_USER_SE19
+			if ( sg == "seAlert" ) {
+				snd SOUNDLIST_ALERT1
 				sg = ""
 				break
 			}
-			if ( sg == "se20" ) {
-				snd SOUNDLIST_USER_SE20
+			if ( sg == "seLocked" ) {
+				snd SOUNDLIST_LOCKED1
 				sg = ""
 				break
 			}
-			if ( sg == "se21" ) {
-				snd SOUNDLIST_USER_SE21
+			if ( sg == "seOpenChest" ) {
+				snd SOUNDLIST_CHEST1
 				sg = ""
 				break
 			}
-			if ( sg == "se22" ) {
-				snd SOUNDLIST_USER_SE22
+			if ( sg == "seNice" ) {
+				snd SOUNDLIST_DING2
 				sg = ""
 				break
 			}
-			if ( sg == "se23" ) {
-				snd SOUNDLIST_USER_SE23
+			if ( sg == "seCook" ) {
+				snd SOUNDLIST_COOK1
 				sg = ""
 				break
 			}
-			if ( sg == "se24" ) {
-				snd SOUNDLIST_USER_SE24
+			if ( sg == "sePop1" ) {
+				snd SOUNDLIST_POP2
 				sg = ""
 				break
 			}
-			if ( sg == "se25" ) {
-				snd SOUNDLIST_USER_SE25
+			if ( sg == "seFail1" ) {
+				snd SOUNDLIST_FAIL1
 				sg = ""
 				break
 			}
-			if ( sg == "se26" ) {
-				snd SOUNDLIST_USER_SE26
+			if ( sg == "seFile" ) {
+				snd SOUNDLIST_SCENE_SOUND
 				sg = ""
 				break
 			}
-			if ( sg == "se27" ) {
-				snd SOUNDLIST_USER_SE27
+			if ( sg == "seBow1" ) {
+				snd SOUNDLIST_BOW1
 				sg = ""
 				break
 			}
-			if ( sg == "se28" ) {
-				snd SOUNDLIST_USER_SE28
+			if ( sg == "seGun1" ) {
+				snd SOUNDLIST_GUN1
 				sg = ""
 				break
 			}
-			if ( sg == "se29" ) {
-				snd SOUNDLIST_USER_SE29
+			if ( sg == "seThrow1" ) {
+				snd SOUNDLIST_THROW1
 				sg = ""
 				break
 			}
-			if ( sg == "se30" ) {
-				snd SOUNDLIST_USER_SE30
+			if ( sg == "seHeart1" ) {
+				snd SOUNDLIST_HEART1
 				sg = ""
 				break
 			}
-			if ( sg == "se31" ) {
-				snd SOUNDLIST_USER_SE31
+			if ( sg == "seHeal1" ) {
+				snd SOUNDLIST_HEAL1
 				sg = ""
 				break
 			}
-			if ( sg == "se32" ) {
-				snd SOUNDLIST_USER_SE32
+			if ( sg == "seBall1" ) {
+				snd SOUNDLIST_BALL1
 				sg = ""
 				break
 			}
-			if ( sg == "se33" ) {
-				snd SOUNDLIST_USER_SE33
+			if ( sg == "seBreath1" ) {
+				snd SOUNDLIST_BREATH1
 				sg = ""
 				break
 			}
-			if ( sg == "se34" ) {
-				snd SOUNDLIST_USER_SE34
+			if ( sg == "seArrow1" ) {
+				snd SOUNDLIST_ARROW1
 				sg = ""
 				break
 			}
-			if ( sg == "se35" ) {
-				snd SOUNDLIST_USER_SE35
+			if ( sg == "seBolt1" ) {
+				snd SOUNDLIST_BOLT1
 				sg = ""
 				break
 			}
-			if ( sg == "se36" ) {
-				snd SOUNDLIST_USER_SE36
+			if ( sg == "seCurse1" ) {
+				snd SOUNDLIST_CURSE1
 				sg = ""
 				break
 			}
-			if ( sg == "se37" ) {
-				snd SOUNDLIST_USER_SE37
+			if ( sg == "sePop2" ) {
+				snd SOUNDLIST_POP3
 				sg = ""
 				break
 			}
-			if ( sg == "se38" ) {
-				snd SOUNDLIST_USER_SE38
+			if ( sg == "seClick1" ) {
+				snd SOUNDLIST_CLICK1
 				sg = ""
 				break
 			}
-			if ( sg == "se39" ) {
-				snd SOUNDLIST_USER_SE39
+			if ( sg == "seGet3" ) {
+				snd SOUNDLIST_GET3
 				sg = ""
 				break
 			}
-			if ( sg == "se40" ) {
-				snd SOUNDLIST_USER_SE40
+			if ( sg == "seLaser1" ) {
+				snd SOUNDLIST_LASER1
 				sg = ""
 				break
 			}
-			if ( sg == "se41" ) {
-				snd SOUNDLIST_USER_SE41
+			if ( sg == "seFoot" ) {
+				snd SOUNDLIST_FOOT
 				sg = ""
 				break
 			}
-			if ( sg == "se42" ) {
-				snd SOUNDLIST_USER_SE42
+			if ( sg == "seSave" ) {
+				snd SOUNDLIST_WRITE1
 				sg = ""
 				break
 			}
-			if ( sg == "se43" ) {
-				snd SOUNDLIST_USER_SE43
+			if ( sg == "seCrush1" ) {
+				snd SOUNDLIST_CRUSH1
 				sg = ""
 				break
 			}
-			if ( sg == "se44" ) {
-				snd SOUNDLIST_USER_SE44
+			if ( sg == "seWater" ) {
+				snd SOUNDLIST_WATER2
 				sg = ""
 				break
 			}
-			if ( sg == "se45" ) {
-				snd SOUNDLIST_USER_SE45
+			if ( sg == "seCrush2" ) {
+				snd SOUNDLIST_CRUSH2
 				sg = ""
 				break
 			}
-			if ( sg == "se46" ) {
-				snd SOUNDLIST_USER_SE46
+			if ( sg == "seOpenDoor" ) {
+				snd SOUNDLIST_DOOR1
 				sg = ""
 				break
 			}
-			if ( sg == "se47" ) {
-				snd SOUNDLIST_USER_SE47
+			if ( sg == "seExitMap" ) {
+				snd SOUNDLIST_EXITMAP1
 				sg = ""
 				break
 			}
-			if ( sg == "se48" ) {
-				snd SOUNDLIST_USER_SE48
+			if ( sg == "seDead" ) {
+				snd SOUNDLIST_DEAD1
 				sg = ""
 				break
 			}
-			if ( sg == "se49" ) {
-				snd SOUNDLIST_USER_SE49
+			if ( sg == "seComplete" ) {
+				snd SOUNDLIST_COMPLETE1
 				sg = ""
 				break
 			}
-			if ( sg == "se50" ) {
-				snd SOUNDLIST_USER_SE50
+			if ( sg == "seDig" ) {
+				snd SOUNDLIST_DIG1
 				sg = ""
 				break
 			}
-			if ( sg == "se51" ) {
-				snd SOUNDLIST_USER_SE51
+			if ( sg == "seChime1" ) {
+				snd SOUNDLIST_CHIME
 				sg = ""
 				break
 			}
-			if ( sg == "se52" ) {
-				snd SOUNDLIST_USER_SE52
+			if ( sg == "seDig2" ) {
+				snd SOUNDLIST_DIG2
 				sg = ""
 				break
 			}
-			if ( sg == "se53" ) {
-				snd SOUNDLIST_USER_SE53
+			if ( sg == "seBush1" ) {
+				snd SOUNDLIST_BUSH1
 				sg = ""
 				break
 			}
-			if ( sg == "se54" ) {
-				snd SOUNDLIST_USER_SE54
+			if ( sg == "seGasha" ) {
+				snd SOUNDLIST_GASHA
 				sg = ""
 				break
 			}
-			if ( sg == "se55" ) {
-				snd SOUNDLIST_USER_SE55
+			if ( sg == "seFishing1" ) {
+				snd SOUNDLIST_WATER
 				sg = ""
 				break
 			}
-			if ( sg == "se56" ) {
-				snd SOUNDLIST_USER_SE56
+			if ( sg == "seBuild1" ) {
+				snd SOUNDLIST_BUILD1
 				sg = ""
 				break
 			}
-			if ( sg == "se57" ) {
-				snd SOUNDLIST_USER_SE57
+			if ( sg == "seOpenBook" ) {
+				snd SOUNDLIST_BOOK1
 				sg = ""
 				break
 			}
-			if ( sg == "se58" ) {
-				snd SOUNDLIST_USER_SE58
+			if ( sg == "seDing" ) {
+				snd SOUNDLIST_DING1
 				sg = ""
 				break
 			}
-			if ( sg == "se59" ) {
-				snd SOUNDLIST_USER_SE59
+			if ( sg == "seDing2" ) {
+				snd SOUNDLIST_DING3
 				sg = ""
 				break
 			}
-			if ( sg == "se60" ) {
-				snd SOUNDLIST_USER_SE60
+			if ( sg == "sePop3" ) {
+				snd SOUNDLIST_POP4
 				sg = ""
 				break
 			}
-			if ( sg == "se61" ) {
-				snd SOUNDLIST_USER_SE61
+			if ( sg == "sePunish" ) {
+				snd SOUNDLIST_PUNISH1
 				sg = ""
 				break
 			}
-			if ( sg == "se62" ) {
-				snd SOUNDLIST_USER_SE62
+			if ( sg == "sePray" ) {
+				snd SOUNDLIST_PRAY1
 				sg = ""
 				break
 			}
-			if ( sg == "se63" ) {
-				snd SOUNDLIST_USER_SE63
+			if ( sg == "seOffer" ) {
+				snd SOUNDLIST_OFFER1
 				sg = ""
 				break
 			}
-			if ( sg == "se64" ) {
-				snd SOUNDLIST_USER_SE64
+			if ( sg == "seFizzle" ) {
+				snd SOUNDLIST_FIZZLE
 				sg = ""
 				break
 			}
-			if ( sg == "se65" ) {
-				snd SOUNDLIST_USER_SE65
+			if ( sg == "seOpenDoor2" ) {
+				snd SOUNDLIST_DOOR2
 				sg = ""
 				break
 			}
-			if ( sg == "se66" ) {
-				snd SOUNDLIST_USER_SE66
+			if ( sg == "seWeb" ) {
+				snd SOUNDLIST_WEB
 				sg = ""
 				break
 			}
-			if ( sg == "se67" ) {
-				snd SOUNDLIST_USER_SE67
+			if ( sg == "seCheer" ) {
+				snd SOUNDLIST_CHEER
 				sg = ""
 				break
 			}
-			if ( sg == "se68" ) {
-				snd SOUNDLIST_USER_SE68
+			if ( sg == "seTrap" ) {
+				snd SOUNDLIST_TRAP1
 				sg = ""
 				break
 			}
-			if ( sg == "se69" ) {
-				snd SOUNDLIST_USER_SE69
+			if ( sg == "seCard1" ) {
+				snd SOUNDLIST_CARD1
 				sg = ""
 				break
 			}
-			if ( sg == "se70" ) {
-				snd SOUNDLIST_USER_SE70
+			if ( sg == "seTeleport1" ) {
+				snd SOUNDLIST_TELEPORT1
 				sg = ""
 				break
 			}
-			if ( sg == "se71" ) {
-				snd SOUNDLIST_USER_SE71
+			if ( sg == "seBash" ) {
+				snd SOUNDLIST_BASH1
 				sg = ""
 				break
 			}
-			if ( sg == "se72" ) {
-				snd SOUNDLIST_USER_SE72
+			if ( sg == "seNight" ) {
+				snd SOUNDLIST_NIGHT
 				sg = ""
 				break
 			}
-			if ( sg == "se73" ) {
-				snd SOUNDLIST_USER_SE73
+			if ( sg == "seBgRain" ) {
+				snd SOUNDLIST_BG_RAIN
 				sg = ""
 				break
 			}
-			if ( sg == "se74" ) {
-				snd SOUNDLIST_USER_SE74
+			if ( sg == "seBgThunder" ) {
+				snd SOUNDLIST_BG_THUNDER
 				sg = ""
 				break
 			}
-			if ( sg == "se75" ) {
-				snd SOUNDLIST_USER_SE75
+			if ( sg == "seBgWind" ) {
+				snd SOUNDLIST_BG_WIND
 				sg = ""
 				break
 			}
-			if ( sg == "se76" ) {
-				snd SOUNDLIST_USER_SE76
+			if ( sg == "seBgSea" ) {
+				snd SOUNDLIST_BG_SEA
 				sg = ""
 				break
 			}
-			if ( sg == "se77" ) {
-				snd SOUNDLIST_USER_SE77
+			if ( sg == "seBgTown" ) {
+				snd SOUNDLIST_BG_TOWN
 				sg = ""
 				break
 			}
-			if ( sg == "se78" ) {
-				snd SOUNDLIST_USER_SE78
+			if ( sg == "seBgFire" ) {
+				snd SOUNDLIST_BG_FIRE
 				sg = ""
 				break
 			}
-			if ( sg == "se79" ) {
-				snd SOUNDLIST_USER_SE79
+			if ( sg == "seFoot1a" ) {
+				snd SOUNDLIST_FOOT1A
 				sg = ""
 				break
 			}
-			if ( sg == "se80" ) {
-				snd SOUNDLIST_USER_SE80
+			if ( sg == "seFoot1b" ) {
+				snd SOUNDLIST_FOOT1B
 				sg = ""
 				break
 			}
-			if ( sg == "se81" ) {
-				snd SOUNDLIST_USER_SE81
+			if ( sg == "seFoot2a" ) {
+				snd SOUNDLIST_FOOT2A
 				sg = ""
 				break
 			}
-			if ( sg == "se82" ) {
-				snd SOUNDLIST_USER_SE82
+			if ( sg == "seFoot2b" ) {
+				snd SOUNDLIST_FOOT2B
 				sg = ""
 				break
 			}
-			if ( sg == "se83" ) {
-				snd SOUNDLIST_USER_SE83
+			if ( sg == "seFoot2c" ) {
+				snd SOUNDLIST_FOOT2C
 				sg = ""
 				break
 			}
-			if ( sg == "se84" ) {
-				snd SOUNDLIST_USER_SE84
+			if ( sg == "seSnow" ) {
+				snd SOUNDLIST_SNOW
 				sg = ""
 				break
 			}
-			if ( sg == "se85" ) {
-				snd SOUNDLIST_USER_SE85
+			if ( sg == "seFishCast" ) {
+				snd SOUNDLIST_FISH_CAST
 				sg = ""
 				break
 			}
-			if ( sg == "se86" ) {
-				snd SOUNDLIST_USER_SE86
+			if ( sg == "seFishGet" ) {
+				snd SOUNDLIST_FISH_GET
 				sg = ""
 				break
 			}
-			if ( sg == "se87" ) {
-				snd SOUNDLIST_USER_SE87
+			if ( sg == "seFishFight" ) {
+				snd SOUNDLIST_FISH_FIGHT
 				sg = ""
 				break
 			}
-			if ( sg == "se88" ) {
-				snd SOUNDLIST_USER_SE88
+			if ( sg == "seAmmo" ) {
+				snd SOUNDLIST_AMMO
 				sg = ""
 				break
 			}
-			if ( sg == "se89" ) {
-				snd SOUNDLIST_USER_SE89
+			if ( sg == "seThrow2" ) {
+				snd SOUNDLIST_THROW2
 				sg = ""
 				break
 			}
-			if ( sg == "se90" ) {
-				snd SOUNDLIST_USER_SE90
+			if ( sg == "seScroll" ) {
+				snd SOUNDLIST_SCROLL
 				sg = ""
 				break
 			}
-			if ( sg == "se91" ) {
-				snd SOUNDLIST_USER_SE91
+			if ( sg == "seLog" ) {
+				snd SOUNDLIST_LOG
 				sg = ""
 				break
 			}
-			if ( sg == "se92" ) {
-				snd SOUNDLIST_USER_SE92
+			if ( sg == "seChara" ) {
+				snd SOUNDLIST_CHARA
 				sg = ""
 				break
 			}
-			if ( sg == "se93" ) {
-				snd SOUNDLIST_USER_SE93
+			if ( sg == "seWear" ) {
+				snd SOUNDLIST_WEAR
 				sg = ""
 				break
 			}
-			if ( sg == "se94" ) {
-				snd SOUNDLIST_USER_SE94
+			if ( sg == "seFeat" ) {
+				snd SOUNDLIST_FEAT
 				sg = ""
 				break
 			}
-			if ( sg == "se95" ) {
-				snd SOUNDLIST_USER_SE95
+			if ( sg == "sePort" ) {
+				snd SOUNDLIST_PORT
 				sg = ""
 				break
 			}
-			if ( sg == "se96" ) {
-				snd SOUNDLIST_USER_SE96
+			if ( sg == "seUnpop1" ) {
+				snd SOUNDLIST_UNPOP1
 				sg = ""
 				break
 			}
-			if ( sg == "se97" ) {
-				snd SOUNDLIST_USER_SE97
+			if ( sg == "seChat" ) {
+				snd SOUNDLIST_CHAT
 				sg = ""
 				break
 			}
-			if ( sg == "se98" ) {
-				snd SOUNDLIST_USER_SE98
+			if ( sg == "seInv" ) {
+				snd SOUNDLIST_INV
 				sg = ""
 				break
 			}
-			if ( sg == "se99" ) {
-				snd SOUNDLIST_USER_SE99
+			if ( sg == "seSkill" ) {
+				snd SOUNDLIST_SKILL
 				sg = ""
 				break
 			}
+			if ( sg == "seSpell" ) {
+				snd SOUNDLIST_SPELL
+				sg = ""
+				break
+			}
+			if ( sg == "seDice" ) {
+				snd SOUNDLIST_DICE
+				sg = ""
+				break
+			}
+			if ( sg == "seVomit" ) {
+				snd SOUNDLIST_VOMIT
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkSword" ) {
+				snd SOUNDLIST_ATKSWORD
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkIce" ) {
+				snd SOUNDLIST_ATK_ICE
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkElec" ) {
+				snd SOUNDLIST_ATK_ELEC
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkFire" ) {
+				snd SOUNDLIST_ATK_FIRE
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkHell" ) {
+				snd SOUNDLIST_ATK_HELL
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkPoison" ) {
+				snd SOUNDLIST_ATK_POISON
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkNerve" ) {
+				snd SOUNDLIST_ATK_NERVE
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkSound" ) {
+				snd SOUNDLIST_ATK_SOUND
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkMind" ) {
+				snd SOUNDLIST_ATK_MIND
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkChaos" ) {
+				snd SOUNDLIST_ATK_CHAOS
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkDark" ) {
+				snd SOUNDLIST_ATK_DARK
+				sg = ""
+				break
+			}
+			if ( sg == "seCurse2" ) {
+				snd SOUNDLIST_CURSE2
+				sg = ""
+				break
+			}
+			if ( sg == "seCurse3" ) {
+				snd SOUNDLIST_CURSE3
+				sg = ""
+				break
+			}
+			if ( sg == "seEnc" ) {
+				snd SOUNDLIST_ENC
+				sg = ""
+				break
+			}
+			if ( sg == "seEnc2" ) {
+				snd SOUNDLIST_ENC2
+				sg = ""
+				break
+			}
+			if ( sg == "sePray2" ) {
+				snd SOUNDLIST_PRAY2
+				sg = ""
+				break
+			}
+			if ( sg == "seOffer2" ) {
+				snd SOUNDLIST_OFFER2
+				sg = ""
+				break
+			}
+			if ( sg == "seGong" ) {
+				snd SOUNDLIST_GONG
+				sg = ""
+				break
+			}
+			if ( sg == "seSlap" ) {
+				snd SOUNDLIST_SLAP
+				sg = ""
+				break
+			}
+			if ( sg == "seCeffet" ) {
+				snd SOUNDLIST_CEFFECT
+				sg = ""
+				break
+			}
+			if ( sg == "seRain" ) {
+				snd SOUNDLIST_RAIN
+				sg = ""
+				break
+			}
+			if ( sg == "seWave" ) {
+				snd SOUNDLIST_WAVE
+				sg = ""
+				break
+			}
+			if ( sg == "seWhistle" ) {
+				snd SOUNDLIST_WHISTLE
+				sg = ""
+				break
+			}
+			if ( sg == "seQuizBad" ) {
+				snd SOUNDLIST_QUIZBAD
+				sg = ""
+				break
+			}
+			if ( sg == "sePower" ) {
+				snd SOUNDLIST_POWER
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano1" ) {
+				snd SOUNDLIST_PIANO1
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano2" ) {
+				snd SOUNDLIST_PIANO2B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano3" ) {
+				snd SOUNDLIST_PIANO3
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano4" ) {
+				snd SOUNDLIST_PIANO4B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano5" ) {
+				snd SOUNDLIST_PIANO5
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano6" ) {
+				snd SOUNDLIST_PIANO6
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano7" ) {
+				snd SOUNDLIST_PIANO7B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano8" ) {
+				snd SOUNDLIST_PIANO8
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano9" ) {
+				snd SOUNDLIST_PIANO9B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano10" ) {
+				snd SOUNDLIST_PIANO10
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano11" ) {
+				snd SOUNDLIST_PIANO11B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano12" ) {
+				snd SOUNDLIST_PIANO12
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano13" ) {
+				snd SOUNDLIST_PIANO13
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano14" ) {
+				snd SOUNDLIST_PIANO14B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano15" ) {
+				snd SOUNDLIST_PIANO15
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano16" ) {
+				snd SOUNDLIST_PIANO16B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano17" ) {
+				snd SOUNDLIST_PIANO17
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano18" ) {
+				snd SOUNDLIST_PIANO18
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano19" ) {
+				snd SOUNDLIST_PIANO19B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano20" ) {
+				snd SOUNDLIST_PIANO20
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano21" ) {
+				snd SOUNDLIST_PIANO21B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano22" ) {
+				snd SOUNDLIST_PIANO22
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano23" ) {
+				snd SOUNDLIST_PIANO23B
+				sg = ""
+				break
+			}
+			if ( sg == "sePiano24" ) {
+				snd SOUNDLIST_PIANO24
+				sg = ""
+				break
+			}
+			if ( sg == "seSonic" ) {
+				snd SOUNDLIST_SONIC
+				sg = ""
+				break
+			}
+			if ( sg == "seShots" ) {
+				snd SOUNDLIST_SHOTS
+				sg = ""
+				break
+			}
+			if ( sg == "seStab" ) {
+				snd SOUNDLIST_STAB
+				sg = ""
+				break
+			}
+			if ( sg == "seMizu" ) {
+				snd SOUNDLIST_MIZU
+				sg = ""
+				break
+			}
+			if ( sg == "seBuble" ) {
+				snd SOUNDLIST_BUBLE
+				sg = ""
+				break
+			}
+			if ( sg == "seScream" ) {
+				snd SOUNDLIST_SCREAM
+				sg = ""
+				break
+			}
+			if ( sg == "seSwing" ) {
+				snd SOUNDLIST_SWING
+				sg = ""
+				break
+			}
+			if ( sg == "seGrowl" ) {
+				snd SOUNDLIST_BEAST02
+				sg = ""
+				break
+			}
+			if ( sg == "seChatF" ) {
+				snd SOUNDLIST_MIND000
+				sg = ""
+				break
+			}
+			if ( sg == "seChatH" ) {
+				snd SOUNDLIST_LOAD
+				sg = ""
+				break
+			}
+			if ( sg == "seHanabi" ) {
+				snd SOUNDLIST_EXPLOSION
+				sg = ""
+				break
+			}
+			if ( sg == "seClap2f" ) {
+				snd SOUNDLIST_CLAP2F
+				sg = ""
+				break
+			}
+			if ( sg == "seClap4f" ) {
+				snd SOUNDLIST_CLAP4F
+				sg = ""
+				break
+			}
+			if ( sg == "seChime2" ) {
+				snd SOUNDLIST_CHIME000R
+				sg = ""
+				break
+			}
+			if ( sg == "seGunshot1" ) {
+				snd SOUNDLIST_GUNSHOT1
+				sg = ""
+				break
+			}
+			if ( sg == "seGunshot3" ) {
+				snd SOUNDLIST_GUNSHOT3
+				sg = ""
+				break
+			}
+			if ( sg == "seCrack" ) {
+				snd SOUNDLIST_CRACK
+				sg = ""
+				break
+			}
+			if ( sg == "seCrack2" ) {
+				snd SOUNDLIST_CRACK2
+				sg = ""
+				break
+			}
+			if ( sg == "seBreak" ) {
+				snd SOUNDLIST_ATTACK00
+				sg = ""
+				break
+			}
+			if ( sg == "seBomH" ) {
+				snd SOUNDLIST_BOM03
+				sg = ""
+				break
+			}
+			if ( sg == "seBomS" ) {
+				snd SOUNDLIST_BOM06
+				sg = ""
+				break
+			}
+			if ( sg == "seBomN" ) {
+				snd SOUNDLIST_BOM15
+				sg = ""
+				break
+			}
+			if ( sg == "sePusyu" ) {
+				snd SOUNDLIST_SWING39
+				sg = ""
+				break
+			}
+			if ( sg == "seMecha" ) {
+				snd SOUNDLIST_MECHA20
+				sg = ""
+				break
+			}
+			if ( sg == "seWaterm" ) {
+				snd SOUNDLIST_WATERM
+				sg = ""
+				break
+			}
+			if ( sg == "seGoto" ) {
+				snd SOUNDLIST_DRAG01
+				sg = ""
+				break
+			}
+			if ( sg == "seInanaki" ) {
+				snd SOUNDLIST_INANAKI
+				sg = ""
+				break
+			}
+			if ( sg == "seCar" ) {
+				snd SOUNDLIST_CAR_HORN1
+				sg = ""
+				break
+			}
+			if ( sg == "seLocomo" ) {
+				snd SOUNDLIST_LOCOMO
+				sg = ""
+				break
+			}
+			if ( sg == "seSiren" ) {
+				snd SOUNDLIST_SIREN
+				sg = ""
+				break
+			}
+			if ( sg == "sePipipi" ) {
+				snd SOUNDLIST_POWER07
+				sg = ""
+				break
+			}
+			if ( sg == "seTaore" ) {
+				snd SOUNDLIST_TAORE08
+				sg = ""
+				break
+			}
+			if ( sg == "seReload" ) {
+				snd SOUNDLIST_TM2_SWITCH001
+				sg = ""
+				break
+			}
+			if ( sg == "sePshot" ) {
+				snd SOUNDLIST_TM2_HIT000
+				sg = ""
+				break
+			}
+			if ( sg == "seFreeze" ) {
+				snd SOUNDLIST_FREEZE01
+				sg = ""
+				break
+			}
+			if ( sg == "seTea" ) {
+				snd SOUNDLIST_TM2_ALCHEMIST000
+				sg = ""
+				break
+			}
+			if ( sg == "seTea2" ) {
+				snd SOUNDLIST_KACHI08
+				sg = ""
+				break
+			}
+			if ( sg == "seSmoke" ) {
+				snd SOUNDLIST_SMOKE03
+				sg = ""
+				break
+			}
+			if ( sg == "seBgRiver" ) {
+				snd SOUNDLIST_TM2_RIVER000
+				sg = ""
+				break
+			}
+			if ( sg == "seBgRiver2" ) {
+				snd SOUNDLIST_TM2_RIVER001
+				sg = ""
+				break
+			}
+			if ( sg == "seSemi1" ) {
+				snd SOUNDLIST_SEMI1
+				sg = ""
+				break
+			}
+			if ( sg == "seSemi2" ) {
+				snd SOUNDLIST_SEMI2
+				sg = ""
+				break
+			}
+			if ( sg == "seSemi3" ) {
+				snd SOUNDLIST_SEMI3
+				sg = ""
+				break
+			}
+			if ( sg == "seSemi4" ) {
+				snd SOUNDLIST_SEMI4
+				sg = ""
+				break
+			}
+			if ( sg == "seSemi5" ) {
+				snd SOUNDLIST_SEMI5
+				sg = ""
+				break
+			}
+			if ( sg == "seGBreak" ) {
+				snd SOUNDLIST_CRASH14
+				sg = ""
+				break
+			}
+			if ( sg == "seWhistleShort" ) {
+				snd SOUNDLIST_WHISTLE00
+				sg = ""
+				break
+			}
+			if ( sg == "seLbazooka" ) {
+				snd SOUNDLIST_GUN10
+				sg = ""
+				break
+			}
+			if ( sg == "seBaby" ) {
+				snd SOUNDLIST_CHANDLER23
+				sg = ""
+				break
+			}
+			if ( sg == "seHawk" ) {
+				snd SOUNDLIST_HAWK1
+				sg = ""
+				break
+			}
+			if ( sg == "seBgSeabed" ) {
+				snd SOUNDLIST_UMINADO
+				sg = ""
+				break
+			}
+			if ( sg == "seMizu2" ) {
+				snd SOUNDLIST_MIZU2
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkfall" ) {
+				snd SOUNDLIST_BURST00
+				sg = ""
+				break
+			}
+			if ( sg == "seGoro" ) {
+				snd SOUNDLIST_GORO05
+				sg = ""
+				break
+			}
+			if ( sg == "seAtkDrill" ) {
+				snd SOUNDLIST_MECHA15
+				sg = ""
+				break
+			}
+			if ( sg == "seCat" ) {
+				snd SOUNDLIST_CAT03
+				sg = ""
+				break
+			}
+			if ( sg == "seDog" ) {
+				snd SOUNDLIST_DOG02
+				sg = ""
+				break
+			}
+            fsg = 0
+            repeat 100
+                if ( sg == "se" + cnt ) {
+                    snd SOUNDLIST_USER_SE00 + cnt
+                    sg = ""
+                    fsg = 1
+                    break
+                }
+            loop
+            if ( fsg == 1 ) {
+                break
+            }
 			sg = "Unknown Code"
 		loop
 		buffg = sg(1) + sg + sg(2)

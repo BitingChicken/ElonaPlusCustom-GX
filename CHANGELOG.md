@@ -1,3 +1,8 @@
+# 2.27.2.0
+
+# Added
+- Ported all changes from Elona+ 2.27R.
+
 # 2.27.1.0
 
 # Added

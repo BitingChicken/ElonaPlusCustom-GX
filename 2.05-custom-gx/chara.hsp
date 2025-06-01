@@ -3206,11 +3206,11 @@
 	}
 	goto *cm_aka_WHILE1
 *cm_aka_WEND1
-	ohanasi1 = rnd(32) + 1
-	ohanasi2 = rnd(28) + 1
-	ohanasi3 = rnd(13) + 1
-	ohanasi4 = rnd(41) + 1
-	ohanasi5 = rnd(36) + 1
+	ohanasi1 = rnd(45) + 1
+	ohanasi2 = rnd(45) + 1
+	ohanasi3 = rnd(45) + 1
+	ohanasi4 = rnd(45) + 1
+	ohanasi5 = rnd(45) + 1
 
 *cm_past
 	redraw 0
@@ -3318,24 +3318,24 @@
 	if ( p != (-1) ) {
 		if ( p == 4 ) {
 			snd SOUNDLIST_DICE
-			ohanasi3 = rnd(13) + 1
-			ohanasi4 = rnd(41) + 1
-			ohanasi5 = rnd(36) + 1
+			ohanasi3 = rnd(45) + 1
+			ohanasi4 = rnd(45) + 1
+			ohanasi5 = rnd(45) + 1
 			goto *cm_past
 		}
 		if ( p == 3 ) {
 			snd SOUNDLIST_DICE
-			ohanasi1 = rnd(32) + 1
-			ohanasi2 = rnd(28) + 1
+			ohanasi1 = rnd(45) + 1
+			ohanasi2 = rnd(45) + 1
 			goto *cm_past
 		}
 		if ( p == 2 ) {
 			snd SOUNDLIST_DICE
-			ohanasi1 = rnd(32) + 1
-			ohanasi2 = rnd(28) + 1
-			ohanasi3 = rnd(13) + 1
-			ohanasi4 = rnd(41) + 1
-			ohanasi5 = rnd(36) + 1
+			ohanasi1 = rnd(45) + 1
+			ohanasi2 = rnd(45) + 1
+			ohanasi3 = rnd(45) + 1
+			ohanasi4 = rnd(45) + 1
+			ohanasi5 = rnd(45) + 1
 			goto *cm_past
 		}
 		if ( p == 1 ) {
