@@ -10294,56 +10294,26 @@
 		ohanasi5 = cdata(CDATA_BACKGROUND_PART_B3, cc)
 		if ( ohanasi1 >= 0 ) {
 			gosub *setHistory1
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 220, wy + 290
 			mes s
 		}
 		if ( ohanasi2 != 0 ) {
 			gosub *setHistory2
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 220, wy + 290 + 1 * 15
 			mes s
 		}
 		if ( ohanasi3 != 0 ) {
 			gosub *setHistory3
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 220, wy + 290 + 2 * 15
 			mes s
 		}
 		if ( ohanasi4 != 0 ) {
 			gosub *setHistory4
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 220, wy + 290 + 3 * 15
 			mes s
 		}
 		if ( ohanasi5 != 0 ) {
 			gosub *setHistory5
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 220, wy + 290 + 4 * 15
 			mes s
 		}

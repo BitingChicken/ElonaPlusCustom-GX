@@ -1852,6 +1852,9 @@ if instr(s,0,%1)!-1{	%c\
 
 #defcfunc his int his_charid, int his_arg2
 	if ( his_arg2 ) {
+		if ( his_charid < CHARA_PLAYER | his_charid >= MAX_CHARA_TOTAL ) {
+			return lang("あなたの", "your")
+		}
 		if ( his_charid == CHARA_PLAYER ) {
 			return lang("あなたの", "your")
 		}
@@ -1890,6 +1893,9 @@ if instr(s,0,%1)!-1{	%c\
 
 #defcfunc him int him_charid, int him_arg2
 	if ( him_arg2 ) {
+		if ( him_charid < CHARA_PLAYER | him_charid >= MAX_CHARA_TOTAL ) {
+			return lang("彼", "he")
+		}
 		if ( cdatan(CDATAN_NEWSEX, him_charid) == lang("男性", "male") | cdatan(CDATAN_NEWSEX, him_charid) == lang("なし", "none") ) {
 			return lang("彼", "he")
 		}
@@ -1903,10 +1909,10 @@ if instr(s,0,%1)!-1{	%c\
 			return lang("彼女？", "she?")
 		}
 		if ( cdata(CDATA_SEX, him_charid) == 0 ) {
-			return lang("彼", "him")
+			return lang("彼", "he")
 		}
 		else {
-			return lang("彼女", "her")
+			return lang("彼女", "she")
 		}
 	}
 	if ( him_charid < CHARA_PLAYER | him_charid >= MAX_CHARA_TOTAL ) {

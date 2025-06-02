@@ -25227,56 +25227,26 @@
 		color 20, 10, 5
 		if ( ohanasi2 >= 0 ) {
 			gosub *setHistory1
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 200, wy + 70
 			mes s
 		}
 		if ( ohanasi2 != 0 ) {
 			gosub *setHistory2
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 200, wy + 70 + 1 * 15
 			mes s
 		}
 		if ( ohanasi3 != 0 ) {
 			gosub *setHistory3
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 200, wy + 70 + 2 * 15
 			mes s
 		}
 		if ( ohanasi4 != 0 ) {
 			gosub *setHistory4
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 200, wy + 70 + 3 * 15
 			mes s
 		}
 		if ( ohanasi5 != 0 ) {
 			gosub *setHistory5
-			if ( c != 0 ) {
-				if ( en ) {
-					cnv_str s, "your", his(c, 1)
-					cnv_str s, "you", him(c, 1)
-				}
-			}
 			pos wx + 200, wy + 70 + 4 * 15
 			mes s
 		}
