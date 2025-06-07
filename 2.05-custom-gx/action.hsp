@@ -9197,7 +9197,6 @@
 				txtef COLOR_GREEN
 				txt lang("" + name(tc) + "は" + skillname(p) + "の技術を獲得した！", name(tc) + " gain" + _s(tc) + " the skill " + skillname(p) + "!")
 				dmgsan tc, 5
-				inv(INV_ITEM_NUM, ci)--
 				cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 				r1 = tc
 				gosub *charaRefresh

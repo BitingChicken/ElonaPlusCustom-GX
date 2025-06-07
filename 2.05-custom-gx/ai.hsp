@@ -971,7 +971,7 @@
 	cdata(CDATA_AI_ITEM, cc) = 0
 
 *ai_item_combat
-	if ( cdata(CDATA_ALLIED, cc) == 0 ) {
+	if ( cdata(CDATA_ALLIED, cc) == 0 | cc == 0 ) {
 		goto *ai_action
 	}
 	if ( cdata(CDATA_AI_ITEM_OFFENSIVE, cc) <= 0 ) {
