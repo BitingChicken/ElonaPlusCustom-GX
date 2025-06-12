@@ -1647,6 +1647,30 @@ Someday, I'll leave this hellhole.
 %END
 
 
+%YOUKO,JP			/Fox
+おきつねこんこんランド開園?！わぁい！
+今のうちに人狼の残党を殲滅するのがおすすめでフォックス。
+住民に化けている間、耳と尻尾を隠すのがストレスだったコン。
+%END%
+
+%YOUKO,EN			/Fox
+Okitsune Konkon Land is now open! Yay!
+I recommend eliminating the remaining werewolves while you can.
+Hiddening my ears and tail while I was disguised as a citizen was stressful.
+%END
+
+
+%INOTIGOI,JP			/surrender
+(震えながらあなたを見ている)
+(あなたを一瞥すると、真っ青になった)
+%END%
+
+%INOTIGOI,EN			/surrender
+({npcc} looks at you trembling.)
+({npcc} glances at you and goes pale.)
+%END
+
+
 ####################### Special #######################
 
 %BORED,JP			/when bored
