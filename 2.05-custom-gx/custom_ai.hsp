@@ -813,7 +813,7 @@
 
 	; Spells
 	if ( act >= STARTING_SKILL_SPELL & act < MAX_SPELL ) {
-		if ( cdata(CDATA_SEALED_MAGIC, cc) == 0 ) { ; Magic not sealed
+		if ( cbit(CHARA_BIT_SEALED_MAGIC, tc) == 0 ) { ; Magic not sealed
 			efid = act
 			npccostmp = 1
 			gosub *cast

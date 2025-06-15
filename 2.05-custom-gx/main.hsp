@@ -18,8 +18,8 @@
 #include "mock_defines.hsp"
 #endif
 
-#define global VARIANT_NAME "ElonaPlus Custom-GX 2.27.2.0"
-#define global VARIANT_TITLE "Elona+ Custom-GX 2.27.2.0"
+#define global VARIANT_NAME "ElonaPlus Custom-GX 2.27.2.1"
+#define global VARIANT_TITLE "Elona+ Custom-GX 2.27.2.1"
 #define global VERSION_STRING "6.38"
 #define global VERSION_NUMBER int(double(VERSION_STRING) * 1000)
 #define global NET_VERSION	200000
@@ -8349,7 +8349,7 @@
 		}
 		if ( cfg_travelexp_select == 0 ) {
 			if ( gdata(GDATA_TRAVEL_DISTANCE) >= 10 ) {
-				if ( gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, CHARA_PLAYER) * 30 + sdata(SKILL_ATTR_LER, CHARA_PLAYER) * 10 > cdata(CDATA_SEALED_MAGIC, CHARA_PLAYER) + 900 ) {
+				if ( gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, CHARA_PLAYER) * 30 + sdata(SKILL_ATTR_LER, CHARA_PLAYER) * 10 > cdata(CDATA_ACCUMULATED_TRAVEL_EXP, CHARA_PLAYER) + 900 ) {
 					snd SOUNDLIST_LOG
 					txtef COLOR_LIGHT_GREEN
 					txt lang("蓄積した" + gdata(GDATA_TRAVEL_DISTANCE) + "の旅経験を整理・共有しようか？", "Organize and share your accumulated " + gdata(GDATA_TRAVEL_DISTANCE) + " travelExp?")
@@ -8365,7 +8365,7 @@
 							}
 							tc = cnt
 							gain1 = gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, tc) * 30 + sdata(SKILL_ATTR_LER, tc) * 10
-							gain2 = gain1 - cdata(CDATA_SEALED_MAGIC, tc)
+							gain2 = gain1 - cdata(CDATA_ACCUMULATED_TRAVEL_EXP, tc)
 							if ( 0 ) {
 								txt lang(name(tc) + "は、" + gain1 + "で" + gain2 + "だ。", name(tc) + " didn't seem to have anything to gain from the travel.")
 							}
@@ -8393,7 +8393,7 @@
 								skillexp cnt, tc, gain2, 9999
 							loop
 							snd SOUNDLIST_WRITE1
-							cdata(CDATA_SEALED_MAGIC, tc) = gain1
+							cdata(CDATA_ACCUMULATED_TRAVEL_EXP, tc) = gain1
 						loop
 					}
 				}

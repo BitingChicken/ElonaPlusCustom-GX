@@ -659,6 +659,41 @@ if instr(s,0,%1)!-1{	%c\
 	if ( cdata(CDATA_HP, getTachiE_arg1_tc) < cdata(CDATA_MAX_HP, getTachiE_arg1_tc) / 2 | cdata(CDATA_EMO_ICON, getTachiE_arg1_tc) \ 100 == 26 ) {
 		locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "E")
 	}
+	// During Evochat Only
+	if ( evochat >= 2 & evochat < 11 ) {
+		locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "BH")
+		if ( hyouzyou > 0 ) {
+			if ( hyouzyou == 7 | hyouzyou == 17 ) {
+				locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "HH")
+			}
+			if ( hyouzyou == 6 | hyouzyou == 16 ) {
+				locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "QH")
+			}
+			if ( hyouzyou == 5 | hyouzyou == 15 ) {
+				locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "AH")
+			}
+			if ( hyouzyou == 4 | hyouzyou == 14 | hyouzyou == 110 ) {
+				locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "BH")
+			}
+			if ( hyouzyou == 3 | hyouzyou == 13 ) {
+				locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "HH")
+			}
+			if ( hyouzyou == 1 | hyouzyou == 11 | hyouzyou == 18 | hyouzyou == 111 ) {
+				if ( tag \ 2 == 1 ) {
+					hyouzyou = 4
+					await 1000
+				}
+				locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "FH")
+			}
+			if ( hyouzyou == 2 | hyouzyou == 12 ) {
+				if ( tag \ 2 == 1 ) {
+					hyouzyou = 4
+					await 1000
+				}
+				locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "EH")
+			}
+		}
+	}
 	return locvar_tachie_usepath
 
 #defcfunc getTachiEF int getTachiE_arg1_tc, str getTachiE_arg2_type

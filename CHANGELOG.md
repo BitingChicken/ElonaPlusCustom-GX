@@ -1,3 +1,13 @@
+# 2.27.2.1
+
+# Added
+- Tachi-e during Evochat: _HH, _QH, _AH, _BH, _FH, _EH
+
+# Fixed
+- Fixes bug that causes more than 1 skill fragment to be used.
+- Added missing flavor text for surrendered enemies.
+- Custom AI not using spells due to seal magic.
+
 # 2.27.2.0
 
 # Added

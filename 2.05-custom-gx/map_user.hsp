@@ -682,7 +682,7 @@
 				}
 				tc = cnt
 				gain1 = gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, tc) * 30 + sdata(SKILL_ATTR_LER, tc) * 10
-				gain2 = gain1 - cdata(CDATA_SEALED_MAGIC, tc)
+				gain2 = gain1 - cdata(CDATA_ACCUMULATED_TRAVEL_EXP, tc)
 				if ( gain2 < 900 ) {
 					txt lang(name(tc) + "は特に得るものが無かったようだ。", name(tc) + " didn't seem to have anything to gain from the travel.")
 					continue
@@ -707,7 +707,7 @@
 					skillexp cnt, tc, gain2, 9999
 				loop
 				snd SOUNDLIST_WRITE1
-				cdata(CDATA_SEALED_MAGIC, tc) = gain1
+				cdata(CDATA_ACCUMULATED_TRAVEL_EXP, tc) = gain1
 			loop
 		}
 		goto *com_home_SWEND1
