@@ -19209,13 +19209,15 @@
 					if ( cbit(CHARA_BIT_NECRO, tc) == 0 ) {
 						if ( cbit(CHARA_BIT_LIVESTOCK, tc) == 0 ) {
 							if ( cdata(CDATA_HUNGER, CHARA_PLAYER) <= 10000 & cdata(CDATA_HUNGER, tc) <= 10000 & cdata(CDATA_IMPRESSION, tc) >= 100 & cbit(CHARA_BIT_ANOREXIA, tc) != TRUE & cbit(CHARA_BIT_ANOREXIA, CHARA_PLAYER) != TRUE ) {
-								chatList 84, lang("一緒に食事する[総経験値200％・満腹度増加量半減]", "Let's have a meal together. [Total EXP 200%, Satiety increase halved]")
+								// chatList 84, lang("一緒に食事する[総経験値200％・満腹度増加量半減]", "Let's have a meal together. [Total EXP 200%, Satiety increase halved]")
+								chatList 84, lang("一緒に食事する[総経験値200％・満腹度増加量半減]", "Let's have a meal together.")
 							}
 							if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 								ttc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 								if ( ttc != 0 ) {
 									if ( cdata(CDATA_HUNGER, ttc) <= 10000 & cdata(CDATA_HUNGER, tc) <= 10000 & cdata(CDATA_IMPRESSION, ttc) >= 100 & cdata(CDATA_IMPRESSION, tc) >= 100 & cbit(CHARA_BIT_ANOREXIA, tc) != TRUE & cbit(CHARA_BIT_ANOREXIA, ttc) != TRUE ) {
-										chatList 142, lang("タッグで食事させる[総経験値200％・満腹度増加量半減]", "Go have a meal with your tag partner.[Total-EXP 200%, Satiety increase halved]")
+										// chatList 142, lang("タッグで食事させる[総経験値200％・満腹度増加量半減]", "Have a meal with your tag partner.[Total-EXP 200%, Satiety increase halved]")
+										chatList 142, lang("タッグで食事させる[総経験値200％・満腹度増加量半減]", "Have a meal with your tag partner.")
 									}
 								}
 							}
@@ -19315,23 +19317,23 @@
 							if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 								ttc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 								if ( ttc != 0 ) {
-									chatList 110, lang("タッグ間のやりとりを見る", "Talk to your tag team partner.")
+									chatList 110, lang("タッグ間のやりとりを見る", "Talk to your tag partner.")
 								}
  							}
 							if ( cdata(CDATA_PRECIOUS_ALLY, tc) == 0 ) {
-								chatList 67, lang("大事な仲間に指定", "Designate as a precious ally.")
+								chatList 67, lang("大事な仲間に指定", "Designate as precious ally.")
 							}
 							if ( cdata(CDATA_PRECIOUS_ALLY, tc) != 0 ) {
 								chatList 68, lang("大事な仲間指定を解除", "Cancel precious ally status.")
 							}
 							if ( cbit(CHARA_BIT_PROHIBIT_PICKING_UP_ITEMS, tc) != TRUE ) {
-								chatList 71, lang("足元のアイテム我慢", "Don't pick up items off the ground.")
+								chatList 71, lang("足元のアイテム我慢", "Don't pick up items.")
 							}
 							if ( cbit(CHARA_BIT_PROHIBIT_PICKING_UP_ITEMS, tc) == TRUE ) {
-								chatList 72, lang("アイテム我慢解除", "Do as you like with items on the ground.")
+								chatList 72, lang("アイテム我慢解除", "Pick up items freely.")
 							}
 							if ( cdata(CDATA_MASTER_SERVANT, tc) >= 150 ) {
-								chatList 94, lang("特殊指示を出す", "Give special instructions.")
+								chatList 94, lang("特殊指示を出す", "Special instructions.")
 							}
 
 			                /********** ORIGINAL 1.90 - BEGINNING ********** // Replaced with the confession mechanic in stock 2.05.
@@ -24877,6 +24879,15 @@
 		if ( evochat < 2 | evochat == 11 ) {
 			x = wx + 136
 			y = wy + wh - 56 - keyrange * 19 + cnt * 19 + 2
+			/********** MMAHACK - MULTILINED CHAT OPTION - BEGINNING **********/
+			if ( evochat == 0 ) {
+				x = wx + 136 + cnt / 10 * 216
+				y = wy + wh - 56 - limit(keyrange, 0, 10) * 19 + cnt \ 10 * 19 + 2
+				if ( keyrange > 10 & (cnt >= 10 | cnt < keyrange - 10) ) {
+					listn(0, cnt) = strmid(listn(0, cnt), 0, 24)
+				}
+			}
+			/********** MMAHACK - MULTILINED CHAT OPTION - ENDING **********/
 		}
 		if ( evochat >= 2 & evochat < 11 ) {
 			x = wx + 66
@@ -24892,7 +24903,7 @@
 	cursor_check
 	/********** MMAHACK - MOUSE OPERATION - BEGINNING **********/
 	if ( cfg_mmah_mouseoperation ) {
-		cursor_check@MMAH wy + wh - 56 - keyrange * 19, 19
+		cursor_check@MMAH wy + wh - 56 - limit(keyrange, 0, 10 + 999 * (evochat != 0)) * 19, 19
 	}
 	/********** MMAHACK - MOUSE OPERATION - ENDING **********/
 	stick a, 128
