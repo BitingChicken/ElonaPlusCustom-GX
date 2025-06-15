@@ -693,6 +693,21 @@ if instr(s,0,%1)!-1{	%c\
 				locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "EH")
 			}
 		}
+		if ( cdata(CDATA_EMO_ICON, getTachiE_arg1_tc) \ 100 == 18 | cdata(CDATA_CONDITION_ANGRY, getTachiE_arg1_tc) > 0 ) {
+			locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "AH")
+		}
+		if ( cdata(CDATA_EMO_ICON, getTachiE_arg1_tc) \ 100 == 21 ) {
+			locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "QH")
+		}
+		if ( cdata(CDATA_EMO_ICON, getTachiE_arg1_tc) \ 100 == 6 ) {
+			locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "FH")
+		}
+		if ( cdata(CDATA_EMO_ICON, getTachiE_arg1_tc) \ 100 == 17 ) {
+			locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "HH")
+		}
+		if ( cdata(CDATA_HP, getTachiE_arg1_tc) < cdata(CDATA_MAX_HP, getTachiE_arg1_tc) / 2 | cdata(CDATA_EMO_ICON, getTachiE_arg1_tc) \ 100 == 26 ) {
+			locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "EH")
+		}
 	}
 	return locvar_tachie_usepath
 
