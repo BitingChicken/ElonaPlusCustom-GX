@@ -3098,7 +3098,7 @@
 		mes s@tcg
 	}
 	pos basex@tcg + 130, basey@tcg + 515
-	mes lang("" + key_next + "," + key_prev + ",Tab [フィルター切替]  決定ｷｰ [カード選択]  ｷｬﾝｾﾙｷｰ [終了]", "" + key_next + "," + key_prev + " [<-Filter->] " + key_fire + "," + key_get + " [Type] " + key_search + " [Sort] " + key_charainfo + " [Info] Enter [Select]  Cancel [Exit]")
+	mes lang("" + key_next + "," + key_prev + ",Tab [フィルター切替]  決定ｷｰ [カード選択]  ｷｬﾝｾﾙｷｰ [終了]", "" + key_next + "," + key_prev + "[Filter] " + key_fire + "," + key_get + " [Type] " + key_search + " [Sort] " + key_charainfo + " [Info] Enter [Select] Cancel [Exit] F8 [Spec]")
 	pos basex@tcg + 700, basey@tcg + 515
 	mes "Page " + ((dsc@tcg / 8 / 3) + 1) + "/" + (((dlistmax@tcg - 1) / 8 / 3) + 1)
 	return

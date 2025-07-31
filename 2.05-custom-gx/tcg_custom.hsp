@@ -212,8 +212,11 @@
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_COFFIN ) {
 					if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_ANCIENT_COFFIN & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_CURSED_COFFIN ) { continue }
 				}
+				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_MESHERA_LESSER ) {
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_MESHERA_BETA & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_MESHERA_DELTA & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_MESHERA_GAMMA ) { continue }
+				}
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_MESHERA ) {
-					if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_MESHERA_BETA & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_MESHERA_DELTA & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_MESHERA_GAMMA & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_BOUNCTERIA & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_MESHERA_UNFINISHED & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_MONSTER_BACTERIA & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_ANABOLIC_RESISTANCE ) { continue }
+					if ( cardn@tcg(TCG_CARDN_REF_RACE, cnt) != "bacteria" | card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_RENAI_THE_OVER_MESHERA | card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNIVERSE_INVADER ) { continue }
 				}
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_GOD ) {
 					if ( cardn@tcg(TCG_CARDN_REF_RACE, cnt) != "god" & cardn@tcg(TCG_CARDN_REF_RACE, cnt) != "catgod" & cardn@tcg(TCG_CARDN_REF_RACE, cnt) != "doggod" & cardn@tcg(TCG_CARDN_REF_RACE, cnt) != "machinegod" & cardn@tcg(TCG_CARDN_REF_RACE, cnt) != "undeadgod" ) { continue }
@@ -3145,7 +3148,7 @@
 	gosub *db_card_custom_search
 	if ( cardrefdomain == 4 ) { cardrefrare++ }
 	if ( cardrefdomain == 5 ) { cardrefrare += 2 }
-	if ( cardrefsex == "random" & cardmode@tcg != 1 ) {
+	if ( cardrefsex == "random" & cardmode@tcg != 1 & rndsex@tcg == "" ) {
 		if ( rnd(2) == 0 ) {
 			cardrefsex = "male"
 		} else {
@@ -10191,9 +10194,9 @@
 		cardreflvl = 162
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 6
-		cardrefattack = 6
-		cardrefhp = 11
+		cardrefcost = 2
+		cardrefattack = 3
+		cardrefhp = 3
 		cardrefskillid = TCG_EFF_RENAI
 		cardrefbits = ""
 		return 1
@@ -13458,9 +13461,9 @@
 		cardreflvl = 162
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 7
-		cardrefattack = 5
-		cardrefhp = 11
+		cardrefcost = 4
+		cardrefattack = 3
+		cardrefhp = 6
 		cardrefskillid = TCG_EFF_REGULUS
 		cardrefbits = "5"
 		return 1

@@ -660,7 +660,7 @@ if instr(s,0,%1)!-1{	%c\
 		locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "E")
 	}
 	// During Evochat Only
-	if ( evochat >= 2 & evochat < 11 ) {
+	if ( evochat == 3 | evochat == 11 ) {
 		locvar_tachie_usepath = getTachiEF(getTachiE_arg1_tc, "BH")
 		if ( hyouzyou > 0 ) {
 			if ( hyouzyou == 7 | hyouzyou == 17 ) {
