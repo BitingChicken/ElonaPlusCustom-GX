@@ -2442,8 +2442,13 @@
 		if ( gdata(GDATA_FLAG_MAIN) >= 350 ) {
 			deck_opponent(CREATURE_ID_MESHERA_PLANT) = 1
 			deck_opponent(CREATURE_ID_MESHERA_ALPHA_THE_DEFORMED_ANGEL) = 1
-			if ( gdata(GDATA_FLAG_SUB_REGULUS_ZANAN) >= 1003 ) {
+			if ( gdata(GDATA_FLAG_SUB_REGULUS_ZANAN) >= 1003 & (cdata(CDATA_ID, tc) == CREATURE_ID_REGULUS_THE_ALTERED | cdata(CDATA_ID, tc) == CREATURE_ID_RENAI_THE_OVER_MESHERA) ) {
+				deck_opponent(CREATURE_ID_REGULUS_THE_ALTERED) = 1
 				deck_opponent(CREATURE_ID_RENAI_THE_OVER_MESHERA) = 1
+				deck_opponent(CREATURE_ID_PUTIT) = 0
+				deck_opponent(CREATURE_ID_SWIMMER) = 0
+				deck_opponent(CREATURE_ID_MASTER_OF_PET_ARENA) = 0
+				deck_opponent(CREATURE_ID_SHENA_THE_DRAW) = 1
 			}
 		}
 	}

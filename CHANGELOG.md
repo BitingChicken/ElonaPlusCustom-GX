@@ -1,3 +1,14 @@
+# 2.28.1.0
+
+# Added
+- Ported all changes from Elona+ 2.28.
+
+# Changed
+- When too many dialog options: split them into 2 columns.
+
+# TCG
+- [Changed some Meshra-related effect, Nerfed some god-killing cards.](https://elona.fandom.com/wiki/User_blog:JianmengYu/CGX_TCG_card_effect_DB?diff=80700)
+
 # 2.27.2.1
 
 # Added

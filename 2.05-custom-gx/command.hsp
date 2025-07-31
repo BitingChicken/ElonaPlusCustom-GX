@@ -2328,7 +2328,17 @@
 			listmax++
 		}
 	}
-	if ( cbit(CHARA_BIT_AWAKE_DIM_ATTACKER, tc) == 1 ) {
+	if ( cbit(CHARA_BIT_EAT_RAW_ITEM, tc) == TRUE | tc == CHARA_PLAYER ) {
+		list(0, listmax) = 1, 99999
+		listn(0, listmax) = lang("[その他]", "[ETC]") + lang("あなたは生もの製のアイテムを食べる", "You eat raw items.")
+		listmax++
+	}
+	if ( cbit(CHARA_BIT_GIVEN_BIRTH, tc) == TRUE ) {
+		list(0, listmax) = 1, 99999
+		listn(0, listmax) = lang("[その他]", "[ETC]") + lang("あなたには出産経験がある[耐久属性被ﾀﾞﾒｰｼﾞ半減]", "You have given birth. [CON RES+]")
+		listmax++
+	}
+	if ( cbit(CHARA_BIT_AWAKE_DIM_ATTACKER, tc) == TRUE ) {
 		list(0, listmax) = 1, 99998
 		listn(0, listmax) = lang("[覚醒]", "[AWAKE]") + lang("あなたの魅力は敵さえも朦朧とさせる[直接攻撃してきた敵が朦朧]", "You dim enemies that directly attack you.")
 		listmax++
@@ -13411,6 +13421,11 @@
 						continue
 					}
 				}
+				if ( invctrl(1) == 33 ) {
+					if ( inv(INV_ITEM_ID, cnt) != ITEM_ID_CARD ) {
+						continue
+					}
+				}
 			}
 			if ( invctrl == INVCTRL_PUT ) {
 				if ( invctrl(1) == 0 ) {
@@ -15123,7 +15138,7 @@
 			return 1
 		}
 		if ( invctrl == 23 ) {
-			if ( invctrl(1) != 31 & invctrl(1) != 21 & invctrl(1) != 23 & invctrl(1) != 24 ) {
+			if ( invctrl(1) != 31 & invctrl(1) != 21 & invctrl(1) != 23 & invctrl(1) != 24 & invctrl(1) != 33 ) {
 				item_separate ci
 			}
 			invsubroutine = 0

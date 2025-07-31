@@ -3048,6 +3048,7 @@
 			repeat maxcard@tcg
 				card@tcg(TCG_CARD_TEMP, cnt) = 0
 				if ( cardn@tcg(TCG_CARDN_REF_RACE, cnt) == "bacteria" ) { card@tcg(TCG_CARD_TEMP, cnt) = 1 }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_INFECTED_YERLES_SOLDIER ) { card@tcg(TCG_CARD_TEMP, cnt) = 1 }
 				if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_RENAI_THE_OVER_MESHERA ) { card@tcg(TCG_CARD_TEMP, cnt) = 0 }
 				if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNIVERSE_INVADER ) { card@tcg(TCG_CARD_TEMP, cnt) = 0 }
 				if ( card@tcg(TCG_CARD_TEMP, cnt) <= 0 ) { continue }
@@ -3070,7 +3071,7 @@
 				gosub *card_filter_reset
 				rndsex@tcg = "random"
 				gosub *card_filter
-				if ( cardno >= 0 ) {
+				if ( cardno >= 0 & card@tcg(TCG_CARD_TEMP, cnt) > 0 ) {
 					evhpbk@tcg = card@tcg(TCG_CARD_REF_HP, cnt)
 					evatkbk@tcg = card@tcg(TCG_CARD_REF_ATTACK, cnt)
 					evcostbk@tcg = card@tcg(TCG_CARD_REF_COST, cnt) - 1
@@ -3085,11 +3086,11 @@
 					card@tcg(TCG_CARD_ATTACK, cnt) = evatkbk@tcg
 					card@tcg(TCG_CARD_CONTROLLER, cnt) = evctlbk@tcg
 					card@tcg(TCG_CARD_LOCATION, cnt) = TCG_LOCATION_ANIM
-					card@tcg(TCG_CARD_TEMP, cnt) = 0
 					reconstruct_card_text cnt
 					efllistaddcard 22, cnt
 					tcgpass 10 - cnt * 2
 				}
+				card@tcg(TCG_CARD_TEMP, cnt) = 0
 			loop
 			tcgpass 50
 			repeat maxcard@tcg

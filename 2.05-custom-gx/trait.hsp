@@ -287,7 +287,7 @@
 			traitref = 0, 0, 1, 1, 0, 100, -1
 			traitrefn2 = lang("優しい笑顔", "Gentle Face")
 			if ( trait(tid) >= 0 ) {
-				traitrefn(2) = lang("優しい笑顔を習得し、敵が逃げ出すのを防ぐ", "Your gentle face prevents your enemies from escaping."), lang("あなたの笑顔は敵を油断させる", "Your attacks don't cause enemies to run.")
+				traitrefn(2) = lang("笑顔の作り方を勉強し、友好度や従順度を高めやすくする", "Your smile makes it easier to raise one's friendliness and obedience."), lang("あなたの笑顔は相手を安心させる", "Your smile reassures others.")
 			}
 			return 1
 		}

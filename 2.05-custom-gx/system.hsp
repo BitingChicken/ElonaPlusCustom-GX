@@ -947,7 +947,7 @@
 	if ( gdata(GDATA_VERSION) < 6340 ) {
 		repeat 16
 			snd SOUNDLIST_ENC
-			if ( cdata(CDATA_ROCK_THROWING, cnt) > 0 ) {
+			if ( cdata(CDATA_PIC_MIMIRROCRY, cnt) > 0 ) {
 				cbitmod CHARA_BIT_ENHANCED_ROCK_THROWING, cnt, TRUE
 			}
 		loop
@@ -975,6 +975,12 @@
 		repeat 16
 			cdata(CDATA_CHARACTER_TIER, cnt) = CHARACTER_TIER_NONE
 		loop
+	}
+	if ( gdata(GDATA_VERSION) < 6390 ) {
+		repeat 245
+			cdata(CDATA_PIC_MIMIRROCRY, cnt) = 0
+		loop
+		kamen11 = 100
 	}
 	if ( gdata(GDATA_VERSION) != VERSION_NUMBER ) {
 		gdata(GDATA_WORLD_RENEW) = 1

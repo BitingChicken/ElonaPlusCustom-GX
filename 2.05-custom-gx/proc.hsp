@@ -3172,11 +3172,15 @@
 				if ( synccheck(cc, -1) ) {
 					txtef COLOR_SKY_BLUE
 					chatc@DP = cc
-					if ( jp ) {
-						txt "「きくぅ」", "「もふもふ」", "「くやしい、でも…」", "「はぁはぁ！」", "「ウフフフ」"
-					}
-					if ( en ) {
-						txt cnvtalk("Yes!"), cnvtalk("Ohhh"), "*gasp*", "*rumble*", cnvtalk("Come on!")
+					customtalk cc, DBMODE_PLEASURE
+					gosub *convert_word
+					if ( gdata(GDATA_CUSTOM_TALK) == 100 ) {
+						if ( jp ) {
+							txt "「きくぅ」", "「もふもふ」", "「くやしい、でも…」", "「はぁはぁ！」", "「ウフフフ」"
+						}
+						if ( en ) {
+							txt cnvtalk("Yes!"), cnvtalk("Ohhh"), "*gasp*", "*rumble*", cnvtalk("come on!")
+						}
 					}
 				}
 			}
@@ -3335,11 +3339,16 @@
 			if ( cdata(CDATA_ACTION_PERIOD, cc) \ 5 == 0 ) {
 				if ( synccheck(cc, -1) ) {
 					txtef COLOR_SKY_BLUE
-					if ( jp ) {
-						txt "「きくぅ」", "「もふもふ」", "「くやしい、でも…」", "「はぁはぁ！」", "「ウフフフ」"
-					}
-					if ( en ) {
-						txt cnvtalk("Yes!"), cnvtalk("Ohhh"), "*gasp*", "*rumble*", cnvtalk("come on!")
+					chatc@DP = cc
+					customtalk cc, DBMODE_PLEASURE_HARD
+					gosub *convert_word
+					if ( gdata(GDATA_CUSTOM_TALK) == 100 ) {
+						if ( jp ) {
+							txt "「きくぅ」", "「もふもふ」", "「くやしい、でも…」", "「はぁはぁ！」", "「ウフフフ」"
+						}
+						if ( en ) {
+							txt cnvtalk("Yes!"), cnvtalk("Ohhh"), "*gasp*", "*rumble*", cnvtalk("come on!")
+						}
 					}
 				}
 			}
@@ -6769,6 +6778,24 @@
 			chara_vomit tc
 		}
 	}
+	if ( cdata(CDATA_THIRST, tc) > 18000 ) {
+		if ( synccheck(tc, -1) ) {
+			kaiwa = rnd(4)
+			txtef COLOR_RED
+			if ( kaiwa == 0 ) {
+				txt lang(name(tc) + "は猛烈にそわそわしている…。", name(tc) + " is extremely restless and fidgety...")
+			}
+			if ( kaiwa == 1 ) {
+				txt lang(name(tc) + "は身をよじって悶えている…。", name(tc) + " is squirming and writhing in discomfort...")
+			}
+			if ( kaiwa == 2 ) {
+				txt lang(name(tc) + "は必死におしっこを我慢している…。", name(tc) + " is desperately holding back urine, trying not to go...")
+			}
+			if ( kaiwa == 3 ) {
+				txt lang(name(tc) + "は微かに震えながら尿意に耐えている…。", name(tc) + " is trembling slightly, barely managing to endure the urge to urinate...")
+			}
+		}
+	}
 	if ( TweakData(TWEAK_GAMEPLAY_CG_DISABLE_THIRST, TWEAK_CATEGORY_GAMEPLAY) == FALSE ) {
 		if ( cdata(CDATA_THIRST, tc) >= 12000 * 2 ) {
 			if ( rnd(5) == 0 ) {
@@ -9751,6 +9778,10 @@
 		}
 		if ( gdata(GDATA_WORLD) == AREA_OCEAN ) {
 			txt lang("それは海の地図ではない。", "It's not a sea map.")
+			goto *effect_end
+		}
+		if ( gdata(GDATA_WORLD) == AREA_AIMWELL ) {
+			txt lang("それはイムウエルの地図ではない。", "It's not a map of Aimwell.")
 			goto *effect_end
 		}
 		if ( efstatus <= (-1) ) {
@@ -15405,7 +15436,7 @@
 				gdata(GDATA_FLAG_MOST_EXPENSIVE_SHIP_THIS_MONTH) = gdata(GDATA_FLAG_SHIP_TYPE)
 			}
 			cdata(CDATA_SHIP_HULL_HP, CHARA_PLAYER) = CHARACTER_TIER_SHIP_HULL_ENDURANCE
-			gdata(GDATA_FLAG_COLLECTED_WISHES) = 0
+			gdata(GDATA_FLAG_SAVED_DRIFTERS) = 0
 			gdata(GDATA_FLAG_SHIP_LAST_PORT) = gdata(GDATA_WORLD) * 100 + gdata(GDATA_AREA)
 			gdata(GDATA_TELEPORT_AREA) = AREA_OCEAN, gdata(GDATA_AREA)
 			gdata(GDATA_RETURN) = 1
@@ -23894,14 +23925,13 @@
 				repeat MAX_CHARA_FOLLOWER
 					cdata(CDATA_ROLE_SHOP_LEVEL, cnt) = rnd(30) + 1
 					cdata(CDATA_ROLE_RESTOCK, cnt) = rnd(30) + 1
+					cbitmod CHARA_BIT_EAT_RAW_ITEM, cnt, TRUE
 				loop
 				repeat MAX_CHARA_TOTAL
+					cdata(CDATA_CONDITION_FEAR, cnt) = 50
 					cdata(CDATA_POWER_GAUGE, cnt) += 52
 					cdata(CDATA_GUARD_BREAK, cnt) += 52
 					cdata(CDATA_WEIGHT, cnt) = 15000
-					if ( cnt != 0 ) {
-						cdata(CDATA_CONDITION_BIND, cnt) += 100
-					}
 					if ( cdata(CDATA_POWER_GAUGE, cnt) > 100 ) {
 						if ( cdata(CDATA_SHIFT_FORM, cnt) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cnt) <= 0 | cnt == 0) & (cdata(CDATA_QUALITY, cnt) < FIX_QUALITY_MIRACLE | cnt < MAX_CHARA_FOLLOWER) ) {
 							cdata(CDATA_POWER_GAUGE, cnt) = 100

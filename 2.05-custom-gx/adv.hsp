@@ -427,6 +427,11 @@
 	if ( a == FILTER_ITEM_FOOD | a == FILTER_ITEM_POTION | a == FILTER_ITEM_SCROLL | (inv(INV_ITEM_MATERIAL, ci) == ITEM_MATERIAL_RAW & Filter_Food == 1) ) {
 		cdata(CDATA_AI_ITEM, rc) = ci
 	}
+	if ( cbit(CHARA_BIT_EAT_RAW_ITEM, rc) == TRUE ) {
+		if ( inv(INV_ITEM_MATERIAL, ci) == ITEM_MATERIAL_RAW ) {
+			cdata(CDATA_AI_ITEM, rc) = ci
+		}
+	}
 	return
 
 	/********** ANNA CUSTOM - ENDING **********/

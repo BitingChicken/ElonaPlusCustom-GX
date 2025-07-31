@@ -1396,6 +1396,15 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_ID, rc) == CREATURE_ID_SP_CHAMPION | cdata(CDATA_ID, rc) == CREATURE_ID_CAPTAIN_SHARK | cdata(CDATA_ID, rc) == CREATURE_ID_RAGING_SHARK | cdata(CDATA_ID, rc) == CREATURE_ID_NIGHTMARE_SHARK ) {
+		if ( rnd(30) == 0 ) {
+			if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {
+				flt
+				itemcreate -1, ITEM_ID_SLIME_FUKAGURUMI, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+				inv(INV_ITEM_PARAM1, ci) = rnd(1000) + 1
+			}
+		}
+	}
 	if ( cdatan(CDATAN_CLASS, rc) == "wizard" ) {
 		if ( rnd(100) == 0 ) {
 			if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {

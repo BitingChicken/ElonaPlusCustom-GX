@@ -527,7 +527,7 @@
 		cbitmod CHARA_BIT_MAGNETISM_N_POLE, cnt, FALSE
 		if ( gdata(GDATA_AREA) == AREA_WILDERNESS ) {
 			if ( gdata(GDATA_WORLD) != AREA_OCEAN ) {
-				gdata(GDATA_FLAG_COLLECTED_WISHES) = 0
+				gdata(GDATA_FLAG_SAVED_DRIFTERS) = 0
 			}
 		}
 		cdata(CDATA_POWER_GAUGE, cnt) = 0
@@ -739,9 +739,9 @@
 				gdata(GDATA_AREA) = gdata(GDATA_FLAG_SHIP_LAST_PORT) \ 100
 				gdata(GDATA_FLAG_SHIP_LAST_PORT) = 0
 				snd SOUNDLIST_MIZU
-				if ( gdata(GDATA_FLAG_COLLECTED_WISHES) > 0 ) {
-					modkarma CHARA_PLAYER, gdata(GDATA_FLAG_COLLECTED_WISHES) * 2
-					msgtemp += lang("漂流者は礼を言って去っていった。", "Drifter thanked you and left. (Karma + " + gdata(GDATA_FLAG_COLLECTED_WISHES) * 2 + ")")
+				if ( gdata(GDATA_FLAG_SAVED_DRIFTERS) > 0 ) {
+					modkarma CHARA_PLAYER, gdata(GDATA_FLAG_SAVED_DRIFTERS) * 2
+					msgtemp += lang("漂流者は礼を言って去っていった。", "Drifter thanked you and left. (Karma + " + gdata(GDATA_FLAG_SAVED_DRIFTERS) * 2 + ")")
 				}
 			}
 		}
@@ -3526,13 +3526,15 @@
 				inv(INV_ITEM_PROPERTY, ci) = PROP_NPC
 				map(inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci), 0) = 0
 			loop
-			if ( rnd(2) == 0 ) {
-				gdata(GDATA_FLAG_COLLECTED_WISHES) = 1
+			if ( gdata(GDATA_WORLD) != AREA_AIMWELL ) {
 				if ( rnd(2) == 0 ) {
-					gosub *map_riverHorizontal
-				}
-				else {
-					gosub *map_riverVertical
+					gdata(GDATA_FLAG_AIMWELLRND) = 1
+					if ( rnd(2) == 0 ) {
+						gosub *map_riverHorizontal
+					}
+					else {
+						gosub *map_riverVertical
+					}
 				}
 			}
 		}
@@ -3555,13 +3557,15 @@
 				itemcreate -1, ITEM_ID_DUMMY, -1, -1, 0
 				inv(INV_ITEM_PROPERTY, ci) = PROP_NPC
 			loop
-			if ( rnd(3) == 0 ) {
-				gdata(GDATA_FLAG_COLLECTED_WISHES) = 3
-				if ( rnd(2) == 0 ) {
-					gosub *map_riverHorizontal
-				}
-				else {
-					gosub *map_riverVertical
+			if ( gdata(GDATA_WORLD) != AREA_AIMWELL ) {
+				if ( rnd(3) == 0 ) {
+					gdata(GDATA_FLAG_AIMWELLRND) = 3
+					if ( rnd(2) == 0 ) {
+						gosub *map_riverHorizontal
+					}
+					else {
+						gosub *map_riverVertical
+					}
 				}
 			}
 		}
@@ -3765,13 +3769,15 @@
 				itemcreate -1, ITEM_ID_DUMMY, -1, -1, 0
 				inv(INV_ITEM_PROPERTY, ci) = PROP_NPC
 			loop
-			if ( rnd(4) == 0 ) {
-				gdata(GDATA_FLAG_COLLECTED_WISHES) = 5
-				if ( rnd(2) == 0 ) {
-					gosub *map_riverHorizontal
-				}
-				else {
-					gosub *map_riverVertical
+			if ( gdata(GDATA_WORLD) != AREA_AIMWELL ) {
+				if ( rnd(4) == 0 ) {
+					gdata(GDATA_FLAG_AIMWELLRND) = 5
+					if ( rnd(2) == 0 ) {
+						gosub *map_riverHorizontal
+					}
+					else {
+						gosub *map_riverVertical
+					}
 				}
 			}
 		}
@@ -3806,13 +3812,15 @@
 				itemcreate -1, ITEM_ID_DUMMY, -1, -1, 0
 				inv(INV_ITEM_PROPERTY, ci) = PROP_NPC
 			loop
-			if ( rnd(4) == 0 ) {
-				gdata(GDATA_FLAG_COLLECTED_WISHES) = 5
-				if ( rnd(2) == 0 ) {
-					gosub *map_riverHorizontal
-				}
-				else {
-					gosub *map_riverVertical
+			if ( gdata(GDATA_WORLD) != AREA_AIMWELL ) {
+				if ( rnd(4) == 0 ) {
+					gdata(GDATA_FLAG_AIMWELLRND) = 5
+					if ( rnd(2) == 0 ) {
+						gosub *map_riverHorizontal
+					}
+					else {
+						gosub *map_riverVertical
+					}
 				}
 			}
 		}
@@ -9862,6 +9870,15 @@
 			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
 		}
 		kamen10 = 0
+	}
+	if ( kamen11 >= 100 ) {
+		if ( kamen11 == 100 ) {
+			flt
+			itemcreate -1, ITEM_ID_MIMIRROCRY, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+		}
+		kamen11 = 0
 	}
 	if ( tuikabui == 100 ) {
 		flt

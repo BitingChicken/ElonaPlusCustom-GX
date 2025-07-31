@@ -2005,7 +2005,11 @@
 		}
 		locvar_draw_cell_tagyshift = (cdata(CDATA_IN_TAGTEAM, CHARA_PLAYER)==1)
 		cell_draw_chara_mark_item CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py, locvar_cell_draw_ground, 0
-		cell_draw_chara_pcc CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py, locvar_cell_draw_ground, locvar_cell_draw_ani
+		if ( cdata(CDATA_PIC_MIMIRROCRY, CHARA_PLAYER) <= 0 ) {
+			cell_draw_chara_pcc CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py, locvar_cell_draw_ground, locvar_cell_draw_ani
+		} else {
+			cell_draw_chara_pic CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py, locvar_cell_draw_ground
+		}
 		cell_draw_chara_emo CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py
 		cell_draw_chara_mark_item CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py, locvar_cell_draw_ground, 1
 		cell_draw_chara_extra_effect CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py
@@ -2019,7 +2023,7 @@
 	cell_draw_arg_chipcf = 16
 	locvar_cell_draw_mimi = charaIsMimic(cell_draw_arg_c)
 	cell_draw_chara_mark_item cell_draw_arg_c, cell_draw_arg_dx, cell_draw_arg_dy, cell_draw_arg_g, 0
-	if ( cbit(CHARA_BIT_PCC, cell_draw_arg_c) == 1 ) {
+	if ( cbit(CHARA_BIT_PCC, cell_draw_arg_c) == 1 & cdata(CDATA_PIC_MIMIRROCRY, cell_draw_arg_c) <= 0 ) {
 		cell_draw_chara_pcc cell_draw_arg_c, cell_draw_arg_dx, cell_draw_arg_dy, cell_draw_arg_g, cell_draw_arg_a
 	} else {
 		cell_draw_chara_pic cell_draw_arg_c, cell_draw_arg_dx, cell_draw_arg_dy, cell_draw_arg_g
@@ -2041,60 +2045,66 @@
 	}
 	return
 
+#deffunc cell_draw_vehicle int cell_draw_arg_c, int cell_draw_arg_dx, int cell_draw_arg_dy, int cell_draw_arg_g, int cell_draw_arg_a
+	if ( cell_draw_arg_c == CHARA_PLAYER ) {
+		// Draw vehicle.
+		if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) > 0 & gdata(GDATA_AREA) != AREA_OCEAN ) {
+			locvar_cell_draw_wide = 1 + 1 * (gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_LAND_BATTLESHIP)
+			// Draw the trailing train.
+			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_MAGIC_LOCOMOTIVE ) {
+				preparePicItem xy2pic(13, 35), (gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_PIC) - gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND)) / 1000
+				if ( gdata(GDATA_RUN_DIR) == 2 ) {
+					pos cell_draw_arg_dx - 10, cell_draw_arg_dy + 8
+					gmode 2, 33, 48
+					grotate BUFFER_ITEM, 0, 960, 0, -33, 48
+				}
+				if ( gdata(GDATA_RUN_DIR) == 1 ) {
+					pos cell_draw_arg_dx + 53, cell_draw_arg_dy + 8
+					gmode 2, 33, 48
+					grotate BUFFER_ITEM, 0, 960, 0, 33, 48
+				}
+			}
+			// Draw shadow
+			gmode 6, , , 110
+			color 0, 0, 0
+			pos cell_draw_arg_dx + 8, cell_draw_arg_dy + 20
+			gcopy BUFFER_INF, 240, 384, 32, 16
+			// Draw vehicle
+			gmode 2, 32, 48
+			pos cell_draw_arg_dx + 22, cell_draw_arg_dy + 8
+			grotate BUFFER_PCC, cell_draw_arg_a, cdata(CDATA_DIR, CHARA_PLAYER) * 48, 0, (32-8*cfg_pcc_show) * locvar_cell_draw_wide, 48 - 8 * cfg_pcc_show
+			return 1
+		}
+		// Draw ocean vehicle
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) > 0 & gdata(GDATA_AREA) == AREA_OCEAN ) {
+			locvar_cell_draw_wide = 1 + 1 * (gdata(GDATA_FLAG_SHIP_TYPE) >= 3)
+			color 0, 0, 0
+			// Draw submarine with transparency, else draw shadow
+			if ( gdata(GDATA_FLAG_SHIP_TYPE) == 6 ) {
+				gmode 4, 32, 48, 146
+			} else {
+				gmode 6, , , 110
+				pos cell_draw_arg_dx + 8, cell_draw_arg_dy + 20
+				gcopy BUFFER_INF, 240, 384, 32, 16
+				color 0, 0, 0
+				gmode 2, 32, 48
+			}
+			pos cell_draw_arg_dx + 22, cell_draw_arg_dy + 8
+			grotate BUFFER_PCC, cell_draw_arg_a, cdata(CDATA_DIR, CHARA_PLAYER) * 48, 0, (32-8*cfg_pcc_show) * locvar_cell_draw_wide, 48 - 8 * cfg_pcc_show
+			return 1
+		}
+	}
+	return 0
+
 #deffunc cell_draw_chara_pcc int cell_draw_arg_c, int cell_draw_arg_dx, int cell_draw_arg_dy, int cell_draw_arg_g, int cell_draw_arg_a
 	locvar_cell_draw_tagteamdir = cdata(CDATA_DIR, cell_draw_arg_c)
 	if ( cdata(CDATA_IN_TAGTEAM, cell_draw_arg_c) == 1 ) {
 		locvar_cell_draw_tagteamdir = cdata(CDATA_DIR, cdata(CDATA_TAGTEAM_PARTNER, cell_draw_arg_c))
 	}
 	if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
-		if ( cell_draw_arg_c == CHARA_PLAYER ) {
-			// Draw vehicle.
-			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) > 0 & gdata(GDATA_AREA) != AREA_OCEAN ) {
-				locvar_cell_draw_wide = 1 + 1 * (gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_LAND_BATTLESHIP)
-				// Draw the trailing train.
-				if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_MAGIC_LOCOMOTIVE ) {
-					preparePicItem xy2pic(13, 35), (gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_PIC) - gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND)) / 1000
-					if ( gdata(GDATA_RUN_DIR) == 2 ) {
-						pos cell_draw_arg_dx - 10, cell_draw_arg_dy + 8
-						gmode 2, 33, 48
-						grotate BUFFER_ITEM, 0, 960, 0, -33, 48
-					}
-					if ( gdata(GDATA_RUN_DIR) == 1 ) {
-						pos cell_draw_arg_dx + 53, cell_draw_arg_dy + 8
-						gmode 2, 33, 48
-						grotate BUFFER_ITEM, 0, 960, 0, 33, 48
-					}
-				}
-				// Draw shadow
-				gmode 6, , , 110
-				color 0, 0, 0
-				pos cell_draw_arg_dx + 8, cell_draw_arg_dy + 20
-				gcopy BUFFER_INF, 240, 384, 32, 16
-				// Draw vehicle
-				gmode 2, 32, 48
-				pos cell_draw_arg_dx + 22, cell_draw_arg_dy + 8
-				grotate BUFFER_PCC, cell_draw_arg_a, cdata(CDATA_DIR, CHARA_PLAYER) * 48, 0, (32-8*cfg_pcc_show) * locvar_cell_draw_wide, 48 - 8 * cfg_pcc_show
-				return
-			}
-			// Draw ocean vehicle
-			if ( gdata(GDATA_FLAG_SHIP_TYPE) > 0 & gdata(GDATA_AREA) == AREA_OCEAN ) {
-				locvar_cell_draw_wide = 1 + 1 * (gdata(GDATA_FLAG_SHIP_TYPE) >= 3)
-				color 0, 0, 0
-				// Draw submarine with transparency, else draw shadow
-				if ( gdata(GDATA_FLAG_SHIP_TYPE) == 6 ) {
-					gmode 4, 32, 48, 146
-				} else {
-					gmode 6, , , 110
-					pos cell_draw_arg_dx + 8, cell_draw_arg_dy + 20
-					gcopy BUFFER_INF, 240, 384, 32, 16
-					color 0, 0, 0
-					gmode 2, 32, 48
-				}
-				pos cell_draw_arg_dx + 22, cell_draw_arg_dy + 8
-				grotate BUFFER_PCC, cell_draw_arg_a, cdata(CDATA_DIR, CHARA_PLAYER) * 48, 0, (32-8*cfg_pcc_show) * locvar_cell_draw_wide, 48 - 8 * cfg_pcc_show
-				return
-			}
-		}
+		// Draw Vehicle
+		cell_draw_vehicle cell_draw_arg_c, cell_draw_arg_dx, cell_draw_arg_dy, cell_draw_arg_g, cell_draw_arg_a
+		if ( stat == 1 ) { return }
 		// Draw a (shrinked) patch of shadow
 		gmode 6, 32, 16, 85
 		color 0, 0, 0
@@ -2176,6 +2186,9 @@
 	}
 	chara_preparepic locvar_cell_draw_p, locvar_cell_draw_col
 	if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
+		// Draw Vehicle
+		cell_draw_vehicle cell_draw_arg_c, cell_draw_arg_dx, cell_draw_arg_dy, cell_draw_arg_g, cell_draw_arg_a
+		if ( stat == 1 ) { return }
 		// Draw a little patch of shadow
 		gmode 6, 32, 16, 85
 		color 0, 0, 0

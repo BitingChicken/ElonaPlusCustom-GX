@@ -1225,7 +1225,7 @@
 			}
 		}
 		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 0 ) {
-			gdata(GDATA_FLAG_COLLECTED_WISHES) = 0
+			gdata(GDATA_FLAG_SAVED_DRIFTERS) = 0
 			maxship = 0
 		}
 		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 1 ) {
@@ -1249,10 +1249,10 @@
 		pos inf_clockw + 230, inf_clocky + 57
 		color 0, 0, 0
 		if ( jp ) {
-			bmes "回収人数：" + gdata(GDATA_FLAG_COLLECTED_WISHES) + "/" + maxship + "人", 35, 235, 235
+			bmes "回収人数：" + gdata(GDATA_FLAG_SAVED_DRIFTERS) + "/" + maxship + "人", 35, 235, 235
 		}
 		if ( en ) {
-			bmes "Drifters-Limit < " + gdata(GDATA_FLAG_COLLECTED_WISHES) + "/" + maxship + " > ", 35, 235, 235
+			bmes "Drifters-Limit < " + gdata(GDATA_FLAG_SAVED_DRIFTERS) + "/" + maxship + " > ", 35, 235, 235
 		}
 	}
 	if ( gdata(GDATA_QUEST) == QUEST_TYPE_MINEFIELD ) {

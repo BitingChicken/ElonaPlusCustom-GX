@@ -704,7 +704,7 @@
 				}
 			}
 			else {
-				if ( inv(INV_ITEM_ID, ci) != ITEM_ID_BOMB_BARREL & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_TRISMAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_OHUDA & inv(INV_ITEM_ID, ci) != ITEM_ID_PRESENT & inv(INV_ITEM_ID, ci) != ITEM_ID_WILD_FLOWER & inv(INV_ITEM_ID, ci) != ITEM_ID_ECHINOBOX & inv(INV_ITEM_ID, ci) != ITEM_ID_LIGHTNING_DISCHARGER & inv(INV_ITEM_ID, ci) != ITEM_ID_DARKNESSBANG & inv(INV_ITEM_ID, ci) != ITEM_ID_SNOW_CRYSTAL ) {
+				if ( inv(INV_ITEM_ID, ci) != ITEM_ID_BOMB_BARREL & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_TRISMAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_OHUDA & inv(INV_ITEM_ID, ci) != ITEM_ID_PRESENT & inv(INV_ITEM_ID, ci) != ITEM_ID_WILD_FLOWER & inv(INV_ITEM_ID, ci) != ITEM_ID_ECHINOBOX & inv(INV_ITEM_ID, ci) != ITEM_ID_LIGHTNING_DISCHARGER & inv(INV_ITEM_ID, ci) != ITEM_ID_DARKNESSBANG & inv(INV_ITEM_ID, ci) != ITEM_ID_SNOW_CRYSTAL & inv(INV_ITEM_ID, ci) != ITEM_ID_SURSTROMMING ) {
 					dmghp tc, limit(sdata(SKILL_WEAPON_THROWING, cc) / 5, 1, 200) * limit(inv(INV_ITEM_WEIGHT, ci) / 1000, 1, 500) + rnd(inv(INV_ITEM_WEIGHT, ci) / 1000 + sdata(SKILL_WEAPON_THROWING, cc) + 1), cc
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_SKULL_SWORD | inv(INV_ITEM_ID, ci) == ITEM_ID_VIOLENT_SKULL_SWORD ) {
@@ -765,6 +765,17 @@
 					efp = efpori
 					gosub *effect
 					tc = tcbk
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_SURSTROMMING ) {
+					tcbk = tc
+					efpori = (sdata(SKILL_NORMAL_COOKING, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					efid = SKILL_SPELL_ANGUISH_JAIL
+					efp = efpori
+					gosub *effect
+					tc = tcbk
+					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
+						dmgcon tc, CONDITION_DIM, limit(rnd(efpori / 2 + 1), 1, 5000)
+					}
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_SNOW_CRYSTAL ) {
 					tcbk = tc
@@ -2263,6 +2274,9 @@
 		}
 	}
 	if ( cdata(CDATA_CONDITION_BIND, cc) > 0 ) {
+		goto *turn_end
+	}
+	if ( cdata(CDATA_CONDITION_FEAR, cc) > 0 ) {
 		goto *turn_end
 	}
 	if ( cdata(CDATA_IN_TAGTEAM, cc) == (-1) ) {
@@ -4347,11 +4361,6 @@
 		return
 	}
 	if ( cdata(CDATA_EXIST, tc) != CHAR_STATE_ALIVE ) {
-		return
-	}
-	if ( cdata(CDATA_CONDITION_FEAR, cc) != 0 ) {
-		msgdup++
-		txt lang(name(cc) + "は怖気づいた。", name(cc) + " " + is(cc) + " frightened.")
 		return
 	}
 	if ( TweakData(TWEAK_GAMEPLAY_CG_DISABLE_CURTAIN_CALL, TWEAK_CATEGORY_GAMEPLAY) == FALSE ) {
@@ -9043,6 +9052,90 @@
 		goto *act_use_SWEND1
 		_switch_sw++
 	}
+	if ( _switch_val == EFFECT_MIMIRROCRY | _switch_sw ) {
+		_switch_sw = 0
+		if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
+			goto *act_use_SWEND1
+		}
+		cibk = ci
+		invsubroutine = 1
+		invctrl = INVCTRL_MATERIAL_ENCHANT, 33
+		snd SOUNDLIST_INV
+		gosub *com_inventory
+		if ( stat == 1 ) {
+		}
+		else {
+			txt lang("やっぱりやめた。", "You changed your mind.")
+			goto *act_use_SWEND1
+			goto *act_use_SWEND1
+		}
+		txt lang("誰に使用する？", "Who is target?")
+		gosub *screen_draw
+		val = 0
+		gosub *prompt_direction
+		if ( stat == 0 ) {
+			txt lang("それは無理だ。", "It's impossible.")
+			gosub *screen_draw
+			goto *pc_turn
+		}
+		if ( map(x, y, MAP_CHARA_INDEX_PLUS_ONE) > 0 ) {
+			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
+		}
+		else {
+			txt lang("それは無理だ。", "It's impossible.")
+			gosub *screen_draw
+			goto *pc_turn
+		}
+		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
+			txtselecttc 2
+			repeat 2
+				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
+				promptmax++
+			loop
+			val = promptx, prompty, 200, 1
+			gosub *prompt_key
+			if ( stat == 0 ) {
+				gosub *screen_draw
+				goto *pc_turn
+			}
+			if ( rtval == 1 ) {
+				tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
+			}
+		}
+		gazou = inv(INV_ITEM_COL, ci) + 12 * 1000
+		if ( inv(INV_ITEM_COL, ci) >= 1000 ) {
+			senn = 1
+		}
+		if ( tc != CHARA_PLAYER & cdata(CDATA_RELATION, tc) != RELATION_ALLY ) {
+			if ( cdata(CDATA_HP, tc) > cdata(CDATA_MAX_HP, tc) / 4 ) {
+				txt lang("" + name(tc) + "は鏡が放つ光を避けた。もっと弱らせる必要がある。", name(tc) + " avoided the light coming from the mirror. You need to weaken the creature to change it.")
+				goto *turn_end
+			}
+		}
+		animeload 96, tc
+		snd SOUNDLIST_ENC
+		if ( cdata(CDATA_PIC_MIMIRROCRY, tc) == 0 ) {
+			txtef COLOR_YELLOW2
+			txt lang("ミラクリーチェンジ！", "Mimirrocry Change!")
+			cdata(CDATA_PIC_MIMIRROCRY, tc) = cdata(CDATA_PIC, tc)
+			cdata(CDATA_CHARA_PIC_ORG, tc) = cdata(CDATA_CHARA_PIC, tc)
+			cdata(CDATA_PIC, tc) = gazou
+			cdata(CDATA_CHARA_PIC, tc) = senn
+			animeload 97, tc
+		}
+		else {
+			txt lang("" + name(tc) + "の姿が元に戻った。", name(tc) + " returned to the original form.")
+			cdata(CDATA_PIC, tc) = cdata(CDATA_PIC_MIMIRROCRY, tc)
+			cdata(CDATA_CHARA_PIC, tc) = cdata(CDATA_CHARA_PIC_ORG, tc)
+			cdata(CDATA_PIC_MIMIRROCRY, tc) = 0
+			cdata(CDATA_CHARA_PIC_ORG, tc) = 0
+		}
+		ci = cibk
+		gazou = 0
+		senn = 0
+		goto *act_use_SWEND1
+		_switch_sw++
+	}
 	if ( _switch_val == EFFECT_MEMORY_CONVERTER | _switch_sw ) {
 		_switch_sw = 0
 		if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
@@ -9197,7 +9290,6 @@
 				txtef COLOR_GREEN
 				txt lang("" + name(tc) + "は" + skillname(p) + "の技術を獲得した！", name(tc) + " gain" + _s(tc) + " the skill " + skillname(p) + "!")
 				dmgsan tc, 5
-				cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 				r1 = tc
 				gosub *charaRefresh
 				gosub *calcBurdenPc
@@ -11072,7 +11164,7 @@
 		}
 		goto *act_use_SWEND1
 	}
-	if ( _switch_val == 149 | _switch_sw ) {
+	if ( _switch_val == EFFECT_HIDEN_MASHI | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) < 100 ) {
 			txt lang("パワーゲージが100％必要だ。", "You need 100% power gauge.")

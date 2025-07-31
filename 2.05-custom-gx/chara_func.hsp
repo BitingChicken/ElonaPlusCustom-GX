@@ -359,6 +359,12 @@
 		if ( customtalk_dbmode == DBMODE_FLAVOR_CLEMENTIA ) {
 			locvar_customtalk_s = "%txtClementia"
 		}
+		if ( customtalk_dbmode == DBMODE_PLEASURE ) {
+			locvar_customtalk_s = "%txtPleasure"
+		}
+		if ( customtalk_dbmode == DBMODE_PLEASURE_HARD ) {
+			locvar_customtalk_s = "%txtPleasureHard"
+		}
 		/********** OOMSESTEPNC - EXTRA CNPC CONFIG - CUSTOM TALK - BEGINNING **********/
 		if ( customtalk_dbmode == 401 ) { locvar_customtalk_s = "%txtsorosu" }
 		if ( customtalk_dbmode == 402 ) { locvar_customtalk_s = "%txtturusu" }
@@ -1024,6 +1030,9 @@
 			locvar_modimp_i = locvar_modimp_i * 3 / 2
 		}
 	}
+	if ( trait(TRAIT_NORMAL_OTHER_GENTLE_FACE) ) {
+		locvar_modimp_i++
+	}
 	cdata(CDATA_IMPRESSION, modimp_charid) += locvar_modimp_i
 	if ( cdata(CDATA_HEART_LOCK_RELATION, modimp_charid) >= 0 ) {
 		if ( cdata(CDATA_IMPRESSION, modimp_charid) > 400 ) {
@@ -1120,6 +1129,9 @@
 		if ( locvar_modimp2_i > 0 ) {
 			locvar_modimp2_i = locvar_modimp2_i * 3 / 2
 		}
+	}
+	if ( trait(TRAIT_NORMAL_OTHER_GENTLE_FACE) ) {
+		locvar_modimp2_i++
 	}
 	cdata(CDATA_MASTER_SERVANT, modimp2_charid) += locvar_modimp2_i
 	if ( cdata(CDATA_HEART_LOCK_RELATION, modimp2_charid) >= 0 ) {
@@ -2235,7 +2247,9 @@
 			}
 		}
 		if ( cdata(CDATA_QUALITY, addbuff_charid) > FIX_QUALITY_GREAT | cdata(CDATA_ID, addbuff_charid) == CREATURE_ID_AILE_THE_ATTENDANT ) {
-			locvar_addbuff_fixeddur = addbuff_arg4 / 4 + 1
+			if ( addbuff_buffid != BUFF_DEATH_WORD ) {
+				locvar_addbuff_fixeddur = addbuff_arg4 / 4 + 1
+			}
 		}
 		if ( cdata(CDATA_ALLIED, addbuff_charid) == 0 & cdata(CDATA_QUALITY, addbuff_charid) > FIX_QUALITY_GREAT ) {
 			if ( addbuff_buffid == BUFF_DEATH_WORD ) {
@@ -4857,7 +4871,10 @@
 		}
 		if ( locvar_dmghp_ele == SKILL_RESDMG_CONSTITUTION | dmghp_source == DAMAGE_FROM_SUFFOCATION | dmghp_source == DAMAGE_FROM_POISON ) {
 			locvar_dmghp_r = sdata(SKILL_ATTR_CON, dmghp_charid) + limit(cdata(CDATA_MASTER_SERVANT, dmghp_charid), 50, 1000) + limit(cdata(CDATA_IMPRESSION, dmghp_charid), 50, 1000)
-			locvar_dmghp_dmg = locvar_dmghp_dmg * 100 / (locvar_dmghp_r + 50)
+			locvar_dmghp_dmg = locvar_dmghp_dmg * 100 / (locvar_dmghp_r + 50) + 2
+			if ( cbit(CHARA_BIT_GIVEN_BIRTH, dmghp_charid) == TRUE ) {
+				locvar_dmghp_dmg = locvar_dmghp_dmg / 2
+			}
 		}
 	}
 	else {
@@ -6126,6 +6143,15 @@
 		cdata(CDATA_GAUGE_COOLDOWN2, dmghp_charid) = 1
 	}
 	if ( cdata(CDATA_HP, dmghp_charid) < 0 ) {
+		if ( cdata(CDATA_PIC_MIMIRROCRY, dmghp_charid) != 0 ) {
+			txt lang("" + name(dmghp_charid) + "の姿が元に戻った。", name(dmghp_charid) + " returned to the original form.")
+			cdata(CDATA_PIC, dmghp_charid) = cdata(CDATA_PIC_MIMIRROCRY, dmghp_charid)
+			cdata(CDATA_CHARA_PIC, dmghp_charid) = cdata(CDATA_CHARA_PIC_ORG, dmghp_charid)
+			cdata(CDATA_PIC_MIMIRROCRY, dmghp_charid) = 0
+			cdata(CDATA_CHARA_PIC_ORG, dmghp_charid) = 0
+		}
+	}
+	if ( cdata(CDATA_HP, dmghp_charid) < 0 ) {
 		locvar_dmghp_bakuretu = 0
 	}
 	if ( cdata(CDATA_HP, dmghp_charid) < 0 ) {
@@ -6355,17 +6381,12 @@
 						else {
 							locvar_dmghp_f = 0
 						}
-						if ( dmghp_source == DAMAGE_FROM_CHARA | dmghp_source < MAX_CHARA_FOLLOWER ) {
-							if ( trait(TRAIT_NORMAL_OTHER_GENTLE_FACE) ) {
-								locvar_dmghp_f = 0
-							}
-						}
 						if ( locvar_dmghp_f ) {
 							cdata(CDATA_CONDITION_FEAR, dmghp_charid) = rnd(20) + 5
 							if ( synccheck(dmghp_charid, -1) ) {
 								txtmore
 								txtef COLOR_BLUE
-								txt lang(name(dmghp_charid) + "は恐怖して逃げ出した。", name(dmghp_charid) + " run" + _s(dmghp_charid) + " away in terror.")
+								txt lang(name(dmghp_charid) + "は恐怖で立ちすくんだ。", name(dmghp_charid) + " is frozen in fear.")
 								if ( TweakData(TWEAK_GAMEPLAY_CG_DISABLE_THIRST, TWEAK_CATEGORY_GAMEPLAY) == FALSE & TweakData(TWEAK_GAMEPLAY_DISABLE_URINATION_FROM_FEAR, TWEAK_CATEGORY_GAMEPLAY) == FALSE ) {
 									if ( cdata(CDATA_THIRST, dmghp_charid) > 12000 ) {
 										chara_morasi dmghp_charid
@@ -6382,7 +6403,7 @@
 			if ( dmghp_charid != CHARA_PLAYER ) {
 				if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, dmghp_charid) == FALSE ) {
 					locvar_dmghp_f = 1
-					if ( cdata(CDATA_RELATION, dmghp_charid) == RELATION_ALLY | dmghp_charid < MAX_CHARA_FOLLOWER | cbit(CHARA_BIT_NECRO, dmghp_charid) == TRUE | cdata(CDATA_QUALITY, dmghp_charid) >= FIX_QUALITY_MIRACLE | cdata(CDATA_ROLE, dmghp_charid) != ROLE_NONE | cbit(CHARA_BIT_PRECIOUS, dmghp_charid) == TRUE | cdata(CDATA_CHARACTER_TIER, dmghp_charid) == CHARACTER_TIER_SUMMONED_NORMAL | cbit(CHARA_BIT_BODYGUARD, dmghp_charid) == TRUE | gdata(GDATA_FLAG_DUEL_TARGET) == dmghp_charid ) {
+					if ( gdata(GDATA_AREA) == AREA_PET_ARENA | cdata(CDATA_RELATION, dmghp_charid) == RELATION_ALLY | dmghp_charid < MAX_CHARA_FOLLOWER | cbit(CHARA_BIT_NECRO, dmghp_charid) == TRUE | cdata(CDATA_QUALITY, dmghp_charid) >= FIX_QUALITY_MIRACLE | cdata(CDATA_ROLE, dmghp_charid) != ROLE_NONE | cbit(CHARA_BIT_PRECIOUS, dmghp_charid) == TRUE | cdata(CDATA_CHARACTER_TIER, dmghp_charid) == CHARACTER_TIER_SUMMONED_NORMAL | cbit(CHARA_BIT_BODYGUARD, dmghp_charid) == TRUE | gdata(GDATA_FLAG_DUEL_TARGET) == dmghp_charid ) {
 						locvar_dmghp_f = 0
 					}
 					if ( locvar_dmghp_f ) {
@@ -6634,18 +6655,28 @@
 			locvar_dmghp_f = FALSE
 			if ( cdata(CDATA_TARGET, dmghp_charid) == 0 ) {
 				if ( cdata(CDATA_AI_AGGRO, dmghp_charid) == 0 ) {
-					if ( cdata(CDATA_RELATION, dmghp_charid) <= RELATION_ENEMY ) {
+					if ( cdata(CDATA_RELATION, dmghp_charid) == RELATION_ENEMY ) {
                         if ( cdata(CDATA_RELATION_ORG, dmghp_source) > RELATION_ENEMY ) {
                             cdata(CDATA_TARGET, dmghp_charid) = dmghp_source
 							locvar_dmghp_f = TRUE
                         }
                     }
                     if ( cdata(CDATA_RELATION, dmghp_charid) > RELATION_ENEMY ) {
-                        if ( cdata(CDATA_RELATION_ORG, dmghp_source) <= RELATION_ENEMY ) {
+                        if ( cdata(CDATA_RELATION_ORG, dmghp_source) == RELATION_ENEMY ) {
                             cdata(CDATA_TARGET, dmghp_charid) = dmghp_source
 							locvar_dmghp_f = TRUE
                         }
                     }
+					if ( cdata(CDATA_RELATION, dmghp_charid) > RELATION_ENEMY ) {
+						if ( cdata(CDATA_RELATION_ORG, dmghp_source) > RELATION_ENEMY ) {
+							if ( cdata(CDATA_TARGET, dmghp_source) == dmghp_charid ) {
+								cdata(CDATA_TARGET, dmghp_charid) = dmghp_source
+								locvar_dmghp_f = TRUE
+							} else {
+								cdata(CDATA_AI_AGGRO, dmghp_charid) = -2
+							}
+						}
+					}
 					if ( dmghp_source != CHARA_PLAYER ) {
 						if ( cdata(CDATA_TARGET, dmghp_source) == dmghp_charid & rnd(3) == 0 ) {
 							cdata(CDATA_TARGET, dmghp_charid) = dmghp_source

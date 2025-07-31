@@ -19284,6 +19284,16 @@
 				chatList 57, lang("馬を買う", "I want to buy a horse.")
 			}
 		}
+		if ( tc < MAX_CHARA_FOLLOWER | cbit(CHARA_BIT_NECRO, tc) == TRUE | cbit(CHARA_BIT_LIVESTOCK, tc) == TRUE | cbit(CHARA_BIT_LABOR_CAMP, tc) == TRUE ) {
+			if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
+				if ( cdata(CDATA_IMPRESSION, tc) >= 150 | cdata(CDATA_MASTER_SERVANT, tc) >= 150 ) {
+					if ( evid() == (-1) ) {
+						chatList 152, lang("気持ちいいことしよう", "A little tail t'night?")
+						chatList 153, lang("激しく気持ちいいことしよう", "A rough little tail t'night?")
+					}
+				}
+			}
+		}
 		if ( tc < MAX_CHARA_FOLLOWER ) {
 			if ( cbit(CHARA_BIT_BODYGUARD, tc) == 0 ) {
 				if ( cbit(CHARA_BIT_GUARD_TEMP, tc) == 0 ) {
@@ -23201,6 +23211,14 @@
 		buff = ""
 		goto *chat_default
 	}
+	if ( chatval == 152 ) {
+		gosub *sexsex
+		goto *chat_end
+	}
+	if ( chatval == 153 ) {
+		gosub *sexsex2
+		goto *chat_end
+	}
 	if ( chatval == 56 ) {
 		chatList 1, lang("はじめる", "Let's do it.")
 		chatList 0, lang("やめる", "W-Wait...")
@@ -24977,7 +24995,7 @@
 	if ( cdata(CDATA_TAGTEAM_PARTNER, tc) > 0 ) {
 		ttc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 	}
-	if ( cdata(CDATA_PORTRAIT, tc) != (-1) & cdata(CDATA_FACE, tc) == 0 & (evochat < 2 | evochat == 11) | scenemode ) {
+	if ( cdata(CDATA_PORTRAIT, tc) != (-1) & cdata(CDATA_PIC_MIMIRROCRY, tc) <= 0 & cdata(CDATA_FACE, tc) == 0 & (evochat < 2 | evochat == 11) | scenemode ) {
 		if ( cdata(CDATA_PORTRAIT, tc) < 80 ) {
 			p = cdata(CDATA_SEX, tc) * 80 + cdata(CDATA_PORTRAIT, tc)
 		}
@@ -25856,6 +25874,9 @@
 			fltn "spshop"
 			if ( rnd(20) == 0 ) {
 				dbid = ITEM_ID_EVITEM
+			}
+			if ( rnd(100) == 0 ) {
+				dbid = ITEM_ID_SURSTROMMING
 			}
 			if ( cnt == 0 ) {
 				dbid = ITEM_ID_SCROLL_GROWTH

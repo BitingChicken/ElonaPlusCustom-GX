@@ -1881,7 +1881,7 @@
 	return
 
 *map_riverHorizontal
-	v = 6 + gdata(GDATA_FLAG_COLLECTED_WISHES)
+	v = 6 + gdata(GDATA_FLAG_AIMWELLRND)
 	dy = mdata(MDATA_HEIGHT) / 2 - v / 2 - 5
 	p = 0
 	repeat mdata(MDATA_WIDTH)

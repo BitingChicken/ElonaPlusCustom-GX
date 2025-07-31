@@ -2191,6 +2191,12 @@
 	}
 	cdata(CDATA_EXTRA_ATTACKS_TYPE, r1) = 0
 	slinger = 0
+	if ( cdata(CDATA_CONDITION_FEAR, r1) > 0 ) {
+		cdata(CDATA_POWER_GAUGE, r1) -= 3
+		if ( cdata(CDATA_POWER_GAUGE, r1) < 0 ) {
+			cdata(CDATA_POWER_GAUGE, r1) = 0
+		}
+	}
 	if ( cdata(CDATA_POWER_GAUGE, r1) > 0 ) {
 		if ( findbuff(r1, BUFF_FORM_SHIFT_OMEGA) == (-1) ) {
 			if ( cdata(CDATA_POWER_GAUGE, r1) < 100 ) {
@@ -2341,8 +2347,26 @@
 				DamagePopupAdd "" + _confear, r1, DMGPOPUP_ADD_CONDITION, CONDITION_FEAR
 			}
 		}
+		if ( cdata(CDATA_THIRST, r1) > 18000 ) {
+			if ( synccheck(r1, -1) ) {
+				kaiwa = rnd(4)
+				txtef COLOR_RED
+				if ( kaiwa == 0 ) {
+					txt lang(name(r1) + "は猛烈にそわそわしている…。", name(r1) + " is extremely restless and fidgety...")
+				}
+				if ( kaiwa == 1 ) {
+					txt lang(name(r1) + "は身をよじって悶えている…。", name(r1) + " is squirming and writhing in discomfort...")
+				}
+				if ( kaiwa == 2 ) {
+					txt lang(name(r1) + "は必死におしっこを我慢している…。", name(r1) + " is desperately holding back urine, trying not to go...")
+				}
+				if ( kaiwa == 3 ) {
+					txt lang(name(r1) + "は微かに震えながら尿意に耐えている…。", name(r1) + " is trembling slightly, barely managing to endure the urge to urinate...")
+				}
+			}
+		}
 		if ( cdata(CDATA_CONDITION_FEAR, r1) > 0 ) {
-			if ( cdata(CDATA_THIRST, r1) > 12000 ) {
+			if ( cdata(CDATA_THIRST, r1) > 20000 ) {
 				if ( TweakData(TWEAK_GAMEPLAY_DISABLE_URINATION_FROM_FEAR, TWEAK_CATEGORY_GAMEPLAY) == FALSE ) {
 					if ( synccheck(r1, -1) ) {
 						snd SOUNDLIST_WATERM

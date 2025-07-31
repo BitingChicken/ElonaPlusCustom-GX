@@ -472,10 +472,10 @@
 		}
 	}
 	if ( gdata(GDATA_AREA) == AREA_WILDERNESS ) {
-		if ( gdata(GDATA_FLAG_COLLECTED_WISHES) > 1 ) {
+		if ( gdata(GDATA_FLAG_AIMWELLRND) > 1 ) {
 			env = SOUNDLIST_TM2_RIVER000
 		}
-		if ( gdata(GDATA_FLAG_COLLECTED_WISHES) == 1 ) {
+		if ( gdata(GDATA_FLAG_AIMWELLRND) == 1 ) {
 			env = SOUNDLIST_TM2_RIVER001
 		}
 	}

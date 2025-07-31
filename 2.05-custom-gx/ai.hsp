@@ -525,6 +525,9 @@
 	}
 	if ( cdata(CDATA_RELATION, cc) >= 10 ) {
 		cdata(CDATA_AI_AGGRO, cc)--
+		if ( cdata(CDATA_TARGET, cc) == 0 ) {
+			cdata(CDATA_AI_AGGRO, cc) = 0
+		}
 		if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cdata(CDATA_TARGET, cc)) == TRUE ) {
 			cdata(CDATA_TARGET, cc) = 0
 		}
@@ -685,7 +688,7 @@
 	}
 	if ( gdata(GDATA_AREA) == AREA_NOYEL ) {
 		if ( cc != gdata(GDATA_FLAG_GIANT_ID) ) {
-			if ( cc > MAX_CHARA_FOLLOWER ) {
+			if ( cc >= MAX_CHARA_FOLLOWER ) {
 				if ( gdata(GDATA_FLAG_FIRE_GIANT) != 0 ) {
 					if ( cdata(CDATA_EXIST, gdata(GDATA_FLAG_GIANT_ID)) == CHAR_STATE_ALIVE ) {
 						if ( cbit(CHARA_BIT_SANDBAG, gdata(GDATA_FLAG_GIANT_ID)) == 0 ) {
@@ -736,14 +739,28 @@
 						if ( cdata(CDATA_Y, CHARA_PLAYER) > cdata(CDATA_Y, cc) - 10 & cdata(CDATA_Y, CHARA_PLAYER) < cdata(CDATA_Y, cc) + 10 ) {
 							if ( cdata(CDATA_ROW_ACT, CHARA_PLAYER) != ACTION_PERFORM ) {
 								if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cc) == FALSE ) {
-									if ( cdata(CDATA_AI_AGGRO, cc) <= 0 ) {
-										customtalk cc, DBMODE_FLAVOR_PASSIVE
-										gosub *convert_word
-									}
-									if ( findbuff(cc, BUFF_RUN_WILDLY) == (-1) ) {
-										if ( cdata(CDATA_AI_AGGRO, cc) != 0 ) {
-											customtalk cc, DBMODE_FLAVOR_ANGERED
+									if ( cc >= MAX_CHARA_FOLLOWER ) {
+										if ( cdata(CDATA_AI_AGGRO, cc) <= 0 ) {
+											customtalk cc, DBMODE_FLAVOR_PASSIVE
 											gosub *convert_word
+										}
+										if ( cdata(CDATA_AI_AGGRO, cc) > 0 ) {
+											if ( findbuff(cc, BUFF_RUN_WILDLY) == (-1) ) {
+												customtalk cc, DBMODE_FLAVOR_ANGERED
+												gosub *convert_word
+											}
+										}
+									}
+									if ( cc < MAX_CHARA_FOLLOWER ) {
+										if ( cdata(CDATA_AI_AGGRO, cc) >= 0 ) {
+											customtalk cc, DBMODE_FLAVOR_PASSIVE
+											gosub *convert_word
+										}
+										if ( cdata(CDATA_AI_AGGRO, cc) < 0 ) {
+											if ( findbuff(cc, BUFF_RUN_WILDLY) == (-1) ) {
+												customtalk cc, DBMODE_FLAVOR_ANGERED
+												gosub *convert_word
+											}
 										}
 									}
 								}
@@ -790,6 +807,9 @@
 				}
 			}
 		}
+	}
+	if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cc) ) {
+		goto *turn_end
 	}
 	if ( gdata(GDATA_AREA) != AREA_PET_ARENA & cdata(CDATA_CONDITION_BRAINWASH, cc) > 0 & cc != CHARA_PLAYER ) {
 		cdata(CDATA_TARGET, cc) = 0
@@ -841,26 +861,28 @@
 
 	if ( cdata(CDATA_ACT_HEAL, cc) != SKILL_NONE ) {
 		if ( cdata(CDATA_HP, cc) < cdata(CDATA_MAX_HP, cc) / 4 ) {
-			if ( cdata(CDATA_MP, cc) > 0 | rnd(5) == 0 ) {
-				efid = cdata(CDATA_ACT_HEAL, cc)
-				if ( efid == SKILL_SPACT_SHADOW_STEP | efid == SKILL_SPACT_UNCONTROL | efid == EFFECT_LEASH | efid == SKILL_SPACT_CLASH_RUSH ) {
-					if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, tc), cdata(CDATA_Y, tc)) > sdataref(SKILL_DATAREF_TG_RANGE, SKILL_SPACT_CHEER) \ EXT_SDATAREF + 1 | fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, tc), cdata(CDATA_Y, tc)) == 0 ) {
-						distance = dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc))
-						goto *ai_followMove
+			if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cc) == FALSE ) {
+				if ( cdata(CDATA_MP, cc) > 0 | rnd(5) == 0 ) {
+					efid = cdata(CDATA_ACT_HEAL, cc)
+					if ( efid == SKILL_SPACT_SHADOW_STEP | efid == SKILL_SPACT_UNCONTROL | efid == EFFECT_LEASH | efid == SKILL_SPACT_CLASH_RUSH ) {
+						if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, tc), cdata(CDATA_Y, tc)) > sdataref(SKILL_DATAREF_TG_RANGE, SKILL_SPACT_CHEER) \ EXT_SDATAREF + 1 | fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, tc), cdata(CDATA_Y, tc)) == 0 ) {
+							distance = dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc))
+							goto *ai_followMove
+						}
 					}
-				}
-				if ( efid >= STARTING_SKILL_SPELL & efid < MAX_SPELL ) {
-					npccostmp = 1
-					gosub *cast
-					if ( stat == 1 ) {
-						goto *turn_end
-					}
-				}
-				else {
-					if ( efid >= STARTING_SKILL_SPACT ) {
-						gosub *action
+					if ( efid >= STARTING_SKILL_SPELL & efid < MAX_SPELL ) {
+						npccostmp = 1
+						gosub *cast
 						if ( stat == 1 ) {
 							goto *turn_end
+						}
+					}
+					else {
+						if ( efid >= STARTING_SKILL_SPACT ) {
+							gosub *action
+							if ( stat == 1 ) {
+								goto *turn_end
+							}
 						}
 					}
 				}
@@ -899,20 +921,22 @@
 		}
 		else {
 			if ( cdata(CDATA_HP, cc) < cdata(CDATA_MAX_HP, cc) / 4 ) {
-				if ( cdata(CDATA_MP, cc) > 0 | rnd(5) == 0 ) {
-					efid = cdata(CDATA_ACT_HEAL, cc)
-					if ( efid >= STARTING_SKILL_SPELL & efid < MAX_SPELL ) {
-						npccostmp = 1
-						gosub *cast
-						if ( stat == 1 ) {
-							goto *turn_end
-						}
-					}
-					else {
-						if ( efid >= STARTING_SKILL_SPACT ) {
-							gosub *action
+				if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cc) == FALSE ) {
+					if ( cdata(CDATA_MP, cc) > 0 | rnd(5) == 0 ) {
+						efid = cdata(CDATA_ACT_HEAL, cc)
+						if ( efid >= STARTING_SKILL_SPELL & efid < MAX_SPELL ) {
+							npccostmp = 1
+							gosub *cast
 							if ( stat == 1 ) {
 								goto *turn_end
+							}
+						}
+						else {
+							if ( efid >= STARTING_SKILL_SPACT ) {
+								gosub *action
+								if ( stat == 1 ) {
+									goto *turn_end
+								}
 							}
 						}
 					}
@@ -935,13 +959,13 @@
 
 	/********** ORIGINAL - BEGINNING **********
 
-	if ( a == FILTER_ITEM_FOOD ) {
+	if ( a == FILTER_ITEM_FOOD | (cbit(CHARA_BIT_EAT_RAW_ITEM, cc) == TRUE & inv(INV_ITEM_MATERIAL, ci) == ITEM_MATERIAL_RAW) ) {
 
 	 ********** ORIGINAL - ENDING **********/
 
 	/********** ANNA CUSTOM - BEGINNING **********/
 
-	if ( a == FILTER_ITEM_FOOD | ( inv(INV_ITEM_MATERIAL, ci) == ITEM_MATERIAL_RAW & Filter_Food == 1) ) {
+	if ( a == FILTER_ITEM_FOOD | (cbit(CHARA_BIT_EAT_RAW_ITEM, cc) == TRUE & inv(INV_ITEM_MATERIAL, ci) == ITEM_MATERIAL_RAW) | ( inv(INV_ITEM_MATERIAL, ci) == ITEM_MATERIAL_RAW & Filter_Food == 1) ) {
 
 	/********** ANNA CUSTOM - ENDING **********/
 
@@ -1117,7 +1141,7 @@
 						ci = rtval(1)
 						p = refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE)
 						if ( cdata(CDATA_HUNGER, cc) <= 10000 ) {
-							if ( p == FILTER_ITEM_FOOD ) {
+							if ( p == FILTER_ITEM_FOOD | (cbit(CHARA_BIT_EAT_RAW_ITEM, cc) == TRUE & inv(INV_ITEM_MATERIAL, ci) == ITEM_MATERIAL_RAW) ) {
 								if ( inv(INV_ITEM_PROPERTY, ci) <= PROP_NONE ) {
 									if ( itemusingfind(ci) != (-1) & itemusingfind(ci) == cdata(CDATA_TAGTEAM_PARTNER, cc) ) {
 										if ( rnd(5) == 0 ) {
@@ -1231,13 +1255,6 @@
 				}
 			}
 		}
-		if ( cdata(CDATA_CONDITION_FEAR, cc) != 0 | cbit(CHARA_BIT_BEGGING_FOR_LIFE, cc) == TRUE ) {
-			retreat = 1
-			goto *ai_followMove
-		}
-		else {
-			retreat = 0
-		}
 
 		/********** ANNA CUSTOM - BEGINNING **********/ // Custom AI & Change Zeome's AI.
 
@@ -1258,7 +1275,7 @@
 				goto *ai_calmMove
 			}
 		}
-		if ( cc > MAX_CHARA_FOLLOWER & ((cdata(CDATA_QUALITY, cc) > FIX_QUALITY_GREAT & TweakData(TWEAK_GAMEPLAY_REVERT_POST_217_BOSS_HEALING, TWEAK_CATEGORY_GAMEPLAY) != TRUE) | cdata(CDATA_ID, cc) == CREATURE_ID_MEGA_MOLE | cdata(CDATA_ID, cc) == CREATURE_ID_TALPIDAE | cdata(CDATA_ID, cc) == CREATURE_ID_AILE_THE_ATTENDANT) ) {
+		if ( cc >= MAX_CHARA_FOLLOWER & ((cdata(CDATA_QUALITY, cc) > FIX_QUALITY_GREAT & TweakData(TWEAK_GAMEPLAY_REVERT_POST_217_BOSS_HEALING, TWEAK_CATEGORY_GAMEPLAY) != TRUE) | cdata(CDATA_ID, cc) == CREATURE_ID_MEGA_MOLE | cdata(CDATA_ID, cc) == CREATURE_ID_TALPIDAE | cdata(CDATA_ID, cc) == CREATURE_ID_AILE_THE_ATTENDANT) ) {
 			if ( cdata(CDATA_HP, cc) <= cdata(CDATA_MAX_HP, cc) * 9 / 10 | cdata(CDATA_MP, cc) <= cdata(CDATA_MAX_MP, cc) * 9 / 10 | cdata(CDATA_SP, cc) <= cdata(CDATA_MAX_SP, cc) * 9 / 10 ) {
 				if ( dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 | fov_los(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) == 0 ) {
 					healsp cc, cdata(CDATA_MAX_SP, cc) / 50 + sqrt(sdata(SKILL_NORMAL_HEALING, cc)) + sqrt(sdata(SKILL_NORMAL_MEDITATION, cc))
@@ -1374,7 +1391,7 @@
 			goto *ai_followMove
 		}
 	}
-	if ( cc > MAX_CHARA_FOLLOWER ) {
+	if ( cc >= MAX_CHARA_FOLLOWER  ) {
 		if ( rnd(5) != 0 ) {
 			goto *turn_end
 		}
@@ -1412,7 +1429,7 @@
 		}
 	}
 *ai_calmMove_WEND1
-	if ( cc > MAX_CHARA_FOLLOWER ) {
+	if ( cc >= MAX_CHARA_FOLLOWER  ) {
 		if ( cbit(CHARA_BIT_NECRO, cc) != 1 ) {
 			if ( gdata(GDATA_AREA) != AREA_SEBI ) {
 				if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN | mdata(MDATA_TYPE) == MAP_TYPE_VILLAGE ) {
@@ -2082,7 +2099,7 @@
 			}
 		}
 	}
-	if ( cc > MAX_CHARA_FOLLOWER & cdata(CDATA_QUALITY, cc) > FIX_QUALITY_GREAT & cdata(CDATA_RELATION, cc) <= (-2) | findbuff(cc, BUFF_HYPER_DASH) != (-1) | (cdata(CDATA_ID, cc) == CREATURE_ID_MEGA_MOLE | cdata(CDATA_ID, cc) == CREATURE_ID_TALPIDAE | cdata(CDATA_ID, cc) == CREATURE_ID_AILE_THE_ATTENDANT & cc > MAX_CHARA_FOLLOWER) ) {
+	if ( cc >= MAX_CHARA_FOLLOWER  & cdata(CDATA_QUALITY, cc) > FIX_QUALITY_GREAT & cdata(CDATA_RELATION, cc) <= (-2) | findbuff(cc, BUFF_HYPER_DASH) != (-1) | (cdata(CDATA_ID, cc) == CREATURE_ID_MEGA_MOLE | cdata(CDATA_ID, cc) == CREATURE_ID_TALPIDAE | cdata(CDATA_ID, cc) == CREATURE_ID_AILE_THE_ATTENDANT & cc >= MAX_CHARA_FOLLOWER ) ) {
 		if ( mdata(MDATA_TYPE) != MAP_TYPE_WORLD & cdata(CDATA_CONDITION_BIND, cc) < 20 ) {
 			if ( x >= 0 ) {
 				if ( x < mdata(MDATA_WIDTH) ) {
@@ -3767,7 +3784,7 @@
 		}
 	}
 	if ( cdata(CDATA_ID, cc) == CREATURE_ID_ITZPALT | cdata(CDATA_ID, cc) == CREATURE_ID_THE_ELEMENT | cdata(CDATA_ID, cc) == CREATURE_ID_YACATECT | cdata(CDATA_ID, cc) == CREATURE_ID_HYPER_YACATECT | cdata(CDATA_ID, cc) == CREATURE_ID_JURE | cdata(CDATA_ID, cc) == CREATURE_ID_BLESSED_JURE | cdata(CDATA_ID, cc) == CREATURE_ID_LULWY | cdata(CDATA_ID, cc) == CREATURE_ID_DEVASTATE_LULWY | cdata(CDATA_ID, cc) == CREATURE_ID_BUILDUP_OPATOS | cdata(CDATA_ID, cc) == CREATURE_ID_INSANE_KUMIROMI | cdata(CDATA_ID, cc) == CREATURE_ID_DEUS_EX_MANINA | cdata(CDATA_ID, cc) == CREATURE_ID_EHEKATL | cdata(CDATA_ID, cc) == CREATURE_ID_GOD_INSIDE_EHEKATL | cdata(CDATA_ID, cc) == CREATURE_ID_OPATOS | cdata(CDATA_ID, cc) == CREATURE_ID_KUMIROMI | cdata(CDATA_ID, cc) == CREATURE_ID_MANI ) {
-		if ( cc > MAX_CHARA_FOLLOWER ) {
+		if ( cc >= MAX_CHARA_FOLLOWER  ) {
 			if ( cdata(CDATA_ALLIED, cc) == 0 ) {
 				if ( rnd(20) == 0 ) {
 					if ( findbuff(cc, BUFF_RETENTION) == (-1) ) {
