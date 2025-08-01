@@ -3833,7 +3833,7 @@
 		file = "bg_re4"
 		buff = lang("波間にもがいている漂流者を発見した。「高波にさらわれてこんなところまで流されてしまったよ！」", "You found a drifter drowning in the waves.")
 		chatlist 1, lang("見捨てる", "(Abandon)")
-		if ( gdata(GDATA_FLAG_COLLECTED_WISHES) < maxship ) {
+		if ( gdata(GDATA_FLAG_SAVED_DRIFTERS) < maxship ) {
 			chatlist 2, lang("乗せてあげる", "(Put on your ship)")
 		}
 		if ( tabikate == 1 ) {
@@ -3851,7 +3851,7 @@
 		if ( rtval == 2 ) {
 			txt lang("「ありがとう！」", cnvtalk("Thanks!"))
 			snd SOUNDLIST_GET1
-			gdata(GDATA_FLAG_COLLECTED_WISHES) += 1
+			gdata(GDATA_FLAG_SAVED_DRIFTERS) += 1
 			txt lang("無事に陸まで連れて行ってあげよう。", "You should get the drifter to shore safely.")
 		}
 		if ( rtval == 3 ) {
@@ -3882,7 +3882,7 @@
 		file = "bg_re4"
 		buff = lang("小さなイカダに乗った漂流者を発見した。「無人島から自力で脱出してきたけれど、もう限界…」", "You found a drifter on a small raft that escaped from an uninhabited island.")
 		chatlist 1, lang("見捨てる", "(Abandon)")
-		if ( gdata(GDATA_FLAG_COLLECTED_WISHES) < maxship ) {
+		if ( gdata(GDATA_FLAG_SAVED_DRIFTERS) < maxship ) {
 			chatlist 2, lang("乗せてあげる", "(Put on your ship)")
 		}
 		if ( tabikate == 1 ) {
@@ -3900,7 +3900,7 @@
 		if ( rtval == 2 ) {
 			txt lang("「ありがとう！」", cnvtalk("Thanks!"))
 			snd SOUNDLIST_GET1
-			gdata(GDATA_FLAG_COLLECTED_WISHES) += 1
+			gdata(GDATA_FLAG_SAVED_DRIFTERS) += 1
 			txt lang("無事に陸まで連れて行ってあげよう。", "You should get the drifter to shore safely.")
 		}
 		if ( rtval == 3 ) {
@@ -3931,7 +3931,7 @@
 		file = "bg_re4"
 		buff = lang("漂流者複数名を発見した。「船が沈んでこのザマです…」", "You found drifters thrown out of the wrecked ship.")
 		chatlist 1, lang("まとめて見捨てる", "(Abandon all)")
-		if ( gdata(GDATA_FLAG_COLLECTED_WISHES) < maxship ) {
+		if ( gdata(GDATA_FLAG_SAVED_DRIFTERS) < maxship ) {
 			chatlist 2, lang("乗せられるだけ乗せる", "(Put on your ship as much as you can)")
 		}
 		if ( tabikate == 1 ) {
@@ -3949,11 +3949,11 @@
 		}
 		if ( rtval == 2 ) {
 			txt lang("「ありがとう！ありがとう！」", cnvtalk("Thank you! Thank you!!"))
-			if ( kazu > maxship - gdata(GDATA_FLAG_COLLECTED_WISHES) ) {
+			if ( kazu > maxship - gdata(GDATA_FLAG_SAVED_DRIFTERS) ) {
 				txt lang("「これ以上は乗れないか…残念だ」", cnvtalk("It looks like I can't get on this ship..."))
 			}
 			snd SOUNDLIST_GET1
-			gdata(GDATA_FLAG_COLLECTED_WISHES) += limit(kazu, 0, maxship - gdata(GDATA_FLAG_COLLECTED_WISHES))
+			gdata(GDATA_FLAG_SAVED_DRIFTERS) += limit(kazu, 0, maxship - gdata(GDATA_FLAG_SAVED_DRIFTERS))
 			txt lang("無事に陸まで連れて行ってあげよう。", "You should get drifters to shore safely.")
 		}
 		if ( rtval == 3 ) {
