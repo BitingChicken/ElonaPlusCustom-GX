@@ -4243,6 +4243,34 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_SILVIA | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				if ( card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_FIELD ) { 
+					if ( card@tcg(TCG_CARD_X, ac@tcg) <= card@tcg(TCG_CARD_X, aeft@tcg) + 72 & card@tcg(TCG_CARD_X, ac@tcg) + 72 >= card@tcg(TCG_CARD_X, aeft@tcg) ) { 
+						card@tcg(TCG_CARD_ATTACK, aeft@tcg) += 3
+						if ( card@tcg(TCG_CARD_EFFECT, aeft@tcg) == TCG_EFF_LEOPARD ) {
+							card@tcg(TCG_CARD_ATTACK, aeft@tcg) += 6
+						}
+					}
+				}
+				if ( card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_HAND ) { 
+					if ( card@tcg(TCG_CARD_X, ac@tcg) + 72 <= card@tcg(TCG_CARD_X, aeft@tcg) + 72 & card@tcg(TCG_CARD_X, ac@tcg) + 144 >= card@tcg(TCG_CARD_X, aeft@tcg) ) {
+						card@tcg(TCG_CARD_COST, aeft@tcg) -= 1
+						if ( card@tcg(TCG_CARD_EFFECT, aeft@tcg) == TCG_EFF_LEOPARD ) {
+							card@tcg(TCG_CARD_COST, aeft@tcg) -= 2
+						}
+						if ( card@tcg(TCG_CARD_COST, aeft@tcg) < 0 ) {
+							card@tcg(TCG_CARD_COST, aeft@tcg) = 0
+						}
+					}
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_ONGOING_REDUCECOSTEACHX | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
@@ -4369,6 +4397,22 @@
 			}
 			x@tcg /= effref@tcg(TCG_SKILL_POWER, aeff@tcg)
 			card@tcg(TCG_CARD_COST, aeft@tcg) = limit(card@tcg(TCG_CARD_COST, aeft@tcg) - x@tcg, 0, TCG_STAT_MAX)
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_ONGOING_GAINATTACKREDUCECOSTEACHX | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			x@tcg = 0
+			if ( effref@tcg(TCG_SKILL_FILTER, aeff@tcg) == -1 ) { 
+				repeat clistmax@tcg(0+3*ap@tcg)
+					if ( card@tcg(TCG_CARD_REF_PIC, clist@tcg(cnt, 0+3*ap@tcg)) < 0 ) { x@tcg += 1 }
+				loop
+			}
+			x@tcg /= effref@tcg(TCG_SKILL_POWER, aeff@tcg)
+			card@tcg(TCG_CARD_COST, aeft@tcg) = limit(card@tcg(TCG_CARD_COST, aeft@tcg) - x@tcg, 0, TCG_STAT_MAX)
+			card@tcg(TCG_CARD_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_ATTACK, aeft@tcg) + x@tcg, 0, TCG_STAT_MAX)
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++

@@ -25,7 +25,7 @@
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_KEEPALIVE ) { p@tcg += rnd(3) }
 		if ( cpdata@tcg(TCG_PLAYER_LIFE, cp@tcg) >= 8 ) {
 			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLD ) { p@tcg -= getholdersum(cp@tcg) / 2 }
-			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDDONTPLAY ) { p@tcg -= 50 }
+			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDDONTPLAY ) { p@tcg -= 150 }
 			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUHAVE ) {
 				p@tcg = -50
 				repeat clistmax@tcg(cl@tcg)
@@ -175,16 +175,18 @@
 	}
 	f@tcg = 0
 	p@tcg(1) = 50
+	aimaxmana@tcg = 0
 	repeat emax@tcg
 		c@tcg = elist@tcg(TCG_EVAL_TARGET, cnt)
 		p@tcg = elist@tcg(TCG_EVAL_PROB, cnt)
+		aimaxmana@tcg = limit(aimaxmana@tcg, card@tcg(TCG_CARD_COST, c@tcg), card@tcg(TCG_CARD_COST, c@tcg) + 10)
 		if ( card@tcg(TCG_CARD_LOCATION, c@tcg) != TCG_LOCATION_HAND ) {
 			continue
 		}
 		if (effref@tcg(TCG_SKILL_EFF, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_EFF_RESURRECT & card@tcg(TCG_CARD_COST, c@tcg) > cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) ) { p@tcg += card@tcg(TCG_CARD_COST, c@tcg) * 2 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_DRAW ) { p@tcg = 55 - getholdersum(cp@tcg) }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLD ) { p@tcg += 100 }
-		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDDONTPLAY ) { p@tcg += 100 }
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDDONTPLAY ) { p@tcg += 200 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDAWHILE ) { p@tcg += 100 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_AOE ) { p@tcg = 40 + 5 * (clistmax@tcg(tl@tcg) - clistmax@tcg(cl@tcg)) }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_SAC ) { p@tcg -= 20 }
@@ -198,6 +200,9 @@
 		}
 		efllistaddeval 2, p@tcg - 50, c@tcg
 	loop
+	if ( aimaxmana@tcg <= cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) & rnd(limit(10 - cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg), 1, 10)) == 0 ) {
+		f@tcg = 0
+	}
 	if ( f@tcg ) {
 		saccard cc@tcg, cp@tcg
 		tcgdraw
