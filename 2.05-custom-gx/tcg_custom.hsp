@@ -2451,6 +2451,7 @@
 				deck_opponent(CREATURE_ID_SHENA_THE_DRAW) = 1
 			}
 		}
+		return 1
 	}
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_RAPHAEL_THE_WOMANIZER ) {
 		deck_opponent(CREATURE_ID_RAPHAEL_THE_WOMANIZER) = 1
@@ -5261,8 +5262,8 @@
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 4
 		cardrefcost = 4
-		cardrefattack = 2
-		cardrefhp = 2
+		cardrefattack = 4
+		cardrefhp = 4
 		cardrefskillid = TCG_EFF_LOTHRIAN
 		cardrefbits = "73,71"
 		return 1
@@ -18620,9 +18621,9 @@
 		cardreflvl = 30
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 4
-		cardrefattack = 4
-		cardrefhp = 4
+		cardrefcost = 2
+		cardrefattack = 2
+		cardrefhp = 2
 		cardrefskillid = TCG_EFF_NAPLUS
 		cardrefbits = ""
 		return 1

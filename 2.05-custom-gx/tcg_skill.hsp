@@ -606,6 +606,79 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_NAPLUS | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			aeftbk@tcg = aeft@tcg
+			aeftpplayer@tcg = card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			if ( hasholdspace(aeftpplayer@tcg) == TRUE ) {
+				create_extra_card aeftpplayer@tcg, CREATURE_ID_ALCHEMIST_NAPLUS
+				if ( cextra@tcg >= 0 ) {
+					cardchoice@tcg = rnd(6)
+					card@tcg(TCG_CARD_COST, cextra@tcg) = 0
+					card@tcg(TCG_CARD_HP, cextra@tcg) = 1
+					card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 1
+					card@tcg(TCG_CARD_REF_COST, cextra@tcg) = 0
+					card@tcg(TCG_CARD_REF_HP, cextra@tcg) = 1
+					card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 1
+					cdbitmod TCG_BIT_COMMAND, cextra@tcg, 1
+					if ( cardchoice@tcg == 0 ) {
+						card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -37
+						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_BATTLECRY_GAIN1MANA
+						card@tcg(TCG_CARD_REF_BG, cextra@tcg) = 0
+						boozenames@tcg = "Beer", "Ale", "Love Potion", "Whiskey", "Sake", "Tequila", "Aqua Parti-o", "Hangover", "Cola", "Wa'ah"
+						carddetailneff@tcg(cextra@tcg) = "High Potion of " + boozenames@tcg(rnd(10)) + "    No.???   very potent beer  Rare:None\n[Command Card]\nEffect: Gain 1 Extra Mana."
+					}
+					if ( cardchoice@tcg == 1 ) {
+						card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -38
+						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_PUFFPUFFBREAD
+						card@tcg(TCG_CARD_REF_BG, cextra@tcg) = 1
+						carddetailneff@tcg(cextra@tcg) = "Puff Puff Bread   No.???   puffy puffy bread  Rare:None\n[Command Card]\nEffect: Feed the Puff Puff Bread to 1 of your Card."
+						cdbitmod TCG_BIT_COMMAND, cextra@tcg, 0
+					}
+					if ( cardchoice@tcg == 2 ) {
+						card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -36
+						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_BATTLECRY_HEALPLAYER2DAMAGE
+						card@tcg(TCG_CARD_REF_BG, cextra@tcg) = 2
+						carddetailneff@tcg(cextra@tcg) = "Cure Crystal  No.???   overpriced heal potion  Rare:None\n[Command Card]\nEffect: Heal Player 2 Damage."
+					}
+					if ( cardchoice@tcg == 3 ) {
+						card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -34
+						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_BATTLECRY_DEALCHOSENENEMY2DAMAGE
+						card@tcg(TCG_CARD_REF_BG, cextra@tcg) = 3
+						carddetailneff@tcg(cextra@tcg) = "Skull Sword   No.???   cheap bone blade  Rare:None\n[Command Card] \nEffect: Deal 2 Damage to Target Card."
+					}
+					if ( cardchoice@tcg == 4 ) {
+						card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -39
+						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_POKEBALL
+						card@tcg(TCG_CARD_REF_BG, cextra@tcg) = 6
+						carddetailneff@tcg(cextra@tcg) = "Monster Ball   No.???   knock-off pokeball  Rare:None\n[Command Card] \nEffect: Enslave Target 1-HP Card."
+					}
+					if ( cardchoice@tcg == 5 ) {
+						card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -35
+						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_BATTLECRY_DEALEVERYONE1DAMAGE
+						card@tcg(TCG_CARD_REF_BG, cextra@tcg) = 7
+						carddetailneff@tcg(cextra@tcg) = "Magistus   No.???   it's just a bomb  Rare:None\n[Command Card] \nEffect: Deal 1 Damage to every card."
+					}
+					card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_ANIM
+					cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+					card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, aeftbk@tcg), card@tcg(TCG_CARD_Y, aeftbk@tcg), card@tcg(TCG_CARD_X, aeftbk@tcg), card@tcg(TCG_CARD_Y, aeftbk@tcg)
+					card@tcg(TCG_CARD_Y_MOVETO, cextra@tcg) -= 15 - 30 * aeftpplayer@tcg
+					tcgpass 30
+					card@tcg(TCG_CARD_Y_MOVETO, cextra@tcg) -= 25 - 50 * aeftpplayer@tcg
+					tcgpass 30
+					card@tcg(TCG_CARD_Y_MOVETO, cextra@tcg) -= 35 - 70 * aeftpplayer@tcg
+					tcgpass 30
+					gettargetcard cextra@tcg
+					tcgpass 20
+				}
+			}
+			makecardlist
+			tcgdraw
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_RAIZEL | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
@@ -954,7 +1027,7 @@
 			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -5 ) { 
 				x@tcg = 0, 0, 0, 0, 0, 0, 0, 0
 				repeat 60
-					if ( card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_NONE ) { continue }
+					if ( card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_DEFAULT ) { continue }
 					if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != ap@tcg ) { continue }
 					if ( card@tcg(TCG_CARD_REF_DOMAIN, cnt) >= 8 | card@tcg(TCG_CARD_REF_DOMAIN, cnt) < 0 ) { continue }
 					x@tcg(card@tcg(TCG_CARD_REF_DOMAIN, cnt))++
@@ -2048,7 +2121,7 @@
 				if ( dbid >= 0) {
 					card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
 					tcgpass 15
-					card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_NONE
+					card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_DEFAULT
 					create_card aeft@tcg, dbid
 					cdbitmod TCG_BIT_FACE_UP, aeft@tcg, 1
 					if ( card@tcg(TCG_CARD_STATUS, aeft@tcg) != TCG_ACTION_NONE ) {
@@ -2080,7 +2153,7 @@
 				card@tcg(TCG_CARD_ANIM, ac@tcg) = 0, 0
 				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
 				tcgpass 15
-				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_NONE
+				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_DEFAULT
 				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 0
 				cdbitmod TCG_BIT_RIDER, aeft@tcg, 1
 				efllistadd 2, 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
@@ -2096,12 +2169,16 @@
 		_switch_sw@tcg = 0
 		if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
 			if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+				makecardlist
+				cardpos 0, -1
+				cardpos 1, -1
+				tcgpass 50
 				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
 				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_FIELD
 				card@tcg(TCG_CARD_ANIM, ac@tcg) = 0, 0
 				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
 				tcgpass 15
-				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_NONE
+				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_DEFAULT
 				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 0
 				card@tcg(TCG_CARD_REF_HP, aeft@tcg) += card@tcg(TCG_CARD_HP, ac@tcg)
 				card@tcg(TCG_CARD_HP, aeft@tcg) += card@tcg(TCG_CARD_HP, ac@tcg)
@@ -2117,6 +2194,9 @@
 				makecardlist
 				cardpos 0, -1
 				cardpos 1, -1
+				if ( card@tcg(TCG_CARD_REF_DBID, aeft@tcg) == CREATURE_ID_ALCHEMIST_NAPLUS & card@tcg(TCG_CARD_REF_DBID, ac@tcg) == CREATURE_ID_ALCHEMIST_NAPLUS ) {
+					dmgcard aeft@tcg, 999
+				}
 			}
 		}
 		goto *actionproc_SWEND1
@@ -2187,7 +2267,7 @@
 				p@tcg++
 			loop
 			if ( p@tcg > 0 & target@tcg > -1 ) {
-				card@tcg(TCG_CARD_LOCATION, aeft@tcg) = TCG_LOCATION_NONE
+				card@tcg(TCG_CARD_LOCATION, aeft@tcg) = TCG_LOCATION_DEFAULT
 				card@tcg(TCG_CARD_CONTROLLER, target@tcg) = ap@tcg
 				gettargetcard target@tcg
 				card@tcg(TCG_CARD_REF_COST, target@tcg) = card@tcg(TCG_CARD_REF_COST, target@tcg) - 2
@@ -2624,7 +2704,6 @@
 					}
 				}
 			loop
-			// a Large chunk of animation code below.
 			tcgpass 30
 			if ( cardsgenerated@tcg == 6 ) {
 				p@tcg = 0
@@ -3269,6 +3348,10 @@
 				if ( cextra@tcg >= 0 & cextra@tcg < maxcard@tcg & ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
 					card@tcg(TCG_CARD_CONTROLLER, cextra@tcg) = ap@tcg
 					card@tcg(TCG_CARD_REF_COST, cextra@tcg) = limit(card@tcg(TCG_CARD_REF_COST, ac@tcg) - 1, 1, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_REF_HP, cextra@tcg) = limit(card@tcg(TCG_CARD_REF_HP, ac@tcg) - 1, 1, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = limit(card@tcg(TCG_CARD_REF_ATTACK, ac@tcg) - 1, 1, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_HP, cextra@tcg) = limit(card@tcg(TCG_CARD_HP, ac@tcg) - 1, 1, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_ATTACK, cextra@tcg) = limit(card@tcg(TCG_CARD_ATTACK, ac@tcg) - 1, 1, TCG_STAT_MAX)
 					gettargetcard cextra@tcg
 				}
 				makecardlist

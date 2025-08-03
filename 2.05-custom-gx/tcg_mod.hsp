@@ -463,6 +463,8 @@
 #define global	TCG_SKILL_EFF_GENERATETOFU 179
 #define global	TCG_SKILL_EFF_MERGEANDGIVESTAT 180
 #define global	TCG_SKILL_EFF_HEALMESHERA 181
+#define global	TCG_SKILL_EFF_RAIZEL 182
+#define global	TCG_SKILL_EFF_NAPLUS 183
 
 #define global	TCG_SKILL_FILTER_NONE 0
 #define global	TCG_SKILL_FILTER_MALE 1
@@ -806,6 +808,8 @@
 #define global	TCG_EFF_ONGOING_INCREASECOSTEACH3TOTALTURN 2915
 #define global	TCG_EFF_ONGOING_INCREASE5ATTACKWHENWOUNDED 2916
 
+#define global	TCG_EFF_POKEBALL 434
+#define global	TCG_EFF_PUFFPUFFBREAD 435
 #define global	TCG_EFF_GODWOLF 436
 #define global	TCG_EFF_TOFU 437
 #define global	TCG_EFF_KYUBI 438
@@ -1482,7 +1486,7 @@
 	effdesc@tcg(TCG_EFF_BATTLECRY_HEALPLAYER2DAMAGE) = "Battlecry: Heal Player 2 Damage."
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_BATTLECRY_HEALPLAYER6DAMAGE) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER, TCG_SKILL_EFF_HEAL_PLAYER_DAMAGE, 6, 1
 	effdesc@tcg(TCG_EFF_BATTLECRY_HEALPLAYER6DAMAGE) = "Battlecry: Heal Player 6 Damage."
-	effref@tcg(TCG_SKILL_REF, TCG_EFF_BATTLECRY_HEALALLCARD) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER_HANDFIELD_ALL, TCG_SKILL_EFF_HEALTOFULL, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_SAC
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_BATTLECRY_HEALALLCARD) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER_HANDFIELD_ALL, TCG_SKILL_EFF_HEALTOFULL, 1, 1
 	effdesc@tcg(TCG_EFF_BATTLECRY_HEALALLCARD) = "Battlecry: Heal All Your Cards to Full Hp."
 	
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_BATTLECRY_DEALEVERYONE1DAMAGE) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_ALL_FIELD_ALL, TCG_SKILL_EFF_DEAL_CREATURE_DAMAGE, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_AOE
@@ -2660,8 +2664,12 @@
 	
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_RAIZEL) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER, TCG_SKILL_EFF_RAIZEL, 1, 10, TCG_SKILL_FILTER_NOTSELF
 	effdesc@tcg(TCG_EFF_RAIZEL) = "Battlecry: Spend all your Mana, deal everyone else that many damage."
-	effref@tcg(TCG_SKILL_REF, TCG_EFF_NAPLUS) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_ALL_GRAVE_ALL, TCG_SKILL_EFF_CONTROLLERDRAW1GAIN1, 1, 1, TCG_SKILL_FILTER_GOD
-	effdesc@tcg(TCG_EFF_NAPLUS) = "Battlecry: Draw 1 Card and Gain 1 Mana for each God in the Graveyard."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_NAPLUS) = 0, TCG_SKILL_TYPE_BATTLECRY + TCG_SKILL_TYPE_INHAND + TCG_SKILL_TYPE_TURN_START, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_NAPLUS, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_HOLDAWHILE
+	effdesc@tcg(TCG_EFF_NAPLUS) = "BattleCry/InHand/BeginPhase: Make you 1 Alchemical-Masterpiece."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_PUFFPUFFBREAD) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER_HANDFIELD_CHOOSE, TCG_SKILL_EFF_MERGEANDGIVESTAT, 1, 1, TCG_SKILL_FILTER_NOTSELF, TCG_SKILL_AI_COMBOCOREPLAY
+	effdesc@tcg(TCG_EFF_PUFFPUFFBREAD) = "Battlecry: Feed the Puff Puff Bread to 1 of your Card."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_POKEBALL) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_ENEMY_FIELD_CHOOSE, TCG_SKILL_EFF_DRAW_TARGET_CARD, 1, 1, TCG_SKILL_FILTER_HP + 1, TCG_SKILL_AI_DRAW
+	effdesc@tcg(TCG_EFF_POKEBALL) = "Battlecry: Enslave Target 1-HP Card."
 
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_NURSE1) = 0, TCG_SKILL_TYPE_TURN_START, TCG_SKILL_TARGET_PLAYER_HANDFIELD_ALL, TCG_SKILL_EFF_HEALTOFULL, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_KEEPALIVE
 	effdesc@tcg(TCG_EFF_NURSE1) = "Begin Phase: Heal All Your Cards to Full Hp."
@@ -2758,7 +2766,7 @@
 	effdesc@tcg(TCG_EFF_ALFRED) = "OnDraw/Battlecry: Your Lothrian Remnant gain +2 Hp/Armor."
 	efftalk@tcg(TCG_EFF_ALFRED) = cnvtalk("The winds of Lothrian are not kind.")
     effref@tcg(TCG_SKILL_REF, TCG_EFF_LOTHRIAN) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_LOTHRIAN, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_DRAW
-	effdesc@tcg(TCG_EFF_LOTHRIAN) = "Battlecry: Draw a Copy of this Card, it cost 1 less (min 1)."
+	effdesc@tcg(TCG_EFF_LOTHRIAN) = "Battlecry: Draw a Copy of this Card, with -1 Cost/ATK/HP (min 1)."
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_ELEAINSTIGATOR) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER_DECK_RANDOM3, TCG_SKILL_EFF_PUT_TARGET_CARD, 1, 1, TCG_SKILL_FILTER_BIT + TCG_BIT_ELEAMOB
 	effdesc@tcg(TCG_EFF_ELEAINSTIGATOR) = "Battlecry: Summon 3 Elea mobs from your deck."
     effref@tcg(TCG_SKILL_REF, TCG_EFF_ELEAWANDERER) = 0, TCG_SKILL_TYPE_DEATHRATTLE, TCG_SKILL_TARGET_PLAYER_DECK_RANDOM, TCG_SKILL_EFF_DRAW_TARGET_CARD, 1, 1, TCG_SKILL_FILTER_BIT + TCG_BIT_ELEAMOB
@@ -3172,7 +3180,17 @@
 		loop
 	loop
 	gmode 2
-	useitemimages@tcg = 333, 986, 34, 35, 37, 36, 41, 39, 40, 26, 1278, 1055
+	useitemimages@tcg(0) = 333 // Red Book
+	useitemimages@tcg(1) = 986 // Fossil
+	useitemimages@tcg(2) = 34, 35, 37, 36, 41, 39, 40, 26 // Kamui Cards
+	useitemimages@tcg(10) = 1278 // Hiden Mashi
+	useitemimages@tcg(11) = 1055 // Tofu -33
+	useitemimages@tcg(12) = 995 // Skull Sword -34
+	useitemimages@tcg(13) = 996 // Magistus -35
+	useitemimages@tcg(14) = 211 // Crystal -36
+	useitemimages@tcg(15) = 210 // Beer -37
+	useitemimages@tcg(16) = 552 // Puff Puff Bread -38
+	useitemimages@tcg(17) = 658 // Pokeball -39
 	repeat length(useitemimages@tcg)
 		pos (cnt\22) * 72 + 12, (cnt/22) * 96 + 96 + 24 + (chipi(CHIPI_HEIGHT, useitemimages@tcg(cnt)) > 48) * 24
 		gcopy 1, useitemimages@tcg(cnt)\33*48, useitemimages@tcg(cnt)/33*48, 48, 48
