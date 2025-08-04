@@ -9,6 +9,15 @@
 		if ( card@tcg(TCG_CARD_HP, cnt) > card@tcg(TCG_CARD_REF_HP, cnt) ) {
 			card@tcg(TCG_CARD_HP, cnt) = card@tcg(TCG_CARD_REF_HP, cnt)
 		}
+		if ( card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_DECK ) {
+			card@tcg(TCG_CARD_X, cnt) = holderix@tcg(card@tcg(TCG_CARD_CONTROLLER, cnt)) - holderspace@tcg + 20 - rnd(40), holderiy@tcg(card@tcg(TCG_CARD_CONTROLLER, cnt)) + 20 - rnd(40)
+		}
+		if ( card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_GRAVEYARD ) {
+			card@tcg(TCG_CARD_X, cnt) = graveix@tcg(card@tcg(TCG_CARD_CONTROLLER, cnt)) + 20 - rnd(40), graveiy@tcg(card@tcg(TCG_CARD_CONTROLLER, cnt)) + 20 - rnd(40)
+		}
+		if ( card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_EXILE ) {
+			card@tcg(TCG_CARD_X, cnt) = landix@tcg(card@tcg(TCG_CARD_CONTROLLER, cnt)) + 20 - rnd(40), landiy@tcg(card@tcg(TCG_CARD_CONTROLLER, cnt)) + 20 - rnd(40)
+		}
 	loop
 	repeat maxcard@tcg
 		if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD ) {
@@ -7415,7 +7424,7 @@
 		cardrefcost = 1
 		cardrefattack = 2
 		cardrefhp = 1
-		cardrefskillid = TCG_EFF_SACRIFICE_DRAW1CARD
+		cardrefskillid = TCG_EFF_OPPONENTDRAW1FATIGUE
 		cardrefbits = ""
 		return 1
 	}

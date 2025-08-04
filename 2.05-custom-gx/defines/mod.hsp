@@ -35,8 +35,9 @@
 #define global	MAX_CARD	1500
 #define global	MIN_CARD_DECK	30
 #define global	MAX_CARD_DECK	60
-#define global	MAX_CARD_EXTRA	40
-#define global	MAX_CARD_DECK_TOTAL	(MAX_CARD_DECK + MAX_CARD_EXTRA)
+#define global	MAX_CARD_EXTRA	39
+#define global	MAX_CARD_FATIGUE	1
+#define global	MAX_CARD_DECK_TOTAL	(MAX_CARD_DECK + MAX_CARD_EXTRA + MAX_CARD_FATIGUE)
 
 #define global	MAX_DB	1499
 

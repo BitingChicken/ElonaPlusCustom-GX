@@ -467,6 +467,8 @@
 #define global	TCG_SKILL_EFF_NAPLUS 183
 #define global	TCG_SKILL_EFF_SILVIA 184
 #define global	TCG_SKILL_EFF_ONGOING_GAINATTACKREDUCECOSTEACHX 185
+#define global	TCG_SKILL_EFF_FATIGUE 186
+#define global	TCG_SKILL_EFF_DRAW_FATIGUE 187
 
 #define global	TCG_SKILL_FILTER_NONE 0
 #define global	TCG_SKILL_FILTER_MALE 1
@@ -610,6 +612,7 @@
 #define global	TCG_EFF_NOVICE 5
 #define global	TCG_EFF_NOCOMBATDAMAGE 6
 #define global	TCG_EFF_CNPC 7
+#define global	TCG_EFF_FATIGUE 8
 
 #define global	TCG_EFF_POKER 201
 
@@ -810,6 +813,7 @@
 #define global	TCG_EFF_ONGOING_INCREASECOSTEACH3TOTALTURN 2915
 #define global	TCG_EFF_ONGOING_INCREASE5ATTACKWHENWOUNDED 2916
 
+#define global	TCG_EFF_OPPONENTDRAW1FATIGUE 432
 #define global	TCG_EFF_FESTIVALTOURIST 433
 #define global	TCG_EFF_POKEBALL 434
 #define global	TCG_EFF_PUFFPUFFBREAD 435
@@ -3040,6 +3044,11 @@
 	effdesc@tcg(TCG_EFF_ITZPALT) = "Impressive, mortal. I shall bestow my wisdom of this card game upon you."
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_ITZPALT2) = 0, TCG_SKILL_TYPE_TURN_START + TCG_SKILL_TYPE_TURN_END + TCG_SKILL_TYPE_BATTLECRY + TCG_SKILL_TYPE_AFTERCOMBAT, TCG_SKILL_TARGET_ENEMY_FIELD_ALL, TCG_SKILL_EFF_DEAL_CREATURE_DAMAGE, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_KEEPALIVE
 	effdesc@tcg(TCG_EFF_ITZPALT2) = "Very impressive, mortal. You shall be the one worthy under the rule of the gods."
+
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_OPPONENTDRAW1FATIGUE) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_ENEMY, TCG_SKILL_EFF_DRAW_FATIGUE, 1, 1
+	effdesc@tcg(TCG_EFF_OPPONENTDRAW1FATIGUE) = "Battlecry: Your Opponent Draw 1 Fatigue."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_FATIGUE) = 0, TCG_SKILL_TYPE_ONDRAW, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_FATIGUE, 1, 1
+	effdesc@tcg(TCG_EFF_FATIGUE) = "You are out of Cards!!!"
     return
 
 #deffunc tcginit
@@ -3157,7 +3166,7 @@
     pos 0, 0
     gsel 7
 	picload exedir + "graphic\\interface2.bmp", 1
-	// Prepare anim effects.
+	// Prepare anim effects. eff5-17 (Fire, Ice... to Chaos, Slash, Blunt.)
 	animeload@tcg = 20, 19, 18, 21, 23, 27, 22, 24, 26, 25, 28, 39
 	repeat 12
 		pos 720, 96 * cnt
@@ -3165,6 +3174,7 @@
 	loop
 	pos 336, 1152
 	picload exedir + "graphic\\anime5.bmp", 1
+	// Extra anim effects. eff18-23 (11Holy, 14Skull...) 
 	animeload@tcg = 11, 14, 30, 15, 33, 42
 	repeat 6
 		pos 0, 640 + 96 * cnt
@@ -3197,6 +3207,7 @@
 	useitemimages@tcg(15) = 210 // Beer -37
 	useitemimages@tcg(16) = 552 // Puff Puff Bread -38
 	useitemimages@tcg(17) = 658 // Pokeball -39
+	useitemimages@tcg(18) = 245 // Skull -40
 	repeat length(useitemimages@tcg)
 		pos (cnt\22) * 72 + 12, (cnt/22) * 96 + 96 + 24 + (chipi(CHIPI_HEIGHT, useitemimages@tcg(cnt)) > 48) * 24
 		gcopy 1, useitemimages@tcg(cnt)\33*48, useitemimages@tcg(cnt)/33*48, 48, 48

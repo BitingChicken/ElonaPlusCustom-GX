@@ -332,11 +332,47 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_FATIGUE | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			tcgpass 30
+			card@tcg(TCG_CARD_X_MOVETO, aeft@tcg) = cpx@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)), cpy@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 15
+			tcgpass 30
+			efllistadd 19, 0, cpx@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 35, cpy@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 55
+			gravecard aeft@tcg
+			card@tcg(TCG_CARD_LOCATION, aeft@tcg) = TCG_LOCATION_DEFAULT
+			cardposgrave card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			if ( card@tcg(TCG_CARD_TEMP, aeft@tcg) > 5 & specialruleusenofatiguerecoil@tcg(1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) == 0 ) {
+				dmgplayer 1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), card@tcg(TCG_CARD_TEMP, aeft@tcg) / 5
+			}
+			dmgplayer card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), card@tcg(TCG_CARD_TEMP, aeft@tcg)
+			if ( gameresult@tcg == 2 ) {
+				gameresult@tcg = 4
+			}
+			if ( gameresult@tcg == 1 ) {
+				gameresult@tcg = 3
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DRAW_FATIGUE | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			fatigueplayer aeft@tcg, 1
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_DRAW_CARD | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
-		getrandomcard aeft@tcg
-		makecardlist
-		tcgdraw
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			if ( getdecksum(aeft@tcg) != 0 ) {
+				getrandomcard aeft@tcg
+				makecardlist
+				tcgdraw
+			}
+		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
@@ -598,7 +634,9 @@
 			if ( cpdata@tcg(TCG_PLAYER_MANA, aeft@tcg) >= 1 & hasholdspace(aeft@tcg) == TRUE ) {
 				cpdata@tcg(TCG_PLAYER_MANA, aeft@tcg) -= 1
 				specialrulemanalastturn@tcg(aeft@tcg) = cpdata@tcg(TCG_PLAYER_MANA)
-				getrandomcard aeft@tcg
+				if ( getdecksum(aeft@tcg) != 0 ) {
+					getrandomcard aeft@tcg
+				}
 			}
 			makecardlist
 			tcgdraw
@@ -699,7 +737,9 @@
 	if ( _switch_val@tcg == TCG_SKILL_EFF_CONTROLLERDRAW1GAIN1 | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
-			getrandomcard card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			if ( getdecksum(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) != 0 ) {
+				getrandomcard card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			}
 			cpdata@tcg(TCG_PLAYER_MANA, card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) += 1
 		}
 		goto *actionproc_SWEND1
@@ -715,7 +755,9 @@
 				card@tcg(TCG_CARD_CONTROLLER, aeft@tcg) = 1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
 				gravecard aeft@tcg
 			}
-			getrandomcard 1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			if ( getdecksum(1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) != 0 ) {
+				getrandomcard 1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			}
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -746,7 +788,9 @@
 					dmgcard aeft@tcg, effref@tcg(TCG_SKILL_POWER, aeff@tcg)
 				}
 				if ( cnt >= 0 & cnt < maxcard@tcg ) {
-					getrandomcard card@tcg(TCG_CARD_CONTROLLER, cnt)
+					if ( getdecksum(card@tcg(TCG_CARD_CONTROLLER, cnt)) != 0 ) {
+						getrandomcard card@tcg(TCG_CARD_CONTROLLER, cnt)
+					}
 				}
 			loop	
 		}
@@ -2417,7 +2461,9 @@
 				putcardfree@tcg = 1
 				putcard aeft@tcg, card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
 				if ( aeff@tcg == TCG_EFF_LICH | aeff@tcg == TCG_EFF_FASTLICH | aeff@tcg == TCG_EFF_SUPERFASTLICH | aeff@tcg == TCG_EFF_MEGASUPERFASTLICH ) {
-					getrandomcard ap@tcg
+					if ( getdecksum(ap@tcg) != 0 ) {
+						getrandomcard ap@tcg
+					}
 				}
 				makecardlist
 				tcgdraw
@@ -2841,7 +2887,9 @@
 				loop
 			}
 			if ( aefp@tcg != 1 ) {
-				getrandomcard ap@tcg
+				if ( getdecksum(ap@tcg) != 0 ) {
+					getrandomcard ap@tcg
+				}
 				makecardlist
 				tcgdraw
 			}
@@ -3922,9 +3970,6 @@
 				if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_PLAYER ) {
 					specialruleusenofatiguerecoil@tcg(ap@tcg) = 1
 					specialruleusealwaysfatigue@tcg(1 - ap@tcg) = 1
-					repeat 10
-						fatigueplayer 1 - ap@tcg
-					loop
 					card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
 					card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
 					cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
@@ -3933,6 +3978,10 @@
 					tcgpass 150
 					saccard ac@tcg, ap@tcg
 					sac@tcg = 0
+					losingplayer@tcg = 1 - ap@tcg
+					repeat 10
+						fatigueplayer losingplayer@tcg, 1
+					loop
 				} else {
 					cpdata@tcg(TCG_PLAYER_LIFE, 1 - ap@tcg) = 0
 					gameresult@tcg = 5 + (ap@tcg == 1)
@@ -3962,9 +4011,6 @@
 			if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_PLAYER ) {
 				specialruleusenofatiguerecoil@tcg(ap@tcg) = 1
 				specialruleusealwaysfatigue@tcg(1 - ap@tcg) = 1
-				repeat 10
-					fatigueplayer 1 - ap@tcg
-				loop
 				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
 				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
 				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
@@ -3972,6 +4018,10 @@
 				tcgpass 150
 				saccard ac@tcg, ap@tcg
 				sac@tcg = 0
+				losingplayer@tcg = 1 - ap@tcg
+				repeat 10
+					fatigueplayer losingplayer@tcg, 1
+				loop
 			} else {
 				cpdata@tcg(TCG_PLAYER_LIFE, 1 - ap@tcg) = 0
 				gameresult@tcg = 7 + (cp@tcg == 1)
@@ -4010,9 +4060,6 @@
 				if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_PLAYER ) {
 					specialruleusenofatiguerecoil@tcg(ap@tcg) = 1
 					specialruleusealwaysfatigue@tcg(1 - ap@tcg) = 1
-					repeat 10
-						fatigueplayer 1 - ap@tcg
-					loop
 					card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
 					card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
 					cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
@@ -4025,6 +4072,10 @@
 						if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_UNITDEAD_JACK ) { continue }
 						if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_UNITDEAD_JOKER ) { continue }
 						saccard cnt, ap@tcg
+					loop
+					losingplayer@tcg = 1 - ap@tcg
+					repeat 10
+						fatigueplayer losingplayer@tcg, 1
 					loop
 				} else {
 					cpdata@tcg(TCG_PLAYER_LIFE, 1 - ap@tcg) = 0
@@ -4045,9 +4096,6 @@
 			if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_OPPONENT ) {
 				specialruleusenofatiguerecoil@tcg(1 - ap@tcg) = 1
 				specialruleusealwaysfatigue@tcg(ap@tcg) = 1
-				repeat 10
-					fatigueplayer ap@tcg
-				loop
 				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
 				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
 				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
@@ -4055,6 +4103,10 @@
 				tcgpass 150
 				saccard ac@tcg, ap@tcg
 				sac@tcg = 0
+				losingplayer@tcg = ap@tcg
+				repeat 10
+					fatigueplayer losingplayer@tcg, 1
+				loop
 			} else {
 				cpdata@tcg(TCG_PLAYER_LIFE, ap@tcg) = 0
 				gameresult@tcg = 11 + (ap@tcg == 0)
@@ -4108,9 +4160,6 @@
 			if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_PLAYER ) {
 				specialruleusenofatiguerecoil@tcg(ap@tcg) = 1
 				specialruleusealwaysfatigue@tcg(1 - ap@tcg) = 1
-				repeat 10
-					fatigueplayer 1 - ap@tcg
-				loop
 				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
 				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
 				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
@@ -4120,6 +4169,10 @@
 				makecardlist
 				cardpos 0, -1
 				cardpos 1, -1
+				losingplayer@tcg = 1 - ap@tcg
+				repeat 10
+					fatigueplayer losingplayer@tcg, 1
+				loop
 			} else {
 				cpdata@tcg(TCG_PLAYER_LIFE, 1 - ap@tcg) = 0
 				gameresult@tcg = 13 + (ap@tcg == 1)
@@ -4546,8 +4599,9 @@
 				if ( yaminogemu@tcg == 1 & aeft@tcg == TCG_CONTROLLER_PLAYER ) {
 					specialruleusenofatiguerecoil@tcg(aeft@tcg) = 1
 					specialruleusealwaysfatigue@tcg(1 - aeft@tcg) = 1
+					losingplayer@tcg = 1 - aeft@tcg
 					repeat 10
-						fatigueplayer 1 - aeft@tcg
+						fatigueplayer losingplayer@tcg, 1
 					loop
 				} else {
 					cpdata@tcg(TCG_PLAYER_LIFE, aeft@tcg) = 0
