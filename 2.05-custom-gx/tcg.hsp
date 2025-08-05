@@ -539,6 +539,15 @@
 	gosub *refresh_bg
 	return
 
+#deffunc organizeboard
+	makecardlist
+	cardpos 0, -1
+	cardpos 1, -1
+	cardposhand 0, -1
+	cardposhand 1, -1
+	cardposgrave -1
+	return
+
 #deffunc makecardlist
 	dim clist@tcg, maxcard@tcg, 7
 	dim clistmax@tcg, 7
@@ -1439,6 +1448,7 @@
 			if ( p@tcg == TCG_BIT_SURGE ) { s@tcg += "[After Drawn: Discard this and Draw 1] "}
 			if ( p@tcg == TCG_BIT_COMMAND ) { s@tcg += "[Command Card] "}
 			if ( p@tcg == TCG_BIT_FOSSIL ) { s@tcg += "[Does Nothing until Unfossiled/Graved] "}
+			if ( p@tcg == TCG_BIT_COST_ONE ) { s@tcg += "[Cost at least 1 Mana] "}
 		loop
 		rtvaln2 += "\n" + s@tcg
 		s@tcg = ""
@@ -2379,6 +2389,8 @@
 		if ( cdata(CDATA_GOD, CHARA_PLAYER) != GOD_JURE & deck(CREATURE_ID_DEFENDER) > 0 ) { buff = "Only a believer of Jure can use the defender in Termination Card Game (TCG)" }
 		if ( cdata(CDATA_GOD, CHARA_PLAYER) != GOD_LULWY & deck(CREATURE_ID_BLACK_ANGEL) > 0 ) { buff = "Only a believer of Lulwy can use the black angel in Termination Card Game (TCG)" }
 		if ( cdata(CDATA_GOD, CHARA_PLAYER) != GOD_YACATECT & deck(CREATURE_ID_GOOSE) > 0 ) { buff = "Only a believer of Yacatect can use a goose in Termination Card Game (TCG)" }
+
+		if ( gdata(GDATA_WIZARD) ) { buff = "" }
 
 		if ( buff != "" ) {
 			chatList 1, lang("また今度ね", "Maybe next time.")

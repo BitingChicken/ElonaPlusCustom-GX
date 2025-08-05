@@ -178,6 +178,7 @@
 #define global	TCG_BIT_SURGE 106 // On Draw: Discard Self from hand, and Draw 1 card.
 #define global	TCG_BIT_COMMAND 107 // Grave itself after use.
 #define global	TCG_BIT_FOSSIL 108 // Grave itself after use, revert to original form.
+#define global	TCG_BIT_COST_ONE 109 // Cost at least 1.
 
 #define global	TCG_SKILL_TYPE_NONE 0
 #define global	TCG_SKILL_TYPE_ACTIVATE 1
@@ -469,6 +470,8 @@
 #define global	TCG_SKILL_EFF_ONGOING_GAINATTACKREDUCECOSTEACHX 185
 #define global	TCG_SKILL_EFF_FATIGUE 186
 #define global	TCG_SKILL_EFF_DRAW_FATIGUE 187
+#define global	TCG_SKILL_EFF_DRAW_SHOVEL 188
+#define global	TCG_SKILL_EFF_SHOVEL 189
 
 #define global	TCG_SKILL_FILTER_NONE 0
 #define global	TCG_SKILL_FILTER_MALE 1
@@ -813,6 +816,8 @@
 #define global	TCG_EFF_ONGOING_INCREASECOSTEACH3TOTALTURN 2915
 #define global	TCG_EFF_ONGOING_INCREASE5ATTACKWHENWOUNDED 2916
 
+#define global	TCG_EFF_SHOVEL 430
+#define global	TCG_EFF_GIVESHOVEL 431
 #define global	TCG_EFF_OPPONENTDRAW1FATIGUE 432
 #define global	TCG_EFF_FESTIVALTOURIST 433
 #define global	TCG_EFF_POKEBALL 434
@@ -2671,6 +2676,11 @@
 	
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_RAIZEL) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER, TCG_SKILL_EFF_RAIZEL, 1, 10, TCG_SKILL_FILTER_NOTSELF
 	effdesc@tcg(TCG_EFF_RAIZEL) = "Battlecry: Spend all your Mana, deal everyone else that many damage."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_GIVESHOVEL) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_DRAW_SHOVEL, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_COMBOCOREPLAY
+	effdesc@tcg(TCG_EFF_GIVESHOVEL) = "Battlecry: Add <Spadille> to your Hand.\n          (Reusable 1 Cost: Deal Damage to target Card.)"
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_SHOVEL) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_ENEMY_FIELD_CHOOSE, TCG_SKILL_EFF_SHOVEL, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_AOE
+	effdesc@tcg(TCG_EFF_SHOVEL) = "Battlecry: BONK Target Card, Deal (Attack Value) Damage."
+
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_NAPLUS) = 0, TCG_SKILL_TYPE_BATTLECRY + TCG_SKILL_TYPE_INHAND + TCG_SKILL_TYPE_TURN_START, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_NAPLUS, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_HOLDDONTPLAY
 	effdesc@tcg(TCG_EFF_NAPLUS) = "BattleCry/InHand/BeginPhase: Make you 1 Alchemical-Masterpiece."
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_PUFFPUFFBREAD) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER_HANDFIELD_CHOOSE, TCG_SKILL_EFF_MERGEANDGIVESTAT, 1, 1, TCG_SKILL_FILTER_NOTSELF, TCG_SKILL_AI_HOLDAWHILE
@@ -3208,6 +3218,7 @@
 	useitemimages@tcg(16) = 552 // Puff Puff Bread -38
 	useitemimages@tcg(17) = 658 // Pokeball -39
 	useitemimages@tcg(18) = 245 // Skull -40
+	useitemimages@tcg(19) = 1003 // Shovel -41
 	repeat length(useitemimages@tcg)
 		pos (cnt\22) * 72 + 12, (cnt/22) * 96 + 96 + 24 + (chipi(CHIPI_HEIGHT, useitemimages@tcg(cnt)) > 48) * 24
 		gcopy 1, useitemimages@tcg(cnt)\33*48, useitemimages@tcg(cnt)/33*48, 48, 48

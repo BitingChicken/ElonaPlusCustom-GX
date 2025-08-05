@@ -336,7 +336,7 @@
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
 			tcgpass 30
-			card@tcg(TCG_CARD_X_MOVETO, aeft@tcg) = cpx@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)), cpy@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 15
+			card@tcg(TCG_CARD_X_MOVETO, aeft@tcg) = cpx@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)), cpy@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 7
 			tcgpass 30
 			efllistadd 19, 0, cpx@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 35, cpy@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 55
 			gravecard aeft@tcg
@@ -713,6 +713,67 @@
 			}
 			makecardlist
 			tcgdraw
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DRAW_SHOVEL | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			aeftbk@tcg = aeft@tcg
+			aeftpplayer@tcg = card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			if ( hasholdspace(aeftpplayer@tcg) == TRUE ) {
+				create_extra_card aeftpplayer@tcg, CREATURE_ID_SHURAIDA_THE_EXPERT_MERC
+				if ( cextra@tcg >= 0 ) {
+					card@tcg(TCG_CARD_COST, cextra@tcg) = 1
+					card@tcg(TCG_CARD_HP, cextra@tcg) = 1
+					card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 1
+					card@tcg(TCG_CARD_REF_COST, cextra@tcg) = 1
+					card@tcg(TCG_CARD_REF_HP, cextra@tcg) = 1
+					card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 1
+					cdbitmod TCG_BIT_COST_ONE, cextra@tcg, 1
+					cdbitmod TCG_BIT_ARMOR, cextra@tcg, 0
+					cdbitmod TCG_BIT_REGENERATION, cextra@tcg, 0
+
+					card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -41
+					card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_SHOVEL
+					carddetailneff@tcg(cextra@tcg) = "<Spadille>    No.???   it's just a shovel  Rare:None\n[Cost at least 1] [Reusable]\nEffect: BONK Target Card, Deal (Attack Value) Damage."
+
+					card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_ANIM
+					cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+					card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, aeftbk@tcg), card@tcg(TCG_CARD_Y, aeftbk@tcg), card@tcg(TCG_CARD_X, aeftbk@tcg), card@tcg(TCG_CARD_Y, aeftbk@tcg)
+					card@tcg(TCG_CARD_X_MOVETO, cextra@tcg) += 40
+					card@tcg(TCG_CARD_Y_MOVETO, cextra@tcg) += 5 - 10 * aeftpplayer@tcg
+					tcgpass 30
+					card@tcg(TCG_CARD_X_MOVETO, cextra@tcg) -= 90
+					card@tcg(TCG_CARD_Y_MOVETO, cextra@tcg) += 10 - 20 * aeftpplayer@tcg
+					tcgpass 30
+					card@tcg(TCG_CARD_X_MOVETO, cextra@tcg) += 110
+					card@tcg(TCG_CARD_Y_MOVETO, cextra@tcg) += 15 - 30 * aeftpplayer@tcg
+					tcgpass 30
+					gettargetcard cextra@tcg
+					tcgpass 20
+				}
+			}
+			makecardlist
+			tcgdraw
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_SHOVEL | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				repeat 1, ac@tcg
+					card@tcg(TCG_CARD_X_MOVETO, cnt) = card@tcg(TCG_CARD_X, aeft@tcg) + 20, card@tcg(TCG_CARD_Y, aeft@tcg) + 20
+					tcgpass 20
+					efllistaddcard 17, aeft@tcg
+                    dmgcard aeft@tcg, card@tcg(TCG_CARD_ATTACK, cnt)
+					tcgpass 30
+					gettargetcard cnt
+                loop
+			}
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -2108,6 +2169,7 @@
 				if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == TCG_SKILL_FILTER_MESHERA ) { 
 					evhpbk@tcg += rnd(2)
 					evatkbk@tcg += rnd(2)
+					racebk@tcg = "bacteria"
 				}
 				racebk@tcg = cardn@tcg(TCG_CARDN_REF_RACE, aeft@tcg)
 				create_card aeft@tcg, cardno
@@ -3942,6 +4004,9 @@
 	if ( _switch_val@tcg == TCG_SKILL_EFF_MESHERA_CONVERTION | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( card@tcg(TCG_CARD_REF_DBID, aeft@tcg) == CREATURE_ID_MESHERA_ALPHA_THE_DEFORMED_ANGEL ) {
+				goto *actionproc_SWEND1
+			}
 			cardn@tcg(TCG_CARDN_REF_RACE, aeft@tcg) = "bacteria"
 			carddetailneff@tcg(aeft@tcg) = "Meshera-infected  No.???   meshera tourist  Rare:None\nEffect: Battlecry: Transform 1 Card in your Deck into a Meshera."
 			card@tcg(TCG_CARD_REF_PIC, aeft@tcg) = xy2pic(31, 13)
@@ -3966,27 +4031,30 @@
 			returncard ac@tcg
 		} else {
 			if ( getdecksum(ap@tcg) == 0 & card@tcg(TCG_CARD_REF_DBID, 100 * ap@tcg + 44) != 0 ) {
+				winningplayer@tcg = ap@tcg
 				cdbitmod TCG_BIT_FACE_UP, c@tcg, 1
-				if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_PLAYER ) {
-					specialruleusenofatiguerecoil@tcg(ap@tcg) = 1
-					specialruleusealwaysfatigue@tcg(1 - ap@tcg) = 1
-					card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
-					card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
-					cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
-					tcgdraw
-					efllistaddchat cnvtalk("Well played... " + cdatan(CDATAN_NAME, CHARA_PLAYER) + "."), ac@tcg
-					tcgpass 150
-					saccard ac@tcg, ap@tcg
-					sac@tcg = 0
-					losingplayer@tcg = 1 - ap@tcg
+				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = cpx@tcg(winningplayer@tcg), cpy@tcg(winningplayer@tcg) + 27
+				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
+				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
+				tcgdraw
+				tcgpass 30
+				efllistaddcard 19, ac@tcg
+				efllistadd 19, 0, cpx@tcg(1 - winningplayer@tcg) + 35, cpy@tcg(1 - winningplayer@tcg) + 55
+				tcgpass 120
+				organizeboard
+				gravecard ac@tcg
+				card@tcg(TCG_CARD_X, ac@tcg) = cpx@tcg(winningplayer@tcg), cpy@tcg(winningplayer@tcg) + 27
+				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
+				if ( yaminogemu@tcg == 1 & winningplayer@tcg == TCG_CONTROLLER_PLAYER ) {
+					specialruleusenofatiguerecoil@tcg(winningplayer@tcg) = 1
+					specialruleusealwaysfatigue@tcg(1 - winningplayer@tcg) = 1
 					repeat 10
-						fatigueplayer losingplayer@tcg, 1
+						fatigueplayer 1 - winningplayer@tcg, 1
 					loop
 				} else {
-					cpdata@tcg(TCG_PLAYER_LIFE, 1 - ap@tcg) = 0
-					gameresult@tcg = 5 + (ap@tcg == 1)
+					cpdata@tcg(TCG_PLAYER_LIFE, 1 - winningplayer@tcg) = 0
+					gameresult@tcg = 5 + (winningplayer@tcg == 1)
 				}
-				tcgpass 30
 			}
 		}
 		goto *actionproc_SWEND1
@@ -4008,26 +4076,30 @@
 			}
 		loop
 		if ( f@tcg == 1 ) {
-			if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_PLAYER ) {
-				specialruleusenofatiguerecoil@tcg(ap@tcg) = 1
-				specialruleusealwaysfatigue@tcg(1 - ap@tcg) = 1
-				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
-				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
-				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
-				tcgdraw
-				tcgpass 150
-				saccard ac@tcg, ap@tcg
-				sac@tcg = 0
-				losingplayer@tcg = 1 - ap@tcg
+			winningplayer@tcg = ap@tcg
+			card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = cpx@tcg(winningplayer@tcg), cpy@tcg(winningplayer@tcg) + 27
+			card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
+			cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
+			tcgdraw
+			tcgpass 30
+			efllistaddcard 19, ac@tcg
+			efllistadd 19, 0, cpx@tcg(1 - winningplayer@tcg) + 35, cpy@tcg(1 - winningplayer@tcg) + 55
+			tcgpass 120
+			organizeboard
+			gravecard ac@tcg
+			card@tcg(TCG_CARD_X, ac@tcg) = cpx@tcg(winningplayer@tcg), cpy@tcg(winningplayer@tcg) + 27
+			card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
+			if ( yaminogemu@tcg == 1 & winningplayer@tcg == TCG_CONTROLLER_PLAYER ) {
+				specialruleusenofatiguerecoil@tcg(winningplayer@tcg) = 1
+				specialruleusealwaysfatigue@tcg(1 - winningplayer@tcg) = 1
 				repeat 10
-					fatigueplayer losingplayer@tcg, 1
+					fatigueplayer 1 - winningplayer@tcg, 1
 				loop
 			} else {
-				cpdata@tcg(TCG_PLAYER_LIFE, 1 - ap@tcg) = 0
-				gameresult@tcg = 7 + (cp@tcg == 1)
+				cpdata@tcg(TCG_PLAYER_LIFE, 1 - winningplayer@tcg) = 0
+				gameresult@tcg = 7 + (winningplayer@tcg == 1)
 			}
 		}
-		tcgpass 30
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
@@ -4057,29 +4129,81 @@
 				}
 			loop
 			if ( p@tcg(0) + p@tcg(1) + p@tcg(2) + p@tcg(3) == 4 ) {
-				if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_PLAYER ) {
-					specialruleusenofatiguerecoil@tcg(ap@tcg) = 1
-					specialruleusealwaysfatigue@tcg(1 - ap@tcg) = 1
-					card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
-					card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
-					cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
-					tcgdraw
-					tcgpass 150
-					repeat maxcard@tcg
-						if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != card@tcg(TCG_CARD_CONTROLLER, ap@tcg) ) { continue }
-						if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_UNITDEAD_KING ) { continue }
-						if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_UNITDEAD_QUEEN ) { continue }
-						if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_UNITDEAD_JACK ) { continue }
-						if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_UNITDEAD_JOKER ) { continue }
-						saccard cnt, ap@tcg
-					loop
-					losingplayer@tcg = 1 - ap@tcg
+				winningplayer@tcg = ap@tcg
+				repeat maxcard@tcg
+					if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != winningplayer@tcg ) { continue }
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_KING ) { 
+						card@tcg(TCG_CARD_X_MOVETO, cnt) = basex@tcg + 274, basey@tcg + 185 
+						cdbitmod TCG_BIT_FACE_UP, cnt, 1
+					}
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_QUEEN ) { 
+						card@tcg(TCG_CARD_X_MOVETO, cnt) = basex@tcg + 374, basey@tcg + 185 
+						cdbitmod TCG_BIT_FACE_UP, cnt, 1
+					}
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_JACK ) { 
+						card@tcg(TCG_CARD_X_MOVETO, cnt) = basex@tcg + 474, basey@tcg + 185 
+						cdbitmod TCG_BIT_FACE_UP, cnt, 1
+					}
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_JOKER ) { 
+						card@tcg(TCG_CARD_X_MOVETO, cnt) = basex@tcg + 574, basey@tcg + 185 
+						cdbitmod TCG_BIT_FACE_UP, cnt, 1
+					}
+				loop
+				tcgdraw
+				tcgpass 70
+				repeat maxcard@tcg
+					if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != winningplayer@tcg ) { continue }
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_KING ) { 
+						efllistaddcard 19, cnt
+						card@tcg(TCG_CARD_X_MOVETO, cnt) = cpx@tcg(1 - winningplayer@tcg) - 46, cpy@tcg(1 - winningplayer@tcg) + 7 - 58
+						tcgpass 20
+					}
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_QUEEN ) { 
+						efllistaddcard 19, cnt
+						card@tcg(TCG_CARD_X_MOVETO, cnt) = cpx@tcg(1 - winningplayer@tcg) + 46, cpy@tcg(1 - winningplayer@tcg) + 7 + 58
+						tcgpass 20
+					}
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_JACK ) { 
+						efllistaddcard 19, cnt
+						card@tcg(TCG_CARD_X_MOVETO, cnt) = cpx@tcg(1 - winningplayer@tcg) + 46, cpy@tcg(1 - winningplayer@tcg) + 7 - 58
+						tcgpass 20
+					}
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_JOKER ) { 
+						efllistaddcard 19, cnt
+						card@tcg(TCG_CARD_X_MOVETO, cnt) = cpx@tcg(1 - winningplayer@tcg) - 46, cpy@tcg(1 - winningplayer@tcg) + 7 + 58
+						tcgpass 20
+					}
+				loop
+				tcgdraw
+				tcgpass 150
+				repeat maxcard@tcg
+					if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != winningplayer@tcg ) { continue }
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_KING ) { 
+						efllistaddcard 19, cnt
+						gravecard cnt
+					}
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_QUEEN ) { 
+						efllistaddcard 19, cnt
+						gravecard cnt
+					}
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_JACK ) { 
+						efllistaddcard 19, cnt
+						gravecard cnt
+					}
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_UNITDEAD_JOKER ) { 
+						efllistaddcard 19, cnt
+						gravecard cnt
+					}
+				loop
+				if ( yaminogemu@tcg == 1 & winningplayer@tcg == TCG_CONTROLLER_PLAYER ) {
+					specialruleusenofatiguerecoil@tcg(winningplayer@tcg) = 1
+					specialruleusealwaysfatigue@tcg(1 - winningplayer@tcg) = 1
 					repeat 10
-						fatigueplayer losingplayer@tcg, 1
+						fatigueplayer 1 - winningplayer@tcg, 1
 					loop
 				} else {
-					cpdata@tcg(TCG_PLAYER_LIFE, 1 - ap@tcg) = 0
-					gameresult@tcg = 9 + (ap@tcg == 1)
+					cpdata@tcg(TCG_PLAYER_LIFE, 1 - winningplayer@tcg) = 0
+					gameresult@tcg = 9 + (winningplayer@tcg == 1)
 				}
 				goto *actionproc_WEND1
 			}
@@ -4093,25 +4217,29 @@
 			goto *actionproc_WEND1
 		}
 		if ( rnd(10) == 0 ) {
-			if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_OPPONENT ) {
-				specialruleusenofatiguerecoil@tcg(1 - ap@tcg) = 1
-				specialruleusealwaysfatigue@tcg(ap@tcg) = 1
-				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
-				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
-				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
-				tcgdraw
-				tcgpass 150
-				saccard ac@tcg, ap@tcg
-				sac@tcg = 0
-				losingplayer@tcg = ap@tcg
+			winningplayer@tcg = 1 - ap@tcg
+			card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = cpx@tcg(1 - winningplayer@tcg), cpy@tcg(1 - winningplayer@tcg) + 27
+			card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
+			cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
+			tcgdraw
+			tcgpass 30
+			efllistaddcard 19, ac@tcg
+			efllistadd 19, 0, cpx@tcg(1 - winningplayer@tcg) + 35, cpy@tcg(1 - winningplayer@tcg) + 55
+			tcgpass 120
+			organizeboard
+			gravecard ac@tcg
+			card@tcg(TCG_CARD_X, ac@tcg) = cpx@tcg(winningplayer@tcg), cpy@tcg(winningplayer@tcg) + 27
+			card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
+			if ( yaminogemu@tcg == 1 & winningplayer@tcg == TCG_CONTROLLER_PLAYER ) {
+				specialruleusenofatiguerecoil@tcg(winningplayer@tcg) = 1
+				specialruleusealwaysfatigue@tcg(1 - winningplayer@tcg) = 1
 				repeat 10
-					fatigueplayer losingplayer@tcg, 1
+					fatigueplayer 1 - winningplayer@tcg, 1
 				loop
 			} else {
-				cpdata@tcg(TCG_PLAYER_LIFE, ap@tcg) = 0
-				gameresult@tcg = 11 + (ap@tcg == 0)
+				cpdata@tcg(TCG_PLAYER_LIFE, 1 - winningplayer@tcg) = 0
+				gameresult@tcg = 11 + (winningplayer@tcg == 1)
 			}
-			tcgpass 30
 			goto *actionproc_WEND1
 		}
 		goto *actionproc_SWEND1
@@ -4157,25 +4285,26 @@
 		_switch_sw@tcg = 0
 		efllistaddchat "\"Hmm, you've been playing for " + hour_played + " hours and " + ((timeGetTime() / 1000 - time_warn)/60) + " minutes.\"", ac@tcg
 		if ( hour_played >= 24 ) {
-			if ( yaminogemu@tcg == 1 & ap@tcg == TCG_CONTROLLER_PLAYER ) {
-				specialruleusenofatiguerecoil@tcg(ap@tcg) = 1
-				specialruleusealwaysfatigue@tcg(1 - ap@tcg) = 1
-				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = basex@tcg + 118, basey@tcg + 310
-				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
-				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
-				tcgdraw
-				tcgpass 150
-				card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_FIELD
-				makecardlist
-				cardpos 0, -1
-				cardpos 1, -1
-				losingplayer@tcg = 1 - ap@tcg
+			winningplayer@tcg = ap@tcg
+			card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = cpx@tcg(1 - winningplayer@tcg), cpy@tcg(1 - winningplayer@tcg) + 27
+			card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_ANIM
+			cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
+			tcgdraw
+			tcgpass 30
+			efllistaddcard 19, ac@tcg
+			efllistadd 19, 0, cpx@tcg(1 - winningplayer@tcg) + 35, cpy@tcg(1 - winningplayer@tcg) + 55
+			tcgpass 120
+			card@tcg(TCG_CARD_LOCATION, ac@tcg) = TCG_LOCATION_FIELD
+			organizeboard
+			if ( yaminogemu@tcg == 1 & winningplayer@tcg == TCG_CONTROLLER_PLAYER ) {
+				specialruleusenofatiguerecoil@tcg(winningplayer@tcg) = 1
+				specialruleusealwaysfatigue@tcg(1 - winningplayer@tcg) = 1
 				repeat 10
-					fatigueplayer losingplayer@tcg, 1
+					fatigueplayer 1 - winningplayer@tcg, 1
 				loop
 			} else {
-				cpdata@tcg(TCG_PLAYER_LIFE, 1 - ap@tcg) = 0
-				gameresult@tcg = 13 + (ap@tcg == 1)
+				cpdata@tcg(TCG_PLAYER_LIFE, 1 - winningplayer@tcg) = 0
+				gameresult@tcg = 13 + (winningplayer@tcg == 1)
 			}
 		}
 		goto *actionproc_SWEND1
@@ -4596,18 +4725,17 @@
 						goto *actionproc_WEND1
 					}
 				}
-				if ( yaminogemu@tcg == 1 & aeft@tcg == TCG_CONTROLLER_PLAYER ) {
-					specialruleusenofatiguerecoil@tcg(aeft@tcg) = 1
-					specialruleusealwaysfatigue@tcg(1 - aeft@tcg) = 1
-					losingplayer@tcg = 1 - aeft@tcg
+				winningplayer@tcg = 1 - aeft@tcg
+				if ( yaminogemu@tcg == 1 & winningplayer@tcg == TCG_CONTROLLER_PLAYER ) {
+					specialruleusenofatiguerecoil@tcg(winningplayer@tcg) = 1
+					specialruleusealwaysfatigue@tcg(1 - winningplayer@tcg) = 1
 					repeat 10
-						fatigueplayer losingplayer@tcg, 1
+						fatigueplayer 1 - winningplayer@tcg, 1
 					loop
 				} else {
-					cpdata@tcg(TCG_PLAYER_LIFE, aeft@tcg) = 0
-					gameresult@tcg = 15 + (aeft@tcg == 0)
+					cpdata@tcg(TCG_PLAYER_LIFE, 1 - winningplayer@tcg) = 0
+					gameresult@tcg = 15 + (winningplayer@tcg == 1)
 				}
-				tcgpass 30
 				goto *actionproc_WEND1
 			}
 			aeftbk@tcg = aeft@tcg
