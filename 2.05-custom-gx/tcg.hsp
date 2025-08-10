@@ -1211,6 +1211,12 @@
 			grotate 7, efllist@tcg(2, cnt) + 96 * limit(efllist@tcg(1, cnt) - 1 - (efllist@tcg(4, cnt) / animespeed@tcg / 2), 0, efllist@tcg(1, cnt) - 1), efllist@tcg(3, cnt), 0, 96, 96
 		}
 	loop
+	if ( specialrulecloudy@tcg ) {
+		currenttimecloud@tcg = 50 - abs((timeGetTime() / 100) \ 200 - 100)
+		gmode 5, , , 250
+		pos basex@tcg + 200 + currenttimecloud@tcg, basey@tcg + 170
+		gcopy 6, 935, 976, 496, 224
+	}
 	gmode 2
 	if ( screenupdate@tcg == (-1) ) {
 		screenupdate@tcg = 0

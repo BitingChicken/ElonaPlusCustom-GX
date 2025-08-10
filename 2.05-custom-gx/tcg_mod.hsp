@@ -474,6 +474,7 @@
 #define global	TCG_SKILL_EFF_SHOVEL 189
 #define global	TCG_SKILL_EFF_HOLY_BEAST 190
 #define global	TCG_SKILL_EFF_MEFAN 191
+#define global	TCG_SKILL_EFF_HOTSPRING 192
 
 #define global	TCG_SKILL_FILTER_NONE 0
 #define global	TCG_SKILL_FILTER_MALE 1
@@ -818,6 +819,7 @@
 #define global	TCG_EFF_ONGOING_INCREASECOSTEACH3TOTALTURN 2915
 #define global	TCG_EFF_ONGOING_INCREASE5ATTACKWHENWOUNDED 2916
 
+#define global	TCG_EFF_HOTSPRING 427
 #define global	TCG_EFF_MEFAN 428
 #define global	TCG_EFF_HOLY_BEAST 429
 #define global	TCG_EFF_SHOVEL 430
@@ -2703,6 +2705,8 @@
 	effdesc@tcg(TCG_EFF_FESTIVALTOURIST) = "Costs -1 and Gain +1 Attack for each Item-Card in your Hand."
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_HOLY_BEAST) = 0, TCG_SKILL_TYPE_ONDRAW, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_HOLY_BEAST, 1, 1
 	effdesc@tcg(TCG_EFF_HOLY_BEAST) = "Drawn by Effect: Deal Opponent 2 Damage and return to Deck."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_HOTSPRING) = 0, TCG_SKILL_TYPE_ONGOING, TCG_SKILL_TARGET_PLAYER, TCG_SKILL_EFF_HOTSPRING, 1, 1
+	effdesc@tcg(TCG_EFF_HOTSPRING) = "Ongoing: Make the screen cloudy."
 
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_JUREFANATIC) = 0, TCG_SKILL_TYPE_ONGOING, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_ONGOING_GAINATTACKEACHX, 5, 1, -7
 	effdesc@tcg(TCG_EFF_JUREFANATIC) = "Ongoing: Gain +5 Attack in December."
@@ -3076,6 +3080,7 @@
 	player@tcg = 0
 	maxholdersum@tcg = 7, 7
 	maxspotsum@tcg = 8, 8
+    specialrulecloudy@tcg = 0
     specialruleaitakeover@tcg = 0
     specialrulenextdrawtempo@tcg = 0
     specialrulecreatureremovewounds@tcg = 0

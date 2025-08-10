@@ -1,6 +1,7 @@
 *card_resolve_ongoing
 	if ( chainmode@tcg != 0 | selectmode@tcg == 2 ) { return }
 	specialruleeffectdamage@tcg = 0, 0
+	specialrulecloudy@tcg = 0
 	repeat maxcard@tcg
 		card@tcg(TCG_CARD_COST, cnt) = limit(card@tcg(TCG_CARD_REF_COST, cnt), 0, TCG_STAT_MAX)
 		card@tcg(TCG_CARD_REF_ATTACK, cnt) = limit(card@tcg(TCG_CARD_REF_ATTACK, cnt), 0, TCG_STAT_MAX)
@@ -15025,8 +15026,8 @@
 		cardrefdomain = 4
 		cardrefcost = 1
 		cardrefattack = 1
-		cardrefhp = 1
-		cardrefskillid = TCG_EFF_BATTLECRY_DRAWRANDOMRED
+		cardrefhp = 3
+		cardrefskillid = TCG_EFF_HOTSPRING
 		cardrefbits = "78"
 		return 1
 	}
