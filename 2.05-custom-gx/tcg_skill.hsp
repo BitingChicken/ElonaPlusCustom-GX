@@ -644,6 +644,24 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_MEFAN | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			if ( hasholdspace(aeft@tcg) == TRUE ) {
+				drawcount@tcg = limit(5 - getholdersum(aeft@tcg), 1, 5)
+				mefanplayer@tcg = aeft@tcg
+				repeat drawcount@tcg
+					if ( getdecksum(mefanplayer@tcg) != 0 ) {
+						getrandomcard mefanplayer@tcg
+					}
+				loop
+			}
+			makecardlist
+			tcgdraw
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_NAPLUS | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
@@ -774,6 +792,24 @@
 					gettargetcard cnt
                 loop
 			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_HOLY_BEAST | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( phase@tcg == 1 ) {
+				goto *actionproc_SWEND1
+			}
+			tcgpass 30
+			card@tcg(TCG_CARD_X_MOVETO, aeft@tcg) = cpx@tcg(1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)), cpy@tcg(1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 7
+			tcgpass 30
+			efllistadd 17, 0, cpx@tcg(1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 35, cpy@tcg(1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 55
+			dmgplayer 1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), 2
+			card@tcg(TCG_CARD_X_MOVETO, aeft@tcg) = deckix@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)), deckiy@tcg(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) + 7
+			tcgpass 30
+			returncard aeft@tcg
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -1177,9 +1213,21 @@
 					if ( inv(INV_ITEM_ID, cnt) == ITEM_ID_MUSIC_TICKET ) { x@tcg += inv(INV_ITEM_NUM, cnt) }
 				loop
 				x@tcg /= 10000
+				if ( card@tcg(TCG_CARD_CONTROLLER, aeft@tcg) != 0 ) {
+					x@tcg = rnd(3) + rnd(3)
+					if ( cdata(CDATA_ID, tc) == CREATURE_ID_RICH_PERSON_STOKE ) {
+						x@tcg += 20 + rnd(10)
+					}
+				}
 			}
 			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -12 ) { 
 				x@tcg = cdata(CDATA_PLATINUM, CHARA_PLAYER) / 50
+				if ( card@tcg(TCG_CARD_CONTROLLER, aeft@tcg) != 0 ) {
+					x@tcg = rnd(3) + rnd(3)
+					if ( cdata(CDATA_ID, tc) == CREATURE_ID_ZISILION_THE_MINE_KING ) {
+						x@tcg = 12
+					}
+				}
 			}
 			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -13 ) { 
 				x@tcg = 1
@@ -1189,6 +1237,12 @@
 					if ( p@tcg <= 0 ) { break }
 					x@tcg += 1
 				loop
+				if ( card@tcg(TCG_CARD_CONTROLLER, aeft@tcg) != 0 ) {
+					x@tcg = rnd(3) + rnd(3)
+					if ( cdata(CDATA_ID, tc) == CREATURE_ID_BANKRUPT_GUO ) {
+						x@tcg += 20 + rnd(10)
+					}
+				}
 			}
 			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -14 ) { 
 				repeat MAX_CHARA_FOLLOWER - 1, 1

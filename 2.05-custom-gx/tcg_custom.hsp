@@ -2695,6 +2695,30 @@
 		deck_opponent(CREATURE_ID_KAMIKAKUSHI_THE_HIDDEN_SHIKIORIGAMI) = 1
 		return 1
 	}
+	if ( cdata(CDATA_ID, tc) == CREATURE_ID_MEFAN_THE_BARD ) {
+		deck_opponent(CREATURE_ID_SHENA_THE_DRAW) = 1
+		deck_opponent(CREATURE_ID_FIRE_DRAKE) = 4
+		deck_opponent(CREATURE_ID_RED_BAPTIST) = 4
+		deck_opponent(CREATURE_ID_CUPID_OF_LOVE) = 4
+		deck_opponent(CREATURE_ID_RED_DRAGON) = 1
+		deck_opponent(CREATURE_ID_MINER) = 2
+		deck_opponent(CREATURE_ID_HOLY_BEAST) = 2
+		deck_opponent(CREATURE_ID_MEFAN_THE_BARD) = 1
+		deck_opponent(CREATURE_ID_CUPID_OF_DEATH) = 2
+		deck_opponent(CREATURE_ID_MAIDSANN) = 2
+		deck_opponent(CREATURE_ID_LUNE_THE_MAID_CHIEF) = 1
+		deck_opponent(CREATURE_ID_HELLSTLING) = 4
+		deck_opponent(CREATURE_ID_CHAOSHAPRINCESS_CHRDH) = 2
+		return 1
+	}
+	if ( cdata(CDATA_ID, tc) == CREATURE_ID_RICH_PERSON_STOKE ) {
+		deck_opponent(CREATURE_ID_RICH_PERSON_STOKE) = 1
+		deck_opponent(CREATURE_ID_SPADE_WARRIOR) = 13
+		deck_opponent(CREATURE_ID_CLUB_FEATHER) = 13
+		deck_opponent(CREATURE_ID_DIAMOND_EYES) = 13
+		deck_opponent(CREATURE_ID_HEART_WITCH) = 13
+		return 1
+	}
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_THE_LEOPARD_WARRIOR ) {
 		deck_opponent(CREATURE_ID_ELDER) = 2
 		deck_opponent(CREATURE_ID_CAT) = 3
@@ -14840,7 +14864,7 @@
 		cardrefcost = 2
 		cardrefattack = 2
 		cardrefhp = 3
-		cardrefskillid = TCG_EFF_SACRIFICE_TARGETHANDCREATURECOSTREDUCE
+		cardrefskillid = TCG_EFF_HOLY_BEAST
 		cardrefbits = ""
 		return 1
 	}
@@ -18764,8 +18788,8 @@
 		cardrefdomain = 5
 		cardrefcost = 3
 		cardrefattack = 1
-		cardrefhp = 8
-		cardrefskillid = TCG_EFF_TURN_START_DRAW1CARD
+		cardrefhp = 5
+		cardrefskillid = TCG_EFF_MEFAN
 		cardrefbits = ""
 		return 1
 	}
