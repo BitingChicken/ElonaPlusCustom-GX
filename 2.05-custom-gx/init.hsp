@@ -118,6 +118,12 @@ if instr(s,0,%1)!-1{	%c\
 
 /********** JAMES CUSTOM - ENEMY EVOLUTION - ENDING **********/
 
+/********** JAMES CUSTOM - ITEM ENCHANTMENT - BEGINNING **********/
+
+#include "custom_itemenchantment.hsp"
+
+/********** JAMES CUSTOM - ITEM ENCHANTMENT - ENDING **********/
+
 #defcfunc hantozen str hantozen_arg1, var hantozen_arg2, int hantozen_arg3
 	return LCMapStringA(GetUserDefaultLCID(), 8388608, hantozen_arg1, -1, hantozen_arg2, hantozen_arg3)
 

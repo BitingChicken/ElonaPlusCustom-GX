@@ -11137,6 +11137,11 @@
 			chatList 0, lang("どうだろう", "That so?")
 			chatList 1, lang("合成用アイテムを持ってきた", "I brought items for synthesis.")
 			chatList 2, lang("ポーショマンの進化", "Can you evolve my potioman?")
+			/********** JAMES CUSTOM - ITEM ENCHANTMENT - BEGINNING **********/
+			if ( TweakData(TWEAK_GAMEPLAY_ARTIFACT_FUSION_AND_ENCHANTMENT_AT_BLACKSMITH, TWEAK_CATEGORY_GAMEPLAY) == 1 ) {
+				chatList 69000, lang("装備のエンチャントを微調整しましょうか？", "Fine tune the enchantment of equipment.")
+			}
+			/********** JAMES CUSTOM - ITEM ENCHANTMENT - ENDING **********/
 			buff = lang("よく夜中に猫やサリムがベッドに潜り込んでくるのじゃ。そんなに寒いのかのう？単にわしが寒さに慣れておるのかもな…ロストイルヴァに来る前はメイルーンに住んでいたからのう。", "Thalia and the cats have been sneaking into my bed at night. Is it really that cold? Maybe I'm just accustomed to it... Before I came to Lost Irva, I lived in Mayroon.")
 			gosub *chat_select
 			if ( chatval == 2 ) {
@@ -11594,6 +11599,11 @@
 					goto *chat_end
 				}
 			}
+			/********** JAMES CUSTOM - ITEM ENCHANTMENT - BEGINNING **********/
+			if ( chatval == 69000 ) {
+				goto *extrachat_disenchantment
+			}
+			/********** JAMES CUSTOM - ITEM ENCHANTMENT - ENDING **********/
 			goto *chat_end
 		}
 		if ( gdata(GDATA_FLAG_SUB_BEYOND_THE_GENERATIONS) == 9 ) {
@@ -19411,6 +19421,15 @@
 
 			/********** ANNA CUSTOM - ENDING **********/
 
+
+			/********** JAMES CUSTOM - ITEM ENCHANTMENT - BEGINNING **********/
+
+			if ( TweakData(TWEAK_GAMEPLAY_ARTIFACT_FUSION_AND_ENCHANTMENT_AT_BLACKSMITH, TWEAK_CATEGORY_GAMEPLAY) == 1 ) {
+				chatList 114514, lang("合成用アイテムを持ってきた", "I brought items for synthesis.")
+				chatList 69000, lang("装備のエンチャントを微調整しましょうか？", "Fine tune the enchantment of equipment.")
+			}
+
+			/********** JAMES CUSTOM - ITEM ENCHANTMENT - ENDING **********/
 		}
 		if ( cdata(CDATA_ROLE, tc) == ROLE_SHOP_INN ) {
 			if ( cdata(CDATA_ID, tc) != CREATURE_ID_BARTENDER2 & cdata(CDATA_ID, tc) != CREATURE_ID_CLERK ) {
@@ -23175,6 +23194,14 @@
 		gosub *com_return
 		goto *chat_end
 	}
+	/********** JAMES CUSTOM - ITEM ENCHANTMENT - BEGINNING **********/
+	if ( chatval == 114514 ) {
+		goto *extrachat_diet_artifact_fusion
+	}
+	if ( chatval == 69000 ) {
+		goto *extrachat_disenchantment
+	}
+	/********** JAMES CUSTOM - ITEM ENCHANTMENT - ENDING **********/
 	if ( chatval == 54 ) {
 		if ( calccostreload(CHARA_PLAYER) == 0 ) {
 			buff = lang("充填する必要はないみたい" + _da(), "Reload what? You don't have any ammo in your inventory.")

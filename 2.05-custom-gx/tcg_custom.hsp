@@ -1673,6 +1673,7 @@
 	loop
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_MICHES_THE_APPRENTICE ) {
 		deck_opponent(CREATURE_ID_MICHES_THE_APPRENTICE) = 1
+		deck_opponent(CREATURE_ID_HOT_SPRING_MANIAC) = 2
 		deck_opponent(CREATURE_ID_YEEK) = 4
 		deck_opponent(CREATURE_ID_YEEK_WARRIOR) = 4
 		deck_opponent(CREATURE_ID_YEEK_ARCHER) = 3
@@ -1887,6 +1888,7 @@
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_SHENA_THE_DRAW | cdata(CDATA_ID, tc) == CREATURE_ID_QURUIZA_THE_RED_EYED_DECEIVER | cdata(CDATA_ID, tc) == CREATURE_ID_CORGON_THE_STEEL_DRAGON ) {
 		deck_opponent(CREATURE_ID_RED_PUTIT) = 4
 		deck_opponent(CREATURE_ID_SHENA_THE_DRAW) = 1
+		deck_opponent(CREATURE_ID_HOT_SPRING_MANIAC) = 2
 		deck_opponent(CREATURE_ID_WIZARD) = 2
 		deck_opponent(CREATURE_ID_RED_WASP) = 2
 		deck_opponent(CREATURE_ID_CYCLOPS) = 1

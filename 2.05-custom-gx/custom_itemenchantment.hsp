@@ -1,0 +1,331 @@
+
+*extrachat_set_thalia_limit
+    if ( gdata(GDATA_THALIA_LIMIT) < 800 ) {
+        gdata(GDATA_THALIA_LIMIT) = 800
+    }
+    if ( gdata(GDATA_THALIA_LIMIT) < 1000 & gdata(GDATA_FLAG_MAIN) < 350 & gdata(GDATA_FLAG_MAIN) >= 200 ) {
+        gdata(GDATA_THALIA_LIMIT) = 1000
+    }
+    if ( gdata(GDATA_THALIA_LIMIT) < 1200 & gdata(GDATA_FLAG_MAIN) >= 350 ) {
+        gdata(GDATA_THALIA_LIMIT) = 1200
+    }
+    blacksmithlimit = gdata(GDATA_THALIA_LIMIT)
+    if ( cdata(CDATA_ID, tc) != CREATURE_ID_IRMA_THE_INDOMITABLE_SMITH ) {
+        blacksmithlimit = limit(gdata(GDATA_THALIA_LIMIT), 800, 1200)
+    }
+    return
+
+*extrachat_get_thalia_score
+    p = 0, blacksmithlimit
+    if ( ibit(ITEM_BIT_ALIVE, ci) ) {
+        p += 10000
+    }
+    if ( inv(INV_ITEM_QUALITY, ci) == FIX_QUALITY_MIRACLE ) {
+        p(1) += 200
+        if ( cdata(CDATA_ID, tc) == CREATURE_ID_IRMA_THE_INDOMITABLE_SMITH ) {
+            p(1) += 300
+        }
+    }
+    if ( inv(INV_ITEM_QUALITY, ci) == FIX_QUALITY_GODLY ) {
+        p(1) += 500
+        if ( cdata(CDATA_ID, tc) == CREATURE_ID_IRMA_THE_INDOMITABLE_SMITH ) {
+            p(1) += 500
+        }
+    }
+    repeat RANGE_INV_ITEM_ENCHANT
+        if ( inv(STARTING_INV_ITEM_ENCHANT + cnt * 2 + 1, ci) > 0 ) {
+            if ( inv(STARTING_INV_ITEM_ENCHANT + cnt * 2, ci) >= EXT_ENCHANTMENT ) {
+                if ( inv(STARTING_INV_ITEM_ENCHANT + cnt * 2, ci) / EXT_ENCHANTMENT == ENCHANT_SUSTAIN ) {
+                    p += 100
+                    continue
+                }
+                if ( inv(STARTING_INV_ITEM_ENCHANT + cnt * 2, ci) / EXT_ENCHANTMENT == ENCHANT_ATTRIBUTE ) {
+                    p -= inv(STARTING_INV_ITEM_ENCHANT + cnt * 2 + 1, ci) * 6 / 10
+                }
+                if ( inv(STARTING_INV_ITEM_ENCHANT + cnt * 2, ci) / EXT_ENCHANTMENT == ENCHANT_SKILL ) {
+                    p -= inv(STARTING_INV_ITEM_ENCHANT + cnt * 2 + 1, ci) / 2
+                }
+            }
+            p += inv(STARTING_INV_ITEM_ENCHANT + cnt * 2 + 1, ci)
+        }
+    loop
+    return
+
+*extrachat_diet_artifact_fusion
+    gosub *extrachat_set_thalia_limit
+    kiseki = blacksmithlimit + 200
+    kiseki2 = blacksmithlimit + 500
+    chatMore lang("おお、練習に付き合ってくれるのか。それで、エンチャントを付与する武具はどれじゃ？エンチャントが強力な武具は、魔術抵抗があって付与できないかもしれん。そうじゃな…サリムの言うエンチャント強度とやらで言うと、今は固定アーティファクトなら" + blacksmithlimit + "パワー、奇跡品なら" + kiseki + "パワー、神器品なら" + kiseki2 + "パワー、辺りが限界じゃ。それとネフィアティア以外を合成する場合は能力獲得の巻き物を一枚使うのう。", "Oh, something to modify on, huh? So, what shall I enchant for you? If it's already powerfully enchanted, I might not be able to do anything with it. Let's see... If you go by mountain folk's ratings, the limit is about " + blacksmithlimit + " for static artifacts, " + kiseki + " for miracle-level artifacts, and " + kiseki2 + " for godly-level artifacts. I'll need a scroll of gain attribute too.")
+    invsubroutine = 1
+    invctrl = 23, 8
+    snd SOUNDLIST_INV
+    gosub *com_inventory
+    if ( stat == 1 ) {
+        gosub *extrachat_get_thalia_score
+        if ( p > p(1) ) {
+            snd SOUNDLIST_ATK_ELEC
+            chatMore lang("くっ！こいつはちょっと無理じゃ。付与されているエンチャントが強く反発しておる！", "The item's hill folk rating is: "+p+"/"+p(1)+"...     This piece of work is too complicated! Working on it will risk destroying it, sorry.")
+            p = 0
+            goto *chat_end
+        }
+        cibk = ci
+    }
+    else {
+        goto *chat_end
+    }
+    ii = -1
+    repeat RANGE_INV_ITEM_ENCHANT
+        if ( ii == (-1) ) {
+            if ( inv(STARTING_INV_ITEM_ENCHANT + cnt * 2, ci) == 0 ) {
+                ii = cnt
+            }
+        }
+    loop
+    if ( ii == (-1) ) {
+        chatMore lang("むむむ。", "Mmmm.")
+        chatList 0, lang("出直す", "Let's start over.")
+        chatList 1, lang("問題ない", "No problem.")
+        chatList 2, lang("エンチャントひとつ消去", "Sorry.")
+        buff = lang("エンチャントが既に15個埋まっておるな。このまま組み込んでも同系エンチャント以外は乗らないんじゃが、大丈夫かの？", "That item already has 15 enchantments. To add anything new to it, one of them will have to be replaced. Is that okay?")
+        gosub *chat_select
+        if ( chatval != 2 & chatval != 1 ) {
+            goto *chat_end
+        }
+        if ( chatval == 2 ) {
+            if ( inv(STARTING_INV_ITEM_ENCHANT + (RANGE_INV_ITEM_ENCHANT - 1) * 2, cibk) == 37 | inv(STARTING_INV_ITEM_ENCHANT + (RANGE_INV_ITEM_ENCHANT - 1) * 2, cibk) == 45 ) {
+                chatMore lang("消去とな？ふむ、このエンチャントだと…ちょっと無理じゃな…すまんのう。", "Removing it then? Mmm, that one... is impossible for now, sorry.")
+                goto *chat_end
+            }
+            chatMore lang("消去とな？ふむ、このエンチャントなら結びつきを削り取ればどうにか…。", "Removing it then? Mmm, I'll see what I can do...")
+            snd SOUNDLIST_BUILD1
+            await 300
+            snd SOUNDLIST_BUILD1
+            inv(STARTING_INV_ITEM_ENCHANT + (15 - 1) * 2 + 1, cibk) = 0
+            inv(STARTING_INV_ITEM_ENCHANT + (15 - 1) * 2, cibk) = 0
+            txt lang(itemname(cibk) + "のエンチャントがひとつ消えた。", "An enchant on the " + itemname(cibk) + " was removed.")
+        }
+    }
+    chatMore lang("それで、どのアイテムの力をアーティファクトに組み込めばよいのじゃ？", "The item's hill folk rating is: "+p+"/"+p(1)+"...         So, which item's power do you want to add to the artifact?")
+    invsubroutine = 1
+    invctrl = 23, 9
+    snd SOUNDLIST_INV
+    gosub *com_inventory
+    if ( stat == 1 ) {
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CORE_OF_NEFIA ) {
+            chatMore lang("すまんのう。", "Never seen an item like this in my life, dunno how to work on it, sorry. Take it to one of those hill-folks maybe.")
+            goto *chat_end
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_TEAR_OF_GOD ) {
+            chatMore lang("すまんのう。", "Never seen an item like this in my life, dunno how to work on it, sorry. Take it to one of those hill-folks maybe.")
+            goto *chat_end
+        }
+        if ( inv(INV_ITEM_ID, ci) != ITEM_ID_CORE_OF_NEFIA ) {
+            nefiat = 100
+            item_find ITEM_ID_SCROLL_GAIN_ATTRIBUTE, 3, 1
+            if ( stat == (-1) ) {
+                chatMore lang("ふむふむ…って、能力獲得の巻き物を持っておらんではないか。", "Mmm... Wait, do you not have a scroll of gain attribute?")
+                nefiat = 0
+                goto *chat_end
+            }
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_GLIA_CRYSTAL ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_FIRE, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_HIBACHI ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_COLD, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_ACCUMULATOR ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_LIGHTNING, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_LAMP_PLANT ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_DARKNESS, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MIND_DISC ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_MIND, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_BLACK_DRIP ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_POISON, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_TROLL_CELL ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_NETHER, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MURDER_CD ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_SOUND, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MAGIC_ICE ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_NERVE, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CHAOS_JEWEL ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_CHAOS, 210, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_ETHER_MIRROR ) {
+            encadd cibk, ENCHANT_RESISTANCE * EXT_ENCHANTMENT + SKILL_RES_MAGIC, 160, 0, 1
+        }
+        if ( inv(INV_ITEM_ID, ci) == ITEM_ID_IKAROS_WING ) {
+            encadd cibk, ENCHANT_FLOAT, 100, 0, 1
+        }
+        inv(INV_ITEM_NUM, ci)--
+        snd SOUNDLIST_BUILD1
+        await 300
+        snd SOUNDLIST_BUILD1
+        await 300
+        snd SOUNDLIST_BUILD1
+        await 300
+        snd SOUNDLIST_DING2
+        chatMore lang("…エンチャント融合完了！いい練習になったのう。", "...The artifact fusion is complete! Thank's for the order.")
+        if ( nefiat == 100 ) {
+            item_find ITEM_ID_SCROLL_GAIN_ATTRIBUTE, 3, 1
+            if ( stat != (-1) ) {
+                ci = stat
+                if ( inv(INV_ITEM_NUM, ci) >= 1 ) {
+                    inv(INV_ITEM_NUM, ci)--
+                }
+            }
+            nefiat = 0
+        }
+    }
+    else {
+        goto *chat_end
+    }
+    goto *chat_end
+
+*extrachat_calculate_enhance_cost
+    p_inc = 100
+    p_rem = 200
+    p_score = val(1)
+    p_item1 = ITEM_ID_POTION_EVOLUTION
+    p_item2 = ITEM_ID_POTION_EVOLUTION
+    if ( val / EXT_ENCHANTMENT == ENCHANT_SUSTAIN | val / EXT_ENCHANTMENT == ENCHANT_ATTRIBUTE | val / EXT_ENCHANTMENT == ENCHANT_SKILL | val / EXT_ENCHANTMENT == ENCHANT_RESISTANCE ) {
+        if ( val / EXT_ENCHANTMENT == ENCHANT_SUSTAIN ) {
+            p_inc = 200 - val(1) 
+            p_rem = val(1)
+            p_score = 100
+            p_item1 = ITEM_ID_POTION_MUTATION
+        }
+        if ( val / EXT_ENCHANTMENT == ENCHANT_ATTRIBUTE ) {
+            p_score = p_score * 6 / 10
+            p_item1 = ITEM_ID_POTION_MUTATION
+        }
+        if ( val / EXT_ENCHANTMENT == ENCHANT_SKILL ) {
+            p_score = p_score / 2
+            p_item1 = ITEM_ID_POTION_MUTATION
+        }
+        if ( val(1) < 0 ) {
+            p_rem = (-1) * p_rem
+            p_score = (-1) * p_score
+            p_item1 = ITEM_ID_DUMMY
+            if ( val(1) > (-300) ) { p_rem = val(1) }
+        }
+    }
+    if ( val(1) > 0 & val(1) < 100 ) { p_inc = 200 - val(1) }
+    if ( val(1) > 0 & val(1) < 300 ) { p_rem = val(1) }
+    if ( inv(INV_ITEM_QUALITY, ci) == FIX_QUALITY_GODLY ) {
+        p_score = p_score * 2
+    }
+    if ( val == ENCHANT_RAGNAROK ) {
+        p_item1 = ITEM_ID_DUMMY
+        p_item2 = ITEM_ID_SCROLL_GAIN_ATTRIBUTE
+        p_score = 100000
+    }
+    if ( val == ENCHANT_SUCK_BLOOD ) {
+        p_item1 = ITEM_ID_DUMMY
+        p_item2 = ITEM_ID_SCROLL_GAIN_ATTRIBUTE
+        p_score = p_score * 100
+    }
+    p_gold = p_score * 500 * 20 / (20 + sqrt(limit(sdata(SKILL_NORMAL_NEGOTIATION, CHARA_PLAYER), 1, 5000)))
+    return
+
+*extrachat_disenchantment
+    gosub *extrachat_set_thalia_limit
+    chatMore lang("ほう、エンチャントに使うものがあるみたいね？じゃ、どのアイテムに集中すればいいのかしら？", "Oh, something to enchant and disenchant, huh? So, which items shall I focus on for you?")
+    invsubroutine = 1
+    invctrl = 23, 8
+    snd SOUNDLIST_INV
+    gosub *com_inventory
+    if ( stat != 1 ) { goto *chat_end }
+    
+    chatMore lang("むむむ。", "Mmmm.")
+
+    gosub *extrachat_get_thalia_score
+    reftype = refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE)
+    repeat RANGE_INV_ITEM_ENCHANT
+        if ( inv(STARTING_INV_ITEM_ENCHANT + cnt * 2, ci) != 0 & inv(STARTING_INV_ITEM_ENCHANT + cnt * 2 + 1, ci) != 0 ) {
+            val = inv(STARTING_INV_ITEM_ENCHANT + cnt * 2, ci), inv(STARTING_INV_ITEM_ENCHANT + cnt * 2 + 1, ci), 0, reftype
+            gosub *item_encdetail
+            gosub *extrachat_calculate_enhance_cost
+            s = "[" + p_gold + " gold] " + s
+            if ( p_item1 != ITEM_ID_POTION_MUTATION ) {
+                s = "*" + s
+            }
+            if ( p_item2 == ITEM_ID_SCROLL_GAIN_ATTRIBUTE ) {
+                s = "*" + s
+            }
+            chatList cnt + 1, s
+        }
+    loop
+    chatList 99, lang("出直す", "Nevermind.")
+    buff = lang("どのエンチャントを修正すればいいですか？", "The item's hill folk rating is: "+p+"/"+p(1)+"...     Which enchantment to modify? I'll need a potion of mutation to enhance a standard enchant, and a potion of evolution to enhance a special enchant or disenchant one.")
+    gosub *chat_select
+
+    if ( chatval >= 1 & chatval <= 15 ) {
+        val = inv(STARTING_INV_ITEM_ENCHANT + (chatval - 1) * 2, ci), inv(STARTING_INV_ITEM_ENCHANT + (chatval - 1) * 2 + 1, ci), 0, reftype
+        gosub *item_encdetail
+        gosub *extrachat_calculate_enhance_cost
+        buff = lang("むむむ。", "About it " + s + "... I'll need a potion of mutation to enhance a standard enchant, and a potion of evolution to enhance a special enchant. If you want to remove the enchantment, you will need a potion of evolution. Oh, and I also need " + p_gold + " gold for other meterials.")
+        if ( p_item1 != ITEM_ID_DUMMY ) { 
+            chatList 1, lang("どうだろう", "Enhance the enchantment? (" + cnvitemname(p_item1) + ")") 
+        }
+        s = "Try to remove the enchantment? (" + cnvitemname(p_item2) + ")"
+        if ( p_rem == val(1) ) {
+            s = "Remove the enchantment? (" + cnvitemname(p_item2) + ")"
+        }
+        chatList 2, lang(s, s)
+        chatList 99, lang("出直す", "Let's start over.")
+        gosub *chat_select
+
+        if ( chatval == 1 ) {
+            gosub *extrachat_get_thalia_score
+            if ( p > p(1) ) {
+                snd SOUNDLIST_ATK_ELEC
+                chatMore lang("くっ！こいつはちょっと無理じゃ。付与されているエンチャントが強く反発しておる！", "This piece of work is too complicated! Working on it will risk destroying it, sorry.")
+                p = 0
+                goto *chat_end
+            }
+
+            item_find p_item1, 3, 1
+            if ( stat == (-1) ) {
+                chatMore lang("ふむふむ…って、" + cnvitemname(p_item1) + "を持っておらんではないか。", "Mmm... Wait, do you not have a " + cnvitemname(p_item1) + "?")
+                goto *chat_end
+            }
+            if ( cdata(CDATA_GOLD, CHARA_PLAYER) < p_gold ) {
+                chatMore lang("足りないんよ", cnvtalk("Not enough gold!"))
+                goto *chat_end
+            }
+            inv(INV_ITEM_NUM, stat)--
+            cdata(CDATA_GOLD, CHARA_PLAYER) -= p_gold
+            
+            encadd ci, val, p_inc, 0, 1, 0, 1
+            chatMore lang("…エンチャント改造完了！いい練習になったのう。", "...The enchantment is enhanced! Thanks for the order, adventurer.")
+        }
+        if ( chatval == 2 ) {
+            item_find p_item2, 3, 1
+            if ( stat == (-1) ) {
+                chatMore lang("ふむふむ…って、" + cnvitemname(p_item2) + "を持っておらんではないか。", "Mmm... Wait, do you not have a " + cnvitemname(p_item2) + "?")
+                goto *chat_end
+            }
+            if ( cdata(CDATA_GOLD, CHARA_PLAYER) < p_gold ) {
+                chatMore lang("足りないんよ", cnvtalk("Not enough gold!"))
+                goto *chat_end
+            }
+            inv(INV_ITEM_NUM, stat)--
+            cdata(CDATA_GOLD, CHARA_PLAYER) -= p_gold
+
+            encremove ci, val, p_rem
+            if ( p_rem == val(1) ) {
+                chatMore lang("…エンチャント消去完了！いい練習になったのう。", "...The enchantment is removed! Thanks for the order, adventurer.")
+            } else {
+                chatMore lang("…エンチャント弱める完了！いい練習になったのう。", "...The enchantment is weakened! Thanks for the order, adventurer.")
+            }
+        }
+    }
+    goto *chat_end

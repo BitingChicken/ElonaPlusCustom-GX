@@ -1,3 +1,14 @@
+# 2.28.2.0
+
+# Added
+- Extra Gameplay Tweak to allow a (weaker) artifact fusion / disenchantment at blacksmiths.
+
+# TCG
+- Now uses fatigue from Hearthstone instead of instantly lose due to deck out.
+- Card draw effects no longer fire when deck is empty.
+- Added an animation for fatigue and special victories.
+- [New effects for Mefan, Shuraida, Silvia, Leopard, Naplus. Buffed some citizen cards.](https://elona.fandom.com/wiki/User_blog:JianmengYu/CGX_TCG_card_effect_DB?diff=80790)
+
 # 2.28.1.0
 
 # Added

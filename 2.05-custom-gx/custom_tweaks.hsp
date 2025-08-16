@@ -1221,7 +1221,7 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	cs = 0
 	page = 0
 	pagesize = 16
-	listmax = 14
+	listmax = 15
 *GameplayExtraTweakMenu_pgchk
 	redraw 0
 	page_check
@@ -1245,6 +1245,7 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	listn(0, 10) = "Enable Noa's unused gathering text adventure." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_GATHER_TEXT_ADVENTURE)
 	listn(0, 11) = "Allow playing Termination Card Game (TCG) against anyone." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SHADOW_CARD_GAME)
 	listn(0, 12) = "Allow spells to activate weapon enchantment." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SPELL_PROCS)
+	listn(0, 13) = "Allow (weaker) artifact fusion at blacksmiths." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_ARTIFACT_FUSION_AND_ENCHANTMENT_AT_BLACKSMITH)
 
 	listn(0, listmax - 1) = "Return."
 	font lang(cfg_font1, cfg_font2), 14 - en * 2, 0
@@ -1306,6 +1307,9 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 			}
 			if ( p == 12 ) {
 				s = "Allow spells to activate weapon enchantments.\nHighly unbalanced, as spells are balanced towards not having procs."
+			}
+			if ( p == 13 ) {
+				s = "Allows a weaker version artifact fusion at blacksmiths without Irma.\n  Blacksmiths only accepts pot of fusion items.\nAnd also allows strengthening and removal of enchantments.\n  For those who don't want to savescum hours for a perfect blank slate item."
 			}
 
 			if ( p == listmax - 1 ) {
@@ -1407,6 +1411,11 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 		ts = 1
 		tm = 4
 		gosub *IncrementTweak
+	}
+	if ( p == 13 ) {
+		tc = TWEAK_CATEGORY_GAMEPLAY
+		tn = TWEAK_GAMEPLAY_ARTIFACT_FUSION_AND_ENCHANTMENT_AT_BLACKSMITH
+		gosub *ToggleTweak
 	}
 
 	if ( p == listmax - 1 ) {
