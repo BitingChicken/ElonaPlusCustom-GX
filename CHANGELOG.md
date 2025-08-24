@@ -1,3 +1,8 @@
+# Upcoming
+
+# TCG
+- Nerfed Unit-Deads to prevent FTK.
+
 # 2.28.2.0
 
 # Added

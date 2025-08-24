@@ -8384,7 +8384,7 @@
 		cardrefcost = 3
 		cardrefattack = 3
 		cardrefhp = 4
-		cardrefskillid = TCG_EFF_BATTLECRY_DRAWRANDOMWHITE
+		cardrefskillid = TCG_EFF_CARAVAN
 		cardrefbits = "78"
 		return 1
 	}
@@ -13470,7 +13470,7 @@
 		cardrefattack = 1
 		cardrefhp = 1
 		cardrefskillid = TCG_EFF_ZANAN_ASSASSIN
-		cardrefbits = "97,98,70"
+		cardrefbits = "98,32,70"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_CRESCE_THE_SEMINAR_LECTURER ) {
@@ -15813,7 +15813,7 @@
 		cardrefattack = 12
 		cardrefhp = 12
 		cardrefskillid = TCG_EFF_UNITDEAD
-		cardrefbits = ""
+		cardrefbits = "110"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_UNITDEAD_QUEEN ) {
@@ -15827,7 +15827,7 @@
 		cardrefattack = 15
 		cardrefhp = 9
 		cardrefskillid = TCG_EFF_UNITDEAD
-		cardrefbits = ""
+		cardrefbits = "110"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_UNITDEAD_JACK ) {
@@ -15841,7 +15841,7 @@
 		cardrefattack = 5
 		cardrefhp = 20
 		cardrefskillid = TCG_EFF_UNITDEAD
-		cardrefbits = ""
+		cardrefbits = "110"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_UNITDEAD_JOKER ) {
@@ -15855,7 +15855,7 @@
 		cardrefattack = 20
 		cardrefhp = 5
 		cardrefskillid = TCG_EFF_UNITDEAD
-		cardrefbits = ""
+		cardrefbits = "110"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_EXOSSIL_THE_CHAOS_WING ) {

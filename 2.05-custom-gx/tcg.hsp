@@ -1455,6 +1455,7 @@
 			if ( p@tcg == TCG_BIT_COMMAND ) { s@tcg += "[Command Card] "}
 			if ( p@tcg == TCG_BIT_FOSSIL ) { s@tcg += "[Does Nothing until Unfossiled/Graved] "}
 			if ( p@tcg == TCG_BIT_COST_ONE ) { s@tcg += "[Cost at least 1 Mana] "}
+			if ( p@tcg == TCG_BIT_DISTANT ) { s@tcg += "[Cannot be drawn when Mana<=2] "}
 		loop
 		rtvaln2 += "\n" + s@tcg
 		s@tcg = ""
@@ -1872,8 +1873,8 @@
 	repeat maxcard@tcg
 		if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_DECK ) { continue }
 		if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != getrandomcard_arg1 ) { continue }
-		if ( cdbit(TCG_BIT_TEMPO, cnt) == TRUE | specialrulenextdrawtempo@tcg > 0 ) { // Tempo Cards with satisfied condition are drawn with higher priority
-			if ( phase@tcg <= 1 & card@tcg(TCG_CARD_COST, cnt) == cpdata@tcg(TCG_PLAYER_MANA, getrandomcard_arg1) ) {
+		if ( cdbit(TCG_BIT_TEMPO, cnt) == TRUE | specialrulenextdrawtempo@tcg(getrandomcard_arg1) > 0 ) { // Tempo Cards with satisfied condition are drawn with higher priority
+			if ( card@tcg(TCG_CARD_COST, cnt) == cpdata@tcg(TCG_PLAYER_MANA, getrandomcard_arg1) ) {
 				ctempo@tcg(1)++
 				if ( rnd(ctempo@tcg(1)) == 0 ) {
 					ctempo@tcg(0) = cnt
@@ -1889,13 +1890,21 @@
 				}
 			}
 		}
+		if ( cdbit(TCG_BIT_DISTANT, cnt) == TRUE ) { // Distant Cards avoids being drawn when having <= 2 mana
+			if ( cpdata@tcg(TCG_PLAYER_MANA, getrandomcard_arg1) <= 2 ) {
+				continue
+			}
+		}
 		// This is the normal draw.
 		c@tcg(1)++
 		if ( rnd(c@tcg(1)) == 0 ) {
 			c@tcg(0) = cnt
 		}
 	loop
-	if ( ctempo@tcg(0) >= 0 | c@tcg(0) < 0 ) { c@tcg(0) = ctempo@tcg(0) }
+	if ( ctempo@tcg(0) >= 0 | c@tcg(0) < 0 ) {
+		efllistadd 18, 0, cpx@tcg(getrandomcard_arg1) + 35, cpy@tcg(getrandomcard_arg1) + 55
+		c@tcg(0) = ctempo@tcg(0) 
+	}
 	if ( c@tcg(0) < 0 ) { // If draw fails, draw from deck without tempo limit
 		c@tcg = -1, 0
 		repeat maxcard@tcg
@@ -1907,7 +1916,10 @@
 			}
 		loop
 	}
-	specialrulenextdrawtempo@tcg--
+	if ( specialrulenextdrawtempo@tcg(getrandomcard_arg1) > 0 ) {
+		specialrulenextdrawtempo@tcg(getrandomcard_arg1)--
+		// title "player " + getrandomcard_arg1 + " had " + specialrulenextdrawtempo@tcg(getrandomcard_arg1) + " draw remaning"
+	}
 	if ( c@tcg(0) < 0 ) { return }
 	proctcg "tcg draw: c" + c@tcg(0) + "/" + c@tcg(1) + " ctempo:" + ctempo@tcg(0) + "/" + ctempo@tcg(1) + " cp:" + getrandomcard_arg1 + " cpdataMANA:" + cpdata@tcg(TCG_PLAYER_MANA, getrandomcard_arg1) + " carddetailneff:" + carddetailneff@tcg(c@tcg(0))
 	gettargetcard c@tcg
@@ -2727,7 +2739,7 @@
 	if ( cp@tcg != player@tcg & getspotsum(1-cp@tcg) >= getspotsum(cp@tcg) + 1 + rnd(6) ) { // Give AI extra cards because they suck
 		if ( getdecksum(cp@tcg) != 0 ) {
 			await 50
-			specialrulenextdrawtempo@tcg++
+			specialrulenextdrawtempo@tcg(cp@tcg)++
 			getrandomcard cp@tcg
 		}
 	}
