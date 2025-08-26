@@ -1,5 +1,12 @@
 # Upcoming
 
+# Added
+- Two UI tweaks to change how item is drawn in inventory.
+
+# Fixed
+- Cutins of some shape-changed characters not showing up.
+- Fixed equipment screen and weapon swing animation not drawing 48x96 items fully.
+
 # TCG
 - Nerfed Unit-Deads to prevent FTK.
 

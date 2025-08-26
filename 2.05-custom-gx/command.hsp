@@ -12422,9 +12422,12 @@
 
             preparePicItem p(2), inv(INV_ITEM_COL, p(1))
 
-			pos wx + 126, wy + 70 + cnt * 19
-			gmode 2, inf_tiles, inf_tiles
-			grotate 1, 0, 960, 0, chipi(CHIPI_WIDTH, p(2)), chipi(CHIPI_HEIGHT, p(2))
+            pos wx + 126, wy + 70 + cnt * 19 - (chipi(CHIPI_HEIGHT, p(2)) > inf_tiles) * 24
+            gmode 2, chipi(CHIPI_WIDTH, p(2)), chipi(CHIPI_HEIGHT, p(2))
+            grotate 1, 0, 960, 0, chipi(CHIPI_WIDTH, p(2)), chipi(CHIPI_HEIGHT, p(2))
+            // pos wx + 126, wy + 70 + cnt * 19
+            // gmode 2, inf_tiles, inf_tiles
+            // grotate 1, 0, 960, 0, chipi(CHIPI_WIDTH, p(2)), chipi(CHIPI_HEIGHT, p(2))
 			if ( showresist ) {
 				/********** ORIGINAL - BEGINNING **********
 				equipinfo p(1), wx + 320, wy + 60 + cnt * 19 + 2
@@ -13976,9 +13979,16 @@
 
         preparePicItem p(1), inv(INV_ITEM_COL, p)
 
-		pos wx + 37, wy + 69 + cnt * 19
+		if ( TweakData(TWEAK_UI_DRAW_FULL_SIZE_ITEM, TWEAK_CATEGORY_UI) == TRUE ) {
+			pos wx + 37 + (TweakData(TWEAK_UI_DRAW_ITEM_ALTERNATELY, TWEAK_CATEGORY_UI) == TRUE) * (- 8 + (cnt\2==0) * 16), wy + 69 + cnt * 19 - (chipi(CHIPI_HEIGHT, p(1)) > inf_tiles) * 24
+			gmode 2, chipi(CHIPI_WIDTH, p(1)), chipi(CHIPI_HEIGHT, p(1))
+			grotate 1, 0, 960, 0, inf_tiles, chipi(CHIPI_HEIGHT, p(1))
+		} else {
+		pos wx + 37 + (TweakData(TWEAK_UI_DRAW_ITEM_ALTERNATELY, TWEAK_CATEGORY_UI) == TRUE) * (- 8 + (cnt\2==0) * 16), wy + 69 + cnt * 19
+		//pos wx + 37, wy + 69 + cnt * 19
 		gmode 2, chipi(CHIPI_WIDTH, p(1)), chipi(CHIPI_HEIGHT, p(1))
 		grotate 1, 0, 960, 0, chipi(CHIPI_WIDTH, p(1)) * inf_tiles / chipi(CHIPI_HEIGHT, p(1)), inf_tiles
+		}
 		if ( inv(INV_ITEM_ID, p) == ITEM_ID_CF_POTIOMAN | inv(INV_ITEM_ID, p) == ITEM_ID_CRUSH_POTIOMAN | inv(INV_ITEM_ID, p) == ITEM_ID_BATTLE_POTIOMAN | inv(INV_ITEM_ID, p) == ITEM_ID_SUPER_POTIOMAN ) {
 			if ( inv(INV_ITEM_PARTS, p) > 0 ) {
 				pos wx + 37, wy + 69 + cnt * 19

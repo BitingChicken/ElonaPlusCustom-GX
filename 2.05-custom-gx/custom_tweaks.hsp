@@ -238,7 +238,7 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
     cs = 0
 	page = 0
 	pagesize = 16
-	listmax = 10
+	listmax = 12
 *UITweakMenu_pgchk
 	redraw 0
 	page_check
@@ -258,6 +258,8 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	listn(0, 6) = "Re-parse ItemList.txt."
 	listn(0, 7) = "Report museum duplicates." + GetTStatus(TWEAK_CATEGORY_UI, TWEAK_UI_REPORT_MUSEUM_DUPLICATES)
 	listn(0, 8) = "Draw stamina bar." + GetTStatus(TWEAK_CATEGORY_UI, TWEAK_UI_DRAW_STAMINA_BAR)
+	listn(0, 9) = "Draw full-sized items in inventory." + GetTStatus(TWEAK_CATEGORY_UI, TWEAK_UI_DRAW_FULL_SIZE_ITEM)
+	listn(0, 10) = "Draw items left-and-right in inventory to reduce overlap." + GetTStatus(TWEAK_CATEGORY_UI, TWEAK_UI_DRAW_ITEM_ALTERNATELY)
 
 	listn(0, listmax - 1) = "Return."
 	font lang(cfg_font1, cfg_font2), 14 - en * 2, 0
@@ -307,6 +309,12 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 			}
 			if ( p == 8 ) {
 				s = "Draw stamina bar instead of just displaying like Sp 12/23.\nIt's using the yellow (gauge) bar below health in interface.bmp.\nIf it looks weird check if your beautify does anything to that."
+			}
+			if ( p == 9 ) {
+				s = "Draw 48x96 items with full size in inventory.\n This includes flesh dolls and golden dolls."
+			}
+			if ( p == 10 ) {
+				s = "Draw items in an alternate pattern of left and right to prevent overlap."
 			}
 
 			if ( p == listmax - 1 ) {
@@ -384,6 +392,17 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 		tn = TWEAK_UI_DRAW_STAMINA_BAR
 		gosub *ToggleTweak
 	}
+	if ( p == 9 ) {
+		tc = TWEAK_CATEGORY_UI
+		tn = TWEAK_UI_DRAW_FULL_SIZE_ITEM
+		gosub *ToggleTweak
+	}
+	if ( p == 10 ) {
+		tc = TWEAK_CATEGORY_UI
+		tn = TWEAK_UI_DRAW_ITEM_ALTERNATELY
+		gosub *ToggleTweak
+	}
+	
 	
 	if ( p == listmax - 1 ) {
 		snd SOUNDLIST_OK1

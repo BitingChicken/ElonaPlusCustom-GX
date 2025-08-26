@@ -2115,6 +2115,42 @@
 		if ( synccheck(cc, -1) == 0 ) { goto *anime_SWEND1 }
 		if ( cw < 0 | cw >= MAX_INV_DATA ) { goto *anime_SWEND1 }
 		preparePicItem inv(INV_ITEM_PIC, cw), inv(INV_ITEM_COL, cw)
+		// Fix display issue of 48x96 items, and the meat dolls
+		if ( inv(INV_ITEM_PIC, cw) >= 0 & inv(INV_ITEM_PIC, cw) < SPRITE_SHEET_COLS_ITEM * SPRITE_SHEET_ROWS_ITEM + 240 ) {
+			isbigitem = 0
+			islowitem = 0
+			if ( chipi(CHIPI_HEIGHT, inv(INV_ITEM_PIC, cw)) > 48 ) {
+				isbigitem = 1
+				if ( inv(INV_ITEM_PIC, cw) == 1119 | inv(INV_ITEM_PIC, cw) == 1206 ) {
+					if ( inv(INV_ITEM_COL, cw) >= 0 & inv(INV_ITEM_COL, cw) < SPRITE_SHEET_COLS_CHARA * SPRITE_SHEET_ROWS_CHARA + 240 ) {
+						if ( chipc(CHIPC_HEIGHT, inv(INV_ITEM_COL, cw)) <= 48 ) {
+							isbigitem = 0
+							islowitem = 1
+						}
+					}
+				}
+			}
+			if ( isbigitem ) {
+				gsel BUFFER_PIC
+				buffer BUFFER_PIC, inf_tiles * 2, inf_tiles * 2
+				gmode 0, inf_tiles, inf_tiles * 2
+				pos 0, 0
+				gzoom inf_tiles * 2, inf_tiles * 2, BUFFER_ITEM, 0, 0, inf_tiles, inf_tiles
+				pos inf_tiles / 2, 0
+				gcopy BUFFER_ITEM, 0, 960, inf_tiles, inf_tiles * 2
+
+				gsel BUFFER_ITEM
+				pos 0, 960
+				gzoom inf_tiles, inf_tiles, BUFFER_PIC, 0, 0, inf_tiles * 2, inf_tiles * 2
+				gsel selcur
+			}
+			if ( islowitem ) {
+				gsel BUFFER_ITEM
+				pos 0, 960
+				gcopy BUFFER_ITEM, 0, 960 + inf_tiles, inf_tiles, inf_tiles
+				gsel selcur
+			}
+		}
 		// Horizontal Flip, then rotate 90 degrees clockwise (for blades with wrong facing, probably shouldn't put it here)
 		if ( (animenum \ 2 == 0 | animeskill == SKILL_WEAPON_SHORTSWORD | animeskill == SKILL_WEAPON_POLEARM | animeskill == SKILL_WEAPON_STAVE) ^ (inv(INV_ITEM_PIC, cw) == xy2pic(2, 13) | inv(INV_ITEM_PIC, cw) == xy2pic(3, 13) | inv(INV_ITEM_PIC, cw) == xy2pic(6, 15) | inv(INV_ITEM_PIC, cw) == xy2pic(6, 15)) ) {
 			gsel BUFFER_PIC
@@ -4892,8 +4928,15 @@
 			goto *anime_SWEND1
 		}
 		pic = cdata(CDATA_PIC, anic) \ 1000 + cdata(CDATA_CHARA_PIC, anic) * 1000 + refchara(cdata(CDATA_ID, anic), DBSPEC_CHARA_COL) * 10000
+		if ( cdata(CDATA_PIC, anic) >= xy2pic(1, 21) & cdata(CDATA_PIC, anic) <= xy2pic(31, 21) ) {
+			pic = cdata(CDATA_PIC, anic)
+		}
 		if ( anic == CHARA_PLAYER ) {
 			pic = -1
+		}
+		exist exedir + "user\\graphic2\\cutin" + pic + ".bmp"
+		if ( strsize == (-1) ) {
+			goto *anime_SWEND1
 		}
 		gsel BUFFER_PIC
 		picload exedir + "user\\graphic2\\cutin" + pic + ".bmp"

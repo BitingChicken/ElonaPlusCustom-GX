@@ -8654,6 +8654,9 @@
 		waza = 1
 	}
 	pic = cdata(CDATA_PIC, chara_cutin_charidx) \ 1000 + cdata(CDATA_CHARA_PIC, chara_cutin_charidx) * 1000 + refchara(cdata(CDATA_ID, chara_cutin_charidx), DBSPEC_CHARA_COL) * 10000
+	if ( cdata(CDATA_PIC, chara_cutin_charidx) >= xy2pic(1, 21) & cdata(CDATA_PIC, chara_cutin_charidx) <= xy2pic(31, 21) ) {
+		pic = cdata(CDATA_PIC, chara_cutin_charidx)
+	}
 	if ( chara_cutin_charidx == CHARA_PLAYER ) {
 		pic = -1
 	}
