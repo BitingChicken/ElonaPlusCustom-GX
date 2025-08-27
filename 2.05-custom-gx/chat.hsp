@@ -24828,6 +24828,7 @@
 	goto *chat_default
 
 *chat_end
+	sndstop // Stop lengthy dialogs from playing after the chat.
 	questteleport = 0
 	hyouzyou = 0
 	hyouzyou2 = 0
@@ -25019,6 +25020,19 @@
 	gmode 2
 	pos wx, wy - 20
 	gcopy 7, 0, 0, 600, 380
+	/********** OOMSESTEPNC - EXTRA CNPC CONFIG - CNPC PORTRAIT - BEGINNING **********/
+	if ( cdata(CDATA_PORTRAIT, tc) == (-1) ) {
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_USER ) {
+			if ( cdata(CDATA_USERNPC_ID, tc) >= 0 & cdata(CDATA_USERNPC_ID, tc) < usernpcmax ) {
+				if ( userdata2(0, cdata(CDATA_USERNPC_ID, tc)) ) {
+					pos wx + 42, wy + 42
+					gzoom 80, 112, 100, cdata(CDATA_USERNPC_ID, tc) \ 16 * 80, cdata(CDATA_USERNPC_ID, tc) / 16 * 112, 80, 112
+					goto *skip_drawChatCharaPic
+				}
+			}
+		}
+	}
+	/********** OOMSESTEPNC - EXTRA CNPC CONFIG - CNPC PORTRAIT - ENDING **********/
 	if ( cdata(CDATA_TAGTEAM_PARTNER, tc) > 0 ) {
 		ttc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 	}
@@ -25217,16 +25231,7 @@
 		}
 	}
 	/********** OOMSESTEPNC - EXTRA CNPC CONFIG - CNPC PORTRAIT - BEGINNING **********/
-	if ( cdata(CDATA_PORTRAIT, tc) == (-1) ) {
-		if ( cdata(CDATA_ID, tc) == CREATURE_ID_USER ) {
-			if ( cdata(CDATA_USERNPC_ID, tc) >= 0 & cdata(CDATA_USERNPC_ID, tc) < usernpcmax ) {
-				if ( userdata2(0, cdata(CDATA_USERNPC_ID, tc)) ) {
-					pos wx + 42, wy + 42
-					gzoom 80, 112, 100, cdata(CDATA_USERNPC_ID, tc) \ 16 * 80, cdata(CDATA_USERNPC_ID, tc) / 16 * 112, 80, 112
-				}
-			}
-		}
-	}
+	*skip_drawChatCharaPic
 	/********** OOMSESTEPNC - EXTRA CNPC CONFIG - CNPC PORTRAIT - ENDING **********/
 	if ( evorec == 1 ) {
 		font lang(cfg_font1, cfg_font2), 30 - en * 2, 1

@@ -6,6 +6,7 @@
 # Fixed
 - Cutins of some shape-changed characters not showing up.
 - Fixed equipment screen and weapon swing animation not drawing 48x96 items fully.
+- Fixed some graphic and sound issue when talking with a CNPC
 
 # TCG
 - Nerfed Unit-Deads to prevent FTK.

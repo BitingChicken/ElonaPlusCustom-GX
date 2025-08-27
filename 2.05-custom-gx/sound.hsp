@@ -76,6 +76,17 @@
 	return
 
 /********** OOMSESTEPNC - EXTRA CNPC CONFIG - CONVERT WORD PLAY SOUND - BEGINNING **********/
+#deffunc sndstop
+	repeat 6, 7
+		if ( cfg_sound == 1 ) {
+			DSSTOP cnt, 0
+		}
+		else {
+			mmstop cnt
+		}
+	loop
+	return
+
 #defcfunc mediafind str mediafind_arg1_folder, str mediafind_arg2_filename
 	mediafile = exedir + "user\\" + mediafind_arg1_folder + mediafind_arg2_filename
 	exist mediafile
@@ -93,6 +104,7 @@
 
 #deffunc playsound str playsound_arg1_filename, int playsound_arg2_define
 	if (mediafind("sound\\", playsound_arg1_filename) != (-1)) {
+		sndstop
 		sndload mediafile, SOUNDLIST_MAX + playsound_arg2_define
 		snd SOUNDLIST_MAX + playsound_arg2_define, 0, 2
 	}
