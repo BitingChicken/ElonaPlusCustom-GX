@@ -1064,7 +1064,11 @@
 					if ( cfg_music == 3 ) {
 						GGS4Stop
 						GGS4AddListFromFile musicfolder + musicfile(music), 0, 0
-						GGS4Play 1, 0
+						if (musicloop == 0) {
+							GGS4Play 2, 0
+						} else {
+							GGS4Play 1 | 2, 0 // opLoop 1 opSkipBeginning 2
+						}
 					}
 				}
 			}
