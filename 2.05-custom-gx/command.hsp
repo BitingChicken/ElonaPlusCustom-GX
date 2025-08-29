@@ -9391,7 +9391,7 @@
 		s = lang("命令されて諸国を巡ることになる。", "You left on adventure to travel the world.")
 	}
 	if ( ohanasi2 == 11 ) {
-		s = lang("失恋を忘れるため旅に出る。", "You left on adventure to distract yourself from your broken heart.")
+		s = lang("失恋を忘れるため旅に出る。", "You left on adventure to distract yourself from broken heart.")
 	}
 	if ( ohanasi2 == 12 ) {
 		s = lang("世界平和のため旅に出る。", "You left on adventure to work towards world peace.")
@@ -9421,7 +9421,7 @@
 		s = lang("儲かると聞いて冒険者になる。", "You left on adventure to become rich.")
 	}
 	if ( ohanasi2 == 21 ) {
-		s = lang("陰謀に巻き込まれ追放される。", "You left on adventure because of your involvement in a conspiracy.")
+		s = lang("陰謀に巻き込まれ追放される。", "You left on adventure for getting involved in a conspiracy.")
 	}
 	if ( ohanasi2 == 22 ) {
 		s = lang("過去から逃げるように旅に出る。", "You left on adventure to flee from your past.")
@@ -9442,43 +9442,43 @@
 		s = lang("まだ見ぬ宝を探して冒険に出る。", "You left on adventure to seek undiscovered treasures.")
 	}
 	if ( ohanasi2 == 28 ) {
-		s = lang("古代文明の謎を追い求め旅に出る。", "You left on adventure to pursue the mysteries of an ancient civilization.")
+		s = lang("古代文明の謎を追い求め旅に出る。", "You left on adventure to pursue the mysteries of old era.")
 	}
 	if ( ohanasi2 == 29 ) {
 		s = lang("なぜ旅しているのかも思い出せない。", "You can not remember the reason of your travel.")
 	}
 	if ( ohanasi2 == 30 ) {
-		s = lang("命を落とし気づくと船に乗っていた。", "You suddenly find yourself on a ship when you are about to die.")
+		s = lang("命を落とし気づくと船に乗っていた。", "You suddenly find yourself on a ship before you die.")
 	}
 	if ( ohanasi2 == 31 ) {
-		s = lang("知人に勧められて冒険者になった。", "You become an adventurer at the recommendation of an acquaintance.")
+		s = lang("知人に勧められて冒険者になった。", "You become an adventurer at the recommendation of friends.")
 	}
 	if ( ohanasi2 == 32 ) {
 		s = lang("呪いを解く方法を探して旅に出る。", "You set out on a journey to find a way to lift a curse.")
 	}
 	if ( ohanasi2 == 33 ) {
-		s = lang("復讐相手を追って旅に出る。", "You set out on a journey to track down the person you want revenge on.")
+		s = lang("復讐相手を追って旅に出る。", "You set out on a journey to seek avenging on some person .")
 	}
 	if ( ohanasi2 == 34 ) {
-		s = lang("情報収集のため各地の調査を開始。", "You are investigating various places to gather intelligence.")
+		s = lang("情報収集のため各地の調査を開始。", "You are investigating the world to gather intelligence.")
 	}
 	if ( ohanasi2 == 35 ) {
-		s = lang("人生失敗し冒険に出るしかなかった。", "You have failed in life and have no choice but to set out on an adventure.")
+		s = lang("人生失敗し冒険に出るしかなかった。", "You have failed in life and can only became a adventurer.")
 	}
 	if ( ohanasi2 == 36 ) {
 		s = lang("謎のゲートを通ってやってきた。", "You have walked through a mysterious gate.")
 	}
 	if ( ohanasi2 == 37 ) {
-		s = lang("時空の歪みに呑まれ迷い込んだ。", "You got swallowed up and lost in a distortion in space-time.")
+		s = lang("時空の歪みに呑まれ迷い込んだ。", "You got swallowed into a distortion in time-space.")
 	}
 	if ( ohanasi2 == 38 ) {
 		s = lang("最悪な未来を変えるために旅に出る。", "You set out on a journey to change a terrible future.")
 	}
 	if ( ohanasi2 == 39 ) {
-		s = lang("まだ見ぬ結婚相手を求めて旅に出る。", "You set out on a journey in search of a marriage partner you have yet to meet.")
+		s = lang("まだ見ぬ結婚相手を求めて旅に出る。", "You set out on a journey in search of someone to marry.")
 	}
 	if ( ohanasi2 == 40 ) {
-		s = lang("広い世界を見たくて各地を観光中。", "You are traveling around the world, wanting to see a wider world.")
+		s = lang("広い世界を見たくて各地を観光中。", "You are traveling around, wanting to see a wider world.")
 	}
 	if ( ohanasi2 == 41 ) {
 		s = lang("役立たずと判断されて追放された。", "You were deemed useless and banished.")
@@ -9595,7 +9595,7 @@
 		s = lang("情報収集が得意だが、", "Though good at gathering information,")
 	}
 	if ( ohanasi3 == 33 ) {
-		s = lang("嫌な事があっても落ち込まないが、", "Though doesn't get depressed even when unpleasant things happen,")
+		s = lang("嫌な事があっても落ち込まないが、", "Though never get depressed even when worst things happen,")
 	}
 	if ( ohanasi3 == 34 ) {
 		s = lang("他人の長所を見抜くのが得意だが、", "Though good at identifying the good points of others,")
@@ -10304,28 +10304,63 @@
 		ohanasi5 = cdata(CDATA_BACKGROUND_PART_B3, cc)
 		if ( ohanasi1 >= 0 ) {
 			gosub *setHistory1
-			pos wx + 220, wy + 290
+			talk_conv s, 32
+			s(1) = "", "", "", ""
+			split s, "\n", s
+			pos wx + 220 - en * 15, wy + 290
 			mes s
+			if ( strlen(s(1)) >= 1 ) {
+				pos wx + 220 - en * 15, wy + 290 + 0 * 15 + 7
+				mes s(1) + " " + s(2) + " " + s(3) + " " + s(4)
+			}
 		}
 		if ( ohanasi2 != 0 ) {
 			gosub *setHistory2
-			pos wx + 220, wy + 290 + 1 * 15
+			talk_conv s, 32
+			s(1) = ""
+			split s, "\n", s
+			pos wx + 220 - en * 15, wy + 289 + 1 * 15
 			mes s
+			if ( strlen(s(1)) >= 1 ) {
+				pos wx + 220 - en * 15, wy + 289 + 1 * 15 + 7
+				mes s(1) + " " + s(2) + " " + s(3) + " " + s(4)
+			}
 		}
 		if ( ohanasi3 != 0 ) {
 			gosub *setHistory3
-			pos wx + 220, wy + 290 + 2 * 15
+			talk_conv s, 32
+			s(1) = ""
+			split s, "\n", s
+			pos wx + 220 - en * 15, wy + 294 + 2 * 15
 			mes s
+			if ( strlen(s(1)) >= 1 ) {
+				pos wx + 220 - en * 15, wy + 294 + 2 * 15 + 7
+				mes s(1) + " " + s(2) + " " + s(3) + " " + s(4)
+			}
 		}
 		if ( ohanasi4 != 0 ) {
 			gosub *setHistory4
-			pos wx + 220, wy + 290 + 3 * 15
+			talk_conv s, 32
+			s(1) = ""
+			split s, "\n", s
+			pos wx + 220 - en * 15, wy + 293 + 3 * 15
 			mes s
+			if ( strlen(s(1)) >= 1 ) {
+				pos wx + 220 - en * 15, wy + 293 + 3 * 15 + 7
+				mes s(1) + " " + s(2) + " " + s(3) + " " + s(4)
+			}
 		}
 		if ( ohanasi5 != 0 ) {
 			gosub *setHistory5
-			pos wx + 220, wy + 290 + 4 * 15
+			talk_conv s, 32
+			s(1) = ""
+			split s, "\n", s
+			pos wx + 220 - en * 15, wy + 292 + 4 * 15
 			mes s
+			if ( strlen(s(1)) >= 1 ) {
+				pos wx + 220 - en * 15, wy + 292 + 4 * 15 + 7
+				mes s(1) + " " + s(2) + " " + s(3) + " " + s(4)
+			}
 		}
 		font lang(cfg_font1, cfg_font2), 14 - en * 2, 0
 		color 0, 0, 0

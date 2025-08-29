@@ -1806,7 +1806,7 @@
 	// Draw logic is changed to not draw cards when hand is full, so this should only trigger with Itzpalt's effect.
 	// Since hand limit can be increased beyond 7, card orders are no longer determined by the (x_moveto).
 	// Now it deletes a random hand card instead.
-	repeat limit(getholdersum(delbottomcard_arg1) - maxholdersum@tcg(delbottomcard_arg1) + 1, 0, 200)
+	repeat limit(getholdersum(delbottomcard_arg1) - maxholdersum@tcg(delbottomcard_arg1), 0, 200)
 		delcard@tcg = -1
 		delcardc@tcg = 0
 		repeat maxcard@tcg

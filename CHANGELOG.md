@@ -4,12 +4,16 @@
 - Two UI tweaks to change how item is drawn in inventory.
 
 # Fixed
-- Cutins of some shape-changed characters not showing up.
+- Split longer profile backstories into multi-lines to prevent overlap.
+- Fixed cutins of some shape-changed characters not showing up.
 - Fixed equipment screen and weapon swing animation not drawing 48x96 items fully.
 - Fixed some graphic and sound issue when talking with a CNPC
+- Fixed non-looping music gets looped, and looping did not skip the beginning of a bgm.
+- Fixed a water tile issue.
 
 # TCG
 - Nerfed Unit-Deads to prevent FTK.
+- Fixed Itzpalt field effect makes you discard one more card.
 
 # 2.28.2.0
 
