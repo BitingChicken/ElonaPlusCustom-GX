@@ -1250,7 +1250,7 @@
 			}
 			if ( locvar_itemowner_a == FILTER_ITEM_FOOD ) {
 				if ( inv(INV_ITEM_PARAM1, itemname_itemid) != 0 ) {
-					if ( inv(INV_ITEM_PARAM2, itemname_itemid) != 0 ) {
+					if ( inv(INV_ITEM_PARAM2, itemname_itemid) != 0 & inv(INV_ITEM_PARAM2, itemname_itemid) != 10 ) {
 							locvar_itemname_s2 = "dish"
 					}
 				}

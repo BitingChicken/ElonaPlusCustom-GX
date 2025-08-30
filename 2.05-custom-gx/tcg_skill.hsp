@@ -3493,6 +3493,14 @@
 				create_extra_card card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), card@tcg(TCG_CARD_REF_DBID, aeft@tcg)
 				if ( cextra@tcg >= 0 ) {
 					card@tcg(TCG_CARD_CONTROLLER, cextra@tcg) = ap@tcg
+					repeat 42, 8
+						card@tcg(cnt, cextra@tcg) = card@tcg(cnt, aeft@tcg)
+					loop
+					repeat 5
+						cardn@tcg(cnt, cextra@tcg) = cardn@tcg(cnt, aeft@tcg)
+					loop
+					carddetailn@tcg(cextra@tcg) = carddetailn@tcg(aeft@tcg)
+					carddetailneff@tcg(cextra@tcg) = carddetailneff@tcg(aeft@tcg)
 					gettargetcard cextra@tcg
 				}
 				makecardlist
@@ -3533,11 +3541,19 @@
 			if ( hasspotspace(ap@tcg) == TRUE ) {
 				cdbitmod TCG_BIT_BLEEDING, aeft@tcg, 1
 				create_extra_card card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), card@tcg(TCG_CARD_REF_DBID, aeft@tcg)
-				card@tcg(TCG_CARD_HP, cextra@tcg) = 1
-				card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 1
-				card@tcg(TCG_CARD_REF_HP, cextra@tcg) = 1
-				card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 1
 				if ( cextra@tcg >= 0 ) {
+					repeat 42, 8
+						card@tcg(cnt, cextra@tcg) = card@tcg(cnt, aeft@tcg)
+					loop
+					repeat 5
+						cardn@tcg(cnt, cextra@tcg) = cardn@tcg(cnt, aeft@tcg)
+					loop
+					carddetailn@tcg(cextra@tcg) = carddetailn@tcg(aeft@tcg)
+					carddetailneff@tcg(cextra@tcg) = carddetailneff@tcg(aeft@tcg)
+					card@tcg(TCG_CARD_HP, cextra@tcg) = 1
+					card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 1
+					card@tcg(TCG_CARD_REF_HP, cextra@tcg) = 1
+					card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 1
 					card@tcg(TCG_CARD_CONTROLLER, cextra@tcg) = ap@tcg
 					putcard cextra@tcg, ap@tcg
 				}

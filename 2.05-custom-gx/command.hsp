@@ -14026,12 +14026,14 @@
 		}
 		if ( inv(INV_ITEM_ID, p) == ITEM_ID_CF_POTIOMAN | inv(INV_ITEM_ID, p) == ITEM_ID_CRUSH_POTIOMAN | inv(INV_ITEM_ID, p) == ITEM_ID_BATTLE_POTIOMAN | inv(INV_ITEM_ID, p) == ITEM_ID_SUPER_POTIOMAN ) {
 			if ( inv(INV_ITEM_PARTS, p) > 0 ) {
-				pos wx + 37, wy + 69 + cnt * 19
+				pos wx + 37 + (TweakData(TWEAK_UI_DRAW_ITEM_ALTERNATELY, TWEAK_CATEGORY_UI) == TRUE) * (- 8 + (cnt\2==0) * 16), wy + 69 + cnt * 19
+				//pos wx + 37, wy + 69 + cnt * 19
 				gmode 2, chipi(CHIPI_WIDTH, p(1)), chipi(CHIPI_HEIGHT, p(1))
 				grotate BUFFER_ITEM, 1008 - (inv(INV_ITEM_PARTS, p) - 50) * 48, 1776, 0, 48, 48
 			}
 			if ( inv(INV_ITEM_AMUR_CAGE, p) > 0 ) {
-				pos wx + 37, wy + 69 + cnt * 19
+				pos wx + 37 + (TweakData(TWEAK_UI_DRAW_ITEM_ALTERNATELY, TWEAK_CATEGORY_UI) == TRUE) * (- 8 + (cnt\2==0) * 16), wy + 69 + cnt * 19
+				//pos wx + 37, wy + 69 + cnt * 19
 				gmode 2, chipi(CHIPI_WIDTH, p(1)), chipi(CHIPI_HEIGHT, p(1))
 				grotate BUFFER_ITEM, 1344 - inv(INV_ITEM_AMUR_CAGE, p) * 48, 1776, 0, 48, 48
 			}

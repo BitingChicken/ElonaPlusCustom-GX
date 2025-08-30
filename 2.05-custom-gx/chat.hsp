@@ -11166,7 +11166,7 @@
 						}
 					}
 					chatList 0, lang("考えておく", "Someday.")
-					buff = lang("…よし、なんでもいいから進化アイテムを１つ持ってくるのじゃ。言っておくが種類は仕上がりに影響せんからの。", "…Okay, bring me an evolution item, whatever it is.")
+					buff = lang("…よし、なんでもいいから進化アイテムを１つ持ってくるのじゃ。言っておくが種類は仕上がりに影響せんからの。", "...Okay, bring me an evolution item, whatever it is.")
 					gosub *chat_select
 					if ( chatval != 1 ) {
 						chatMore lang("ふぅん。", "Huh."), strmore

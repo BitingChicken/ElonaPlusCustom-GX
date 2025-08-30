@@ -1463,7 +1463,7 @@
 	}
 	if ( card(0, CREATURE_ID_HEART_WITCH) < 13 | card(0, CREATURE_ID_DIAMOND_EYES) < 13 | card(0, CREATURE_ID_CLUB_FEATHER) < 13 | card(0, CREATURE_ID_SPADE_WARRIOR) < 13 ) {
 		currentthing@tcg = 23
-		cardprice@tcg(currentthing@tcg) = 1000
+		cardprice@tcg(currentthing@tcg) = 1000 * (1 + limit(limit(limit(card(0, CREATURE_ID_HEART_WITCH), 0, card(0, CREATURE_ID_DIAMOND_EYES)), 0, card(0, CREATURE_ID_CLUB_FEATHER)), 0, card(0, CREATURE_ID_SPADE_WARRIOR)))
 		cardsetcontent@tcg(0, currentthing@tcg) = CREATURE_ID_HEART_WITCH, CREATURE_ID_DIAMOND_EYES, CREATURE_ID_CLUB_FEATHER, CREATURE_ID_SPADE_WARRIOR
 		cardsetdesc@tcg(currentthing@tcg) = lang("最近「ポーカー」と呼ばれる52枚のカードが入ったデックを手に入れたんだ。僕はこのデッキをプレイするつもりはないんだけど、コレクターの間ではかなり人気があるみたいなんだ。そこで、このデッキのカードを1枚ずつバンドルして売るんだけど、買わない？", "I recently came into possession of a rather... unusual deck of 52 cards, called 'poker' apparently. I have no particular interest in playing this game myself, but it seems to be quite the collectors' item. So, in an effort to clear some space, I've decided to sell bundles containing a single copy of each suit from this deck. Fancy a set, perchance? \n[Contains]\n1 Spade Warrior.\n1 Club Feather.\n1 Diamond Eyes.\n1 Heart Witch.")
 		if ( cpicurr@tcg >= cardpage@tcg * cpimax@tcg & cpicurr@tcg < (cardpage@tcg + 1) * cpimax@tcg) {
@@ -8053,7 +8053,7 @@
 		cardreflvl = 30
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 2
-		cardrefcost = 3
+		cardrefcost = 4
 		cardrefattack = 8
 		cardrefhp = 8
 		cardrefskillid = TCG_EFF_ONGOING_INCREASECOSTEACH3TOTALTURN

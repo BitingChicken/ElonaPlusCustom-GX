@@ -6813,7 +6813,7 @@
 	}
 	if ( dbid == CREATURE_ID_FLASH_WYVERN ) {
 		cardreftype = 10
-		cardrefskill = lang("進化の過程で生まれた竜の亜種にしてワイバーンの最終形態。狙撃と連射を得意とし、瞬く閃光のように次々にターゲットを撃ち抜いていく。", "A spaghetti-like monster from a different universe. It has a habit of resting its tentacles on a person's head. There is a theory that this encounter with the monster was a catalyst for the birth of a parody religion…")
+		cardrefskill = lang("進化の過程で生まれた竜の亜種にしてワイバーンの最終形態。狙撃と連射を得意とし、瞬く閃光のように次々にターゲットを撃ち抜いていく。", "A spaghetti-like monster from a different universe. It has a habit of resting its tentacles on a person's head. There is a theory that this encounter with the monster was a catalyst for the birth of a parody religion...")
 		cardrefdomain = 4
 		cardrefrare = 30
 		cardrefcost = 0
@@ -8243,7 +8243,7 @@
 	}
 	if ( dbid == CREATURE_ID_SILENT_LEECH ) {
 		cardreftype = 10
-		cardrefskill = lang("音もなく静かに獲物に忍び寄る。だがその図体のせいですぐに見つかってしまう。一応、霧を発生させるなどの工夫はするのだが…。", "They creep up on their prey quietly and without sound. But because of its figure it was soon discovered. It's trying to create a fog but…")
+		cardrefskill = lang("音もなく静かに獲物に忍び寄る。だがその図体のせいですぐに見つかってしまう。一応、霧を発生させるなどの工夫はするのだが…。", "They creep up on their prey quietly and without sound. But because of its figure it was soon discovered. It's trying to create a fog but...")
 		cardrefdomain = 3
 		cardrefrare = 100
 		cardrefcost = 0

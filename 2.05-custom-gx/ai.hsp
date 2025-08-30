@@ -739,7 +739,7 @@
 						if ( cdata(CDATA_Y, CHARA_PLAYER) > cdata(CDATA_Y, cc) - 10 & cdata(CDATA_Y, CHARA_PLAYER) < cdata(CDATA_Y, cc) + 10 ) {
 							if ( cdata(CDATA_ROW_ACT, CHARA_PLAYER) != ACTION_PERFORM ) {
 								if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cc) == FALSE ) {
-									if ( cc >= MAX_CHARA_FOLLOWER ) {
+									if ( cc >= MAX_CHARA_FOLLOWER & cdata(CDATA_RELATION, cc) != RELATION_ALLY ) {
 										if ( cdata(CDATA_AI_AGGRO, cc) <= 0 ) {
 											customtalk cc, DBMODE_FLAVOR_PASSIVE
 											gosub *convert_word
@@ -750,8 +750,7 @@
 												gosub *convert_word
 											}
 										}
-									}
-									if ( cc < MAX_CHARA_FOLLOWER ) {
+									} else {
 										if ( cdata(CDATA_AI_AGGRO, cc) >= 0 ) {
 											customtalk cc, DBMODE_FLAVOR_PASSIVE
 											gosub *convert_word
