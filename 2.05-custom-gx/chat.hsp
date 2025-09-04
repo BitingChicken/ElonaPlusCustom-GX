@@ -5513,13 +5513,13 @@
 					gdata(GDATA_FLAG_SUB_GUILD_FIGHTER) = 1
 					txt_questupdate
 					gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) = 1
-					gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL) = rnd(8)
-					gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) = 5
-					chatMore lang("" + gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) + "階相当以上の" + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL)) + "のランダムネフィアを" + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + "個制覇するのが、お前に課せられた試験だ。ノルマを達成したら、私に報告したまえ。", "The task given to you is this. Find and conquer " + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + " random " + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL)) + " Nefia of level " + gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) + " or more. Talk to me again when you complete this.")
+					gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE) = rnd(8)
+					gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) = 5
+					chatMore lang("" + gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) + "階相当以上の" + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE)) + "のランダムネフィアを" + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + "個制覇するのが、お前に課せられた試験だ。ノルマを達成したら、私に報告したまえ。", "The task given to you is this. Find and conquer " + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + " random " + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE)) + " Nefia of level " + gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) + " or more. Talk to me again when you complete this.")
 					goto *chat_unique
 				}
 				if ( gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) > 0 ) {
-					chatMore lang("どうした？試験の内容は伝えたはずだ。" + gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) + "階相当以上の" + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL)) + "のランダムネフィアを" + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + "個制覇してからまた来なさい。", "You still need to conquer " + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + " random " + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL)) + " Nefia of level " + gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) + " or more.")
+					chatMore lang("どうした？試験の内容は伝えたはずだ。" + gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) + "階相当以上の" + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE)) + "のランダムネフィアを" + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + "個制覇してからまた来なさい。", "You still need to conquer " + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + " random " + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE)) + " Nefia of level " + gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) + " or more.")
 					goto *chat_unique
 				}
 				chatMore lang("ほう…どうやらノルマを見事に達成したようだな。", "Quite impressive... You have accomplished the task.")
@@ -5568,11 +5568,11 @@
 		gosub *chat_select
 		if ( chatval == 1 ) {
 			gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) = 1
-			gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL) = rnd(8)
-			gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) = 30 - gdata(GDATA_RANK_GUILD) / 400
+			gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE) = rnd(8)
+			gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) = 30 - gdata(GDATA_RANK_GUILD) / 400
 			gdata(GDATA_FLAG_SUB_FIGHTER_1) = 1
 			txt_questupdate
-			chatMore lang("良い心がけです。あなたにランク昇格のためのノルマを与えましょう。" + gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) + "階相当以上の" + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL)) + "のランダムネフィアを" + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + "個制覇してからまた来なさい。昇進のための審査会に報告してあげましょう。", "There's a task for you. Go find and conquer " + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + " random " + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL)) + " Nefia of level " + gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) + " or more. Then we will think about your promotion."), strbye
+			chatMore lang("良い心がけです。あなたにランク昇格のためのノルマを与えましょう。" + gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) + "階相当以上の" + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE)) + "のランダムネフィアを" + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + "個制覇してからまた来なさい。昇進のための審査会に報告してあげましょう。", "There's a task for you. Go find and conquer " + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + " random " + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE)) + " Nefia of level " + gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) + " or more. Then we will think about your promotion."), strbye
 			goto *chat_unique
 		}
 		if ( chatval == 2 ) {
@@ -9261,11 +9261,11 @@
 		gosub *chat_select
 		if ( chatval == 1 ) {
 			gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) = 1
-			gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL) = rnd(8)
-			gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) = 40 - gdata(GDATA_RANK_GUILD) / 400
+			gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE) = rnd(8)
+			gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) = 40 - gdata(GDATA_RANK_GUILD) / 400
 			gdata(GDATA_FLAG_SUB_FIGHTER_1) = 1
 			txt_questupdate
-			chatMore lang("良い心がけだ。お前にランク昇格のためのノルマを与えよう。" + gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) + "階相当以上の" + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL)) + "のランダムネフィアを" + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + "個制覇してからまた来なさい。本部に報告してあげよう。", "There's a task for you. Go find and conquer " + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + " random " + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL)) + " Nefia of level " + gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) + " or more. Then we will consider about your promotion."), strbye
+			chatMore lang("良い心がけだ。お前にランク昇格のためのノルマを与えよう。" + gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) + "階相当以上の" + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE)) + "のランダムネフィアを" + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + "個制覇してからまた来なさい。本部に報告してあげよう。", "There's a task for you. Go find and conquer " + gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) + " random " + _nefiatype(gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE)) + " Nefia of level " + gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_MIN_LEVEL) + " or more. Then we will consider about your promotion."), strbye
 			goto *chat_unique
 		}
 		if ( chatval == 2 ) {

@@ -906,7 +906,7 @@
 		txt lang("ジャーナルが更新された。", "Your journal has been updated.")
 		if ( gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) > 0 ) {
 			gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) = 15
-			gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL) = rnd(8)
+			gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE) = rnd(8)
 			gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) = 0
 		}
 		if ( gdata(GDATA_FLAG_GUILD_MAGE_NORMA) > 0 ) {
@@ -1589,6 +1589,12 @@
 	sdim userdatan2, 40, 10, usernpcmax + 1
 	buffer 100, 16 * 80, (usernpcmax / 16 + 1) * 112
 	/********** OOMSESTEPNC - EXTRA CNPC CONFIG - ENDING *********/
+	/********** JAMES CUSTOM - GREYSCALE GOLDEN DOLL - BEGINNING **********/
+	buffer 101, SPRITE_SHEET_COLS_CHARA * 48 + 10, (SPRITE_SHEET_ROWS_CHARA + (usernpcmax / SPRITE_SHEET_COLS_CHARA + 1) * 2) * 48 + 10
+	color 0, 0, 0
+	boxf 0, 0, SPRITE_SHEET_COLS_CHARA * 48, (SPRITE_SHEET_ROWS_CHARA + (usernpcmax / SPRITE_SHEET_COLS_CHARA + 1) * 2) * 48
+	dim greyscaleflag, SPRITE_SHEET_COLS_CHARA * SPRITE_SHEET_ROWS_CHARA + 240 
+	/********** JAMES CUSTOM - GREYSCALE GOLDEN DOLL - ENDING **********/
 	gmode 0
 	fread = 1
 	proc "userNpc_update:1"
@@ -4351,6 +4357,8 @@
     loop
 	gsel 100 // CNPC portrait from Omake
 	bmpsave exedir + "tmp\\" + 100 + ".bmp"
+	gsel 101 // Greyscale buffer for golden doll rendering
+	bmpsave exedir + "tmp\\" + 101 + ".bmp"
     gsel BUFFER_SCREEN
     return
 

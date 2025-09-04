@@ -1128,10 +1128,15 @@
 			gsel selcur
 			return
 		}
+		; pos 0, 1055 - chipc(CHIPC_HEIGHT, cch)
+		; gcopy BUFFER_CHR, chipc(CHIPC_X, cch), chipc(CHIPC_Y, cch), chipc(CHIPC_WIDTH, cch), chipc(CHIPC_HEIGHT, cch)
+		/********** JAMES CUSTOM - GREYSCALE GOLDEN DOLL - BEGINNING **********/
+		registergreyscaleimage cch
 		pos 0, 1055 - chipc(CHIPC_HEIGHT, cch)
-		gcopy BUFFER_CHR, chipc(CHIPC_X, cch), chipc(CHIPC_Y, cch), chipc(CHIPC_WIDTH, cch), chipc(CHIPC_HEIGHT, cch)
+		gcopy 101, chipc(CHIPC_X, cch), chipc(CHIPC_Y, cch), chipc(CHIPC_WIDTH, cch), chipc(CHIPC_HEIGHT, cch)
+		/********** JAMES CUSTOM - GREYSCALE GOLDEN DOLL - ENDING **********/
 		gfini chipi(CHIPI_WIDTH, ich), chipi(CHIPI_HEIGHT, ich)
-		gfdec2 0, 0, 255
+		gfdec2 0, 40, 255
 		gsel selcur
 		return
 	}
@@ -1907,6 +1912,20 @@
 						pos locvar_cell_draw_dx, locvar_cell_draw_dy - lightdata(LIGHTDATA_Y, locvar_cell_draw_p)
 						gmode 5, inf_tiles, inf_tiles, lightdata(LIGHTDATA_BRIGHT, locvar_cell_draw_p) + rnd(lightdata(LIGHTDATA_FLICK, locvar_cell_draw_p) + 1)
 						gcopy 3, 192 + lightdata(LIGHTDATA_PIC, locvar_cell_draw_p) * 48 + rnd(lightdata(LIGHTDATA_ANIM, locvar_cell_draw_p) + 1) * inf_tiles, 704
+						
+						// Extra light effect for higher golden dolls
+						if ( map(locvar_cell_draw_x, locvar_cell_draw_y, MAP_ITEM_CHIPS_MEMORY) > 0 ) {
+							if ( wpeek(map(locvar_cell_draw_x, locvar_cell_draw_y, MAP_ITEM_CHIPS_MEMORY), 0) == xy2pic(18, 36) ) {
+								locvar_cell_draw_gdpic = wpeek(map(locvar_cell_draw_x, locvar_cell_draw_y, MAP_ITEM_CHIPS_MEMORY), 2)
+								if ( locvar_cell_draw_gdpic >= 0 & locvar_cell_draw_gdpic < SPRITE_SHEET_COLS_CHARA * SPRITE_SHEET_ROWS_CHARA + 240 ) {
+									if ( chipc(CHIPC_HEIGHT, locvar_cell_draw_gdpic) == 96 ) {
+										pos locvar_cell_draw_dx, locvar_cell_draw_dy - lightdata(LIGHTDATA_Y, locvar_cell_draw_p) - 48
+										gmode 5, inf_tiles, inf_tiles, lightdata(LIGHTDATA_BRIGHT, locvar_cell_draw_p) + rnd(lightdata(LIGHTDATA_FLICK, locvar_cell_draw_p) + 1)
+										gcopy 3, 192 + lightdata(LIGHTDATA_PIC, locvar_cell_draw_p) * 48 + rnd(lightdata(LIGHTDATA_ANIM, locvar_cell_draw_p) + 1) * inf_tiles, 704
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -5146,3 +5165,36 @@
 		}
 	loop
 	return
+
+/********** JAMES CUSTOM - GREYSCALE GOLDEN DOLL - BEGINNING **********/
+#deffunc registergreyscaleimage int grescaleimg_arg_c
+	if ( grescaleimg_arg_c < 0 | grescaleimg_arg_c >= SPRITE_SHEET_COLS_CHARA * SPRITE_SHEET_ROWS_CHARA + 240 ) { return }
+	if ( length(greyscaleflag) <= 2 ) { return	}
+	if ( greyscaleflag(grescaleimg_arg_c) != 0 ) { return }
+	gmode 0
+	gsel 101
+	pos chipc(CHIPC_X, grescaleimg_arg_c), chipc(CHIPC_Y, grescaleimg_arg_c)
+	gcopy BUFFER_CHR, chipc(CHIPC_X, grescaleimg_arg_c), chipc(CHIPC_Y, grescaleimg_arg_c), chipc(CHIPC_WIDTH, grescaleimg_arg_c), chipc(CHIPC_HEIGHT, grescaleimg_arg_c)
+	greyscaleitembuffer chipc(CHIPC_X, grescaleimg_arg_c), chipc(CHIPC_Y, grescaleimg_arg_c), chipc(CHIPC_WIDTH, grescaleimg_arg_c), chipc(CHIPC_HEIGHT, grescaleimg_arg_c)
+	gmode 2
+	gsel BUFFER_ITEM
+	greyscaleflag(grescaleimg_arg_c) = 1
+	return
+
+#deffunc greyscaleitembuffer int grescaleimg_arg_x, int grescaleimg_arg_y, int grescaleimg_arg_w, int grescaleimg_arg_h
+	repeat grescaleimg_arg_w, grescaleimg_arg_x
+		gpx = cnt
+		repeat grescaleimg_arg_h, grescaleimg_arg_y
+			gpy = cnt
+			// RGB is ginfo(16), ginfo(17), ginfo(18)
+			pget gpx, gpy
+			gpmin = limit(limit(ginfo(16), 0, ginfo(17)), 0, ginfo(18))
+			gpmax = limit(limit(ginfo(16), ginfo(17), 255), ginfo(18), 255)
+			gpavg = limit((gpmin + gpmax * 2) / 3, 0, 255)
+			// gpqik = (ginfo(16) + ginfo(17) + ginfo(18)) / 3
+			color gpavg, gpavg, gpavg
+			pset gpx, gpy
+		loop
+	loop
+	return
+/********** JAMES CUSTOM - GREYSCALE GOLDEN DOLL - ENDING **********/
