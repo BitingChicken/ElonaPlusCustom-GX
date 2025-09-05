@@ -5374,7 +5374,7 @@
 		sx = cdata(CDATA_X, camera) - scx, cdata(CDATA_X, camera)
 		sy = cdata(CDATA_Y, camera) - scy, cdata(CDATA_Y, camera)
 	}
-	if ( tatcfound@CGX ) {
+	if ( tatcfound@CGX ) {  // JAMES CUSTOM - Mainscreen Tachi-e tweak
 		sx += 3
 	}
 	if ( cfg_alwayscenter ) {
@@ -5395,8 +5395,8 @@
 			scy = sy(1) - (inf_screenh - scposy - 1)
 		}
 	}
-	if ( scx + inf_screenw >= mdata(MDATA_WIDTH) ) {
-		scx = mdata(MDATA_WIDTH) - inf_screenw
+	if ( scx + inf_screenw >= mdata(MDATA_WIDTH) + tatcfound@CGX * 6 ) {
+		scx = mdata(MDATA_WIDTH) + tatcfound@CGX * 6 - inf_screenw
 	}
 	if ( scy + inf_screenh >= mdata(MDATA_HEIGHT) ) {
 		scy = mdata(MDATA_HEIGHT) - inf_screenh

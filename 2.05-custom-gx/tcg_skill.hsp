@@ -3135,6 +3135,55 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	
+	if ( _switch_val@tcg == TCG_SKILL_EFF_BEILGENA | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			aeftcontroller@tcg = card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			card@tcg(TCG_CARD_X_MOVETO, aeft@tcg) = basex@tcg + 424
+			card@tcg(TCG_CARD_LOCATION, aeft@tcg) = TCG_LOCATION_ANIM
+			tcgpass 60
+			organizeboard
+			card@tcg(TCG_CARD_Y_MOVETO, aeft@tcg) = graveiy@tcg(aeftcontroller@tcg)
+			card@tcg(TCG_CARD_LOCATION, aeft@tcg) = TCG_LOCATION_FIELD
+			tcgpass 60
+			efllistaddcard 18, aeft@tcg
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != aeftcontroller@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD ) { continue }
+				if ( cnt == aeft@tcg ) { continue }
+				card@tcg(TCG_CARD_TEMP, cnt) = 1
+			loop
+			repeat 9
+				gap@tcg = basex@tcg + 424 - cnt * 40, basex@tcg + 424 + 72 + cnt * 40
+				repeat maxcard@tcg
+					if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != aeftcontroller@tcg ) { continue }
+					if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD ) { continue }
+					if ( card@tcg(TCG_CARD_TEMP, cnt) != 1 ) { continue }
+					if ( card@tcg(TCG_CARD_X, cnt) <= gap@tcg(1) & card@tcg(TCG_CARD_X, cnt) + 72 >= gap@tcg(0) ) {
+						if ( card@tcg(TCG_CARD_X, cnt) < card@tcg(TCG_CARD_X, aeft@tcg) ) {
+							card@tcg(TCG_CARD_HP, cnt) += 2
+							card@tcg(TCG_CARD_REF_HP, cnt) += 2
+							card@tcg(TCG_CARD_ATTACK, cnt) += 2
+							card@tcg(TCG_CARD_REF_ATTACK, cnt) += 2
+							efllistaddcard 6, cnt
+						}
+						if ( card@tcg(TCG_CARD_X, cnt) > card@tcg(TCG_CARD_X, aeft@tcg) ) {
+							card@tcg(TCG_CARD_REF_COST, cnt) -= 2
+							card@tcg(TCG_CARD_COST, cnt) -= 2
+							efllistaddcard 5, cnt
+						}
+						card@tcg(TCG_CARD_TEMP, cnt) = 0
+					}
+				loop
+				tcgpass 30
+			loop
+			organizeboard
+			tcgdraw
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_EVOLVERORAN | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {

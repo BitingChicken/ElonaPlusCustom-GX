@@ -2327,6 +2327,7 @@ if instr(s,0,%1)!-1{	%c\
 	buffer 6, SPRITE_SHEET_COLS_ITEM * inf_tiles, SPRITE_SHEET_ROWS_ITEM * inf_tiles
 	buffer 7, 24, 24
 	buffer 9, 24, 24
+	buffer 998, 24, 24 // JAMES CUSTOM - Mainscreen Tachi-e tweak
 	proc "dim"
 	dim initeq, 2, 50
 	dup eqhelm, initeq(0, 0)

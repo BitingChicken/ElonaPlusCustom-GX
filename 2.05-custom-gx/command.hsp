@@ -11202,6 +11202,14 @@
 	p = 0
 *com_item_mark_loop
 	gosub *screen_draw
+	await cfg_wait1
+	key_check
+	cursor_check
+	/********** MMAHACK - MOUSE OPERATION - BEGINNING **********/
+	if ( cfg_mmah_mouseoperation ) {
+		cursor_check@MMAH
+	}
+	/********** MMAHACK - MOUSE OPERATION - ENDING **********/
 	getkey p, 13
 	if ( p ) {
 		snd SOUNDLIST_PORT
@@ -11341,16 +11349,9 @@
 		snd SOUNDLIST_CURSOR1
 	}
 	redraw 1
-	await cfg_wait1
-	key_check
-	cursor_check
-	/********** MMAHACK - MOUSE OPERATION - BEGINNING **********/
-	if ( cfg_mmah_mouseoperation ) {
-		cursor_check@MMAH
-	}
-	/********** MMAHACK - MOUSE OPERATION - ENDING **********/
 	goto *com_item_mark_loop
 
+// Unused in cgx, all functionality is added to the above code.
 *com_item_mark_adjust
 	bkiteml = cdata(CDATA_MARK_ITEM_ADJUST_L, tc)
 	bkitemw = cdata(CDATA_MARK_ITEM_ADJUST_W, tc)
@@ -11364,6 +11365,14 @@
 	p = 0
 *com_item_mark_adjust_loop
 	gosub *screen_draw
+	await cfg_wait1
+	key_check
+	cursor_check
+	/********** MMAHACK - MOUSE OPERATION - BEGINNING **********/
+	if ( cfg_mmah_mouseoperation ) {
+		cursor_check@MMAH
+	}
+	/********** MMAHACK - MOUSE OPERATION - ENDING **********/
 	getkey p, 13
 	if ( p ) {
 		snd SOUNDLIST_PORT
@@ -11424,14 +11433,6 @@
 		snd SOUNDLIST_CURSOR1
 	}
 	redraw 1
-	await cfg_wait1
-	key_check
-	cursor_check
-	/********** MMAHACK - MOUSE OPERATION - BEGINNING **********/
-	if ( cfg_mmah_mouseoperation ) {
-		cursor_check@MMAH
-	}
-	/********** MMAHACK - MOUSE OPERATION - ENDING **********/
 	goto *com_item_mark_adjust_loop
 
 *com_tachi_e

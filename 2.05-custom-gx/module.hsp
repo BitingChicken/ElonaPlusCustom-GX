@@ -1398,6 +1398,7 @@
 	// Draw the out-of-sight shadow, stored in slight(locvar_cell_draw_x, locvar_cell_draw_y).
 	cell_draw_pov_shadow
 
+	tatcfound@CGX = 0
 	if ( gdata(GDATA_AREA) != AREA_PET_ARENA & TweakData(TWEAK_MISC_DRAW_TACHI_E_MAINSCREEN, TWEAK_CATEGORY_MISC) > 0 ) {
 		tatc@CGX = -1
 		if ( TweakData(TWEAK_MISC_DRAW_TACHI_E_MAINSCREEN, TWEAK_CATEGORY_MISC) == 1 ) {
@@ -1417,19 +1418,18 @@
 				}
 			loop
 		}
-		tatcfound@CGX = 0
 		if ( tatc@CGX >= 0 ) {
 			if ( cdata(CDATA_FACE, tatc@CGX) > 0 ) {
 				stati = getTachiE(tatc@CGX, exedir + "\\user\\graphic2\\face_error.bmp")
 				exist stati
 				if ( strsize != (-1) ) {
 					gmode 2
-					gsel BUFFER_PIC2
+					gsel 998
 					pos 0, 0
 					picload stati
 					gsel BUFFER_SCREEN
 					pos windoww - 300, windowh - 588
-					gcopy BUFFER_PIC2, 0, 0, 300, 500
+					gcopy 998, 0, 0, 300, 500
 					gsel selcur
 					tatcfound@CGX = 1
 				}
@@ -3153,7 +3153,7 @@
 					// Draw complete hidden tiles.
 					locvar_cell_draw_p2 = (locvar_cell_draw_p - 1000) \ 16
 					locvar_cell_draw_i = 0
-					if ( locvar_cell_draw_p2 == 15 ) {
+					if ( locvar_cell_draw_p2 == 15 | locvar_cell_draw_p2 < 0 | locvar_cell_draw_p2 > 16 ) {
 						locvar_cell_draw_p2 = (locvar_cell_draw_p - 1000) \ 256
 						if ( locvar_cell_draw_p2 == 127 ) {
 							locvar_cell_draw_i = 13
