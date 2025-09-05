@@ -1136,7 +1136,7 @@
 		gcopy 101, chipc(CHIPC_X, cch), chipc(CHIPC_Y, cch), chipc(CHIPC_WIDTH, cch), chipc(CHIPC_HEIGHT, cch)
 		/********** JAMES CUSTOM - GREYSCALE GOLDEN DOLL - ENDING **********/
 		gfini chipi(CHIPI_WIDTH, ich), chipi(CHIPI_HEIGHT, ich)
-		gfdec2 0, 40, 255
+		gfdec2 0, 50, 255
 		gsel selcur
 		return
 	}
@@ -2190,6 +2190,7 @@
 		locvar_cell_draw_col = 0
 		locvar_cell_draw_p = cdata(CDATA_PIC, cell_draw_arg_c)
 	}
+	if ( locvar_cell_draw_p < 0 | locvar_cell_draw_p >= SPRITE_SHEET_COLS_CHARA * SPRITE_SHEET_ROWS_CHARA + 240 ) { return }
 	cell_draw_arg_chipcf = chipc(CHIPC_F, locvar_cell_draw_p)
 	// Draw the sandbag effect. (Sand bag can't be used on pet, and only pet and player can have PCC)
 	if ( cbit(CHARA_BIT_SANDBAG, cell_draw_arg_c) ) {

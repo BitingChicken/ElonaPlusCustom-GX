@@ -3,12 +3,16 @@
 # Added
 - Two UI tweaks to change how item is drawn in inventory.
 
-# Fixed
+# Changed
+- Golden dolls are now rendered differently.
 - Split longer profile backstories into multi-lines to prevent overlap.
-- Fixed cutins of some shape-changed characters not showing up.
+
+# Fixed
+- (Plus) Fixed a crash when shift-cores and mimirrocry are used simutaneously.
+- (Plus) Fixed cut-ins of some shape-changed characters not showing up due to not detecting custom image.
 - Fixed equipment screen and weapon swing animation not drawing 48x96 items fully.
-- Fixed some graphic and sound issue when talking with a CNPC
-- Fixed non-looping music gets looped, and looping did not skip the beginning of a bgm.
+- Fixed some graphical and sound issue when talking with a CNPC.
+- Fixed GGSMF4 causing non-looping music gets looped, and looping did not skip the beginning of a bgm.
 - Fixed a water tile issue.
 
 # TCG
