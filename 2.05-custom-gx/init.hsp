@@ -539,7 +539,7 @@ if instr(s,0,%1)!-1{	%c\
 		if ( inv(INV_ITEM_AMUR_CAGE, getunid_ci) == omakechecksum(userdatan(0, cnt)) ) {
 			locvar_getunid_s = userdatan(1, cnt)
 			// Fix figurine/card image upon finding a match
-			if ( inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_CARD | inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_FIGURINE ) {
+			if ( inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_CARD | inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_FIGURINE | inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_GOLDEN_DOLL | (inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_CORPSE & inv(INV_ITEM_PARAM2, getunid_ci) = 10) ) {
 				inv(INV_ITEM_COL, getunid_ci) = SPRITE_SHEET_COLS_CHARA * SPRITE_SHEET_ROWS_CHARA + cnt
 			}
 			break
@@ -547,7 +547,7 @@ if instr(s,0,%1)!-1{	%c\
 	loop
 	// If no such CNPC is found, set image to image 1 (default player, the guy that looks like mani)
 	if ( locvar_getunid_s == "unknown user" ) {
-		if ( inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_CARD | inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_FIGURINE ) {
+		if ( inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_CARD | inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_FIGURINE | inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_GOLDEN_DOLL | (inv(INV_ITEM_ID, getunid_ci) == ITEM_ID_CORPSE & inv(INV_ITEM_PARAM2, getunid_ci) = 10) ) {
 			inv(INV_ITEM_COL, getunid_ci) = 1
 		}
 	}

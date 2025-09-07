@@ -4737,10 +4737,22 @@
 	cnv_str fix_wish_arg1, "はく製", ""
 	cnv_str fix_wish_arg1, "のカード", ""
 	cnv_str fix_wish_arg1, "カード", ""
+	cnv_str fix_wish_arg1, "の黄金像", ""
+	cnv_str fix_wish_arg1, "黄金像", ""
+	cnv_str fix_wish_arg1, "の肉人形", ""
+	cnv_str fix_wish_arg1, "肉人形", ""
+	cnv_str fix_wish_arg1, "card of ", ""
 	cnv_str fix_wish_arg1, "card ", ""
-	cnv_str fix_wish_arg1, "figure ", ""
 	cnv_str fix_wish_arg1, "card", ""
+	cnv_str fix_wish_arg1, "figure of ", ""
+	cnv_str fix_wish_arg1, "figure ", ""
 	cnv_str fix_wish_arg1, "figure", ""
+	cnv_str fix_wish_arg1, "golden doll of ", ""
+	cnv_str fix_wish_arg1, "golden doll ", ""
+	cnv_str fix_wish_arg1, "golden doll", ""
+	cnv_str fix_wish_arg1, "flesh doll of ", ""
+	cnv_str fix_wish_arg1, "flesh doll ", ""
+	cnv_str fix_wish_arg1, "flesh doll", ""
 	return
 
 #deffunc fix_input_chat var fix_input_chat_arg1
@@ -5183,10 +5195,12 @@
 	return
 
 #deffunc greyscaleitembuffer int grescaleimg_arg_x, int grescaleimg_arg_y, int grescaleimg_arg_w, int grescaleimg_arg_h
-	repeat grescaleimg_arg_w, grescaleimg_arg_x
-		gpx = cnt
-		repeat grescaleimg_arg_h, grescaleimg_arg_y
-			gpy = cnt
+	// Due to a HSP bug, boxf draws a minimal square of 2x2, so we cycle the pixels in reverse order.
+	// And pset function does not have highDPI support.
+	repeat grescaleimg_arg_w
+		gpx = grescaleimg_arg_w - 1 - cnt + grescaleimg_arg_x
+		repeat grescaleimg_arg_h
+			gpy = grescaleimg_arg_h - 1 - cnt + grescaleimg_arg_y
 			// RGB is ginfo(16), ginfo(17), ginfo(18)
 			pget gpx, gpy
 			gpmin = limit(limit(ginfo(16), 0, ginfo(17)), 0, ginfo(18))
@@ -5194,7 +5208,7 @@
 			gpavg = limit((gpmin + gpmax * 2) / 3, 0, 255)
 			// gpqik = (ginfo(16) + ginfo(17) + ginfo(18)) / 3
 			color gpavg, gpavg, gpavg
-			pset gpx, gpy
+			boxf gpx, gpy, gpx + 1, gpy + 1
 		loop
 	loop
 	return

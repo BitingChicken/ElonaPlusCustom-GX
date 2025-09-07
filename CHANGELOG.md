@@ -2,6 +2,7 @@
 
 # Added
 - Two UI tweaks to change how item is drawn in inventory.
+- Allows wishing for golden dolls and flesh dolls.
 
 # Changed
 - Golden dolls are now rendered differently.
@@ -18,6 +19,7 @@
 
 # TCG
 - Nerfed Unit-Deads to prevent FTK.
+- 'Copy Card' effect now copy every stat of target card, except Card Cost.
 - Fixed Itzpalt field effect makes you discard one more card.
 
 # 2.28.2.0

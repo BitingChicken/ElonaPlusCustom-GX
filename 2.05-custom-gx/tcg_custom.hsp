@@ -15306,9 +15306,9 @@
 		cardreflvl = 55
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 4
+		cardrefcost = 6
 		cardrefattack = 2
-		cardrefhp = 6
+		cardrefhp = 2
 		cardrefskillid = TCG_EFF_REVLUS
 		cardrefbits = "69"
 		return 1
@@ -15320,7 +15320,7 @@
 		cardreflvl = 38
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 3
+		cardrefcost = 4
 		cardrefattack = 1
 		cardrefhp = 1
 		cardrefskillid = TCG_EFF_LEXUS

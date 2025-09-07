@@ -3135,7 +3135,6 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
-	
 	if ( _switch_val@tcg == TCG_SKILL_EFF_BEILGENA | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
@@ -3542,6 +3541,9 @@
 				create_extra_card card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), card@tcg(TCG_CARD_REF_DBID, aeft@tcg)
 				if ( cextra@tcg >= 0 ) {
 					card@tcg(TCG_CARD_CONTROLLER, cextra@tcg) = ap@tcg
+					card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_FIELD
+					card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+					costbk@tcg = card@tcg(TCG_CARD_REF_COST, cextra@tcg)
 					repeat 42, 8
 						card@tcg(cnt, cextra@tcg) = card@tcg(cnt, aeft@tcg)
 					loop
@@ -3550,6 +3552,10 @@
 					loop
 					carddetailn@tcg(cextra@tcg) = carddetailn@tcg(aeft@tcg)
 					carddetailneff@tcg(cextra@tcg) = carddetailneff@tcg(aeft@tcg)
+					// Nerf - If cost is copied its too strong.
+					if ( card@tcg(TCG_CARD_REF_COST, cextra@tcg) < costbk@tcg ) {
+						card@tcg(TCG_CARD_REF_COST, cextra@tcg) = costbk@tcg
+					}
 					gettargetcard cextra@tcg
 				}
 				makecardlist

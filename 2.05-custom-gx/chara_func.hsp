@@ -7914,6 +7914,7 @@
 				itemcreate -1, ITEM_ID_FIGURINE, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid), 0
 				inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, dmghp_charid) \ COLOR_TINT_MULT + picols * COLOR_TINT_MULT
 				inv(INV_ITEM_SUB_NAME, ci) = cdata(CDATA_ID, dmghp_charid)
+				if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_USER ) { inv(INV_ITEM_AMUR_CAGE, ci) = omakechecksum(cdatan(CDATAN_USER_NPC_TAG, dmghp_charid)) } // JAMES CUSTOM - DISPLAY USER PARTS NAME
 				flt
 				itemcreate -1, ITEM_ID_CORPSE, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid), 0
 				remain_make ci, dmghp_charid
