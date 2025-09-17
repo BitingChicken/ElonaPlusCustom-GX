@@ -2262,15 +2262,18 @@
 				// CDATA_MARK_ITEM_PIC's CHIPI_HEIGHT > 48: y - 4
 				pos cell_draw_arg_dx + 12 + cdata(CDATA_MARK_ITEM_X, cell_draw_arg_c) + locvar_draw_cell_tagyshift * 12, cell_draw_arg_dy + 18 + cdata(CDATA_MARK_ITEM_Y, cell_draw_arg_c) + (chipm(CHIPM_ROLE, cell_draw_arg_g) == MAP_CHIP_ROLE_WATER) * 16 - (cbit(CHARA_BIT_SANDBAG, cell_draw_arg_c) == 1) * 24 - (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48) * 4
 				preparePicItem cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c), cdata(CDATA_MARK_ITEM_COL, cell_draw_arg_c)
-				// Player's item mark aren't affected by nearby tiles, so it has a loosened limit.
-				if ( cell_draw_arg_c == CHARA_PLAYER ) {
-					gmode 2, 48, 48
-					grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, 24 + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2, 24 + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2
-				} else {
-					// CDATA_MARK_ITEM_PIC's CHIPI_HEIGHT > 48: hw / 4 instead of hw / 2
-					gmode 2, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)), chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c))
-					grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) / (2 + 2 * (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48)) + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2, chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) / (2 + 2 * (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48)) + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2
-				}
+
+				gmode 2, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)), chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c))
+				grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, 24 + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2, 24 + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2
+				// CGX had different rendering order, the limit is removed, use the same rendering code for higher items.
+				; if ( cell_draw_arg_c == CHARA_PLAYER ) {
+				; 	gmode 2, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)), chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c))
+				; 	grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, 24 + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2, 24 + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2
+				; } else {
+				; 	// CDATA_MARK_ITEM_PIC's CHIPI_HEIGHT > 48: hw / 4 instead of hw / 2
+				; 	gmode 2, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)), chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c))
+				; 	grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) / (2 + 2 * (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48)) + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2, chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) / (2 + 2 * (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48)) + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2
+				; }
 			}
 		}
 	}

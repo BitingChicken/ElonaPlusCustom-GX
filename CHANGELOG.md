@@ -11,7 +11,8 @@
 # Fixed
 - (Plus) Fixed a crash when shift-cores and mimirrocry are used simutaneously.
 - (Plus) Fixed cut-ins of some shape-changed characters not showing up due to not detecting custom image.
-- (Plus) Fixed Item Mark set bug where key check happened before key press.
+- (Plus) Fixed Item Mark set bug where key check happened before key press, and allows support for 48x96 images.
+- (Plus) Blending cursed antiseptic with a flesh doll crashes the game
 - Fixed equipment screen and weapon swing animation not drawing 48x96 items fully.
 - Fixed some graphical and sound issue when talking with a CNPC.
 - Fixed GGSMF4 causing non-looping music gets looped, and looping did not skip the beginning of a bgm.

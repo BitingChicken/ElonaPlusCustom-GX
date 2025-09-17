@@ -11289,6 +11289,9 @@
 		cdata(CDATA_MARK_ITEM_ADJUST_L, tc) = 12
 		cdata(CDATA_MARK_ITEM_ADJUST_W, tc) = 12
 		cdata(CDATA_MARK_ITEM_ADJUST_R, tc) = 0
+		if ( chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, tc)) > 48 ) {
+			cdata(CDATA_MARK_ITEM_ADJUST_L, tc) += 24
+		}
 	}
 	if ( key == "k" ) {
 		snd SOUNDLIST_EQUIP1
@@ -11335,25 +11338,25 @@
 		}
 		snd SOUNDLIST_CURSOR1
 	}
-	if ( key == key_wear ) {
+	if ( key == "w" ) {
 		if ( cdata(CDATA_MARK_ITEM_ADJUST_L, tc) < 36 + 48 ) {
 			cdata(CDATA_MARK_ITEM_ADJUST_L, tc)++
 		}
 		snd SOUNDLIST_CURSOR1
 	}
-	if ( key == key_search ) {
+	if ( key == "s" ) {
 		if ( cdata(CDATA_MARK_ITEM_ADJUST_L, tc) >= (-11) ) {
 			cdata(CDATA_MARK_ITEM_ADJUST_L, tc)--
 		}
 		snd SOUNDLIST_CURSOR1
 	}
-	if ( key == key_drop ) {
+	if ( key == "d" ) {
 		if ( cdata(CDATA_MARK_ITEM_ADJUST_W, tc) < 36 ) {
 			cdata(CDATA_MARK_ITEM_ADJUST_W, tc)++
 		}
 		snd SOUNDLIST_CURSOR1
 	}
-	if ( key == key_skill ) {
+	if ( key == "a" ) {
 		if ( cdata(CDATA_MARK_ITEM_ADJUST_W, tc) >= (-11) ) {
 			cdata(CDATA_MARK_ITEM_ADJUST_W, tc)--
 		}
@@ -14601,7 +14604,12 @@
 			if ( cdata(CDATA_MARK_ITEM_X, tc) == 0 ) { cdata(CDATA_MARK_ITEM_X, tc) == 12 }
 			if ( cdata(CDATA_MARK_ITEM_Y, tc) == 0 ) { cdata(CDATA_MARK_ITEM_Y, tc) == (-10) }
 			if ( cdata(CDATA_MARK_ITEM_ADJUST_W, tc) == 0 ) { cdata(CDATA_MARK_ITEM_ADJUST_W, tc) == 12 }
-			if ( cdata(CDATA_MARK_ITEM_ADJUST_L, tc) == 0 ) { cdata(CDATA_MARK_ITEM_ADJUST_L, tc) == 12 }
+			if ( cdata(CDATA_MARK_ITEM_ADJUST_L, tc) == 0 ) { 
+				cdata(CDATA_MARK_ITEM_ADJUST_L, tc) == 12
+				if ( chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, tc)) > 48 ) {
+					cdata(CDATA_MARK_ITEM_ADJUST_L, tc) += 24
+				}
+			}
 			txt lang(name(tc) + "にアイテム画像を付与した。", "You attached an item mark to " + name(tc) + ".")
 			gosub *screen_draw
 			gosub *com_item_mark

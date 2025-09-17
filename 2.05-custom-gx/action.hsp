@@ -6290,6 +6290,9 @@
 			txt lang(itemname(dipcursed_item) + "は腐ってしまった…", "" + itemname(dipcursed_item) + " rots.")
 			inv(INV_ITEM_ROT, dipcursed_item) = -1
 			inv(INV_ITEM_PIC, dipcursed_item) = xy2pic(6, 10)
+			if ( inv(INV_ITEM_PIC, dipcursed_item) == xy2pic(30, 33) ) {
+				inv(INV_ITEM_COL, dipcursed_item) = COLOR_DEFAULT
+			}
 			cell_refresh inv(INV_ITEM_X, dipcursed_item), inv(INV_ITEM_Y, dipcursed_item)
 			return
 		}
