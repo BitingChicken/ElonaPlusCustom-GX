@@ -5103,7 +5103,7 @@
 		cardreflvl = 111
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 14
+		cardrefcost = 10
 		cardrefattack = 7
 		cardrefhp = 9
 		cardrefskillid = TCG_EFF_CHESTNUTGIANT

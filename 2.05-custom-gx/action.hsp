@@ -562,7 +562,7 @@
 			dmghp tc, (sdata(SKILL_WEAPON_THROWING, cc) + 2) / 2, cc, SKILL_RESDMG_CUT, 500
 			if ( cdata(CDATA_ID, tc) == CREATURE_ID_CHESTNUT_GIANT ) {
 				chatc@DP = tc
-				txt lang("「お、おのれ！卑劣な真似を！」", "Chestnut giant yells, " + cnvtalk("You idiot!"))
+				txt lang("「お、おのれ！卑劣な真似を！」", "Chestnut giant yells, " + cnvtalk("D-despicable you! How dare you!"))
 				dmghp tc, cdata(CDATA_MAX_HP, tc) / 10, cc, SKILL_RESDMG_CHESTNUT, 1000
 			}
 			if ( gdata(GDATA_FLAG_THROWN_CHESTNUTS) < 100 ) {

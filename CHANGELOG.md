@@ -1,5 +1,7 @@
 # Upcoming
 
+# 2.28.2.1
+
 # Added
 - Two UI tweaks to change how item is drawn in inventory.
 - Allows wishing for golden dolls and flesh dolls.

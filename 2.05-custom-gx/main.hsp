@@ -4776,12 +4776,12 @@
 			ci = stat
 			if ( inv(INV_ITEM_NUM, ci) >= 1 ) {
 				inv(INV_ITEM_NUM, ci) = 0
-				txt lang("突然、手持ちの栗をひったくられた！", "Suddenly, a chestnut was snatched from the stores.")
+				txt lang("突然、手持ちの栗をひったくられた！", "Suddenly, someone snatched your chestnuts from your bag!")
 			}
 		}
 		txtef COLOR_RED
 		txtmore
-		txt lang("「栗を粗末にしたのは…お前だなああっ！！」", "Chestnut giant yells, " + cnvtalk("You idiot!"))
+		txt lang("「栗を粗末にしたのは…お前だなああっ！！」", "Chestnut giant yells, " + cnvtalk("It was you who wasted my chestnut, wasn't it!"))
 		goto *event_SWEND1
 	}
 	if ( _switch_val == EVENT_H_SISTER | _switch_sw ) {

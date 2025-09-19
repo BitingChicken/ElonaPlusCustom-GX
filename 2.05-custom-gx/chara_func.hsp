@@ -1878,14 +1878,30 @@
 			}
 		loop
 		if ( locvar_get_freechara_f == 0 ) {
-			repeat
-				locvar_relocate_chara_tc = MAX_CHARA_SAVE + rnd(MAX_CHARA_TOTAL - MAX_CHARA_SAVE)
+			locvar_get_freechara_f@cgx = -1, 0
+			repeat MAX_CHARA_TOTAL - MAX_CHARA_SAVE, MAX_CHARA_SAVE
 				if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_ALIVE ) {
 					if ( cdata(CDATA_ROLE, cnt) == ROLE_NONE ) {
-						break
+						locvar_get_freechara_f@cgx(1)++
+						if ( rnd(locvar_get_freechara_f@cgx(1)) == 0 ) {
+							locvar_get_freechara_f@cgx(0) = cnt
+						}
 					}
 				}
 			loop
+			locvar_relocate_chara_tc = MAX_CHARA_SAVE
+			if ( locvar_get_freechara_f@cgx(0) >= MAX_CHARA_SAVE & locvar_get_freechara_f@cgx(0) < MAX_CHARA_TOTAL ) {
+				locvar_relocate_chara_tc = locvar_get_freechara_f@cgx(0)
+			}
+			; repeat MAX_CHARA_TOTAL - MAX_CHARA_SAVE, MAX_CHARA_SAVE
+			; 	locvar_relocate_chara_tc = MAX_CHARA_SAVE + rnd(MAX_CHARA_TOTAL - MAX_CHARA_SAVE)
+			; 	if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_ALIVE ) {
+			; 		if ( cdata(CDATA_ROLE, cnt) == ROLE_NONE ) {
+			; 			break
+			; 		}
+			; 	}
+			; loop
+			title "Map npc limit reached, removing chara " + locvar_relocate_chara_tc + ": " + cdatan(CDATAN_NAME, locvar_relocate_chara_tc)
 			chara_vanquish locvar_relocate_chara_tc
 		}
 	}
