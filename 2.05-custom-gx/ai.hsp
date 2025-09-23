@@ -529,6 +529,9 @@
 			cdata(CDATA_AI_AGGRO, cc) = 0
 		}
 		if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cdata(CDATA_TARGET, cc)) == TRUE ) {
+			if ( pcattacker == cdata(CDATA_TARGET, cc) ) {
+				pcattacker = 0
+			}
 			cdata(CDATA_TARGET, cc) = 0
 		}
 		if ( cdata(CDATA_TARGET, cc) == 0 | cdata(CDATA_AI_AGGRO, cc) <= 0 | (cdata(CDATA_RELATION, cdata(CDATA_TARGET, cc)) >= (-2) & cdata(CDATA_TARGET, cdata(CDATA_TARGET, cc)) != cc) ) {
@@ -547,7 +550,7 @@
 			}
 			if ( cdata(CDATA_TARGET, CHARA_PLAYER) != 0 ) {
 				if ( cdata(CDATA_EXIST, cdata(CDATA_TARGET, CHARA_PLAYER)) == CHAR_STATE_ALIVE & TweakData(TWEAK_AI_ALLY_INDEPENDENT_TARGETING, TWEAK_CATEGORY_AI) == 0 ) {
-					if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, pcattacker) != TRUE ) {
+					if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cdata(CDATA_TARGET, CHARA_PLAYER)) != TRUE ) {
 						cdata(CDATA_TARGET, cc) = cdata(CDATA_TARGET, CHARA_PLAYER)
 					}
 				}
@@ -1295,7 +1298,7 @@
 	if ( cdata(CDATA_RELATION, cc) < 10 ) {
 		if ( cbit(CHARA_BIT_SANDBAG, tc) | cbit(CHARA_BIT_BEGGING_FOR_LIFE, tc) ) {
 			cdata(CDATA_TARGET, cc) = 0
-			caggro(cc) = 0
+			cdata(CDATA_AI_AGGRO, cc) = 0
 		}
 	}
 	if ( cdata(CDATA_TURN, cc) \ 10 == 1 ) {

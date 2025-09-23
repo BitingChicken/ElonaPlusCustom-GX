@@ -1893,10 +1893,10 @@
 			if ( locvar_get_freechara_f@cgx(0) >= MAX_CHARA_SAVE & locvar_get_freechara_f@cgx(0) < MAX_CHARA_TOTAL ) {
 				locvar_relocate_chara_tc = locvar_get_freechara_f@cgx(0)
 			}
-			; repeat MAX_CHARA_TOTAL - MAX_CHARA_SAVE, MAX_CHARA_SAVE
+			; repeat
 			; 	locvar_relocate_chara_tc = MAX_CHARA_SAVE + rnd(MAX_CHARA_TOTAL - MAX_CHARA_SAVE)
-			; 	if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_ALIVE ) {
-			; 		if ( cdata(CDATA_ROLE, cnt) == ROLE_NONE ) {
+			; 	if ( cdata(CDATA_EXIST, locvar_relocate_chara_tc) == CHAR_STATE_ALIVE ) {
+			; 		if ( cdata(CDATA_ROLE, locvar_relocate_chara_tc) == ROLE_NONE ) {
 			; 			break
 			; 		}
 			; 	}
