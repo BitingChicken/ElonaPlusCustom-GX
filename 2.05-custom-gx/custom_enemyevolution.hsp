@@ -1083,7 +1083,8 @@
     if ( cdata(CDATA_ID, tc@PE) == CREATURE_ID_RAT ) {
         if ( p@PE == 0 ) {
             evname = lang("エレクトリカルマウス", "Electrical Mouse")
-            cdata(CDATA_PIC, tc@PE) = xy2pic(24, 7) + COLOR_YELLOW * COLOR_TINT_MULT
+            cdata(CDATA_CHARA_PIC, tc@PE) = xy2pic(1, 0)
+            cdata(CDATA_PIC, tc@PE) = xy2pic(28, 34) + COLOR_YELLOW * COLOR_TINT_MULT
             evold = lang("ネズミ", "rat")
             skillmod SKILL_ATTR_SPD, tc@PE, 20000
             skillmod SKILL_ATTR_MAG, tc@PE, 30000
