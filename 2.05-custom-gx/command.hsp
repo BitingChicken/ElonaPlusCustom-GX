@@ -6116,7 +6116,7 @@
 	}
 	/********** JAMES CUSTOM - TCG - ENDING **********/
 
-	val = promptx, prompty, 225, 1
+	val = promptx, prompty, 275, 1
 	gosub *prompt_key
 	if ( stat == 0 ) {
 		gosub *screen_draw

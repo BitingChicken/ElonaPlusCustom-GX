@@ -1900,6 +1900,7 @@
 	return
 
 *mapEditor_init
+	dim TweakData, 500, 5
 	inf_screeny = 0
 	inf_screenx = 0
 	windoww = 800

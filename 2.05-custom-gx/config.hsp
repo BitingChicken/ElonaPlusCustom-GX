@@ -118,7 +118,7 @@
 	return
 
 *config_loadCore
-	key_select = "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+	key_select = "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ",", ".", "/", ";", "'"
 	notesel note_buff
 	noteload exedir + "\\config.txt"
 	repeat noteinfo(0)

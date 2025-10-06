@@ -4106,7 +4106,7 @@
 						}
 					}
 					if ( charaGivesExp(check_kill_arg2) & cdata(CDATA_ROLE, check_kill_arg2) != ROLE_BOUNTY_HUNTER & cdata(CDATA_ROLE, check_kill_arg2) != ROLE_GUARD & cbit(CHARA_BIT_CRADLE_15TH, check_kill_arg2) != 1 ) {
-						gain_ap "kill", check_kill_arg1, check_talk_arg2
+						gain_ap "kill", check_kill_arg1, check_kill_arg2
 					}
 				}
 			}

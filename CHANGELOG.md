@@ -2,6 +2,7 @@
 
 # Added
 - Ported all changes from Elona+ 2.29.
+- A misc tweak to draw tag-team-leader slightly to the left to ensure equal spacing.
 
 # Fixed
 - (Plus) Genocide-tail and Hairmet not in Garok's medal exchange list.

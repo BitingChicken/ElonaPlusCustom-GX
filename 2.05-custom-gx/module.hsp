@@ -2023,6 +2023,9 @@
 			}
 		}
 		locvar_draw_cell_tagyshift = (cdata(CDATA_IN_TAGTEAM, CHARA_PLAYER)==1)
+		if ( TweakData(TWEAK_MISC_TAGTEAM_X_OFFSET, TWEAK_CATEGORY_MISC) == 1 ) {
+			locvar_draw_cell_tagyshift = limit(cdata(CDATA_IN_TAGTEAM, CHARA_PLAYER), -1, 1)
+		}
 		cell_draw_chara_mark_item CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py, locvar_cell_draw_ground, 0
 		if ( cdata(CDATA_PIC_MIMIRROCRY, CHARA_PLAYER) <= 0 ) {
 			cell_draw_chara_pcc CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py, locvar_cell_draw_ground, locvar_cell_draw_ani
@@ -2039,6 +2042,9 @@
 
 #deffunc cell_draw_chara int cell_draw_arg_c, int cell_draw_arg_dx, int cell_draw_arg_dy, int cell_draw_arg_g, int cell_draw_arg_a
 	locvar_draw_cell_tagyshift = (cdata(CDATA_IN_TAGTEAM, cell_draw_arg_c)==1)
+	if ( TweakData(TWEAK_MISC_TAGTEAM_X_OFFSET, TWEAK_CATEGORY_MISC) == 1 ) {
+		locvar_draw_cell_tagyshift = limit(cdata(CDATA_IN_TAGTEAM, cell_draw_arg_c), -1, 1)
+	}
 	// Draw pcc. I put the 'float offset' here for convenience.
 	cell_draw_arg_chipcf = 16
 	locvar_cell_draw_mimi = charaIsMimic(cell_draw_arg_c)
