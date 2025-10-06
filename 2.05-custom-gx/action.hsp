@@ -704,7 +704,7 @@
 				}
 			}
 			else {
-				if ( inv(INV_ITEM_ID, ci) != ITEM_ID_BOMB_BARREL & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_TRISMAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_OHUDA & inv(INV_ITEM_ID, ci) != ITEM_ID_PRESENT & inv(INV_ITEM_ID, ci) != ITEM_ID_WILD_FLOWER & inv(INV_ITEM_ID, ci) != ITEM_ID_ECHINOBOX & inv(INV_ITEM_ID, ci) != ITEM_ID_LIGHTNING_DISCHARGER & inv(INV_ITEM_ID, ci) != ITEM_ID_DARKNESSBANG & inv(INV_ITEM_ID, ci) != ITEM_ID_SNOW_CRYSTAL & inv(INV_ITEM_ID, ci) != ITEM_ID_SURSTROMMING ) {
+				if ( inv(INV_ITEM_ID, ci) != ITEM_ID_BOMB_BARREL & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_TRISMAGISTUS & inv(INV_ITEM_ID, ci) != ITEM_ID_OHUDA & inv(INV_ITEM_ID, ci) != ITEM_ID_PRESENT & inv(INV_ITEM_ID, ci) != ITEM_ID_WILD_FLOWER & inv(INV_ITEM_ID, ci) != ITEM_ID_ECHINOBOX & inv(INV_ITEM_ID, ci) != ITEM_ID_LIGHTNING_DISCHARGER & inv(INV_ITEM_ID, ci) != ITEM_ID_DARKNESSBANG & inv(INV_ITEM_ID, ci) != ITEM_ID_SNOW_CRYSTAL & inv(INV_ITEM_ID, ci) != ITEM_ID_SURSTROMMING & inv(INV_ITEM_ID, ci) != ITEM_ID_EXPOOPSION ) {
 					dmghp tc, limit(sdata(SKILL_WEAPON_THROWING, cc) / 5, 1, 200) * limit(inv(INV_ITEM_WEIGHT, ci) / 1000, 1, 500) + rnd(inv(INV_ITEM_WEIGHT, ci) / 1000 + sdata(SKILL_WEAPON_THROWING, cc) + 1), cc
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_SKULL_SWORD | inv(INV_ITEM_ID, ci) == ITEM_ID_VIOLENT_SKULL_SWORD ) {
@@ -786,6 +786,17 @@
 					tc = tcbk
 					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
 						addbuff tc, BUFF_ELEMENT_SCAR, efpori / 3, 30
+					}
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_EXPOOPSION ) {
+					tcbk = tc
+					efpori = (sdata(SKILL_NORMAL_JEWELER, CHARA_PLAYER) + sdata(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) + cdata(CDATA_LEVEL, CHARA_PLAYER)) * 6 + 5
+					efid = SKILL_SPELL_POISON_STORM
+					efp = efpori
+					gosub *effect
+					tc = tcbk
+					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
+						addbuff tc, BUFF_NIGHTMARE, efpori / 3, 30
 					}
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_DARKNESSBANG ) {
@@ -8940,7 +8951,7 @@
 		}
 		if ( cdata(CDATA_AP_CURRENT, cc) < 2000 ) {
 			init = 0
-			gain_ap "destone", cc, inv(INV_ITEM_PARAM2, ci), inv(INV_ITEM_PARAM3, ci), inv(INV_ITEM_AMUR_CAGE, ci), 0,   5, 10, 10, 10, 5,   5, 10, 10, 10, 5
+			gain_ap_old "destone", cc, inv(INV_ITEM_PARAM2, ci), inv(INV_ITEM_PARAM3, ci), inv(INV_ITEM_AMUR_CAGE, ci), 0,   5, 10, 10, 10, 5,   5, 10, 10, 10, 5
 			init = stat
 			if ( init == 0 ) {
 				txt lang("" + name(cc) + "には何の経験にもならないようだ…。", name(cc) + " seems to get no AP from it...")
@@ -10926,6 +10937,36 @@
 		goto *act_use_SWEND1
 		_switch_sw++
 	}
+	if ( _switch_val == EFFECT_GENOCIDE_TAIL | _switch_sw ) {
+		_switch_sw = 0
+		snd SOUNDLIST_AMMO
+		txtef COLOR_GREEN
+		txt lang("髪型が変化した！", "The hairstyle of the wig was changed!")
+		if ( inv(INV_ITEM_PIC, ci) < xy2pic(21, 40) ) {
+			inv(INV_ITEM_PIC, ci)++
+		}
+		else {
+			inv(INV_ITEM_PIC, ci) = xy2pic(0, 40)
+		}
+		cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+		goto *act_use_SWEND1
+		_switch_sw++
+	}
+	if ( _switch_val == EFFECT_HAIRMET | _switch_sw ) {
+		_switch_sw = 0
+		snd SOUNDLIST_AMMO
+		txtef COLOR_GREEN
+		txt lang("髪型が変化した！", "The hairstyle of the wig was changed!")
+		if ( inv(INV_ITEM_PIC, ci) < xy2pic(25, 41) ) {
+			inv(INV_ITEM_PIC, ci)++
+		}
+		else {
+			inv(INV_ITEM_PIC, ci) = xy2pic(0, 41)
+		}
+		cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+		goto *act_use_SWEND1
+		_switch_sw++
+	}
 	if ( _switch_val == EFFECT_AMMO_BOX | _switch_sw ) {
 		_switch_sw = 0
 		txt lang("誰に使用させる？", "Who should use it?")
@@ -11467,8 +11508,8 @@
 						}
 					loop
 				}
-				txtsettamer 6
-				repeat 6
+				txtsettamer 18
+				repeat 18
 					promptAdd s(cnt), key_select(cnt)
 				loop
 				val = promptx, prompty, 300, 1
@@ -11477,7 +11518,7 @@
 					gosub *screen_draw
 					goto *pc_turn
 				}
-				if ( rtval == 5 ) {
+				if ( rtval == 17 ) {
 					goto *pc_turn
 				}
 				if ( cdata(CDATA_MASTER_SERVANT2, tc) == 0 ) {
@@ -11496,6 +11537,16 @@
 					if ( cdata(CDATA_ID, tc) == CREATURE_ID_NERES_THE_AMNESIAC ) {
 						cdata(CDATA_MASTER_SERVANT2, tc) = 7
 					}
+				}
+				if ( rtval >= 5 & rtval <= 16 ) {
+					if ( cdata(CDATA_MASTER_SERVANT, tc) < 150 ) {
+						txt lang("もっと主従度を高める必要がある。", "You need to increase your domination over them...")
+						goto *act_use_SWEND1
+					}
+					cdata(CDATA_AI_CALM, tc) = rtval - 4
+					snd SOUNDLIST_ENC
+					txt lang(cdatan(CDATAN_NAME, tc) + "に指示した。", "You instructed " + cdatan(CDATAN_NAME, tc) + " what to do while bored.")
+					f = 1
 				}
 				if ( rtval == 4 ) {
 					if ( cbit(CHARA_BIT_SANDBAG, tc) ) {

@@ -2499,6 +2499,10 @@
 	if ( animeload_arg1 == 14 ) {
 		locvar_animeload_i = 6, 50
 	}
+	if ( animeload_animid == 35 ) {
+		locvar_animeload_i = 5, 99
+		locvar_animeload_r = 0
+	}
 	repeat locvar_animeload_i
 		gmode 2, 96, 96
 		pos locvar_animeload_dx + 24, locvar_animeload_dy + 8
@@ -2508,7 +2512,12 @@
 		redraw 0
 		pos locvar_animeload_dx - 24, locvar_animeload_dy - 40
 		gcopy 4, 0, 0, 96, 96
-		await cfg_animewait + locvar_animeload_i(1)
+		if ( locvar_animeload_i(1) != 99 ) {
+			await cfg_animewait + locvar_animeload_i(1)
+		}
+		if ( locvar_animeload_i(1) == 99 ) {
+			await 1
+		}
 	loop
 	gmode 2
 	return
@@ -3952,23 +3961,8 @@
 	if ( check_talk_arg1 < 0 ) {
 		return
 	}
-	if ( cdata(CDATA_INIT_ATTR, check_talk_arg1) == 0 ) {
-		cdata(CDATA_INIT_ATTR, check_talk_arg1) = sorg(SKILL_ATTR_STR, check_talk_arg1) + sorg(SKILL_ATTR_CON, check_talk_arg1) + sorg(SKILL_ATTR_DEX, check_talk_arg1) + sorg(SKILL_ATTR_PER, check_talk_arg1) + sorg(SKILL_ATTR_LER, check_talk_arg1) + sorg(SKILL_ATTR_WIL, check_talk_arg1) + sorg(SKILL_ATTR_MAG, check_talk_arg1) + sorg(SKILL_ATTR_CHA, check_talk_arg1)
-	}
-	if ( cdata(CDATA_INIT_SPEED, check_talk_arg1) == 0 ) {
-		cdata(CDATA_INIT_SPEED, check_talk_arg1) = sorg(SKILL_ATTR_SPD, check_talk_arg1)
-	}
-	if ( cdata(CDATA_INIT_ATTR, check_talk_arg2) == 0 ) {
-		cdata(CDATA_INIT_ATTR, check_talk_arg2) = sorg(SKILL_ATTR_STR, check_talk_arg2) + sorg(SKILL_ATTR_CON, check_talk_arg2) + sorg(SKILL_ATTR_DEX, check_talk_arg2) + sorg(SKILL_ATTR_PER, check_talk_arg2) + sorg(SKILL_ATTR_LER, check_talk_arg2) + sorg(SKILL_ATTR_WIL, check_talk_arg2) + sorg(SKILL_ATTR_MAG, check_talk_arg2) + sorg(SKILL_ATTR_CHA, check_talk_arg2)
-	}
-	if ( cdata(CDATA_INIT_SPEED, check_talk_arg2) == 0 ) {
-		cdata(CDATA_INIT_SPEED, check_talk_arg2) = sorg(SKILL_ATTR_SPD, check_talk_arg2)
-	}
-	if ( cdata(CDATA_INIT_LIFEMANA, check_talk_arg1) == 0 ) {
-		cdata(CDATA_INIT_LIFEMANA, check_talk_arg1) = limit(sorg(SKILL_ATTR_LIFE, check_talk_arg1), 50, 200) * 2 + limit(sorg(SKILL_ATTR_MANA, check_talk_arg1), 50, 200) / 2
-	}
 	if ( charaGivesExp(check_talk_arg2) & cdata(CDATA_ROLE, check_talk_arg2) != ROLE_BOUNTY_HUNTER & cdata(CDATA_ROLE, check_talk_arg2) != ROLE_GUARD & cbit(CHARA_BIT_CRADLE_15TH, check_talk_arg2) != 1 & cdata(CDATA_RELATION, check_talk_arg2) != RELATION_ALLY ) {
-		gain_ap "talk", check_talk_arg1, cdata(CDATA_INIT_ATTR, check_talk_arg2), cdata(CDATA_INIT_LIFEMANA, check_talk_arg2), cdata(CDATA_INIT_SPEED, check_talk_arg2), sorg(SKILL_ATTR_SPD, check_talk_arg2),  1, 2, 2, 2, 1,   1, 2, 2, 2, 1
+		gain_ap "talk", check_talk_arg1, check_talk_arg2
 	}
 	if ( TweakData(TWEAK_GAMEPLAY_REVERT_POST_213_EXP_CHANGES, TWEAK_CATEGORY_GAMEPLAY) == TRUE ) {
 		locvar_check_talk_exp = limit(cdata(CDATA_LEVEL, check_talk_arg2), 1, 400) * limit(cdata(CDATA_LEVEL, check_talk_arg2) + 1, 1, 400) * limit(cdata(CDATA_LEVEL, check_talk_arg2) + 2, 1, 400) / 10 + 8
@@ -4071,21 +4065,6 @@
 			addbuff check_kill_arg1, BUFF_PUNISHMENT, 10, cdata(CDATA_LEVEL, check_kill_arg2) + 1
 		}
 	}
-	if ( cdata(CDATA_INIT_ATTR, check_kill_arg1) == 0 ) {
-		cdata(CDATA_INIT_ATTR, check_kill_arg1) = sorg(SKILL_ATTR_STR, check_kill_arg1) + sorg(SKILL_ATTR_CON, check_kill_arg1) + sorg(SKILL_ATTR_DEX, check_kill_arg1) + sorg(SKILL_ATTR_PER, check_kill_arg1) + sorg(SKILL_ATTR_LER, check_kill_arg1) + sorg(SKILL_ATTR_WIL, check_kill_arg1) + sorg(SKILL_ATTR_MAG, check_kill_arg1) + sorg(SKILL_ATTR_CHA, check_kill_arg1)
-	}
-	if ( cdata(CDATA_INIT_SPEED, check_kill_arg1) == 0 ) {
-		cdata(CDATA_INIT_SPEED, check_kill_arg1) = sorg(SKILL_ATTR_SPD, check_kill_arg1)
-	}
-	if ( cdata(CDATA_INIT_ATTR, check_kill_arg2) == 0 ) {
-		cdata(CDATA_INIT_ATTR, check_kill_arg2) = sorg(SKILL_ATTR_STR, check_kill_arg2) + sorg(SKILL_ATTR_CON, check_kill_arg2) + sorg(SKILL_ATTR_DEX, check_kill_arg2) + sorg(SKILL_ATTR_PER, check_kill_arg2) + sorg(SKILL_ATTR_LER, check_kill_arg2) + sorg(SKILL_ATTR_WIL, check_kill_arg2) + sorg(SKILL_ATTR_MAG, check_kill_arg2) + sorg(SKILL_ATTR_CHA, check_kill_arg2)
-	}
-	if ( cdata(CDATA_INIT_SPEED, check_kill_arg2) == 0 ) {
-		cdata(CDATA_INIT_SPEED, check_kill_arg2) = sorg(SKILL_ATTR_SPD, check_kill_arg2)
-	}
-	if ( cdata(CDATA_INIT_LIFEMANA, check_kill_arg1) == 0 ) {
-		cdata(CDATA_INIT_LIFEMANA, check_kill_arg1) = limit(sorg(SKILL_ATTR_LIFE, check_kill_arg1), 50, 200) * 2 + limit(sorg(SKILL_ATTR_MANA, check_kill_arg1), 50, 200) / 2
-	}
 	if ( check_kill_arg1 >= 0 & check_kill_arg1 != check_kill_arg2 ) {
 		if ( check_kill_arg1 == 0 | cdata(CDATA_RELATION, check_kill_arg1) >= 10 ) {
 			if ( cbit(CHARA_BIT_NECRO, check_kill_arg2) != TRUE & cdata(CDATA_RELATION, check_kill_arg2) != RELATION_ALLY ) {
@@ -4127,7 +4106,7 @@
 						}
 					}
 					if ( charaGivesExp(check_kill_arg2) & cdata(CDATA_ROLE, check_kill_arg2) != ROLE_BOUNTY_HUNTER & cdata(CDATA_ROLE, check_kill_arg2) != ROLE_GUARD & cbit(CHARA_BIT_CRADLE_15TH, check_kill_arg2) != 1 ) {
-						gain_ap "kill", check_kill_arg1, cdata(CDATA_INIT_ATTR, check_kill_arg2), cdata(CDATA_INIT_LIFEMANA, check_kill_arg2), cdata(CDATA_INIT_SPEED, check_kill_arg2), sorg(SKILL_ATTR_SPD, check_kill_arg2),  1, 3, 3, 3, 2,   1, 3, 3, 3, 2
+						gain_ap "kill", check_kill_arg1, check_talk_arg2
 					}
 				}
 			}
@@ -4942,31 +4921,43 @@
 		if ( locvar_dmghp_ele == SKILL_RES_FIRE | dmghp_source == DAMAGE_FROM_FIRE ) {
 			locvar_dmghp_dmg = locvar_dmghp_dmg / 2
 		}
-		if ( locvar_dmghp_ele == SKILL_RES_LIGHTNING ) {
-			locvar_dmghp_dmg = locvar_dmghp_dmg * 3 / 2
+		if ( locvar_dmghp_ele == 52 ) {
+			if ( locvar_dmghp_dmg > 2 ) {
+				locvar_dmghp_dmg = locvar_dmghp_dmg / 2 * 3 + 1
+			}
 		}
-		if ( locvar_dmghp_ele == SKILL_RES_COLD ) {
-			locvar_dmghp_dmg = locvar_dmghp_dmg * 7 / 4
+		if ( locvar_dmghp_ele == 51 ) {
+			if ( locvar_dmghp_dmg > 4 ) {
+				locvar_dmghp_dmg = locvar_dmghp_dmg / 4 * 7 + 1
+			}
 		}
 	}
 	if ( cdata(CDATA_CONDITION_OIL, dmghp_charid) > 0 ) {
-		if ( locvar_dmghp_ele == SKILL_RES_FIRE | dmghp_source == DAMAGE_FROM_FIRE ) {
-			locvar_dmghp_dmg = locvar_dmghp_dmg * 7 / 4
+		if ( locvar_dmghp_ele == 50 | dmghp_source == DAMAGE_FROM_FIRE ) {
+			if ( locvar_dmghp_dmg > 2 ) {
+				locvar_dmghp_dmg = locvar_dmghp_dmg / 2 * 5 + 1
+			}
 		}
 	}
 	if ( cdata(CDATA_CONDITION_WINCE, dmghp_charid) != 0 ) {
-		locvar_dmghp_dmg = locvar_dmghp_dmg * 12 / 10
-	}
-	if ( dmghp_source >= DAMAGE_FROM_CHARA ) {
-		if ( cdata(CDATA_CONDITION_CHILLS, dmghp_source) != 0 ) {
-			locvar_dmghp_dmg = locvar_dmghp_dmg * 8 / 10
+		if ( locvar_dmghp_dmg > 5 ) {
+			locvar_dmghp_dmg = locvar_dmghp_dmg / 5 * 6 + 1
 		}
 	}
 	if ( dmghp_source >= DAMAGE_FROM_CHARA ) {
-		if ( cdata(CDATA_ID, dmghp_source) == CREATURE_ID_SPIPHA_THE_DRAGON_HUNTER ) {
-			locvar_dmghp_s = refchara(cdata(CDATA_ID, dmghp_charid), DBSPEC_CHARA_FILTER, 1)
-			if ( instr(locvar_dmghp_s, 0, "/dragon/") != (-1) ) {
-				locvar_dmghp_dmg = locvar_dmghp_dmg * 11 / 10 + 100
+		if ( locvar_dmghp_dmg > 5 ) {
+			if ( cdata(CDATA_CONDITION_CHILLS, dmghp_source) != 0 ) {
+				locvar_dmghp_dmg = locvar_dmghp_dmg / 5 * 4 + 1
+			}
+		}
+	}
+	if ( dmghp_source >= DAMAGE_FROM_CHARA ) {
+		if ( locvar_dmghp_dmg > 5 ) {
+			if ( cdata(CDATA_ID, dmghp_source) == CREATURE_ID_SPIPHA_THE_DRAGON_HUNTER ) {
+				locvar_dmghp_s = refchara(cdata(CDATA_ID, dmghp_charid), DBSPEC_CHARA_FILTER, 1)
+				if ( instr(locvar_dmghp_s, 0, "/dragon/") != (-1) ) {
+					locvar_dmghp_dmg = locvar_dmghp_dmg / 5 * 6 + 100
+				}
 			}
 		}
 	}
@@ -8300,7 +8291,93 @@
 
 /********** JAMES CUSTOM - AP FORMULA - BEGINNING **********/ 
 // The gain AP function is unnecessarily mested/convoluted, so I just place them in the same place.
-#deffunc gain_ap str gain_ap_source, int gain_ap_chara_id, int gain_ap_enemy_attr, int gain_ap_enemy_lifemana, int gain_ap_enemy_speed, int gain_ap_enemy_orgspd, int gain_ap_c1, int gain_ap_c2, int gain_ap_c3, int gain_ap_c4, int gain_ap_c5, int gain_ap_p1, int gain_ap_p2, int gain_ap_p3, int gain_ap_p4, int gain_ap_p5
+
+// Ano made ap gain functions a lot simpler in 2.29, but he didn't change the destone formula.
+#deffunc gain_ap str gain_ap_source, int gain_ap_chara_id, int gain_ap_enemy_id
+	if ( check_talk_arg1 != 0 & cdata(CDATA_RELATION, check_talk_arg1) < RELATION_ALLY ) { return FALSE }
+	if ( cdata(CDATA_INIT_ATTR, gain_ap_enemy_id) == 0 ) {
+		cdata(CDATA_INIT_ATTR, gain_ap_enemy_id) = sorg(SKILL_ATTR_STR, gain_ap_enemy_id) + sorg(SKILL_ATTR_CON, gain_ap_enemy_id) + sorg(SKILL_ATTR_DEX, gain_ap_enemy_id) + sorg(SKILL_ATTR_PER, gain_ap_enemy_id) + sorg(SKILL_ATTR_LER, gain_ap_enemy_id) + sorg(SKILL_ATTR_WIL, gain_ap_enemy_id) + sorg(SKILL_ATTR_MAG, gain_ap_enemy_id) + sorg(SKILL_ATTR_CHA, gain_ap_enemy_id)
+	}
+	if ( cdata(CDATA_INIT_SPEED, gain_ap_enemy_id) == 0 ) {
+		cdata(CDATA_INIT_SPEED, gain_ap_enemy_id) = sorg(SKILL_ATTR_SPD, gain_ap_enemy_id)
+	}
+	gain_ap_enemy_attr_local = cdata(CDATA_INIT_ATTR, gain_ap_enemy_id)
+	gain_ap_enemy_lifemana_local = cdata(CDATA_INIT_LIFEMANA, gain_ap_enemy_id)
+	gain_ap_enemy_speed_local = cdata(CDATA_INIT_SPEED, gain_ap_enemy_id)
+	gain_ap_enemy_orgspd_local = sorg(SKILL_ATTR_SPD, gain_ap_enemy_id)
+	repeat MAX_CHARA_FOLLOWER
+		if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+			continue
+		}
+		if ( cdata(CDATA_INIT_ATTR, cnt) == 0 ) {
+			cdata(CDATA_INIT_ATTR, cnt) = sorg(SKILL_ATTR_STR, cnt) + sorg(SKILL_ATTR_CON, cnt) + sorg(SKILL_ATTR_DEX, cnt) + sorg(SKILL_ATTR_PER, cnt) + sorg(SKILL_ATTR_LER, cnt) + sorg(SKILL_ATTR_WIL, cnt) + sorg(SKILL_ATTR_MAG, cnt) + sorg(SKILL_ATTR_CHA, cnt)
+		}
+		if ( cdata(CDATA_INIT_SPEED, cnt) == 0 ) {
+			cdata(CDATA_INIT_SPEED, cnt) = sorg(SKILL_ATTR_SPD, cnt)
+		}
+		if ( cdata(CDATA_INIT_LIFEMANA, cnt) == 0 ) {
+			cdata(CDATA_INIT_LIFEMANA, cnt) = limit(sorg(SKILL_ATTR_LIFE, cnt), 50, 200) * 2 + limit(sorg(SKILL_ATTR_MANA, cnt), 50, 200) / 2
+		}
+		if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+			continue
+		}
+		if ( gdata(GDATA_AREA) != AREA_VOID & gain_ap_enemy_orgspd_local > 0 ) {
+			if ( gain_ap_enemy_orgspd_local > sorg(SKILL_ATTR_SPD, cnt) ) {
+				skillexp SKILL_ATTR_SPD, cnt, limit(gain_ap_enemy_orgspd_local, 10, 2000) / 5
+			}
+		}
+		if ( cdata(CDATA_AP_CURRENT, cnt) < 2000 ) {
+			gain_ap_attr = cdata(CDATA_INIT_ATTR, cnt)
+			gain_ap_aspd = cdata(CDATA_INIT_SPEED, cnt)
+			gain_ap_lfmn = cdata(CDATA_INIT_LIFEMANA, cnt)
+			gain_ap_total = cdata(CDATA_AP_TOTAL, cnt)
+		}
+		if ( gain_ap_enemy_attr_local + gain_ap_enemy_lifemana_local >= 1000 ) {
+			if ( gain_ap_enemy_attr_local + gain_ap_enemy_speed_local > gain_ap_attr + gain_ap_aspd + gain_ap_lfmn + (gain_ap_total + 1) / 5 ) {
+				if ( gain_ap_enemy_speed_local > gain_ap_aspd * 5 ) {
+					cdata(CDATA_AP_CURRENT, cnt) += 2
+					cdata(CDATA_AP_TOTAL, cnt) += 2
+				}
+				if ( gain_ap_enemy_speed_local > gain_ap_aspd * 4 ) {
+					cdata(CDATA_AP_CURRENT, cnt) += 2
+					cdata(CDATA_AP_TOTAL, cnt) += 2
+				}
+				if ( gain_ap_enemy_speed_local > gain_ap_aspd * 3 ) {
+					cdata(CDATA_AP_CURRENT, cnt) += 2
+					cdata(CDATA_AP_TOTAL, cnt) += 2
+				}
+				if ( gain_ap_enemy_speed_local > gain_ap_aspd * 2 ) {
+					cdata(CDATA_AP_CURRENT, cnt) += 2
+					cdata(CDATA_AP_TOTAL, cnt) += 2
+				}
+				if ( gain_ap_enemy_speed_local > gain_ap_aspd ) {
+					cdata(CDATA_AP_CURRENT, cnt) += 2
+					cdata(CDATA_AP_TOTAL, cnt) += 2
+					snd SOUNDLIST_ENC
+					animeload ANIMATION_CHAOS_CHILD, cnt
+				}
+				if ( cdata(CDATA_AP_CURRENT, cnt) > 2000 ) {
+					cdata(CDATA_AP_TOTAL, cnt) -= cdata(CDATA_AP_CURRENT, cnt) - 2000
+					cdata(CDATA_AP_CURRENT, cnt) = 2000
+				}
+				if ( cdata(CDATA_AP_TOTAL, cnt) < 0 ) {
+					cdata(CDATA_AP_TOTAL, cnt) = 2000
+				}
+				if ( cdata(CDATA_AP_TOTAL, cnt) > gain_ap_total ) {
+					DamagePopupAdd ("AP +" + ( cdata(CDATA_AP_TOTAL, cnt) - gain_ap_total )), cnt, DMGPOPUP_HEAL_SP, 0
+					txt "" + name(cnt) + " obtained " + ( cdata(CDATA_AP_TOTAL, cnt) - gain_ap_total ) + " AP from the " + gain_ap_source + "."
+				}
+			}
+		}
+	loop
+	if ( gain_ap_source == "kill" ) {
+		if ( cbit(CHARA_BIT_NECRO, gain_ap_chara_id) == 1 & gain_ap_chara_id != CHARA_PLAYER ) {
+			skillexp SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER, limit(cdata(CDATA_LEVEL, gain_ap_chara_id) + 200, 200, 1000)
+		}
+	}
+	return
+
+#deffunc gain_ap_old str gain_ap_source, int gain_ap_chara_id, int gain_ap_enemy_attr, int gain_ap_enemy_lifemana, int gain_ap_enemy_speed, int gain_ap_enemy_orgspd, int gain_ap_c1, int gain_ap_c2, int gain_ap_c3, int gain_ap_c4, int gain_ap_c5, int gain_ap_p1, int gain_ap_p2, int gain_ap_p3, int gain_ap_p4, int gain_ap_p5
 	if ( gain_ap_chara_id < 0 | gain_ap_chara_id >= MAX_CHARA_TOTAL ) { return FALSE }
 	if ( gdata(GDATA_AREA) != AREA_VOID & gain_ap_enemy_orgspd > 0 ) {
 		if ( gain_ap_enemy_orgspd > sorg(SKILL_ATTR_SPD, gain_ap_chara_id) ) {

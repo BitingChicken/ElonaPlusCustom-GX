@@ -68,6 +68,12 @@
 	if ( inv(INV_ITEM_ID, calcmedalvalue_itemid) == ITEM_ID_GAROKS_HAMMER ) {
 		return 47
 	}
+	if ( inv(INV_ITEM_ID, calcmedalvalue_itemid) == ITEM_ID_HAIRMET ) {
+		return 14
+	}
+	if ( inv(INV_ITEM_ID, calcmedalvalue_itemid) == ITEM_ID_GENOCIDE_TAIL ) {
+		return 19
+	}
 	return 1
 
 #defcfunc calcmusicticketvalue int calcmusicticketvalue_itemid

@@ -349,8 +349,10 @@
 			}
 			else {
 				repeat 8 + rnd(6)
-					flt
-					itemcreate -1, ITEM_ID_VOMIT, -1, -1, 0
+					if ( cfg_dust_select == 0 ) {
+						flt
+						itemcreate -1, ITEM_ID_VOMIT, -1, -1, 0
+					}
 					txt lang(name(tc) + "は吐いた。", name(tc) + " vomits.")
 					snd SOUNDLIST_VOMIT
 					await 10
@@ -14270,7 +14272,7 @@
 		}
 		if ( chatval == 11 ) {
 			chatMore lang("あまり浸透していないけれど、仲間にスキルを覚えさせる方法としては能力合成っていうのがあるんだ。他の仲間を分解して能力を移植する、生化学文明時代の技術だな。仲間のレベル以上の生化学スキルが必要だ。確か、ポート・カプールの学者が個人レベルでも使えるように研究していたはずだぞ。", "Though it's not well known, with knowledge of Gene Engineer it's possible for allies to learn new skills. It uses technology from the era of biochemistry civilization to decompose beings and transplant their abilities. I heard of it from a scholarly acquaintance of mine from Port Kapul.")
-			chatMore lang("能力を合成することで、素体からスキルや装備部位を移植できる。さらに、素体の主能力が上回っていれば最大で３種類＆１０上昇する。料理で上がらなくなる前に、生化学を鍛えてこちらに切り替えていこう。間違って強くしたい方を分解しないように、話しかけて大事な仲間に指定しておくのを忘れずに。あと、視界内にいないと能力が上昇したかどうかわからないから気をつけてくれよ。", "Theoretically, you could transplant new skills and even body parts into an ally, as well as empower them. Of course, before doing anything that dangerous you'd want to talk to the ally you want to keep and make them a precious ally so they wouldn't end up getting accidentally decomposed!")
+			chatMore lang("能力を合成することで、素体からスキルや装備部位を移植できる。さらに、素体の主能力が上回っていれば最大で３種類＆１０上昇する。料理で上がらなくなる前に、生化学を鍛えてこちらに切り替えていこう。間違って強くしたい方を分解しないように、干渉しかけて大事な仲間に指定しておくのを忘れずに。あと、視界内にいないと能力が上昇したかどうかわからないから気をつけてくれよ。", "Theoretically, you could transplant new skills and even body parts into an ally, as well as empower them. Of course, before doing anything that dangerous you'd want to 'i'nteract to the ally you want to keep and make them a precious ally so they wouldn't end up getting accidentally decomposed!")
 			gdata(GDATA_FLAG_TRAINING_COURSE_STATE)++
 		}
 		if ( chatval == 12 ) {
@@ -19309,7 +19311,6 @@
 				if ( cbit(CHARA_BIT_GUARD_TEMP, tc) == 0 ) {
 					if ( cbit(CHARA_BIT_NECRO, tc) == 0 ) {
 						if ( cbit(CHARA_BIT_LIVESTOCK, tc) == 0 ) {
-							chatList 34, lang("街で待機しろ", "Wait in town.")
 							if ( cbit(CHARA_BIT_BIRTHED_CHILD, tc) == TRUE ) {
 								if ( cdata(CDATA_FRIENDSHIP, tc) >= 10 ) {
 									if ( cdata(CDATA_LEVEL, tc) > (6 + cdata(CDATA_SPRITE_SIZE_MILK, tc)) * 10 | cdata(CDATA_AGE, tc) <= gdata(GDATA_YEAR) - 3 * (6 + cdata(CDATA_SPRITE_SIZE_MILK, tc)) ) {
@@ -19340,6 +19341,21 @@
 									chatList 110, lang("タッグ間のやりとりを見る", "Talk to your tag partner.")
 								}
  							}
+
+			                /********** ORIGINAL 1.90 - BEGINNING ********** // Replaced with the confession mechanic in stock 2.05.
+
+							if ( cbit(CHARA_BIT_MARRIED, tc) == 0 ) {
+								chatList 38, lang("婚約を申し込む", "May I ask for your hand?")
+							}
+							else {
+								if ( gdata(GDATA_SLEEP) >= 13 ) {
+									chatList 39, lang("遺伝子を残す", "Let's make a gene.")
+								}
+							}
+
+	 	                    ********** ORIGINAL 1.90 - ENDING **********/
+
+			                /********** ORIGINAL 2.29 - BEGINNING ********** // Moved to interact / Tamer's whip menu
 							if ( cdata(CDATA_PRECIOUS_ALLY, tc) == 0 ) {
 								chatList 67, lang("大事な仲間に指定", "Designate as precious ally.")
 							}
@@ -19356,19 +19372,6 @@
 								chatList 94, lang("特殊指示を出す", "Special instructions.")
 							}
 
-			                /********** ORIGINAL 1.90 - BEGINNING ********** // Replaced with the confession mechanic in stock 2.05.
-
-							if ( cbit(CHARA_BIT_MARRIED, tc) == 0 ) {
-								chatList 38, lang("婚約を申し込む", "May I ask for your hand?")
-							}
-							else {
-								if ( gdata(GDATA_SLEEP) >= 13 ) {
-									chatList 39, lang("遺伝子を残す", "Let's make a gene.")
-								}
-							}
-
-	 	                    ********** ORIGINAL 1.90 - ENDING **********/
-
 							if ( cdata(CDATA_TXT, tc) != 0 ) {
 								if ( cbit(CHARA_BIT_SHUT_UP, tc) == 0 ) {
 									chatList 48, lang("黙らせる", "Shut up.")
@@ -19377,6 +19380,8 @@
 									chatList 48, lang("喋らせる", "You can speak now.")
 								}
 							}
+	 	                    ********** ORIGINAL 2.29 - ENDING **********/
+								
 							if ( cdata(CDATA_PRECIOUS_ALLY, tc) == 0 ) {
 								chatList 35, lang("縁を切る", "I'm going to abandon you.")
 							}
@@ -25186,21 +25191,27 @@
 			chara_preparepic p, p(1)
 			// Default Chat mode, drawn in the face box.
 			if ( evochat < 2 | evochat == 11 ) {
+				cell_draw_chara_mark_item tc, wx + 82 - 24, wy + 125 + 20 - chipc(CHIPC_F, p) + (chipc(CHIPC_HEIGHT, p) > 48) * 48, 0, 0, 2
 				pos wx + 82, wy + 125 - chipc(CHIPC_F, p)
 				gmode 2, chipc(CHIPC_WIDTH, p), chipc(CHIPC_HEIGHT, p)
 				grotate BUFFER_CHR, 0, 960, 0, chipc(CHIPC_WIDTH, p) * 2, chipc(CHIPC_HEIGHT, p) * 2
+				cell_draw_chara_mark_item tc, wx + 82 - 24, wy + 125 + 20 - chipc(CHIPC_F, p) + (chipc(CHIPC_HEIGHT, p) > 48) * 48, 0, 1, 2
 			}
 			// Dangerously Close mode
 			if ( evochat >= 2 & evochat < 11 ) {
 				// Drawn left if in tag chat and leader 
 				if ( tagevochat > 0 & cdata(CDATA_IN_TAGTEAM, tc) == (-1) ) {
+					cell_draw_chara_mark_item tc, windoww / 2 - 250 - 72, windowh - 88 + 60 - chipc(CHIPC_HEIGHT, p) * 3 + (chipc(CHIPC_HEIGHT, p) > 48) * 144, 0, 0, 6
 					pos windoww / 2 - 250, windowh - 88 - chipc(CHIPC_HEIGHT, p) * 3
 					gmode 2, chipc(CHIPC_WIDTH, p), chipc(CHIPC_HEIGHT, p)
 					grotate BUFFER_CHR, 0, 960, 0, chipc(CHIPC_WIDTH, p) * 6, chipc(CHIPC_HEIGHT, p) * 6
+					cell_draw_chara_mark_item tc, windoww / 2 - 250 - 72, windowh - 88 + 60 - chipc(CHIPC_HEIGHT, p) * 3 + (chipc(CHIPC_HEIGHT, p) > 48) * 144, 0, 1, 6
 				} else {
+					cell_draw_chara_mark_item tc, windoww / 2 - 72, windowh - 88 + 60 - chipc(CHIPC_HEIGHT, p) * 3 + (chipc(CHIPC_HEIGHT, p) > 48) * 144, 0, 0, 6
 					pos windoww / 2, windowh - 88 - chipc(CHIPC_HEIGHT, p) * 3
 					gmode 2, chipc(CHIPC_WIDTH, p), chipc(CHIPC_HEIGHT, p)
 					grotate BUFFER_CHR, 0, 960, 0, chipc(CHIPC_WIDTH, p) * 6, chipc(CHIPC_HEIGHT, p) * 6
+					cell_draw_chara_mark_item tc, windoww / 2 - 72, windowh - 88 + 60 - chipc(CHIPC_HEIGHT, p) * 3 + (chipc(CHIPC_HEIGHT, p) > 48) * 144, 0, 1, 6
 				}
 			}
 		}
@@ -25217,13 +25228,17 @@
 					if ( evochat >= 2 & evochat < 11 ) {
 						// Drawn left if  leader 
 						if ( cdata(CDATA_IN_TAGTEAM, tatc2) == (-1) ) {
+							cell_draw_chara_mark_item tatc2, windoww / 2 - 250 - 72, windowh - 88 + 60 - chipc(CHIPC_HEIGHT, p2) * 3 + (chipc(CHIPC_HEIGHT, p2) > 48) * 144, 0, 0, 6
 							pos windoww / 2 - 250, windowh - 88 - chipc(CHIPC_HEIGHT, p2) * 3
 							gmode 2, chipc(CHIPC_WIDTH, p2), chipc(CHIPC_HEIGHT, p2)
 							grotate BUFFER_CHR, 0, 960, 0, chipc(CHIPC_WIDTH, p2) * 6, chipc(CHIPC_HEIGHT, p2) * 6
+							cell_draw_chara_mark_item tatc2, windoww / 2 - 250 - 72, windowh - 88 + 60 - chipc(CHIPC_HEIGHT, p2) * 3 + (chipc(CHIPC_HEIGHT, p2) > 48) * 144, 0, 1, 6
 						} else {
+							cell_draw_chara_mark_item tatc2, windoww / 2 - 72, windowh - 88 + 60 - chipc(CHIPC_HEIGHT, p2) * 3 + (chipc(CHIPC_HEIGHT, p2) > 48) * 144, 0, 0, 6
 							pos windoww / 2, windowh - 88 - chipc(CHIPC_HEIGHT, p2) * 3
 							gmode 2, chipc(CHIPC_WIDTH, p2), chipc(CHIPC_HEIGHT, p2)
 							grotate BUFFER_CHR, 0, 960, 0, chipc(CHIPC_WIDTH, p2) * 6, chipc(CHIPC_HEIGHT, p2) * 6
+							cell_draw_chara_mark_item tatc2, windoww / 2 - 72, windowh - 88 + 60 - chipc(CHIPC_HEIGHT, p2) * 3 + (chipc(CHIPC_HEIGHT, p2) > 48) * 144, 0, 1, 6
 						}
 					}
 				}
@@ -25397,24 +25412,24 @@
 			s(1) = "" + cdata(CDATA_IMPRESSION, tc)
 			pos wx + 32, wy + 198
 			mes "(" + s(1) + ")" + s
+			s = _impressionb(implevel2(cdata(CDATA_MASTER_SERVANT, tc)))
+			if ( cdata(CDATA_HEART_LOCK_RELATION, tc) == (-11) ) {
+				s = _impressionb1(implevel2(cdata(CDATA_MASTER_SERVANT, tc)))
+			}
+			if ( cdata(CDATA_HEART_LOCK_RELATION, tc) == (-12) ) {
+				s = _impressionb2(implevel2(cdata(CDATA_MASTER_SERVANT, tc)))
+			}
+			if ( cdata(CDATA_HEART_LOCK_RELATION, tc) == (-13) ) {
+				s = _impressionb3(implevel2(cdata(CDATA_MASTER_SERVANT, tc)))
+			}
+			s(1) = "" + cdata(CDATA_MASTER_SERVANT, tc)
+			pos wx + 32, wy + 212
+			mes "(" + s(1) + ")" + s
 			if ( cbit(CHARA_BIT_HIRED, tc) != FALSE ) {
 				pos wx + 32, wy + 310
 				mes "" + cnvdate(cdata(CDATA_HIRE_DATE, tc), 2)
 			}
 			if ( tc < MAX_CHARA_FOLLOWER | cbit(CHARA_BIT_LIVESTOCK, tc) == 1 | cbit(CHARA_BIT_LABOR_CAMP, tc) == TRUE | cbit(CHARA_BIT_BEGGING_FOR_LIFE, tc) == TRUE ) {
-				s = _impressionb(implevel2(cdata(CDATA_MASTER_SERVANT, tc)))
-				if ( cdata(CDATA_HEART_LOCK_RELATION, tc) == (-11) ) {
-					s = _impressionb1(implevel2(cdata(CDATA_MASTER_SERVANT, tc)))
-				}
-				if ( cdata(CDATA_HEART_LOCK_RELATION, tc) == (-12) ) {
-					s = _impressionb2(implevel2(cdata(CDATA_MASTER_SERVANT, tc)))
-				}
-				if ( cdata(CDATA_HEART_LOCK_RELATION, tc) == (-13) ) {
-					s = _impressionb3(implevel2(cdata(CDATA_MASTER_SERVANT, tc)))
-				}
-				s(1) = "" + cdata(CDATA_MASTER_SERVANT, tc)
-				pos wx + 32, wy + 212
-				mes "(" + s(1) + ")" + s
 				if ( cdata(CDATA_JOIN_DATE_MONTH, tc) == 0 ) {
 					cdata(CDATA_JOIN_DATE_MONTH, tc) = gdata(GDATA_MONTH)
 				}
@@ -25574,7 +25589,7 @@
 		p = 6 + rnd(4)
 	}
 	if ( cdata(CDATA_ROLE, tc) == ROLE_SHOP_MIROK ) {
-		p = 23
+		p = 25
 	}
 	if ( cdata(CDATA_ROLE, tc) == ROLE_SHOP_MOUNTAIN2 ) {
 		p /= 2
@@ -26119,7 +26134,13 @@
 			if ( cnt == 22 ) {
 				dbid = ITEM_ID_NYOI_MIMIKAKI
 			}
-			if ( cnt > 22 ) {
+			if ( cnt == 23 ) {
+				dbid = ITEM_ID_HAIRMET
+			}
+			if ( cnt == 24 ) {
+				dbid = ITEM_ID_GENOCIDE_TAIL
+			}
+			if ( cnt > 24 ) {
 				continue
 			}
 		}

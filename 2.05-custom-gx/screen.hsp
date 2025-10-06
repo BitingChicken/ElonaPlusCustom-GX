@@ -8442,7 +8442,7 @@
 	lvhosei = limit(cdata(CDATA_LEVEL, r1) / 4 + limit(cdata(CDATA_LEVEL, r1) / 5, 0, 20) + limit(cdata(CDATA_LEVEL, r1) / 5, 1, 40) + limit(cdata(CDATA_LEVEL, r1) / 5, 1, 60) + limit(cdata(CDATA_LEVEL, r1) / 5, 1, 100), 1, 3000)
 	cdata(CDATA_MAX_MP, r1) = limit((sdata(SKILL_ATTR_MAG, r1) * 3 + sdata(SKILL_ATTR_WIL, r1) + sdata(SKILL_ATTR_LER, r1)) / 3 * lvhosei / 10 + sdata(SKILL_ATTR_MAG, r1), 1, 2000000) * limit(sdata(SKILL_ATTR_MANA, r1), 1, 1000) / 100
 	cdata(CDATA_MAX_HP, r1) = limit((sdata(SKILL_ATTR_CON, r1) * 3 + sdata(SKILL_ATTR_STR, r1) + sdata(SKILL_ATTR_WIL, r1)) / 3 * lvhosei / 10 + sdata(SKILL_ATTR_CON, r1), 1, 2000000) * limit(sdata(SKILL_ATTR_LIFE, r1), 1, 1000) / 100 + 5
-	cdata(CDATA_MAX_SP, r1) = 100 + (sdata(SKILL_ATTR_WIL, r1) + sdata(SKILL_ATTR_CON, r1)) / 5 + trait(TRAIT_NORMAL_STAT_STAMINA) * 8
+	cdata(CDATA_MAX_SP, r1) = 100 + (sdata(SKILL_ATTR_WIL, r1) + sdata(SKILL_ATTR_CON, r1)) / 5 + trait(TRAIT_NORMAL_STAT_STAMINA) * 8 + limit(cdata(CDATA_LEVEL, r1), 1, 2000)
 	if ( r1 == CHARA_PLAYER ) {
 		if ( trait(TRAIT_ETHER_ABNORMAL_LIBIDO) != 0 ) {
 			cdata(CDATA_MAX_SP, r1) = cdata(CDATA_MAX_SP, r1) * 6 / 5
@@ -8466,6 +8466,7 @@
 		}
 		if ( cdata(CDATA_QUALITY, r1) >= FIX_QUALITY_MIRACLE | cdata(CDATA_ID, r1) == CREATURE_ID_AILE_THE_ATTENDANT ) {
 			cdata(CDATA_MAX_HP, r1) = cdata(CDATA_MAX_HP, r1) * 6
+			cdata(CDATA_MAX_SP, r1) = cdata(CDATA_MAX_SP, r1) * 3
 			sdata(SKILL_RES_FIRE, r1) += 150
 			sdata(SKILL_RES_COLD, r1) += 150
 			sdata(SKILL_RES_LIGHTNING, r1) += 150

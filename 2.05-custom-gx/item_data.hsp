@@ -69,6 +69,11 @@
 		}
 		break
 	loop
+	if ( locvar_calcfixlv_fixlv == 2 ) {
+		if ( rnd(6) == 0 ) {
+			locvar_calcfixlv_fixlv++
+		}
+	}
 	if ( locvar_calcfixlv_fixlv < FIX_QUALITY_BAD ) {
 		locvar_calcfixlv_fixlv = FIX_QUALITY_BAD
 	}
@@ -1182,6 +1187,10 @@
 		else {
 			gosub *item_ego
 		}
+		encadd ci, randomenc(randomenclv(egolv)), randomencp(), 10
+		if ( rnd(20) == 0 ) {
+			encadd ci, randomenc(99), randomencp()
+		}
 	}
 	if ( fixlv == FIX_QUALITY_MIRACLE | fixlv == FIX_QUALITY_GODLY ) {
 		inv(INV_ITEM_SUB_NAME, ci) = 40000 + rnd(30000)
@@ -1229,8 +1238,11 @@
 			encadd ci, randomenc(randomenclv(egolv)), randomencp() + (fixlv == FIX_QUALITY_GODLY) * 200 + (ibit(ITEM_BIT_ULTIMATE, ci) == 1) * 100, 20 - (fixlv == FIX_QUALITY_GODLY) * 10 - (ibit(ITEM_BIT_ULTIMATE, ci) == 1) * 20
 		loop
 	}
+	if ( fixlv == FIX_QUALITY_MIRACLE ) {
+		encadd ci, ENCHANT_RESISTANCE, randomencp() * 2 / 3 + 151
+	}
 	if ( fixlv == FIX_QUALITY_GODLY ) {
-		repeat rnd(2) + 1
+		repeat rnd(2) + 2
 			encadd ci, ENCHANT_RESISTANCE, randomencp() * 2 / 3 + 151
 		loop
 	}

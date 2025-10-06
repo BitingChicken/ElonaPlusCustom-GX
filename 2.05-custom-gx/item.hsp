@@ -3246,7 +3246,7 @@
 			}
 		}
 	}
-	if ( inv(INV_ITEM_LEVEL, ci) > 0 & inv(INV_ITEM_LEVEL, ci) <= 15 ) {
+	if ( inv(INV_ITEM_LEVEL, ci) > 0 ) {
 		modgrowth cc, SKILL_ATTR_SPD, inv(INV_ITEM_LEVEL, ci) / 2 + 3
 	}
 	if ( inv(INV_ITEM_PARAM2, ci) > 0 ) {

@@ -2032,6 +2032,7 @@
 		cell_draw_chara_emo CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py
 		cell_draw_chara_mark_item CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py, locvar_cell_draw_ground, 1
 		cell_draw_chara_extra_effect CHARA_PLAYER, locvar_cell_draw_px, locvar_cell_draw_py
+		locvar_draw_cell_tagyshift = 0
 	}
 
 	return
@@ -2050,6 +2051,7 @@
 	cell_draw_chara_emo cell_draw_arg_c, cell_draw_arg_dx, cell_draw_arg_dy
 	cell_draw_chara_mark_item cell_draw_arg_c, cell_draw_arg_dx, cell_draw_arg_dy, cell_draw_arg_g, 1
 	cell_draw_chara_overlay cell_draw_arg_c, cell_draw_arg_dx, cell_draw_arg_dy, cell_draw_arg_g
+	locvar_draw_cell_tagyshift = 0
 	return
 
 #deffunc cell_draw_chara_emo int cell_draw_arg_c, int cell_draw_arg_dx, int cell_draw_arg_dy
@@ -2248,12 +2250,14 @@
 	}
 	return
 
-#deffunc cell_draw_chara_mark_item int cell_draw_arg_c, int cell_draw_arg_dx, int cell_draw_arg_dy, int cell_draw_arg_g, int cell_draw_arg_bool_front
+#deffunc cell_draw_chara_mark_item int cell_draw_arg_c, int cell_draw_arg_dx, int cell_draw_arg_dy, int cell_draw_arg_g, int cell_draw_arg_bool_front, int cell_draw_arg_times_larger
 	// CDATA_MARK_ITEM_PIC == 0: drawn behind character
 	// CDATA_MARK_ITEM_PIC != 0: drawn in front of character.
-	if ( cbit(CHARA_BIT_MARK_ITEM, cell_draw_arg_c) == 0 ^ (cell_draw_arg_bool_front == 0) ) {
+	if ( cbit(CHARA_BIT_ITEM_MARK_FRONTBACK, cell_draw_arg_c) == 0 ^ (cell_draw_arg_bool_front == 0) ) {
 		if ( mdata(MDATA_TYPE) != MAP_TYPE_WORLD ) {
 			if ( cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c) > 0 ) {
+				cell_draw_item_mark_enlarge_w = limit(cell_draw_arg_times_larger, 1, 6) * (1 - 2 * (cbit(CHARA_BIT_ITEM_MARK_FLIP, locvar_cell_draw_c) == TRUE))
+				cell_draw_item_mark_enlarge_h = limit(cell_draw_arg_times_larger, 1, 6)
 				// base x: 12,  y: 18
 				// CDATA_IN_TAGTEAM == 1:					x + 12
 				// CDATA_IN_TAGTEAM == -1:					no changes.
@@ -2261,18 +2265,24 @@
 				// CHARA_BIT_SANDBAG:						y - 24
 				// CDATA_MARK_ITEM_PIC's CHIPI_HEIGHT > 48: y - 4
 				pos cell_draw_arg_dx + 12 + cdata(CDATA_MARK_ITEM_X, cell_draw_arg_c) + locvar_draw_cell_tagyshift * 12, cell_draw_arg_dy + 18 + cdata(CDATA_MARK_ITEM_Y, cell_draw_arg_c) + (chipm(CHIPM_ROLE, cell_draw_arg_g) == MAP_CHIP_ROLE_WATER) * 16 - (cbit(CHARA_BIT_SANDBAG, cell_draw_arg_c) == 1) * 24 - (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48) * 4
+				// if in chat screen, do not apply the modifiers
+				// Instead, apply the enlargement modifier only
+				if ( cell_draw_arg_times_larger > 1 ) {
+					pos cell_draw_arg_dx + cdata(CDATA_MARK_ITEM_X, cell_draw_arg_c) * cell_draw_item_mark_enlarge_w, cell_draw_arg_dy + cdata(CDATA_MARK_ITEM_Y, cell_draw_arg_c) * cell_draw_item_mark_enlarge_h
+				}
 				preparePicItem cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c), cdata(CDATA_MARK_ITEM_COL, cell_draw_arg_c)
 
 				gmode 2, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)), chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c))
-				grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, 24 + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2, 24 + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2
+				grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, (24 + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2) * cell_draw_item_mark_enlarge_w, (24 + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2) * cell_draw_item_mark_enlarge_h
+
 				// CGX had different rendering order, the limit is removed, use the same rendering code for higher items.
 				; if ( cell_draw_arg_c == CHARA_PLAYER ) {
 				; 	gmode 2, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)), chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c))
-				; 	grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, 24 + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2, 24 + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2
+				; 	grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, (24 + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2) * cell_draw_item_mark_enlarge_w, (24 + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2) * cell_draw_item_mark_enlarge_h
 				; } else {
 				; 	// CDATA_MARK_ITEM_PIC's CHIPI_HEIGHT > 48: hw / 4 instead of hw / 2
 				; 	gmode 2, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)), chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c))
-				; 	grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) / (2 + 2 * (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48)) + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2, chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) / (2 + 2 * (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48)) + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2
+				; 	grotate BUFFER_ITEM, 0, 960, cdata(CDATA_MARK_ITEM_ADJUST_R, cell_draw_arg_c) * 6.54498469498, (chipi(CHIPI_WIDTH, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) / (2 + 2 * (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48)) + cdata(CDATA_MARK_ITEM_ADJUST_W, cell_draw_arg_c) * 2) * cell_draw_item_mark_enlarge_w, (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) / (2 + 2 * (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c)) > 48)) + cdata(CDATA_MARK_ITEM_ADJUST_L, cell_draw_arg_c) * 2) * cell_draw_item_mark_enlarge_h
 				; }
 			}
 		}

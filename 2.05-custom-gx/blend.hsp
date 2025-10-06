@@ -191,7 +191,7 @@
 					continue
 				}
 				if ( locvar_blendcheckmat_id < EXT_RPACTION ) {
-					if ( instr(rffilter_item(inv(INV_ITEM_ID, cnt)), 0, "/" + rfnameorg(RFNAMEORG_ID, locvar_blendcheckmat_id - EXT_RF) + "/") != (-1) | locvar_blendcheckmat_id == RF_ANY ) {
+					if ( instr(rffilter_item(inv(INV_ITEM_ID, cnt)), 0, "/" + rfnameorg(RFNAMEORG_ID, locvar_blendcheckmat_id - EXT_RF) + "/") != (-1) | locvar_blendcheckmat_id == RF_ANY | locvar_blendcheckmat_id == RF_REFERENCE_ITEM ) {
 						locvar_blendcheckmat_f = 1
 						break
 					}
@@ -258,7 +258,7 @@
 				continue
 			}
 			if ( blendmatnum_arg1 < EXT_RPACTION ) {
-				if ( instr(rffilter_item(inv(INV_ITEM_ID, cnt)), 0, "/" + rfnameorg(RFNAMEORG_ID, blendmatnum_arg1 - EXT_RF) + "/") != (-1) | blendmatnum_arg1 == RF_ANY ) {
+				if ( instr(rffilter_item(inv(INV_ITEM_ID, cnt)), 0, "/" + rfnameorg(RFNAMEORG_ID, blendmatnum_arg1 - EXT_RF) + "/") != (-1) | blendmatnum_arg1 == RF_ANY | blendmatnum_arg1 == RF_REFERENCE_ITEM ) {
 					locvar_blendmatnum_m += inv(INV_ITEM_NUM, cnt)
 				}
 				continue
@@ -322,7 +322,7 @@
 			}
 			else {
 				if ( locvar_blendlist_id < EXT_RPACTION ) {
-					if ( instr(rffilter_item(inv(INV_ITEM_ID, cnt)), 0, "/" + rfnameorg(RFNAMEORG_ID, locvar_blendlist_id - EXT_RF) + "/") == (-1) & locvar_blendlist_id != RF_ANY ) {
+					if ( instr(rffilter_item(inv(INV_ITEM_ID, cnt)), 0, "/" + rfnameorg(RFNAMEORG_ID, locvar_blendlist_id - EXT_RF) + "/") == (-1) & locvar_blendlist_id != RF_ANY & locvar_blendlist_id != RF_REFERENCE_ITEM ) {
 						continue
 					}
 				}
@@ -852,6 +852,13 @@
 
 	rpid++
 	rplistdef(length(rplistdef)) = 1 * EXT_RECIPES + rpid
+	rpdatan(rpid) = lang("ウンチ爆弾", "poop bomb")
+	rpdata(RPDATA_ITEM, rpid) = ITEM_ID_EXPOOPSION, 15 + 1 * 10000
+	rpdata(RPDATA_SKILL + 0 * 2, rpid) = SKILL_NORMAL_JEWELER, 30, SKILL_NORMAL_CARPENTRY, 10
+	rpdata(RPDATA_MAT + 0, rpid) = ITEM_ID_SHIT, ITEM_ID_SULFUR, ITEM_ID_GARBAGE
+
+	rpid++
+	rplistdef(length(rplistdef)) = 1 * EXT_RECIPES + rpid
 	rpdatan(rpid) = lang("魔力爆弾", "crystal bomb")
 	rpdata(RPDATA_ITEM, rpid) = ITEM_ID_MAGISTUS, 10
 	rpdata(RPDATA_SKILL + 0 * 2, rpid) = SKILL_NORMAL_ALCHEMY, 4, SKILL_NORMAL_CONTROL_MAGIC, 4
@@ -1060,6 +1067,13 @@
 	rpdata(RPDATA_SKILL + 0 * 2, rpid) = SKILL_NORMAL_TAILORING, 15, SKILL_NORMAL_ALCHEMY, 32
 	rpdata(RPDATA_MAT + 0, rpid) = ITEM_ID_EARTH_CRYSTAL, RF_BLANKET, ITEM_ID_BOTTLE_MILK
 
+	rpid++
+	rplistdef(length(rplistdef)) = 1 * EXT_RECIPES + rpid
+	rpdatan(rpid) = lang("外見模倣", "Appearance imitation")
+	rpdata(RPDATA_ITEM, rpid) = RECIPE_BLEND_ACTION_APPEARANCE_IMITATION, 50
+	rpdata(RPDATA_SKILL + 0 * 2, rpid) = SKILL_NORMAL_ALCHEMY, 5, SKILL_NORMAL_CARPENTRY, 5
+	rpdata(RPDATA_MAT + 0, rpid) = RF_ANY, RF_REFERENCE_ITEM
+
 	rpid = ITEM_ID_POTION_DISASTER + EXT_RP
 	rplistshop(length(rplistshop)) = 30 * EXT_RECIPES + rpid
 	rpdata(RPDATA_ITEM, rpid) = ITEM_ID_POTION_DISASTER, 60 + 3 * 10000
@@ -1131,6 +1145,7 @@
 	rfnameorg(RFNAMEORG_ID, RF_LEAF - EXT_RF) = "kusuri", lang("薬草類", "any healthy leaf")
 	rfnameorg(RFNAMEORG_ID, RF_DISINFECTANT - EXT_RF) = "holy", lang("適当な浄化アイテム", "any holy item")
 	rfnameorg(RFNAMEORG_ID, RF_BLANKET - EXT_RF) = "blanket", lang("ブランケット類", "any blanket")
+	rfnameorg(RFNAMEORG_ID, RF_REFERENCE_ITEM - EXT_RF) = "", lang("参考にする物体", "reference item")
 
 	return
 
@@ -1523,6 +1538,9 @@
 		}
 		if ( rpref(10 + cnt * 2) == (-2) ) {
 			continue
+		}
+		if ( rpdata(RPDATA_ITEM, rpid) == RECIPE_BLEND_ACTION_APPEARANCE_IMITATION ) {
+			break
 		}
 		if ( rpdata(RPDATA_TYPE, rpid) <= 0 | cnt != 0 ) {
 			if ( rpresult ) {
@@ -2342,6 +2360,18 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 		}
+		if ( rpdata(RPDATA_ITEM, rpid) == ITEM_ID_EXPOOPSION ) {
+			flt
+			itemcreate -1, ITEM_ID_EXPOOPSION, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+			item_identify ci, ITEM_KNOWN_FULL
+
+			/********** BLOODYSHADE CUSTOM - BEGINNING **********/
+
+			item_stack -1, ci
+
+			/********** BLOODYSHADE CUSTOM - ENDING **********/
+		}
 		if ( rpdata(RPDATA_ITEM, rpid) == ITEM_ID_CIGARETTE ) {
 			picp = inv(INV_ITEM_LEVEL, rpref(10 + 0 * 2))
 			flt
@@ -2421,7 +2451,7 @@
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
 		}
-		if ( rpdata(RPDATA_ITEM, rpid) != ITEM_ID_BOTTLE_CRIM_ALE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_COFFIN_OF_NECROMANCY & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_SKULL_SWORD & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_VIOLENT_SKULL_SWORD & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_MAGISTUS & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_TRISMAGISTUS & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_BOMB_BARREL & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_LARGE_PICNIC_BASKET & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_MONSTER_BALL & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_CIGARETTE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_CURE_CRYSTAL & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_SACK_FLOUR & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_RICE_BALL & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_COFFEE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_GREEN_TEA & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_LIVESTOCK_FEED & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_CHEESE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_TOFU & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_WORTHLESS_FAKE_GOLD_BAR & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_CYBER_SNACK & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_OZOUNI & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_HAMBURGER & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_SOFT_HIGH_MATERIUM & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_HARD_HIGH_MATERIUM & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_SHARP_HIGH_MATERIUM & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_GOLD_PIECE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_POISON & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_DEED & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_MOLOTOV & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_BOTTLE_SULFURIC & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_GROUND_BAIT ) {
+		if ( rpdata(RPDATA_ITEM, rpid) != ITEM_ID_BOTTLE_CRIM_ALE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_COFFIN_OF_NECROMANCY & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_CRIMSON_DARK_ORB & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_SKULL_SWORD & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_VIOLENT_SKULL_SWORD & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_MAGISTUS & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_TRISMAGISTUS & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_BOMB_BARREL & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_EXPOOPSION & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_LARGE_PICNIC_BASKET & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_MONSTER_BALL & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_CIGARETTE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_CURE_CRYSTAL & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_SACK_FLOUR & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_RICE_BALL & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_COFFEE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_GREEN_TEA & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_LIVESTOCK_FEED & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_CHEESE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_TOFU & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_WORTHLESS_FAKE_GOLD_BAR & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_CYBER_SNACK & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_OZOUNI & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_HAMBURGER & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_SOFT_HIGH_MATERIUM & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_HARD_HIGH_MATERIUM & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_SHARP_HIGH_MATERIUM & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_GOLD_PIECE & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_POISON & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_DEED & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_MOLOTOV & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_BOTTLE_SULFURIC & rpdata(RPDATA_ITEM, rpid) != ITEM_ID_GROUND_BAIT ) {
 			flt
 			nostack = 1
 			itemcreate -1, rpdata(RPDATA_ITEM, rpid), cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -3418,6 +3448,23 @@
 
 		/********** BLOODYSHADE CUSTOM - ENDING **********/
 
+		goto *blend_act_SWEND1
+	}
+	if ( _switch_val == RECIPE_BLEND_ACTION_APPEARANCE_IMITATION | _switch_sw ) {
+		_switch_sw = 0
+		inv(INV_ITEM_PIC, ci) = inv(INV_ITEM_PIC, ti)
+		inv(INV_ITEM_COL, ci) = inv(INV_ITEM_COL, ti)
+		inv(INV_ITEM_CHARA_PIC, ci) = inv(INV_ITEM_CHARA_PIC, ti)
+		txtef COLOR_GREEN
+		txt lang(itemname(ci) + "の外見を変えた。", "You changed the appearance of " + itemname(ci) + ".")
+		snd SOUNDLIST_BUILD1
+
+		/********** BLOODYSHADE CUSTOM - BEGINNING **********/
+
+		item_stack -1, ci
+
+		/********** BLOODYSHADE CUSTOM - ENDING **********/
+		
 		goto *blend_act_SWEND1
 	}
 	if ( _switch_val == RECIPE_BLEND_ACTION_MEAT_FILLING | _switch_sw ) {

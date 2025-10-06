@@ -1,4 +1,10 @@
-# Upcoming
+# 2.29.1.0
+
+# Added
+- Ported all changes from Elona+ 2.29.
+
+# Fixed
+- (Plus) Genocide-tail and Hairmet not in Garok's medal exchange list.
 
 # 2.28.2.1
 

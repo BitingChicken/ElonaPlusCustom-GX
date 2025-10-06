@@ -2072,6 +2072,18 @@
 				locvar_itemowner_s += lang("(シビレスピア)", " (paralyze spear)")
 			}
 		}
+		if ( inv(INV_ITEM_ID, itemname_itemid) == ITEM_ID_CLOTHWORLD ) {
+			locvar_itemname_form = inv(INV_ITEM_PIC, itemname_itemid) - 1122
+			locvar_itemowner_s += lang("モード" + locvar_itemname_form + "", " (Model-" + locvar_itemname_form + ")")
+		}
+		if ( inv(INV_ITEM_ID, itemname_itemid) == ITEM_ID_GENOCIDE_TAIL ) {
+			locvar_itemname_form = inv(INV_ITEM_PIC, itemname_itemid) - 1320
+			locvar_itemowner_s += lang("モード" + locvar_itemname_form + "", " (Model-" + locvar_itemname_form + ")")
+		}
+		if ( inv(INV_ITEM_ID, itemname_itemid) == ITEM_ID_HAIRMET ) {
+			locvar_itemname_form = inv(INV_ITEM_PIC, itemname_itemid) - 1323
+			locvar_itemowner_s += lang("モード" + locvar_itemname_form + "", " (Model-" + locvar_itemname_form + ")")
+		}
 		if ( inv(INV_ITEM_ID, itemname_itemid) == ITEM_ID_COFFIN_OF_NECROMANCY ) {
 			if ( inv(INV_ITEM_PARAM1, itemname_itemid) <= 2 ) {
 				locvar_itemowner_s += lang("(猫ゾンビ)", " (cat)")

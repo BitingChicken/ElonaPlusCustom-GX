@@ -4457,7 +4457,8 @@
 		gdata(GDATA_FLAG_INSIDE_DEEP_SEA_CASTLE) = 0
 	}
 	gdata(STARTING_GDATA_FLAG + 376) = 0
-	breakfast = 0
+	breakfast = 1
+	gosub *random_event
 	if ( gdata(GDATA_HOUR) >= 4 & gdata(GDATA_HOUR) <= 9 ) {
 		breakfast = 100
 		gosub *random_event
@@ -19588,6 +19589,8 @@
 					cdatan(CDATAN_NAME, rc) += " Lv" + cdata(CDATA_LEVEL, rc)
 					cdata(CDATA_MAX_HP, rc) = cdata(CDATA_MAX_HP, rc) / 20 + 1
 					cdata(CDATA_HP, rc) = cdata(CDATA_MAX_HP, rc)
+					cdata(CDATA_MAX_MP, rc) = cdata(CDATA_MAX_MP, rc) / 20 + 1
+					cdata(CDATA_MP, rc) = cdata(CDATA_MAX_MP, rc)
 				}
 				if ( efid == SKILL_SPACT_SHIKIORIGAMI_SHURIKEN ) {
 					flt
@@ -19602,6 +19605,8 @@
 					cdatan(CDATAN_NAME, rc) += " Lv" + cdata(CDATA_LEVEL, rc)
 					cdata(CDATA_MAX_HP, rc) = cdata(CDATA_MAX_HP, rc) / 20 + 1
 					cdata(CDATA_HP, rc) = cdata(CDATA_MAX_HP, rc)
+					cdata(CDATA_MAX_MP, rc) = cdata(CDATA_MAX_MP, rc) / 20 + 1
+					cdata(CDATA_MP, rc) = cdata(CDATA_MAX_MP, rc)
 				}
 				if ( efid == SKILL_SPACT_SHIKIORIGAMI_AIRPLANE ) {
 					flt
@@ -19616,6 +19621,8 @@
 					cdatan(CDATAN_NAME, rc) += " Lv" + cdata(CDATA_LEVEL, rc)
 					cdata(CDATA_MAX_HP, rc) = cdata(CDATA_MAX_HP, rc) / 20 + 1
 					cdata(CDATA_HP, rc) = cdata(CDATA_MAX_HP, rc)
+					cdata(CDATA_MAX_MP, rc) = cdata(CDATA_MAX_MP, rc) / 20 + 1
+					cdata(CDATA_MP, rc) = cdata(CDATA_MAX_MP, rc)
 				}
 			loop
 			skillexp SKILL_NORMAL_LITERACY, CHARA_PLAYER, 200

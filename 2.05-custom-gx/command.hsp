@@ -5990,18 +5990,36 @@
 				}
 			}
 			if ( tc < MAX_CHARA_FOLLOWER ) {
-				promptAdd lang("着替えさせる", "Appearance"), "null", 8
-			}
-			if ( tc < MAX_CHARA_FOLLOWER ) {
 				if ( cfg_atk_select == 0 ) {
 					promptAdd lang("攻撃する", "Attack"), "null", 1
 				}
 			}
-			if ( tc < MAX_CHARA_FOLLOWER ) {
-				promptAdd lang("姿を変える", "Shape change"), "null", 14
-			}
 		}
 		promptAdd lang("言葉を教える", "Teach Words"), "null", 7
+		promptAdd lang("口調を変える", "Change Tone"), "null", 10
+		if ( tc < MAX_CHARA_FOLLOWER ) {
+			if ( cdata(CDATA_TXT, tc) != 0 ) {
+				if ( cbit(CHARA_BIT_SHUT_UP, tc) == FALSE ) {
+					promptAdd lang("黙らせる", "Shut up"), "null", 36
+				}
+				else {
+					promptAdd lang("喋らせる", "You can speak now"), "null", 36
+				}
+			}
+			if ( cbit(CHARA_BIT_PRECIOUS_ALLY, tc) == FALSE ) {
+				promptAdd lang("大事な仲間に指定", "Designate as precious ally"), "null", 37
+			}
+			else {
+				promptAdd lang("大事な仲間指定解除", "Cancel precious ally status"), "null", 37
+			}
+			if ( cbit(CHARA_BIT_PROHIBIT_PICKING_UP_ITEMS, tc) == FALSE ) {
+				promptAdd lang("足元のアイテム我慢", "Don't pick up items"), "null", 38
+			}
+			else {
+				promptAdd lang("アイテム我慢解除", "Pick up items freely"), "null", 38
+			}
+			promptAdd lang("街で待機させる", "Wait at the town"), "null", 39
+		}
 		if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
 			if ( cbit(CHARA_BIT_SANDBAG, tc) ) {
 				promptAdd lang("縄を解く", "Release"), "null", 9
@@ -6014,6 +6032,12 @@
 				}
 			}
 		}
+	}
+	if ( tc < MAX_CHARA_FOLLOWER ) {
+		promptAdd lang("着替えさせる", "Appearance"), "null", 8
+	}
+	if ( tc < MAX_CHARA_FOLLOWER ) {
+		promptAdd lang("姿を変える", "Shape change"), "null", 14
 	}
 	promptAdd lang("立ち姿を変える", "Change Tachi-e"), "null", "" + 27
 	promptAdd lang("アイテム画像の付与", "Item mark set"), "null", 23
@@ -6042,7 +6066,6 @@
 			}
 		}
 	}
-	promptAdd lang("口調を変える", "Change Tone"), "null", 10
 	promptAdd lang("名前をつける", "Name"), "null", 3
 	if ( tc != CHARA_PLAYER & cdata(CDATA_RELATION, tc) == RELATION_ALLY | (gdata(GDATA_AREA) == AREA_DOJO & cbit(CHARA_BIT_LIVESTOCK, tc) == TRUE) | (tc != CHARA_PLAYER & cdata(CDATA_ANALYSIS_GAUGE, tc) == 100) ) {
 		promptAdd lang("能力の開示", "Info"), "null", "" + 28
@@ -6564,6 +6587,101 @@
 			cdatan(CDATAN_MSG, tc) = inputlog
 			txtef COLOR_SKY_BLUE
 			txt "" + cdatan(CDATAN_MSG, tc)
+		}
+		gosub *screen_draw
+		goto *pc_turn
+	}
+	if ( p == 36 ) {
+		if ( cbit(CHARA_BIT_SHUT_UP, tc) == FALSE ) {
+			cbitmod CHARA_BIT_SHUT_UP, tc, TRUE
+			snd SOUNDLIST_LOCKED1
+			txt lang(name(tc) + "はしゅんとなった…。", name(tc) + " stops talking...")
+		}
+		else {
+			snd SOUNDLIST_CHEST1
+			txt lang(name(tc) + "はあなたに抱きついた。", name(tc) + " hugs you.")
+			cbitmod CHARA_BIT_SHUT_UP, tc, FALSE
+		}
+		gosub *screen_draw
+		goto *pc_turn
+	}
+	if ( p == 37 ) {
+		if ( cbit(CHARA_BIT_PRECIOUS_ALLY, tc) == FALSE ) {
+			cbitmod CHARA_BIT_PRECIOUS_ALLY, tc, TRUE
+			snd SOUNDLIST_LOCKED1
+			txtef COLOR_GREEN
+			if ( cdata(CDATA_IMPRESSION, tc) >= 150 ) {
+				txt lang(name(tc) + "は当然だとばかりに胸を張った。", name(tc) + " puffs out " + his(tc) + " chest with pride.")
+			}
+			if ( cdata(CDATA_IMPRESSION, tc) >= 100 & cdata(CDATA_IMPRESSION, tc) < 150 ) {
+				txt lang(name(tc) + "は少し照れくさそうだ。", name(tc) + " looks a little embarrassed.")
+			}
+			if ( cdata(CDATA_IMPRESSION, tc) >= 0 & cdata(CDATA_IMPRESSION, tc) < 100 ) {
+				txt lang(name(tc) + "はちょっと驚いている。", name(tc) + " looks surprised.")
+			}
+			if ( cdata(CDATA_IMPRESSION, tc) < 0 ) {
+				txt lang(name(tc) + "は気持ち悪そうに舌打ちした。", name(tc) + " clicks " + his(tc) + " tongue disapprovingly.")
+			}
+		}
+		else {
+			txtef COLOR_RED
+			snd SOUNDLIST_ATK_DARK
+			if ( cdata(CDATA_IMPRESSION, tc) >= 150 ) {
+				txt lang(name(tc) + "は軽く絶望している…。", name(tc) + " looks depressed...")
+			}
+			if ( cdata(CDATA_IMPRESSION, tc) >= 100 & cdata(CDATA_IMPRESSION, tc) < 150 ) {
+				txt lang(name(tc) + "は何かを考え込んでいる…。", name(tc) + " appears to be lost in thought...")
+			}
+			if ( cdata(CDATA_IMPRESSION, tc) >= 0 & cdata(CDATA_IMPRESSION, tc) < 100 ) {
+				txt lang(name(tc) + "は怯えている…。", name(tc) + " looks scared...")
+			}
+			if ( cdata(CDATA_IMPRESSION, tc) < 0 ) {
+				txt lang(name(tc) + "は唾を吐き捨てた。", name(tc) + " spits on the ground...")
+			}
+			cbitmod CHARA_BIT_PRECIOUS_ALLY, tc, FALSE
+		}
+		gosub *screen_draw
+		goto *pc_turn
+	}
+	if ( p == 38 ) {
+		if ( cbit(CHARA_BIT_PROHIBIT_PICKING_UP_ITEMS, tc) == FALSE ) {
+			cbitmod CHARA_BIT_PROHIBIT_PICKING_UP_ITEMS, tc, TRUE
+			snd SOUNDLIST_LOCKED1
+			txt lang(name(tc) + "に、足元のアイテムを我慢するよう指示した。", "You instructed " + name(tc) + " to not pick up items off the ground.")
+		}
+		else {
+			snd SOUNDLIST_CHEST1
+			txt lang(name(tc) + "に、足元のアイテムを我慢しなくていいことを伝えた。", "You instructed " + name(tc) + " to do as they like with items on the ground.")
+			cbitmod CHARA_BIT_PROHIBIT_PICKING_UP_ITEMS, tc, FALSE
+		}
+		gosub *screen_draw
+		goto *pc_turn
+	}
+	if ( p == 39 ) {
+		txt lang("あなたは、" + name(tc) + "に街で待っているように指示した。", "You order " + name(tc) + " to wait in town.")
+		if ( tc == gdata(GDATA_RIDER) ) {
+			cell_findspace cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 1
+			if ( stat == 0 ) {
+				txt lang("降りるスペースがない。", "There's no place to get off.")
+				gosub *screen_draw
+				goto *pc_turn
+			}
+			cell_setchara gdata(GDATA_RIDER), rtval, rtval(1)
+			cdata(CDATA_RIDING, gdata(GDATA_RIDER)) = 0
+			ride_end
+		}
+		map(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), MAP_CHARA_INDEX_PLUS_ONE) = 0
+		cdata(CDATA_EXIST, tc) = CHAR_STATE_ALLY_WAIT
+		cdata(CDATA_AREA, tc) = 0
+		if ( cdata(CDATA_IN_TAGTEAM, tc) == (-1) ) {
+			ttc = cdata(CDATA_TAGTEAM_PARTNER, tc)
+			cell_setchara ttc, cdata(CDATA_X, tc), cdata(CDATA_Y, tc)
+			tag_end tc
+		}
+		if ( cdata(CDATA_IN_TAGTEAM, tc) == 1 ) {
+			ttc = cdata(CDATA_TAGTEAM_PARTNER, tc)
+			tag_end tc
+			cell_movechara ttc, cdata(CDATA_X, ttc), cdata(CDATA_Y, ttc)
 		}
 		gosub *screen_draw
 		goto *pc_turn
@@ -11255,7 +11373,7 @@
 	txt lang("W/Sキーで縦サイズ調整、A/Dキーで横サイズ調整、Z/Xキーで角度調整。", "Item Mark: W/S: adjust length, A/D: adjust width, Z/X: rotate angle, Q/E: adjust size.")
 	txtnew
 	txtef COLOR_YELLOW
-	txt lang("移動キーでマーク移動、Back spaceキーで前後切替、RキーでReset。", "           ARROW keys to move, BACKSPACE key to switch front/behind, R to reset position.")
+	txt lang("移動キーでマーク移動、Gキーで前後切替、Fキーで左右反転、RキーでReset。", "           ARROW keys to move, G key to switch side, F to flip, R to reset position.")
 	txtnew
 	txtef COLOR_GREEN
 	txt lang("Enterキーで決定、キャンセルキーで終了、Kキーで削除し終了。", "           ENTER key to save, SHIFT key to cancel and exit, K to delete and exit.")
@@ -11292,6 +11410,8 @@
 		if ( chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, tc)) > 48 ) {
 			cdata(CDATA_MARK_ITEM_ADJUST_L, tc) += 24
 		}
+		cbitmod CHARA_BIT_ITEM_MARK_FRONTBACK, tc, FALSE
+		cbitmod CHARA_BIT_ITEM_MARK_FLIP, tc, FALSE
 	}
 	if ( key == "k" ) {
 		snd SOUNDLIST_EQUIP1
@@ -11301,6 +11421,8 @@
 		cdata(CDATA_MARK_ITEM_ADJUST_W, tc) = 0
 		cdata(CDATA_MARK_ITEM_ADJUST_R, tc) = 0
 		cdata(CDATA_MARK_ITEM_PIC, tc) = 0
+		cbitmod CHARA_BIT_ITEM_MARK_FRONTBACK, tc, FALSE
+		cbitmod CHARA_BIT_ITEM_MARK_FLIP, tc, FALSE
 		gosub *screen_draw
 		n = 0
 		txtnew
@@ -11323,6 +11445,9 @@
 	if ( key == "q" ) {
 		if ( cdata(CDATA_MARK_ITEM_ADJUST_L, tc) >= (-11) ) {
 			cdata(CDATA_MARK_ITEM_ADJUST_L, tc)--
+			if ( chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, tc)) > 48 ) {
+				cdata(CDATA_MARK_ITEM_ADJUST_L, tc)--
+			}
 		}
 		if ( cdata(CDATA_MARK_ITEM_ADJUST_W, tc) >= (-11) ) {
 			cdata(CDATA_MARK_ITEM_ADJUST_W, tc)--
@@ -11332,6 +11457,9 @@
 	if ( key == "e" ) {
 		if ( cdata(CDATA_MARK_ITEM_ADJUST_L, tc) < 36 + 48 * (chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, tc)) > 48) ) {
 			cdata(CDATA_MARK_ITEM_ADJUST_L, tc)++
+			if ( chipi(CHIPI_HEIGHT, cdata(CDATA_MARK_ITEM_PIC, tc)) > 48 ) {
+				cdata(CDATA_MARK_ITEM_ADJUST_L, tc)++
+			}
 		}
 		if ( cdata(CDATA_MARK_ITEM_ADJUST_W, tc) < 36 ) {
 			cdata(CDATA_MARK_ITEM_ADJUST_W, tc)++
@@ -11376,16 +11504,27 @@
 		}
 		snd SOUNDLIST_CURSOR1
 	}
-	getkey p, 8
-	if ( p ) {
-		if ( cbit(CHARA_BIT_MARK_ITEM, tc) ) {
+	if ( key == "g" ) {
+		if ( cbit(CHARA_BIT_ITEM_MARK_FRONTBACK, tc) ) {
 			snd SOUNDLIST_DROP1
-			cbitmod CHARA_BIT_MARK_ITEM, tc, 0
+			cbitmod CHARA_BIT_ITEM_MARK_FRONTBACK, tc, FALSE
 			await 500
 		}
 		else {
 			snd SOUNDLIST_ENC
-			cbitmod CHARA_BIT_MARK_ITEM, tc, 1
+			cbitmod CHARA_BIT_ITEM_MARK_FRONTBACK, tc, TRUE
+			await 500
+		}
+	}
+	if ( key == "f" ) {
+		if ( cbit(CHARA_BIT_ITEM_MARK_FLIP, tc) ) {
+			snd SOUNDLIST_DROP1
+			cbitmod CHARA_BIT_ITEM_MARK_FLIP, tc, FALSE
+			await 500
+		}
+		else {
+			snd SOUNDLIST_ENC
+			cbitmod CHARA_BIT_ITEM_MARK_FLIP, tc, TRUE
 			await 500
 		}
 	}
@@ -14610,6 +14749,8 @@
 					cdata(CDATA_MARK_ITEM_ADJUST_L, tc) += 24
 				}
 			}
+			cbitmod CHARA_BIT_ITEM_MARK_FRONTBACK, tc, FALSE
+			cbitmod CHARA_BIT_ITEM_MARK_FLIP, tc, FALSE
 			txt lang(name(tc) + "にアイテム画像を付与した。", "You attached an item mark to " + name(tc) + ".")
 			gosub *screen_draw
 			gosub *com_item_mark

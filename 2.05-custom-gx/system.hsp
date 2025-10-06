@@ -982,6 +982,16 @@
 		loop
 		kamen11 = 100
 	}
+	if ( gdata(GDATA_VERSION) < 6400 ) {
+		repeat 245
+			if ( cnt == 0 ) {
+				continue
+			}
+			if ( cdata(CDATA_PRAY, cnt) == 1 ) {
+				cbitmod CHARA_BIT_PRECIOUS_ALLY, cnt, TRUE
+			}
+		loop
+	}
 	if ( gdata(GDATA_VERSION) != VERSION_NUMBER ) {
 		gdata(GDATA_WORLD_RENEW) = 1
 	}

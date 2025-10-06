@@ -1924,15 +1924,15 @@
 	skillname(SKILL_SPACT_REPRIMAND) = lang("懲罰の光", "Reprimand")
 	skilldesc(SKILL_SPACT_REPRIMAND) = lang("全域味方殺害罰する/ゲージ80％消費", "Punish killing of allies field/gauge80")
 	
-	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHIKIORIGAMI_CRANE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 15, 3000 + 6, 500
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHIKIORIGAMI_CRANE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 25, 3000 + 6, 500
 	skillname(SKILL_SPACT_SHIKIORIGAMI_CRANE) = lang("式折神・幻惑折鶴", "ShikiOrigami-Crane")
 	skilldesc(SKILL_SPACT_SHIKIORIGAMI_CRANE) = lang("MP20%と魔法書消費し味方生成", "Create allies/Consume spell book and MP")
 	
-	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHIKIORIGAMI_SHURIKEN) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 18, 3000 + 6, 500
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHIKIORIGAMI_SHURIKEN) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 15, 3000 + 6, 500
 	skillname(SKILL_SPACT_SHIKIORIGAMI_SHURIKEN) = lang("式折神・荒紙手裏剣", "ShikiOrigami-Shuriken")
 	skilldesc(SKILL_SPACT_SHIKIORIGAMI_SHURIKEN) = lang("MP20%と魔法書消費し味方生成", "Create allies/Consume book and MP")
 	
-	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHIKIORIGAMI_AIRPLANE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 21, 3000 + 6, 500
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHIKIORIGAMI_AIRPLANE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 20, 3000 + 6, 500
 	skillname(SKILL_SPACT_SHIKIORIGAMI_AIRPLANE) = lang("式折神・紙風飛行機", "ShikiOrigami-Airplane")
 	skilldesc(SKILL_SPACT_SHIKIORIGAMI_AIRPLANE) = lang("MP20%と魔法書消費し味方生成", "Create allies/Consume book and MP")
 	

@@ -7,6 +7,10 @@
 	if ( mdata(MDATA_TYPE) != MAP_TYPE_TOWN ) {
 		kitune = 0
 	}
+	if ( breakfast == 1 ) {
+		id = RANDOM_EVENT_RELIEF_SUPPLIES
+		goto *random_eventProc
+	}
 	if ( breakfast == 100 ) {
 		id = RANDOM_EVENT_BREAKFAST
 		goto *random_eventProc
@@ -544,6 +548,7 @@
 				txt lang("合計レベルが200以上になるように生贄が捧げられたことにより、神狼が降臨しました。狼陣営の勝利です。", "The sacrifice was made so that the total level was 200 or more, so a wolfgod descended. It's a victory for the wolves.")
 				snd SOUNDLIST_SIREN
 				flt
+				initlv = limit(85 + gdata(GDATA_DEEPEST_LEVEL) / 2, 85, 2000)
 				characreate -1, CREATURE_ID_GODWOLF, cxx, cyy
 				repeat 245
 					if ( cnt < 16 ) {
@@ -596,6 +601,7 @@
 				txt lang("潜伏していた妖狐が人狼遊儀を乗っ取ったことにより、九尾が降臨しました。狐陣営の勝利です。", "A fox that had been hiding out takes over Werewolf-RitualGame, so a foxgod descended. It's a victory for the fox.")
 				snd SOUNDLIST_SIREN
 				flt
+				initlv = limit(90 + gdata(GDATA_DEEPEST_LEVEL) / 2, 90, 2000)
 				characreate -1, CREATURE_ID_KYU_BI, cxx, cyy
 				repeat 245
 					if ( cnt < 16 ) {
@@ -805,6 +811,46 @@
 		}
 		mtc = 0
 		goto *random_eventProc_SWEND1
+	}
+	if ( _switch_val == RANDOM_EVENT_RELIEF_SUPPLIES | _switch_sw ) {
+		_switch_sw = 0
+		snd SOUNDLIST_CHIME
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS)++
+		txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired.[Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		s = lang("ささやかな支援", "Small relief supplies")
+		file = "bg_re4"
+		buff = lang("ガイドが支援物資を調達してきたようだ。", "It seems the guide has brought in some relief supplies.")
+		list(0, listmax) = 1
+		listn(0, listmax) = lang("サンキュー", "(Receive)")
+		listmax++
+		gosub *re_select
+		if ( gdata(GDATA_FLAG_MAIN) < 210 ) {
+			flt
+			itemcreate -1, ITEM_ID_POTION_CURE_MINOR_WOUND, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 3
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+		}
+		if ( gdata(GDATA_FLAG_MAIN) >= 210 & gdata(GDATA_FLAG_MAIN) < 350 ) {
+			flt
+			itemcreate -1, ITEM_ID_POTION_CURE_MAJOR_WOUND, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 3
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+		}
+		if ( gdata(GDATA_FLAG_MAIN) >= 350 & gdata(GDATA_FLAG_MAIN) < 1010 ) {
+			flt
+			itemcreate -1, ITEM_ID_POTION_CURE_CRITICAL_WOUND, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 3
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+		}
+		if ( gdata(GDATA_FLAG_MAIN) >= 1010 ) {
+			flt
+			itemcreate -1, ITEM_ID_POTION_VITALITY, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 3
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+		}
+		flt
+		itemcreate -1, ITEM_ID_SCROLL_TELEPORTATION, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+		txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+		goto *random_eventProc_SWEND1
+		_switch_sw++
 	}
 	if ( _switch_val == RANDOM_EVENT_HANDMADE_GIFT | _switch_sw ) {
 		_switch_sw = 0
@@ -3469,7 +3515,7 @@
 		}
 		else {
 			s = lang("旅の途中で", "Adventure Days")
-			file = "bg_re9"
+			file = "bg_re13"
 		}
 		if ( gdata(GDATA_AREA) == AREA_OCEAN ) {
 			kaiwa = rnd(12)

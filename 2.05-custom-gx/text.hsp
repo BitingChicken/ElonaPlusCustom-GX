@@ -1495,7 +1495,7 @@
 	return
 
 #deffunc txtsettamer int txtsettamer_arg1
-	repeat 6
+	repeat 18
 		i = cnt
 		p(cnt) = p(i)
 		p(i) = cnt
@@ -1517,6 +1517,42 @@
 			s(cnt) = lang("逆に鞭で打ってもらう", "Hand over the whip")
 		}
 		if ( p(cnt) == 5 ) {
+			s(cnt) = lang("別行動時は(遠距離)散策", "Roam freely if you have nothing to do.")
+		}
+		if ( p(cnt) == 6 ) {
+			s(cnt) = lang("別行動時は(近距離)散策", "Walk around if you have nothing to do.")
+		}
+		if ( p(cnt) == 7 ) {
+			s(cnt) = lang("別行動時は直立不動で待機", "Stand still if you have nothing to do.")
+		}
+		if ( p(cnt) == 8 ) {
+			s(cnt) = lang("別行動時でも随行", "Follow me if you have nothing to do.")
+		}
+		if ( p(cnt) == 9 ) {
+			s(cnt) = lang("本職を優先", "Do your main job.")
+		}
+		if ( p(cnt) == 10 ) {
+			s(cnt) = lang("気が向いたら路上演奏", "Perform music on the roads.")
+		}
+		if ( p(cnt) == 11 ) {
+			s(cnt) = lang("たまに布教活動", "Propagate greatness of god.")
+		}
+		if ( p(cnt) == 12 ) {
+			s(cnt) = lang("時々ダンス披露", "Dance on the roads.")
+		}
+		if ( p(cnt) == 13 ) {
+			s(cnt) = lang("暇ならかたつむり駆除", "Exterminate snail when you see them.")
+		}
+		if ( p(cnt) == 14 ) {
+			s(cnt) = lang("客を見繕って売春", "Prostitute yourself if you have nothing to do.")
+		}
+		if ( p(cnt) == 15 ) {
+			s(cnt) = lang("街での訓練は禁止", "Do not train in town")
+		}
+		if ( p(cnt) == 16 ) {
+			s(cnt) = lang("その辺で物乞い", "Beg in town.")
+		}
+		if ( p(cnt) == 17 ) {
 			s(cnt) = lang("キャンセル", "Cancel")
 		}
 	loop

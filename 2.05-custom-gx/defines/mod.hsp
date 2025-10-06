@@ -1420,6 +1420,8 @@
 #define global	EFFECT_SLAVE_WHEEL	148
 #define global	EFFECT_HIDEN_MASHI	149
 #define global	EFFECT_MIMIRROCRY	150
+#define global	EFFECT_HAIRMET	151
+#define global	EFFECT_GENOCIDE_TAIL	152
 
 // Traits (feats)
 #define global	TRAIT_NORMAL_OTHER_MUTANT	0
@@ -1535,7 +1537,7 @@
 #define global	SPRITE_SHEET_COLS_MAP	33
 #define global	SPRITE_SHEET_ROWS_MAP	25
 #define global	SPRITE_SHEET_COLS_ITEM	33
-#define global	SPRITE_SHEET_ROWS_ITEM	40
+#define global	SPRITE_SHEET_ROWS_ITEM	42
 #define global	SPRITE_SHEET_COLS_CHARA	33
 #define global	SPRITE_SHEET_ROWS_CHARA	37
 
@@ -2206,6 +2208,7 @@
 #define global	CHARA_BIT_SHOP_STRONG_ALLY	1023
 #define global	CHARA_BIT_SHOP_BUSINESS_SMILE	1024
 #define global	CHARA_BIT_MARK_ITEM	1025
+#define global	CHARA_BIT_ITEM_MARK_FRONTBACK	1025
 #define global	CHARA_BIT_LITERAL_BIRTH_YEAR	1026
 #define global	CHARA_BIT_HAS_BEEN_CONFESSED_TO	1027
 #define global	CHARA_BIT_VINDALIAN_JIUJITSU_ACTIVE	1028
@@ -2233,6 +2236,8 @@
 #define global	CHARA_BIT_BEGGING_FOR_LIFE	1049
 #define global	CHARA_BIT_EAT_RAW_ITEM	1050
 #define global	CHARA_BIT_GIVEN_BIRTH	1051
+#define global	CHARA_BIT_ITEM_MARK_FLIP	1052
+#define global	CHARA_BIT_PRECIOUS_ALLY	1053
 
 // Database modes
 #define global	DBMODE_NONE	0
@@ -2544,6 +2549,7 @@
 #define global	RF_STAR	(EXT_RF + 27)
 #define global	RF_BLANKET	(EXT_RF + 28)
 #define global	RF_DEBUFF_POTION	(EXT_RF + 29)
+#define global	RF_REFERENCE_ITEM	(EXT_RF + 30)
 
 #define global	MAX_RF	(RF_DEBUFF_POTION + 1)
 
@@ -2582,6 +2588,7 @@
 #define global	RECIPE_BLEND_ACTION_BARREL_BOMB	10021
 #define global	RECIPE_BLEND_ACTION_POTTERY	10022
 #define global	RECIPE_BLEND_ACTION_BIOLOGICAL_RESTORATION	10023
+#define global	RECIPE_BLEND_ACTION_APPEARANCE_IMITATION	10024
 
 // Equip slots / limbs
 #define global	EQUIP_SLOT_NONE	0
@@ -3024,6 +3031,7 @@
 #define global	RANDOM_EVENT_DRIFTER	54
 #define global	RANDOM_EVENT_BIG_CATCH	55
 #define global	RANDOM_EVENT_SEA_EVENT	56
+#define global	RANDOM_EVENT_RELIEF_SUPPLIES	57
 
 // Event types
 #define global	EVENT_NONE	0
@@ -3831,6 +3839,7 @@
 // NOTE: This was reused for the precious ally designation sometime after 1.90,
 // since the limit of cdata slots was reached. It only makes sense for the player
 // to have a prayer charge, and for allies to be marked as precious.
+// 2.29 Ano changed precious ally into a bit flag, but he didn't change the code, the analyser will return CDATA_PRAY tho, you have to change those manually
 #define global	CDATA_PRAY	63
 #define global	CDATA_PRECIOUS_ALLY	63
 
@@ -3870,8 +3879,6 @@
 #define global	CDATA_SHIELD_STYLE_TYPE	96
 #define global	CDATA_WEAPON_STYLE_TYPE	97
 #define global	CDATA_ENHANCE_SPELL	98
-
-// NOTE: Was precious ally flag in 1.90.
 #define global	CDATA_MARK_ITEM_ADJUST_L	99
 
 #define global	CDATA_STARTING_EQUIP_SLOTS	100
@@ -6027,8 +6034,11 @@
 #define global	ITEM_ID_SNOW_CRYSTAL	1307
 #define global	ITEM_ID_MIMIRROCRY	1308
 #define global	ITEM_ID_SURSTROMMING	1309
+#define global	ITEM_ID_HAIRMET	1310
+#define global	ITEM_ID_GENOCIDE_TAIL	1311
+#define global	ITEM_ID_EXPOOPSION	1312
 
-#define global	MAX_ITEM_ID	(ITEM_ID_SURSTROMMING + 3)
+#define global	MAX_ITEM_ID	(ITEM_ID_EXPOOPSION + 3)
 
 // Creatures
 #define global	CREATURE_ID_BUG	0 // Also doubles as RANDOM
