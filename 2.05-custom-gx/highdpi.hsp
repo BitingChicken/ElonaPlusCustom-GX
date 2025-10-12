@@ -599,6 +599,7 @@
 	local BMSCR, local _gbuf, local _gw, local _gh
 	_p1 = p1
 	_p2 = p2
+	loadingpic@HSP=_p1
 	mref BMSCR, 67 // gmode 情報を取得
 	_gbuf = BMSCR.18
 	if(p1 == HIGHDPI_DEF) : _p1 = _p1

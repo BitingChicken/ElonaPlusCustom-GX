@@ -2696,6 +2696,9 @@ if instr(s,0,%1)!-1{	%c\
 	buf += "Message (EN): " + ErrorMsg(1, wparam) + "\n"
 	buf += "efId " + efid + " efP " + efp + " Area " + gdata(GDATA_AREA) + "/" + gdata(GDATA_LEVEL) + "\n"
 	buf += "ci "
+	if ( wparam == 13 ) {
+		buf += "\nTrying to load picture: [" + loadingpic@HSP + "]\n"
+	}
 	if ( ci < SIZE_INV1 ) {
 		buf += "0"
 		if ( ci >= 0 ) {

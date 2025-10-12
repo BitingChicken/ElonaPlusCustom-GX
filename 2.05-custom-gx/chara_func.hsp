@@ -2499,7 +2499,7 @@
 	if ( animeload_arg1 == 14 ) {
 		locvar_animeload_i = 6, 50
 	}
-	if ( animeload_animid == 35 ) {
+	if ( animeload_arg1 == 35 ) {
 		locvar_animeload_i = 5, 99
 		locvar_animeload_r = 0
 	}
@@ -8294,7 +8294,9 @@
 
 // Ano made ap gain functions a lot simpler in 2.29, but he didn't change the destone formula.
 #deffunc gain_ap str gain_ap_source, int gain_ap_chara_id, int gain_ap_enemy_id
-	if ( check_talk_arg1 != 0 & cdata(CDATA_RELATION, check_talk_arg1) < RELATION_ALLY ) { return FALSE }
+	if ( gain_ap_chara_id < 0 | gain_ap_chara_id >= MAX_CHARA_TOTAL ) { return FALSE }
+	if ( gain_ap_enemy_id < 0 | gain_ap_enemy_id >= MAX_CHARA_TOTAL ) { return FALSE }
+	if ( gain_ap_chara_id != 0 & cdata(CDATA_RELATION, gain_ap_chara_id) < RELATION_ALLY ) { return FALSE }
 	if ( cdata(CDATA_INIT_ATTR, gain_ap_enemy_id) == 0 ) {
 		cdata(CDATA_INIT_ATTR, gain_ap_enemy_id) = sorg(SKILL_ATTR_STR, gain_ap_enemy_id) + sorg(SKILL_ATTR_CON, gain_ap_enemy_id) + sorg(SKILL_ATTR_DEX, gain_ap_enemy_id) + sorg(SKILL_ATTR_PER, gain_ap_enemy_id) + sorg(SKILL_ATTR_LER, gain_ap_enemy_id) + sorg(SKILL_ATTR_WIL, gain_ap_enemy_id) + sorg(SKILL_ATTR_MAG, gain_ap_enemy_id) + sorg(SKILL_ATTR_CHA, gain_ap_enemy_id)
 	}
@@ -8331,41 +8333,55 @@
 			gain_ap_aspd = cdata(CDATA_INIT_SPEED, cnt)
 			gain_ap_lfmn = cdata(CDATA_INIT_LIFEMANA, cnt)
 			gain_ap_total = cdata(CDATA_AP_TOTAL, cnt)
-		}
-		if ( gain_ap_enemy_attr_local + gain_ap_enemy_lifemana_local >= 1000 ) {
-			if ( gain_ap_enemy_attr_local + gain_ap_enemy_speed_local > gain_ap_attr + gain_ap_aspd + gain_ap_lfmn + (gain_ap_total + 1) / 5 ) {
-				if ( gain_ap_enemy_speed_local > gain_ap_aspd * 5 ) {
-					cdata(CDATA_AP_CURRENT, cnt) += 2
-					cdata(CDATA_AP_TOTAL, cnt) += 2
+			if ( gdata(GDATA_RIDER) != 0 ) {
+				if ( gain_ap_chara_id == CHARA_PLAYER | gain_ap_chara_id == gdata(GDATA_RIDER) ) {
+					if ( cdata(CDATA_INIT_SPEED, CHARA_PLAYER) > cdata(CDATA_INIT_SPEED, gdata(GDATA_RIDER)) ) {
+						gain_ap_aspd = cdata(CDATA_INIT_SPEED, CHARA_PLAYER)
+					}
+					else {
+						gain_ap_aspd = cdata(CDATA_INIT_SPEED, gdata(GDATA_RIDER))
+					}
 				}
-				if ( gain_ap_enemy_speed_local > gain_ap_aspd * 4 ) {
-					cdata(CDATA_AP_CURRENT, cnt) += 2
-					cdata(CDATA_AP_TOTAL, cnt) += 2
-				}
-				if ( gain_ap_enemy_speed_local > gain_ap_aspd * 3 ) {
-					cdata(CDATA_AP_CURRENT, cnt) += 2
-					cdata(CDATA_AP_TOTAL, cnt) += 2
-				}
-				if ( gain_ap_enemy_speed_local > gain_ap_aspd * 2 ) {
-					cdata(CDATA_AP_CURRENT, cnt) += 2
-					cdata(CDATA_AP_TOTAL, cnt) += 2
-				}
-				if ( gain_ap_enemy_speed_local > gain_ap_aspd ) {
-					cdata(CDATA_AP_CURRENT, cnt) += 2
-					cdata(CDATA_AP_TOTAL, cnt) += 2
-					snd SOUNDLIST_ENC
-					animeload ANIMATION_CHAOS_CHILD, cnt
-				}
-				if ( cdata(CDATA_AP_CURRENT, cnt) > 2000 ) {
-					cdata(CDATA_AP_TOTAL, cnt) -= cdata(CDATA_AP_CURRENT, cnt) - 2000
-					cdata(CDATA_AP_CURRENT, cnt) = 2000
-				}
-				if ( cdata(CDATA_AP_TOTAL, cnt) < 0 ) {
-					cdata(CDATA_AP_TOTAL, cnt) = 2000
-				}
-				if ( cdata(CDATA_AP_TOTAL, cnt) > gain_ap_total ) {
-					DamagePopupAdd ("AP +" + ( cdata(CDATA_AP_TOTAL, cnt) - gain_ap_total )), cnt, DMGPOPUP_HEAL_SP, 0
-					txt "" + name(cnt) + " obtained " + ( cdata(CDATA_AP_TOTAL, cnt) - gain_ap_total ) + " AP from the " + gain_ap_source + "."
+			}
+			if ( gain_ap_enemy_attr_local + gain_ap_enemy_lifemana_local >= 1000 ) {
+				if ( gain_ap_enemy_attr_local + gain_ap_enemy_speed_local > gain_ap_attr + gain_ap_aspd + gain_ap_lfmn + (gain_ap_total + 1) / 5 ) {
+					if ( gain_ap_enemy_speed_local > gain_ap_aspd * 5 ) {
+						cdata(CDATA_AP_CURRENT, cnt) += 2
+						cdata(CDATA_AP_TOTAL, cnt) += 2
+					}
+					if ( gain_ap_enemy_speed_local > gain_ap_aspd * 4 ) {
+						cdata(CDATA_AP_CURRENT, cnt) += 2
+						cdata(CDATA_AP_TOTAL, cnt) += 2
+					}
+					if ( gain_ap_enemy_speed_local > gain_ap_aspd * 3 ) {
+						cdata(CDATA_AP_CURRENT, cnt) += 2
+						cdata(CDATA_AP_TOTAL, cnt) += 2
+					}
+					if ( gain_ap_enemy_speed_local > gain_ap_aspd * 2 ) {
+						cdata(CDATA_AP_CURRENT, cnt) += 2
+						cdata(CDATA_AP_TOTAL, cnt) += 2
+					}
+					if ( gain_ap_enemy_speed_local > gain_ap_aspd ) {
+						cdata(CDATA_AP_CURRENT, cnt) += 2
+						cdata(CDATA_AP_TOTAL, cnt) += 2
+						snd SOUNDLIST_ENC
+						if ( gain_ap_source == "talk" ) {
+							animeload 35, cnt
+						} else {
+							animeload 36, cnt
+						}
+					}
+					if ( cdata(CDATA_AP_CURRENT, cnt) > 2000 ) {
+						cdata(CDATA_AP_TOTAL, cnt) -= cdata(CDATA_AP_CURRENT, cnt) - 2000
+						cdata(CDATA_AP_CURRENT, cnt) = 2000
+					}
+					if ( cdata(CDATA_AP_TOTAL, cnt) < 0 ) {
+						cdata(CDATA_AP_TOTAL, cnt) = 2000
+					}
+					if ( cdata(CDATA_AP_TOTAL, cnt) > gain_ap_total ) {
+						DamagePopupAdd ("AP +" + ( cdata(CDATA_AP_TOTAL, cnt) - gain_ap_total )), cnt, DMGPOPUP_HEAL_SP, 0
+						txt "" + name(cnt) + " obtained " + ( cdata(CDATA_AP_TOTAL, cnt) - gain_ap_total ) + " AP from the " + gain_ap_source + "."
+					}
 				}
 			}
 		}
