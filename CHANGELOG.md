@@ -1,3 +1,8 @@
+# 2.29.1.1
+
+# Added
+- Ported all changes from Elona+ 2.29R.
+
 # 2.29.1.0
 
 # Added

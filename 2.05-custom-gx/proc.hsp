@@ -25271,7 +25271,7 @@
 		_switch_sw = 0
 		if ( cdata(CDATA_ID, tc) == CREATURE_ID_SIST_THE_OLDER_SISTER | cdata(CDATA_ID, tc) == CREATURE_ID_MIKRAANESIS | cdata(CDATA_ID, tc) == CREATURE_ID_URCAGUARY | cdata(CDATA_ID, tc) == CREATURE_ID_LAZY_OLDER_SISTER | cdata(CDATA_ID, tc) == CREATURE_ID_OLDER_SISTER2 | cdata(CDATA_ID, tc) == CREATURE_ID_OLDER_DOG_SISTER | cdata(CDATA_ID, tc) == CREATURE_ID_OLDER_SISTER ) {
 			txtef COLOR_PURPLE
-			txt lang(name(cc) + "の眼差しは" + name(tc) + "の姉波動に防がれた！", name(tc) + " defended against " + name(cc) + your(cc) + " gaze with sisterly energy!")
+			txt lang(name(cc) + "の眼差しは" + name(tc) + "の姉波動に防がれた！", name(tc) + " defended against " + name(cc) + your(cc) + " gaze with Big Sister Energy!")
 			goto *effect_end
 		}
 		txtef COLOR_RED
@@ -25289,7 +25289,16 @@
 		if ( cc == CHARA_PLAYER ) {
 			cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER)++
 			if ( cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER) > cdata(CDATA_LEVEL, CHARA_PLAYER) ) {
+				txtef COLOR_RED2
 				cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER) = cdata(CDATA_LEVEL, CHARA_PLAYER)
+				txt lang(name(cc) + "のレベルが姉波動に追い付いていない…。", name(cc) + "'s level cannot contain any more of the Big Sister Energy...")
+			}
+			else {
+				if ( cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER) \ 13 == 0 ) {
+					txtef COLOR_PINK
+					txt lang(name(cc) + "は姉波動をより身近に感じるようになった！", name(cc) + " feel" + _s(cc) + " more in touch with the Big Sister Energy!")
+					snd SOUNDLIST_PRAY2
+				}
 			}
 			anepower = (cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER) + 13) / 13 * 10
 		}

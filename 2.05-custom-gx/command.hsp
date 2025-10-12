@@ -2649,14 +2649,14 @@
 			}
 			else {
 				if ( trait(tid) > 0 ) {
-					color 0, 0, 200
+					color 0, 0, 120
 				}
 				else {
-					color 200, 0, 0
+					color 150, 0, 0
 				}
 			}
 			if ( list(1, p) == 99998 ) {
-				color 0, 200, 0
+				color 0, 100, 0
 			}
 		}
 		else {
