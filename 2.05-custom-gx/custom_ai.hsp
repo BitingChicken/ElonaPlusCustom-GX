@@ -384,7 +384,7 @@
 						TargetCount = 0
 						while ( LoopCount < LoopMax )
 							LoopTarget = TargetList(LoopCount)
-							if ( (findbuff(LoopCount, CAIValue(cnt, cc)) == (-1) & CAIComparatorFix(cnt, cc) == (4)) | (findbuff(LoopCount, CAIValue(cnt, cc)) != (-1) & CAIComparatorFix(cnt, cc) == (3)) ) {
+							if ( (findbuff(LoopTarget, CAIValue(cnt, cc)) == (-1) & CAIComparatorFix(cnt, cc) == (4)) | (findbuff(LoopTarget, CAIValue(cnt, cc)) != (-1) & CAIComparatorFix(cnt, cc) == (3)) ) {
 								TargetList(TargetCount) = LoopTarget
 								TargetCount++
 								LoopCount++

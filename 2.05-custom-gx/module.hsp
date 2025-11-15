@@ -2262,7 +2262,7 @@
 	if ( cbit(CHARA_BIT_ITEM_MARK_FRONTBACK, cell_draw_arg_c) == 0 ^ (cell_draw_arg_bool_front == 0) ) {
 		if ( mdata(MDATA_TYPE) != MAP_TYPE_WORLD ) {
 			if ( cdata(CDATA_MARK_ITEM_PIC, cell_draw_arg_c) > 0 ) {
-				cell_draw_item_mark_enlarge_w = limit(cell_draw_arg_times_larger, 1, 6) * (1 - 2 * (cbit(CHARA_BIT_ITEM_MARK_FLIP, locvar_cell_draw_c) == TRUE))
+				cell_draw_item_mark_enlarge_w = limit(cell_draw_arg_times_larger, 1, 6) * (1 - 2 * (cbit(CHARA_BIT_ITEM_MARK_FLIP, cell_draw_arg_c) == TRUE))
 				cell_draw_item_mark_enlarge_h = limit(cell_draw_arg_times_larger, 1, 6)
 				// base x: 12,  y: 18
 				// CDATA_IN_TAGTEAM == 1:					x + 12
