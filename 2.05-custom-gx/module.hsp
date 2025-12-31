@@ -2036,6 +2036,12 @@
 				}
 			}
 		}
+		if ( cdata(CDATA_ROW_ACT, CHARA_PLAYER) == ACTION_SEX ) {
+			locvar_cell_draw_py -= cdata(CDATA_ACTION_PERIOD, CHARA_PLAYER) \ 5 * 4
+		}
+		if ( cdata(CDATA_ROW_ACT, CHARA_PLAYER) == ACTION_SEX_2 ) {
+			locvar_cell_draw_py -= cdata(CDATA_ACTION_PERIOD, CHARA_PLAYER) \ 3 * 10
+		}
 		/********** JAMES CUSTOM - RENDERING ORDER - BEGINNING **********/
 		// Draw the tagteam partner of player.
 		locvar_cell_draw_c = cdata(CDATA_TAGTEAM_PARTNER, CHARA_PLAYER)
