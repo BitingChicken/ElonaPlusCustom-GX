@@ -1,3 +1,13 @@
+# 2.30.1.0
+
+# Added
+- Ported all changes from Elona+ 2.30.
+
+# Fixed
+- Fixed Custom AI multi-target buff checking targeting the wrong NPC
+- Fixed item mark flip not working for tag-team partner.
+- Fixed a AP gain issue where the wrong checks are used.
+
 # 2.29.1.1
 
 # Added
