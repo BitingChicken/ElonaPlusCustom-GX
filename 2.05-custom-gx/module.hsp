@@ -2004,6 +2004,38 @@
 		gmode 5, inf_tiles, inf_tiles, 50 + locvar_cell_draw_flick
 		pos locvar_cell_draw_px - 48, locvar_cell_draw_py - 48
 		gcopy BUFFER_INF, 800, 112, 144, 96
+		// Modify px and py during jump animation
+		if ( jumpanime >= 1 ) {
+			if ( jumpanime(1) \ 8 < 4 ) {
+				locvar_cell_draw_py -= jumpanime(1) \ 4 * (jumpanime(1) \ 4) * 4
+			}
+			else {
+				locvar_cell_draw_py -= (7 - jumpanime(1)) * (7 - jumpanime(1)) * 3
+			}
+			if ( jumpanime == 3 ) {
+				if ( cdata(CDATA_DIR, CHARA_PLAYER) == 1 ) {
+					if ( jumpanime(1) \ 8 < 4 ) {
+						locvar_cell_draw_px -= jumpanime(1) \ 4 * (jumpanime(1) \ 4) * 2
+					}
+					else {
+						locvar_cell_draw_px += (7 - jumpanime(1)) * (7 - jumpanime(1)) * 2
+					}
+				}
+				if ( cdata(CDATA_DIR, CHARA_PLAYER) == 2 ) {
+					if ( jumpanime(1) \ 8 < 4 ) {
+						locvar_cell_draw_px += jumpanime(1) \ 4 * (jumpanime(1) \ 4) * 2
+					}
+					else {
+						locvar_cell_draw_px -= (7 - jumpanime(1)) * (7 - jumpanime(1)) * 2
+					}
+				}
+				if ( cdata(CDATA_DIR, CHARA_PLAYER) == 3 ) {
+					if ( jumpanime(1) \ 8 < 4 ) {
+						locvar_cell_draw_py -= jumpanime(1) \ 4 * (jumpanime(1) \ 4) * 2
+					}
+				}
+			}
+		}
 		/********** JAMES CUSTOM - RENDERING ORDER - BEGINNING **********/
 		// Draw the tagteam partner of player.
 		locvar_cell_draw_c = cdata(CDATA_TAGTEAM_PARTNER, CHARA_PLAYER)
@@ -2515,6 +2547,10 @@
 	if ( cbit(CHARA_BIT_MAGNETISM_N_POLE, cell_draw_arg_c) ) {
 		pos cell_draw_arg_dx + 9 + locvar_draw_cell_tagyshift * 13, cell_draw_arg_dy + 25 - 9
 		gcopy BUFFER_INF, 1375, 517, 8, 8
+	}
+	if ( cbit(CHARA_BIT_HIDDEN_BOMB, cell_draw_arg_c) ) {
+		pos cell_draw_arg_dx + 9 + locvar_draw_cell_tagyshift * 13, cell_draw_arg_dy + 25 - 18
+		gcopy BUFFER_INF, 1375, 509, 8, 8
 	}
 	if ( cdata(CDATA_POWER_GAUGE, cell_draw_arg_c) < 0 ) {
 		cdata(CDATA_POWER_GAUGE, cell_draw_arg_c) = 0

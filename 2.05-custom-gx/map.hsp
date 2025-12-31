@@ -20,8 +20,17 @@
 			if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS | gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
 				if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
 					if ( gdata(GDATA_AREA) != AREA_MELUGAS ) {
+						if ( mdata(MDATA_WEREWOLF_POLICY) == 0 ) {
+							prevent = 100
+						}
+						if ( mdata(MDATA_WEREWOLF_POLICY) == 1 ) {
+							prevent = 1000
+						}
+						if ( mdata(MDATA_WEREWOLF_POLICY) == (-1) ) {
+							prevent = 10
+						}
 						if ( findchara(CREATURE_ID_KYU_BI) == 0 ) {
-							if ( rnd(100) == 0 ) {
+							if ( rnd(prevent) == 0 ) {
 								dbid = CREATURE_ID_WEREWOLF
 								return
 							}
@@ -289,6 +298,7 @@
 			flt calcobjlv(qdata(QDATA_LEVEL, gdata(GDATA_QUEST_REF)) + 1), calcfixlv(FIX_QUALITY_GOOD)
 		}
 		if ( gdata(GDATA_QUEST) == QUEST_TYPE_HARVEST ) {
+			evadd EVENT_HARVEST_ENEMY
 			fltn "wild"
 			objlv = limit(objlv / 4, 1, 8)
 		}
@@ -9182,6 +9192,15 @@
 			if ( mdata(MDATA_NO_RENEW) == 0 ) {
 				if ( mdata(MDATA_RENEW) != 0 ) {
 					if ( gdata(GDATA_LEVEL) == 1 ) {
+						if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS | gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
+							if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
+								if ( gdata(GDATA_AREA) != AREA_MELUGAS ) {
+									if ( mdata(MDATA_BEAR_EXTERMINATION) > (-10) ) {
+										mdata(MDATA_BEAR_EXTERMINATION)--
+									}
+								}
+							}
+						}
 						if ( gdata(GDATA_AREA) == AREA_SEMINAR ) {
 							map_reload "semi1"
 						}
@@ -12289,8 +12308,8 @@
 						if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
 							continue
 						}
-						if ( cbit(CHARA_BIT_SUMMONED, cnt) == 1 & cdata(CDATA_RELATION, cnt) == (-3) ) {
-							if ( cbit(CHARA_BIT_SANDBAG, cnt) == 0 ) {
+						if ( cbit(CHARA_BIT_SANDBAG, cnt) == FALSE ) {
+							if ( cbit(CHARA_BIT_SUMMONED, cnt) == TRUE & cdata(CDATA_RELATION, cnt) == RELATION_ENEMY ) {
 								if ( rnd(10) > 1 ) {
 									cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
 									map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), 1) = 0
@@ -12344,12 +12363,16 @@
 				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
 					continue
 				}
-				if ( cbit(CHARA_BIT_SUMMONED, cnt) == 1 & cdata(CDATA_RELATION, cnt) == (-3) | (cbit(CHARA_BIT_GUEST, cnt) == 1 & gdata(GDATA_AREA) == AREA_HOME) ) {
-					if ( cbit(CHARA_BIT_SANDBAG, cnt) == 0 ) {
+				if ( cbit(CHARA_BIT_SANDBAG, cnt) == FALSE ) {
+					if ( cbit(CHARA_BIT_SUMMONED, cnt) == TRUE & cdata(CDATA_RELATION, cnt) == RELATION_ENEMY | (cbit(CHARA_BIT_GUEST, cnt) == TRUE & gdata(GDATA_AREA) == AREA_HOME) ) {
 						if ( rnd(2) == 0 ) {
 							cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
-							map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), 1) = 0
+							map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), MAP_CHARA_INDEX_PLUS_ONE) = 0
 						}
+					}
+					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_MOTUHEGUI | cdata(CDATA_ID, cnt) == CREATURE_ID_GAKI_MOTUHEGUI ) {
+						cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
+						map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), MAP_CHARA_INDEX_PLUS_ONE) = 0
 					}
 				}
 				if ( gdata(GDATA_AREA) == AREA_HOME ) {
@@ -12363,6 +12386,36 @@
 					}
 				}
 			loop
+			if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS | gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
+				if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
+					if ( gdata(GDATA_AREA) != AREA_MELUGAS ) {
+						prevent = limit(mdata(MDATA_BEAR_EXTERMINATION) * 10 + 200, 100, 300)
+						if ( rnd(prevent) == 0 ) {
+							kx = -1
+							gaki = rnd(2)
+							if ( gaki == 0 ) {
+								flt
+								characreate -1, CREATURE_ID_MOTUHEGUI, -3, 0
+								cdata(CDATA_SEX, rc) = 0
+							}
+							if ( gaki == 1 ) {
+								flt
+								characreate -1, CREATURE_ID_MOTUHEGUI, -3, 0
+								cdata(CDATA_SEX, rc) = 1
+								kx = cdata(CDATA_X, rc)
+								ky = cdata(CDATA_Y, rc)
+							}
+							if ( kx >= 0 ) {
+								gaki = rnd(3) + 1
+								repeat gaki
+									flt
+									characreate -1, CREATURE_ID_GAKI_MOTUHEGUI, kx, ky
+								loop
+							}
+						}
+					}
+				}
+			}
 			if ( hometc != 0 ) {
 				flt
 				characreate -1, CREATURE_ID_MAGIC_BEE, cdata(CDATA_X, hometc), cdata(CDATA_Y, hometc)
@@ -12402,11 +12455,11 @@
 			}
 		}
 		mdata(MDATA_RENEW) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 + 120
-		if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_RANCH | adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_CROP | gdata(GDATA_AREA) == AREA_HOME ) {
+		if ( gdata(GDATA_AREA) == AREA_HOME ) {
 			mdata(MDATA_RENEW) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 + 24
 		}
-		if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_CAMP ) {
-			mdata(MDATA_RENEW) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 + 72
+		if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_RANCH | adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_CROP | adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_CAMP ) {
+			mdata(MDATA_RENEW) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 + 120
 		}
 	}
 	if ( gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 >= mdata(MDATA_RENEW_MINOR) ) {
@@ -12447,6 +12500,29 @@
 			loop
 		}
 		if ( mdata(MDATA_NO_RENEW) == 0 ) {
+			if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_CROP ) {
+				hakai = 0
+				repeat MAX_CHARA_TOTAL - MAX_CHARA_SAVE, MAX_CHARA_SAVE
+					if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+						continue
+					}
+					if ( cbit(CHARA_BIT_SANDBAG, cnt) ) {
+						continue
+					}
+					if ( cnt < 16 ) {
+						continue
+					}
+					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_MADEER ) {
+						hakai += 3
+					}
+					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_VICIOUS_RACCOON ) {
+						hakai += 1
+					}
+					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_THIEF_LIGHT_TRUCK ) {
+						hakai += 5
+					}
+				loop
+			}
 			repeat mdata(MDATA_HEIGHT)
 				y = cnt
 				repeat mdata(MDATA_WIDTH)
@@ -12454,6 +12530,12 @@
 						cell_featread cnt, y
 						x = cnt
 						if ( feat(1) == CELL_FEATURE_PLANTED_SEED ) {
+							if ( hakai > 0 ) {
+								hakai--
+								snd SOUNDLIST_EAT1
+								map(x, y, MAP_FEATS_ON_TILE) = 0
+								continue
+							}
 							repeat renewmulti
 								if ( feat >= tile_plant + 2 ) {
 									break
@@ -12472,6 +12554,9 @@
 					}
 				loop
 			loop
+			if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_CROP ) {
+				evadd EVENT_HARVEST_ENEMY
+			}
 			if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN | mdata(MDATA_TYPE) == MAP_TYPE_VILLAGE | gdata(GDATA_AREA) == AREA_HOME ) {
 				repeat MAX_CHARA_TOTAL - MAX_CHARA_SAVE, MAX_CHARA_SAVE
 					if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {

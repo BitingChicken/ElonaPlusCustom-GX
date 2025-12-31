@@ -437,7 +437,7 @@
 			pos x + 248 + cnt / 3 * 290, y + 283 + cnt \ 3 * 14
 			mes s(cnt * 2 + 1)
 		loop
-		s = "セーブして終了(save)", key_save, "神に祈る(pray)", key_pray, "神に捧げる(offer)", key_offer, "ドアを閉める(close)", key_close, "与える(give)", key_give, "", "", ""
+		s = "セーブして終了(save)", key_save, "神に祈る(pray)", key_pray, "神に捧げる(offer)", key_offer, "ドアを閉める(close)", key_close, "与える(give)", key_give, "ハイジャンプ(hi jump)", key_hijump, "", ""
 		gosub *convertHelp
 		repeat 6
 			font lang(cfg_font1, cfg_font2), 13 - en * 2, 0

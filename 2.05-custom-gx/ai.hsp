@@ -62,6 +62,28 @@
 	// JAMES CUSTOM - Prevent foe from spamming angered flavor text
 	jamesangerhack = 0
 	chatc@DP = 0
+	if ( TweakData(TWEAK_GAMEPLAY_DISABLE_CLEMENTIA, TWEAK_CATEGORY_GAMEPLAY) <= FALSE ) {
+		if ( cdata(CDATA_HP, cc) <= cdata(CDATA_MAX_HP, cc) / 20 ) {
+			if ( rnd(5) == 0 ) {
+				if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, cc) == FALSE ) {
+					f = 1
+					snd SOUNDLIST_TAORE08
+					if ( gdata(GDATA_AREA) == AREA_PET_ARENA | cdata(CDATA_RELATION, cc) == RELATION_ALLY | cc < MAX_CHARA_FOLLOWER | cbit(CHARA_BIT_NECRO, cc) == TRUE | cdata(CDATA_QUALITY, cc) >= FIX_QUALITY_MIRACLE | cdata(CDATA_ROLE, cc) != ROLE_NONE | cbit(CHARA_BIT_PRECIOUS, cc) == TRUE | cdata(CDATA_CHARACTER_TIER, cc) == CHARACTER_TIER_SUMMONED_NORMAL | cbit(CHARA_BIT_BODYGUARD, cc) == TRUE | gdata(GDATA_FLAG_DUEL_TARGET) == cc ) {
+						f = 0
+					}
+					if ( f ) {
+						if ( cbit(CHARA_BIT_SANDBAG, cc) != TRUE ) {
+							cdata(CDATA_CONDITION_FEAR, cc) = rnd(20) + 50
+							txtmore
+							txtef COLOR_SKY_BLUE
+							txt lang(name(cc) + "は恐怖のあまり命乞いを始めた。話を聞いてやろうか？", name(cc) + " was frightened and began to ask for forgiveness. Maybe you could talk to " + name(cc) + " now.")
+							cbitmod CHARA_BIT_BEGGING_FOR_LIFE, cc, TRUE
+						}
+					}
+				}
+			}
+		}
+	}
 	if ( cdata(CDATA_ROLE, cc) == ROLE_ADVENTURER ) {
 		if ( cdata(CDATA_RELATION, cc) != RELATION_ALLY ) {
 			if ( cdata(CDATA_DIRECTIVE_MODE, cc) != DIRECTIVE_MODE_OFFENSIVE ) {
@@ -3255,6 +3277,42 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_TARGET, cc) > (-1) ) {
+		if ( cdata(CDATA_ID, cc) == CREATURE_ID_YERLES_CYBORG_SOLDIER | cdata(CDATA_ID, cc) == CREATURE_ID_MILIS_CAPTAIN_OF_THE_SPECIAL_FORCES | cdata(CDATA_ID, cc) == CREATURE_ID_WORKER_01 | cdata(CDATA_ID, cc) == CREATURE_ID_SCATTER_LANDMINE_GIRL | cdata(CDATA_ID, cc) == CREATURE_ID_NOEL_THE_BOMBER ) {
+			if ( cdata(CDATA_MP, cc) >= cdata(CDATA_MAX_MP, cc) / 5 ) {
+				if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, cdata(CDATA_TARGET, cc)), cdata(CDATA_Y, cdata(CDATA_TARGET, cc))) == 1 ) {
+					if ( rnd(5) == 0 ) {
+						act = SKILL_SPACT_HIDDEN_EXPLOSIVE
+					}
+				}
+			}
+		}
+	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_MELUGAST_AO_I_THE_DIMENSION_DRIVER | cdata(CDATA_ID, cc) == CREATURE_ID_MELUGAST_TYPE0_THE_DIMENSION_DRIVER | cdata(CDATA_ID, cc) == CREATURE_ID_MELUGAST_TYPEM | cdata(CDATA_ID, cc) == CREATURE_ID_YERLES_COMBAT_PLANE | cdata(CDATA_ID, cc) == CREATURE_ID_GIGA_BOMB_ROCK ) {
+		if ( cdata(CDATA_MP, cc) >= cdata(CDATA_MAX_MP, cc) / 10 * 9 ) {
+			if ( findbuff(cc, BUFF_BOOST) == (-1) ) {
+				if ( rnd(2) == 0 ) {
+					act = SKILL_SPACT_ROCKET_BOOST
+				}
+			}
+		}
+	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_WORKER_02 | cdata(CDATA_ID, cc) == CREATURE_ID_YERLESWOOD_TYPE_M | cdata(CDATA_ID, cc) == CREATURE_ID_YERLESWOOD_NEO | cdata(CDATA_ID, cc) == CREATURE_ID_METAL_VESDA_THE_FIRE_MACHINE | cdata(CDATA_ID, cc) == CREATURE_ID_YERLESWOOD_THE_SAVAGE_MACHINE | cdata(CDATA_ID, cc) == CREATURE_ID_CHAOSHAPRINCESS_VARGM ) {
+		if ( cdata(CDATA_MP, cc) >= cdata(CDATA_MAX_MP, cc) / 2 ) {
+			if ( rnd(5) == 0 ) {
+				act = SKILL_SPACT_GUIDED_BOMBING
+			}
+		}
+	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_STERSHA_THE_QUEEN_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_XABI_THE_KING_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_SILVIA_THE_PRINCESS | cdata(CDATA_ID, cc) == CREATURE_ID_HAND_OF_THE_CATGOD | cdata(CDATA_ID, cc) == CREATURE_ID_RICH_PERSON | cdata(CDATA_ID, cc) == CREATURE_ID_PALMIAN_ELITE_SOLDIER | cdata(CDATA_ID, cc) == CREATURE_ID_KARAVIKA ) {
+		if ( cdata(CDATA_POWER_GAUGE, cc) < 80 ) {
+			if ( cdata(CDATA_POWER_GAUGE, cc) >= 30 ) {
+				if ( rnd(10) == 0 ) {
+					act = SKILL_SPACT_RESCUE_REQUEST
+				}
+			}
+		}
+	}
 	if ( cdata(CDATA_ID, cc) >= CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, cc) <= CREATURE_ID_HEART_WITCH ) {
 		if ( cdata(CDATA_PIC, cc) == xy2pic(18, 35) ) {
 			act = SKILL_SPACT_INTENSIVE_POWER
@@ -3383,11 +3441,13 @@
 			}
 		}
 	}
-	if ( cdata(CDATA_ID, cc) == CREATURE_ID_NIGHTMARE_SHARK | cdata(CDATA_ID, cc) == CREATURE_ID_RAGING_SHARK | cdata(CDATA_ID, cc) == CREATURE_ID_CAPTAIN_SHARK | cdata(CDATA_ID, cc) == CREATURE_ID_SP_CHAMPION ) {
-		if ( cdata(CDATA_POWER_GAUGE, cc) < 80 ) {
-			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, tc), cdata(CDATA_Y, tc)) == 1 ) {
-				if ( rnd(6) == 0 ) {
-					act = SKILL_SPACT_SHARK_TRADE
+	if ( cdata(CDATA_TARGET, cc) > (-1) ) {
+		if ( cdata(CDATA_ID, cc) == CREATURE_ID_NIGHTMARE_SHARK | cdata(CDATA_ID, cc) == CREATURE_ID_RAGING_SHARK | cdata(CDATA_ID, cc) == CREATURE_ID_CAPTAIN_SHARK | cdata(CDATA_ID, cc) == CREATURE_ID_SP_CHAMPION ) {
+			if ( cdata(CDATA_POWER_GAUGE, cc) < 80 ) {
+				if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, tc), cdata(CDATA_Y, tc)) == 1 ) {
+					if ( rnd(6) == 0 ) {
+						act = SKILL_SPACT_SHARK_TRADE
+					}
 				}
 			}
 		}

@@ -1728,6 +1728,12 @@
 			itemcreate -1, ITEM_ID_ESSENTIAL_OIL, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
 		}
 	}
+	if ( cdata(CDATA_ID, rc) == CREATURE_ID_MADEER ) {
+		if ( cdata(CDATA_SEX, rc) == 0 ) {
+			flt
+			itemcreate -1, ITEM_ID_DEER_HEAD, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+		}
+	}
 	if ( cdata(CDATA_ID, rc) == CREATURE_ID_ZOMBIE ) {
 		if ( rnd(100) == 0 ) {
 			if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {

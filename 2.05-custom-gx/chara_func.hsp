@@ -6405,27 +6405,6 @@
 				}
 			}
 		}
-		if ( TweakData(TWEAK_GAMEPLAY_DISABLE_CLEMENTIA, TWEAK_CATEGORY_GAMEPLAY) <= FALSE ) {
-		if ( cdata(CDATA_HP, dmghp_charid) < cdata(CDATA_MAX_HP, dmghp_charid) / 10 ) {
-			if ( dmghp_charid != CHARA_PLAYER ) {
-				if ( cbit(CHARA_BIT_BEGGING_FOR_LIFE, dmghp_charid) == FALSE ) {
-					locvar_dmghp_f = 1
-					if ( gdata(GDATA_AREA) == AREA_PET_ARENA | cdata(CDATA_RELATION, dmghp_charid) == RELATION_ALLY | dmghp_charid < MAX_CHARA_FOLLOWER | cbit(CHARA_BIT_NECRO, dmghp_charid) == TRUE | cdata(CDATA_QUALITY, dmghp_charid) >= FIX_QUALITY_MIRACLE | cdata(CDATA_ROLE, dmghp_charid) != ROLE_NONE | cbit(CHARA_BIT_PRECIOUS, dmghp_charid) == TRUE | cdata(CDATA_CHARACTER_TIER, dmghp_charid) == CHARACTER_TIER_SUMMONED_NORMAL | cbit(CHARA_BIT_BODYGUARD, dmghp_charid) == TRUE | gdata(GDATA_FLAG_DUEL_TARGET) == dmghp_charid ) {
-						locvar_dmghp_f = 0
-					}
-					if ( locvar_dmghp_f ) {
-						if ( cbit(CHARA_BIT_SANDBAG, dmghp_charid) != TRUE ) {
-							cdata(CDATA_CONDITION_FEAR, dmghp_charid) = rnd(20) + 50
-							txtmore
-							txtef COLOR_SKY_BLUE
-							txt lang(name(dmghp_charid) + "は恐怖のあまり命乞いを始めた。話を聞いてやろうか？", name(dmghp_charid) + " was frightened and began to beg for their lives. Maybe I could talk to " + name(dmghp_charid) + " now.")
-							cbitmod CHARA_BIT_BEGGING_FOR_LIFE, dmghp_charid, TRUE
-						}
-					}
-				}
-			}
-		}
-		}
 		if ( TweakData(TWEAK_GAMEPLAY_REVERT_POST_208_ELEMENT_CHANGE, TWEAK_CATEGORY_GAMEPLAY) != FALSE ) {
 			// BEGINNING - Pre-2.08 behavior, do not apply changes here.
 			if ( locvar_dmghp_ele ) {
@@ -6633,10 +6612,14 @@
 		}
 		if ( cbit(CHARA_BIT_SUICIDE, dmghp_charid) ) {
 			if ( rnd(3) == 0 ) {
-				cbitmod CHARA_BIT_SUICIDE_SWITCH, dmghp_charid, 1
-				txtef COLOR_SKY_BLUE
-				txtmore
-				txt lang(" *カチッ* ", " *click* ")
+				if ( cdata(CDATA_CONDITION_WET, dmghp_charid) == 0 ) {
+					if ( cdata(CDATA_CONDITION_DIM, dmghp_charid) < 60 ) {
+						cbitmod CHARA_BIT_SUICIDE_SWITCH, dmghp_charid, TRUE
+						txtef COLOR_SKY_BLUE
+						txtmore
+						txt lang(" *カチッ* ", "*click*")
+					}
+				}
 			}
 		}
 		if ( charaCanSplit(dmghp_charid) ) {
@@ -6676,11 +6659,13 @@
                     }
 					if ( cdata(CDATA_RELATION, dmghp_charid) > RELATION_ENEMY ) {
 						if ( cdata(CDATA_RELATION_ORG, dmghp_source) > RELATION_ENEMY ) {
-							if ( cdata(CDATA_TARGET, dmghp_source) == dmghp_charid ) {
-								cdata(CDATA_TARGET, dmghp_charid) = dmghp_source
-								locvar_dmghp_f = TRUE
-							} else {
-								cdata(CDATA_AI_AGGRO, dmghp_charid) = -2
+							if ( cdata(CDATA_RELATION, dmghp_charid) != RELATION_ALLY & dmghp_charid != CHARA_PLAYER ) {
+								if ( cdata(CDATA_TARGET, dmghp_source) == dmghp_charid ) {
+									cdata(CDATA_TARGET, dmghp_charid) = dmghp_source
+									locvar_dmghp_f = TRUE
+								} else {
+									cdata(CDATA_AI_AGGRO, dmghp_charid) = -2
+								}
 							}
 						}
 					}
@@ -6818,6 +6803,9 @@
 				}
 			}
 			ndeathcause = lang(cdatan(CDATAN_NAME, cc) + "に殺された。", "was killed by " + cdatan(CDATAN_NAME, cc))
+			// James - funny bear message
+			cnv_str ndeathcause, "was killed by motuhegui", "was mauled to death by a bear"
+			cnv_str ndeathcause, "was killed by gaki-motuhegui", "was mauled to death by a bear cub"
 		}
 		else {
 			if ( dmghp_source == DAMAGE_FROM_WEREWOLF ) {
@@ -7237,6 +7225,20 @@
 							}
 							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ITZPALT ) {
 								evadd EVENT_GOD_INSIDE_ITZPALT, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MADEER ) {
+								evadd EVENT_MATICK_SPAWN, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MOTUHEGUI ) {
+								mdata(MDATA_BEAR_EXTERMINATION)++
+								txt lang("これで熊の出没も少しは減るだろう。", "This will likely reduce bear visits a little.")
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_GAKI_MOTUHEGUI ) {
+								mdata(MDATA_BEAR_EXTERMINATION) += 2
+								txt lang("これで将来的に熊の出没が減るだろう。", "This will likely reduce bear visits in the future.")
+							}
+							if ( mdata(MDATA_BEAR_EXTERMINATION) > 10 ) {
+								mdata(MDATA_BEAR_EXTERMINATION) = 10
 							}
 							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_IMARITUKA_THE_ZASIKI_WARAI ) {
 								skillmod SKILL_ATTR_LUC, CHARA_PLAYER, (-1000) * 51

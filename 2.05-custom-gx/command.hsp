@@ -1057,19 +1057,19 @@
 
 		/********** ANNA CUSTOM - BEGINNING **********/
 
-		if ( cdata(CDATA_PRECIOUS_ALLY, cnt) != 0 & PAllyFilter == 1 ) {
+		if ( cbit(CHARA_BIT_PRECIOUS_ALLY, cnt) != 0 & PAllyFilter == 1 ) {
 			continue
 		}
 
 		/********** ANNA CUSTOM - ENDING **********/
 
 		if ( allyctrl == 1 ) {
-			if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_ALLY_DEAD | cdata(CDATA_PRECIOUS_ALLY, cnt) != 0 ) {
+			if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_ALLY_DEAD | cbit(CHARA_BIT_PRECIOUS_ALLY, cnt) != 0 ) {
 				continue
 			}
 		}
 		if ( allyctrl == 7 ) {
-			if ( cdata(CDATA_PRECIOUS_ALLY, cnt) != 0 ) {
+			if ( cbit(CHARA_BIT_PRECIOUS_ALLY, cnt) != 0 ) {
 				continue
 			}
 		}
@@ -1093,7 +1093,7 @@
 				continue
 			}
 		}
-		if ( allyctrl != 9 ) {
+		if ( allyctrl != 9 & allyctrl != 10 ) {
 			if ( allyctrl != 1 ) {
 				if ( cbit(CHARA_BIT_BODYGUARD, cnt) == TRUE ) {
 					continue
@@ -1183,7 +1183,7 @@
 		s(10) = lang("収容する連行者", "Prisoner List"), strhint2 + strhint3, lang("連行者の情報", "Name"), lang("状態", "Status")
 		x = 0
 	}
-	if ( allyctrl == 0 ) {
+	if ( allyctrl == 0 | allyctrl == 10 ) {
 		txt lang("誰を呼び戻す？", "Who to recall?")
 		s(10) = lang("呼び戻す仲間", "Ally List"), strhint2 + strhint3, lang("仲間の情報", "Name"), lang("状態", "Status")
 		x = 0
@@ -1305,7 +1305,7 @@
 			cs_list lang("決定", "Proceed"), wx + 84, wy + 66 + cnt * 19 - 1, 19
 			continue
 		}
-		if ( allyctrl == 0 | allyctrl == 2 | allyctrl == 3 | allyctrl == 4 | allyctrl == 5 | allyctrl == 6 | allyctrl == 7 | allyctrl == 8 | allyctrl == 9 ) {
+		if ( allyctrl == 0 | allyctrl == 2 | allyctrl == 3 | allyctrl == 4 | allyctrl == 5 | allyctrl == 6 | allyctrl == 7 | allyctrl == 8 | allyctrl == 9 | allyctrl == 10 ) {
 			s = "" + cdatan(CDATAN_AKA, i) + " " + cdatan(CDATAN_NAME, i)
 			if ( cdata(CDATA_AREA, i) != AREA_NONE ) {
 				s = s + "(" + mapname(cdata(CDATA_AREA, i)) + ")"
@@ -1358,7 +1358,7 @@
 						}
 					}
 					if ( cdata(CDATA_EXIST, i) == CHAR_STATE_ALLY_WAIT ) {
-						if ( allyctrl == 0 ) {
+						if ( allyctrl == 0 | allyctrl == 10 ) {
 							s += lang("(待機している)", "(Waiting)")
 						}
 						else {
@@ -1366,7 +1366,7 @@
 						}
 					}
 					if ( cdata(CDATA_EXIST, i) == CHAR_STATE_ALIVE ) {
-						if ( allyctrl == 0 ) {
+						if ( allyctrl == 0 | allyctrl == 10 ) {
 							s += lang("(生きている)", "(Alive)")
 						}
 						else {
@@ -1375,7 +1375,7 @@
 					}
 					if ( cdata(CDATA_EXIST, i) == CHAR_STATE_SUSPEND ) {
 						if ( gdata(GDATA_FLAG_MAIN) >= 875 & gdata(GDATA_FLAG_MAIN) < 1000 ) {
-							if ( allyctrl == 0 ) {
+							if ( allyctrl == 0 | allyctrl == 10 ) {
 								s += lang("(灰になった)", "(Ash)")
 							}
                         }
@@ -6018,7 +6018,15 @@
 			else {
 				promptAdd lang("アイテム我慢解除", "Pick up items freely"), "null", 38
 			}
-			promptAdd lang("街で待機させる", "Wait at the town"), "null", 39
+			if ( cbit(CHARA_BIT_BODYGUARD, tc) == FALSE ) {
+				if ( cbit(CHARA_BIT_GUARD_TEMP, tc) == FALSE ) {
+					if ( cbit(CHARA_BIT_NECRO, tc) == FALSE ) {
+						if ( cbit(CHARA_BIT_LIVESTOCK, tc) == FALSE ) {
+							promptAdd lang("街で待機させる", "Wait at the town"), "null", 39
+						}
+					}
+				}
+			}
 		}
 		if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
 			if ( cbit(CHARA_BIT_SANDBAG, tc) ) {
@@ -10464,7 +10472,7 @@
 			s = lang("HP/MP", "HP/MP"), lang("生命力", "Life"), lang("マナ", "Mana"), lang("狂気度", "InSAN"), lang("速度", "Speed"), lang("名声", "Fame"), lang("カルマ", "Karma"), lang("戦力評価", "Rating"), lang("打撃修正", "Melee"), lang("射撃修正", "Shoot"), "", "", "", "", "", ""
 		}
 		else {
-			s = lang("HP/MP", "HP/MP"), lang("生命力", "Life"), lang("マナ", "Mana"), lang("狂気度", "Sanity"), lang("速度", "Speed"), lang("名声", "Fame"), "", "", "", "", "", "", ""
+			s = lang("HP/MP", "HP/MP"), lang("生命力", "Life"), lang("マナ", "Mana"), lang("狂気度", "InSAN"), lang("速度", "Speed"), lang("名声", "Fame"), "", "", "", "", "", "", ""
 		}
 		repeat 8
 			pos wx + 255, wy + 151 + cnt * 15
@@ -17076,6 +17084,113 @@
 		}
 	loop
 	return
+
+*com_hijump
+	if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
+		txt lang("ワールドマップでは無理だ。", "It's not possible on the world map.")
+		goto *turn_end
+	}
+	cc = CHARA_PLAYER
+	y = cdata(CDATA_Y, cc)
+	if ( cc == CHARA_PLAYER ) {
+		gdata(GDATA_RUN_DIR) = cdata(CDATA_DIR, CHARA_PLAYER)
+	}
+	if ( cdata(CDATA_DIR, CHARA_PLAYER) == 1 ) {
+		xxx = cdata(CDATA_X, CHARA_PLAYER) - 2
+		yyy = cdata(CDATA_Y, CHARA_PLAYER)
+	}
+	if ( cdata(CDATA_DIR, CHARA_PLAYER) == 2 ) {
+		xxx = cdata(CDATA_X, CHARA_PLAYER) + 2
+		yyy = cdata(CDATA_Y, CHARA_PLAYER)
+	}
+	if ( cdata(CDATA_DIR, CHARA_PLAYER) == 3 ) {
+		xxx = cdata(CDATA_X, CHARA_PLAYER)
+		yyy = cdata(CDATA_Y, CHARA_PLAYER) - 2
+	}
+	if ( cdata(CDATA_DIR, CHARA_PLAYER) == 0 ) {
+		xxx = cdata(CDATA_X, CHARA_PLAYER)
+		yyy = cdata(CDATA_Y, CHARA_PLAYER) + 2
+	}
+	idou = 0
+	mizu = 0
+	cell_check xxx, yyy
+	if ( cellaccess == 1 ) {
+		idou = 1
+	}
+	if ( idou == 1 ) {
+		get_route cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), xxx, yyy
+		if ( stat == 0 ) {
+			idou = 0
+		}
+	}
+	if ( idou == 1 ) {
+		jumpanime = 3
+	}
+	else {
+		if ( cdata(CDATA_DIR, CHARA_PLAYER) == 1 ) {
+			xxx = cdata(CDATA_X, CHARA_PLAYER) - 1
+			yyy = cdata(CDATA_Y, CHARA_PLAYER)
+		}
+		if ( cdata(CDATA_DIR, CHARA_PLAYER) == 2 ) {
+			xxx = cdata(CDATA_X, CHARA_PLAYER) + 1
+			yyy = cdata(CDATA_Y, CHARA_PLAYER)
+		}
+		if ( cdata(CDATA_DIR, CHARA_PLAYER) == 3 ) {
+			xxx = cdata(CDATA_X, CHARA_PLAYER)
+			yyy = cdata(CDATA_Y, CHARA_PLAYER) - 1
+		}
+		if ( cdata(CDATA_DIR, CHARA_PLAYER) == 0 ) {
+			xxx = cdata(CDATA_X, CHARA_PLAYER)
+			yyy = cdata(CDATA_Y, CHARA_PLAYER) + 1
+		}
+		idou = 0
+		cell_check xxx, yyy
+		if ( cellaccess == 1 ) {
+			idou = 1
+		}
+		if ( idou == 1 ) {
+			get_route cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), xxx, yyy
+			if ( stat == 0 ) {
+				idou = 0
+			}
+		}
+		if ( idou == 1 ) {
+			jumpanime = 3
+		}
+		else {
+			xxx = cdata(CDATA_X, CHARA_PLAYER)
+			yyy = cdata(CDATA_Y, CHARA_PLAYER)
+			jumpanime = 1
+		}
+	}
+	p = map(cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), MAP_TILE_ID)
+	if ( chipm(CHIPM_ROLE, p) == MAP_CHIP_ROLE_WATER ) {
+		mizu = 1
+	}
+	p = map(xxx, yyy, MAP_TILE_ID)
+	if ( chipm(CHIPM_ROLE, p) == MAP_CHIP_ROLE_WATER ) {
+		mizu = 1
+	}
+	if ( mizu == 1 ) {
+		snd SOUNDLIST_MIZU
+	}
+	else {
+		snd SOUNDLIST_GET1
+	}
+	dmgsp CHARA_PLAYER, 1
+	repeat 7
+		redraw 0
+		jumpanime(1) = cnt
+		scrturn++
+		gosub *screen_draw
+		redraw 1
+		await 30
+		if ( cnt == 3 ) {
+			cell_movechara 0, xxx, yyy
+		}
+	loop
+	jumpanime = 0
+	goto *turn_end
 
 *com_rest
 	r1 = 50

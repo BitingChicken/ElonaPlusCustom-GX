@@ -131,7 +131,7 @@
 	gosub *anime
 	ti = inv_getfreeid(-1)
 	removeitem ci, 1
-	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MONSTER_BALL | (inv(INV_ITEM_ID, ci) == ITEM_ID_CHESTNUT & inv(INV_ITEM_PARAM2, ci) == 0) | inv(INV_ITEM_ID, ci) == ITEM_ID_DUEL_GLOVE | inv(INV_ITEM_ID, ci) == ITEM_ID_LULWYS_PHOTO_COLLECTION | refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_FURNITURE | refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_JUNK | refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_ENVIRONMENT | refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_ITEM_FOOD ) {
+	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MONSTER_BALL | (inv(INV_ITEM_ID, ci) == ITEM_ID_CHESTNUT & inv(INV_ITEM_PARAM2, ci) == 0) | inv(INV_ITEM_ID, ci) == ITEM_ID_DUEL_GLOVE | inv(INV_ITEM_ID, ci) == ITEM_ID_BLANK_CARD | inv(INV_ITEM_ID, ci) == ITEM_ID_LULWYS_PHOTO_COLLECTION | refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_FURNITURE | refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_JUNK | refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_ENVIRONMENT | refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_ITEM_FOOD ) {
 		if ( ti != (-1) ) {
 			item_copy ci, ti
 			inv(INV_ITEM_NUM, ti) = 1
@@ -580,6 +580,33 @@
 				txt lang(name(tc) + "の足元に落ちた。", "It hits " + name(tc) + "!")
 			}
 			rowact_check tc
+		}
+		goto *turn_end
+	}
+	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_BLANK_CARD ) {
+		snd SOUNDLIST_THROW2
+		cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+		if ( map(tlocx, tlocy, MAP_CHARA_INDEX_PLUS_ONE) != 0 ) {
+			tc = map(tlocx, tlocy, MAP_CHARA_INDEX_PLUS_ONE) - 1
+			if ( synccheck(tc, -1) ) {
+				txt lang(name(tc) + "の足元に落ちた。", "It hits " + name(tc) + "!")
+			}
+			rowact_check tc
+			snd SOUNDLIST_ENC
+			txt lang("ブランクカードに" + name(tc) + "の情報が刻まれた。", "The information of " + name(tc) + " was engraved on the blank card.")
+			inv(INV_ITEM_NUM, ci)--
+			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+			flt
+			itemcreate -1, ITEM_ID_CARD, cdata(CDATA_X, tc), cdata(CDATA_Y, tc), 0
+			inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, tc) \ 1000 + cdata(CDATA_CHARA_PIC, tc) * 1000
+			inv(INV_ITEM_SUB_NAME, ci) = cdata(CDATA_ID, tc)
+			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+			if ( cdata(CDATA_RELATION, tc) == RELATION_NEUTRAL & tc >= MAX_CHARA_FOLLOWER ) {
+				cdata(CDATA_EMO_ICON, tc) = 18 + 100 * 4
+				cdata(CDATA_RELATION, tc) = RELATION_ENEMY
+				cdata(CDATA_AI_AGGRO, tc) = 80
+				cdata(CDATA_TARGET, tc) = 0
+			}
 		}
 		goto *turn_end
 	}
@@ -10927,11 +10954,23 @@
 		snd SOUNDLIST_AMMO
 		txtef COLOR_GREEN
 		txt lang("制服が変化した！", "Your uniform was changed!")
-		if ( inv(INV_ITEM_PIC, ci) > xy2pic(0, 34) ) {
-			inv(INV_ITEM_PIC, ci)--
-		}
-		else {
+		if ( inv(INV_ITEM_PIC, ci) >= xy2pic(6, 35) ) {
 			inv(INV_ITEM_PIC, ci) = xy2pic(12, 34)
+			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+			goto *act_use_SWEND1
+		}
+		if ( inv(INV_ITEM_PIC, ci) == xy2pic(0, 34) ) {
+			inv(INV_ITEM_PIC, ci) = xy2pic(0, 35)
+			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+			goto *act_use_SWEND1
+		}
+		if ( inv(INV_ITEM_PIC, ci) <= xy2pic(12, 34) ) {
+			inv(INV_ITEM_PIC, ci)--
+			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+			goto *act_use_SWEND1
+		}
+		if ( inv(INV_ITEM_PIC, ci) >= xy2pic(0, 35) ) {
+			inv(INV_ITEM_PIC, ci)++
 		}
 		cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 		goto *act_use_SWEND1
@@ -18712,7 +18751,7 @@
 			goto *turn_end
 		}
 		tc = stat
-		if ( cdata(CDATA_PRECIOUS_ALLY, tc) != 0 ) {
+		if ( cbit(CHARA_BIT_PRECIOUS_ALLY, tc) != 0 ) {
 			snd SOUNDLIST_FAIL1
 			txt lang(cdatan(CDATAN_NAME, tc) + "はあなたの大事な仲間だ。", cdatan(CDATAN_NAME, tc) + " is a precious ally.")
 			goto *turn_end

@@ -225,6 +225,20 @@
 		}
 		return 1
 	}
+	if ( tid == TRAIT_NORMAL_SPACT_BOMBER ) {
+		if ( traitmode == 0 ) {
+			traitref = 0, 0, 1, 1, 0, 100, -1
+			traitrefn2 = lang("爆魔", "Bomber")
+			if ( trait(tid) >= 0 ) {
+				traitrefn(2) = lang("魔力爆弾を解析し、自分の魔力を爆発に変換する方法を編み出す", "You analyzed mana-bombs, learnt to convert your mana into explosions."), lang("あなたは自分の魔力を爆発に変換できる", "You can transform your mana into explosions.")
+			}
+			return 1
+		}
+		if ( spact(SKILL_SPACT_HIDDEN_EXPLOSIVE - STARTING_SKILL_SPACT) == 0 ) {
+			spact(SKILL_SPACT_HIDDEN_EXPLOSIVE - STARTING_SKILL_SPACT) = 1
+		}
+		return 1
+	}
 	if ( tid == TRAIT_NORMAL_SPACT_GRAVITY_ACCEL ) {
 		if ( traitmode == 0 ) {
 			traitref = 0, 0, 1, 1, 0, 100, -1

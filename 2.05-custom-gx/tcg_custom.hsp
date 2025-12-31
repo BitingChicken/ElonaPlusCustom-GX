@@ -2920,6 +2920,7 @@
 		deck_opponent(CREATURE_ID_ZANAN_OLD_SOLDIER) = 4
 		deck_opponent(CREATURE_ID_ZOIBO) = 2
 		deck_opponent(CREATURE_ID_CHAOSHAPRINCESS_CHRDH) = 2
+		deck_opponent(CREATURE_ID_THIEF_LIGHT_TRUCK) = 2
 		return 1
 	}
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_HALION_THE_EXTREMIST | cdata(CDATA_ID, tc) == CREATURE_ID_MILOS_OF_THE_FORGOTTEN_WORLD | cdata(CDATA_ID, tc) == CREATURE_ID_CARLA_OF_THE_FORGOTTEN_WORLD ) {
@@ -5784,6 +5785,19 @@
 		return 1
 	}
 	// vehicle
+	if ( dbid == CREATURE_ID_THIEF_LIGHT_TRUCK ) {
+		cardrefrace = "vehicle"
+		cardrefclass = "thief"
+		cardreflvl = 73
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 4
+		cardrefattack = 1
+		cardrefhp = 4
+		cardrefskillid = TCG_EFF_TRUCK
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_KONIGS_KATZE ) {
 		cardrefrace = "vehicle"
 		cardrefclass = "gunner"
@@ -9829,6 +9843,45 @@
 		return 1
 	}
 	// bear
+	if ( dbid == CREATURE_ID_GAKI_MOTUHEGUI ) {
+		cardrefrace = "bear"
+		cardrefclass = "predator"
+		cardreflvl = 46
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 2
+		cardrefattack = 3
+		cardrefhp = 3
+		cardrefskillid = TCG_EFF_BEARCUB
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MOTUHEGUI ) {
+		cardrefrace = "bear"
+		cardrefclass = "predator"
+		cardreflvl = 70
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 4
+		cardrefattack = 3
+		cardrefhp = 5
+		cardrefskillid = TCG_EFF_MOTUHEGUI
+		cardrefbits = "12"
+		return 1
+	}
+	if ( dbid == CREATURE_ID_VICIOUS_RACCOON ) {
+		cardrefrace = "bear"
+		cardrefclass = "thief"
+		cardreflvl = 28
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 2
+		cardrefattack = 2
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_PERFORMAIDBITCHIACK
+		cardrefbits = "11,12,19,20"
+		return 1
+	}
 	if ( dbid == CREATURE_ID_RESTOROID_GIANT_PANDA ) {
 		cardrefrace = "bear"
 		cardrefclass = "tourist"
@@ -10581,6 +10634,19 @@
 		return 1
 	}
 	// spider
+	if ( dbid == CREATURE_ID_MATICK ) {
+		cardrefrace = "spider"
+		cardrefclass = "wizard"
+		cardreflvl = 55
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 1
+		cardrefskillid = TCG_EFF_BATTLECRY_HEALPLAYER1DAMAGE
+		cardrefbits = "10,22"
+		return 1
+	}
 	if ( dbid == CREATURE_ID_STEEL_ARMOR_SPIDER ) {
 		cardrefrace = "spider"
 		cardrefclass = "predator"
@@ -13166,6 +13232,19 @@
 		return 1
 	}
 	// sheep
+	if ( dbid == CREATURE_ID_MADEER ) {
+		cardrefrace = "sheep"
+		cardrefclass = "warmage"
+		cardreflvl = 50
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 4
+		cardrefattack = 1
+		cardrefhp = 6
+		cardrefskillid = TCG_EFF_MADEER
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_RESTOROID_GOAT ) {
 		cardrefrace = "sheep"
 		cardrefclass = "thief"

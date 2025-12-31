@@ -784,12 +784,51 @@
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
 			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
 				repeat 1, ac@tcg
+					card@tcg(TCG_CARD_TEMP, cnt) = aeff@tcg
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_THIEF_LIGHT_TRUCK ) {
+						efllistaddchat "*vroom*", cnt
+					}
 					card@tcg(TCG_CARD_X_MOVETO, cnt) = card@tcg(TCG_CARD_X, aeft@tcg) + 20, card@tcg(TCG_CARD_Y, aeft@tcg) + 20
 					tcgpass 20
 					efllistaddcard 17, aeft@tcg
                     dmgcard aeft@tcg, card@tcg(TCG_CARD_ATTACK, cnt)
-					tcgpass 30
-					gettargetcard cnt
+					if ( card@tcg(TCG_CARD_TEMP, cnt) >= 0 & card@tcg(TCG_CARD_TEMP, cnt) < 3000 ) {
+						if ( effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_TEMP, cnt)) == TCG_SKILL_TYPE_BATTLECRY ) {
+							tcgpass 30
+							gettargetcard cnt
+						}
+					}
+					makecardlist
+					organizeboard
+					tcgdraw
+                loop
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_BEARMAUL | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				repeat 1, ac@tcg
+					card@tcg(TCG_CARD_TEMP, cnt) = aeff@tcg
+					card@tcg(TCG_CARD_X_MOVETO, cnt) = card@tcg(TCG_CARD_X, aeft@tcg) + 20, card@tcg(TCG_CARD_Y, aeft@tcg) + 20
+					tcgpass 20
+					efllistaddcard 16, aeft@tcg
+					efllistaddchat "AIEEE!!!", aeft@tcg
+                    gravecard aeft@tcg
+					card@tcg(TCG_CARD_ATTACK, cnt) += 1
+					card@tcg(TCG_CARD_REF_ATTACK, cnt) += 1
+					card@tcg(TCG_CARD_HP, cnt) += 1
+					card@tcg(TCG_CARD_REF_HP, cnt) += 1
+					card@tcg(TCG_CARD_ATTACK, cnt) = limit(card@tcg(TCG_CARD_ATTACK, cnt), 0, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_REF_ATTACK, cnt) = limit(card@tcg(TCG_CARD_REF_ATTACK, cnt), 0, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_HP, cnt) = limit(card@tcg(TCG_CARD_HP, cnt), 0, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_REF_HP, cnt) = limit(card@tcg(TCG_CARD_REF_HP, cnt), 0, TCG_STAT_MAX)
+					makecardlist
+					organizeboard
+					tcgdraw
                 loop
 			}
 		}

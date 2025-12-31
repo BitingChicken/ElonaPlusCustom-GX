@@ -1,4 +1,82 @@
 *db_card
+	if ( dbid == CREATURE_ID_MADEER ) {
+		cardreftype = 10
+		cardrefskill = lang("馬の隣に並べてはいけない生物。食欲がすごく、こいつが山に数匹いるだけでマジで山がハゲ山に変わるほど。寄生虫が身体にめちゃくちゃついており、植物を食い漁った地域に寄生虫を残していく。", "A creature that should never be placed next to a horse. It has an enormous appetite - having just a few of these in a mountain can strip it bare, turning it into a barren, bald mountain. It is covered in parasites and leaves a trail of these parasites in the areas it has ravaged by feeding on plants.")
+		cardrefdomain = 6
+		cardrefrare = 70
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("マジカ", "madeer")
+		cardrefpic = xy2pic(22, 36) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1136 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MATICK ) {
+		cardreftype = 10
+		cardrefskill = lang("大型のダニ。普段はマジカにくっついて最低限の血と魔力を吸って暮らしている。宿主が死亡したことに気づくと、吸えるだけ吸ってパンパンに膨れた状態で離れていく。下手につつくと破裂するぞ。", "Ginat ticks that usually lives attached to a Magic. It subsists by drawing a minimal amount of blood and magical power from its host. When the host dies, it drinks as much as it can and detaches in a bloated state. Be careful not to poke it, as it may burst.")
+		cardrefdomain = 6
+		cardrefrare = 60
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("魔ダニ", "matick")
+		cardrefpic = xy2pic(22, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1135 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_VICIOUS_RACCOON ) {
+		cardreftype = 10
+		cardrefskill = lang("畑を荒らす害獣。見た目が可愛いからといって飼育する無知な人間も多いが、気性が荒いので飼うのがだんだんツラくなってくるのだ。これは本来住んでいなかった地域にわざと捨てられることで、生息範囲を拡大していくという戦略なのだ。見た目が似ているのでタヌキに畑荒らしの罪をなすりつけることが多いのだ。", "Crop destroying pests. Many people naively try to keep it as a pet because of its cute appearance, but its wild temperament eventually makes it unbearable to keep. This is part of its strategy to expand its habitat - careless owners intentionally release them in new areas. It often gets blamed for the crop destruction and has the raccoon dog (tanuki) taking the fall because of their similar appearance.")
+		cardrefdomain = 6
+		cardrefrare = 70
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("気性あらいぐま", "vicious raccoon")
+		cardrefpic = xy2pic(20, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1134 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_THIEF_LIGHT_TRUCK ) {
+		cardreftype = 10
+		cardrefskill = lang("拉致や身売りによって悪の手先に堕ちた軽トラック。収穫前のやや未熟な作物を根こそぎ盗んでいき、カスみてぇな値段で路上販売する。捕まえてもわざと軽トラ語しか喋らないので何を言っているのか分からず最悪。", "A light truck that has derailed into evil paths due to abduction and trafficking. It steals and unroots entire crops before they're fully ripe, then sells them for a paltry sum on the streets. Even if caught, it deliberately only speaks in truck language, making it impossible to understand what it's saying, which is utterly frustrating.")
+		cardrefdomain = 6
+		cardrefrare = 70
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("泥棒軽トラ", "thief light truck")
+		cardrefpic = xy2pic(21, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1133 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MOTUHEGUI ) {
+		cardreftype = 10
+		cardrefskill = lang("臓物を食べてその味のトリコになってしまい、もう元の食生活には戻れなくなった。獲物がまだ死んでいなくても我慢できずに腹を裂いて食い漁る。同じ熊の他モンスターと比較してもフィジカルが段違いであり、非常に危険。", "Motuhegui (Organ-Mauler), having become addicted to the taste of organs, they can no longer revert to their previous diet. Even if prey is still alive, they cannot resist the urge to tear open its belly and feed. Compared to other bears and monsters, their physical prowess is in a completely different league, making them extremely dangerous.")
+		cardrefdomain = 6
+		cardrefrare = 60
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("モツヘグイ", "motuhegui")
+		cardrefpic = xy2pic(19, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1132 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_GAKI_MOTUHEGUI ) {
+		cardreftype = 10
+		cardrefskill = lang("モツヘグイの幼体だがこの時点でもかなりのパワーとタフネスを誇るモンスター。一般人が死に物狂いで顔面をぶん殴った程度ではびくともしないし、逆にひっかき一発で顔面を持っていかれる。お母さんといっしょに児童の臓物を引きずり出して美味しそうに食い漁る。", "A Motuhegui (Organ-Mauler) Cub, already boasting significant power and toughness. A person punching it with all their might would barely faze it, while a single scratch could easily take off their face. Together with its mother, it gleefully tears out and devours the organs of children.")
+		cardrefdomain = 6
+		cardrefrare = 70
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("ガキモツヘグイ", "gaki-motuhegui")
+		cardrefpic = xy2pic(20, 36) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1131 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
 	if ( dbid == CREATURE_ID_HEART_WITCH ) {
 		cardreftype = 10
 		cardrefskill = lang("カードに宿る精霊。カードを通じて使い手とシンクロすることでパワーアップし、姿を変えていく。ラブリーな仕草で笑顔をふりまき人の心を惑わす魔女。仲間外のこのモンスターは通常の魔力制御判定とは別にランク×5％の確率で味方の巻き込みを無効にする。", "Spirits that inhabit the cards. By synchronising with the user through the card, it powers up and changes its appearance. A witch who bewitches people's hearts with her lovely gestures and smiles. Apart from the normal magic control judgement, this monster has a rank x 5% chance to not hit allies.")

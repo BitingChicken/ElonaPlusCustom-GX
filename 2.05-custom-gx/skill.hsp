@@ -1032,9 +1032,9 @@
 	skillname(SKILL_SPACT_SUMMON_SISTER) = lang("妹召喚", "Summon Sister")
 	skilldesc(SKILL_SPACT_SUMMON_SISTER) = lang("妹を召喚する", "Summon Sister")
 
-	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SUICIDE_ATTACK) = SKILL_ATTR_CON, SKILL_TYPE_BALL, 16, TARGET_TYPE_DIRECTION, 450
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SUICIDE_ATTACK) = SKILL_ATTR_CON, SKILL_TYPE_BALL, 1, TARGET_TYPE_DIRECTION, 450
 	skillname(SKILL_SPACT_SUICIDE_ATTACK) = lang("自爆", "Suicide Attack")
-	skilldesc(SKILL_SPACT_SUICIDE_ATTACK) = lang("PVDV属性の範囲攻撃", "Suicide(PVDV)")
+	skilldesc(SKILL_SPACT_SUICIDE_ATTACK) = lang("PVDV属性の範囲攻撃/瀕死気絶", "Suicide(PVDV)")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_CURSE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 10, TARGET_TYPE_ENEMY + 4, 100
 	skillname(SKILL_SPACT_CURSE) = lang("呪いの言葉", "Curse")
@@ -1087,6 +1087,10 @@
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_CHEER) = SKILL_ATTR_CHA, SKILL_TYPE_SP, 32, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_CHEER) = lang("鼓舞", "Cheer")
 	skilldesc(SKILL_SPACT_CHEER) = lang("視界内仲間強化", "Strengthen allies")
+
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_RESCUE_REQUEST) = SKILL_ATTR_CHA, SKILL_TYPE_SP, 10, 3000 + 6, 500
+	skillname(SKILL_SPACT_RESCUE_REQUEST) = lang("救援要請", "Rescue request")
+	skilldesc(SKILL_SPACT_RESCUE_REQUEST) = lang("ゲージ30％消費し助けを求める", "Call for help/gauge30")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_MEWMEWMEW) = SKILL_ATTR_LUC, SKILL_TYPE_SP, 1, TARGET_TYPE_SELF, 500
 	skillname(SKILL_SPACT_MEWMEWMEW) = lang("うみみゃぁ！", "Mewmewmew!")
@@ -1338,7 +1342,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_CUT_TREE) = SKILL_ATTR_STR, SKILL_TYPE_SP, 12, TARGET_TYPE_SELF_ONLY, 0
 	skillname(SKILL_SPACT_CUT_TREE) = lang("樹木の伐採", "Cut Tree")
-	skilldesc(SKILL_SPACT_CUT_TREE) = lang("伐採して材木にする", "make tree material")
+	skilldesc(SKILL_SPACT_CUT_TREE) = lang("大斧などで伐採して材木化", "cut tree with axe")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_PREACHING) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 20, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_PREACHING) = lang("説法", "Preaching")
@@ -1571,6 +1575,18 @@
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_HOMING_LASER) = SKILL_ATTR_PER, SKILL_TYPE_SP, 12, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_HOMING_LASER) = lang("マルチロック射撃", "Homing Laser")
 	skilldesc(SKILL_SPACT_HOMING_LASER) = lang("敵の数に応じて分散する射撃", "The entire distributed attack")
+
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_HIDDEN_EXPLOSIVE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 5, TARGET_TYPE_DIRECTION, 500
+	skillname(SKILL_SPACT_HIDDEN_EXPLOSIVE) = lang("仕込み爆薬", "Hidden Explosive")
+	skilldesc(SKILL_SPACT_HIDDEN_EXPLOSIVE) = lang("MP5%消費/爆弾付着/自分選択で爆破", "Bomb Placement(Target)/Detonate(Self) [-5%MP]")
+	
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_ROCKET_BOOST) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 5, TARGET_TYPE_SELF_ONLY, 500
+	skillname(SKILL_SPACT_ROCKET_BOOST) = lang("ロケットブースト", "Rocket Boost")
+	skilldesc(SKILL_SPACT_ROCKET_BOOST) = lang("MP50％消費して自己強化", "Self-enhancement [-50%MP]")
+	
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_GUIDED_BOMBING) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 5, 3000 + 6, 500
+	skillname(SKILL_SPACT_GUIDED_BOMBING) = lang("誘導爆撃", "Guided Bombing")
+	skilldesc(SKILL_SPACT_GUIDED_BOMBING) = lang("MP10％消費/分散する音属性攻撃", "AOE Attack(Sound) [-10%MP]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_MP_BREATH) = SKILL_ATTR_CON, SKILL_TYPE_SP, 25, TARGET_TYPE_BOTH + SKILL_TYPE_FOV_BOLT, 0
 	skillname(SKILL_SPACT_MP_BREATH) = lang("破壊の奔流", "MP Breath")

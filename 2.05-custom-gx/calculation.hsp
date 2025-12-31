@@ -1378,6 +1378,9 @@
 	if ( cdata(CDATA_ID, r1) == CREATURE_ID_VINDALIAN_DEATHWORM | cdata(CDATA_ID, r1) == CREATURE_ID_WALL_HACK_CHEATAH | cdata(CDATA_ID, r1) == CREATURE_ID_SAND_WORM | cdata(CDATA_ID, r1) == CREATURE_ID_BAMBOO_SPROUT | cdata(CDATA_ID, r1) == CREATURE_ID_BAMBOO_SPEAR_SPIRIT ) {
 		skillinit SKILL_NORMAL_MINING, r1, 4
 	}
+	if ( cdata(CDATA_ID, r1) == CREATURE_ID_MOTUHEGUI ) {
+		skillinit SKILL_ACTIVE_RIDING, r1, 4
+	}
 	if ( necrop2 > 0 ) {
 		skillinit SKILL_NORMAL_CONTROL_MAGIC, r1, 2
 		if ( necrop2 == ITEM_ID_BONE ) {

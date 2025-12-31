@@ -5,6 +5,204 @@
 	dbsum = 0
 	dbmax = 0
 	
+*db_creature_MADEER
+	if ( 50 > objlv ) {
+		goto *db_creature_MATICK
+	}
+	if ( fltselect != 1 ) {
+		goto *db_creature_MATICK
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_MATICK
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "sheep" ) {
+			goto *db_creature_MATICK
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_MADEER + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_MATICK
+		}
+	}
+	dbsum += 70000 / (500 + abs(objlv - 50) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_MADEER, dbsum
+	dbmax++
+
+*db_creature_MATICK
+	if ( 55 > objlv ) {
+		goto *db_creature_VICIOUS_RACCOON
+	}
+	if ( fltselect != 1 ) {
+		goto *db_creature_VICIOUS_RACCOON
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_VICIOUS_RACCOON
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "spider" ) {
+			goto *db_creature_VICIOUS_RACCOON
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_MATICK + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_VICIOUS_RACCOON
+		}
+	}
+	dbsum += 60000 / (500 + abs(objlv - 55) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_MATICK, dbsum
+	dbmax++
+
+*db_creature_VICIOUS_RACCOON
+	if ( 28 > objlv ) {
+		goto *db_creature_THIEF_LIGHT_TRUCK
+	}
+	if ( fltselect != 1 ) {
+		goto *db_creature_THIEF_LIGHT_TRUCK
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_THIEF_LIGHT_TRUCK
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bear" ) {
+			goto *db_creature_THIEF_LIGHT_TRUCK
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_VICIOUS_RACCOON + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_THIEF_LIGHT_TRUCK
+		}
+	}
+	dbsum += 70000 / (500 + abs(objlv - 28) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_VICIOUS_RACCOON, dbsum
+	dbmax++
+
+*db_creature_THIEF_LIGHT_TRUCK
+	if ( 73 > objlv ) {
+		goto *db_creature_MOTUHEGUI
+	}
+	if ( fltselect != 1 ) {
+		goto *db_creature_MOTUHEGUI
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_MOTUHEGUI
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "vehicle" ) {
+			goto *db_creature_MOTUHEGUI
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_THIEF_LIGHT_TRUCK + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_MOTUHEGUI
+		}
+	}
+	dbsum += 70000 / (500 + abs(objlv - 73) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_THIEF_LIGHT_TRUCK, dbsum
+	dbmax++
+
+*db_creature_MOTUHEGUI
+	if ( 70 > objlv ) {
+		goto *db_creature_GAKI_MOTUHEGUI
+	}
+	if ( fltselect != 1 ) {
+		goto *db_creature_GAKI_MOTUHEGUI
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_GAKI_MOTUHEGUI
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bear" ) {
+			goto *db_creature_GAKI_MOTUHEGUI
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_MOTUHEGUI + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_GAKI_MOTUHEGUI
+		}
+	}
+	dbsum += 60000 / (500 + abs(objlv - 70) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_MOTUHEGUI, dbsum
+	dbmax++
+
+*db_creature_GAKI_MOTUHEGUI
+	if ( 46 > objlv ) {
+		goto *db_creature_HEART_WITCH
+	}
+	if ( fltselect != 1 ) {
+		goto *db_creature_HEART_WITCH
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_HEART_WITCH
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bear" ) {
+			goto *db_creature_HEART_WITCH
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_GAKI_MOTUHEGUI + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_HEART_WITCH
+		}
+	}
+	dbsum += 70000 / (500 + abs(objlv - 46) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_GAKI_MOTUHEGUI, dbsum
+	dbmax++
+
 *db_creature_HEART_WITCH
 	if ( 20 > objlv ) {
 		goto *db_creature_DIAMOND_EYES
@@ -36343,6 +36541,476 @@
 	return
 
 *db_creature2
+	if ( dbid == CREATURE_ID_MADEER ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 70
+			}
+			if ( dbspec == 2 ) {
+				return lang("マジカ", "madeer")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "sheep"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1210
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_MADEER
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 50
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 95
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 18
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE, ACTION_MELEE, ACTION_MELEE, SKILL_SPELL_ILLUSION_ROAR, SKILL_SPELL_ILLUSION_ROAR
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_SPEED, SKILL_SPELL_SLOW
+			cdata(CDATA_ACT_INDEX, rc) = 25
+			cdata(CDATA_ACT_HEAL, rc) = 402
+			cdatan(CDATAN_NAME, rc) = lang("マジカ", "madeer")
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "sheep"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "warmage"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(22, 36)
+			if ( cdata(CDATA_SEX, rc) == 1 ) {
+				cdata(CDATA_PIC, rc) = xy2pic(23, 36)
+			}
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_MATICK ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 2
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 60
+			}
+			if ( dbspec == 2 ) {
+				return lang("魔ダニ", "matick")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "spider"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1177
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_MATICK
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 55
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 80
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 15
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_DRAIN_BLOOD, SKILL_SPACT_DRAIN_BLOOD, SKILL_SPELL_NERVE_ARROW, SKILL_SPELL_NERVE_ARROW, SKILL_SPELL_NERVE_ARROW
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_MIST_OF_SILENCE
+			cdata(CDATA_ACT_INDEX, rc) = 15
+			cdata(CDATA_ACT_HEAL, rc) = 644
+			cdatan(CDATAN_NAME, rc) = lang("魔ダニ", "matick")
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "spider"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "wizard"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(22, 35)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_VICIOUS_RACCOON ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 70
+			}
+			if ( dbspec == 2 ) {
+				return lang("気性あらいぐま", "vicious raccoon")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bear"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1175
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_VICIOUS_RACCOON
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 28
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 80
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 10
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE, SKILL_SPACT_SHADOW_STEP, SKILL_SPACT_SHADOW_STEP, SKILL_SPACT_SWARM, SKILL_SPACT_SWARM
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_SCAVENGE
+			cdata(CDATA_ACT_INDEX, rc) = 15
+			cdatan(CDATAN_NAME, rc) = lang("気性あらいぐま", "vicious raccoon")
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bear"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "thief"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(20, 35)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_THIEF_LIGHT_TRUCK ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("* ボ ボ ボ * ", cnvtalk("*Beep* *Beep*")), lang("* プスン * ", cnvtalk("*Vrooom*"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("* ブロロロロ * ", cnvtalk("*Vroom!* *Vrooom!*")), lang("* ブォォォン * ", cnvtalk("*SCREEEEEECH!*"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("*ぷすん* ", cnvtalk("*crash*"))
+			return 1
+		}
+		if ( dbmode == DBMODE_ON_EAT ) {
+			gosub *eatHard
+			return -1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 3
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 70
+			}
+			if ( dbspec == 2 ) {
+				return lang("泥棒軽トラ", "thief light truck")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "vehicle"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1176
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_THIEF_LIGHT_TRUCK
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 73
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 50
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 15
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE, ACTION_MELEE, SKILL_SPACT_CLASH_RUSH
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_HYPER_DASH
+			cdata(CDATA_ACT_INDEX, rc) = 13
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("泥棒軽トラ", "thief light truck")
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "vehicle"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "thief"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(21, 35)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_MOTUHEGUI ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「クマと共存する社会を目指すべき」 ", cnvtalk("We should aim for a society where we can coexist with bears."))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「クマと戦っても勝てないんだから逆らうな」 ", cnvtalk("You can't win against a bear! Stop resisting!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「クマを殺すな！お前が死ね！」 ", cnvtalk("Don't kill bears! You should end yourself now!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「クマの生活圏に住んでいるほうが悪い」 ", cnvtalk("It's your own fault for living in a bear's habitat."))
+			return 1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 60
+			}
+			if ( dbspec == 2 ) {
+				return lang("モツヘグイ", "motuhegui")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bear"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1174
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_MOTUHEGUI
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 70
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 80
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 8
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_SHADOW_STEP, SKILL_SPACT_DECAPITATION, ACTION_MELEE, ACTION_MELEE, SKILL_SPACT_VORACITY_FANG
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_HYPER_DASH
+			cdata(CDATA_ACT_INDEX, rc) = 15
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("モツヘグイ", "motuhegui")
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bear"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "predator"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(19, 35)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_GAKI_MOTUHEGUI ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「児童臓物、食べていいの！？」 ", cnvtalk("Is it okay to eat a child's organs!?"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「子熊の尊い命を奪うな！」 ", cnvtalk("Don't take the precious life of a bear cub!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「まだ子熊なのに、殺すなんて…」 ", cnvtalk("It's terrible to kill a bear that's still a cub!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「クマの親子は必死に生きているだけなんだ！」 ", cnvtalk("The mother bear and her cub are just desperately trying to survive!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 70
+			}
+			if ( dbspec == 2 ) {
+				return lang("ガキモツヘグイ", "gaki-motuhegui")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bear"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1208
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_GAKI_MOTUHEGUI
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 46
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 80
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 10
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_SQUEEZE, ACTION_MELEE, ACTION_MELEE, SKILL_SPACT_VORACITY_FANG
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_RESCUE_REQUEST
+			cdata(CDATA_ACT_INDEX, rc) = 14
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("ガキモツヘグイ", "gaki-motuhegui")
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bear"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "predator"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(20, 36)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
 	if ( dbid == CREATURE_ID_HEART_WITCH ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
@@ -36846,12 +37514,10 @@
 	}
 	if ( dbid == CREATURE_ID_SAIKYO_NEZUMI ) {
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
-			if ( jp ) {
-				txtmore
-				txtef COLOR_SKY_BLUE
-				txt lang("「最強になりたかった…」", cnvtalk("I wanted to be the strongest..."))
-				return 1
-			}
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「最強になりたかった…」", cnvtalk("I wanted to be the strongest..."))
+			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
@@ -123614,6 +124280,18 @@
 	// This causes weird bugs in almost every version of CGX, so if you don't want to change every reference to "filter_creature".
 	// Just change filter_creature(bullshit_number) to filter_creature(new_creature_id + 2) like the ones below.
 	// Make sure the filter matches or you will get bugs like fairys spawning in lake dungeons or something.
+
+	filter_creature(CREATURE_ID_MADEER + 2) = ""
+	HMMBITON cbitorg(CHARA_BIT_SUPERIOR_RIDING / 32, CREATURE_ID_MADEER), CHARA_BIT_SUPERIOR_RIDING \ 32
+	filter_creature(CREATURE_ID_MATICK + 2) = ""
+	filter_creature(CREATURE_ID_VICIOUS_RACCOON + 2) = ""
+	HMMBITON cbitorg(CHARA_BIT_TEMPER / 32, CREATURE_ID_VICIOUS_RACCOON), CHARA_BIT_TEMPER \ 32
+	filter_creature(CREATURE_ID_THIEF_LIGHT_TRUCK + 2) = ""
+	HMMBITON cbitorg(CHARA_BIT_SUPERIOR_RIDING / 32, CREATURE_ID_THIEF_LIGHT_TRUCK), CHARA_BIT_SUPERIOR_RIDING \ 32
+	filter_creature(CREATURE_ID_MOTUHEGUI + 2) = ""
+	HMMBITON cbitorg(CHARA_BIT_SUPERIOR_RIDING / 32, CREATURE_ID_MOTUHEGUI), CHARA_BIT_SUPERIOR_RIDING \ 32
+	filter_creature(CREATURE_ID_GAKI_MOTUHEGUI + 2) = ""
+
 	filter_creature(CREATURE_ID_HEART_WITCH + 2) = ""
 	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_HEART_WITCH), CHARA_BIT_FLOAT \ 32
 	filter_creature(CREATURE_ID_DIAMOND_EYES + 2) = ""

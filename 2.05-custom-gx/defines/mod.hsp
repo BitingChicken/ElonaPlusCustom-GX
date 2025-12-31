@@ -622,8 +622,12 @@
 #define global	SKILL_SPACT_POKER_FORCE	868
 #define global	SKILL_SPACT_CLEMENTIA	869
 #define global	SKILL_SPACT_MIASMA_OF_HELL	870
+#define global	SKILL_SPACT_HIDDEN_EXPLOSIVE	871
+#define global	SKILL_SPACT_ROCKET_BOOST	872
+#define global	SKILL_SPACT_GUIDED_BOMBING	873
+#define global	SKILL_SPACT_RESCUE_REQUEST	874
 
-#define global	MAX_SKILL	(SKILL_SPACT_MIASMA_OF_HELL + 1)
+#define global	MAX_SKILL	(SKILL_SPACT_RESCUE_REQUEST + 1)
 
 // Absolute skill limits
 #define global	MAX_SPACT_COUNT	500 // Maximum number of spact slots available in the array, beginning at STARTING_SKILL_SPACT, meaning the effective max skillid is 1099 (1100 if you really push it)
@@ -1477,7 +1481,8 @@
 #define global	TRAIT_NORMAL_SPACT_EYE_OF_MANA	47
 #define global	TRAIT_NORMAL_OTHER_MOUNT_BOND	48
 #define global	TRAIT_NORMAL_SPACT_MISTELTEIN	49
-#define global	MAX_NORMAL_TRAIT	50
+#define global	TRAIT_NORMAL_SPACT_BOMBER	50
+#define global	MAX_NORMAL_TRAIT	51
 
 #define global	TRAIT_RACE_RES_FIRE	150
 #define global	TRAIT_RACE_RES_COLD	151
@@ -2238,6 +2243,7 @@
 #define global	CHARA_BIT_GIVEN_BIRTH	1051
 #define global	CHARA_BIT_ITEM_MARK_FLIP	1052
 #define global	CHARA_BIT_PRECIOUS_ALLY	1053
+#define global	CHARA_BIT_HIDDEN_BOMB	1054
 
 // Database modes
 #define global	DBMODE_NONE	0
@@ -3132,6 +3138,8 @@
 #define global	EVENT_SHIP_MERCHANT	95
 #define global	EVENT_LEAVING_BEGGAR_CAVE	96
 #define global	EVENT_ELEA_REPARATION	97
+#define global	EVENT_MATICK_SPAWN	98
+#define global	EVENT_HARVEST_ENEMY	99
 
 // Map stuff
 #define global	MAP_TYPE_WORLD	1
@@ -3236,6 +3244,8 @@
 #define global	MDATA_CITY_BUDGET	32
 #define global	MDATA_WEREWOLF_STAGE	33
 #define global	MDATA_WEREWOLF_PROGRESS	34
+#define global	MDATA_WEREWOLF_POLICY	35
+#define global	MDATA_BEAR_EXTERMINATION	36
 
 #define global	MDATAN_NAME	0
 
@@ -6037,6 +6047,8 @@
 #define global	ITEM_ID_HAIRMET	1310
 #define global	ITEM_ID_GENOCIDE_TAIL	1311
 #define global	ITEM_ID_EXPOOPSION	1312
+#define global	ITEM_ID_BLANK_CARD	1313
+#define global	ITEM_ID_TURAHAGI	1314
 
 #define global	MAX_ITEM_ID	(ITEM_ID_EXPOOPSION + 3)
 
@@ -7172,8 +7184,14 @@
 #define global	CREATURE_ID_CLUB_FEATHER	1128
 #define global	CREATURE_ID_DIAMOND_EYES	1129
 #define global	CREATURE_ID_HEART_WITCH	1130
+#define global	CREATURE_ID_GAKI_MOTUHEGUI	1131
+#define global	CREATURE_ID_MOTUHEGUI	1132
+#define global	CREATURE_ID_THIEF_LIGHT_TRUCK	1133
+#define global	CREATURE_ID_VICIOUS_RACCOON	1134
+#define global	CREATURE_ID_MATICK	1135
+#define global	CREATURE_ID_MADEER	1136
 
-#define global	MAX_CREATURE_ID	(CREATURE_ID_HEART_WITCH + 3)
+#define global	MAX_CREATURE_ID	(CREATURE_ID_MADEER + 3)
 
 // Buffer
 #define global	BUFFER_SCREEN	0

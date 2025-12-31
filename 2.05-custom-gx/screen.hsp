@@ -3809,6 +3809,14 @@
 			gsel BUFFER_PIC
 			picload exedir + "graphic\\anime8.bmp"
 		}
+		if ( animode == 11 ) {
+			gsel BUFFER_PIC
+			picload exedir + "graphic\\anime71.bmp"
+		}
+		if ( animode == 12 ) {
+			gsel BUFFER_PIC
+			picload exedir + "graphic\\anime72.bmp"
+		}
 		gsel BUFFER_BUF
 		gmode 0
 		pos 0, 0
@@ -3820,7 +3828,7 @@
 			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
 				continue
 			}
-			if ( animode == 0 | animode == 2 | animode == 7 | animode == 9 | animode == 10 ) {
+			if ( animode == 0 | animode == 2 | animode == 7 | animode == 9 | animode == 10 | animode == 11 ) {
 				if ( cnt == cc ) {
 					continue
 				}
@@ -3854,6 +3862,14 @@
 			}
 			if ( animode >= 3 & animode <= 6 ) {
 				if ( cnt == cc ) {
+					continue
+				}
+			}
+			if ( animode == 12 ) {
+				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+					continue
+				}
+				if ( cbit(CHARA_BIT_HIDDEN_BOMB, cnt) != TRUE ) {
 					continue
 				}
 			}
@@ -3938,6 +3954,12 @@
 						if ( animode == 10 ) {
 							snd SOUNDLIST_FIZZLE
 						}
+						if ( animode == 11 ) {
+							snd SOUNDLIST_BALL1
+						}
+						if ( animode == 12 ) {
+							snd SOUNDLIST_BALL1
+						}
 					}
 				}
 			}
@@ -3957,6 +3979,12 @@
 				await cfg_animewait + 15
 			}
 			if ( animode == 10 ) {
+				await cfg_animewait + 5
+			}
+			if ( animode == 11 ) {
+				await cfg_animewait + 5
+			}
+			if ( animode == 12 ) {
 				await cfg_animewait + 5
 			}
 			redraw 1
@@ -8057,11 +8085,11 @@
 		cdata(CDATA_EQUIP_WEIGHT, r1) += inv(INV_ITEM_WEIGHT, rp)
 		if ( inv(INV_ITEM_SKILL_REF, rp) == SKILL_NORMAL_SHIELD ) {
 			if ( cdata(cnt, r1) / EXT_EQUIP_SLOTS == EQUIP_SLOT_HAND ) {
-				if ( inv(INV_ITEM_ID, rp) != ITEM_ID_SACRIFICE_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SHIELD_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SMASH_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SABER_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SONIC_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_GUR_BAGH_NAKH & inv(INV_ITEM_ID, rp) != ITEM_ID_CLAW & inv(INV_ITEM_ID, rp) != ITEM_ID_OTOGIRI & inv(INV_ITEM_ID, rp) != ITEM_ID_GOD_BINDER ) {
+				if ( inv(INV_ITEM_ID, rp) != ITEM_ID_SACRIFICE_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SHIELD_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SMASH_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SABER_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SONIC_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_GUR_BAGH_NAKH & inv(INV_ITEM_ID, rp) != ITEM_ID_CLAW & inv(INV_ITEM_ID, rp) != ITEM_ID_OTOGIRI & inv(INV_ITEM_ID, rp) != ITEM_ID_GOD_BINDER & inv(INV_ITEM_ID, rp) != ITEM_ID_TURAHAGI ) {
 					cdata(CDATA_SHIELD_STYLE_TYPE, r1) = SHIELD_STYLE_NORMAL
 					cdata(CDATA_SHIELD_PARRY, r1) += inv(INV_ITEM_DV, rp)
 				}
-				if ( inv(INV_ITEM_ID, rp) == ITEM_ID_SACRIFICE_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_SHIELD_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_SMASH_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_SABER_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_SONIC_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_GUR_BAGH_NAKH | inv(INV_ITEM_ID, rp) == ITEM_ID_CLAW | inv(INV_ITEM_ID, rp) == ITEM_ID_OTOGIRI | inv(INV_ITEM_ID, rp) == ITEM_ID_GOD_BINDER ) {
+				if ( inv(INV_ITEM_ID, rp) == ITEM_ID_SACRIFICE_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_SHIELD_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_SMASH_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_SABER_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_SONIC_TONFA | inv(INV_ITEM_ID, rp) == ITEM_ID_GUR_BAGH_NAKH | inv(INV_ITEM_ID, rp) == ITEM_ID_CLAW | inv(INV_ITEM_ID, rp) == ITEM_ID_OTOGIRI | inv(INV_ITEM_ID, rp) == ITEM_ID_GOD_BINDER | inv(INV_ITEM_ID, rp) == ITEM_ID_TURAHAGI ) {
 					if ( cdata(CDATA_SHIELD_STYLE_TYPE, r1) != SHIELD_STYLE_NORMAL ) {
 						cdata(CDATA_SHIELD_STYLE_TYPE, r1) = SHIELD_STYLE_TONFA
 					}
@@ -8120,7 +8148,7 @@
 				cdata(CDATA_ATTACK, r1) += inv(INV_ITEM_ATTACK, rp)
 				cdata(CDATA_DAMAGE, r1) += inv(INV_ITEM_DAMAGE, rp)
 			}
-			if ( inv(INV_ITEM_ID, rp) != ITEM_ID_SACRIFICE_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SHIELD_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SMASH_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SABER_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SONIC_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_GUR_BAGH_NAKH & inv(INV_ITEM_ID, rp) != ITEM_ID_CLAW & inv(INV_ITEM_ID, rp) != ITEM_ID_OTOGIRI ) {
+			if ( inv(INV_ITEM_ID, rp) != ITEM_ID_SACRIFICE_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SHIELD_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SMASH_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SABER_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_SONIC_TONFA & inv(INV_ITEM_ID, rp) != ITEM_ID_GUR_BAGH_NAKH & inv(INV_ITEM_ID, rp) != ITEM_ID_CLAW & inv(INV_ITEM_ID, rp) != ITEM_ID_OTOGIRI & inv(INV_ITEM_ID, rp) != ITEM_ID_GOD_BINDER & inv(INV_ITEM_ID, rp) != ITEM_ID_TURAHAGI ) {
 				cdata(CDATA_PV, r1) += inv(INV_ITEM_LEVEL, rp) * 2 + (inv(INV_ITEM_STATUS, rp) == ITEM_STATUS_BLESSED) * 2 + limit((inv(INV_ITEM_WEIGHT, rp) + 1) / 5000, 0, 40)
 				cdata(CDATA_DV, r1) += inv(INV_ITEM_LEVEL, rp) * 2 + (inv(INV_ITEM_STATUS, rp) == ITEM_STATUS_BLESSED) * 2
 			}

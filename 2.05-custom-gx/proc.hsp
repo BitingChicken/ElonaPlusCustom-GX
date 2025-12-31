@@ -8149,9 +8149,11 @@
 								}
 								if ( cbit(CHARA_BIT_SUICIDE, tc) ) {
 									if ( cdata(CDATA_CONDITION_WET, tc) == 0 ) {
-										chainbomblist(chainbomb) = tc
-										chainbomb++
-										continue
+										if ( cdata(CDATA_CONDITION_DIM, tc) < 60 ) {
+											chainbomblist(chainbomb) = tc
+											chainbomb++
+											continue
+										}
 									}
 								}
 								dmg += (calcLevelDmg(cc) + 1) / 3
@@ -8341,7 +8343,7 @@
 				/********** MMAHACK/JAMES - SPELL PROC STAFF PROC - ENDING **********/
 				if ( efid == SKILL_SPACT_SUICIDE_ATTACK ) {
 					cdata(CDATA_HP, cc) = 0
-					dmghp cc, 99999, DAMAGE_FROM_SUICIDE
+					cdata(CDATA_CONDITION_DIM, cc) = 70
 				}
 				if ( chainbomb > 0 ) {
 					*chainBomb_loop_WHILE1
@@ -8648,15 +8650,6 @@
 									txt lang(name(cc) + "に血を吸われた。", name(cc) + " suck" + _s(cc) + " " + name(tc) + your(tc) + " blood.")
 								}
 							}
-							if ( cc == CHARA_PLAYER ) {
-								if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
-									snd SOUNDLIST_WRITE1
-									txtef COLOR_GREEN
-									txt lang("ジャーナルが更新された。", "Your journal has been updated.")
-									cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
-								}
-							}
-							gain_iden tc, cc, 5
 						}
 						else {
 							if ( synccheck(cc, -1) ) {
@@ -8682,6 +8675,24 @@
 						dmgspt tc, rnd(6) + 5
 					}
 					refreshspeed tc
+					if ( cc == CHARA_PLAYER ) {
+						if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 1 ) {
+							snd SOUNDLIST_WRITE1
+							txtef COLOR_GREEN
+							txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+							cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
+						}
+					}
+					gain_iden tc, cc, 5
+					if ( cc == CHARA_PLAYER & tc < MAX_CHARA_FOLLOWER & (cdata(CDATA_IMPRESSION, tc) >= 150 | cdata(CDATA_MASTER_SERVANT, tc) >= 150) ) {
+						healcon tc, CONDITION_SICK, 5
+					}
+					else {
+						if ( rnd(30) == 0 ) {
+							dmgcon tc, CONDITION_SICK, 20
+							snd SOUNDLIST_CRACK
+						}
+					}
 					// Drain blood impression check rework, fixes pet squeeze enemy bug.
 					// Retain the custom change: allows pet to drain blood player / other pet while still using it as an attack.
 					squeezeimpressioncc@CGX = (cc != CHARA_PLAYER) * cdata(CDATA_IMPRESSION, cc) + (cc == CHARA_PLAYER) * 400
@@ -8711,7 +8722,11 @@
 				}
 				if ( efid == SKILL_SPACT_VORACITY_FANG ) {
 					dmgcon tc, CONDITION_BLEED, 75
-					cdata(CDATA_HUNGER, cc) += 150
+					if ( cdata(CDATA_HP, cc) <= cdata(CDATA_MAX_HP, cc) * 2 / 3 ) {
+						healhp cc, cdata(CDATA_MAX_HP, cc) / 3
+						snd SOUNDLIST_HEAL1
+					}
+					cdata(CDATA_HUNGER, cc) += 75
 					if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
 						p = 11 - 10
 						if ( cdata(CDATA_QUALITY, tc) >= FIX_QUALITY_MIRACLE | encfind(tc, 6 * 10000 + 10 + p) != (-1) ) {
@@ -17361,6 +17376,51 @@
 		gdata(GDATA_TEMPORARY_FLAGS2) = 0
 		goto *effect_end
 	}
+	if ( _switch_val == SKILL_SPACT_RESCUE_REQUEST | _switch_sw ) {
+		_switch_sw = 0
+		if ( cdata(CDATA_POWER_GAUGE, cc) < 30 ) {
+			txt lang(name(cc) + "は叫んで助けを求めようとしたが、うまく声が出なかった…。", name(cc) + " called out for help in a trembling voice, but no sound came out.")
+			goto *effect_end
+		}
+		cdata(CDATA_POWER_GAUGE, cc) -= 30
+		txt lang(name(cc) + "は周囲に助けを求めた。", name(cc) + " called for help from those around.")
+		snd SOUNDLIST_ENC
+		repeat 245
+			if ( cnt == cc ) {
+				continue
+			}
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cdata(CDATA_RELATION_ORG, cc) == RELATION_ENEMY ) {
+				if ( cdata(CDATA_RELATION_ORG, cnt) != RELATION_ENEMY ) {
+					continue
+				}
+			}
+			if ( cdata(CDATA_RELATION_ORG, cc) > RELATION_ENEMY ) {
+				if ( cdata(CDATA_RELATION_ORG, cnt) == RELATION_ENEMY ) {
+					continue
+				}
+			}
+			if ( cdata(CDATA_CONDITION_SLEEP, cnt) != 0 | cdata(CDATA_CONDITION_DIM, cnt) >= 60 | cdata(CDATA_CONDITION_BLIND, cnt) != 0 | cdata(CDATA_CONDITION_PARALYZE, cnt) != 0 | cdata(CDATA_CONDITION_SUFFOCATION, cnt) != 0 | cdata(CDATA_CONDITION_BRAINWASH, cnt) != 0 ) {
+				continue
+			}
+			tc = cnt
+			dx = cdata(CDATA_X, tc)
+			dy = cdata(CDATA_Y, tc)
+			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > 15 ) {
+				continue
+			}
+			cdata(CDATA_TARGET, tc) = cdata(CDATA_TARGET, cc)
+			cdata(CDATA_AI_AGGRO, tc) = 30
+			cdata(CDATA_EMO_ICON, tc) = 20 + 100
+			if ( cdata(CDATA_POWER_GAUGE, tc) <= 80 ) {
+				cdata(CDATA_POWER_GAUGE, tc) += 15
+			}
+		loop
+		goto *effect_end
+		_switch_sw++
+	}
 	if ( _switch_val == SKILL_SPACT_FIRE_A_VOLLEY | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 50 ) {
@@ -17607,12 +17667,12 @@
 			}
 			if ( cdata(CDATA_CONDITION_ANGRY, tc) > 0 ) {
 				if ( synccheck(tc, -1) ) {
-					txt lang(name(tc) + "はすでに狂暴化している。", name(cc) + " has already gone berserk.")
+					txt lang(name(tc) + "はすでに狂暴化している。", name(tc) + " has already gone berserk.")
 				}
 			}
 			else {
 				if ( synccheck(tc, -1) ) {
-					txt lang(name(tc) + "は狂暴化した。", name(cc) + " went berserk.")
+					txt lang(name(tc) + "は狂暴化した。", name(tc) + " went berserk.")
 				}
 				snd SOUNDLIST_ATK_FIRE
 				cdata(CDATA_CONDITION_ANGRY, tc) += rnd(20) + 10
@@ -18361,6 +18421,90 @@
 		homing = 0
 		goto *effect_end
 	}
+	if ( _switch_val == SKILL_SPACT_GUIDED_BOMBING | _switch_sw ) {
+		_switch_sw = 0
+		homing = 0
+		f = 0
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cc == cnt ) {
+				continue
+			}
+			if ( cc < MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION, cnt) != RELATION_ENEMY ) {
+					continue
+				}
+			}
+			if ( cc >= MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION_ORG, cnt) == cdata(CDATA_RELATION_ORG, cc) | cdata(CDATA_RELATION, cnt) == cdata(CDATA_RELATION, cc) ) {
+					continue
+				}
+			}
+			tc = cnt
+			dx = cdata(CDATA_X, tc)
+			dy = cdata(CDATA_Y, tc)
+			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+				continue
+			}
+			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+				continue
+			}
+			homing++
+		loop
+		if ( homing <= 0 ) {
+			goto *effect_end
+		}
+		dmgmp cc, cdata(CDATA_MAX_MP, cc) / 10
+		txtef COLOR_YELLOW
+		txt lang(name(cc) + "は周囲の敵に狙いを定めた。", name(cc) + " aim" + _s(cc) + " at nearby enemies.")
+		snd SOUNDLIST_SWING39
+		snd SOUNDLIST_BOLT1
+		animeload 99, cc
+		animeid = ANIMATION_HEALING_RAIN
+		animode = 11
+		gosub *anime
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cc == cnt ) {
+				continue
+			}
+			if ( cc < MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION, cnt) != RELATION_ENEMY ) {
+					continue
+				}
+			}
+			if ( cc >= MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION_ORG, cnt) == cdata(CDATA_RELATION_ORG, cc) | cdata(CDATA_RELATION, cnt) == cdata(CDATA_RELATION, cc) ) {
+					continue
+				}
+			}
+			tc = cnt
+			dx = cdata(CDATA_X, tc)
+			dy = cdata(CDATA_Y, tc)
+			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+				continue
+			}
+			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+				continue
+			}
+			dmg = (sdata(SKILL_ATTR_MAG, cc) / 2 + 5) * ((sdata(SKILL_NORMAL_DETECTION, cc) + 1) / 2 + 5) + (rnd(sdata(SKILL_ATTR_MAG, cc) * 2 + 5) + (limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30) / homing
+			if ( cbit(CHARA_BIT_SPLIT_KEEP_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SPLIT_NO_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SUMMONED, tc) != TRUE & cbit(CHARA_BIT_LIVESTOCK, tc) != TRUE & cbit(CHARA_BIT_NECRO, tc) != TRUE & cbit(CHARA_BIT_SANDBAG, tc) != TRUE & tc != CHARA_PLAYER ) {
+				f = 1
+			}
+			dmghp tc, dmg, cc, SKILL_RES_SOUND, 1000
+		loop
+		homing = 0
+		if ( f == 1 ) {
+			f = 0
+			skillexp SKILL_NORMAL_DETECTION, cc, 100
+		}
+		goto *effect_end
+		_switch_sw++
+	}
 	if ( _switch_val == SKILL_SPACT_JUMPING_DROP | _switch_sw ) {
 		_switch_sw = 0
 		if ( gdata(GDATA_RIDER) != 0 ) {
@@ -18524,6 +18668,24 @@
 			animeload 20, tc
 			addbuff tc, BUFF_OVERLIMIT_THROW, 25, 25
 		}
+		goto *effect_end
+		_switch_sw++
+	}
+	if ( _switch_val == SKILL_SPACT_ROCKET_BOOST | _switch_sw ) {
+		_switch_sw = 0
+		waitbk = cfg_animewait
+		if ( cfg_animewait > 0 ) {
+			cfg_animewait = 1
+		}
+		repeat 2
+			animeload 98, tc
+			snd SOUNDLIST_BOLT1
+		loop
+		cfg_animewait = waitbk
+		dmgmp tc, cdata(CDATA_MAX_MP, tc) / 2
+		txt lang(name(tc) + "は各部から爆炎を噴き出した。", "Flames began to burst out all over " + name(tc) + "'s body.")
+		addbuff tc, BUFF_BOOST, 20, 150
+		addbuff tc, BUFF_SPEED, sdata(SKILL_ATTR_CHA, cc) * 3 + 50, 150
 		goto *effect_end
 		_switch_sw++
 	}
@@ -24783,6 +24945,63 @@
 				dmg = dmg * 3 / 2
 			}
 			dmghp tc, dmg, cc, SKILL_RESDMG_CONSTITUTION, 1000
+		}
+		goto *effect_end
+		_switch_sw++
+	}
+	if ( _switch_val == SKILL_SPACT_HIDDEN_EXPLOSIVE | _switch_sw ) {
+		_switch_sw = 0
+		dmgmp cc, cdata(CDATA_MAX_MP, cc) / 20 + 1
+		if ( cc == CHARA_PLAYER ) {
+			if ( tc == CHARA_PLAYER ) {
+				animeid = ANIMATION_HEALING_RAIN
+				animode = 12
+				gosub *anime
+				f = 0
+				repeat 245
+					if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+						continue
+					}
+					if ( cbit(CHARA_BIT_HIDDEN_BOMB, cnt) != TRUE ) {
+						continue
+					}
+					tc = cnt
+					if ( cbit(CHARA_BIT_SPLIT_KEEP_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SPLIT_NO_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SUMMONED, tc) != TRUE & cbit(CHARA_BIT_LIVESTOCK, tc) != TRUE & cbit(CHARA_BIT_NECRO, tc) != TRUE & cbit(CHARA_BIT_SANDBAG, tc) != TRUE & tc != CHARA_PLAYER ) {
+						f = 1
+					}
+					cbitmod CHARA_BIT_HIDDEN_BOMB, tc, FALSE
+					dmghp tc, (sdata(SKILL_ATTR_MAG, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_STEALTH, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_STEALTH, cc) * 2 + 5) + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) / 2, cc, SKILL_RESDMG_CONSTITUTION, 1000
+				loop
+				if ( f == 1 ) {
+					f = 0
+					skillexp SKILL_NORMAL_STEALTH, CHARA_PLAYER, 40
+				}
+				goto *effect_end
+			}
+			else {
+				if ( tc < MAX_CHARA_FOLLOWER ) {
+					txt lang("味方に爆薬を仕掛けようとしたが、やっぱりやめた…。", "You tried to plant explosives on ally, but decided not to...")
+					goto *effect_end
+				}
+				snd SOUNDLIST_CARD1
+				txt lang("爆薬を仕掛けた。自分自身を選択することで起爆できる。", name(cc) + " planted an explosive. [Target Self to detonate.]")
+				cbitmod CHARA_BIT_HIDDEN_BOMB, tc, TRUE
+				goto *effect_end
+			}
+		}
+		if ( cc != CHARA_PLAYER ) {
+			txt lang(name(cc) + "は" + name(tc) + "に爆薬を押し当てて起爆した。", name(cc) + " pressed explosives against " + name(tc) + " and detonates it.")
+			snd SOUNDLIST_CHEST1
+			await 50
+			aniref = 0
+			animeid = ANIMATION_BALL
+			anix = cdata(CDATA_X, tc)
+			aniy = cdata(CDATA_Y, tc)
+			gosub *anime
+			dmghp tc, (sdata(SKILL_ATTR_MAG, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_STEALTH, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_STEALTH, cc) * 2 + 5) + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) / 2, cc, SKILL_RESDMG_CONSTITUTION, 1000
+			if ( cbit(CHARA_BIT_SPLIT_KEEP_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SPLIT_NO_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SUMMONED, tc) != TRUE & cbit(CHARA_BIT_LIVESTOCK, tc) != TRUE & cbit(CHARA_BIT_NECRO, tc) != TRUE & cbit(CHARA_BIT_SANDBAG, tc) != TRUE & tc != CHARA_PLAYER ) {
+				skillexp SKILL_NORMAL_STEALTH, cc, 40
+			}
 		}
 		goto *effect_end
 		_switch_sw++
