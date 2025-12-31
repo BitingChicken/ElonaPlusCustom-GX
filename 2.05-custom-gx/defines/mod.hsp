@@ -6050,7 +6050,7 @@
 #define global	ITEM_ID_BLANK_CARD	1313
 #define global	ITEM_ID_TURAHAGI	1314
 
-#define global	MAX_ITEM_ID	(ITEM_ID_EXPOOPSION + 3)
+#define global	MAX_ITEM_ID	(ITEM_ID_TURAHAGI + 3)
 
 // Creatures
 #define global	CREATURE_ID_BUG	0 // Also doubles as RANDOM
