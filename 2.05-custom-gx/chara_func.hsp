@@ -2044,7 +2044,7 @@
 				txtmore
 				txt lang(name(hostileaction_target) + "は激怒した。", name(hostileaction_target) + " gets furious!")
 			}
-			if ( cdata(CDATA_AI_AGGRO, hostileaction_target) <= 0 ) {
+			if ( cdata(CDATA_AI_AGGRO, hostileaction_target) <= 0 | cdata(CDATA_RELATION, hostileaction_target) == (-2) ) {
 				cdata(CDATA_RELATION, hostileaction_target) = -3
 				cdata(CDATA_AI_AGGRO, hostileaction_target) = 80
 				cdata(CDATA_TARGET, hostileaction_target) = hostileaction_source
