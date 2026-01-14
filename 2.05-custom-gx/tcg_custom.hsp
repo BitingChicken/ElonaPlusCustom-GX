@@ -444,6 +444,9 @@
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) >= TCG_SKILL_FILTER_BIT & effref@tcg(TCG_SKILL_FILTER, eff@tcg) < TCG_SKILL_FILTER_BIT + 200 ) {
 					if ( cdbit(effref@tcg(TCG_SKILL_FILTER, eff@tcg) - TCG_SKILL_FILTER_BIT, cnt) != 1 ) { continue }
 				}
+				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) >= TCG_SKILL_FILTER_NO_BIT & effref@tcg(TCG_SKILL_FILTER, eff@tcg) < TCG_SKILL_FILTER_NO_BIT + 200 ) {
+					if ( cdbit(effref@tcg(TCG_SKILL_FILTER, eff@tcg) - TCG_SKILL_FILTER_NO_BIT, cnt) == 1 ) { continue }
+				}
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) >= TCG_SKILL_FILTER_DBID & effref@tcg(TCG_SKILL_FILTER, eff@tcg) < TCG_SKILL_FILTER_DBID + MAX_CARD ) {
 					if ( card@tcg(TCG_CARD_REF_DBID, cnt) != effref@tcg(TCG_SKILL_FILTER, eff@tcg) - TCG_SKILL_FILTER_DBID ) { continue }
 				}
@@ -8122,11 +8125,11 @@
 		cardreflvl = 96
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 2
-		cardrefcost = 3
-		cardrefattack = 3
-		cardrefhp = 5
-		cardrefskillid = TCG_EFF_BATTLECRY_BLEEDALLENEMY
-		cardrefbits = "82"
+		cardrefcost = 4
+		cardrefattack = 2
+		cardrefhp = 4
+		cardrefskillid = TCG_EFF_PIRATEROUGH
+		cardrefbits = "20,82"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_PIRATE_MUSKETEER ) {
@@ -8136,10 +8139,10 @@
 		cardreflvl = 85
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 2
-		cardrefcost = 3
-		cardrefattack = 5
+		cardrefcost = 5
+		cardrefattack = 0
 		cardrefhp = 3
-		cardrefskillid = TCG_EFF_BATTLECRY_DEALRANDOMENEMY3DAMAGE
+		cardrefskillid = TCG_EFF_PIRATEMUSKTEER
 		cardrefbits = "82"
 		return 1
 	}
@@ -8252,10 +8255,10 @@
 		cardreflvl = 72
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 2
-		cardrefcost = 3
-		cardrefattack = 4
-		cardrefhp = 4
-		cardrefskillid = TCG_EFF_BATTLECRY_OPPONENTMILL1CARD
+		cardrefcost = 1
+		cardrefattack = 2
+		cardrefhp = 1
+		cardrefskillid = TCG_EFF_PIRATE
 		cardrefbits = "82"
 		return 1
 	}
@@ -8381,11 +8384,11 @@
 		cardreflvl = 110
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 5
+		cardrefcost = 7
 		cardrefattack = 4
-		cardrefhp = 3
+		cardrefhp = 7
 		cardrefskillid = TCG_EFF_PIRATEBOSS
-		cardrefbits = ""
+		cardrefbits = "11,12,20,82"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_CARAVAN_MASTER ) {
@@ -14598,9 +14601,9 @@
 		cardreflvl = 87
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 6
-		cardrefattack = 7
-		cardrefhp = 8
+		cardrefcost = 4
+		cardrefattack = 1
+		cardrefhp = 5
 		cardrefskillid = TCG_EFF_ZERNARD
 		cardrefbits = ""
 		return 1

@@ -662,6 +662,48 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_ZERNARD | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			aeftbk@tcg = aeft@tcg
+			aeftpplayer@tcg = card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			if ( phase@tcg >= 2 ) { 
+				// Battlecry
+				repeat 10
+					create_extra_card aeftpplayer@tcg, CREATURE_ID_PIRATE
+					if ( cextra@tcg >= 0 ) {
+						tcg_generate_bullet cextra@tcg
+						card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_ANIM
+						cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+						card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, aeftbk@tcg), card@tcg(TCG_CARD_Y, aeftbk@tcg)
+						card@tcg(TCG_CARD_X_MOVETO, cextra@tcg) = deckix@tcg(card@tcg(TCG_CARD_CONTROLLER, aeftbk@tcg)), deckiy@tcg(card@tcg(TCG_CARD_CONTROLLER, aeftbk@tcg))
+						tcgpass 15
+					}
+				loop
+				repeat maxcard@tcg
+					cextra@tcg = maxcard@tcg - cnt - 1
+					if ( card@tcg(TCG_CARD_LOCATION, cextra@tcg) != TCG_LOCATION_ANIM ) { continue }
+					if ( card@tcg(TCG_CARD_REF_DBID, cextra@tcg) != CREATURE_ID_PIRATE ) { continue }
+					cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 0
+					returncard cextra@tcg
+				loop
+			} else { 
+				// Turn Start
+				drawcount@tcg = limit(5 - getholdersum(aeftpplayer@tcg), 0, 5)
+				if ( drawcount@tcg > 0 ) {
+					effref@tcg(TCG_SKILL_TARGET, TCG_EFF_ZERNARD_DRAW) = TCG_SKILL_TARGET_PLAYER_DECK_RANDOM - 1 + drawcount@tcg
+					effac@tcg = ac@tcg
+					eff@tcg = TCG_EFF_ZERNARD_DRAW
+					efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+					gosub *card_action_choose_target
+				}
+			}
+			makecardlist
+			tcgdraw
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_NAPLUS | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
@@ -902,6 +944,52 @@
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
 			dmgcard aeft@tcg, effref@tcg(TCG_SKILL_POWER, aeff@tcg)
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DEAL_CREATURE_DAMAGE_BLEED | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			repeat 1, aeft@tcg
+				dmgcard cnt, effref@tcg(TCG_SKILL_POWER, aeff@tcg)
+				cdbitmod TCG_BIT_BLEEDING, cnt, 1
+			loop
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DEAL_CREATURE_DAMAGE_SILENCE | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			repeat 1, aeft@tcg
+				cdbitmod TCG_BIT_SILENCED, cnt, 1
+				dmgcard cnt, effref@tcg(TCG_SKILL_POWER, aeff@tcg)
+			loop
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DEAL_CREATURE_DAMAGE_CONT | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			repeat effref@tcg(TCG_SKILL_POWER, aeff@tcg)
+				cardstack@tcg(TCG_STACK, stack@tcg) = ac@tcg, TCG_SKILL_EFF_DEAL_CREATURE_DAMAGE, ap@tcg, TCG_EFF_BATTLECRY_DEALRANDOMENEMY1DAMAGE, aeft@tcg, aite@tcg + 1, aeftg@tcg
+				stack@tcg++
+			loop
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DEAL_CREATURE_DAMAGE_MARK | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			cont@tcg = effref@tcg(TCG_SKILL_POWER, aeff@tcg)
+			repeat 1, aeft@tcg
+				dmgcard cnt, effref@tcg(TCG_SKILL_POWER, aeff@tcg)
+				markerwords = "v","V","shoot me","ELEA","x","this guy","here"
+				cardn@tcg(TCG_CARDN_REF_TAG, cnt) = markerwords(rnd(length(markerwords)))
+			loop
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -1336,6 +1424,13 @@
 					if ( cardn@tcg(TCG_CARDN_REF_RACE, cnt) == "minotaur" ) { x@tcg++ }
 				loop
 			}
+			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -19 ) {
+				repeat maxcard@tcg
+					if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != card@tcg(TCG_CARD_CONTROLLER, aeft@tcg) ) { continue }
+					if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_GRAVEYARD ) { continue }
+					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_PIRATE & cdbit(TCG_BIT_COMMAND, cnt) == TRUE ) { x@tcg++ }
+				loop
+			}
 			card@tcg(TCG_CARD_ATTACK, aeft@tcg) += x@tcg
 			card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) += x@tcg
 			card@tcg(TCG_CARD_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_ATTACK, aeft@tcg), 0, TCG_STAT_MAX)
@@ -1667,6 +1762,82 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DISCOVER_BULLET | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			if ( hasholdspace(aeft@tcg) ) {
+				discovercount@tcg = limit(MAX_CARD_EXTRA - cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg), 0, aefp@tcg)
+				discovercount@tcg = limit(discovercount@tcg, 0, 11)
+				if ( discovercount@tcg > 0 ) {
+					repeat 11
+						discover@tcg(cnt) = cnt + 1
+						if ( cnt >= discovercount@tcg ) {
+							discover@tcg(rnd(cnt + 1)) = cnt + 1
+						}
+					loop
+					cextrabk@tcg = cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg)
+					deckbk@tcg = cpdata@tcg(TCG_PLAYER_DECK, aeft@tcg)
+					repeat discovercount@tcg
+						cextra@tcg = aeft@tcg * MAX_CARD_DECK_TOTAL + MAX_CARD_DECK + cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg)
+						bulletchoice@tcg = discover@tcg(cnt)
+						create_card cextra@tcg, CREATURE_ID_PIRATE
+						tcg_generate_bullet cextra@tcg
+						cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+						card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_DISCOVER, aeft@tcg, deckix@tcg(aeft@tcg), deckiy@tcg(aeft@tcg), deckix@tcg(aeft@tcg), deckiy@tcg(aeft@tcg)
+						cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg)++
+						cpdata@tcg(TCG_PLAYER_DECK, aeft@tcg)++
+					loop
+					discover_extra_card aeft@tcg
+					bulletchoice@tcg = discover@tcg(discoverchoiceval@tcg)
+					create_extra_card aeft@tcg, CREATURE_ID_PIRATE
+					if ( cextra@tcg >= 0 ) {
+						tcg_generate_bullet cextra@tcg
+						gettargetcard cextra@tcg
+					}
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DISCOVER_BULLET_FIRE | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			if ( hasspotspace(aeft@tcg) ) {
+				discovercount@tcg = limit(MAX_CARD_EXTRA - cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg), 0, aefp@tcg)
+				discovercount@tcg = limit(discovercount@tcg, 0, 11)
+				if ( discovercount@tcg > 0 ) {
+					repeat 11
+						discover@tcg(cnt) = cnt + 1
+						if ( cnt >= discovercount@tcg ) {
+							discover@tcg(rnd(cnt + 1)) = cnt + 1
+						}
+					loop
+					cextrabk@tcg = cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg)
+					deckbk@tcg = cpdata@tcg(TCG_PLAYER_DECK, aeft@tcg)
+					repeat discovercount@tcg
+						cextra@tcg = aeft@tcg * MAX_CARD_DECK_TOTAL + MAX_CARD_DECK + cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg)
+						bulletchoice@tcg = discover@tcg(cnt)
+						create_card cextra@tcg, CREATURE_ID_PIRATE
+						tcg_generate_bullet cextra@tcg
+						cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+						card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_DISCOVER, aeft@tcg, deckix@tcg(aeft@tcg), deckiy@tcg(aeft@tcg), deckix@tcg(aeft@tcg), deckiy@tcg(aeft@tcg)
+						cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg)++
+						cpdata@tcg(TCG_PLAYER_DECK, aeft@tcg)++
+					loop
+					discover_extra_card aeft@tcg
+					bulletchoice@tcg = discover@tcg(discoverchoiceval@tcg)
+					create_extra_card aeft@tcg, CREATURE_ID_PIRATE
+					if ( cextra@tcg >= 0 ) {
+						tcg_generate_bullet cextra@tcg
+						putcard cextra@tcg, aeft@tcg
+					}
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_DISCOVER_CNPC | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
@@ -1900,6 +2071,20 @@
 			card@tcg(TCG_CARD_REF_CHARA_PIC, aeft@tcg) = 0
 			carddetailneff@tcg(aeft@tcg) = "Spaghetti  No.???   sphaghet  Rare: pasta\nEffect: Your hands are shaky."
 			efllistadd 2, 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_PUTA_TRANSFORM | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			create_card aeft@tcg, CREATURE_ID_PROSTITUTE
+			cdbitmod TCG_BIT_FACE_UP, aeft@tcg, 1
+			card@tcg(TCG_CARD_ATTACK, aeft@tcg) = 1
+			card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) = 1
+			card@tcg(TCG_CARD_HP, aeft@tcg) = 1
+			card@tcg(TCG_CARD_REF_HP, aeft@tcg) = 1
+			efllistaddcard
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -4003,6 +4188,24 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_BMG_SUMMON | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+			if ( hasspotspace(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) == TRUE ) {
+				create_extra_card card@tcg(TCG_CARD_CONTROLLER, ac@tcg), CREATURE_ID_LITTLE_GIRL
+				if ( cextra@tcg >= 0 ) {
+					card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 3
+					card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = xy2pic(14, 17)
+					card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_WITCH
+					carddetailneff@tcg(cextra@tcg) = "Black Magician Girl (White) No.???    Roran Warrior  Rare:Very\nEffect: "
+					reconstruct_card_text cextra@tcg
+					putcard cextra@tcg, card@tcg(TCG_CARD_CONTROLLER, cextra@tcg)
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_ZAILE | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
@@ -5075,4 +5278,96 @@
 	deckmode@tcg = 0
 	deckmodecp@tcg = 0
 	cpisme
+	return
+
+#deffunc tcg_generate_bullet int tcggen_arg1
+	if ( bulletchoice@tcg <= 0 | bulletchoice@tcg > 11 ) {
+		bulletchoice@tcg = rnd(11)
+	} else {
+		bulletchoice@tcg -= 1
+	}
+	card@tcg(TCG_CARD_COST, tcggen_arg1) = 2
+	card@tcg(TCG_CARD_REF_COST, tcggen_arg1) = 2
+	card@tcg(TCG_CARD_HP, tcggen_arg1) = 1
+	card@tcg(TCG_CARD_REF_HP, tcggen_arg1) = 1
+	card@tcg(TCG_CARD_ATTACK, tcggen_arg1) = 0
+	card@tcg(TCG_CARD_REF_ATTACK, tcggen_arg1) = 0
+	cdbitmod TCG_BIT_PIRATE, tcggen_arg1, 0
+	cdbitmod TCG_BIT_COMMAND, tcggen_arg1, 1
+	if ( bulletchoice@tcg == 0 ) {
+		card@tcg(TCG_CARD_COST, tcggen_arg1) = 3
+		card@tcg(TCG_CARD_REF_COST, tcggen_arg1) = 3
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -42
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET1
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = ".338 La Puta Magnum   No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Turn an Enemy into a 1/1 Prostitute."
+	}
+	if ( bulletchoice@tcg == 1 ) {
+		card@tcg(TCG_CARD_COST, tcggen_arg1) = 1
+		card@tcg(TCG_CARD_REF_COST, tcggen_arg1) = 1
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -43
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET2
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = "12/70 SuperFormance-RatShot   No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Deal 1 Damage and Bleed All non-armored Enemies."
+	}
+	if ( bulletchoice@tcg == 2 ) {
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -50
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET3
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = ".50 BMG   No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Summon 1 Black Magician Girl."
+	}
+	if ( bulletchoice@tcg == 3 ) {
+		card@tcg(TCG_CARD_COST, tcggen_arg1) = 0
+		card@tcg(TCG_CARD_REF_COST, tcggen_arg1) = 0
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -45
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET4
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = "7.62x15mm TT Subsonic Ultra Slow   No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Deals 0 Damage, Amazing."
+	}
+	if ( bulletchoice@tcg == 4 ) {
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -46
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET5
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = "7.62x51mm M62 Tracist   No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Deals 5 Damage and add a little marker on them."
+	}
+	if ( bulletchoice@tcg == 5 ) {
+		card@tcg(TCG_CARD_COST, tcggen_arg1) = 5
+		card@tcg(TCG_CARD_REF_COST, tcggen_arg1) = 5
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -47
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET6
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = "7.62x39mm Fumble-Mind-Jujitsu  No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Inflict Insanity on Random Field Card, 10 Times."
+	}
+	if ( bulletchoice@tcg == 6 ) {
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -48
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET7
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = "5.56x45mm Eulderna Warmage   No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Deal 5 Damage Split Among Enemies."
+	}
+	if ( bulletchoice@tcg == 7 ) {
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -49
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET8
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = "9x39 SupaPulya-4   No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Deal 1 Damage to Target Card, 4 times."
+	}
+	if ( bulletchoice@tcg == 8 ) {
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -51
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET9
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = "7.62x51mm Ultra Noisemaker  No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Silence and Deals 3 Damage to an Enemy."
+	}
+	if ( bulletchoice@tcg == 9 ) {
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -52
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BULLET10
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = "20/70 Fleischesser  No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Deal 2 Damage and Bleed 3 Random Enemies."
+	}
+	if ( bulletchoice@tcg == 10 ) {
+		card@tcg(TCG_CARD_COST, tcggen_arg1) = 3
+		card@tcg(TCG_CARD_REF_COST, tcggen_arg1) = 3
+		card@tcg(TCG_CARD_REF_PIC, tcggen_arg1) = -44
+		card@tcg(TCG_CARD_EFFECT, tcggen_arg1) = TCG_EFF_BATTLECRY_BOUNCETARGETOPPCARD
+		card@tcg(TCG_CARD_REF_BG, tcggen_arg1) = 0
+		carddetailneff@tcg(tcggen_arg1) = ".300 Backout   No.???   questionable bullet  Rare:None\n[Command Card]\nEffect: Return Target Opponent Card to Hand."
+	}
 	return
