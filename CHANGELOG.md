@@ -1,3 +1,12 @@
+# Upcoming
+
+# Fixed
+- KamiKakushi consuming necromancy-zombies when they shouldn't.
+
+# TCG
+- Revamped Pirate cards, and gave them a deck.
+
+
 # 2.30.1.0
 
 # Added

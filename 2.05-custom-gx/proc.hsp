@@ -22910,10 +22910,11 @@
 			if ( cdata(CDATA_RELATION, cnt) != RELATION_ALLY ) {
 				continue
 			}
-			if ( cbit(CHARA_BIT_SHADOW_CLONE, cnt) == TRUE ) {
-				if ( cdata(CDATA_ID, cnt) != CREATURE_ID_KAMIORIDURU & cdata(CDATA_ID, cnt) != CREATURE_ID_KAMISHURIKEN & cdata(CDATA_ID, cnt) != CREATURE_ID_KAMIHIKOUKI ) {
-					continue
-				}
+			if ( cbit(CHARA_BIT_SHADOW_CLONE, cnt) != TRUE ) {
+				continue
+			}
+			if ( cdata(CDATA_ID, cnt) != CREATURE_ID_KAMIORIDURU & cdata(CDATA_ID, cnt) != CREATURE_ID_KAMISHURIKEN & cdata(CDATA_ID, cnt) != CREATURE_ID_KAMIHIKOUKI ) {
+				continue
 			}
 			if ( cbit(CHARA_BIT_NECRO, cnt) != TRUE ) {
 				continue
@@ -22935,7 +22936,7 @@
 			if ( stat == 0 ) {
 				goto *effect_end
 			}
-			txt lang(name(cc) + "は" + name(tck) + "を一瞬で切り刻んで撒き散らした。", name(cc) + " call forth " + name(tck) + ", making it unfold and scatter towards enent.")
+			txt lang(name(cc) + "は" + name(tck) + "を一瞬で切り刻んで撒き散らした。", name(cc) + " call forth " + name(tck) + ", making it unfold and scatter towards enemy.")
 			dx = cdata(CDATA_X, cc)
 			dy = cdata(CDATA_Y, cc)
 			breath_list
