@@ -12374,6 +12374,11 @@
 						cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
 						map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), MAP_CHARA_INDEX_PLUS_ONE) = 0
 					}
+					// James - Despawns GODWOLF and KYU-BI too.
+					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_GODWOLF | cdata(CDATA_ID, cnt) == CREATURE_ID_KYU_BI ) {
+						cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
+						map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), MAP_CHARA_INDEX_PLUS_ONE) = 0
+					}
 				}
 				if ( gdata(GDATA_AREA) == AREA_HOME ) {
 					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_MAGIC_BEE ) {
@@ -12388,7 +12393,7 @@
 			loop
 			if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS | gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
 				if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
-					if ( gdata(GDATA_AREA) != AREA_MELUGAS ) {
+					if ( gdata(GDATA_AREA) != AREA_MELUGAS & gdata(GDATA_FLAG_MAIN) >= 180 ) { // James: Disable this until act II
 						prevent = limit(mdata(MDATA_BEAR_EXTERMINATION) * 10 + 200, 100, 300)
 						if ( rnd(prevent) == 0 ) {
 							kx = -1

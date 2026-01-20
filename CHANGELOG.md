@@ -1,10 +1,14 @@
 # Upcoming
 
+# Changed
+- Disables Bear-Invasion and Werewolf events until Act II.
+- God Wolf and Kyu-Bi now despawns like invading bears.
+
 # Fixed
 - KamiKakushi consuming necromancy-zombies when they shouldn't.
 
 # TCG
-- Revamped Pirate cards, and gave them a deck.
+- Revamped Pirate cards, and gave Zernard and the Pirate NPCs a pirate deck.
 
 
 # 2.30.1.0
