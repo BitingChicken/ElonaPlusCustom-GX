@@ -641,7 +641,7 @@
 			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, rc), cdata(CDATA_Y, rc)) == 0 ) {
 				break
 			}
-			if ( charaIsVisible(rc) ) {
+			if ( charaIsVisible(rc) == 0 ) {
 				break
 			}
 			get_route cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, rc), cdata(CDATA_Y, rc)
