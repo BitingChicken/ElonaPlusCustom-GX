@@ -2193,6 +2193,7 @@
 		}
 		else {
 			income += val
+			yaca += limit(val, 1, 500000) / 1000
 		}
 		if ( area == gdata(GDATA_AREA) ) {
 			repeat MAX_CHARA_TOTAL

@@ -450,7 +450,7 @@
 			if ( cdata(CDATA_RELATION, cnt) == (-3) ) {
 				hyou++
 			}
-			votep -= hyou + cdata(CDATA_VOTES_RECEIVED, cnt)
+			votep -= hyou
 			cdata(CDATA_VOTES_RECEIVED, cnt) += hyou
 		}
 		list(0, listmax) = cnt, cdata(CDATA_VOTES_RECEIVED, cnt)

@@ -18552,7 +18552,16 @@
 		}
 		/********** JAMES CUSTOM - prevent getting lvl 70 bamboo spirit early game. - BEGINNING **********/
 		if ( inv(INV_ITEM_SUB_NAME, ci) == CREATURE_ID_BAMBOO_SPEAR_SPIRIT ) {
-			initlv = 1
+			initlv = limit(gdata(GDATA_DEEPEST_LEVEL), 1, 70)
+		}
+		if ( inv(INV_ITEM_SUB_NAME, ci) == CREATURE_ID_PIRATE ) {
+			initlv = limit(gdata(GDATA_DEEPEST_LEVEL), 1, 72)
+		}
+		if ( inv(INV_ITEM_SUB_NAME, ci) == CREATURE_ID_PIRATE_MUSKETEER ) {
+			initlv = limit(gdata(GDATA_DEEPEST_LEVEL), 1, 85)
+		}
+		if ( inv(INV_ITEM_SUB_NAME, ci) == CREATURE_ID_ROUGH_PIRATE ) {
+			initlv = limit(gdata(GDATA_DEEPEST_LEVEL), 1, 96)
 		}
 		/********** JAMES CUSTOM - prevent getting lvl 70 bamboo spirit early game. - ENDING **********/
 		if ( get_freeally() == 0 ) {

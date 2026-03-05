@@ -4727,6 +4727,20 @@
 	
 	/********** JIANMENGYU CUSTOM - BEGINNING **********/
 
+	if ( instr(buff, 0, "export_living_name") != (-1) ) {
+		buff = ""
+		notesel buff
+
+		repeat 30000
+			randomize cnt
+			noteadd "" + (40000 + cnt) + "|" + random_title(1)
+		loop
+		notesave exedir + "living_weapon_name.txt"
+		notesel dbm
+		noteadd "Done."
+		goto *console_write
+	}
+
 	if ( instr(buff, 0, "crash_the_game") != (-1) ) {
 		goto *exit_game_error
 	}

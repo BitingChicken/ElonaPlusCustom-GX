@@ -1,6 +1,17 @@
 # Upcoming
 
 # Changed
+- Level of Bamboo Spirit from monster ball now depends on Deepest Level (min 1, max 70)
+  - Same applied to the pirates (1-72), pirate musketeer (1-85), and rough pirate (1-96)
+  - If you want to exploit this, you can still use the original `elonaplus.exe`
+
+# Fixed
+- (Plus) Fixed werewolves not receiving NPC votes for execution after first round.
+- (Plus) Fixed player shop not giving Yaca Points for selling items without trading.
+
+# 2.30.1.1
+
+# Changed
 - Disables Bear-Invasion and Werewolf events until Act II.
 - God Wolf and Kyu-Bi now despawns like invading bears.
 
