@@ -5930,23 +5930,10 @@
 	}
 	p = 0
 	if ( tc != CHARA_PLAYER ) {
-		if ( cdata(CDATA_PIC, tc) == xy2pic(18, 35) ) {
-			if ( cdata(CDATA_ALLIED, tc) == 0 ) {
-				promptAdd lang("【ランクチェンジ】", "<Rank Change>"), "null", 31
-				if ( cdata(CDATA_ID, tc) != CREATURE_ID_SPADE_WARRIOR ) {
-					promptAdd lang("[スペードチェンジ]", "[Spade Change]"), "null", 32
-				}
-				if ( cdata(CDATA_ID, tc) != CREATURE_ID_CLUB_FEATHER ) {
-					promptAdd lang("[クラブチェンジ]", "[Club Change]"), "null", 33
-				}
-				if ( cdata(CDATA_ID, tc) != CREATURE_ID_DIAMOND_EYES ) {
-					promptAdd lang("[ダイヤチェンジ]", "[Diamond Change]"), "null", 34
-				}
-				if ( cdata(CDATA_ID, tc) != CREATURE_ID_HEART_WITCH ) {
-					promptAdd lang("[ハートチェンジ]", "[Heart Change]"), "null", 35
-				}
-			}
-		}
+		; Since Ano added too many 'i'nteract options, I grouped necessary and auxilary functions into several group
+		; So in the case of too many options causing a crash, some will be skipped to prevent that in CGX
+
+		; Basic interactions:
 		if ( cdata(CDATA_CONDITION_CONFUSE, CHARA_PLAYER) == 0 ) {
 			promptAdd lang("話しかける", "Talk"), "null", 0
 			if ( tc >= MAX_CHARA_FOLLOWER ) {
@@ -5976,7 +5963,34 @@
 			}
 
 			/********** ANNA CUSTOM - ENDING **********/
+		}
 
+		; Special ally interactions:
+		if ( cdata(CDATA_PIC, tc) == xy2pic(18, 35) ) {
+			if ( cdata(CDATA_ALLIED, tc) == 0 ) {
+				promptAdd lang("【ランクチェンジ】", "<Rank Change>"), "null", 31
+				if ( cdata(CDATA_ID, tc) != CREATURE_ID_SPADE_WARRIOR ) {
+					promptAdd lang("[スペードチェンジ]", "[Spade Change]"), "null", 32
+				}
+				if ( cdata(CDATA_ID, tc) != CREATURE_ID_CLUB_FEATHER ) {
+					promptAdd lang("[クラブチェンジ]", "[Club Change]"), "null", 33
+				}
+				if ( cdata(CDATA_ID, tc) != CREATURE_ID_DIAMOND_EYES ) {
+					promptAdd lang("[ダイヤチェンジ]", "[Diamond Change]"), "null", 34
+				}
+				if ( cdata(CDATA_ID, tc) != CREATURE_ID_HEART_WITCH ) {
+					promptAdd lang("[ハートチェンジ]", "[Heart Change]"), "null", 35
+				}
+				goto *skipCustomizationOptions
+			}
+		}
+		if ( charaIsNecromancyZombie(tc) ) {
+			promptAdd lang("棺に戻す", "Return to the coffin"), "null", 13
+			goto *skipCustomizationOptions
+		}
+		
+		; Ranch animal interactions
+		if ( cbit(CHARA_BIT_BODYGUARD, tc) == FALSE & cbit(CHARA_BIT_GUARD_TEMP, tc) == FALSE & cbit(CHARA_BIT_LOCKED_UP, tc) == FALSE ) {
 			if ( cbit(CHARA_BIT_LIVESTOCK, tc) == 1 ) {
 				promptAdd lang("連れ出す", "Bring Out"), "null", 5
 			}
@@ -5987,14 +6001,14 @@
 					promptAdd lang("目玉を抉り取る", "Take out eye"), "null", 20
 					promptAdd lang("体液を搾り取る", "Take out blood"), "null", 21
 					promptAdd lang("皮を剥ぐ", "Take out skin"), "null", 22
-				}
-			}
-			if ( tc < MAX_CHARA_FOLLOWER ) {
-				if ( cfg_atk_select == 0 ) {
-					promptAdd lang("攻撃する", "Attack"), "null", 1
+					
+					promptAdd lang("名前をつける", "Name"), "null", 3
+					goto *skipCustomizationOptions
 				}
 			}
 		}
+
+		; Customization interactions
 		promptAdd lang("言葉を教える", "Teach Words"), "null", 7
 		promptAdd lang("口調を変える", "Change Tone"), "null", 10
 		if ( tc < MAX_CHARA_FOLLOWER ) {
@@ -6028,19 +6042,8 @@
 				}
 			}
 		}
-		if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
-			if ( cbit(CHARA_BIT_SANDBAG, tc) ) {
-				promptAdd lang("縄を解く", "Release"), "null", 9
-			}
-		}
-		if ( gdata(GDATA_AREA) != AREA_CAMP ) {
-			if ( cdata(CDATA_FAME, tc) <= (-90) ) {
-				if ( cbit(CHARA_BIT_LOCKED_UP, tc) ) {
-					promptAdd lang("檻から解き放つ", "Release"), "null", 30
-				}
-			}
-		}
 	}
+	; Customization interactions, cont.
 	if ( tc < MAX_CHARA_FOLLOWER ) {
 		promptAdd lang("着替えさせる", "Appearance"), "null", 8
 	}
@@ -6058,6 +6061,17 @@
 	if ( cdata(CDATA_MARK_ITEM_PIC, tc) > 0 ) {
 		promptAdd lang("アイテム画像の削除", "Item mark delete"), "null", 24
 	}
+	promptAdd lang("名前をつける", "Name"), "null", 3
+
+	*skipCustomizationOptions
+	; Basic functions, cont.
+	if ( cbit(CHARA_BIT_BODYGUARD, tc) == FALSE & cbit(CHARA_BIT_GUARD_TEMP, tc) == FALSE & cbit(CHARA_BIT_LOCKED_UP, tc) == FALSE ) {
+		if ( tc < MAX_CHARA_FOLLOWER ) {
+			if ( cfg_atk_select == 0 ) {
+				promptAdd lang("攻撃する", "Attack"), "null", 1
+			}
+		}
+	}
 	if ( cbit(CHARA_BIT_BODYGUARD, tc) == FALSE & cbit(CHARA_BIT_GUARD_TEMP, tc) == FALSE & cbit(CHARA_BIT_LOCKED_UP, tc) == FALSE ) {
 		if ( tc < MAX_CHARA_FOLLOWER ) {
 			if ( cdata(CDATA_IN_TAGTEAM, tc) != 1 ) {
@@ -6074,13 +6088,21 @@
 			}
 		}
 	}
-	promptAdd lang("名前をつける", "Name"), "null", 3
-	if ( tc != CHARA_PLAYER & cdata(CDATA_RELATION, tc) == RELATION_ALLY | (gdata(GDATA_AREA) == AREA_DOJO & cbit(CHARA_BIT_LIVESTOCK, tc) == TRUE) | (tc != CHARA_PLAYER & cdata(CDATA_ANALYSIS_GAUGE, tc) == 100) ) {
-		promptAdd lang("能力の開示", "Info"), "null", "" + 28
-	}
-	if ( develop | gdata(GDATA_WIZARD) ) {
-		promptAdd lang("情報", "Information"), "null", 6
-		promptAdd lang("カスタムＡＩ", "Custom AI"), "null", 998
+
+	; Auxillary functions on special cases
+	if ( tc != CHARA_PLAYER ) {
+		if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
+			if ( cbit(CHARA_BIT_SANDBAG, tc) ) {
+				promptAdd lang("縄を解く", "Release"), "null", 9
+			}
+		}
+		if ( gdata(GDATA_AREA) != AREA_CAMP ) {
+			if ( cdata(CDATA_FAME, tc) <= (-90) ) {
+				if ( cbit(CHARA_BIT_LOCKED_UP, tc) ) {
+					promptAdd lang("檻から解き放つ", "Release"), "null", 30
+				}
+			}
+		}
 	}
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_ITZPALT | cdata(CDATA_ID, tc) == CREATURE_ID_YACATECT | cdata(CDATA_ID, tc) == CREATURE_ID_JURE | cdata(CDATA_ID, tc) == CREATURE_ID_LULWY | cdata(CDATA_ID, tc) == CREATURE_ID_EHEKATL | cdata(CDATA_ID, tc) == CREATURE_ID_OPATOS | cdata(CDATA_ID, tc) == CREATURE_ID_KUMIROMI | cdata(CDATA_ID, tc) == CREATURE_ID_MANI | cdata(CDATA_ID, tc) == CREATURE_ID_WAR_SPIRIT | cdata(CDATA_ID, tc) == CREATURE_ID_MAGIC_SPIRIT | cdata(CDATA_ID, tc) == CREATURE_ID_PUDDING_SPIRIT | cdata(CDATA_ID, tc) == CREATURE_ID_GUN_SPIRIT ) {
 		if ( cbit(CHARA_BIT_LIVESTOCK, tc) != 1 ) {
@@ -6091,28 +6113,37 @@
 			}
 		}
 	}
-	if ( gdata(GDATA_MONTH) == 2 & cdata(CDATA_IMPRESSION, tc) >= 200 & tc != CHARA_PLAYER & gdata(GDATA_FLAG_CAN_RECEIVE_CHOCOLATE) == 1 ) {
-		promptAdd lang("チョコをねだる", "Ask for chocolate"), "null", 12
-	}
-	if ( gdata(GDATA_MONTH) == 2 ) {
-		if ( gdata(GDATA_FLAG_CHOCOLATE_KIT_YOURSELF) != 0 & tc != CHARA_PLAYER ) {
-			promptAdd lang("自分をプレゼント", "Offer yourself as a gift"), "null", 15
+	if ( promptmax <= 25 ) {
+		if ( gdata(GDATA_MONTH) == 2 & cdata(CDATA_IMPRESSION, tc) >= 200 & tc != CHARA_PLAYER & gdata(GDATA_FLAG_CAN_RECEIVE_CHOCOLATE) == 1 ) {
+			promptAdd lang("チョコをねだる", "Ask for chocolate"), "null", 12
 		}
 	}
-	if ( charaIsNecromancyZombie(tc) ) {
-		promptAdd lang("棺に戻す", "Return to the coffin"), "null", 13
+	if ( promptmax <= 25 ) {
+		if ( gdata(GDATA_MONTH) == 2 ) {
+			if ( gdata(GDATA_FLAG_CHOCOLATE_KIT_YOURSELF) != 0 & tc != CHARA_PLAYER ) {
+				promptAdd lang("自分をプレゼント", "Offer yourself as a gift"), "null", 15
+			}
+		}
+	}
+	if ( promptmax <= 25 ) {
+		if ( tc != CHARA_PLAYER & cdata(CDATA_RELATION, tc) == RELATION_ALLY | (gdata(GDATA_AREA) == AREA_DOJO & cbit(CHARA_BIT_LIVESTOCK, tc) == TRUE) | (tc != CHARA_PLAYER & cdata(CDATA_ANALYSIS_GAUGE, tc) == 100) ) {
+			promptAdd lang("能力の開示", "Information"), "null", "" + 28
+		} else {
+			if ( develop | gdata(GDATA_WIZARD) ) {
+				promptAdd lang("情報", "Information"), "null", 6
+				; promptAdd lang("カスタムＡＩ", "Custom AI"), "null", 998
+			}
+		}
 	}
 
 	/********** BLOODYSHADE CUSTOM - BEGINNING **********/ // Add option to collect materials from all pets at once.
-
-	if ( tc == CHARA_PLAYER ) {
+	if ( tc == CHARA_PLAYER & promptmax <= 25 ) {
 		promptAdd lang("資料を集める", "Collect materials"), "null", 666
 	}
-
 	/********** BLOODYSHADE CUSTOM - ENDING **********/
 	
 	/********** JAMES CUSTOM - TCG - BEGINNING **********/
-	if ( tc > CHARA_PLAYER ) {
+    if ( tc > CHARA_PLAYER & promptmax <= 24 ) {
 		if ( cdata(CDATA_INTEREST, tc) >= 80 & cdata(CDATA_CONDITION_SLEEP, tc) == 0 ) {
 			if ( cdata(CDATA_RELATION, tc) >= -1 | cdata(CDATA_QUALITY, tc) >= 5) {
 				promptAdd lang("決闘!", "Play TCG!"), "null", 69100

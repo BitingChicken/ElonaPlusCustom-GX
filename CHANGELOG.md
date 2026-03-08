@@ -6,8 +6,9 @@
   - If you want to exploit this, you can still use the original `elonaplus.exe`
 
 # Fixed
+- (Plus) Fixed a crash caused by too many 'i'nteract options (at ranch, namely).
 - (Plus) Fixed werewolves not receiving NPC votes for execution after first round.
-- (Plus) Fixed player shop not giving Yaca Points for selling items without trading.
+- (Plus) Fixed player-shop not giving Yaca Points for selling items (before trading).
 
 # 2.30.1.1
 

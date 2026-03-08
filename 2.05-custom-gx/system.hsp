@@ -4690,6 +4690,12 @@
 		loop
 		goto *console_write
 	}
+	if ( instr(buff, 0, "unwizard") != (-1) ) {
+		gdata(GDATA_WIZARD) = 0
+		cdatan(CDATAN_AKA, CHARA_PLAYER) = "*Un-debug*"
+		noteadd "Genitalia restored."
+		goto *console_write
+	}
 	if ( instr(buff, 0, "wizard") != (-1) ) {
 		gdata(GDATA_WIZARD) = 1
 		cdatan(CDATAN_AKA, CHARA_PLAYER) = "*Debug*"
@@ -4731,9 +4737,19 @@
 		buff = ""
 		notesel buff
 
+		noteadd "Randomly generated"
 		repeat 30000
 			randomize cnt
 			noteadd "" + (40000 + cnt) + "|" + random_title(1)
+		loop
+		repeat 10000
+			cnt2 = cnt
+			noteadd "name scroll - page: " + (cnt2+1)
+			repeat 16
+				target = 10500 + cnt2 * 17 + 1 + cnt
+				randomize target
+				noteadd "" + (40000 + target)  + "|" + random_title(1)
+			loop
 		loop
 		notesave exedir + "living_weapon_name.txt"
 		notesel dbm
