@@ -4,6 +4,7 @@
 # Added
 - Ported all changes from Elona+ 2.31.
 - Option to replace 'control help' screen with in-game log messages.
+- Tweak to disable the 400% skill EXP bonus in 2.31.
 
 # Changed
 - Re-enabled Bear-Invasion and Werewolf event disabled in 2.30.1.1, due to countermeasures being implemented.

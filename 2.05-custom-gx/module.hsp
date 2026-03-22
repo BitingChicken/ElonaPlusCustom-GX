@@ -431,11 +431,13 @@
 				locvar_skillmod_exp = locvar_skillmod_exp / 4 * (gdata(GDATA_FLAG_MAIN) + 100) / 100
 			}
 		}
-		/********** JAMES CUSTOM - ENDING **********/
 		
-		if ( sorg(skillexp_skillid, skillexp_charid) < gdata(GDATA_DEEPEST_LEVEL) ) {
-			locvar_skillmod_exp = locvar_skillmod_exp * 4
+		if ( TweakData(TWEAK_GAMEPLAY_REVERT_POST_231_DEEPEST_EXP, TWEAK_CATEGORY_GAMEPLAY) == FALSE ) {
+			if ( sorg(skillexp_skillid, skillexp_charid) < gdata(GDATA_DEEPEST_LEVEL) ) {
+				locvar_skillmod_exp = locvar_skillmod_exp * 4
+			}
 		}
+		/********** JAMES CUSTOM - ENDING **********/
 
 		if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_PURGE ) {
 			if ( locvar_skillmod_exp == 0 ) {

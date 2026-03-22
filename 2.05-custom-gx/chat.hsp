@@ -835,7 +835,7 @@
 				chatList 0, lang("【ちょっとだけよ】", "<Welcome!>")
 			}
 			chatList 1, lang("帰れバケモノ！", "Get out, monster!")
-			chatList 2, lang("吸いつくされそうだからイヤ", "I don't want to because I feel like you'll suck all my blood out.")
+			chatList 2, lang("吸いつくされそうだからイヤ", "I feel like you'll suck all my blood out, so no.")
 			buff = lang("オナカの赤チャンのタメ…献血をお願イしまス…。", "Please...donate blood...for the sake of my unborn babies...")
 			chatesc = 0
 			gosub *chat_select

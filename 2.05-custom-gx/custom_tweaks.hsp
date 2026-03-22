@@ -828,7 +828,7 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	listn(0, 23) = "Disable DESTINY." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_DESTINY)
 	listn(0, 24) = "Revert post-2.13 combat exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_213_EXP_CHANGES)
 	listn(0, 25) = "Revert post-2.17 skill exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_217_EXP_CHANGES)
-	listn(0, 26) = "" 
+	listn(0, 26) = "Revert post-2.31 4x exp bonus on low-level skills." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_231_DEEPEST_EXP)
 	listn(0, 27) = "" 
 	listn(0, 28) = "" 
 	listn(0, 29) = "" 
@@ -951,6 +951,9 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 			}
 			if ( p == 25 ) {
 				s = "Reverts changes to the skill experience formula after version 2.17.\nThis will lock your growth rate at 400% (100% compared to growth in 2.17)."
+			}
+			if ( p == 26 ) {
+				s = "Reverts the 400% increase in EXP if (skill level < deepest level), in 2.31."
 			}
 
 			if ( p == 31 ) {
@@ -1132,6 +1135,11 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	if ( p == 25 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_REVERT_POST_217_EXP_CHANGES
+		gosub *ToggleTweak
+	}
+	if ( p == 26 ) {
+		tc = TWEAK_CATEGORY_GAMEPLAY
+		tn = TWEAK_GAMEPLAY_REVERT_POST_231_DEEPEST_EXP
 		gosub *ToggleTweak
 	}
 

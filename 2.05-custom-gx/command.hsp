@@ -131,6 +131,20 @@
 				bmes s, 255, 2552, 255
 			}
 		loop
+		if ( cdata(CDATA_INCAPACITATED, txttargetnpc_arg_tc) > 0 ) {
+			s = "Tranquilizer taking effect: " + cdata(CDATA_INCAPACITATED, txttargetnpc_arg_tc) + lang("ﾀｰﾝ", " stacks ")
+			color 0, 0, 0
+			pos 100, windowh - inf_verh - 45 - locvar_txttargetnpc_dy * 20
+			locvar_txttargetnpc_dy++
+			bmes s, 255, 2552, 255
+		}
+		if ( cdata(CDATA_INCAPACITATED, txttargetnpc_arg_tc) < 0 ) {
+			s = "Incapacitated: " + ((-1)*cdata(CDATA_INCAPACITATED, txttargetnpc_arg_tc)) + lang("ﾀｰﾝ", " stacks ")
+			color 0, 0, 0
+			pos 100, windowh - inf_verh - 45 - locvar_txttargetnpc_dy * 20
+			locvar_txttargetnpc_dy++
+			bmes s, 255, 2552, 255
+		}
 	}
 	// Aggro
 	if ( ( cdata(CDATA_TARGET, txttargetnpc_arg_tc) != CHARA_PLAYER | cdata(CDATA_RELATION, txttargetnpc_arg_tc) == (-3) ) & cdata(CDATA_AI_AGGRO, txttargetnpc_arg_tc) > 0 & trait(TRAIT_NORMAL_DISCERNMENT) != 0 ) {

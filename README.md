@@ -11,7 +11,7 @@ This repository is an unofficial continuation of the above repository using Ruin
 
 ## Installation
 
-1. Download Elona+ 2.31 from [here](https://mega.nz/file/4KVjHBCD#3VOIeuXVHCpYcjUvBdmmTCi0z1bI19JP6j83_grkPfg). Extract it to `elonaplus2.31`.
+1. Download Elona+ 2.31 from [here](https://mega.nz/file/0GMlHRbR#kTWClL8QeUb0WiB_ZtRoW0nqtkya9mmSu7tB7dOjrYc). Extract it to `elonaplus2.31`.
 2. Extract the contents of Custom-GX's archive to the `elonaplus2.31` folder, overwriting all existing files.
 3. Run `elonapluscgx.exe`.
 
