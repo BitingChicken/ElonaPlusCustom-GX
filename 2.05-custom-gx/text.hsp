@@ -65,7 +65,7 @@
 	_vomit = lang("拒食Lv0", "Anorexia-Lv0"), lang("拒食Lv1", "Anorexia-Lv1"), lang("拒食Lv2", "Anorexia-Lv2"), lang("拒食Lv3", "Anorexia-Lv3"), lang("拒食Lv4", "Anorexia-Lv4"), lang("拒食Lv5", "Anorexia-Lv5"), lang("拒食Lv6", "Anorexia-Lv6"), lang("拒食Lv7", "Anorexia-Lv7"), lang("拒食Lv8", "Anorexia-Lv8"), lang("拒食Lv9", "Anorexia-Lv9"), lang("拒食Lv??", "Anorexia-Lv??")
 	_burden = "", lang("重　荷", "Burden"), lang("圧　迫", "Burden!"), lang("超　過", "Overweight"), lang("潰れ中", "Overweight!")
 	_sleep = lang("睡眠可", "Sleepy"), lang("要睡眠", "Need Sleep"), lang("要睡眠", "Need Sleep!")
-	_consick = lang("病　気", "Sick"), lang("重　病", "Very Sick")
+	_consick = lang("病気Lv0", "Sick-Lv0"), lang("病気Lv1", "Sick-Lv1"), lang("病気Lv2", "Sick-Lv2"), lang("病気Lv3", "Sick-Lv3"), lang("病気Lv4", "Sick-Lv4"), lang("病気Lv5", "Sick-Lv5"), lang("病気Lv6", "Sick-Lv6"), lang("病気Lv7", "Sick-Lv7"), lang("病気Lv8", "Sick-Lv8"), lang("病気Lv9", "Sick-Lv9"), lang("病気Lv??", "Sick-Lv??")
 	_conpoison = lang("　毒", "Poisoned"), lang("猛　毒", "Poisoned Bad!")
 	_conmpoison = lang("侵　蝕", "Erosion")
 	_condim = lang("朦　朧", "Dim"), lang("混　濁", "Muddled"), lang("気　絶", "Unconscious")
@@ -87,6 +87,7 @@
 	_conbleed = lang("出　血", "Bleeding"), lang("出　血", "Bleeding!"), lang("大出血", "Hemorrhage")
 	_coninsane = lang("不安定", "Unsteady"), lang("狂　気", "Insane"), lang("崩　壊", "Paranoia")
 	_condrunk = lang("酔払い", "Drunk")
+	_conincapable = lang("行動不能", "Incapacitated")
 	_conwet = lang("濡　れ", "Wet")
 	_conoil = lang("オイル", "Oil")
 	_coninvert = lang("転　倒", "Prone")
@@ -122,6 +123,7 @@
 	strmale = lang("男性", "male")
 	strfemale = lang("女性", "female")
 	strthankyou = lang("ありがとうございます！", "Thank you very much!")
+	strsuki = lang("あんたも好きねぇ", "I like you!")
 	strbye = lang("さようなら", "Bye bye.")
 	strbyea = lang("さよならだ", "Bye bye.")
 	strmada = lang("まだお礼もできていないのに！", "I haven't thank you yet...")
@@ -132,7 +134,7 @@
 	strinteractfail = lang("その方向には、操作できる対象はない。", "There's no valid target in that direction.")
 	invtitle = "", lang("調べる", "Examine"), lang("置く", "Drop"), lang("拾う", "Pick Up"), "", lang("食べる", "Eat"), lang("装備する", "Wear"), lang("読む", "Read"), lang("飲む", "Drink"), lang("振る", "Zap"), lang("渡す", "Give"), lang("購入する", "Buy"), lang("売却する", "Sell"), lang("鑑定する", "Identify"), lang("使う", "Use"), lang("開く", "Open"), lang("料理する", "Cook"), lang("調合", "Mix"), lang("混ぜる対象", "Mix Target"), lang("捧げる", "Offer"), lang("交換する", "Trade"), lang("提示する", "Present"), lang("取る", "Take"), lang("対象の", "Target"), lang("入れる", "Put"), lang("もらう", "Take"), lang("投げる", "Throw"), lang("盗む", "Pickpocket"), lang("交換する", "Trade"), lang("予約する", "Reserve"), "", "", lang("画像付与", "Set Mark"), "", lang("種子", "Seeds")
 	bodyn = "", lang("頭", "Head"), lang("首", "Neck"), lang("背中", "Back"), lang("胴体", "Body"), lang("手", "Hand"), lang("指", "Ring"), lang("腕", "Arm"), lang("腰", "Waist"), lang("足", "Leg"), lang("遠隔", "Shoot"), lang("矢弾", "Ammo")
-	actlistn = lang("行動", "current action"), lang("食事", "eating"), lang("読書", "reading"), lang("移動", "moving"), lang("休息", "resting"), lang("採掘", "mining"), lang("演奏", "playing"), lang("釣り", "fishing"), lang("採取", "collecting materials"), lang("穴掘り", "digging hole"), lang("行動", "current action"), lang("行動", "current action"), lang("合成", "blend"), lang("チャージ", "charge"), lang("伐採", "felling"), lang("説法", "preaching"), lang("食事", "eating"), lang("舞", "dance"), lang("食事", "eating"), lang("説得", "persuasion"), lang("ギャグ", "joke"), lang("嘘", "lie"), lang("脅迫", "intimidation"), lang("歌", "song"), lang("", ""), lang("執筆", "writing"), lang("仕事", "work"), lang("仕事", "work"), lang("仕事", "work"), lang("物乞い", "begging"), lang("飛跳殺法", "jumping drop"), lang("奇襲穿孔", "diving drill"), lang("行動", "the action"), ""
+	actlistn = lang("行動", "current action"), lang("食事", "eating"), lang("読書", "reading"), lang("移動", "moving"), lang("休息", "resting"), lang("採掘", "mining"), lang("演奏", "playing"), lang("釣り", "fishing"), lang("採取", "collecting materials"), lang("穴掘り", "digging hole"), lang("行動", "current action"), lang("行動", "current action"), lang("合成", "blend"), lang("チャージ", "charge"), lang("伐採", "felling"), lang("説法", "preaching"), lang("食事", "eating"), lang("舞", "dance"), lang("食事", "eating"), lang("説得", "persuasion"), lang("ギャグ", "joke"), lang("嘘", "lie"), lang("脅迫", "intimidation"), lang("歌", "song"), lang("", ""), lang("執筆", "writing"), lang("仕事", "work"), lang("仕事", "work"), lang("仕事", "work"), lang("物乞い", "begging"), lang("飛跳殺法", "jumping drop"), lang("奇襲穿孔", "diving drill"), lang("行動", "the action"), lang("応援", "cheering"), ""
 	sdim _cast, 30, 10
 	_cast(0) = lang("魔法を詠唱した。", " casts a spell.")
 	_cast(1) = lang("糸を飛ばした。", " spits cobweb.")
@@ -157,17 +159,18 @@
 	_castplayer(9) = lang("思念を放った。", " use the {} mind.")
 	sdim _melee, 20, 3, 13
 	_melee(0, 0) = lang("殴って", "punch"), lang("殴られた。", "punch"), lang("手", "hand")
+	_melee(0, 1) = lang("引っ掻き", "claw"), lang("引っ掻かれた。", "claw"), lang("爪", "claw")
+	_melee(0, 2) = lang("蹴り抜いて", "kick"), lang("蹴り飛ばされた。", "kick"), lang("脚", "leg")
 	_melee(0, 3) = lang("噛んで", "bite"), lang("噛みつかれた。", "bite"), lang("牙", "fang")
 	_melee(0, 4) = lang("睨んで", "gaze"), lang("睨まれた。", "gaze"), lang("眼", "eye")
-	_melee(0, 1) = lang("引っ掻き", "claw"), lang("引っ掻かれた。", "claw"), lang("爪", "claw")
 	_melee(0, 5) = lang("刺し", "sting"), lang("刺された。", "sting"), lang("針", "needle")
 	_melee(0, 6) = lang("触って", "touch"), lang("触られた。", "touch"), lang("手", "hand")
-	_melee(0, 7) = lang("胞子で攻撃し", "attack"), lang("胞子を飛ばされた。", "attack"), lang("胞子", "spore")
+	_melee(0, 7) = lang("胞子まみれにし", "attack"), lang("胞子を飛ばされた。", "attack"), lang("胞子", "spore")
 	_melee(0, 8) = lang("打って", "bash"), lang("打たれた。", "bash"), lang("枝", "branch")
 	_melee(0, 9) = lang("地面に叩きつけ", "strike"), lang("地面へ叩きつけられた。", "strike"), lang("剛腕", "hand")
 	_melee(0, 10) = lang("体当たりして", "rush"), lang("体当たりされた。", "rush"), lang("体", "body")
 	_melee(0, 11) = lang("鋏んで", "cut"), lang("鋏まれた。", "cut"), lang("鋏", "scissors")
-	_melee(0, 2) = lang("蹴り抜いて", "kick"), lang("蹴り飛ばされた。", "kick"), lang("脚", "leg")
+	_melee(0, 12) = lang("蹴り抜いて", "kick"), lang("蹴り飛ばされた。", "kick"), lang("脚", "leg")
 	randcolor = 0, 4, 2, 5, 6
 	_randcolor = 0, 2, 4, 5, 6, 3
 	_namepotion = lang("透明な", "clear"), lang("緑色の", "green"), lang("青い", "blue"), lang("金色の", "gold"), lang("茶色い", "brown"), lang("赤い", "red")

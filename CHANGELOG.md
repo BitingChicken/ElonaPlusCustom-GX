@@ -1,11 +1,17 @@
-# Upcoming
+
+# 2.31.1.0
+
+# Added
+- Ported all changes from Elona+ 2.31.
+- Option to replace 'control help' screen with in-game log messages.
 
 # Changed
+- Re-enabled Bear-Invasion and Werewolf event disabled in 2.30.1.1, due to countermeasures being implemented.
 - Level of Bamboo Spirit from monster ball now depends on Deepest Level (min 1, max 70)
   - Same applied to the pirates (1-72), pirate musketeer (1-85), and rough pirate (1-96)
   - If you want to exploit this, you can still use the original `elonaplus.exe`
 
-# Fixed
+# Fixed 
 - (Plus) Fixed a crash caused by too many 'i'nteract options (at ranch, namely).
 - (Plus) Fixed werewolves not receiving NPC votes for execution after first round.
 - (Plus) Fixed player-shop not giving Yaca Points for selling items (before trading).

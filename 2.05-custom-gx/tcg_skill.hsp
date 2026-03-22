@@ -826,7 +826,13 @@
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
 			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
 				repeat 1, ac@tcg
-					card@tcg(TCG_CARD_TEMP, cnt) = aeff@tcg
+					if ( card@tcg(TCG_CARD_TEMP, cnt) = 2345 ) {
+						card@tcg(TCG_CARD_TEMP, cnt) = 0
+						break
+					}
+					card@tcg(TCG_CARD_TEMP, cnt) = 0
+					if (aeff@tcg == TCG_EFF_SHOVEL) { card@tcg(TCG_CARD_TEMP, cnt) = 1234 }
+					if (aeff@tcg == TCG_EFF_MINECART & card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_HAND ) { card@tcg(TCG_CARD_TEMP, cnt) = 2345 }
 					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_THIEF_LIGHT_TRUCK ) {
 						efllistaddchat "*vroom*", cnt
 					}
@@ -834,11 +840,9 @@
 					tcgpass 20
 					efllistaddcard 17, aeft@tcg
                     dmgcard aeft@tcg, card@tcg(TCG_CARD_ATTACK, cnt)
-					if ( card@tcg(TCG_CARD_TEMP, cnt) >= 0 & card@tcg(TCG_CARD_TEMP, cnt) < 3000 ) {
-						if ( effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_TEMP, cnt)) == TCG_SKILL_TYPE_BATTLECRY ) {
-							tcgpass 30
-							gettargetcard cnt
-						}
+					if ( card@tcg(TCG_CARD_TEMP, cnt) == 1234 | card@tcg(TCG_CARD_TEMP, cnt) == 2345 ) {
+						tcgpass 30
+						gettargetcard cnt
 					}
 					makecardlist
 					organizeboard
@@ -1231,6 +1235,43 @@
 			card@tcg(TCG_CARD_REF_COST, aeft@tcg) -= effref@tcg(TCG_SKILL_POWER, card@tcg(TCG_CARD_EFFECT, effac@tcg))
 			card@tcg(TCG_CARD_REF_COST, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_COST, aeft@tcg), 0, TCG_STAT_MAX)
 			efllistadd 2, effref@tcg(TCG_SKILL_POWER, card@tcg(TCG_CARD_EFFECT, effac@tcg)), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_STEAL11 | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				if ( card@tcg(TCG_CARD_ATTACK, aeft@tcg) >= 1 ) {
+					card@tcg(TCG_CARD_ATTACK, ac@tcg) += 1
+					card@tcg(TCG_CARD_REF_ATTACK, ac@tcg) += 1
+					card@tcg(TCG_CARD_ATTACK, ac@tcg) = limit(card@tcg(TCG_CARD_ATTACK, ac@tcg), 0, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_REF_ATTACK, ac@tcg) = limit(card@tcg(TCG_CARD_REF_ATTACK, ac@tcg), 0, TCG_STAT_MAX)
+
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) -= 1
+					card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) -= 1
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_ATTACK, aeft@tcg), 0, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg), 0, TCG_STAT_MAX)
+				}
+				if ( card@tcg(TCG_CARD_HP, aeft@tcg) >= 1 ) {
+					card@tcg(TCG_CARD_HP, ac@tcg) += 1
+					card@tcg(TCG_CARD_REF_HP, ac@tcg) += 1
+					card@tcg(TCG_CARD_HP, ac@tcg) = limit(card@tcg(TCG_CARD_HP, ac@tcg), 0, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_REF_HP, ac@tcg) = limit(card@tcg(TCG_CARD_REF_HP, ac@tcg), 0, TCG_STAT_MAX)
+
+					card@tcg(TCG_CARD_HP, aeft@tcg) -= 1
+					card@tcg(TCG_CARD_REF_HP, aeft@tcg) -= 1
+					card@tcg(TCG_CARD_HP, aeft@tcg) = limit(card@tcg(TCG_CARD_HP, aeft@tcg), 0, TCG_STAT_MAX)
+					card@tcg(TCG_CARD_REF_HP, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_HP, aeft@tcg), 0, TCG_STAT_MAX)
+				}
+				efllistaddcard 19, aeft@tcg
+				efllistadd 2, (-1) * 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+				efllistadd 2, 1, card@tcg(TCG_CARD_X, ac@tcg), card@tcg(TCG_CARD_Y, ac@tcg), card@tcg(TCG_CARD_X, ac@tcg), card@tcg(TCG_CARD_Y, ac@tcg)
+				if ( card@tcg(TCG_CARD_HP, aeft@tcg) <= 0 ) {
+					dmgcard aeft@tcg, 0
+				}
+			}
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -1748,6 +1789,27 @@
 		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
 			if ( hasholdspace(aeft@tcg) ) {
 				discover@tcg = CREATURE_ID_PUTIT, CREATURE_ID_RED_PUTIT, CREATURE_ID_MILITARY_PUTIT, CREATURE_ID_PUTIT_TANK, -1
+				discovercount@tcg = 5
+				generate_extra_card aeft@tcg
+				discover_extra_card aeft@tcg
+				if ( discoverchoice@tcg >= 0 ) {
+					create_extra_card aeft@tcg,  discoverchoice@tcg
+					if ( cextra@tcg >= 0 ) {
+						gettargetcard cextra@tcg
+					}
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DISCOVER_RACCOON | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			if ( hasholdspace(aeft@tcg) ) {
+				discover@tcg = CREATURE_ID_KAKOI_ANAGUMA, CREATURE_ID_VICIOUS_RACCOON, CREATURE_ID_GAKI_MOTUHEGUI, CREATURE_ID_BADGER, CREATURE_ID_MASKED_MUSANGOD
+				discovermemes@tcg = CREATURE_ID_MONSTER_BACTERIA, CREATURE_ID_IRIS, CREATURE_ID_KILLING_ANTEATER, CREATURE_ID_CAPYBARA, CREATURE_ID_TELHUREZA_THE_HOUSE_GUARD, CREATURE_ID_THIEF_LIGHT_TRUCK
+				discover@tcg(rnd(5)) = discovermemes@tcg(rnd(6))
 				discovercount@tcg = 5
 				generate_extra_card aeft@tcg
 				discover_extra_card aeft@tcg

@@ -11235,6 +11235,7 @@
 			}
 			cdata(CDATA_SKILLPOINT, cc)--
 			snd SOUNDLIST_SPEND1
+			gdata(GDATA_SENSE_OBJECT) = 1
 			skillexp csskill, cc, 400, 2, 1000
 			modgrowth cc, csskill, limit(15 - sgrowth(csskill, cc) / 15, 2, 15)
 			redraw 0
@@ -12904,6 +12905,26 @@
 						if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_STRANGE ) {
 							autosave = 1 * (gdata(GDATA_AREA) != AREA_SHOW_HOUSE)
 						}
+						gosub *calcBurdenPc
+						goto *turn_end
+					}
+				}
+				if ( feat(FEAT_CELL_FEATURE_ID) == CELL_FEATURE_WARIBASI ) {
+					if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
+						if ( inv_getspace(CHARA_PLAYER) == 0 ) {
+							txt lang("バックパックが一杯だ。", "Your inventory is full.")
+							gosub *screen_draw
+							goto *pc_turn
+						}
+						if ( gdata(GDATA_FLAG_GAME_MODE) == 1 ) {
+							if ( inv_sum(CHARA_PLAYER) > 20 ) {
+								txt lang("バックパックが一杯だ。", "Your inventory is full.")
+								gosub *screen_draw
+								goto *pc_turn
+							}
+						}
+						gosub *item_chopstickPick
+						map(cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), MAP_FEATS_ON_TILE) = 0
 						gosub *calcBurdenPc
 						goto *turn_end
 					}
@@ -15246,7 +15267,7 @@
 				if ( refitem(inv(INV_ITEM_ID, ci), DBSPEC_TYPE) == FILTER_ITEM_ROD ) {
 					cdata(CDATA_AI_ITEM_OFFENSIVE, tc) = ci
 				}
-				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_LASER_BAZOOKA | inv(INV_ITEM_ID, ci) == ITEM_ID_M202_SPECIAL | inv(INV_ITEM_ID, ci) == ITEM_ID_PANZERFAUST_X ) {
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_TZ500_K | inv(INV_ITEM_ID, ci) == ITEM_ID_TZC_500 | inv(INV_ITEM_ID, ci) == ITEM_ID_TZ30_C | inv(INV_ITEM_ID, ci) == ITEM_ID_TZ_30 | inv(INV_ITEM_ID, ci) == ITEM_ID_LASER_BAZOOKA | inv(INV_ITEM_ID, ci) == ITEM_ID_M202_SPECIAL | inv(INV_ITEM_ID, ci) == ITEM_ID_PANZERFAUST_X ) {
 					cdata(CDATA_AI_ITEM_OFFENSIVE, tc) = ci
 				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CF_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_CRUSH_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_BATTLE_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_SUPER_POTIOMAN ) {

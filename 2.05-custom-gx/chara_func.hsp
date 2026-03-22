@@ -4887,9 +4887,11 @@
 				}
 			}
 		}
-		if ( cdata(CDATA_GUARD_BREAK, dmghp_charid) < 100 ) {
-			locvar_dmghp_dmg = locvar_dmghp_dmg * 100 / (sdata(SKILL_RES_MAGIC, dmghp_charid) / 4 + 50)
+		locvar_dmghp_resm = sdata(SKILL_RES_MAGIC, dmghp_charid)
+		if ( cdata(CDATA_GUARD_BREAK, dmghp_charid) >= 100 ) {
+			locvar_dmghp_resm = 1
 		}
+		locvar_dmghp_dmg = locvar_dmghp_dmg * 100 / (locvar_dmghp_resm / 4 + 50)
 	}
 	if ( dmghp_source == DAMAGE_FROM_CHARA ) {
 		if ( gdata(GDATA_TEMPORARY_FLAGS2) < 1000 ) {
@@ -6156,6 +6158,23 @@
 			cdata(CDATA_CHARA_PIC, dmghp_charid) = cdata(CDATA_CHARA_PIC_ORG, dmghp_charid)
 			cdata(CDATA_PIC_MIMIRROCRY, dmghp_charid) = 0
 			cdata(CDATA_CHARA_PIC_ORG, dmghp_charid) = 0
+		}
+	}
+	if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL ) {
+		if ( cdata(CDATA_HP, dmghp_charid) < cdata(CDATA_MAX_HP, dmghp_charid) / 2 ) {
+			if ( cdata(CDATA_PIC, dmghp_charid) == xy2pic(25, 35) ) {
+				snd SOUNDLIST_CRACK
+				cdata(CDATA_PIC, dmghp_charid) = xy2pic(25, 36)
+				if ( cdata(CDATA_HP, dmghp_charid) > cdata(CDATA_MAX_HP, dmghp_charid) / 4 ) {
+					txtef COLOR_YELLOW
+					txt lang("＜中破＞", "<Medium damaged>")
+				}
+				if ( cdata(CDATA_HP, dmghp_charid) <= cdata(CDATA_MAX_HP, dmghp_charid) / 4 ) {
+					txtef COLOR_RED
+					txt lang("＜大破＞", "<Medium damaged>")
+				}
+				txt lang("「わらわの船体がまた引き裂かれた…！」", cnvtalk("My ship's hull has been torn apart again...!"))
+			}
 		}
 	}
 	if ( cdata(CDATA_HP, dmghp_charid) < 0 ) {

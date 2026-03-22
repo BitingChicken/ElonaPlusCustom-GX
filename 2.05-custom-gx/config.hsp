@@ -203,6 +203,8 @@
 		cfgRead "showSkillMod.", cfg_showskillmod = int(rtvaln)
 		cfgRead "hide_autoIdentify.", cfg_hideautoidentify = int(rtvaln)
 		cfgRead "hide_shopResult.", cfg_hideshopresult = int(rtvaln)
+		cfgRead "operate.", cfg_operate = int(rtvaln)
+		cfgRead "dispLog.", cfg_displayLog = int(rtvaln)
 		cfgRead "msg_trans.", cfg_msgtrans = int(rtvaln)
 		cfgRead "msg_addTime.", cfg_msgaddtime = int(rtvaln)
 		cfgRead "title_dialog.", cfg_titledialog = int(rtvaln)
@@ -613,7 +615,7 @@
 	}
 	if ( submenu == 6 ) {
 		q = lang("メッセージとログ", "Message&Log")
-		s = lang("ログに時刻表示追加", "Add time info"), lang("過去のﾒｯｾｰｼﾞの透過", "Transparency"), lang("起動時の注意書き", "Disclaimer at startup"), "Capitalize item names", ""
+		s = lang("ログに時刻表示追加", "Add time info"), lang("過去のﾒｯｾｰｼﾞの透過", "Transparency"), lang("起動時の注意書き", "Disclaimer at startup"), lang("操作説明ウインドウ*", "Control Help*"), "  Display log instead*", "Capitalize item names", ""
 		dx = 440
 		dy = 300
 	}
@@ -920,7 +922,7 @@
 		}
 		if ( submenu == 6 ) {
 			if ( cnt == 0 ) {
-				s = lang("しない", "No"), lang("する", "Yes")
+				s = lang("非表示", "No"), lang("表示", "Yes")
 				mes s(cfg_msgaddtime)
 			}
 			if ( cnt == 1 ) {
@@ -931,6 +933,14 @@
 				mes s(cfg_titledialog)
 			}
 			if ( cnt == 3 ) {
+				s = lang("非表示", "No"), lang("表示", "Yes")
+				mes s(cfg_operate)
+			}
+			if ( cnt == 4 ) {
+				s = lang("非表示", "No"), lang("表示", "Yes")
+				mes s(cfg_displayLog)
+			}
+			if ( cnt == 5 ) {
 				s = lang("非表示", "No"), lang("表示", "Capitalize"), lang("表示", "Uppercase"), lang("表示", "Lowercase"), lang("表示", "Spongebob"), lang("表示", "Schizophrenic")
 				mes s(cfg_capitalizeItemName)
 			}
@@ -1842,6 +1852,12 @@
 				goto *com_config_loop
 			}
 			if ( cs == 3 ) {
+				setBoolOption cfg_operate, "operate"
+			}
+			if ( cs == 4 ) {
+				setBoolOption cfg_displayLog, "dispLog"
+			}
+			if ( cs == 5 ) {
 				setOption cfg_capitalizeItemName, "capitalizeItemName", 0, 5
 			}
 		}

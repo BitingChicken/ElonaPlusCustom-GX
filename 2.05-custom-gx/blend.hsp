@@ -827,7 +827,7 @@
 	rpdatan(rpid) = lang("石の加工", "stone craft")
 	rpdata(RPDATA_ITEM, rpid) = RECIPE_BLEND_ACTION_STONECRAFT, 100
 	rpdata(RPDATA_SKILL + 0 * 2, rpid) = SKILL_NORMAL_ALCHEMY, 2, SKILL_NORMAL_JEWELER, 2
-	rpdata(RPDATA_MAT + 0, rpid) = ITEM_ID_GEM_CUTTER, ITEM_ID_STONE_MATERIAL, ITEM_ID_STONE
+	rpdata(RPDATA_MAT + 0, rpid) = ITEM_ID_GEM_CUTTER, ITEM_ID_STONE_MATERIAL
 
 	rpid++
 	rplistdef(length(rplistdef)) = 1 * EXT_RECIPES + rpid
@@ -869,7 +869,7 @@
 	rpdatan(rpid) = lang("すごい魔力爆弾", "big crystal bomb")
 	rpdata(RPDATA_ITEM, rpid) = ITEM_ID_TRISMAGISTUS, 50
 	rpdata(RPDATA_SKILL + 0 * 2, rpid) = SKILL_NORMAL_ALCHEMY, 60, SKILL_NORMAL_CONTROL_MAGIC, 30
-	rpdata(RPDATA_MAT + 0, rpid) = RF_MAGI, RF_MAGI, RF_MAGI, ITEM_ID_MAGATAMA
+	rpdata(RPDATA_MAT + 0, rpid) = ITEM_ID_MAGISTUS, ITEM_ID_MAGISTUS, ITEM_ID_MAGISTUS, ITEM_ID_MAGATAMA
 
 	rpid++
 	rplistdef(length(rplistdef)) = 1 * EXT_RECIPES + rpid
@@ -883,7 +883,7 @@
 	rpdatan(rpid) = lang("真・魔剣転生", "true evil sword")
 	rpdata(RPDATA_ITEM, rpid) = ITEM_ID_VIOLENT_SKULL_SWORD, 30 + 1 * 10000
 	rpdata(RPDATA_SKILL + 0 * 2, rpid) = SKILL_NORMAL_MAGIC_DEVICE, 30, SKILL_NORMAL_ALCHEMY, 45
-	rpdata(RPDATA_MAT + 0, rpid) = RF_MAKENN, RF_MAKENN, ITEM_ID_ORE_PIECE
+	rpdata(RPDATA_MAT + 0, rpid) = ITEM_ID_SKULL_SWORD, ITEM_ID_SKULL_SWORD, ITEM_ID_ORE_PIECE
 
 	rpid++
 	rplistdef(length(rplistdef)) = 1 * EXT_RECIPES + rpid

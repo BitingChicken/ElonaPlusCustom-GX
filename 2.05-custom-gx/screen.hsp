@@ -551,18 +551,18 @@
 	}
 	if ( cdata(CDATA_CONDITION_SICK, CHARA_PLAYER) != 0 ) {
 		color 80, 120, 0
-		if ( cdata(CDATA_CONDITION_SICK, CHARA_PLAYER) >= 30 ) {
+		if ( cdata(CDATA_CONDITION_SICK, CHARA_PLAYER) > 0 ) {
 			pos sx, sy
 			gcopy 3, 0, 416, 65 + en * 15, 15
 			pos sx + 6, sy + 1
-			mes _consick(1)
+			mes _consick(limit(cdata(CDATA_CONDITION_SICK, CHARA_PLAYER) / 3, 0, 10))
 			sy -= 20
 		}
 		else {
 			pos sx, sy
 			gcopy 3, 0, 416, 65 + en * 15, 15
 			pos sx + 6, sy + 1
-			mes _consick
+			mes _consick(0)
 			sy -= 20
 		}
 	}
@@ -895,6 +895,14 @@
 		gcopy 3, 0, 416, 65 + en * 15, 15
 		pos sx + 6, sy + 1
 		mes _coninvert
+		sy -= 20
+	}
+	if ( cdata(CDATA_INCAPACITATED, CHARA_PLAYER) < 0 ) {
+		color 100, 0, 0
+		pos sx, sy
+		gcopy BUFFER_INF, 0 + en * 84, 416, 65 + en * 30, 15
+		pos sx + 6, sy + 1
+		mes _conincapable
 		sy -= 20
 	}
 	if ( cdata(CDATA_CONDITION_WET, CHARA_PLAYER) != 0 ) {
@@ -2978,6 +2986,10 @@
 	}
 	if ( _switch_val == ANIMATION_SHOWDOWN_HIGH_CARD | _switch_sw ) {
 		_switch_sw = 0
+		_switch_sw++
+	}
+	if ( _switch_val == ANIMATION_OVERDOSE | _switch_sw ) {
+		_switch_sw = 0
 		if ( synccheck(cc, -1) == 0 ) {
 			goto *anime_SWEND1
 		}
@@ -3002,6 +3014,10 @@
 		if ( animeid == ANIMATION_LINEAR_LAUNCHER ) {
 			preparePicItem inv(INV_ITEM_PIC, aniref), inv(INV_ITEM_COL, aniref)
 			snd SOUNDLIST_BOLT1
+		}
+		if ( animeid == ANIMATION_OVERDOSE ) {
+			preparePicItem xy2pic(32, 38), COLOR_DEFAULT
+			snd SOUNDLIST_SWING39
 		}
 		if ( animeid == ANIMATION_SHOWDOWN_HIGH_CARD ) {
 			preparePicItem xy2pic(24, 39), COLOR_DEFAULT
@@ -7128,7 +7144,7 @@
 	if ( cdata(CDATA_CONDITION_BIND, tc) != 0 ) {
 		evade = 0
 	}
-	if ( cdata(CDATA_CONDITION_SLEEP, tc) != 0 | cdata(CDATA_CONDITION_BIND, tc) >= 20 ) {
+	if ( cdata(CDATA_CONDITION_SLEEP, tc) != 0 | cdata(CDATA_CONDITION_BIND, tc) >= 20 | cdata(CDATA_INCAPACITATED, tc) < 0 ) {
 		return 1
 	}
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_JALDABAOTH_THE_CHAOS_CHILD ) {
@@ -8481,6 +8497,12 @@
 	}
 	if ( cdata(CDATA_MAX_HP, r1) < 1 ) {
 		cdata(CDATA_MAX_HP, r1) = 1
+	}
+	if ( cdata(CDATA_ID, r1) == CREATURE_ID_KAMIORIDURU | cdata(CDATA_ID, r1) == CREATURE_ID_KAMISHURIKEN | cdata(CDATA_ID, r1) == CREATURE_ID_KAMIHIKOUKI ) {
+		if ( cdata(CDATA_ALLIED, r1) == 0 ) {
+			cdata(CDATA_MAX_HP, r1) = cdata(CDATA_MAX_HP, r1) / 20 + 1
+			cdata(CDATA_MAX_MP, r1) = cdata(CDATA_MAX_MP, r1) / 20 + 1
+		}
 	}
 	if ( r1 >= MAX_CHARA_SAVE & cdata(CDATA_ALLIED, r1) == 0 & r1 != CHARA_PLAYER & cdata(CDATA_ID, r1) != CREATURE_ID_KAMIKAKUSHI_THE_HIDDEN_SHIKIORIGAMI ) {
 		if ( cdata(CDATA_GUARD_BREAK, r1) < 100 ) {

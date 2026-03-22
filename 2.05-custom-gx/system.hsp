@@ -958,8 +958,8 @@
 				cdata(CDATA_ACCUMULATED_TRAVEL_EXP, cnt) = 0
 				cbitmod CHARA_BIT_SEALED_MAGIC, cnt, TRUE
 			}
-			if ( cdata(CDATA_SEALED_ABILITY, cnt) == 1 ) {
-				cdata(CDATA_SEALED_ABILITY, cnt) = 0
+			if ( cdata(CDATA_INCAPACITATED, cnt) == 1 ) {
+				cdata(CDATA_INCAPACITATED, cnt) = 0
 				cbitmod CHARA_BIT_SEALED_ABILITY, cnt, TRUE
 			}
 		loop
@@ -990,6 +990,11 @@
 			if ( cdata(CDATA_PRAY, cnt) == 1 ) {
 				cbitmod CHARA_BIT_PRECIOUS_ALLY, cnt, TRUE
 			}
+		loop
+	}
+	if ( gdata(GDATA_VERSION) < 6410 ) {
+		repeat 245
+			cdata(CDATA_INCAPACITATED, cnt) = 0
 		loop
 	}
 	if ( gdata(GDATA_VERSION) != VERSION_NUMBER ) {

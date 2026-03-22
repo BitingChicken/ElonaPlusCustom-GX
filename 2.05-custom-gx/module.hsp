@@ -432,6 +432,10 @@
 			}
 		}
 		/********** JAMES CUSTOM - ENDING **********/
+		
+		if ( sorg(skillexp_skillid, skillexp_charid) < gdata(GDATA_DEEPEST_LEVEL) ) {
+			locvar_skillmod_exp = locvar_skillmod_exp * 4
+		}
 
 		if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_PURGE ) {
 			if ( locvar_skillmod_exp == 0 ) {

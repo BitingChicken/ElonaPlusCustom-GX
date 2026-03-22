@@ -626,8 +626,10 @@
 #define global	SKILL_SPACT_ROCKET_BOOST	872
 #define global	SKILL_SPACT_GUIDED_BOMBING	873
 #define global	SKILL_SPACT_RESCUE_REQUEST	874
+#define global	SKILL_SPACT_GENUINE_CHEERING	875
+#define global	SKILL_SPACT_DYNAMIC_YELL	876
 
-#define global	MAX_SKILL	(SKILL_SPACT_RESCUE_REQUEST + 1)
+#define global	MAX_SKILL	(SKILL_SPACT_DYNAMIC_YELL + 1)
 
 // Absolute skill limits
 #define global	MAX_SPACT_COUNT	500 // Maximum number of spact slots available in the array, beginning at STARTING_SKILL_SPACT, meaning the effective max skillid is 1099 (1100 if you really push it)
@@ -762,6 +764,7 @@
 #define global	ACTION_JUMPING_DROP	30
 #define global	ACTION_DIVING_DRILL	31
 #define global	ACTION_SEX_2	32
+#define global	ACTION_CHEER	33
 #define global	ACTION_SLAVE_SPINNER	107
 #define global	ACTION_SLAVE_WHEEL	108
 
@@ -1426,6 +1429,8 @@
 #define global	EFFECT_MIMIRROCRY	150
 #define global	EFFECT_HAIRMET	151
 #define global	EFFECT_GENOCIDE_TAIL	152
+#define global	EFFECT_WARIBASI	153
+#define global	EFFECT_TRANQ_RIFLE	154
 
 // Traits (feats)
 #define global	TRAIT_NORMAL_OTHER_MUTANT	0
@@ -1645,6 +1650,7 @@
 #define global	CELL_FEATURE_POT	30
 #define global	CELL_FEATURE_SMALL_MEDAL	32
 #define global	CELL_FEATURE_BUILDING	34
+#define global	CELL_FEATURE_WARIBASI	35
 
 #define global	CELL_SUB_FEATURE_TRAP_IMPALEMENT	0
 #define global	CELL_SUB_FEATURE_TRAP_POISON	1
@@ -2670,6 +2676,7 @@
 #define global	FILTER_RACE_SEAMONSTER_DOLPHIN_SOLDIER	51
 #define global	FILTER_RACE_SEAMONSTER_DAGANOTOSUS	52
 #define global	FILTER_RACE_RAT_GUNDEGU	53
+#define global	FILTER_RACE_KAKOI_ANAGUMA	54
 
 #define global	FILTER_WEAPON	10000
 #define global	FILTER_WEAPON_HEAVY_SWORD	10001
@@ -2945,6 +2952,7 @@
 #define global	ANIMATION_SHIKIKAMI_BREATH	65
 #define global	ANIMATION_CUT_IN	66
 #define global	ANIMATION_SHOWDOWN_HIGH_CARD	67
+#define global	ANIMATION_OVERDOSE	72
 
 #define global	ANIMATION_UNUSED1	108
 #define global	ANIMATION_UNUSED2	109
@@ -3966,6 +3974,7 @@
 #define global	CDATA_SEALED_MAGIC	180
 #define global	CDATA_ACCUMULATED_TRAVEL_EXP	180
 #define global	CDATA_SEALED_ABILITY	181
+#define global	CDATA_INCAPACITATED	181
 #define global	CDATA_POWER_GAUGE	182
 #define global	CDATA_GAUGE_COOLDOWN2	183
 #define global	CDATA_DAMAGE_FIX	184
@@ -6049,8 +6058,14 @@
 #define global	ITEM_ID_EXPOOPSION	1312
 #define global	ITEM_ID_BLANK_CARD	1313
 #define global	ITEM_ID_TURAHAGI	1314
+#define global	ITEM_ID_MESUGAKI	1315
+#define global	ITEM_ID_WARIBASI	1316
+#define global	ITEM_ID_TZ_30	1317
+#define global	ITEM_ID_TZ30_C	1318
+#define global	ITEM_ID_TZC_500	1319
+#define global	ITEM_ID_TZ500_K	1320
 
-#define global	MAX_ITEM_ID	(ITEM_ID_TURAHAGI + 3)
+#define global	MAX_ITEM_ID	(ITEM_ID_TZ500_K + 3)
 
 // Creatures
 #define global	CREATURE_ID_BUG	0 // Also doubles as RANDOM
@@ -7190,8 +7205,15 @@
 #define global	CREATURE_ID_VICIOUS_RACCOON	1134
 #define global	CREATURE_ID_MATICK	1135
 #define global	CREATURE_ID_MADEER	1136
+#define global	CREATURE_ID_KAKOI_ANAGUMA	1137
+#define global	CREATURE_ID_MASKED_MUSANGOD	1138
+#define global	CREATURE_ID_DEVIANT_MINECART	1139
+#define global	CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER	1140
+#define global	CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL	1141
+#define global	CREATURE_ID_BIG_MOSQUITO	1142
+#define global	CREATURE_ID_MOMALARIA_THE_BLOODSUCKER	1143
 
-#define global	MAX_CREATURE_ID	(CREATURE_ID_MADEER + 3)
+#define global	MAX_CREATURE_ID	(CREATURE_ID_MOMALARIA_THE_BLOODSUCKER + 3)
 
 // Buffer
 #define global	BUFFER_SCREEN	0

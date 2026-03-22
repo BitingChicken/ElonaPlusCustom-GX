@@ -2046,7 +2046,176 @@
 	rowactend cc
 	goto *turn_end
 	return
-		
+
+*skill_act_cheer
+	if ( cdata(CDATA_ROW_ACT, cc) == ACTION_NONE ) {
+		powsel = 0
+		if ( gdata(GDATA_FLAG_MAIN) < 350 ) {
+			if ( cdata(CDATA_LEVEL, cc) >= 130 ) {
+				powsel = 100
+			}
+		}
+		if ( gdata(GDATA_FLAG_MAIN) >= 350 ) {
+			if ( cdata(CDATA_LEVEL, cc) >= 50 ) {
+				powsel = 100
+			}
+		}
+		if ( cc < MAX_CHARA_FOLLOWER | cdata(CDATA_ALLIED, cc) == 100 | cc == CHARA_PLAYER ) {
+			powsel = 100
+		}
+		if ( gdata(GDATA_FLAG_GAME_MODE) == 1 ) {
+			powsel = 100
+		}
+		if ( cc >= MAX_CHARA_FOLLOWER & cdata(CDATA_QUALITY, cc) > FIX_QUALITY_GREAT & cdata(CDATA_HP, cc) > cdata(CDATA_MAX_HP, cc) / 2 & cdata(CDATA_POWER_GAUGE, cc) < 200 ) {
+			if ( exgauge != 100 ) {
+				powsel = 0
+			}
+		}
+		if ( gdata(GDATA_TEMPORARY_FLAGS2) == 888 ) {
+			powsel = 0
+		}
+		if ( cdata(CDATA_DIRECTIVE_MODE, cc) == DIRECTIVE_MODE_TEMPORARY ) {
+			if ( cdata(CDATA_DIRECTIVE_MODE_ORG, cc) != 0 ) {
+				powsel = 0
+			}
+		}
+		if ( cdata(CDATA_DIRECTIVE_MODE, cc) == DIRECTIVE_MODE_DEFENSIVE | cdata(CDATA_DIRECTIVE_MODE, cc) == DIRECTIVE_MODE_INTERCEPT ) {
+			powsel = 0
+		}
+		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
+			if ( powsel == 100 ) {
+				efid = SKILL_SPACT_DYNAMIC_YELL
+				gosub *effect
+				powsel = 0
+				return
+			}
+		}
+		cdata(CDATA_ROW_ACT, cc) = ACTION_CHEER
+		cdata(CDATA_ACTION_PERIOD, cc) = 5
+		ninzuu = 0
+		kyouka = 0
+		daihyou = -1
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cc == cnt ) {
+				continue
+			}
+			if ( cc < MAX_CHARA_FOLLOWER | cc == CHARA_PLAYER ) {
+				if ( cnt >= 16 ) {
+					continue
+				}
+			}
+			if ( cc >= MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION, cc) != cdata(CDATA_RELATION, cnt) ) {
+					continue
+				}
+			}
+			tc = cnt
+			dx = cdata(CDATA_X, tc)
+			dy = cdata(CDATA_Y, tc)
+			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+				continue
+			}
+			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+				continue
+			}
+			if ( cdata(CDATA_DIRECTIVE_MODE, cnt) == DIRECTIVE_MODE_TALKING ) {
+				if ( findbuff(cnt, BUFF_HARMONIC_ASSAULT) != (-1) ) {
+					ninzuu++
+					kyouka += (sdata(SKILL_NORMAL_SENSE_QUALITY, cnt) + 10) / 5
+					if ( daihyou == (-1) ) {
+						daihyou = cnt
+					}
+					else {
+						if ( rnd(4) == 0 ) {
+							daihyou = cnt
+						}
+					}
+				}
+			}
+		loop
+		customtalk cc, DBMODE_FLAVOR_BTALK
+		gosub *convert_word
+		if ( gdata(GDATA_CUSTOM_TALK) == 100 ) {
+			txt lang(name(cc) + "は応援を始めた。", name(cc) + " start cheering.")
+		}
+		if ( daihyou >= 0 ) {
+			if ( ninzuu == 1 ) {
+				txt lang(name(daihyou) + "も応援に加わった！", name(daihyou) + " also joined the cheering.")
+			}
+			if ( ninzuu > 1 ) {
+				txt lang(name(daihyou) + "たちも応援に加わった！", name(daihyou) + " also joined the cheering.")
+			}
+		}
+		return
+	}
+	if ( cdata(CDATA_ACTION_PERIOD, cc) > 0 & gdata(GDATA_TIME_STOP_TIME) == 0 & gdata(GDATA_FLAG_STOP_TIME_OTHER) == 0 ) {
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cc == cnt ) {
+				continue
+			}
+			if ( cc < MAX_CHARA_FOLLOWER | cc == CHARA_PLAYER ) {
+				if ( cnt >= 16 ) {
+					continue
+				}
+			}
+			if ( cc >= MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION, cc) != cdata(CDATA_RELATION, cnt) ) {
+					continue
+				}
+			}
+			tc = cnt
+			dx = cdata(CDATA_X, tc)
+			dy = cdata(CDATA_Y, tc)
+			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+				continue
+			}
+			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+				continue
+			}
+			if ( cdata(CDATA_CONDITION_DIM, tc) > 60 ) {
+				cdata(CDATA_CONDITION_DIM, tc) = 59
+			}
+			cdata(CDATA_CONDITION_SLEEP, tc) = 0
+			cdata(CDATA_POWER_GAUGE, tc) += 2
+			if ( cdata(CDATA_POWER_GAUGE, tc) > 100 ) {
+				if ( cdata(CDATA_SHIFT_FORM, tc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, tc) <= 0 | tc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, tc) < FIX_QUALITY_MIRACLE | tc <= MAX_CHARA_FOLLOWER) ) {
+					cdata(CDATA_POWER_GAUGE, tc) = 100
+				}
+			}
+			if ( cdata(CDATA_POWER_GAUGE, tc) > 200 ) {
+				cdata(CDATA_POWER_GAUGE, tc) = 200
+			}
+			if ( rnd(sdata(SKILL_ATTR_CHA, cc) + kyouka) > rnd(sdata(SKILL_ATTR_CHA, tc)) ) {
+				cdata(CDATA_EMO_ICON, tc) = 6 + 100
+				talkfix = 1
+				if ( cdata(CDATA_IMPRESSION, cc) >= 100 ) {
+					talkfix = 2
+				}
+				if ( cdata(CDATA_IMPRESSION, cc) >= 150 ) {
+					talkfix = 3
+				}
+				if ( cdata(CDATA_IMPRESSION, cc) >= 200 ) {
+					talkfix = 4
+				}
+				healsp tc, talkfix
+			}
+			else {
+				cdata(CDATA_EMO_ICON, tc) = 21 + 100
+			}
+		loop
+		skillexp SKILL_ATTR_CHA, cc, 40
+		return
+	}
+	txt lang(name(cc) + "は一息ついた。", name(cc) + " was a little break.")
+	rowactend cc
+	return
+
 *skill_persuasion
 	if ( cdata(CDATA_ROW_ACT, cc) == ACTION_NONE ) {
 		powsel = charaCanGauge(cc)
@@ -4036,6 +4205,8 @@
 		cell_refresh cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER)
 		flt
 		itemcreate -1, ITEM_ID_STUMP, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 1
+		flt
+		itemcreate -1, ITEM_ID_WARIBASI, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 1
 		flt
 		itemcreate -1, ITEM_ID_WOOD_MATERIAL, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 1
 	}
@@ -9067,6 +9238,9 @@
 						}
 						if ( cdata(CDATA_ID, cc) == CREATURE_ID_RUSH_RAT ) {
 							dbid = CREATURE_ID_RUSH_RAT
+						}
+						if ( cdata(CDATA_ID, cc) == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
+							dbid = CREATURE_ID_BIG_MOSQUITO
 						}
 					}
 					if ( efid == SKILL_SPELL_SUMMON_SPIRIT ) {
@@ -19749,10 +19923,6 @@
 					cbitmod CHARA_BIT_NECRO, rc, TRUE
 					cbitmod CHARA_BIT_SHADOW_CLONE, rc, TRUE
 					cdatan(CDATAN_NAME, rc) += " Lv" + cdata(CDATA_LEVEL, rc)
-					cdata(CDATA_MAX_HP, rc) = cdata(CDATA_MAX_HP, rc) / 20 + 1
-					cdata(CDATA_HP, rc) = cdata(CDATA_MAX_HP, rc)
-					cdata(CDATA_MAX_MP, rc) = cdata(CDATA_MAX_MP, rc) / 20 + 1
-					cdata(CDATA_MP, rc) = cdata(CDATA_MAX_MP, rc)
 				}
 				if ( efid == SKILL_SPACT_SHIKIORIGAMI_SHURIKEN ) {
 					flt
@@ -19765,10 +19935,6 @@
 					cbitmod CHARA_BIT_NECRO, rc, TRUE
 					cbitmod CHARA_BIT_SHADOW_CLONE, rc, TRUE
 					cdatan(CDATAN_NAME, rc) += " Lv" + cdata(CDATA_LEVEL, rc)
-					cdata(CDATA_MAX_HP, rc) = cdata(CDATA_MAX_HP, rc) / 20 + 1
-					cdata(CDATA_HP, rc) = cdata(CDATA_MAX_HP, rc)
-					cdata(CDATA_MAX_MP, rc) = cdata(CDATA_MAX_MP, rc) / 20 + 1
-					cdata(CDATA_MP, rc) = cdata(CDATA_MAX_MP, rc)
 				}
 				if ( efid == SKILL_SPACT_SHIKIORIGAMI_AIRPLANE ) {
 					flt
@@ -19781,10 +19947,6 @@
 					cbitmod CHARA_BIT_NECRO, rc, TRUE
 					cbitmod CHARA_BIT_SHADOW_CLONE, rc, TRUE
 					cdatan(CDATAN_NAME, rc) += " Lv" + cdata(CDATA_LEVEL, rc)
-					cdata(CDATA_MAX_HP, rc) = cdata(CDATA_MAX_HP, rc) / 20 + 1
-					cdata(CDATA_HP, rc) = cdata(CDATA_MAX_HP, rc)
-					cdata(CDATA_MAX_MP, rc) = cdata(CDATA_MAX_MP, rc) / 20 + 1
-					cdata(CDATA_MP, rc) = cdata(CDATA_MAX_MP, rc)
 				}
 			loop
 			skillexp SKILL_NORMAL_LITERACY, CHARA_PLAYER, 200
@@ -21062,6 +21224,147 @@
 		snd SOUNDLIST_CHEER
 		goto *effect_end
 	}
+	if ( _switch_val == SKILL_SPACT_DYNAMIC_YELL | _switch_sw ) {
+		_switch_sw = 0
+		if ( cdata(CDATA_POWER_GAUGE, cc) < 100 ) {
+			txt lang("何もおきない… ", "Nothing happens...")
+			goto *effect_end
+		}
+		cdata(CDATA_POWER_GAUGE, cc) -= 100
+		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
+			snd SOUNDLIST_POWER
+			exgauge = 100
+			if ( gdata(GDATA_TIME_STOP_TIME) == 0 ) {
+				gdata(GDATA_TIME_STOP_TIME) = 2
+			}
+		}
+		txtef COLOR_YELLOW
+		txt lang("*" + skillname(efid) + "*　", "*" + skillname(efid) + "* ")
+		if ( cc == CHARA_PLAYER ) {
+			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
+		}
+		snd SOUNDLIST_ENC
+		animeload 40, cc
+		customtalk cc, DBMODE_FLAVOR_SPECIAL
+		gosub *convert_word
+		if ( cdata(CDATA_RELATION, cc) == RELATION_ENEMY ) {
+			waza = -1
+		}
+		else {
+			waza = 1
+		}
+		pic = cdata(CDATA_PIC, cc) \ 1000 + cdata(CDATA_CHARA_PIC, cc) * 1000 + refchara(cdata(CDATA_ID, cc), DBSPEC_CHARA_COL) * 10000
+		if ( cc == CHARA_PLAYER ) {
+			pic = -1
+		}
+		exist exedir + "user\\graphic2\\cutin" + pic + ".bmp"
+		if ( strsize == (-1) ) {
+			snd SOUNDLIST_MECHA20
+			repeat 2
+				animeload 92, cc
+			loop
+		}
+		else {
+			animeid = ANIMATION_CUT_IN
+			anic = cc
+			gosub *anime
+		}
+		snd SOUNDLIST_CHEER
+		animeload 98, cc
+		txtef COLOR_GREEN
+		txt lang(name(cc) + "のダイナミックな声援が響き渡った。", "Dynamic cheers of " + name(cc) + " echoed all around.")
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cc == cnt ) {
+				continue
+			}
+			if ( cc < MAX_CHARA_FOLLOWER | cc == CHARA_PLAYER ) {
+				if ( cnt >= 16 ) {
+					continue
+				}
+			}
+			if ( cc >= MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION, cc) != cdata(CDATA_RELATION, cnt) ) {
+					continue
+				}
+			}
+			tc = cnt
+			dx = cdata(CDATA_X, tc)
+			dy = cdata(CDATA_Y, tc)
+			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+				continue
+			}
+			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+				continue
+			}
+			cdata(CDATA_POWER_GAUGE, tc) += 5
+			if ( cdata(CDATA_POWER_GAUGE, tc) > 100 ) {
+				if ( cdata(CDATA_SHIFT_FORM, tc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, tc) <= 0 | tc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, tc) < FIX_QUALITY_MIRACLE | tc < MAX_CHARA_FOLLOWER) ) {
+					cdata(CDATA_POWER_GAUGE, tc) = 100
+				}
+			}
+			if ( cdata(CDATA_POWER_GAUGE, tc) > 200 ) {
+				cdata(CDATA_POWER_GAUGE, tc) = 200
+			}
+			cdata(CDATA_GUARD_BREAK, tc) -= 15
+			if ( cdata(CDATA_GUARD_BREAK, cc) >= 100 ) {
+				cdata(CDATA_GUARD_BREAK, cc) = 99
+			}
+			if ( cdata(CDATA_GUARD_BREAK, tc) < 0 ) {
+				cdata(CDATA_GUARD_BREAK, tc) = 0
+			}
+		loop
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cc == cnt ) {
+				continue
+			}
+			if ( cc < MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION, cnt) != RELATION_ENEMY ) {
+					continue
+				}
+			}
+			if ( cc >= MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION, cnt) == cdata(CDATA_RELATION, cc) ) {
+					continue
+				}
+			}
+			tc = cnt
+			dx = cdata(CDATA_X, tc)
+			dy = cdata(CDATA_Y, tc)
+			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+				continue
+			}
+			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+				continue
+			}
+			if ( cbit(CHARA_BIT_SPLIT_KEEP_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SPLIT_NO_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SUMMONED, tc) != TRUE & cbit(CHARA_BIT_LIVESTOCK, tc) != TRUE & cbit(CHARA_BIT_NECRO, tc) != TRUE & cbit(CHARA_BIT_SANDBAG, tc) != TRUE & tc != CHARA_PLAYER ) {
+				f = 1
+			}
+			if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
+				if ( cdata(CDATA_GUARD_BREAK, tc) < 100 ) {
+					cdata(CDATA_GUARD_BREAK, tc) += 30
+					if ( cdata(CDATA_GUARD_BREAK, tc) >= 100 ) {
+						cdata(CDATA_GUARD_BREAK, tc) = 120
+						waitbk = cfg_animewait
+						if ( cfg_animewait < 50 ) {
+							cfg_animewait = 50
+						}
+						animeload 87, tc
+						snd SOUNDLIST_CRASH14
+						cfg_animewait = waitbk
+					}
+				}
+			}
+		loop
+		waza = 0
+		goto *effect_end
+		_switch_sw++
+	}
 	if ( _switch_val == SKILL_SPACT_UNISON_IMPACT | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 100 ) {
@@ -21486,6 +21789,56 @@
 			gosub *skill_mysterious_song
 		}
 		goto *effect_end
+	}
+	if ( _switch_val == SKILL_SPACT_GENUINE_CHEERING | _switch_sw ) {
+		_switch_sw = 0
+		if ( cc == CHARA_PLAYER ) {
+			if ( cdata(CDATA_TARGET, CHARA_PLAYER) == 0 ) {
+				gosub *findTarget
+			}
+			gosub *com_findTarget
+			if ( listmax == 0 ) {
+				txt lang("視界内にターゲットは存在しない。", "You look around and find nothing.")
+				goto *effect_end
+			}
+			ens2 = 0
+			repeat 245
+				if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+					continue
+				}
+				if ( cc == cnt ) {
+					continue
+				}
+				if ( cc < MAX_CHARA_FOLLOWER | cc == CHARA_PLAYER ) {
+					if ( cdata(CDATA_RELATION, cnt) != RELATION_ALLY ) {
+						continue
+					}
+				}
+				tc = cnt
+				dx = cdata(CDATA_X, tc)
+				dy = cdata(CDATA_Y, tc)
+				if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+					continue
+				}
+				if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+					continue
+				}
+				ens2++
+			loop
+			if ( ens2 == 0 ) {
+				txt lang("あなたはひとりぼっちだ…。", "You're all alone.")
+				goto *effect_end
+			}
+			ens2 = 0
+		}
+		if ( cdata(CDATA_ACTION_PERIOD, cc) > 0 ) {
+			goto *effect_end
+		}
+		snd SOUNDLIST_CHAT
+		animeload 73, cc
+		gosub *skill_act_cheer
+		goto *effect_end
+		_switch_sw++
 	}
 	if ( _switch_val == SKILL_SPACT_RUBBING | _switch_sw ) {
 		_switch_sw = 0
@@ -22910,16 +23263,15 @@
 			if ( cdata(CDATA_RELATION, cnt) != RELATION_ALLY ) {
 				continue
 			}
-			if ( cbit(CHARA_BIT_SHADOW_CLONE, cnt) != TRUE ) {
-				continue
-			}
-			if ( cdata(CDATA_ID, cnt) != CREATURE_ID_KAMIORIDURU & cdata(CDATA_ID, cnt) != CREATURE_ID_KAMISHURIKEN & cdata(CDATA_ID, cnt) != CREATURE_ID_KAMIHIKOUKI ) {
-				continue
-			}
 			if ( cbit(CHARA_BIT_NECRO, cnt) != TRUE ) {
 				continue
 			}
-			tck = cnt
+			if ( cbit(CHARA_BIT_SHADOW_CLONE, cnt) == TRUE ) {
+				if ( cdata(CDATA_ID, cnt) == CREATURE_ID_KAMIORIDURU | cdata(CDATA_ID, cnt) == CREATURE_ID_KAMISHURIKEN | cdata(CDATA_ID, cnt) == CREATURE_ID_KAMIHIKOUKI ) {
+					tck = cnt
+					break
+				}
+			}
 			break
 		loop
 		if ( tck == 0 ) {

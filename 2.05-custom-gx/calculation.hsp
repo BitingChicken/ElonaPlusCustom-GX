@@ -1167,6 +1167,9 @@
 	if ( cdata(CDATA_ID, r1) == CREATURE_ID_WANDERING_PENGUIN | cdata(CDATA_ID, r1) == CREATURE_ID_RESTOROID_GAREFOWL | cdata(CDATA_ID, r1) == CREATURE_ID_RESTOROID_SEA_COW | cdata(CDATA_ID, r1) == CREATURE_ID_RESTOROID_KAPPA ) {
 		skillinit SKILL_NORMAL_SWIMMING, r1, 15
 	}
+	if ( cdata(CDATA_ID, r1) == CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL ) {
+		skillinit SKILL_NORMAL_SWIMMING, r1, 10
+	}
 	if ( cdata(CDATA_ID, r1) == CREATURE_ID_CHAOSHAPRINCESS_FSSSY ) {
 		skillinit SKILL_NORMAL_SWIMMING, r1, 10
 	}
@@ -1873,7 +1876,7 @@
 		cdata(CDATA_CONDITION_SUFFOCATION, r1) -= rnd(3)
 		if ( cdata(CDATA_CONDITION_SUFFOCATION, r1) <= 0 ) {
 			if ( synccheck(r1, -1) ) {
-				txt lang(name(r1) + "は気道を確保した。「げほっげほっ！」", name(cc) + " stopped choking.")
+				txt lang(name(r1) + "は気道を確保した。「げほっげほっ！」", name(r1) + " stopped choking.")
 			}
 			cdata(CDATA_CONDITION_SUFFOCATION, r1) = 0
 		}
@@ -1923,7 +1926,7 @@
 		dmgsp r1, 1
 		if ( cdata(CDATA_CONDITION_BIND, r1) == 0 ) {
 			if ( synccheck(r1, -1) ) {
-				txt lang(name(r1) + "は束縛から解放された。", name(cc) + " released from bind.")
+				txt lang(name(r1) + "は束縛から解放された。", name(r1) + " released from bind.")
 			}
 		}
 	}
@@ -1942,7 +1945,7 @@
 		cdata(CDATA_CONDITION_BRAINWASH, r1)--
 		if ( cdata(CDATA_CONDITION_BRAINWASH, r1) == 0 ) {
 			if ( synccheck(r1, -1) ) {
-				txt lang(name(r1) + "は正気に戻った。", name(cc) + " recovered from brainwash.")
+				txt lang(name(r1) + "は正気に戻った。", name(r1) + " recovered from brainwash.")
 			}
 			cdata(CDATA_TARGET, r1) = 0
 			cdata(CDATA_AI_AGGRO, r1) = 0
@@ -2081,6 +2084,29 @@
 		}
 		cdata(CDATA_CONDITION_WET, r1)--
 		refreshspeed r1
+	}
+	if ( cdata(CDATA_INCAPACITATED, r1) < 0 ) {
+		if ( -cdata(CDATA_INCAPACITATED, r1) > 0 ) {
+			cdata(CDATA_EMO_ICON, r1) = 30 + 100
+		}
+		cdata(CDATA_INCAPACITATED, r1)++
+		if ( cdata(CDATA_INCAPACITATED, r1) == 0 ) {
+			if ( synccheck(r1, -1) ) {
+				txt lang(name(r1) + "は行動不能から回復した。", name(r1) + " recovered from incapacity.")
+			}
+		}
+	}
+	if ( cdata(CDATA_INCAPACITATED, r1) > 0 ) {
+		cdata(CDATA_INCAPACITATED, r1)--
+		if ( cdata(CDATA_INCAPACITATED, r1) == 0 ) {
+			cdata(CDATA_INCAPACITATED, r1) = -90
+			if ( cdata(CDATA_QUALITY, r1) >= FIX_QUALITY_MIRACLE ) {
+				cdata(CDATA_INCAPACITATED, r1) = -3
+			}
+			if ( synccheck(r1, -1) ) {
+				txt lang(name(r1) + "は行動不能になった。", name(r1) + " became incapacitated.")
+			}
+		}
 	}
 	if ( cdata(CDATA_CONDITION_WINCE, r1) > 0 ) {
 		if ( cdata(CDATA_CONDITION_WINCE, r1) > 100 ) {

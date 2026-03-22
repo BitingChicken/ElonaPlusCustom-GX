@@ -1429,6 +1429,16 @@ if instr(s,0,%1)!-1{	%c\
 	gmode 0
 	pos 0, msgline \ inf_maxlog * inf_msgspace
 	gcopy 0, inf_msgx, inf_msgy + 5 + inf_msgspace * 3 + en * 3, windoww - inf_msgx, inf_msgspace
+	if ( cfg_displayLog ) {
+		if ( screen20displayed ) {
+			gsel 20
+			gmode 0
+			pos 0, 0
+			gcopy 20, 0, 15, windoww - inf_msgx, 450
+			pos 0, 450
+			gcopy 0, inf_msgx, inf_msgy + 5 + inf_msgspace * 3 + en * 3, windoww - inf_msgx, inf_msgspace
+		}
+	}
 	gsel 0
 	return
 

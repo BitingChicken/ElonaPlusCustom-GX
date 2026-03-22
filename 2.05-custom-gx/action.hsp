@@ -2897,6 +2897,9 @@
 			if ( feat(1) == CELL_FEATURE_SAMPLING_SPOT_GARDENING ) {
 				txt lang("色んな植物が生えている。", "You can collect materials from plants here.")
 			}
+			if ( feat(FEAT_CELL_FEATURE_ID) == CELL_FEATURE_WARIBASI ) {
+				txt lang("わりばしが植えてある。", "A waribasi is planted.")
+			}
 			if ( feat(1) == CELL_FEATURE_PLANTED_SEED ) {
 				if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_VEGETABLE ) {
 					s = lang("野菜", "vegetable")
@@ -9093,6 +9096,92 @@
 		goto *act_use_SWEND1
 		_switch_sw++
 	}
+	if ( _switch_val == EFFECT_WARIBASI | _switch_sw ) {
+		_switch_sw = 0
+		if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
+			goto *act_use_SWEND1
+		}
+		txt lang("どの方向に使用する？", "Which direction to use?")
+		gosub *screen_draw
+		val = 0
+		gosub *prompt_direction
+		if ( stat == 0 ) {
+			txt lang("それは無理だ。", "It's impossible.")
+			gosub *screen_draw
+			goto *pc_turn
+		}
+		if ( map(x, y, MAP_CHARA_INDEX_PLUS_ONE) > 0 ) {
+			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
+		}
+		else {
+			txt lang("それは無理だ。", "It's impossible.")
+			gosub *screen_draw
+			goto *pc_turn
+		}
+		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
+			txtselecttc 2
+			repeat 2
+				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
+				promptmax++
+			loop
+			val = promptx, prompty, 200, 1
+			gosub *prompt_key
+			if ( stat == 0 ) {
+				gosub *screen_draw
+				goto *pc_turn
+			}
+			if ( rtval == 1 ) {
+				tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
+			}
+		}
+		if ( tc != CHARA_PLAYER ) {
+			txtef COLOR_GREEN
+			txt lang("あなたは" + name(tc) + "にフェイントを仕掛けた。", "You have attempted a feint on " + name(tc) + ".")
+			snd SOUNDLIST_SWING
+			cdata(CDATA_POWER_GAUGE, tc) -= 5
+			if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
+				cdata(CDATA_POWER_GAUGE, tc) = 0
+			}
+			inv(INV_ITEM_NUM, ci)--
+			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
+		}
+		else {
+			screenupdate = -1
+			gosub *screen_draw
+			if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD | mdata(MDATA_TYPE) == MAP_TYPE_TOWN | mdata(MDATA_TYPE) == MAP_TYPE_VILLAGE ) {
+				txt lang("この場所には植えられない。", "You can't plant it here.")
+				gosub *screen_draw
+				goto *pc_turn
+			}
+			if ( map(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), MAP_FEATS_ON_TILE) != 0 ) {
+				txt lang("この場所には植えられない。", "You can't plant it here.")
+				gosub *screen_draw
+				goto *pc_turn
+			}
+			if ( chipm(CHIPM_ROLE, map(cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), MAP_TILE_ID)) == MAP_CHIP_ROLE_CROP ) {
+				val = 1
+			}
+			else {
+				val = 0
+			}
+			feat = tile_plant + 9, 35, inv(INV_ITEM_MATERIAL, ci)
+			gosub *item_seedNextGrowth
+			if ( val ) {
+				s = "畑に"
+			}
+			else {
+				s = ""
+			}
+			s += lang("" + itemname(ci, 1) + "を植えた。", "You plant " + itemname(ci, 1))
+			txt s
+			snd SOUNDLIST_BUSH1
+			removeitem ci, 1
+			cell_featset cdata(CDATA_X, cc), cdata(CDATA_Y, cc), tile_plant + 9, CELL_FEATURE_WARIBASI, inv(INV_ITEM_MATERIAL, ci), feat(FEAT_CELL_PARAM_1)
+		}
+		gosub *calcBurdenPc
+		goto *act_use_SWEND1
+		_switch_sw++
+	}
 	if ( _switch_val == EFFECT_MIMIRROCRY | _switch_sw ) {
 		_switch_sw = 0
 		if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
@@ -9430,6 +9519,7 @@
 			await 200
 			snd SOUNDLIST_AMMO
 			addbuff tc, BUFF_SHOOTING_MODE, 25, 25
+			cdata(CDATA_CONDITION_BIND, tc) += 25
 		}
 		goto *act_use_SWEND1
 	}
@@ -10085,6 +10175,131 @@
 		goto *act_use_SWEND1
 		_switch_sw++
 	}
+	if ( _switch_val == EFFECT_TRANQ_RIFLE | _switch_sw ) {
+		_switch_sw = 0
+		if ( cc != CHARA_PLAYER ) {
+			cdata(CDATA_AI_ITEM, cc) = ci
+		}
+		inv(INV_ITEM_AMMO , ci)++
+		if ( cc != CHARA_PLAYER ) {
+			if ( inv(INV_ITEM_AMMO , ci) <= 0 ) {
+				if ( gdata(GDATA_ABSORB_CHARGE) < 10 ) {
+					cdata(CDATA_AI_ITEM, cc) = 0
+					txt lang("魔力の貯蓄が足りない…。", "Not enough charges...")
+					snd SOUNDLIST_FAIL1
+					goto *act_use_SWEND1
+				}
+				snd SOUNDLIST_TM2_SWITCH001
+				gdata(GDATA_ABSORB_CHARGE) -= 10
+				txt lang(name(cc) + "は魔力の貯蓄を10消費した(残り" + gdata(GDATA_ABSORB_CHARGE) + ")", name(cc) + " spend 10 charges. (Total: " + gdata(GDATA_ABSORB_CHARGE) + ")")
+				inv(INV_ITEM_AMMO , ci) = 3
+				goto *act_use_SWEND1
+			}
+		}
+		if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {
+			goto *act_use_SWEND1
+		}
+		if ( cdata(CDATA_TARGET, cc) == 0 ) {
+			gosub *findTarget
+			if ( stat == 0 ) {
+				goto *act_use_SWEND1
+			}
+		}
+		tc = cdata(CDATA_TARGET, cc)
+		if ( dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) > 6 | fov_los(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) == 0 ) {
+			if ( cc == CHARA_PLAYER ) {
+				msgdup++
+				txt lang("範囲外だ。", "It's out of range.")
+			}
+			goto *act_use_SWEND1
+		}
+		if ( cdata(CDATA_RELATION, tc) >= RELATION_NEUTRAL ) {
+			if ( cc != CHARA_PLAYER ) {
+				goto *act_use_SWEND1
+			}
+			gosub *com_confirmAttack
+			if ( stat == 0 ) {
+				goto *act_use_SWEND1
+			}
+		}
+		if ( dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) >= 4 ) {
+			if ( cc == CHARA_PLAYER ) {
+				msgdup++
+				txt lang("この距離からでは麻酔弾が刺さらない…。", "The tranquilizer needle won't penetrate from this distance...")
+			}
+			goto *act_use_SWEND1
+		}
+		tlocx = cdata(CDATA_X, tc)
+		tlocy = cdata(CDATA_Y, tc)
+		inv(INV_ITEM_AMMO , ci)--
+		if ( inv(INV_ITEM_AMMO , ci) < 0 ) {
+			inv(INV_ITEM_AMMO , ci) = 0
+		}
+		item_stack cc, ci, 1
+		animeid = ANIMATION_OVERDOSE
+		gosub *anime
+		txt lang(name(cc) + "は" + itemname(ci) + "で" + cdatan(CDATAN_NAME, tc) + "を撃った。", name(cc) + " shot " + cdatan(CDATAN_NAME, tc) + " with " + itemname(ci) + ".")
+		skillexp SKILL_NORMAL_GENE_ENGINEER, cc, 80
+		skillexp SKILL_NORMAL_MARKSMAN, cc, 80
+		hostileaction cc, tc
+		hostileaction cc, tc
+		if ( cdata(CDATA_INCAPACITATED, tc) == 0 ) {
+			if ( inv(INV_ITEM_ID, ci) == ITEM_ID_TZ_30 ) {
+				if ( cdata(CDATA_WEIGHT, rc) < 30 ) {
+					txtef COLOR_YELLOW
+					txt lang("適正体重！", "Proper weight!")
+					cdata(CDATA_INCAPACITATED, tc) = 15
+					goto *act_use_SWEND1
+				}
+				if ( cdata(CDATA_WEIGHT, rc) >= 30 ) {
+					cdata(CDATA_INCAPACITATED, tc) = 30
+					goto *act_use_SWEND1
+				}
+			}
+			if ( inv(INV_ITEM_ID, ci) == ITEM_ID_TZ30_C ) {
+				if ( cdata(CDATA_WEIGHT, rc) >= 30 & cdata(CDATA_WEIGHT, rc) < 100 ) {
+					txtef COLOR_YELLOW
+					txt lang("適正体重！", "Proper weight!")
+					cdata(CDATA_INCAPACITATED, tc) = 15
+					goto *act_use_SWEND1
+				}
+				if ( cdata(CDATA_WEIGHT, rc) >= 100 ) {
+					cdata(CDATA_INCAPACITATED, tc) = 30
+					goto *act_use_SWEND1
+				}
+			}
+			if ( inv(INV_ITEM_ID, ci) == ITEM_ID_TZC_500 ) {
+				if ( cdata(CDATA_WEIGHT, rc) >= 100 & cdata(CDATA_WEIGHT, rc) < 500 ) {
+					txtef COLOR_YELLOW
+					txt lang("適正体重！", "Proper weight!")
+					cdata(CDATA_INCAPACITATED, tc) = 15
+					goto *act_use_SWEND1
+				}
+				if ( cdata(CDATA_WEIGHT, rc) >= 500 ) {
+					cdata(CDATA_INCAPACITATED, tc) = 30
+					goto *act_use_SWEND1
+				}
+			}
+			if ( inv(INV_ITEM_ID, ci) == ITEM_ID_TZ500_K ) {
+				if ( cdata(CDATA_WEIGHT, rc) >= 500 & cdata(CDATA_WEIGHT, rc) < 1000 ) {
+					txtef COLOR_YELLOW
+					txt lang("適正体重！", "Proper weight!")
+					cdata(CDATA_INCAPACITATED, tc) = 15
+					goto *act_use_SWEND1
+				}
+				if ( cdata(CDATA_WEIGHT, rc) >= 1000 ) {
+					cdata(CDATA_INCAPACITATED, tc) = 30
+					goto *act_use_SWEND1
+				}
+			}
+		}
+		txtef COLOR_RED2
+		txt lang("過剰投与！", "Overdose!")
+		dmg = (sdata(SKILL_ATTR_PER, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_MARKSMAN, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_MARKSMAN, cc) * 2 + 5) + ((limit(cdata(CDATA_LEVEL, cc) - 50, 1, 2000) + limit(cdata(CDATA_LEVEL, cc) - 100, 1, 2000)) * 4 * sqrt(limit(cdata(CDATA_LEVEL, cc), 1, 2000) * 3) + 30 + 1) * 2 / 3
+		dmghp tc, dmg, cc, SKILL_RES_NERVE, 100
+		goto *act_use_SWEND1
+		_switch_sw++
+	}
 	if ( _switch_val == EFFECT_LASER_BAZOOKA | _switch_sw ) {
 		_switch_sw = 0
 		if ( cc != CHARA_PLAYER ) {
@@ -10697,7 +10912,7 @@
 					txt lang("タッグは閉じ込められない。", "It is not possible to lock up people in a tag team.")
 					goto *pc_turn
 				}
-				if ( cdata(CDATA_HP, tc) >= cdata(CDATA_MAX_HP, tc) / 4 ) {
+				if ( cdata(CDATA_HP, tc) >= cdata(CDATA_MAX_HP, tc) / 4 & cdata(CDATA_INCAPACITATED, tc) >= 0 ) {
 					if ( 0 == 0 ) {
 						txt lang("もっと弱らせないと閉じ込められない。", "The target needs to be weakened.")
 						goto *pc_turn
@@ -19245,6 +19460,15 @@
 	feat = tile_plant
 	gosub *item_seedNextGrowth
 	cell_featset x, y, feat, feat(1), feat(2), feat(3)
+	return
+
+*item_chopstickPick
+	snd SOUNDLIST_BUSH1
+	dbid = ITEM_ID_WARIBASI
+	itemcreate CHARA_PLAYER, dbid, -1, -1, 0
+	inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+	txt lang(itemname(ci, 1) + "を収穫した。", "You harvest " + itemname(ci, 1) + ".")
+	item_stack CHARA_PLAYER, ci, 1
 	return
 
 *item_seedPick

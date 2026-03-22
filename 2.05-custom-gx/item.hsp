@@ -1405,6 +1405,11 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_ID, rc) == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
+		flt
+		itemcreate -1, ITEM_ID_BOTTLE_HERMES_BLOOD, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+		inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_DOOMED
+	}
 	if ( cdatan(CDATAN_CLASS, rc) == "wizard" ) {
 		if ( rnd(100) == 0 ) {
 			if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {
@@ -3922,6 +3927,37 @@
 			if ( cc != CHARA_PLAYER ) {
 				txt lang("味に違和感があったのか、" + name(cc) + "は首をかしげている。", "There was a sense of incompatibility in the taste... " + name(cc) + " tilts " + his(cc) + " head, pondering.")
 			}
+		}
+	}
+	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_MESUGAKI ) {
+		if ( gdata(GDATA_AREA) == AREA_SHOW_HOUSE | (gdata(GDATA_AREA) == AREA_CHAOS_CRADLE & gdata(GDATA_LEVEL) == 179) | (gdata(GDATA_AREA) == AREA_AMUR_CAGE & gdata(GDATA_LEVEL) >= 10) ) {
+			txt lang("「考えることまで雑魚♪1」", cnvtalk("You're a Zako even in terms of ideas♪1 "))
+		}
+		else {
+			kaiwa = rnd(10) + 1
+			if ( kaiwa == 1 ) {
+				txtef COLOR_RED
+				txt lang("これは…大当たりだ！！！", "<Jackpot>")
+				txtvalid = 0
+				txt lang("「うっわぁ♪1雑魚すぎ♪1♪1♪1」", cnvtalk("Wow♪1 Zaaaako♪1♪1♪1 "))
+				dmgcon tc, CONDITION_SICK, 300
+				chara_vomit cc
+				chara_vomit cc
+				chara_vomit cc
+			}
+			if ( kaiwa >= 2 & kaiwa <= 4 ) {
+				txtef COLOR_PURPLE
+				txt lang("これは…当たりだ！", "Jackpot!")
+				txtvalid = 0
+				txt lang("「胃腸よわよわ♪1」", cnvtalk("Your stomach is weak and weak♪1 "))
+				dmgcon tc, CONDITION_SICK, 100
+				chara_vomit cc
+			}
+			if ( kaiwa >= 5 ) {
+				txt lang("運が良くなった気がする…。", "You felt like you were in luck...")
+				skillexp SKILL_ATTR_LUC, cc, 2200
+			}
+			autosave = 1 * (gdata(GDATA_AREA) != AREA_SHOW_HOUSE)
 		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CHEWING_GUM | inv(INV_ITEM_ID, ci) == ITEM_ID_CHEWED_UP_GUM ) {

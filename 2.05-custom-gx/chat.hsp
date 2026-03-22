@@ -830,6 +830,32 @@
 				goto *chat_event_SWEND1
 			}
 		}
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
+			if ( gdata(GDATA_DEEPEST_LEVEL) >= 140 ) {
+				chatList 0, lang("【ちょっとだけよ】", "<Welcome!>")
+			}
+			chatList 1, lang("帰れバケモノ！", "Get out, monster!")
+			chatList 2, lang("吸いつくされそうだからイヤ", "I don't want to because I feel like you'll suck all my blood out.")
+			buff = lang("オナカの赤チャンのタメ…献血をお願イしまス…。", "Please...donate blood...for the sake of my unborn babies...")
+			chatesc = 0
+			gosub *chat_select
+			if ( chatval == 0 ) {
+				chatMore lang("ギひゃアアアア！ぜんぶイタダキまぁぁァス！！", "Yaaaaaay! I'll take all the bloooooooood!!"), strsuki
+				cdata(CDATA_RELATION, tc) = RELATION_ENEMY
+				cdata(CDATA_AI_AGGRO, tc) = 80
+				cdata(CDATA_TARGET, tc) = 0
+			}
+			if ( chatval == 1 ) {
+				chatMore lang("ホントウにバケモノなのハ…ドッチでシょう、ネ？", "The real monster...might be you..."), strbye
+				chara_vanquish tc
+				goto *chat_event_SWEND1
+			}
+			if ( chatval == 2 ) {
+				chatMore lang("マって！10リットル！いヤ、8リットルでイイからぁあ！", "Wait a moment...10 liters...no, even 8 liters would be fine...!"), strbye
+				chara_vanquish tc
+				goto *chat_event_SWEND1
+			}
+		}
 		cbitmod CHARA_BIT_GUEST, tc, FALSE
 		cdata(CDATA_ROLE, tc) = ROLE_NONE
 		cdata(CDATA_AREA, tc) = AREA_HOME
@@ -6990,7 +7016,52 @@
 				buff = lang("おっ。どういう管理をしてくれるんだ？", "Oh? What sort of management are you going to do?")
 				gosub *chat_select
 				if ( chatval == 1 ) {
-					chatMore lang("まだできないぜ。", "Sorry, this is undeveloped.")
+					chatList 0, lang("キャンセル", "Cancel")
+					chatList 2, lang("ご当地キャラ配置（運営予算200cgp消費）", "Placement of the local mascot (Budget:200) ")
+					chatList 3, lang("準備中", "Cancel")
+					buff = lang("どういう政策を行う" + _noka(3) + "？", "What the policy are you going to do ?")
+					gosub *chat_select
+					if ( chatval == 1 ) {
+						if ( mdata(MDATA_CITY_AUTHORITY) < 50 ) {
+							chatMore lang(_kimi(3) + "にそんな発言力は無い" + _na(3) + "。", "Your authority is insufficient."), strmore
+						}
+						else {
+							snd SOUNDLIST_DING2
+							gdata(GDATA_NEXT_VOTE) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12
+							afterau = mdata(MDATA_CITY_AUTHORITY) - 50
+							txt lang("発言力" + mdata(MDATA_CITY_AUTHORITY) + "→" + afterau + " ", "Authority :" + mdata(MDATA_CITY_AUTHORITY) + " -> " + afterau + " ")
+							mdata(MDATA_CITY_AUTHORITY) -= 50
+						}
+						goto *chat_end
+					}
+					if ( chatval == 2 ) {
+						if ( mdata(MDATA_CITY_BUDGET) < 200 ) {
+							chatMore lang("そんな運営予算は無い" + _na(3) + "。", "We don't have that kind of operating budget."), strmore
+							goto *chat_default
+						}
+						kazu = 1
+						if ( findchara(CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER) == 0 ) {
+							kazu = 0
+						}
+						if ( kazu != 0 ) {
+							chatMore lang("もう配置されている" + _na(3) + "。", "The mascot has already been placed."), strmore
+							goto *chat_default
+						}
+						else {
+							snd SOUNDLIST_DING2
+							flt
+							characreate -1, CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER, 22, 20
+							cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
+							afterau = mdata(MDATA_CITY_BUDGET) - 200
+							txt lang("運営予算" + mdata(MDATA_CITY_BUDGET) + "→" + afterau + " ", "Budget :" + mdata(MDATA_CITY_BUDGET) + " -> " + afterau + " ")
+							mdata(MDATA_CITY_BUDGET) -= 200
+							afterau = mdata(MDATA_CITY_TOURISM_REVENUE) + 20
+							txt lang("観光収入" + mdata(MDATA_CITY_TOURISM_REVENUE) + "→" + afterau + " ", "Tourism revenue :" + mdata(MDATA_CITY_TOURISM_REVENUE) + " -> " + afterau + " ")
+							mdata(MDATA_CITY_TOURISM_REVENUE) += 20
+						}
+						goto *chat_end
+					}
+					goto *chat_end
 				}
 				if ( chatval == 2 ) {
 					chatMore lang("未実装らしいな。", "Sorry, this is undeveloped.")
@@ -15613,8 +15684,35 @@
 	}
 	if ( _switch_val == CREATURE_ID_TALKA_THE_LONG_TWINTAIL | _switch_sw ) {
 		_switch_sw = 0
-		chatMore lang("なんですか、ジロジロと…わたしの顔に何かついてます？", "Wha.. why are you staring at me... is there something weird on my face?"), strbye
+		chatList 0, lang("信仰の深さについて", "I want to know about Piety.")
+		chatList 1, lang("捧げものについて", "I want to know about Offerings.")
+		chatList 2, lang("神の下僕について", "I want to know about Servants.")
+		chatList 3, lang("片隅にある黒い本について", "I want to know about the black book in the corner.")
+		buff = lang("なんですか、ジロジロと…わたしの顔に何かついてます？", "Why are you staring at me like that... Is there something on my face?")
+		gosub *chat_select
+		if ( chatval == 0 ) {
+			chatMore lang("各神への「信仰の深さ」の上限は「信仰スキル」によって決まります。スキルを成長させるだけでは信仰が深まらないので、必ず祭壇に捧げものをしましょう。", "The maximum Piety you can have in each god is determined by your faith skill. Simply increasing your skill won't deepen your faith, so be sure to make offerings at the altar."), strmore
+			chatMore lang("信仰の深さは移動の過程で徐々に減少していくので、定期的に捧げものをしたほうがいいですね。それと、当然ですが信仰の深さは神を乗り換えるとリセットされますよ。", "The Piety gradually diminishes during the process of migration, so it's a good idea to make offerings regularly. And, of course, the Piety will be reset if you switch gods."), strmore
+			goto *chat_end
+		}
+		if ( chatval == 1 ) {
+			chatMore lang("神ごとに好みの捧げものが違います。捧げものを大量に供給できるかどうか、信仰する前によく確認してください。", "Each deity has different preferences for offerings. Before you start faith, make sure you can provide a large quantity of offerings."), strmore
+			chatMore lang("重量のある死体は共通して好まれるので、捧げる目的なら調理しないほうがいいですよ。でも死体の場合は腐ると価値がゴミ同然になるので気をつけてくださいね。", "Heavy corpses are generally preferred, so if you're offering one, it's best not to cook it. However, be careful, as corpses become practically worthless once they rot."), strmore
+			goto *chat_end
+		}
+		if ( chatval == 2 ) {
+			chatMore lang("信仰を深めていくと神ごとに固有の下僕を貰えます。その神の身内などがモデルになっているらしいですね。", "As your faith deepens, you will receive unique servants from each god. It seems that the servant is modeled after relatives, etc."), strmore
+			chatMore lang("さらに信仰を深めていくことで、下僕以上のものも貰えるそうですよ。…信仰を変えてからわざわざ信仰しなおすことで下僕を貰いなおす信者もいますけど、そこまでする必要はあまりないと思います。", "They say that by deepening your faith even further, you can receive more than just a servant... Some believers even change their faith and then change it again just to receive a servant again, but I don't think it's really necessary to go that far."), strmore
+			goto *chat_end
+		}
+		if ( chatval == 3 ) {
+			chatMore lang("あの本は…皆に確認したけれど、誰も知らないみたいです。ある日、気づいたら出現していました。", "That book… I confirmed with everyone, but it seems no one knows about it. It suddenly appeared one day."), strmore
+			chatMore lang("得体のしれない魔道具のようですが、一流の冒険者はきっとあんなものでも使いこなせるんでしょうね…。", "Though its nature is unclear, it appears to be some mysterious magical artifact of some kind… A top-tier adventurer could likely wield even such an object with ease."), strmore
+			goto *chat_end
+		}
 		goto *chat_end
+		goto *chat_unique_SWEND1
+		_switch_sw++
 	}
 	if ( _switch_val == CREATURE_ID_KYU_BI | _switch_sw ) {
 		_switch_sw = 0
@@ -23841,7 +23939,7 @@
 			if ( gdata(GDATA_NEXT_VOTE) > gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 ) {
 				chatList 1, lang("貢献度の高い有権者に追加投票権（発言力50消費）", "Revival of the right to vote(Authority:50) ")
 			}
-			chatList 2, lang("準備中", "Cancel")
+			chatList 2, lang("ご当地キャラ配置（運営予算200cgp消費）", "Placement of the local mascot (Budget:200) ")
 			chatList 3, lang("準備中", "Cancel")
 			buff = lang("どういう政策を行う" + _noka(3) + "？", "What the policy are you going to do ?")
 			gosub *chat_select
@@ -23856,6 +23954,51 @@
 					txt lang("発言力" + mdata(MDATA_CITY_AUTHORITY) + "→" + afterau + " ", "Authority :" + mdata(MDATA_CITY_AUTHORITY) + " -> " + afterau + " ")
 					mdata(MDATA_CITY_AUTHORITY) -= 50
 				}
+			}
+			if ( chatval == 2 ) {
+				if ( mdata(MDATA_CITY_BUDGET) < 200 ) {
+					chatMore lang("そんな運営予算は無い" + _na(3) + "。", "We don't have that kind of operating budget."), strmore
+					goto *chat_default
+				}
+				if ( gdata(GDATA_AREA) != AREA_VERNIS & gdata(GDATA_AREA) != AREA_PORT_KAPUL ) {
+					chatMore lang("この街では準備中。", "This town is still under preparation."), strmore
+					goto *chat_default
+				}
+				kazu = 1
+				if ( gdata(GDATA_AREA) == AREA_VERNIS ) {
+					if ( findchara(CREATURE_ID_DEVIANT_MINECART) == 0 ) {
+						kazu = 0
+					}
+				}
+				if ( gdata(GDATA_AREA) == AREA_PORT_KAPUL ) {
+					if ( findchara(CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL) == 0 ) {
+						kazu = 0
+					}
+				}
+				if ( kazu != 0 ) {
+					chatMore lang("もう配置されている" + _na(3) + "。", "The mascot has already been placed."), strmore
+					goto *chat_default
+				}
+				else {
+					snd SOUNDLIST_DING2
+					if ( gdata(GDATA_AREA) == AREA_VERNIS ) {
+						flt
+						characreate -1, CREATURE_ID_DEVIANT_MINECART, 19, 7
+						cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
+					}
+					if ( gdata(GDATA_AREA) == AREA_PORT_KAPUL ) {
+						flt
+						characreate -1, CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL, 9, 9
+						cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
+					}
+					afterau = mdata(MDATA_CITY_BUDGET) - 200
+					txt lang("運営予算" + mdata(MDATA_CITY_BUDGET) + "→" + afterau + " ", "Budget :" + mdata(MDATA_CITY_BUDGET) + " -> " + afterau + " ")
+					mdata(MDATA_CITY_BUDGET) -= 200
+					afterau = mdata(MDATA_CITY_TOURISM_REVENUE) + 20
+					txt lang("観光収入" + mdata(MDATA_CITY_TOURISM_REVENUE) + "→" + afterau + " ", "Tourism revenue :" + mdata(MDATA_CITY_TOURISM_REVENUE) + " -> " + afterau + " ")
+					mdata(MDATA_CITY_TOURISM_REVENUE) += 20
+				}
+				goto *chat_end
 			}
 			goto *chat_end
 		}

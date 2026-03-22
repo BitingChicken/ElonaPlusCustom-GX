@@ -1315,6 +1315,8 @@
 	chipc(CHIPC_HEIGHT, xy2pic(17, 35)) = inf_tiles * 2, inf_tiles + 16
 	chipc(CHIPC_HEIGHT, xy2pic(18, 35)) = inf_tiles * 2, inf_tiles + 16
 	chipc(CHIPC_HEIGHT, xy2pic(19, 35)) = inf_tiles * 2, inf_tiles + 16
+	chipc(CHIPC_HEIGHT, xy2pic(26, 35)) = inf_tiles * 2, inf_tiles + 16
+	chipc(CHIPC_HEIGHT, xy2pic(27, 35)) = inf_tiles * 2, inf_tiles + 16
 	dim deco, 3, 300
 	repeat 16
 		deco(0, 1 + cnt * 16) = 0, 1

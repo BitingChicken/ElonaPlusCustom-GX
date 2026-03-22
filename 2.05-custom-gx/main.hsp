@@ -18,9 +18,9 @@
 #include "mock_defines.hsp"
 #endif
 
-#define global VARIANT_NAME "ElonaPlus Custom-GX 2.30.1.1"
-#define global VARIANT_TITLE "Elona+ Custom-GX 2.30.1.1"
-#define global VERSION_STRING "6.40"
+#define global VARIANT_NAME "ElonaPlus Custom-GX 2.31.1.0"
+#define global VARIANT_TITLE "Elona+ Custom-GX 2.31.1.0"
+#define global VERSION_STRING "6.41"
 #define global VERSION_NUMBER int(double(VERSION_STRING) * 1000)
 #define global NET_VERSION	200000
 
@@ -867,6 +867,56 @@
 	if ( mode == MODELIST_CONTINUE ) {
 		gosub *game_load
 	}
+	if ( cfg_operate ) {
+		if ( jp ) {
+			screen 20, 800, 190
+			font lang(cfg_font1, cfg_font2), 13 - en * 2, 0
+			s = lang("★初心者向け基本操作（初期設定）（大文字コマンドはshift押しながら入力）", "Essential is normal mode.")
+			pos 10, 0
+			mes s
+			s = lang("※このウインドウを閉じると連動してゲームも閉じます。設定からこのウインドウが出ないようにもできます。", "Essential is normal mode.")
+			pos 10, 20
+			mes s
+			s = lang("←↑↓→:移動　enter:決定　shift:キャンセル　space:汎用　?:ヘルプを表示(その他操作方法もここ)", "Essential is normal mode.")
+			pos 10, 40
+			mes s
+			s = lang("q:quaff(飲む)　w:wear(装備)　e:eat(食べる)　r:read(読む)　t:tool(使う)　　 i:interact(干渉する)　o:open(開く)　", "Essential is normal mode.")
+			pos 10, 65
+			mes s
+			s = lang("　　　　　　　 W:WideApply(広域能力を使う)　R:Rest(休息)　T:Throw(投げる)　I:itemstack(アイテムスタック)", "Essential is normal mode.")
+			pos 10, 85
+			mes s
+			s = lang("a:apply(能力を使う)　s:search(調べる)　　　d:drop(置く)　　 f:fire(射撃)　g:get(取る)　h:hijump(ハイジャンプ)　", "Essential is normal mode.")
+			pos 10, 110
+			mes s
+			s = lang("A:Ammo(特殊弾切替)　 S:Save(セーブ・設定)　D:Dig(穴を掘る)　F:Feat(特徴)　j:journal(日誌)　*:ターゲット指定", "Essential is normal mode.")
+			pos 10, 130
+			mes s
+			s = lang("z:行動選択　x:アイテム調べる　c:chara(キャラ情報)　v:魔法を唱える　b:bash(体当たり)　m:material(所持マテリアル)", "Essential is normal mode.")
+			pos 10, 155
+			mes s
+			s = lang("Z:Zap(杖を振る)　　　　　　　 C:close(ドアを閉める)　　　　　　　　B:Blend(調合)　", "Essential is normal mode.")
+			pos 10, 175
+			mes s
+		}
+		if ( en ) {
+			if ( cfg_displayLog ) {
+				screen 20, windoww - inf_msgx, 465
+				screen20displayed = 1
+				title "log"
+				pos 0, 0
+				gzoom windoww - inf_msgx, 465, 3, 496, 536, 180, 60
+			} else {
+				exist exedir + "controls.jpg"
+				if ( strsize != (-1) ) {
+					screen 20, 800, 600
+					title "Controls.jpg"
+					pos 0, 0
+					picload exedir + "controls.jpg", 1
+				}
+			}
+		}
+	}
 	gosub *define_los
 	goto *map_init
 
@@ -1523,10 +1573,16 @@
 						}
 					}
 				}
+				if ( cdata(CDATA_ID, cnt) == CREATURE_ID_KYU_BI | cdata(CDATA_ID, cnt) == CREATURE_ID_GODWOLF ) {
+					if ( cdata(CDATA_ALLIED, cnt) != 100 ) {
+						if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_ALIVE ) {
+							mdata(MDATA_WEREWOLF_PROGRESS) = 0
+							kitune = 0
+							break
+						}
+					}
+				}
 			loop
-			if ( gdata(GDATA_FLAG_MAIN) < 180 ) { // James: Disable Werewolf until Act II
-				kitune = 0
-			}
 			if ( kitune == 10 ) {
 				if ( detect < 2 ) {
 					txtef COLOR_YELLOW
@@ -2140,7 +2196,7 @@
 		}
 		goto *turn_end
 	}
-	if ( cdata(CDATA_CONDITION_SUFFOCATION, cc) >= 15 | cdata(CDATA_CONDITION_SLEEP, cc) > 0 | (cdata(CDATA_CONDITION_PARALYZE, cc) > 0 & rnd(2) == 0) | cdata(CDATA_CONDITION_DIM, cc) >= 60 | (findbuff(cc, BUFF_MELANCHOLY) != (-1) & rnd(10) == 0) ) {
+	if ( cdata(CDATA_CONDITION_SUFFOCATION, cc) >= 15 | cdata(CDATA_CONDITION_SLEEP, cc) > 0 | (cdata(CDATA_CONDITION_PARALYZE, cc) > 0 & rnd(2) == 0) | cdata(CDATA_CONDITION_DIM, cc) >= 60 | cdata(CDATA_INCAPACITATED, cc) < 0 | (findbuff(cc, BUFF_MELANCHOLY) != (-1) & rnd(10) == 0) ) {
 		if ( cc == CHARA_PLAYER ) {
 			if ( cdata(CDATA_CONDITION_SUFFOCATION, cc) >= 15 ) {
 				await 120
@@ -2266,7 +2322,7 @@
 			}
 		}
 		if ( findbuff(cc, BUFF_HARMONIC_ASSAULT) != (-1) ) {
-			if ( cdata(CDATA_ROW_ACT, cc) == ACTION_PERSUASION | cdata(CDATA_ROW_ACT, cc) == ACTION_PECULIAR_JOKE | cdata(CDATA_ROW_ACT, cc) == ACTION_BLENDED_LIE | cdata(CDATA_ROW_ACT, cc) == ACTION_INTIMIDATION | cdata(CDATA_ROW_ACT, cc) == ACTION_MYSTERIOUS_SONG ) {
+			if ( cdata(CDATA_ROW_ACT, cc) == ACTION_PERSUASION | cdata(CDATA_ROW_ACT, cc) == ACTION_PECULIAR_JOKE | cdata(CDATA_ROW_ACT, cc) == ACTION_BLENDED_LIE | cdata(CDATA_ROW_ACT, cc) == ACTION_INTIMIDATION | cdata(CDATA_ROW_ACT, cc) == ACTION_MYSTERIOUS_SONG | cdata(CDATA_ROW_ACT, cc) == ACTION_CHEER ) {
 				rtval = 2
 			}
 		}
@@ -2383,6 +2439,10 @@
 		if ( cdata(CDATA_ROW_ACT, cc) == ACTION_MYSTERIOUS_SONG ) {
 			at 5
 			gosub *skill_mysterious_song
+		}
+		if ( cdata(CDATA_ROW_ACT, cc) == ACTION_CHEER ) {
+			at 5
+			gosub *skill_act_cheer
 		}
 		if ( cdata(CDATA_ROW_ACT, cc) == ACTION_WORK_A ) {
 			at 5
@@ -8150,30 +8210,37 @@
 				}
 				if ( rnd(10) == 0 ) {
 					homeu++
-					if ( (gdata(GDATA_DAY) + homeu) \ 4 == 0 ) {
+					if ( (gdata(GDATA_DAY) + homeu) \ 5 == 0 ) {
 						if ( findcharahome(CREATURE_ID_SCARD_THE_HAPPY_SWALLOW) == 0 ) {
 							characreate -1, CREATURE_ID_SCARD_THE_HAPPY_SWALLOW, -3, 0
 							cdata(CDATA_ROLE, rc) = ROLE_GUEST_HOUSEMATE
 							break
 						}
 					}
-					if ( (gdata(GDATA_DAY) + homeu) \ 4 == 1 ) {
+					if ( (gdata(GDATA_DAY) + homeu) \ 5 == 1 ) {
 						if ( findcharahome(CREATURE_ID_OXODE_THE_QUEEN_BEE) == 0 ) {
 							characreate -1, CREATURE_ID_OXODE_THE_QUEEN_BEE, -3, 0
 							cdata(CDATA_ROLE, rc) = ROLE_GUEST_HOUSEMATE
 							break
 						}
 					}
-					if ( (gdata(GDATA_DAY) + homeu) \ 4 == 2 ) {
+					if ( (gdata(GDATA_DAY) + homeu) \ 5 == 2 ) {
 						if ( findcharahome(CREATURE_ID_IMARITUKA_THE_ZASIKI_WARAI) == 0 ) {
 							characreate -1, CREATURE_ID_IMARITUKA_THE_ZASIKI_WARAI, -3, 0
 							cdata(CDATA_ROLE, rc) = ROLE_GUEST_HOUSEMATE
 							break
 						}
 					}
-					if ( (gdata(GDATA_DAY) + homeu) \ 4 == 3 ) {
+					if ( (gdata(GDATA_DAY) + homeu) \ 5 == 3 ) {
 						if ( findcharahome(CREATURE_ID_TELHUREZA_THE_HOUSE_GUARD) == 0 ) {
 							characreate -1, CREATURE_ID_TELHUREZA_THE_HOUSE_GUARD, -3, 0
+							cdata(CDATA_ROLE, rc) = ROLE_GUEST_HOUSEMATE
+							break
+						}
+					}
+					if ( (gdata(GDATA_DAY) + homeu) \ 5 == 4 ) {
+						if ( findcharahome(CREATURE_ID_MOMALARIA_THE_BLOODSUCKER) == 0 ) {
+							characreate -1, CREATURE_ID_MOMALARIA_THE_BLOODSUCKER, -3, 0
 							cdata(CDATA_ROLE, rc) = ROLE_GUEST_HOUSEMATE
 							break
 						}

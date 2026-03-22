@@ -825,7 +825,7 @@
 
 	; Abilities
 	if ( act >= STARTING_SKILL_SPACT ) {
-		if ( act == SKILL_SPACT_DISTURBANCE | cdata(CDATA_SEALED_ABILITY, cc) == 0 ) {
+		if ( act == SKILL_SPACT_DISTURBANCE | cbit(CHARA_BIT_SEALED_ABILITY, cc) == 0 ) {
 			efid = act
 			gosub *action
 			if ( stat == 1 ) {

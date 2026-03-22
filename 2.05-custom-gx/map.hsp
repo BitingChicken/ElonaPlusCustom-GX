@@ -3670,31 +3670,47 @@
 				itemcreate -1, ITEM_ID_DUMMY, -1, -1, 0
 			loop
 			repeat 2 + rnd(2)
+				kaiwa = rnd(4)
 				if ( gdata(GDATA_FLAG_SHIP_LAST_PORT) \ 100 == 53 ) {
 					if ( rnd(2) == 0 ) {
 						flt
 						itemcreate -1, ITEM_ID_SAZAE, -1, -1, 0
+						inv(INV_ITEM_VALUE, ci) = inv(INV_ITEM_VALUE, ci) + kaiwa * 600
+						inv(INV_ITEM_WEIGHT, ci) = inv(INV_ITEM_WEIGHT, ci) + kaiwa * 100
 					}
 				}
 				if ( gdata(GDATA_FLAG_SHIP_LAST_PORT) \ 100 == 54 ) {
 					if ( rnd(6) == 0 ) {
 						flt
 						itemcreate -1, ITEM_ID_COCONUT_CRAB, -1, -1, 0
+						inv(INV_ITEM_VALUE, ci) = inv(INV_ITEM_VALUE, ci) + kaiwa * 600
+						inv(INV_ITEM_WEIGHT, ci) = inv(INV_ITEM_WEIGHT, ci) + kaiwa * 100
 					}
 				}
 				if ( gdata(GDATA_FLAG_SHIP_LAST_PORT) \ 100 == 36 ) {
 					if ( rnd(2) == 0 ) {
 						flt
 						itemcreate -1, ITEM_ID_HAMAGURI, -1, -1, 0
+						inv(INV_ITEM_VALUE, ci) = inv(INV_ITEM_VALUE, ci) + kaiwa * 600
+						inv(INV_ITEM_WEIGHT, ci) = inv(INV_ITEM_WEIGHT, ci) + kaiwa * 100
 					}
 				}
 				if ( gdata(GDATA_FLAG_SHIP_LAST_PORT) \ 100 == 11 ) {
 					if ( rnd(2) == 0 ) {
 						flt
 						itemcreate -1, ITEM_ID_HOTATE, -1, -1, 0
+						inv(INV_ITEM_VALUE, ci) = inv(INV_ITEM_VALUE, ci) + kaiwa * 600
+						inv(INV_ITEM_WEIGHT, ci) = inv(INV_ITEM_WEIGHT, ci) + kaiwa * 100
 					}
 				}
 			loop
+			kaiwa = rnd(4)
+			if ( rnd(4) == 0 ) {
+				flt
+				itemcreate -1, ITEM_ID_MESUGAKI, -1, -1, 0
+				inv(INV_ITEM_VALUE, ci) = inv(INV_ITEM_VALUE, ci) + kaiwa * 600
+				inv(INV_ITEM_WEIGHT, ci) = inv(INV_ITEM_WEIGHT, ci) + kaiwa * 100
+			}
 			if ( gdata(GDATA_DEEPEST_LEVEL) > 91 ) {
 				if ( rnd(5) == 0 ) {
 					flt
@@ -12374,11 +12390,6 @@
 						cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
 						map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), MAP_CHARA_INDEX_PLUS_ONE) = 0
 					}
-					// James - Despawns GODWOLF and KYU-BI too.
-					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_GODWOLF | cdata(CDATA_ID, cnt) == CREATURE_ID_KYU_BI ) {
-						cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
-						map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), MAP_CHARA_INDEX_PLUS_ONE) = 0
-					}
 				}
 				if ( gdata(GDATA_AREA) == AREA_HOME ) {
 					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_MAGIC_BEE ) {
@@ -12393,7 +12404,7 @@
 			loop
 			if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS | gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
 				if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
-					if ( gdata(GDATA_AREA) != AREA_MELUGAS & gdata(GDATA_FLAG_MAIN) >= 180 ) { // James: Disable this until act II
+					if ( gdata(GDATA_AREA) != AREA_MELUGAS ) {
 						prevent = limit(mdata(MDATA_BEAR_EXTERMINATION) * 10 + 200, 100, 300)
 						if ( rnd(prevent) == 0 ) {
 							kx = -1

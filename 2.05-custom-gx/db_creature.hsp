@@ -4,7 +4,238 @@
 	}
 	dbsum = 0
 	dbmax = 0
-	
+
+*db_creature_MOMALARIA_THE_BLOODSUCKER
+	if ( 145 > objlv ) {
+		goto *db_creature_BIG_MOSQUITO
+	}
+	if ( fltselect != 3 ) {
+		goto *db_creature_BIG_MOSQUITO
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_BIG_MOSQUITO
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "beetle" ) {
+			goto *db_creature_BIG_MOSQUITO
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_MOMALARIA_THE_BLOODSUCKER + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_BIG_MOSQUITO
+		}
+	}
+	dbsum += 10000 / (500 + abs(objlv - 145) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_MOMALARIA_THE_BLOODSUCKER, dbsum
+	dbmax++
+
+*db_creature_BIG_MOSQUITO
+	if ( 123 > objlv ) {
+		goto *db_creature_QUEEN_SEDONA_THE_SAIL_GIRL
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_QUEEN_SEDONA_THE_SAIL_GIRL
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_QUEEN_SEDONA_THE_SAIL_GIRL
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "beetle" ) {
+			goto *db_creature_QUEEN_SEDONA_THE_SAIL_GIRL
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_BIG_MOSQUITO + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_QUEEN_SEDONA_THE_SAIL_GIRL
+		}
+	}
+	dbsum += 30000 / (500 + abs(objlv - 123) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_BIG_MOSQUITO, dbsum
+	dbmax++
+
+*db_creature_QUEEN_SEDONA_THE_SAIL_GIRL
+	if ( 50 > objlv ) {
+		goto *db_creature_PROPA_GANDAR_THE_MOBILE_ADVERTISER
+	}
+	if ( fltselect != 3 ) {
+		goto *db_creature_PROPA_GANDAR_THE_MOBILE_ADVERTISER
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_PROPA_GANDAR_THE_MOBILE_ADVERTISER
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "spirit" ) {
+			goto *db_creature_PROPA_GANDAR_THE_MOBILE_ADVERTISER
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_PROPA_GANDAR_THE_MOBILE_ADVERTISER
+		}
+	}
+	dbsum += 10000 / (500 + abs(objlv - 50) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL, dbsum
+	dbmax++
+
+*db_creature_PROPA_GANDAR_THE_MOBILE_ADVERTISER
+	if ( 100 > objlv ) {
+		goto *db_creature_DEVIANT_MINECART
+	}
+	if ( fltselect != 3 ) {
+		goto *db_creature_DEVIANT_MINECART
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_DEVIANT_MINECART
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "machine" ) {
+			goto *db_creature_DEVIANT_MINECART
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_DEVIANT_MINECART
+		}
+	}
+	dbsum += 10000 / (500 + abs(objlv - 100) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER, dbsum
+	dbmax++
+
+*db_creature_DEVIANT_MINECART
+	if ( 50 > objlv ) {
+		goto *db_creature_MASKED_MUSANGOD
+	}
+	if ( fltselect != 3 ) {
+		goto *db_creature_MASKED_MUSANGOD
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_MASKED_MUSANGOD
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "spirit" ) {
+			goto *db_creature_MASKED_MUSANGOD
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_DEVIANT_MINECART + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_MASKED_MUSANGOD
+		}
+	}
+	dbsum += 10000 / (500 + abs(objlv - 50) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_DEVIANT_MINECART, dbsum
+	dbmax++
+
+*db_creature_MASKED_MUSANGOD
+	if ( 194 > objlv ) {
+		goto *db_creature_KAKOI_ANAGUMA
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_KAKOI_ANAGUMA
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_KAKOI_ANAGUMA
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "cat" ) {
+			goto *db_creature_KAKOI_ANAGUMA
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_MASKED_MUSANGOD + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_KAKOI_ANAGUMA
+		}
+	}
+	dbsum += 5000 / (500 + abs(objlv - 194) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_MASKED_MUSANGOD, dbsum
+	dbmax++
+
+*db_creature_KAKOI_ANAGUMA
+	if ( 98 > objlv ) {
+		goto *db_creature_MADEER
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_MADEER
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_RACE_KAKOI_ANAGUMA ) {
+			goto *db_creature_MADEER
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bear" ) {
+			goto *db_creature_MADEER
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_KAKOI_ANAGUMA + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_MADEER
+		}
+	}
+	dbsum += 70000 / (500 + abs(objlv - 98) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_KAKOI_ANAGUMA, dbsum
+	dbmax++
+
 *db_creature_MADEER
 	if ( 50 > objlv ) {
 		goto *db_creature_MATICK
@@ -36541,6 +36772,565 @@
 	return
 
 *db_creature2
+	if ( dbid == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 6
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 10
+			}
+			if ( dbspec == 2 ) {
+				return lang("吸血妊婦『ママラリア』", "<Momalaria> the bloodsucker")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "beetle"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1182
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_MOMALARIA_THE_BLOODSUCKER
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 145
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = 97
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 95
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 10
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_DRAIN_BLOOD, ACTION_MELEE, ACTION_RANGE, SKILL_SPACT_BODY_BLOW, SKILL_SPACT_BODY_BLOW
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_SUMMON_CHAOS
+			cdata(CDATA_ACT_INDEX, rc) = 15
+			cdatan(CDATAN_NAME, rc) = lang("吸血妊婦『ママラリア』", "<Momalaria> the bloodsucker")
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "beetle"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "gunner"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 1
+			cdata(CDATA_PIC, rc) = xy2pic(27, 35)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			fixlv = FIX_QUALITY_UNIQUE
+			cspecialeq = 1
+			return
+		}
+		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
+			eqammo = 25030, 3
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_BIG_MOSQUITO ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 30
+			}
+			if ( dbspec == 2 ) {
+				return lang("ビッグモスキート", "big mosquito")
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia2/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "beetle"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1181
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_BIG_MOSQUITO
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 123
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 95
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_DRAIN_BLOOD, ACTION_MELEE, SKILL_SPACT_BODY_BLOW, SKILL_SPACT_BODY_BLOW
+			cdata(CDATA_ACT_INDEX, rc) = 4
+			cdatan(CDATAN_NAME, rc) = lang("ビッグモスキート", "big mosquito")
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "beetle"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "predator"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(26, 35)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「マスコットの仕事など、女王にふさわしくなかろう」", cnvtalk("I should hope being a mere mascot is a task beneath an esteemed queen such as myself!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「戦いたいならば戦艦とやるがよい！」", cnvtalk("If you wish to fight, then face one of the battleships!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「ろ、ロストなどしとうない！」", cnvtalk("I don't want to lose!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「わらわの前にひれ伏すのだ！」", cnvtalk("Bow before me!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 6
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 10
+			}
+			if ( dbspec == 2 ) {
+				return lang("帆娘の『クイーン・セドナ』", "<Queen Sedona> the sail girl")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "spirit"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1180
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 50
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 2
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 50
+			cdata(CDATA_AI_DISTANCE, rc) = 3
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_RANGE
+			cdata(CDATA_ACT_INDEX, rc) = 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("帆娘の『クイーン・セドナ』", "<Queen Sedona> the sail girl")
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "spirit"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "tourist"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 1
+			cdata(CDATA_PIC, rc) = xy2pic(25, 35)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			fixlv = FIX_QUALITY_UNIQUE
+			cspecialeq = 1
+			return
+		}
+		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
+			eqrange = 714
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「イェルス軍が世界の治安を守るぞ！」", cnvtalk("The Yerles Army shall maintain world peace!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「私の動力炉と勇気が！熱く！燃えている！」", cnvtalk("My reactor core and COURAGE burn hot!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「この世に愛と正義とイェルス軍がある限り、私は再び立ち上がる！」", cnvtalk("As long as love, justice, and the Yerles Army exist in this world, I shall rise again!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「メルガス基地監修カレーもヨロシク！」", cnvtalk("Don't forget to try the official Melugas Base supervision curry!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 6
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 10
+			}
+			if ( dbspec == 2 ) {
+				return lang("機動宣伝『プロパ・ガンダー』", "<Propa-gandar> the mobile advertiser")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "machine"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1212
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 100
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 2
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 90
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 20
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_SPEED, SKILL_SPELL_HERO
+			cdata(CDATA_ACT_INDEX, rc) = 21
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("機動宣伝『プロパ・ガンダー』", "<Propa-gandar> the mobile advertiser")
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "machine"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "warmage"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 0
+			cdata(CDATA_PIC, rc) = xy2pic(24, 36)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			fixlv = FIX_QUALITY_UNIQUE
+			cspecialeq = 1
+			return
+		}
+		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
+			eqweapon1 = 759, 3
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_DEVIANT_MINECART ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「とびだすな　トロッコは急に　止まれない」", cnvtalk("Don't jump out, the minecart can't, stop suddenly!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「トロいんだよ」", cnvtalk("Too slow."))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「敷かれたレールから飛び出せ！」", cnvtalk("Get off my tracks!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「弱すぎて轢くわ〜」", cnvtalk("I felt nothing running over you~"))
+			return 1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 6
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 10
+			}
+			if ( dbspec == 2 ) {
+				return lang("道を外れた『問題トロッコ』", "<Deviant Minecart>")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "spirit"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1179
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_DEVIANT_MINECART
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 50
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 2
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 95
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(CDATA_ACT_INDEX, rc) = 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("道を外れた『問題トロッコ』", "<Deviant Minecart>")
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "spirit"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "predator"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 0
+			cdata(CDATA_PIC, rc) = xy2pic(24, 35)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			fixlv = FIX_QUALITY_UNIQUE
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_MASKED_MUSANGOD ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 5
+			}
+			if ( dbspec == 2 ) {
+				return lang("白鼻神", "masked musangod")
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/wild/nefia6/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "cat"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1209
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_MASKED_MUSANGOD
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 194
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 60
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE, ACTION_MELEE, ACTION_MELEE, SKILL_SPACT_THUNDERCLAP_KICK, SKILL_SPACT_THUNDERCLAP_KICK
+			cdata(CDATA_ACT_INDEX, rc) = 5
+			cdatan(CDATAN_NAME, rc) = lang("白鼻神", "masked musangod")
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "cat"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "predator"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			sdata(SKILL_RES_LIGHTNING, rc) = 800
+			if ( 0 != 0 ) {
+				sdata(rsres0, rc) = 800
+			}
+			if ( 0 != 0 ) {
+				sdata(rsres0, rc) = 800
+			}
+			cdata(CDATA_PIC, rc) = xy2pic(21, 36)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_KAKOI_ANAGUMA ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 70
+			}
+			if ( dbspec == 2 ) {
+				return lang("囲い穴熊", "kakoi anaguma")
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia1/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bear"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1178
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_KAKOI_ANAGUMA
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 98
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 5
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 10
+			creaturepack = FILTER_RACE_KAKOI_ANAGUMA
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_WAIT_MELEE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_DIVING_DRILL
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			cdatan(CDATAN_NAME, rc) = lang("囲い穴熊", "kakoi anaguma")
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bear"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "warrior"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(23, 35)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 1
+			return
+		}
+		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
+			eqmultiweapon = 453, 3
+			return
+		}
+		return 0
+	}
 	if ( dbid == CREATURE_ID_MADEER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == 3 ) {
@@ -36588,7 +37378,7 @@
 			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE, ACTION_MELEE, ACTION_MELEE, SKILL_SPELL_ILLUSION_ROAR, SKILL_SPELL_ILLUSION_ROAR
 			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_SPEED, SKILL_SPELL_SLOW
 			cdata(CDATA_ACT_INDEX, rc) = 25
-			cdata(CDATA_ACT_HEAL, rc) = 402
+			cdata(CDATA_ACT_HEAL, rc) = SKILL_SPELL_CURE_OF_ERIS
 			cdatan(CDATAN_NAME, rc) = lang("マジカ", "madeer")
 			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
 			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
@@ -36656,7 +37446,7 @@
 			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_DRAIN_BLOOD, SKILL_SPACT_DRAIN_BLOOD, SKILL_SPELL_NERVE_ARROW, SKILL_SPELL_NERVE_ARROW, SKILL_SPELL_NERVE_ARROW
 			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_MIST_OF_SILENCE
 			cdata(CDATA_ACT_INDEX, rc) = 15
-			cdata(CDATA_ACT_HEAL, rc) = 644
+			cdata(CDATA_ACT_HEAL, rc) = SKILL_SPACT_SUICIDE_ATTACK
 			cdatan(CDATAN_NAME, rc) = lang("魔ダニ", "matick")
 			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
 			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
@@ -37488,7 +38278,7 @@
 			creaturepack = FILTER_NOTHING
 			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_SHADOW_STEP, SKILL_SPACT_SHADOW_STEP, SKILL_SPACT_DECAPITATION, SKILL_SPELL_MIND_THORN, SKILL_SPACT_KAMIKAKUSHI
 			cdata(CDATA_ACT_INDEX, rc) = 5
-			cdata(CDATA_ACT_HEAL, rc) = 866
+			cdata(CDATA_ACT_HEAL, rc) = SKILL_SPACT_KAMIKAKUSHI
 			cdatan(CDATAN_NAME, rc) = lang("秘伝式折神『紙隠』", "<Kamikakushi> the hidden ShikiOrigami")
 			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
 			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
@@ -124280,6 +125070,17 @@
 	// This causes weird bugs in almost every version of CGX, so if you don't want to change every reference to "filter_creature".
 	// Just change filter_creature(bullshit_number) to filter_creature(new_creature_id + 2) like the ones below.
 	// Make sure the filter matches or you will get bugs like fairys spawning in lake dungeons or something.
+	filter_creature(CREATURE_ID_MOMALARIA_THE_BLOODSUCKER + 2) = ""
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_MOMALARIA_THE_BLOODSUCKER), CHARA_BIT_FLOAT \ 32
+	filter_creature(CREATURE_ID_BIG_MOSQUITO + 2) = "/nefia2/"
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_BIG_MOSQUITO), CHARA_BIT_FLOAT \ 32
+	HMMBITON cbitorg(CHARA_BIT_RES_CONFUSE / 32, CREATURE_ID_BIG_MOSQUITO), CHARA_BIT_RES_CONFUSE \ 32
+	HMMBITON cbitorg(CHARA_BIT_RES_BLIND / 32, CREATURE_ID_BIG_MOSQUITO), CHARA_BIT_RES_BLIND \ 32
+	filter_creature(CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL + 2) = ""
+	filter_creature(CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER + 2) = ""
+	filter_creature(CREATURE_ID_DEVIANT_MINECART + 2) = ""
+	filter_creature(CREATURE_ID_MASKED_MUSANGOD + 2) = "/wild/nefia6/"
+	filter_creature(CREATURE_ID_KAKOI_ANAGUMA + 2) = "/nefia1/"
 
 	filter_creature(CREATURE_ID_MADEER + 2) = ""
 	HMMBITON cbitorg(CHARA_BIT_SUPERIOR_RIDING / 32, CREATURE_ID_MADEER), CHARA_BIT_SUPERIOR_RIDING \ 32

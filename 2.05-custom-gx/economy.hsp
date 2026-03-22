@@ -254,41 +254,53 @@
 			if ( mdata(MDATA_CITY_PROPERTY_VALUE) <= (-50) ) {
 				s1 = "Chaos"
 			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) <= (-100) ) {
-				s2 = lang("腐れ暴君", "Tyrant")
+			imp = 0
+			kazu = 0
+			repeat 245
+				if ( cnt < 16 ) {
+					continue
+				}
+				if ( cdata(CDATA_RELATION, cnt) == RELATION_ALLY ) {
+					continue
+				}
+				if ( cdata(CDATA_ROLE, cnt) == ROLE_NONE ) {
+					continue
+				}
+				if ( cbit(CHARA_BIT_NECRO, cnt) == TRUE ) {
+					continue
+				}
+				if ( cdata(CDATA_ROLE, cnt) == ROLE_ADVENTURER ) {
+					continue
+				}
+				if ( cbit(CHARA_BIT_GUARD_TEMP, cnt) == TRUE ) {
+					continue
+				}
+				kazu++
+				if ( cdata(CDATA_IMPRESSION, cnt) >= 100 ) {
+					imp++
+				}
+			loop
+			imp = imp * 100 / kazu
+			if ( imp < 5 ) {
+				s2 = lang("<税金泥棒>", "<Tax-Thief>")
 			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) > (-100) & mdata(MDATA_CITY_APPROVAL_RATE) <= (-80) ) {
-				s2 = lang("悪政者", "Misrule")
+			if ( imp >= 5 & imp < 20 ) {
+				s2 = lang("期待外れ", "Disappointment")
 			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) > (-80) & mdata(MDATA_CITY_APPROVAL_RATE) <= (-60) ) {
-				s2 = lang("税金泥棒", "Zeikin-Dorobou")
+			if ( imp >= 20 & imp < 40 ) {
+				s2 = lang("正直微妙", "No Voice Raised")
 			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) > (-60) & mdata(MDATA_CITY_APPROVAL_RATE) <= (-40) ) {
-				s2 = lang("ただの無能", "Incompetence")
+			if ( imp >= 40 & imp < 60 ) {
+				s2 = lang("まぁこんなもん", "No Opinion")
 			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) > (-40) & mdata(MDATA_CITY_APPROVAL_RATE) <= (-20) ) {
-				s2 = lang("期待外れ", "Disappointing")
+			if ( imp >= 60 & imp < 80 ) {
+				s2 = lang("特に不満無し", "No Complaints")
 			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) > (-20) & mdata(MDATA_CITY_APPROVAL_RATE) < 0 ) {
-				s2 = lang("正直微妙", "Not good enough")
+			if ( imp >= 80 & imp < 95 ) {
+				s2 = lang("管理者の模範", "Role Model")
 			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) >= 0 & mdata(MDATA_CITY_APPROVAL_RATE) < 20 ) {
-				s2 = lang("無益無害", "Useless and harmless")
-			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) >= 20 & mdata(MDATA_CITY_APPROVAL_RATE) < 40 ) {
-				s2 = lang("割と普通", "Common")
-			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) >= 40 & mdata(MDATA_CITY_APPROVAL_RATE) < 60 ) {
-				s2 = lang("これからに期待", "Promising")
-			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) >= 60 & mdata(MDATA_CITY_APPROVAL_RATE) < 80 ) {
-				s2 = lang("希望の星", "Excellent")
-			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) >= 80 & mdata(MDATA_CITY_APPROVAL_RATE) < 100 ) {
-				s2 = lang("まさに名君", "Role model")
-			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) >= 100 ) {
-				s2 = lang("街の守護者", "Ruler of virtue")
+			if ( imp >= 95 ) {
+				s2 = lang("<街の希望>", "<the Hope of " + mdatan(MDATAN_NAME) + ">")
 			}
 			taiki = mdata(MDATA_CITY_ETHER_CORRUPTION)
 			if ( gdata(GDATA_WEATHER) == WEATHER_ETHER ) {
@@ -324,11 +336,11 @@
 			x = wx + 50
 			y = wy + 196
 			pos x, y
-			mes lang("観光収入　　　" + mdata(MDATA_CITY_TOURISM_REVENUE) + "gp　", "Tourism revenue     " + mdata(MDATA_CITY_TOURISM_REVENUE) + "gp ")
+			mes lang("観光収入　　　" + mdata(MDATA_CITY_TOURISM_REVENUE) + "cgp　", "Tourism revenue     " + mdata(MDATA_CITY_TOURISM_REVENUE) + " cgp ")
 			x = wx + 50
 			y = wy + 212
 			pos x, y
-			mes lang("維持費　　　　" + mdata(MDATA_CITY_MAINTENANCE_COST) + "gp　", "Maintenance costs   " + mdata(MDATA_CITY_MAINTENANCE_COST) + "gp ")
+			mes lang("維持費　　　　" + mdata(MDATA_CITY_MAINTENANCE_COST) + "cgp　", "Maintenance costs   " + mdata(MDATA_CITY_MAINTENANCE_COST) + " cgp ")
 			x = wx + 50
 			y = wy + 228
 			pos x, y
@@ -346,7 +358,7 @@
 				x = wx + 50
 				y = wy + 312
 				pos x, y
-				mes lang("支持率　　　　" + mdata(MDATA_CITY_APPROVAL_RATE) + "%　", "Approval rate       " + mdata(MDATA_CITY_APPROVAL_RATE) + "% ")
+				mes lang("支持率　　　　" + imp + "%　", "Approval rate       " + imp + "% ")
 				x = wx + 50
 				y = wy + 328
 				pos x, y

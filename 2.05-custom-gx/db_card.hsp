@@ -1,4 +1,95 @@
 *db_card
+	if ( dbid == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
+		cardreftype = 10
+		cardrefskill = lang("ビッグモスキートの頭や足が変異した特殊個体。人家を訪問し、うっかり招き入れてしまうと大繁殖してアグレッシブに住人を襲う。家に帰れなくなり街にたむろし続ける市民が誕生する原因でもある。招かれないと家に入れないのが弱点。", "Big Mosquito Mutant: A special variant with enlarged head and limbs. If accidentally invited into homes, they breed rapidly and aggressively attack inhabitants. These incidents cause citizens to be unable to return home, congregating in the streets.")
+		cardrefdomain = 6
+		cardrefrare = 10
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("吸血妊婦『ママラリア』", "<Momalaria> the bloodsucker")
+		cardrefpic = xy2pic(27, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1143 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_BIG_MOSQUITO ) {
+		cardreftype = 10
+		cardrefskill = lang("現代イルヴァにおける人間ぶっ殺しナンバーワン生物。目立たないだけで死因の7〜8割が蚊。ほぼビッグモスキートに自宅で襲われて死ぬ。インド象とかマンモスとか関係なく鉄拳で叩きのめし、性別とか産卵時期とか関係なく吸血する。", "Mosquito: The number one human killer in modern Irva. Most deaths occur at home, crushed by these unassuming insects. Even an Indian Elephant or mammoth is no match, as mosquitoes don't discriminate by gender or breeding season.")
+		cardrefdomain = 6
+		cardrefrare = 30
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("ビッグモスキート", "big mosquito")
+		cardrefpic = xy2pic(26, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1142 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL ) {
+		cardreftype = 10
+		cardrefskill = lang("ポート・カプールへの処女航海中にエーテル風で沈没したはずの帆船。一度は船体が引き裂かれて海の藻屑と化したがその時不思議なことが起こり、なんか人型になって目的の港へたどり着いた。女王様気どりだが元が商船なのでカネにうるさく、戦闘力も低い。", "Queen Sedona: A sailing ship that sank during its maiden voyage to Port Kapul due to an Etherwind. Though its hull was torn apart, it inexplicably transformed into a humanoid form and reached its destination. It acts haughty like a queen, but being originally a merchant vessel, it's quite money-oriented and lacks combat strength.")
+		cardrefdomain = 6
+		cardrefrare = 10
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("帆娘の『クイーン・セドナ』", "<Queen Sedona> the sail girl")
+		cardrefpic = xy2pic(25, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1141 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER ) {
+		cardreftype = 10
+		cardrefskill = lang("イェルス軍の公式広報キャラクター。余った広報予算を使い切るため開発主任にPR用の実機を作らせたところ、決戦兵器の規格落ち部品や不採用部品を流用。宣伝目的なのにやたら強力な機体へと仕上がった。", "The official PR character of the Yerles Army. Created to spend leftover promotion funds, it was made using surplus and rejected parts, resulting in an overly powerful machine for just PR purposes.")
+		cardrefdomain = 6
+		cardrefrare = 10
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("機動宣伝『プロパ・ガンダー』", "<Propa-gandar> the mobile advertiser")
+		cardrefpic = xy2pic(24, 36) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1140 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_DEVIANT_MINECART ) {
+		cardreftype = 10
+		cardrefskill = lang("トロッコ事故の危険性を啓発するためのキャラクター。もしも行く手に５人の作業員、分かれ道に１人の作業員がいた場合、レールから外れて全員轢きに行くタイプの問題児。積んでいるのは犠牲者の血で染めた鉱石だ。", "Character designated to educate about the dangers of minecart accidents. If encountered with 5 workers ahead and 1 at a fork, it will do a multi-track drift to run all of them down.")
+		cardrefdomain = 6
+		cardrefrare = 10
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("道を外れた『問題トロッコ』", "<Deviant Minecart>")
+		cardrefpic = xy2pic(24, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1139 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MASKED_MUSANGOD ) {
+		cardreftype = 10
+		cardrefskill = lang("ハクビシン。その名の通り、鼻筋の白いラインが特徴。雷神の欠片を宿しており、雷に乗って高速移動することから雷獣の異名を持つ。狸に間違われることも多いが、どちらかというと猫の親戚であり木登りが得意。", "Also known as the Hakubishin. As its name suggests, it is characterized by a white stripe on its nose. Said to harbor a shard of the Lightning God within, enabling it to move at high speeds by riding lightning currents, earning it the moniker of the 'Thunder Beast'. While often mistaken for a raccoon, it is more closely related to cats and is adept at climbing trees.")
+		cardrefdomain = 6
+		cardrefrare = 5
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("白鼻神", "masked musangod")
+		cardrefpic = xy2pic(21, 36) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1138 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_KAKOI_ANAGUMA ) {
+		cardreftype = 10
+		cardrefskill = lang("別名ムジナ。味方を囲んで防御力の高い密集陣形を作る。狸とは親戚ではないのだが見た目が似ており、穴熊が掘った巣穴に狸が勝手に住み着くことがあるので本当に紛らわしい。同じ穴のムジナと言われて混同されがち。", "Also known as the Badger (Mujina). It forms a dense, defensive formation by surrounding allies. Despite their similar appearance, they are not related to raccoons. Sometimes, they occupy holes dug by raccoons, causing confusion within them.")
+		cardrefdomain = 6
+		cardrefrare = 70
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("囲い穴熊", "kakoi anaguma")
+		cardrefpic = xy2pic(23, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1137 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
 	if ( dbid == CREATURE_ID_MADEER ) {
 		cardreftype = 10
 		cardrefskill = lang("馬の隣に並べてはいけない生物。食欲がすごく、こいつが山に数匹いるだけでマジで山がハゲ山に変わるほど。寄生虫が身体にめちゃくちゃついており、植物を食い漁った地域に寄生虫を残していく。", "A creature that should never be placed next to a horse. It has an enormous appetite - having just a few of these in a mountain can strip it bare, turning it into a barren, bald mountain. It is covered in parasites and leaves a trail of these parasites in the areas it has ravaged by feeding on plants.")

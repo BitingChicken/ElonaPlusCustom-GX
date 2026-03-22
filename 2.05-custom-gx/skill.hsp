@@ -1090,7 +1090,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_RESCUE_REQUEST) = SKILL_ATTR_CHA, SKILL_TYPE_SP, 10, 3000 + 6, 500
 	skillname(SKILL_SPACT_RESCUE_REQUEST) = lang("救援要請", "Rescue request")
-	skilldesc(SKILL_SPACT_RESCUE_REQUEST) = lang("ゲージ30％消費し助けを求める", "Call for help/gauge30")
+	skilldesc(SKILL_SPACT_RESCUE_REQUEST) = lang("ゲージ30％消費し助けを求める", "Call for help [30% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_MEWMEWMEW) = SKILL_ATTR_LUC, SKILL_TYPE_SP, 1, TARGET_TYPE_SELF, 500
 	skillname(SKILL_SPACT_MEWMEWMEW) = lang("うみみゃぁ！", "Mewmewmew!")
@@ -1246,7 +1246,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_FIRE_A_VOLLEY) = SKILL_ATTR_PER, SKILL_TYPE_SP, 10, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_FIRE_A_VOLLEY) = lang("一斉射撃", "Fire a Volley")
-	skilldesc(SKILL_SPACT_FIRE_A_VOLLEY) = lang("仲間と一斉に通常遠隔攻撃/ゲージ50％消費", "Party Shooting/Consumes 50% gauge")
+	skilldesc(SKILL_SPACT_FIRE_A_VOLLEY) = lang("仲間と一斉に通常遠隔攻撃/ゲージ50％消費", "Party Shooting [50% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_ABSOLUTE_PROTECT) = SKILL_ATTR_CON, SKILL_TYPE_SP, 80, TARGET_TYPE_SELF, 500
 	skillname(SKILL_SPACT_ABSOLUTE_PROTECT) = lang("絶対防衛", "Absolute protect")
@@ -1302,31 +1302,31 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_FLASH_OF_SWIFTNESS) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_FLASH_OF_SWIFTNESS) = lang("神速の一閃", "Flash of Swiftness")
-	skilldesc(SKILL_SPACT_FLASH_OF_SWIFTNESS) = lang("敵ゲージ半減/ゲージ100％消費", "Rapid Slash")
+	skilldesc(SKILL_SPACT_FLASH_OF_SWIFTNESS) = lang("敵ゲージ半減/ゲージ100％消費", "Rapid Slash [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_UNDERHAND_DROP) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_UNDERHAND_DROP) = lang("逆手落とし", "Underhand Drop")
-	skilldesc(SKILL_SPACT_UNDERHAND_DROP) = lang("恐怖させる刺突/ゲージ100％消費", "Piercing fear")
+	skilldesc(SKILL_SPACT_UNDERHAND_DROP) = lang("恐怖させる刺突/ゲージ100％消費", "Piercing fear [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_BISECTION) = SKILL_ATTR_STR, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_BISECTION) = lang("大烈断", "Bisection")
-	skilldesc(SKILL_SPACT_BISECTION) = lang("出血させる切断/ゲージ100％消費", "Brute force")
+	skilldesc(SKILL_SPACT_BISECTION) = lang("出血させる切断/ゲージ100％消費", "Brute force [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_PULVERIZATION) = SKILL_ATTR_STR, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_PULVERIZATION) = lang("砦崩し", "Pulverization")
-	skilldesc(SKILL_SPACT_PULVERIZATION) = lang("防御一時的に下げる/ゲージ100％消費", "Defense break")
+	skilldesc(SKILL_SPACT_PULVERIZATION) = lang("防御一時的に下げる/ゲージ100％消費", "Defense break [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_PENETRATION) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_PENETRATION) = lang("朧突き", "Penetration")
-	skilldesc(SKILL_SPACT_PENETRATION) = lang("朦朧とさせる刺突/ゲージ100％消費", "Thrust dim")
+	skilldesc(SKILL_SPACT_PENETRATION) = lang("朦朧とさせる刺突/ゲージ100％消費", "Thrust dim [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_DANCE_OF_BLOW) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_DANCE_OF_BLOW) = lang("怒涛の連撃", "Dance of Blow")
-	skilldesc(SKILL_SPACT_DANCE_OF_BLOW) = lang("回避一時的に下げる/ゲージ100％消費", "Continuous attacks")
+	skilldesc(SKILL_SPACT_DANCE_OF_BLOW) = lang("回避一時的に下げる/ゲージ100％消費", "Continuous attacks [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_EXPLOSION) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_EXPLOSION) = lang("魂の一撃", "Explosion")
-	skilldesc(SKILL_SPACT_EXPLOSION) = lang("消費後15％回復/ゲージ100％消費", "Blaze Fighting spirit")
+	skilldesc(SKILL_SPACT_EXPLOSION) = lang("消費後15％回復/ゲージ100％消費", "Blaze spirit [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_QUICK_USE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 20, TARGET_TYPE_SELF_ONLY, 0
 	skillname(SKILL_SPACT_QUICK_USE) = lang("パワーアイテム", "Power Item")
@@ -1358,27 +1358,27 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_CONVERGE_BREATH) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_CONVERGE_BREATH) = lang("収束放射", "Converge Breath")
-	skilldesc(SKILL_SPACT_CONVERGE_BREATH) = lang("強力な一列放射/ゲージ100％消費", "Breath(converge)")
+	skilldesc(SKILL_SPACT_CONVERGE_BREATH) = lang("強力な一列放射/ゲージ100％消費", "Breath(converge) [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_TIME_STOP) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 200, TARGET_TYPE_SELF, 500
 	skillname(SKILL_SPACT_TIME_STOP) = lang("刻の涙", "Time Stop")
-	skilldesc(SKILL_SPACT_TIME_STOP) = lang("時間を止める/ゲージ100％消費", "?")
+	skilldesc(SKILL_SPACT_TIME_STOP) = lang("時間を止める/ゲージ100％消費", "Stops time [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_PIERCING_ZERO_SHOOT) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_PIERCING_ZERO_SHOOT) = lang("零の間撃・突型", "Piercing Zero Shoot")
-	skilldesc(SKILL_SPACT_PIERCING_ZERO_SHOOT) = lang("近いほど貫通率上昇/ゲージ100％消費", "Incresed Penetration rate at close range/100% gauge used")
+	skilldesc(SKILL_SPACT_PIERCING_ZERO_SHOOT) = lang("近いほど貫通率上昇/ゲージ100％消費", "Piercing Shot [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_HYPER_PLUG_BURST) = SKILL_ATTR_PER, SKILL_TYPE_SP, 30, 2000 + 10, 0
 	skillname(SKILL_SPACT_HYPER_PLUG_BURST) = lang("爆栓連発", "Hyper Plug Burst")
-	skilldesc(SKILL_SPACT_HYPER_PLUG_BURST) = lang("ﾎﾟｰｼｮﾏﾝ充填/ゲージ100％消費", "charge the potioman")
+	skilldesc(SKILL_SPACT_HYPER_PLUG_BURST) = lang("ﾎﾟｰｼｮﾏﾝ充填/ゲージ100％消費", "Charges potioman [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_DIFFUSION_WAVE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 15, 0
 	skillname(SKILL_SPACT_DIFFUSION_WAVE) = lang("魔儀迦", "Diffusion Wave")
-	skilldesc(SKILL_SPACT_DIFFUSION_WAVE) = lang("HPMP回復長射程攻撃/ゲージ100％消費", "Attack Multiple enemies")
+	skilldesc(SKILL_SPACT_DIFFUSION_WAVE) = lang("HPMP回復長射程攻撃/ゲージ100％消費", "Ranged/Heals HP,MP [100% Gauge]")
 	
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_GOD_CHARGE_ROD) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 30, 2000 + 15, 0
 	skillname(SKILL_SPACT_GOD_CHARGE_ROD) = lang("神填の杖", "God charge Rod")
-	skilldesc(SKILL_SPACT_GOD_CHARGE_ROD) = lang("充填用魔力+10/攻撃/ゲージ100％消費", "Attack and get recharge power")
+	skilldesc(SKILL_SPACT_GOD_CHARGE_ROD) = lang("充填用魔力+10/攻撃/ゲージ100％消費", "Recharge Power + 10 [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_ASSIMILATE) = SKILL_ATTR_STR, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_ASSIMILATE) = lang("同化吸収", "Assimilate")
@@ -1394,7 +1394,11 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_RESONANT_VOICE) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 7, 0
 	skillname(SKILL_SPACT_RESONANT_VOICE) = lang("レゾナントボイス", "Resonant Voice")
-	skilldesc(SKILL_SPACT_RESONANT_VOICE) = lang("視界内敵戦意喪失/ゲージ100％消費", "Fatigue enemies, halve power gauges")
+	skilldesc(SKILL_SPACT_RESONANT_VOICE) = lang("敵戦意喪失/ゲージ100％消費", "Fatigue enemies [100% Gauge]")
+
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_DYNAMIC_YELL) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 30, TARGET_TYPE_SELF + 6, 0
+	skillname(SKILL_SPACT_DYNAMIC_YELL) = lang("ダイナミックエール", "Dynamic Yell")
+	skilldesc(SKILL_SPACT_DYNAMIC_YELL) = lang("味方ゲージ増加/ゲージ100％消費", "Ally Gauge+ [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_KIJIN_SHIBARI) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 15, TARGET_TYPE_SELF + 6, 0
 	skillname(SKILL_SPACT_KIJIN_SHIBARI) = lang("鬼神縛り", "Kijin Shibari")
@@ -1418,19 +1422,19 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_MIND_BREAK) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 3, 0
 	skillname(SKILL_SPACT_MIND_BREAK) = lang("精神破壊光", "Mind Break")
-	skilldesc(SKILL_SPACT_MIND_BREAK) = lang("精神攻撃/ゲージ100％消費", "Mental Pollution")
+	skilldesc(SKILL_SPACT_MIND_BREAK) = lang("精神攻撃/ゲージ100％消費", "Mental Pollution [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_HAND_OF_SPLENDOR) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 20, 0
 	skillname(SKILL_SPACT_HAND_OF_SPLENDOR) = lang("光輝の手", "Hand of Splendor")
-	skilldesc(SKILL_SPACT_HAND_OF_SPLENDOR) = lang("光を叩きつける/ゲージ100％消費", "magic attack")
+	skilldesc(SKILL_SPACT_HAND_OF_SPLENDOR) = lang("光を叩きつける/ゲージ100％消費", "Magical Slap [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_GRAVITON_BUSTER) = SKILL_ATTR_CON, SKILL_TYPE_SP, 20, TARGET_TYPE_BOTH + SKILL_TYPE_FOV_BOLT, 0
 	skillname(SKILL_SPACT_GRAVITON_BUSTER) = lang("グラビトンバスター", "Graviton Buster")
-	skilldesc(SKILL_SPACT_GRAVITON_BUSTER) = lang("階層依存放射/ゲージ100％消費", "Gravity Blast/Consumes 100% gauge")
+	skilldesc(SKILL_SPACT_GRAVITON_BUSTER) = lang("階層依存放射/ゲージ100％消費", "Gravity Blast [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_MANA_SLASH) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_MANA_SLASH) = lang("魔刃狩り", "Mana Slash")
-	skilldesc(SKILL_SPACT_MANA_SLASH) = lang("敵のMPにもダメージ/ゲージ100％消費", "Damages enemy MP/100% gauge used")
+	skilldesc(SKILL_SPACT_MANA_SLASH) = lang("敵のMPにもダメージ/ゲージ100％消費", "Damages enemy MP [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_INTENSIVE_POWER) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 30, TARGET_TYPE_SELF, 0
 	skillname(SKILL_SPACT_INTENSIVE_POWER) = lang("力の集約", "Intensive Power")
@@ -1446,7 +1450,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SPINNING_THROW) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_SPINNING_THROW) = lang("超輪転", "Spinning Throw")
-	skilldesc(SKILL_SPACT_SPINNING_THROW) = lang("貫通率上昇必中会心/ゲージ100％消費", "Revolve enough to penetrate")
+	skilldesc(SKILL_SPACT_SPINNING_THROW) = lang("貫通率上昇必中会心/ゲージ100％消費", "Penetrating Critical [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_METAL_GUARD) = SKILL_ATTR_CON, SKILL_TYPE_SP, 70, TARGET_TYPE_SELF_ONLY, 500
 	skillname(SKILL_SPACT_METAL_GUARD) = lang("メタルコート", "Metal Guard")
@@ -1454,7 +1458,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_THUNDERCLAP_KICK) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 35, TARGET_TYPE_ENEMY + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_THUNDERCLAP_KICK) = lang("迅雷脚", "Thunderclap Kick")
-	skilldesc(SKILL_SPACT_THUNDERCLAP_KICK) = lang("突撃＋通常電撃格闘/ゲージ25％消費", "Teleport+Martial lightning attack/Consumes 25% gauge")
+	skilldesc(SKILL_SPACT_THUNDERCLAP_KICK) = lang("突撃＋通常電撃格闘/ゲージ25％消費", "Teleport MA lightning attack [25% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_STRUCK_OUT) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 15, TARGET_TYPE_ENEMY + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_STRUCK_OUT) = lang("ストラックアウト", "Struck Out")
@@ -1466,11 +1470,11 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHADOW_RUSH) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 10, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_SHADOW_RUSH) = lang("全軍突撃", "Shadow Rush")
-	skilldesc(SKILL_SPACT_SHADOW_RUSH) = lang("全員で突撃＋通常近接攻撃/ゲージ75％消費", "Party Teleport+Attack/Consumes 75% gauge")
+	skilldesc(SKILL_SPACT_SHADOW_RUSH) = lang("全員で突撃＋通常近接攻撃/ゲージ75％消費", "Party Teleport+Attack [75% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_TAG_FORCE) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 24, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_TAG_FORCE) = lang("タッグフォース", "Tag Force")
-	skilldesc(SKILL_SPACT_TAG_FORCE) = lang("タッグ強化回復/ゲージ50％消費", "Strengthen tag teams/Consumes 50% gauge")
+	skilldesc(SKILL_SPACT_TAG_FORCE) = lang("タッグ強化回復/ゲージ50％消費", "Strengthen tag teams [50% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_CLEMENTIA) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 10, 3000 + 6, 500
 	skillname(SKILL_SPACT_CLEMENTIA) = lang("【命乞い】", "<Clementia>")
@@ -1502,7 +1506,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_OVERRAY) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 10, TARGET_TYPE_ENEMY + 7, 0
 	skillname(SKILL_SPACT_OVERRAY) = lang("多重詠唱魔法", "Over-Ray")
-	skilldesc(SKILL_SPACT_OVERRAY) = lang("仲間の魔力を集積/ゲージ50％消費", "Attack by integrating the magic of ally.")
+	skilldesc(SKILL_SPACT_OVERRAY) = lang("仲間の魔力を集積/ゲージ50％消費", "Team Magic Laser [50% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SMASH_GROUND) = SKILL_ATTR_STR, SKILL_TYPE_SP, 12, TARGET_TYPE_SELF_ONLY, 220
 	skillname(SKILL_SPACT_SMASH_GROUND) = lang("地砕き", "Smash Ground")
@@ -1518,7 +1522,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHIELD_STRIKE) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY, 0
 	skillname(SKILL_SPACT_SHIELD_STRIKE) = lang("盾殴り", "Shield Strike")
-	skilldesc(SKILL_SPACT_SHIELD_STRIKE) = lang("衝撃で敵を朦朧麻痺/ゲージ100％消費", "Impact that dims and paralyzes enemies/100% gauge used")
+	skilldesc(SKILL_SPACT_SHIELD_STRIKE) = lang("衝撃で敵を朦朧麻痺/ゲージ100％消費", "Dims and paralyzes enemies [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_GAUGE_RELEASE) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 1, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_GAUGE_RELEASE) = lang("【力の温存/解放】", "<Gauge Save/Release>")
@@ -1566,7 +1570,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_CLASH_RUSH) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 25, TARGET_TYPE_ENEMY + SKILL_TYPE_FOV_BOLT, 0
 	skillname(SKILL_SPACT_CLASH_RUSH) = lang("捨て身", "Clash Rush")
-	skilldesc(SKILL_SPACT_CLASH_RUSH) = lang("接近攻撃/反動あり/ゲージ25％消費", "Attack at the risk of life")
+	skilldesc(SKILL_SPACT_CLASH_RUSH) = lang("接近攻撃/反動あり/ゲージ25％消費", "TP Attack [Recoil][25% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_DEATH_SONG) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 30, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_DEATH_SONG) = lang("破滅の歌", "Death Song")
@@ -1646,7 +1650,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_EXTERMINATION_BREATH) = SKILL_ATTR_CON, SKILL_TYPE_SP, 10, TARGET_TYPE_BOTH + SKILL_TYPE_FOV_BOLT, 0
 	skillname(SKILL_SPACT_EXTERMINATION_BREATH) = lang("殲滅可変放射", "Extermination Breath")
-	skilldesc(SKILL_SPACT_EXTERMINATION_BREATH) = lang("耐性属性視界内放射/ゲージ25％消費", "All Breath(variable)")
+	skilldesc(SKILL_SPACT_EXTERMINATION_BREATH) = lang("耐性属性視界内放射/ゲージ25％消費", "CON Breath(variable) [25% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_RESOLUTION_HAND) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 15, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_RESOLUTION_HAND) = lang("錬成掌", "Resolution Hand")
@@ -1674,11 +1678,11 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_ROCKET_FIRE) = SKILL_ATTR_PER, SKILL_TYPE_SP, 20, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_ROCKET_FIRE) = lang("砲弾発射", "Rocket Fire")
-	skilldesc(SKILL_SPACT_ROCKET_FIRE) = lang("防御を下げる/ゲージ25％消費", "Attack and reduce defense/Consumes 25% gauge")
+	skilldesc(SKILL_SPACT_ROCKET_FIRE) = lang("防御を下げる/ゲージ25％消費", "Defense- [25% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_NUCLEAR_FIRE) = SKILL_ATTR_PER, SKILL_TYPE_SP, 50, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_NUCLEAR_FIRE) = lang("核発射", "Nuclear Fire")
-	skilldesc(SKILL_SPACT_NUCLEAR_FIRE) = lang("広範囲爆破/ゲージ25％消費", "Extensive Explosion/Consumes 25% gauge")
+	skilldesc(SKILL_SPACT_NUCLEAR_FIRE) = lang("広範囲爆破/ゲージ25％消費", "Large Explosion [25% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_GOLDEN_STORM) = SKILL_ATTR_CHA, SKILL_TYPE_SP, 18, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_GOLDEN_STORM) = lang("デフレストーム", "Golden Storm")
@@ -1742,23 +1746,23 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_IMPACT_GUNFIRE) = SKILL_ATTR_PER, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_IMPACT_GUNFIRE) = lang("重衝撃断動弾", "Impact Gunfire")
-	skilldesc(SKILL_SPACT_IMPACT_GUNFIRE) = lang("衝撃で敵転倒/ゲージ100％消費", "Knockdown target")
+	skilldesc(SKILL_SPACT_IMPACT_GUNFIRE) = lang("衝撃で敵転倒/ゲージ100％消費", "Knockdown target [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_ONE_POINT_SHOOT) = SKILL_ATTR_PER, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_ONE_POINT_SHOOT) = lang("壱点連弾銃", "One Point Shoot")
-	skilldesc(SKILL_SPACT_ONE_POINT_SHOOT) = lang("防御一時的に下げる/ゲージ100％消費", "Defense break")
+	skilldesc(SKILL_SPACT_ONE_POINT_SHOOT) = lang("防御一時的に下げる/ゲージ100％消費", "Defense break [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_CRITICAL_PARTICLE_CANNON) = SKILL_ATTR_PER, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_CRITICAL_PARTICLE_CANNON) = lang("臨界粒子砲", "Critical Particle Cannon")
-	skilldesc(SKILL_SPACT_CRITICAL_PARTICLE_CANNON) = lang("閃光で敵盲目/ゲージ100％消費", "hitting the target")
+	skilldesc(SKILL_SPACT_CRITICAL_PARTICLE_CANNON) = lang("閃光で敵盲目/ゲージ100％消費", "hitting the target [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_HELM_SMASHER) = SKILL_ATTR_PER, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_HELM_SMASHER) = lang("兜裂き", "Helm Smasher")
-	skilldesc(SKILL_SPACT_HELM_SMASHER) = lang("衝撃で敵麻痺/ゲージ100％消費", "Paralyze target")
+	skilldesc(SKILL_SPACT_HELM_SMASHER) = lang("衝撃で敵麻痺/ゲージ100％消費", "Paralyze target [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_ARROW_RAIN) = SKILL_ATTR_PER, SKILL_TYPE_SP, 30, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_ARROW_RAIN) = lang("浴びせ滝矢射", "Arrow Rain")
-	skilldesc(SKILL_SPACT_ARROW_RAIN) = lang("回避一時的に下げる/ゲージ100％消費", "Reduce avoidance")
+	skilldesc(SKILL_SPACT_ARROW_RAIN) = lang("回避一時的に下げる/ゲージ100％消費", "Dodge- [100% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_ACID_HURRICANE) = SKILL_ATTR_CON, SKILL_TYPE_SP, 5, TARGET_TYPE_ENEMY + 10, 0
 	skillname(SKILL_SPACT_ACID_HURRICANE) = lang("腐食の烈風", "Acid Hurricane")
@@ -1878,7 +1882,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_VENOTRATE) = SKILL_ATTR_DEX, SKILL_TYPE_SP, 20, TARGET_TYPE_ENEMY + 10, 500
 	skillname(SKILL_SPACT_VENOTRATE) = lang("ヴェノトレイト", "Venotrate")
-	skilldesc(SKILL_SPACT_VENOTRATE) = lang("問答無用で毒状態/ゲージ25％消費", "Poison target/Consumes 25% gauge")
+	skilldesc(SKILL_SPACT_VENOTRATE) = lang("問答無用で毒状態/ゲージ25％消費", "Poison Target [25% Gauge]")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_PERSUASION) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 10, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_PERSUASION) = lang("全力説得", "Persuasion")
@@ -1899,6 +1903,10 @@
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_MYSTERIOUS_SONG) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 10, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_MYSTERIOUS_SONG) = lang("魔唱", "Mysterious Song")
 	skilldesc(SKILL_SPACT_MYSTERIOUS_SONG) = lang("魔力対抗/ゲージが高い対象ほど疲労", "Against MAG,Fatigue high power gauge enemies")
+
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_GENUINE_CHEERING) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 10, 3000 + 6, 500
+	skillname(SKILL_SPACT_GENUINE_CHEERING) = lang("響く声援", "Genuine cheering")
+	skilldesc(SKILL_SPACT_GENUINE_CHEERING) = lang("味方ゲージ増加魅力対抗sp回復", "Ally gauge increase, SP recovery")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_TUIN_DER_LUSTEN) = SKILL_ATTR_CHA, SKILL_TYPE_SP, 10, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_TUIN_DER_LUSTEN) = lang("快楽の園", "Tuin der Lusten")
@@ -1930,7 +1938,7 @@
 	
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_ANGEL_HALO) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 24, 3000 + 6, 500
 	skillname(SKILL_SPACT_ANGEL_HALO) = lang("エンジェルハイロゥ", "Angel Halo")
-	skilldesc(SKILL_SPACT_ANGEL_HALO) = lang("無差別ゲージ変動/ゲージ15％消費", "Indiscriminate gauge fluctuation/gauge15")
+	skilldesc(SKILL_SPACT_ANGEL_HALO) = lang("無差別ゲージ変動/ゲージ15％消費", "All NPC gauge change [15% Gauge]")
 	
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_KAMIKAKUSHI) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 1, 9000 + 6, 500
 	skillname(SKILL_SPACT_KAMIKAKUSHI) = lang("紙隠し", "Kamikakushi")
@@ -1938,7 +1946,7 @@
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_REPRIMAND) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 20, 3000 + 6, 0
 	skillname(SKILL_SPACT_REPRIMAND) = lang("懲罰の光", "Reprimand")
-	skilldesc(SKILL_SPACT_REPRIMAND) = lang("全域味方殺害罰する/ゲージ80％消費", "Punish killing of allies field/gauge80")
+	skilldesc(SKILL_SPACT_REPRIMAND) = lang("全域味方殺害罰する/ゲージ80％消費", "Punish friendly-kill [Domain][80% Gauge]")
 	
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHIKIORIGAMI_CRANE) = SKILL_ATTR_MAG, SKILL_TYPE_SP, 25, 3000 + 6, 500
 	skillname(SKILL_SPACT_SHIKIORIGAMI_CRANE) = lang("式折神・幻惑折鶴", "ShikiOrigami-Crane")

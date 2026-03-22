@@ -99,6 +99,13 @@
 			cdata(CDATA_ALLIED, cc) = 100
 		}
 	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL ) {
+		if ( cdata(CDATA_HP, cc) >= cdata(CDATA_MAX_HP, cc) / 2 ) {
+			if ( cdata(CDATA_PIC, cc) == xy2pic(25, 36) ) {
+				cdata(CDATA_PIC, cc) = xy2pic(25, 35)
+			}
+		}
+	}
 	if ( cdata(CDATA_ID, cc) == CREATURE_ID_WEREWOLF & mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
 		if ( cc < MAX_CHARA_FOLLOWER | cdata(CDATA_ROLE, cc) == ROLE_SPECIAL | cdata(CDATA_ALLIED, cc) == 100 ) {
 			if ( cdata(CDATA_PIC, cc) == xy2pic(4, 4) | cdata(CDATA_PIC, cc) == xy2pic(21, 4) ) {
@@ -1047,6 +1054,17 @@
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CF_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_CRUSH_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_BATTLE_POTIOMAN | inv(INV_ITEM_ID, ci) == ITEM_ID_SUPER_POTIOMAN ) {
 		goto *act_use
+	}
+	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_TZ500_K | inv(INV_ITEM_ID, ci) == ITEM_ID_TZC_500 | inv(INV_ITEM_ID, ci) == ITEM_ID_TZ30_C | inv(INV_ITEM_ID, ci) == ITEM_ID_TZ_30 ) {
+		if ( cdata(CDATA_TARGET, cc) <= 0 ) {
+			goto *ai_action
+		}
+		if ( cdata(CDATA_INCAPACITATED, cdata(CDATA_TARGET, cc)) == 0 & dist(cdata(CDATA_X, cdata(CDATA_TARGET, cc)), cdata(CDATA_Y, cdata(CDATA_TARGET, cc)), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) <= 3 ) {
+			goto *act_use
+		}
+		else {
+			goto *ai_action
+		}
 	}
 	cdata(CDATA_AI_ITEM_OFFENSIVE, cc) = 0
 
@@ -2707,7 +2725,7 @@
 		}
 	}
 	if ( cdata(CDATA_REMOTE_BLOW, cc) != 0 ) {
-		if ( cdata(CDATA_REMOTE_BLOW, cc) > rnd(600) ) {
+		if ( limit(cdata(CDATA_REMOTE_BLOW, cc), 1, 540) >= rnd(600) ) {
 			act = SKILL_SPACT_DISTANT_ATTACK
 		}
 	}
@@ -3277,6 +3295,27 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_DEVIANT_MINECART ) {
+		if ( rnd(3) == 0 ) {
+			if ( findbuff(cc, BUFF_HYPER_DASH) == (-1) ) {
+				act = SKILL_SPACT_HYPER_DASH
+			}
+		}
+	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_MASKED_MUSANGOD ) {
+		if ( rnd(4) == 0 ) {
+			if ( findbuff(cc, BUFF_ATTRIBUTE) == (-1) ) {
+				act = SKILL_SPACT_ATTRIBUTE
+			}
+		}
+	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_KAKOI_ANAGUMA ) {
+		if ( rnd(5) == 0 ) {
+			if ( findbuff(cc, BUFF_SHIELD_PARRY) == (-1) ) {
+				act = SKILL_SPACT_SHIELD_PARRY
+			}
+		}
+	}
 	if ( cdata(CDATA_TARGET, cc) > (-1) ) {
 		if ( cdata(CDATA_ID, cc) == CREATURE_ID_YERLES_CYBORG_SOLDIER | cdata(CDATA_ID, cc) == CREATURE_ID_MILIS_CAPTAIN_OF_THE_SPECIAL_FORCES | cdata(CDATA_ID, cc) == CREATURE_ID_WORKER_01 | cdata(CDATA_ID, cc) == CREATURE_ID_SCATTER_LANDMINE_GIRL | cdata(CDATA_ID, cc) == CREATURE_ID_NOEL_THE_BOMBER ) {
 			if ( cdata(CDATA_MP, cc) >= cdata(CDATA_MAX_MP, cc) / 5 ) {
@@ -3304,7 +3343,7 @@
 			}
 		}
 	}
-	if ( cdata(CDATA_ID, cc) == CREATURE_ID_STERSHA_THE_QUEEN_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_XABI_THE_KING_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_SILVIA_THE_PRINCESS | cdata(CDATA_ID, cc) == CREATURE_ID_HAND_OF_THE_CATGOD | cdata(CDATA_ID, cc) == CREATURE_ID_RICH_PERSON | cdata(CDATA_ID, cc) == CREATURE_ID_PALMIAN_ELITE_SOLDIER | cdata(CDATA_ID, cc) == CREATURE_ID_KARAVIKA ) {
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_STERSHA_THE_QUEEN_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_XABI_THE_KING_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_SILVIA_THE_PRINCESS | cdata(CDATA_ID, cc) == CREATURE_ID_HAND_OF_THE_CATGOD | cdata(CDATA_ID, cc) == CREATURE_ID_RICH_PERSON | cdata(CDATA_ID, cc) == CREATURE_ID_PALMIAN_ELITE_SOLDIER | cdata(CDATA_ID, cc) == CREATURE_ID_KARAVIKA | cdata(CDATA_ID, cc) == CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL ) {
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 80 ) {
 			if ( cdata(CDATA_POWER_GAUGE, cc) >= 30 ) {
 				if ( rnd(10) == 0 ) {
@@ -4231,6 +4270,10 @@
 					act = SKILL_SPACT_MYSTERIOUS_SONG
 					bvar = sdata(SKILL_ATTR_MAG, cc)
 				}
+				if ( sdata(SKILL_ATTR_CHA, cc) > bvar ) {
+					act = SKILL_SPACT_GENUINE_CHEERING
+					bvar = sdata(SKILL_ATTR_CHA, cc)
+				}
 				if ( act == SKILL_SPACT_PERSUASION ) {
 					efid = SKILL_SPACT_PERSUASION
 					gosub *effect
@@ -4249,6 +4292,10 @@
 				}
 				if ( act == SKILL_SPACT_MYSTERIOUS_SONG ) {
 					efid = SKILL_SPACT_MYSTERIOUS_SONG
+					gosub *effect
+				}
+				if ( act == SKILL_SPACT_GENUINE_CHEERING ) {
+					efid = SKILL_SPACT_GENUINE_CHEERING
 					gosub *effect
 				}
 				goto *turn_end

@@ -680,7 +680,6 @@
 				return
 			}
 		}
-		cdata(CDATA_CONDITION_BIND, calcbuff_charid) += 25
 		return
 	}
 	if ( calcbuff_buffid == BUFF_DATA_SCAN ) {

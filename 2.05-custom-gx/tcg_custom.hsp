@@ -9882,6 +9882,19 @@
 		return 1
 	}
 	// bear
+	if ( dbid == CREATURE_ID_KAKOI_ANAGUMA ) {
+		cardrefrace = "bear"
+		cardrefclass = "warrior"
+		cardreflvl = 98
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 1
+		cardrefcost = 2
+		cardrefattack = 2
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_KAKOI_ANAGUMA
+		cardrefbits = "11,12"
+		return 1
+	}
 	if ( dbid == CREATURE_ID_GAKI_MOTUHEGUI ) {
 		cardrefrace = "bear"
 		cardrefclass = "predator"
@@ -11597,6 +11610,33 @@
 		return 1
 	}
 	// beetle
+	if ( dbid == CREATURE_ID_BIG_MOSQUITO ) {
+		cardrefrace = "beetle"
+		cardrefclass = "predator"
+		cardreflvl = 123
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 1
+		cardrefcost = 2
+		cardrefattack = 2
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_MOSQUITO
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
+		cardrefrace = "beetle"
+		cardrefclass = "gunner"
+		cardrefsex = "female"
+		cardreflvl = 145
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 5
+		cardrefcost = 5
+		cardrefattack = 2
+		cardrefhp = 4
+		cardrefskillid = TCG_EFF_MOMALARIA
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_BLACK_HOPPER_X ) {
 		cardrefrace = "beetle"
 		cardrefclass = "claymore"
@@ -12711,6 +12751,20 @@
 		return 1
 	}
 	// machine
+	if ( dbid == CREATURE_ID_PROPA_GANDAR_THE_MOBILE_ADVERTISER ) {
+		cardrefrace = "machine"
+		cardrefclass = "warmage"
+		cardrefsex = "male"
+		cardreflvl = 100
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 5
+		cardrefcost = 4
+		cardrefattack = 2
+		cardrefhp = 5
+		cardrefskillid = TCG_EFF_YERLES_PROPAGANDA
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_METAL_ZILLA ) {
 		cardrefrace = "machine"
 		cardrefclass = "predator"
@@ -16417,6 +16471,19 @@
 		return 1
 	}
 	// cat
+	if ( dbid == CREATURE_ID_MASKED_MUSANGOD ) {
+		cardrefrace = "cat"
+		cardrefclass = "predator"
+		cardreflvl = 194
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 3
+		cardrefcost = 6
+		cardrefattack = 8
+		cardrefhp = 6
+		cardrefskillid = TCG_EFF_BATTLECRY_PARALYSECHOSENENEMY
+		cardrefbits = "11,12,20"
+		return 1
+	}
 	if ( dbid == CREATURE_ID_RESTOROID_SABER_TIGER ) {
 		cardrefrace = "cat"
 		cardrefclass = "claymore"
@@ -17620,6 +17687,34 @@
 		return 1
 	}
 	// spirit
+	if ( dbid == CREATURE_ID_DEVIANT_MINECART ) {
+		cardrefrace = "spirit"
+		cardrefclass = "predator"
+		cardrefsex = "male"
+		cardreflvl = 50
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 5
+		cardrefcost = 5
+		cardrefattack = 2
+		cardrefhp = 5
+		cardrefskillid = TCG_EFF_MINECART
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL ) {
+		cardrefrace = "spirit"
+		cardrefclass = "tourist"
+		cardrefsex = "female"
+		cardreflvl = 50
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 5
+		cardrefcost = 3
+		cardrefattack = 0
+		cardrefhp = 4
+		cardrefskillid = TCG_EFF_SEDONA
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_HEART_WITCH ) {
 		cardrefrace = "spirit"
 		cardrefclass = "wizard"
