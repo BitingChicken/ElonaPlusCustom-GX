@@ -1,3 +1,7 @@
+# Upcoming
+
+# Fixed
+- Fixed ranch animals receiving EXP from nefia debris, causing lower breed power
 
 # 2.31.1.0
 

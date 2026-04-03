@@ -9405,7 +9405,7 @@
 			if ( cnt >= 16 ) {
 				continue
 			}
-			if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_DEAD ) {
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
 				continue
 			}
 			tc = cnt
