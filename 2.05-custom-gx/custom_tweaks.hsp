@@ -1690,7 +1690,7 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 				s = "Adjust the positioning of tag-team leader 12-px to the left.\nEnsuring they are not centered exclusively on the tag-leader,\n but rather equally spaced between the two members of the team."
 			}
 			if ( p == 14 ) {
-				s = "(MMAH) Render queued animations in ASync mode. \n  E.g. Death animations will all play at once instead of one by one."
+				s = "(MMAH) Render queued animations in ASync mode. \n  E.g. Death animations will all play at the same time, instead of one by one."
 			}
 			if ( p == listmax - 1 ) {
 				s = "Return to the previous menu."
