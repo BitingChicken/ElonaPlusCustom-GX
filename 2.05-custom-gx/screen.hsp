@@ -7227,7 +7227,7 @@
 		if ( inv(INV_ITEM_ID, cw) != ITEM_ID_G3_EXA & inv(INV_ITEM_ID, cw) != ITEM_ID_DREADNOUGHT ) {
 			evade = 0
 			snd SOUNDLIST_PUNISH1
-			animeload ANIMATION_UNISON_IMPACT1, tc
+			animeload 39, tc
 			critical = 1
 			return 1
 		}
@@ -7973,7 +7973,7 @@
 				snd SOUNDLIST_ATK_SOUND
 				encharge = 0
 			}
-			animeload ANIMATION_OFFER, tc
+			animeload 7, tc
 		}
 	}
 	orgdmg = damage

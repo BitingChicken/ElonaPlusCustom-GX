@@ -2743,7 +2743,7 @@
 	}
 	snd SOUNDLIST_ATK_ELEC
 	if ( meal == 0 ) {
-		animeload ANIMATION_THROW, resistmod_charid
+		animeload 15, resistmod_charid
 	}
 	r1 = resistmod_charid
 	gosub *charaRefresh
@@ -2837,7 +2837,7 @@
 	}
 	snd SOUNDLIST_ATK_ELEC
 	if ( meal == 0 ) {
-		animeload ANIMATION_THROW, resistmodh_charid
+		animeload 15, resistmodh_charid
 	}
 	r1 = resistmodh_charid
 	gosub *charaRefresh
@@ -2950,7 +2950,7 @@
 				break
 			loop
 		loop
-		animeload ANIMATION_FIZZLE, CHARA_PLAYER
+		animeload 8, CHARA_PLAYER
 		r1 = CHARA_PLAYER
 		gosub *charaRefresh
 		return
@@ -2993,7 +2993,7 @@
 				break
 			loop
 		loop
-		animeload ANIMATION_BLOOD, CHARA_PLAYER
+		animeload 10, CHARA_PLAYER
 		r1 = CHARA_PLAYER
 		gosub *charaRefresh
 		return
@@ -8498,7 +8498,7 @@
 					cdata(CDATA_AP_CURRENT, gain_ap_chara_id) += gain_ap_c1
 					cdata(CDATA_AP_TOTAL, gain_ap_chara_id) += gain_ap_c1
 					snd SOUNDLIST_ENC
-					animeload ANIMATION_CHAOS_CHILD, gain_ap_chara_id
+					animeload 36, gain_ap_chara_id
 					if ( gain_ap_chara_id != CHARA_PLAYER ) {
 						cdata(CDATA_AP_CURRENT, gain_ap_chara_id) += gain_ap_p1
 						cdata(CDATA_AP_TOTAL, gain_ap_chara_id) += gain_ap_p1

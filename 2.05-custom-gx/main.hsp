@@ -7132,7 +7132,7 @@
 		txt lang("「これが返事だ」", cnvtalk("This is my reply!!"))
 		snd SOUNDLIST_PUNISH1
 		if ( cfg_attackanime ) {
-			animeload ANIMATION_UNISON_IMPACT1, CHARA_PLAYER
+			animeload 39, CHARA_PLAYER
 		}
 		cdata(CDATA_HP, CHARA_PLAYER) = (cdata(CDATA_HP, CHARA_PLAYER) + 1) * 3 / 5
 		cc = tc

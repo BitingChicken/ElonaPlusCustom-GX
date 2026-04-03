@@ -13937,7 +13937,7 @@
 		if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
 			chatMore lang("うぐがぁぁっ！いいですか…もし、辿り着いても…混沌の神は、まだ、倒しては…！あれは世界を…結束させるため必要なっ…！", "Ughaaah! Listen to me... even if you manage to reach the Eternal Seal... the God of Chaos must not be defeated... yet! It's necessary to unite the world...")
 			chatMore lang("あっ…がっ…。", "Ahhh...ughh...")
-			animeload ANIMATION_OFFER, tc
+			animeload 7, tc
 			snd SOUNDLIST_BALL1
 			txt lang(name(tc) + "の身体が弾け飛んだ。", name(tc) + " shatter" + _s(tc) + ".")
 			dmghp tc, 99999, DAMAGE_FROM_SUICIDE

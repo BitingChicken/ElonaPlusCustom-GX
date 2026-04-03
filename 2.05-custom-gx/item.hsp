@@ -401,7 +401,7 @@
 								encadd ci, ENCHANT_ATTRIBUTE * EXT_ENCHANTMENT + SKILL_ATTR_SPD, 201, 0, 1
 							}
 						}
-						animeload ANIMATION_FIZZLE, rc
+						animeload 8, rc
 					}
 				}
 			}
@@ -2792,7 +2792,7 @@
 	}
 	ci = cibk
 	snd SOUNDLIST_ATK_ELEC
-	animeload ANIMATION_THROW, lovemiracle_arg1
+	animeload 15, lovemiracle_arg1
 	return
 
 #deffunc lovemiracle2 int lovemiracle2_arg1
@@ -3894,13 +3894,13 @@
 		if ( inv(INV_ITEM_PARAM3, ci) == 2 ) {
 			if ( cc != CHARA_PLAYER ) {
 				snd SOUNDLIST_CURSE3
-				animeload ANIMATION_CRUSH, cc
+				animeload 14, cc
 				dmgcon cc, CONDITION_SICK, 200
 			}
 		}
 		else {
 			snd SOUNDLIST_ATK_MIND
-			animeload ANIMATION_GOLDENSTORM, cc
+			animeload 30, cc
 		}
 		if ( inv(INV_ITEM_PARAM3, ci) == 5 ) {
 			aniref = 0
@@ -4039,7 +4039,7 @@
 		cdata(CDATA_CONDITION_WET, cc) += 50
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_AGING_LUNCH ) {
-		animeload ANIMATION_FIZZLE, cc
+		animeload 8, cc
 		if ( inv(INV_ITEM_STATUS, ci) <= ITEM_STATUS_CURSED ) {
 			cdata(CDATA_AGE, cc) -= rnd(20) + 10
 		}
@@ -4057,7 +4057,7 @@
 		gosub *charaRefresh
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_AGE_RETURN_LUNCH ) {
-		animeload ANIMATION_FIZZLE, cc
+		animeload 8, cc
 		if ( inv(INV_ITEM_STATUS, ci) <= ITEM_STATUS_CURSED ) {
 			cdata(CDATA_AGE, cc) += 9999999
 			if ( cdata(CDATA_AGE, cc) + 10 > gdata(GDATA_YEAR) ) {
@@ -4088,7 +4088,7 @@
 		if ( stat == (-1) ) {
 			cdata(CDATA_HEIGHT, cc) = (cdata(CDATA_HEIGHT, cc) + 150) / 2
 			cdata(CDATA_WEIGHT, cc) = (cdata(CDATA_WEIGHT, cc) + 40) / 2
-			animeload ANIMATION_FIZZLE, cc
+			animeload 8, cc
 			if ( synccheck(cc, -1) ) {
 				txtef COLOR_BLUE
 				txt lang("食べ終えた瞬間、" + name(cc) + "の体が激しく伸び縮みした。", "After eating, " + name(cc) + "'s body violently expanded and contracted.")
@@ -4098,7 +4098,7 @@
 		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_FORBIDDEN_MEAT ) {
-		animeload ANIMATION_FIZZLE, cc
+		animeload 8, cc
 		if ( inv(INV_ITEM_STATUS, ci) == ITEM_STATUS_BLESSED ) {
 			if ( cdatan(CDATAN_NEWSEX, cc) != "" ) {
 				if ( cdatan(CDATAN_NEWSEX, cc) == lang("男性", "male") ) {
@@ -4635,7 +4635,7 @@
 		txtef COLOR_YELLOW
 		txt lang(name(tc) + "は寄生された。", name(tc) + " get" + _s(tc) + " parasitized in the abdomen.")
 		if ( meal == 0 ) {
-			animeload ANIMATION_FIZZLE, tc
+			animeload 8, tc
 		}
 		if ( ninsin != 0 ) {
 			if ( ninsin == CREATURE_ID_SUNBARARIAN ) {
