@@ -5,7 +5,8 @@
   - E.g. Death animations are all played at the same time, and no longer causes pause.
 
 # Fixed
-- Fixed ranch animals receiving EXP from nefia debris, causing lower breed power
+- (Plus) Fixed ranch animals receiving EXP from nefia debris, causing lower breed power
+- Extermination breath flag not set.
 
 # 2.31.1.0
 

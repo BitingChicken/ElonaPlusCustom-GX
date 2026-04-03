@@ -24700,8 +24700,8 @@
 		}
 		bvar = 0
 		efid = SKILL_SPACT_FIRE_BREATH + cdata(CDATA_ATTRIBUTE_ELE, cc)
-		kouiki = 0
 		gosub *effect
+		kouiki = 0
 		goto *effect_end
 	}
 	if ( _switch_val == SKILL_SPACT_VARIABLE_BREATH | _switch_sw ) {
