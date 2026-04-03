@@ -1,5 +1,9 @@
 # Upcoming
 
+# Added
+- (MMAH) Tweak to change some animations into Async mode
+  - E.g. Death animations are all played at the same time, and no longer causes pause.
+
 # Fixed
 - Fixed ranch animals receiving EXP from nefia debris, causing lower breed power
 

@@ -742,6 +742,42 @@ if instr(s,0,%1)!-1{	%c\
 	if ( strsize != (-1) ) { return locvar_tachie_usepath_try }
 	return locvar_tachie_usepath
 
+/********** JAMES CUSTOM - ASYNC ANIMATION - BEGINNING **********/
+#deffunc init_asyn_anim_buffer
+	init_oaplist
+	buffer 97, 96 * 8, 96 * oaplistmax
+	gsel 97
+	gmode 0
+	boxf
+	repeat oaplistmax
+		pos 0, 96 * cnt
+		picload exedir + "graphic\\anime" + oaplist(cnt) + ".bmp", 1
+	loop
+	gsel 0
+	return
+#deffunc init_drawing_infomation
+	init_oaplist
+	dim animeinfo, 54, 100
+	animepointer = 0
+	repeat 40
+		animeinfo(0, cnt) = timeGetTime() - 10000
+	loop
+	return
+#deffunc init_oaplist
+	oaplist = 5, 8, 10, 11, 14, 15, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28
+	oaplistmax = length(oaplist)
+	return
+#defcfunc find_oaplist int oaplist_arg1
+	f@MMA = -1
+	repeat oaplistmax
+		if ( oaplist(cnt) == oaplist_arg1 ) {
+			f@MMA = cnt
+			break
+		}
+	loop
+	return f@MMA
+/********** JAMES CUSTOM - ASYNC ANIMATION - ENDING **********/
+
 #defcfunc synccheck int synccheck_arg1, int synccheck_arg2
 	if ( synccheck_arg2 == (-1) ) {
 		if ( cdata(CDATA_IN_TAGTEAM, synccheck_arg1) == 1 ) {
@@ -2282,6 +2318,10 @@ if instr(s,0,%1)!-1{	%c\
 	/********** JAMES CUSTOM - DAMAGE METER - BEGINNING **********/
     gosub *DamageParsesInit
 	/********** JAMES CUSTOM - DAMAGE METER - ENDING **********/
+	/********** JAMES CUSTOM - ASYNC ANIMATION - BEGINNING **********/
+	init_asyn_anim_buffer
+	init_drawing_infomation
+	/********** JAMES CUSTOM - ASYNC ANIMATION - ENDING **********/
 	/********** JAMES CUSTOM - BEGINNING **********/ // Fix sleeping crashes caused by uninitiated atxinfon (type mismatch).
 	sdim atxinfon, 80, 5
 	atxinfon(0) = ""

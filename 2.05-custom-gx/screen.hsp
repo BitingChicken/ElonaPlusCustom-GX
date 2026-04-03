@@ -1775,6 +1775,127 @@
 		}
 	}
 
+	/********** JAMES CUSTOM - ASYNC ANIMATION - BEGINNING **********/
+	if ( TweakData(TWEAK_MISC_MMAH_ASYNC_ANIMATION, TWEAK_CATEGORY_MISC) == 1 ) {
+		gmode 2
+		mondmgtime = timeGetTime()
+		repeat length2(animeinfo)
+			mondmgcnt2 = (animepointer + cnt) \ length2(animeinfo)
+			ap3 = animeinfo(6, mondmgcnt2)
+			if ( ap3 < 1 ) {
+				continue
+			}
+			if ( animeinfo(0, mondmgcnt2) + animeinfo(5, mondmgcnt2) * ap3 <= mondmgtime ) {
+				continue
+			}
+			ap2 = animeinfo(1, mondmgcnt2)
+			ap = find_oaplist(ap2)
+			if ( ap2 > 5 & ap2 < 18 | ap2 == (-5) | ap2 == (-6) | ap2 == (-7) | ap2 == (-9) | ap2 == (-11) | ap2 == (-12) ) {
+				apx = cdata(1, animeinfo(2, mondmgcnt2))
+				apy = cdata(2, animeinfo(2, mondmgcnt2))
+			}
+			else {
+				apx = animeinfo(3, mondmgcnt2)
+				apy = animeinfo(4, mondmgcnt2)
+			}
+			ap3 = (mondmgtime - animeinfo(0, mondmgcnt2)) / ap3
+			mondmgdx = (apx - scx) * inf_tiles + inf_screenx
+			mondmgdy = (apy - scy) * inf_tiles + inf_screeny
+			mondmgdx += sxfix@m85 * (scrollp >= 3 + cfg_improvescroll * 2)
+			mondmgdy += syfix@m85 * (scrollp >= 3 + cfg_improvescroll * 2)
+			if ( mondmgdy < (-48) | mondmgdy > inf_ver | mondmgdx < (-48) | mondmgdx > windoww ) {
+				continue
+			}
+			if ( ap >= 0 ) {
+				pos mondmgdx - 24, mondmgdy - 32 + animeinfo(7, mondmgcnt2)
+				if ( ginfo(23) > inf_ver - 48 ) {
+					continue
+				}
+				gcopy 97, ap3 * 96, ap * 96, 96, 96
+			}
+			if ( animeinfo(8, mondmgcnt2) == 16 | animeinfo(8, mondmgcnt2) == 18 ) {
+				ap = ap3 * 2
+				ap2 = animeinfo(8, mondmgcnt2)
+				repeat 20
+					apx = animeinfo(cnt * 2 + 9, mondmgcnt2)
+					apy = animeinfo(cnt * 2 + 10, mondmgcnt2)
+					pos mondmgdx + 24 + apx + (apx < 3) * ((1 + (cnt \ 2 == 0)) * (-1)) * ap + (apx > (-4)) * (1 + (cnt \ 2 == 0)) * ap, mondmgdy + apy + ap * ap / 2 - 12 + cnt
+					if ( ginfo(23) > inf_ver - 12 - ap ) {
+						continue
+					}
+					grotate 1, chipi(0, ap2), chipi(1, ap2), 0.2 * cnt, 24 - ap * 2, 24 - ap * 2
+				loop
+				continue
+			}
+			if ( ap2 == (-14) | ap2 == (-16) ) {
+				ap = ap3 * 2
+				ap2 = animeinfo(8, mondmgcnt2)
+				repeat 4
+					apx = animeinfo(cnt * 2 + 9, mondmgcnt2)
+					apy = animeinfo(cnt * 2 + 10, mondmgcnt2)
+					pos mondmgdx + 24 + apx + (apx < 4) * ((1 + (cnt \ 2 == 0)) * (-1)) * ap + (apx > (-4)) * (1 + (cnt \ 2 == 0)) * ap, mondmgdy + apy + ap * ap / 3
+					if ( ginfo(23) > inf_ver - 12 ) {
+						continue
+					}
+					grotate 1, 864, 0, 0.4 * cnt, 24, 24
+				loop
+				pos mondmgdx + animeinfo(9, mondmgcnt2) + 24, mondmgdy + animeinfo(10, mondmgcnt2) + 10
+				grotate 1, chipi(0, ap2), chipi(1, ap2), 0.5 * ap3 - 0.8, ap3 * 10 + 4 * 3, ap3 * 10 + 4 * 3
+				continue
+			}
+			if ( ap2 == (-9) ) {
+				ap2 = animeinfo(8, mondmgcnt2)
+				pos mondmgdx + 16, mondmgdy + 16
+				grotate 1, chipi(0, ap2), chipi(1, ap2), 0.5 * ap3 - 0.8, ap3 * 8 + 18, ap3 * 8 + 18
+				continue
+			}
+			if ( ap2 == (-12) ) {
+				ap2 = ap3 * 2
+				if ( animeinfo(4, mondmgcnt2) ) {
+					pos mondmgdx - 24, mondmgdy - 32
+					gcopy 97, ap3 * 96, 96 * 16, 96, 96
+				}
+				repeat animeinfo(3, mondmgcnt2)
+					apx = animeinfo(cnt * 2 + 9, mondmgcnt2)
+					apy = animeinfo(cnt * 2 + 10, mondmgcnt2)
+					pos mondmgdx + 24 + apx + (apx < 4) * ((1 + (cnt \ 2 == 0)) * (-1)) * ap2 + (apx > (-4)) * (1 + (cnt \ 2 == 0)) * ap2, mondmgdy + apy + ap2 * ap2 / 3
+					if ( ginfo(23) > inf_ver - 3 ) {
+						continue
+					}
+					grotate 1, animeinfo(7, mondmgcnt2), 0, 0.4 * cnt, 6, 6
+				loop
+				if ( animeinfo(8, mondmgcnt2) == 0 ) {
+					ap = animeinfo(3, mondmgcnt2)
+					pos mondmgdx + animeinfo(9, mondmgcnt2) + 24, mondmgdy + animeinfo(10, mondmgcnt2) + 10
+					if ( ginfo(23) > inf_ver - (cnt * 10 + ap) / 2 ) {
+						continue
+					}
+					grotate 1, chipi(0, 17), chipi(1, 17), 0.5 * ap3 - 0.8, ap3 * 10 + ap, ap3 * 10 + ap
+					continue
+				}
+				pos mondmgdx, mondmgdy
+				if ( ginfo(23) > inf_ver - 24 ) {
+					continue
+				}
+				gcopy 3, 816 + (animeinfo(8, mondmgcnt2) == 1) * 192 + ap3 * 48, 432, 48, 48
+				continue
+			}
+			if ( ap2 < (-4) ) {
+				ap = ap3 * 2
+				ap2 = animeinfo(8, mondmgcnt2)
+				repeat 15
+					pos mondmgdx + animeinfo(cnt * 3 + 9, mondmgcnt2), mondmgdy + animeinfo(cnt * 3 + 10, mondmgcnt2) + ap / animeinfo(cnt * 3 + 11, mondmgcnt2)
+					if ( ginfo(23) > inf_ver - 24 - ap ) {
+						continue
+					}
+					grotate 1, chipi(0, ap2), chipi(1, ap2), ap * animeinfo(cnt * 3 + 11, mondmgcnt2), inf_tiles - ap * 2, inf_tiles - ap * 2
+				loop
+				continue
+			}
+		loop
+	}
+	/********** JAMES CUSTOM - ASYNC ANIMATION - ENDING **********/
+
 	/********** JAMES CUSTOM - BEGINNING **********/
 	// Skip extra UI when in town board / world map / auto turn. These causes performance / graphic issues
 	if ( screendrawextras@DP != 1 | mode == MODELIST_TXT_ADV | mdata(MDATA_TYPE) == MAP_TYPE_WORLD | cdata(CDATA_ROW_ACT, CHARA_PLAYER) != ACTION_NONE ) {
@@ -2357,6 +2478,38 @@
 		if ( synccheck(tc, -1) == 0 ) {
 			goto *anime_SWEND1
 		}
+		ax = (cdata(CDATA_X, tc) - scx) * inf_tiles + inf_screenx
+		ay = (cdata(CDATA_Y, tc) - scy) * inf_tiles + inf_screeny
+		repeat 15
+			ax2(cnt) = rnd(inf_tiles)
+			ay2(cnt) = rnd(inf_tiles) - 8
+			ap(cnt) = (rnd(4) + 1) * (-1)
+			if ( animeid == ANIMATION_CURSE | animeid == ANIMATION_JALDABAOTH ) {
+				ap(cnt) *= -1
+			}
+		loop
+		if ( animeid == ANIMATION_CURSE ) {
+			snd SOUNDLIST_CURSE1
+		}
+		if ( animeid == ANIMATION_HEAL | animeid == ANIMATION_HEAL_FAST ) {
+			snd SOUNDLIST_HEAL1
+		}
+		if ( TweakData(TWEAK_MISC_MMAH_ASYNC_ANIMATION, TWEAK_CATEGORY_MISC) == 1 ) {
+			if ( animeid == 11 ) {
+				animeinfo(0, animepointer) = timeGetTime(), -animeid, tc, cdata(1, tc), cdata(2, tc), 10, 5, 0, 7
+			}
+			else {
+				animeinfo(0, animepointer) = timeGetTime(), -animeid, tc, cdata(1, tc), cdata(2, tc), 10, 20, 0, animeid + 2
+			}
+			repeat 15
+				animeinfo(9 + cnt * 3, animepointer) = ax2(cnt)
+				animeinfo(10 + cnt * 3, animepointer) = ay2(cnt)
+				animeinfo(11 + cnt * 3, animepointer) = ap(cnt)
+			loop
+			animepointer = (animepointer + 1) \ length2(animeinfo)
+			gsel 0
+			goto *anime_SWEND1
+		}
 		if ( animeid == ANIMATION_CURSE ) {
 			gsel 1
 			color 0
@@ -2389,22 +2542,12 @@
 			gfdec2 c_col(0, anicol), c_col(1, anicol), c_col(2, anicol)
 			gsel selcur
 		}
-		ax = (cdata(CDATA_X, tc) - scx) * inf_tiles + inf_screenx
-		ay = (cdata(CDATA_Y, tc) - scy) * inf_tiles + inf_screeny
 		gsel 4
 		gmode 0
 		pos 0, 0
 		gcopy 0, ax - inf_tiles / 2, ay - inf_tiles / 2, inf_tiles * 2, inf_tiles * 2
 		gmode 2
 		gsel 0
-		repeat 15
-			ax2(cnt) = rnd(inf_tiles)
-			ay2(cnt) = rnd(inf_tiles) - 8
-			ap(cnt) = (rnd(4) + 1) * (-1)
-			if ( animeid == ANIMATION_CURSE | animeid == ANIMATION_JALDABAOTH ) {
-				ap(cnt) *= -1
-			}
-		loop
 		repeat 10
 			if ( animeid == ANIMATION_HEAL_FAST ) {
 				await 1
@@ -3273,6 +3416,18 @@
 	if ( _switch_val == ANIMATION_ATTACK | _switch_sw ) {
 		_switch_sw = 0
 		snd SOUNDLIST_ATK1
+		anidx = (cdata(CDATA_X, tc) - scx) * inf_tiles + inf_screenx
+		anidy = (cdata(CDATA_Y, tc) - scy) * inf_tiles + inf_screeny
+		if ( anidy < (-48) | anidy > inf_ver | anidx < (-48) | anidx > windoww ) {
+			gsel 0
+			goto *anime_SWEND1
+		}
+		if ( TweakData(TWEAK_MISC_MMAH_ASYNC_ANIMATION, TWEAK_CATEGORY_MISC) == 1 ) {
+			animeinfo(0, animepointer) = timeGetTime(), -animeid, tc, cdata(1, tc), cdata(2, tc), 4, 10, 0, 17
+			animepointer = (animepointer + 1) \ length2(animeinfo)
+			gsel 0
+			goto *anime_SWEND1
+		}
 		gsel 1
 		color 0
 		boxf 0, 960, chipi(CHIPI_WIDTH, xy2pic(17, 0)), chipi(CHIPI_HEIGHT, xy2pic(17, 0)) + 960
@@ -3281,8 +3436,6 @@
 		gfini chipi(CHIPI_WIDTH, xy2pic(17, 0)), chipi(CHIPI_HEIGHT, xy2pic(17, 0))
 		gfdec2 c_col(0, 0), c_col(1, 0), c_col(2, 0)
 		gsel selcur
-		anidx = (cdata(CDATA_X, tc) - scx) * inf_tiles + inf_screenx
-		anidy = (cdata(CDATA_Y, tc) - scy) * inf_tiles + inf_screeny
 		gsel 4
 		gmode 0
 		pos 0, 0
@@ -3365,6 +3518,16 @@
 					sy(cnt) = rnd(24) - 12
 				}
 			loop
+			if ( TweakData(TWEAK_MISC_MMAH_ASYNC_ANIMATION, TWEAK_CATEGORY_MISC) == 1 ) {
+				animeinfo(0, animepointer) = timeGetTime(), -12, tc, aniref, critical, 4 + (critical != 0), 10, anix(1), ap
+				repeat aniref
+					animeinfo(9 + cnt * 2, animepointer) = sx(cnt)
+					animeinfo(10 + cnt * 2, animepointer) = sy(cnt)
+				loop
+				animepointer = (animepointer + 1) \ length2(animeinfo)
+				gsel 0
+				goto *anime_SWEND1
+			}
 			anidx = (cdata(CDATA_X, tc) - scx) * inf_tiles + inf_screenx
 			anix = anidx + rnd(12) - rnd(12)
 			anidy = (cdata(CDATA_Y, tc) - scy) * inf_tiles + inf_screeny
@@ -5366,6 +5529,16 @@
 			sx(cnt) = rnd(24) - 12
 			sy(cnt) = rnd(8)
 		loop
+		if ( TweakData(TWEAK_MISC_MMAH_ASYNC_ANIMATION, TWEAK_CATEGORY_MISC) == 1 ) {
+			animeinfo(0, animepointer) = timeGetTime(), -animeid, 0, x, y, 5, 20, 0, 17
+			repeat aniref
+				animeinfo(9 + cnt * 2, animepointer) = sx(cnt)
+				animeinfo(10 + cnt * 2, animepointer) = sy(cnt)
+			loop
+			animepointer = (animepointer + 1) \ length2(animeinfo)
+			gsel 0
+			goto *anime_SWEND1
+		}
 		gsel 4
 		gmode 0
 		pos 0, 0

@@ -9146,6 +9146,9 @@
 			gosub *world_refresh
 		}
 	}
+	/********** JAMES CUSTOM - ASYNC ANIMATION - BEGINNING **********/
+	init_drawing_infomation
+	/********** JAMES CUSTOM - ASYNC ANIMATION - ENDING **********/
 	if ( gdata(GDATA_AREA) == AREA_NORTH_TYRIS ) {
 		if ( gdata(GDATA_FLAG_MAIN) == 180 ) {
 			cdata(CDATA_X, CHARA_PLAYER) = adata(ADATA_X, AREA_PORT_KAPUL)

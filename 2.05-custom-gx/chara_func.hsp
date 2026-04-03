@@ -2473,14 +2473,6 @@
 	gosub *screen_draw
 	locvar_animeload_dx = (cdata(CDATA_X, animeload_arg2) - scx) * inf_tiles + inf_screenx
 	locvar_animeload_dy = (cdata(CDATA_Y, animeload_arg2) - scy) * inf_tiles + inf_screeny
-	gsel 7
-	picload exedir + "graphic\\anime" + animeload_arg1 + ".bmp"
-	gsel 4
-	gmode 0
-	pos 0, 0
-	gcopy 0, locvar_animeload_dx - 24, locvar_animeload_dy - 40, 96, 96
-	gsel 0
-	gmode 2
 	locvar_animeload_i = 5, 50
 	locvar_animeload_r = 0
 	if ( animeload_arg1 == 8 ) {
@@ -2503,6 +2495,26 @@
 		locvar_animeload_i = 5, 99
 		locvar_animeload_r = 0
 	}
+	if ( TweakData(TWEAK_MISC_MMAH_ASYNC_ANIMATION, TWEAK_CATEGORY_MISC) == 1 ) {
+		; Only the whitelisted Anims is going to be loaded or there will be issues.
+		ap@MMA = find_oaplist(animeload_arg1)
+		if ( ap@MMA >= 0 ) {
+			animeinfo(0, animepointer) = timeGetTime(), animeload_arg1, animeload_arg2
+			animeinfo(3, animepointer) = cdata(CDATA_X, animeload_arg2), cdata(CDATA_Y, animeload_arg2)
+			animeinfo(5, animepointer) = locvar_animeload_i, locvar_animeload_i(1) + 20, -8, 0
+			animepointer = (animepointer + 1) \ length2(animeinfo)
+			gsel 0
+			return
+		}
+	}
+	gsel 7
+	picload exedir + "graphic\\anime" + animeload_arg1 + ".bmp"
+	gsel 4
+	gmode 0
+	pos 0, 0
+	gcopy 0, locvar_animeload_dx - 24, locvar_animeload_dy - 40, 96, 96
+	gsel 0
+	gmode 2
 	repeat locvar_animeload_i
 		gmode 2, 96, 96
 		pos locvar_animeload_dx + 24, locvar_animeload_dy + 8
@@ -2539,70 +2551,82 @@
 	}
 	locvar_animeload_dx = (cdata(CDATA_X, animeblood_arg1) - scx) * inf_tiles + inf_screenx
 	locvar_animeload_dy = (cdata(CDATA_Y, animeblood_arg1) - scy) * inf_tiles + inf_screeny, 0
+
+	repeat 1
+		locvar_animeblood_ele2 = 1
+		if ( animeblood_arg3 == 52 ) {
+			locvar_animeload_dy(1) = -16
+			f@MMA = 18
+			break
+		}
+		if ( animeblood_arg3 == 51 ) {
+			locvar_animeload_dy(1) = -16
+			f@MMA = 19
+			break
+		}
+		if ( animeblood_arg3 == 50 ) {
+			locvar_animeload_dy(1) = -20
+			f@MMA = 20
+			break
+		}
+		if ( animeblood_arg3 == 56 ) {
+			locvar_animeload_dy(1) = -24
+			f@MMA = 22
+			break
+		}
+		if ( animeblood_arg3 == 53 ) {
+			locvar_animeload_dy(1) = -16
+			f@MMA = 21
+			break
+		}
+		if ( animeblood_arg3 == 54 ) {
+			locvar_animeload_dy(1) = -16
+			f@MMA = 23
+			break
+		}
+		if ( animeblood_arg3 == 57 ) {
+			locvar_animeload_dy(1) = -16
+			f@MMA = 24
+			break
+		}
+		if ( animeblood_arg3 == 59 ) {
+			locvar_animeload_dy(1) = -16
+			f@MMA = 25
+			break
+		}
+		if ( animeblood_arg3 == 58 ) {
+			locvar_animeload_dy(1) = -16
+			f@MMA = 26
+			break
+		}
+		if ( animeblood_arg3 == 55 | animeblood_arg3 == 63 ) {
+			locvar_animeload_dy(1) = -16
+			f@MMA = 27
+			break
+		}
+		locvar_animeblood_ele2 = 0
+		f@MMA = 0
+		break
+	loop
+	if ( TweakData(TWEAK_MISC_MMAH_ASYNC_ANIMATION, TWEAK_CATEGORY_MISC) == 1 ) {
+		animeinfo(0, animepointer) = timeGetTime(), f@MMA, animeblood_arg1
+		animeinfo(3, animepointer) = cdata(CDATA_X, animeblood_arg1), cdata(CDATA_Y, animeblood_arg1)
+		animeinfo(5, animepointer) = 6, 35 + (locvar_animeblood_ele2 != 0) * 20, locvar_animeload_dy(1), 16 + animeblood_arg2 * 2
+		repeat 20
+			animeinfo(9 + cnt * 2, animepointer) = rnd(48) - 24
+			animeinfo(10 + cnt * 2, animepointer) = rnd(16)
+		loop
+		animepointer = (animepointer + 1) \ length2(animeinfo)
+		gsel 0
+		return
+	}
 	gsel 4
 	gmode 0
 	pos 0, 0
 	gcopy 0, locvar_animeload_dx - 48, locvar_animeload_dy - 56, 144, 160
-	locvar_animeblood_ele2 = 0
-	if ( animeblood_arg3 == 52 ) {
-		locvar_animeblood_ele2 = 1
+	if ( locvar_animeblood_ele2 ) {
 		gsel 7
-		picload exedir + "graphic\\anime18.bmp"
-		locvar_animeload_dy(1) = -16
-	}
-	if ( animeblood_arg3 == 51 ) {
-		locvar_animeblood_ele2 = 1
-		gsel 7
-		picload exedir + "graphic\\anime19.bmp"
-		locvar_animeload_dy(1) = -16
-	}
-	if ( animeblood_arg3 == 50 ) {
-		locvar_animeblood_ele2 = 1
-		gsel 7
-		picload exedir + "graphic\\anime20.bmp"
-		locvar_animeload_dy(1) = -20
-	}
-	if ( animeblood_arg3 == 56 ) {
-		locvar_animeblood_ele2 = 1
-		gsel 7
-		picload exedir + "graphic\\anime22.bmp"
-		locvar_animeload_dy(1) = -24
-	}
-	if ( animeblood_arg3 == 53 ) {
-		locvar_animeblood_ele2 = 1
-		gsel 7
-		picload exedir + "graphic\\anime21.bmp"
-		locvar_animeload_dy(1) = -16
-	}
-	if ( animeblood_arg3 == 54 ) {
-		locvar_animeblood_ele2 = 1
-		gsel 7
-		picload exedir + "graphic\\anime23.bmp"
-		locvar_animeload_dy(1) = -16
-	}
-	if ( animeblood_arg3 == 57 ) {
-		locvar_animeblood_ele2 = 1
-		gsel 7
-		picload exedir + "graphic\\anime24.bmp"
-		locvar_animeload_dy(1) = -16
-	}
-	if ( animeblood_arg3 == 59 ) {
-		locvar_animeblood_ele2 = 1
-		gsel 7
-		picload exedir + "graphic\\anime25.bmp"
-		locvar_animeload_dy(1) = -16
-	}
-	if ( animeblood_arg3 == 58 ) {
-		locvar_animeblood_ele2 = 1
-		gsel 7
-		picload exedir + "graphic\\anime26.bmp"
-		locvar_animeload_dy(1) = -16
-	}
-	if ( animeblood_arg3 == 55 | animeblood_arg3 == 63 ) {
-		locvar_animeblood_ele2 = 1
-		gsel 7
-		picload exedir + "graphic\\anime27.bmp"
-		locvar_animeload_dy(1) = -16
+		picload exedir + "graphic\\anime" + f@MMA + ".bmp"
 	}
 	gmode 2
 	gsel 0
