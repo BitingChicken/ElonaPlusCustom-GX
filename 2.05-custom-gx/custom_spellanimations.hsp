@@ -19,76 +19,163 @@
     color 0, 0, 0
     return
 
-*custom_spell_animation_dart    
+#defcfunc find_olist int olist_arg1
+    f@MMA = -1
+    repeat olistmax
+        if ( olist(cnt) == olist_arg1 ) {
+            f@MMA = cnt
+            break
+        }
+    loop
+    return f@MMA
+
+#deffunc custom_spell_animation_load
+    if ( flag_custom_spell_animation_loaded@CSA ) { return }
+    buffer 970, 100 + 600 + 384 * 6, 384 * 12
+    color 0, 0, 0
+    boxf 0, 0, 100 + 600 + 384 * 6, 384 * 12
+    gmode 0
+    p@CSA = xy2pic(21, 36), xy2pic(27, 36), 3, 6, 6, 10, 6, xy2pic(32, 35), 6, 6, 6, 6
+    buffer 7, 96 * 6, 96
+    gsel 7
+    repeat 12
+        preparePicItem p@CSA(cnt), eleinfo(50 + cnt, 0) * (cnt < 11) + 21 * (cnt == 11)
+        gsel 970
+        pos 0, 384 * cnt
+        gcopy 1, 0, 960, inf_tiles, inf_tiles
+    loop
+    gsel 7
+    picload exedir + "graphic\\anime5.bmp"
+    repeat 12
+        preparePicItem p@CSA(cnt), eleinfo(50 + cnt, 0) * (cnt < 11) + 21 * (cnt == 11)
+        gsel 970
+        pos 100, 384 * cnt + 200
+        gcopy 7, 0, 96, 480, 48
+		gfini 480, 48
+        anicol = eleinfo(50 + cnt, 0) * (cnt < 11) + 21 * (cnt == 11)
+		gfdec2 c_col(0, anicol), c_col(1, anicol), c_col(2, anicol)
+    loop
+    pn@CSA(0) = "custom_animation\\saku_anime20.bmp"
+    pn@CSA(1) = "custom_animation\\saku_anime19.bmp"
+    pn@CSA(2) = "custom_animation\\saku_anime18.bmp"
+    pn@CSA(3) = "custom_animation\\saku_anime21.bmp"
+    pn@CSA(4) = "custom_animation\\saku_anime23.bmp"
+    pn@CSA(5) = "custom_animation\\saku_anime27.bmp"
+    pn@CSA(6) = "custom_animation\\saku_anime22.bmp"
+    pn@CSA(7) = "custom_animation\\saku_anime24.bmp"
+    pn@CSA(8) = "custom_animation\\saku_anime26.bmp"
+    pn@CSA(9) = "custom_animation\\saku_anime25.bmp"
+    pn@CSA(10) = "anime5.bmp"
+    pn@CSA(11) = "custom_animation\\craftpix_anime_bubble.bmp"
+    repeat 12
+        buffer 7, 96 * 6, 96
+        gsel 7
+        picload exedir + "graphic\\" + pn@CSA(cnt)
+        gsel 970
+        pos 100, 384 * cnt
+        if ( cnt == 10 ) {
+            gcopy 7, 0, 0, 96 * 6, 96
+            buffer 7, 96 * 6, 96
+            gsel 7
+            picload exedir + "graphic\\anime6.bmp"
+            gsel 970
+            pos 100, 384 * cnt + 100
+            gzoom 96 * 5, 96, 7, 0, 0, 240, 48
+            continue
+        }
+        if ( cnt == 11 ) {
+            gzoom 96 * 5, 96, 7, 0, 0, 960, 192
+            pos 100, 384 * cnt + 100
+            gzoom 96 * 5, 96, 7, 0, 0, 960, 192
+            continue
+        }
+        gcopy 7, 0, 0, 96 * 6, 96
+        pos 100, 384 * cnt + 100
+        gcopy 7, 0, 0, 96 * 6, 96
+    loop
+    pn@CSA(0) = "custom_animation\\saku_anime17.bmp"
+    pn@CSA(2) = "custom_animation\\untied_games_anime_electric.bmp"
+    pn@CSA(10) = "anime68.bmp"
+    repeat 12
+        buffer 7, 384 * 6, 384
+        gsel 7
+        picload exedir + "graphic\\" + pn@CSA(cnt)
+        gsel 970
+        pos 100 + 600, 384 * cnt
+        if ( cnt == 0 ) {
+            pos 100 + 600, 384 * cnt + 48
+            gzoom 1920, 192, 7, 0, 96, 960, 96
+            continue
+        }
+        if ( cnt == 2 ) {
+            gzoom 384 * 6, 384, 7, 0, 0, 192 * 6, 192
+            continue
+        }
+        if ( cnt == 10 ) {
+            gzoom 1920, 384, 7, 0, 0, 480, 96
+            continue
+        }
+        if ( cnt == 11 ) {
+            gzoom 1920, 384, 7, 0, 0, 960, 192
+            continue
+        }
+        gzoom 384 * 6, 384, 7, 0, 0, 96 * 6, 96
+    loop
+    gsel 0
+    flag_custom_spell_animation_loaded@CSA = 1
+    return
+
+*custom_spell_animation_dart
+    custom_spell_animation_load
+    gosub *save_buffer
+
+    olist = SKILL_SPELL_FIRE_CLAW, SKILL_SPELL_COLD_BLADE, SKILL_SPELL_LIGHTNING_SPEAR
+    olist(3) = SKILL_SPELL_DARK_EYE, SKILL_SPELL_MIND_THORN, SKILL_SPELL_POISON_MUCUS
+    olist(6) = SKILL_SPELL_NETHER_ARROW, SKILL_SPELL_SOUND_CANNONBALL, SKILL_SPELL_NERVE_ARROW
+    olist(9) = SKILL_SPELL_CHAOS_EYE, SKILL_SPELL_MAGIC_DART, SKILL_SPELL_HYDRO_FANG
+    olistmax = 12
+    otarget = find_olist(efid)
+    if ( otarget < 0 | otarget >= olistmax ) {
+        gosub *load_buffer
+        if ( anisound ) {
+            snd anisound, 0, 1
+        }
+        return 
+    }
+
     ax = (cdata(CDATA_X, cc) - scx) * inf_tiles
     ay = (cdata(CDATA_Y, cc) - scy) * inf_tiles - 12
     ap = dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), cdata(CDATA_X, tc), cdata(CDATA_Y, tc)) + 1
+
     aangle@CSA = atan(cdata(CDATA_X, tc) - cdata(CDATA_X, cc), cdata(CDATA_Y, cc) - cdata(CDATA_Y, tc))
     hoseiwait = ( cfg_animewait ) * ( ammoproc != ENCHANT_AMMO_BURST )
     effshift@CSA = 24
-
-    // txt "[" + animeid + "/" + ele + "/" + efid + "/" + fusifc + "/" + hoseiwait + "]"
-    gosub *save_buffer
-
-    preparePicItem 6, anicol
     if ( efid == SKILL_SPELL_FIRE_CLAW ) {
-        preparePicItem xy2pic(21, 36), anicol
         aangle@CSA = atan(cdata(CDATA_X, cc) - cdata(CDATA_X, tc), cdata(CDATA_Y, tc) - cdata(CDATA_Y, cc))
     }
-    if ( efid == SKILL_SPELL_COLD_BLADE ) {
-		preparePicItem xy2pic(27, 36), anicol
-    }
-    if ( efid == SKILL_SPELL_LIGHTNING_SPEAR ) {
-		preparePicItem xy2pic(3, 0), anicol
-    }
-    if ( efid == SKILL_SPELL_DARK_EYE ) {
+    if ( efid == SKILL_SPELL_DARK_EYE | efid == SKILL_SPELL_MIND_THORN | efid == SKILL_SPELL_CHAOS_EYE ) {
         hoseiwait = 0
-    }
-    if ( efid == SKILL_SPELL_MIND_THORN ) {
-        hoseiwait = 0
-    }
-    if ( efid == SKILL_SPELL_POISON_MUCUS ) {
-		preparePicItem xy2pic(10, 0), anicol
-    }
-    if ( efid == SKILL_SPELL_NETHER_ARROW ) {
-		preparePicItem xy2pic(6, 0), anicol
-    }
-    if ( efid == SKILL_SPELL_SOUND_CANNONBALL ) {
-        preparePicItem xy2pic(32, 35), anicol
-    }
-    if ( efid == SKILL_SPELL_NERVE_ARROW ) {
-		preparePicItem xy2pic(6, 0), anicol
-    }
-    if ( efid == SKILL_SPELL_CHAOS_EYE ) {
-        hoseiwait = 0
-    }
-    if ( efid == SKILL_SPELL_MAGIC_DART ) {
-        preparePicItem xy2pic(6, 0), anicol
-        hoseiwait = hoseiwait / 3
-    }
-    if ( efid == SKILL_SPELL_HYDRO_FANG ) {
-		preparePicItem xy2pic(6, 0), anicol
+    } else {
+        hoseiwait /= 3
     }
     if ( rapidmagic ) {
         hoseiwait /= 3
     }
-    buffer 9, inf_tiles, inf_tiles
-    gosub *buffer_pen_reset
 
     if ( hoseiwait > 0 ) {
         repeat ap
             ax -= (cdata(CDATA_X, cc) - cdata(CDATA_X, tc)) * inf_tiles / ap
             ay -= (cdata(CDATA_Y, cc) - cdata(CDATA_Y, tc)) * inf_tiles / ap
             redraw 0
-            gsel 9
+            gsel 970
             gmode 0
-            pos 0, 0
+            pos 25, 125 + 384 * otarget
             gcopy 0, ax, ay - inf_tiles / 2  + 24, inf_tiles, inf_tiles
             gmode 2
             gsel 0
             gmode 2, inf_tiles, inf_tiles
             pos ax + inf_tiles / 2, ay + effshift@CSA
-            grotate 1, 0, 960, aangle@CSA, inf_tiles, inf_tiles
+            grotate 970, 0, 384 * otarget, aangle@CSA, inf_tiles, inf_tiles
             redraw 1
             
             await hoseiwait
@@ -96,65 +183,10 @@
             redraw 0
             gmode 0
             pos ax, ay - inf_tiles / 2  + 24
-            gcopy 9, 0, 0, inf_tiles, inf_tiles
+            gcopy 970, 25, 125 + 384 * otarget, inf_tiles, inf_tiles
             gmode 2
             redraw 1
         loop
-    }
-
-    hoseiwait = ( cfg_animewait ) * ( ammoproc != ENCHANT_AMMO_BURST )
-    aangle@CSA = atan(cdata(CDATA_X, tc) - cdata(CDATA_X, cc), cdata(CDATA_Y, cc) - cdata(CDATA_Y, tc))
-    effshift@CSA = 0
-
-    gsel 7
-    buffer 7, 96 * 6, 96
-    boxf 0, 0, 96 * 6, 96
-    if ( efid == SKILL_SPELL_FIRE_CLAW ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime20.bmp"
-    }
-    if ( efid == SKILL_SPELL_COLD_BLADE ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime19.bmp"
-        aangle@CSA = atan(0, 1)
-    }
-    if ( efid == SKILL_SPELL_LIGHTNING_SPEAR ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime18.bmp"
-        aangle@CSA = aangle@CSA + rnd(3) - 1
-    }
-    if ( efid == SKILL_SPELL_DARK_EYE ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime21.bmp"
-    }
-    if ( efid == SKILL_SPELL_MIND_THORN ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime23.bmp"
-    }
-    if ( efid == SKILL_SPELL_POISON_MUCUS ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime27.bmp"
-        aangle@CSA = atan(0, 1)
-    }
-    if ( efid == SKILL_SPELL_NETHER_ARROW ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime22.bmp"
-        aangle@CSA = atan(0, 1)
-        effshift@CSA = -24
-    }
-    if ( efid == SKILL_SPELL_SOUND_CANNONBALL ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime24.bmp"
-    }
-    if ( efid == SKILL_SPELL_NERVE_ARROW ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime26.bmp"
-    }
-    if ( efid == SKILL_SPELL_CHAOS_EYE ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime25.bmp"
-    }
-    if ( efid == SKILL_SPELL_MAGIC_DART ) {
-        picload exedir + "graphic\\anime5.bmp", 1
-    }
-    if ( efid == SKILL_SPELL_HYDRO_FANG ) {
-        picload exedir + "graphic\\custom_animation\\craftpix_anime_bubble.bmp"
-        pos 0, 0
-        gzoom 96 * 5, 96, 7, 0, 0, 960, 192
-        boxf 96 * 5, 0, 96 * 5, 96
-    }
-    if ( rapidmagic ) {
-        hoseiwait /= 3
     }
 
     gosub *buffer_pen_reset
@@ -164,21 +196,60 @@
     anidy = (cdata(CDATA_Y, tc) - scy) * inf_tiles + inf_screeny
     aniy = anidy // + rnd(12) - rnd(12)
     
-    repeat 10
-        redraw 0
-        gosub *load_buffer
-        redraw 1
+    hoseiwait = ( cfg_animewait ) * ( ammoproc != ENCHANT_AMMO_BURST )
+    adiff@CSA = cdata(CDATA_X, tc) - cdata(CDATA_X, cc), cdata(CDATA_Y, cc) - cdata(CDATA_Y, tc)
+    aangle@CSA = atan(cdata(CDATA_X, tc) - cdata(CDATA_X, cc), cdata(CDATA_Y, cc) - cdata(CDATA_Y, tc))
+    effshift@CSA = 0
 
-        redraw 0
-        gsel 0
-        pos anix + 24, aniy + 24 + effshift@CSA
-        gmode 2, 96, 96
-        grotate 7, (cnt / 2) * 96, 0, aangle@CSA, 96, 96
-        redraw 1
+    if ( efid == SKILL_SPELL_COLD_BLADE ) {
+        adiff@CSA = 0, 1
+        aangle@CSA = atan(0, 1)
+    }
+    if ( efid == SKILL_SPELL_LIGHTNING_SPEAR ) {
+        adiff@CSA = cdata(CDATA_X, tc) - cdata(CDATA_X, cc) + rnd(3) - 1, cdata(CDATA_Y, cc) - cdata(CDATA_Y, tc) + rnd(3) - 1
+        aangle@CSA = aangle@CSA + rnd(3) - 1
+    }
+    if ( efid == SKILL_SPELL_POISON_MUCUS ) {
+        adiff@CSA = 0, 1
+        aangle@CSA = atan(0, 1)
+    }
+    if ( efid == SKILL_SPELL_NETHER_ARROW ) {
+        adiff@CSA = 0, 1
+        aangle@CSA = atan(0, 1)
+        effshift@CSA = -24
+    }
+    if ( efid == SKILL_SPELL_DARK_EYE | efid == SKILL_SPELL_MIND_THORN | efid == SKILL_SPELL_CHAOS_EYE | efid == SKILL_SPELL_MAGIC_DART ) {
+        hoseiwait = hoseiwait * 2 / 3
+    } else {
+        hoseiwait = hoseiwait / 3
+    }
+    if ( rapidmagic ) {
+        hoseiwait /= 3
+    }
 
-        await hoseiwait
+	if ( TweakData(TWEAK_MISC_MMAH_ASYNC_ANIMATION, TWEAK_CATEGORY_MISC) == 1 ) {
+        animeinfo(0, animepointer) = timeGetTime(), 1000 + otarget, tc
+        animeinfo(3, animepointer) = cdata(CDATA_X, tc), cdata(CDATA_Y, tc)
+        animeinfo(5, animepointer) = 6, hoseiwait * 3 + 20, -8, 0
+        animeinfo(9, animepointer) = effshift@CSA, adiff@CSA(0), adiff@CSA(1)
+        animepointer = (animepointer + 1) \ length2(animeinfo)
+	} else {
+        repeat 12
+            redraw 0
+            gosub *load_buffer
+            redraw 1
+    
+            redraw 0
+            gsel 0
+            pos anix + 24, aniy + 24 + effshift@CSA
+            gmode 2, 96, 96
+            grotate 970, (cnt / 2) * 96 + 100, 0 + 384 * otarget, aangle@CSA, 96, 96
+            redraw 1
+    
+            await hoseiwait
+        loop
+    }
 
-    loop
     gosub *load_buffer
 
     if ( anisound ) {
@@ -187,81 +258,40 @@
     return 
 
 *custom_spell_animation_bolt
-    //txt "[" + animeid + "/" + ele + "/" + efid + "/" + fusifc + "]"
     gosub *save_buffer
     gosub *buffer_pen_reset
+
+    olist = SKILL_SPELL_FIRE_BOLT, SKILL_SPELL_ICE_BOLT, SKILL_SPELL_LIGHTNING_BOLT
+    olist(3) = SKILL_SPELL_DARKNESS_BOLT, SKILL_SPELL_MIND_BOLT, SKILL_SPELL_POISON_BOLT
+    olist(6) = SKILL_SPELL_NETHER_BOLT, SKILL_SPELL_SOUND_BOLT, SKILL_SPELL_NERVE_BOLT
+    olist(9) = SKILL_SPELL_CHAOS_BOLT, SKILL_SPELL_CRYSTAL_SPEAR, SKILL_SPELL_WATER_BOLT
+    olistmax = 12
+    otarget = find_olist(efid)
+    if ( otarget < 0 | otarget >= olistmax ) {
+        gosub *load_buffer
+        if ( anisound ) {
+            snd anisound, 0, 1
+        }
+        return 
+    }
 
     anidx = cdata(CDATA_X, cc)
     anidy = cdata(CDATA_Y, cc)
     ax = (cdata(CDATA_X, cc) - scx) * inf_tiles
     ay = (cdata(CDATA_Y, cc) - scy) * inf_tiles
     aangle@CSA = atan(tlocx - cdata(CDATA_X, cc), cdata(CDATA_Y, cc) - tlocy)
-    
-    // if ( efid == SKILL_SPELL_FIRE_BOLT ) {
-    //     buffer 7, 960, 384
-    //     boxf 0, 0, 960, 384
-    //     picload exedir + "graphic\\anime16.bmp", 1
-    //     gsel 0
 
-    //     repeat 10
-    //         redraw 0
-    //         gosub *load_buffer
-            
-    //         gmode 2, 96, 384
-    //         pos ax + (inf_tiles / 2), ay + (inf_tiles / 2)
-    //         grotate 7, cnt * 96, 0, aangle@CSA, 96, 384
-
-	// 		redraw 1
-    //         await cfg_animewait + 10
-    //     loop
-    // }
-
-    buffer 7, 96 * 6, 96
-    boxf 0, 0, 96 * 6, 96
-    if ( efid == SKILL_SPELL_FIRE_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime20.bmp"
-    }
     if ( efid == SKILL_SPELL_ICE_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime19.bmp"
         aangle@CSA = atan(0, 1)
     }
     if ( efid == SKILL_SPELL_LIGHTNING_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime18.bmp"
         aangle@CSA = aangle@CSA + rnd(3) - 1
     }
-    if ( efid == SKILL_SPELL_DARKNESS_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime21.bmp"
-    }
-    if ( efid == SKILL_SPELL_MIND_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime23.bmp"
-    }
     if ( efid == SKILL_SPELL_POISON_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime27.bmp"
         aangle@CSA = atan(0, 1)
     }
     if ( efid == SKILL_SPELL_NETHER_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime22.bmp"
         aangle@CSA = atan(0, 1)
-    }
-    if ( efid == SKILL_SPELL_SOUND_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime24.bmp"
-    }
-    if ( efid == SKILL_SPELL_NERVE_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime26.bmp"
-    }
-    if ( efid == SKILL_SPELL_CHAOS_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime25.bmp"
-    }
-    if ( efid == SKILL_SPELL_CRYSTAL_SPEAR ) {
-        picload exedir + "graphic\\anime6.bmp", 1
-        pos 0, 0
-        gzoom 96 * 5, 96, 7, 0, 0, 240, 48
-    }
-    if ( efid == SKILL_SPELL_WATER_BOLT ) {
-        picload exedir + "graphic\\custom_animation\\craftpix_anime_bubble.bmp"
-        pos 0, 0
-        gzoom 96 * 5, 96, 7, 0, 0, 960, 192
-        boxf 96 * 5, 0, 96 * 5, 96
     }
 
     gosub *buffer_pen_reset
@@ -310,21 +340,13 @@
             if ( ap(cnt) == (-2) ) {
                 break
             }
-            // if ( (anidx - scx) < 0 | (anidx - scx) >= mdata(MDATA_WIDTH) ) {
-            //     continue
-            // }
-            // if ( ay(cnt) < 0 | ay(cnt) >= mdata(MDATA_HEIGHT) ) {
-            //     continue
-            // }
-            // if ( (map((anidx - scx), ay(cnt), 1) == 0) & ((chipm(CHIPM_ATTRIB, map(ax(cnt), ay(cnt), MAP_TILE_ID)) & CHIPM_ATTRIB_CANT_PASS) == 0) ) {
-            //     continue
-            // }
+            
             if ( ap(cnt) < 5 ) {
                 if ( ax(cnt) < windoww ) {
                     if ( ay(cnt) < inf_screenh * inf_tiles + inf_screeny - inf_tiles / 2 ) {
                         pos ax(cnt), ay(cnt)
                         gmode 2, 96, 96
-                        grotate 7, ap(cnt) * 96, 0, aangle@CSA, 96, 96
+                        grotate 970, ap(cnt) * 96 + 100, 0 + 384 * otarget + 100, aangle@CSA, 96, 96
                     }
                 }
             }
@@ -341,87 +363,56 @@
     return
 
 *custom_spell_animation_ball
-    //txt "[" + animeid + "/" + ele + "/" + efid + "/" + fusifc + "]"
     snd SOUNDLIST_BALL1
 
     gosub *save_buffer
-    gsel 7
-    picload exedir + "graphic\\anime5.bmp"
-    pos 0, 96
-    gfini 480, 48
-    gfdec2 c_col(0, anicol), c_col(1, anicol), c_col(2, anicol)
+    gosub *buffer_pen_reset
+
+    olist = SKILL_SPELL_FIRE_BALL, SKILL_SPELL_ICE_BALL, SKILL_SPELL_THUNDER_VORTEX
+    olist(3) = SKILL_SPELL_ECLIPSE, SKILL_SPELL_ILLUSION_ROAR, SKILL_SPELL_POISON_STORM
+    olist(6) = SKILL_SPELL_NETHER_WAVE, SKILL_SPELL_RAGING_ROAR, SKILL_SPELL_ANGUISH_JAIL
+    olist(9) = SKILL_SPELL_CHAOS_BALL, SKILL_SPELL_MAGIC_STORM, SKILL_SPELL_BUBBLE_STORM
+    olistmax = 12
+    otarget = find_olist(efid)
+    if ( otarget < 0 | otarget >= olistmax ) {
+        gosub *load_buffer
+        if ( anisound ) {
+            snd anisound, 0, 1
+        }
+        return 
+    }
 
     gosub *buffer_pen_reset
-    buffer 9, 384 * 6, 384
-    boxf 0, 0, 384 * 6, 384
+    
     animelength@CSA = 6
     effshift@CSA = 0
     if ( efid == SKILL_SPELL_FIRE_BALL ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime17.bmp", 1
-        pos 0, 48
-        gzoom 1920, 192, 9, 0, 96, 960, 96
-        boxf 0, 0, 1920, 48
         animelength@CSA = 5
         effshift@CSA = 24
     }
     if ( efid == SKILL_SPELL_ICE_BALL ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime19.bmp", 1
-        gzoom 1920, 384, 9, 192, 0, 96 * 5, 96
         animelength@CSA = 5
         effshift@CSA = -56
     }
-    if ( efid == SKILL_SPELL_THUNDER_VORTEX ) {
-        picload exedir + "graphic\\custom_animation\\untied_games_anime_electric.bmp", 1
-        gzoom 384 * 6, 384, 9, 0, 0, 192 * 6, 192
-    }
-    if ( efid == SKILL_SPELL_ECLIPSE ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime21.bmp", 1
-        gzoom 384 * 6, 384, 9, 0, 0, 96 * 6, 96
-    }
-    if ( efid == SKILL_SPELL_ILLUSION_ROAR ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime23.bmp", 1
-        gzoom 384 * 6, 384, 9, 0, 0, 96 * 6, 96
-    }
-    if ( efid == SKILL_SPELL_POISON_STORM ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime27.bmp", 1
-        gzoom 384 * 6, 384, 9, 0, 0, 96 * 6, 96
-    }
     if ( efid == SKILL_SPELL_NETHER_WAVE ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime22.bmp", 1
-        gzoom 384 * 6, 384, 9, 0, 0, 96 * 6, 96
         effshift@CSA = -168
     }
-    if ( efid == SKILL_SPELL_RAGING_ROAR ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime24.bmp", 1
-        gzoom 384 * 6, 384, 9, 0, 0, 96 * 6, 96
-    }
-    if ( efid == SKILL_SPELL_ANGUISH_JAIL ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime26.bmp", 1
-        gzoom 384 * 6, 384, 9, 0, 0, 96 * 6, 96
-    }
-    if ( efid == SKILL_SPELL_CHAOS_BALL ) {
-        picload exedir + "graphic\\custom_animation\\saku_anime25.bmp", 1
-        gzoom 384 * 6, 384, 9, 0, 0, 96 * 6, 96
-    }
     if ( efid == SKILL_SPELL_MAGIC_STORM ) {
-        picload exedir + "graphic\\anime68.bmp", 1
-        gzoom 1920, 384, 9, 0, 0, 480, 96
         animelength@CSA = 5
     }
     if ( efid == SKILL_SPELL_BUBBLE_STORM ) {
-        picload exedir + "graphic\\custom_animation\\craftpix_anime_bubble.bmp", 1
-        gzoom 1920, 384, 9, 0, 0, 960, 192
         animelength@CSA = 5
     }
 
     gosub *buffer_pen_reset
+
     repeat animelength@CSA * 4
         redraw 0
         gosub *load_buffer
         
         gmode 2
         pos (anix - scx) * inf_tiles + inf_screenx + 24 - 192, (aniy - scy) * inf_tiles + inf_screeny + 24 - 192 + effshift@CSA
-        gcopy 9, ( cnt / 4 ) * 384, 0, 384, 384
+        gcopy 970, ( cnt / 4 ) * 384 + 700, 0 + 384 * otarget, 384, 384
 
         anip = 10 - ( animelength@CSA * 4 - cnt )
         if ( anip >= 0 & anip < 10 ) {
@@ -463,7 +454,7 @@
                         if ( sy * inf_tiles + inf_screeny < inf_screenh * inf_tiles + inf_screeny - inf_tiles / 2 ) {
                             pos sx * inf_tiles + inf_screenx, sy * inf_tiles + inf_screeny
                             gmode 2, 48, 48
-                            gcopy 7, anip * 48, 96, 48, 48
+                            gcopy 970, anip * 48 + 100, 200 + 384 * otarget, 48, 48
                         }
                     }
                 loop

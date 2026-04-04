@@ -9149,6 +9149,11 @@
 	/********** JAMES CUSTOM - ASYNC ANIMATION - BEGINNING **********/
 	init_drawing_infomation
 	/********** JAMES CUSTOM - ASYNC ANIMATION - ENDING **********/
+	/********** JAMES CUSTOM - SPELL ANIMATION - BEGINNING **********/
+	if ( TweakData(TWEAK_MISC_CUSTOM_SPELL_ANIMATIONS, TWEAK_CATEGORY_MISC) != 0 ) {
+		custom_spell_animation_load
+	}
+	/********** JAMES CUSTOM - SPELL ANIMATION - ENDING **********/
 	if ( gdata(GDATA_AREA) == AREA_NORTH_TYRIS ) {
 		if ( gdata(GDATA_FLAG_MAIN) == 180 ) {
 			cdata(CDATA_X, CHARA_PLAYER) = adata(ADATA_X, AREA_PORT_KAPUL)

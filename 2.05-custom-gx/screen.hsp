@@ -1798,11 +1798,17 @@
 				apx = animeinfo(3, mondmgcnt2)
 				apy = animeinfo(4, mondmgcnt2)
 			}
+			/********** JAMES CUSTOM - SPELL ANIMATION - BEGINNING **********/
+			if ( ap2 >= 1000 & ap2 < 1000 + 12 ) {
+				apx = cdata(1, animeinfo(2, mondmgcnt2))
+				apy = cdata(2, animeinfo(2, mondmgcnt2))
+			}
+			/********** JAMES CUSTOM - SPELL ANIMATION - ENDING **********/
 			ap3 = (mondmgtime - animeinfo(0, mondmgcnt2)) / ap3
 			mondmgdx = (apx - scx) * inf_tiles + inf_screenx
 			mondmgdy = (apy - scy) * inf_tiles + inf_screeny
-			mondmgdx += sxfix@m85 * (scrollp >= 3 + cfg_improvescroll * 2)
-			mondmgdy += syfix@m85 * (scrollp >= 3 + cfg_improvescroll * 2)
+			mondmgdx += locvar_cell_draw_sxfix * (scrollp >= 3 + cfg_improvescroll * 2)
+			mondmgdy += locvar_cell_draw_syfix * (scrollp >= 3 + cfg_improvescroll * 2)
 			if ( mondmgdy < (-48) | mondmgdy > inf_ver | mondmgdx < (-48) | mondmgdx > windoww ) {
 				continue
 			}
@@ -1813,6 +1819,14 @@
 				}
 				gcopy 97, ap3 * 96, ap * 96, 96, 96
 			}
+			/********** JAMES CUSTOM - SPELL ANIMATION - BEGINNING **********/
+			if ( ap2 >= 1000 & ap2 < 1000 + 12 ) {
+				pos mondmgdx + 24, mondmgdy + 32 + animeinfo(7, mondmgcnt2) + animeinfo(9, mondmgcnt2)
+				gmode 2, 96, 96
+				grotate 970, ap3 * 96 + 100, (ap2 - 1000) * 384, atan(animeinfo(10, mondmgcnt2), animeinfo(11, mondmgcnt2)), 96, 96
+				continue
+			}
+			/********** JAMES CUSTOM - SPELL ANIMATION - ENDING **********/
 			if ( animeinfo(8, mondmgcnt2) == 16 | animeinfo(8, mondmgcnt2) == 18 ) {
 				ap = ap3 * 2
 				ap2 = animeinfo(8, mondmgcnt2)
