@@ -59,7 +59,7 @@
 		}
 	loop
 	repeat maxcard@tcg
-		if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD ) {
+		if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD ) {
 			continue
 		}
 		if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, cnt)) & TCG_SKILL_TYPE_ONGOINGFINAL) ) {
@@ -12760,9 +12760,9 @@
 		cardrefdomain = 5
 		cardrefcost = 4
 		cardrefattack = 2
-		cardrefhp = 5
+		cardrefhp = 3
 		cardrefskillid = TCG_EFF_YERLES_PROPAGANDA
-		cardrefbits = ""
+		cardrefbits = "25,64"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_METAL_ZILLA ) {
@@ -17454,7 +17454,7 @@
 		cardrefattack = 12
 		cardrefhp = 10
 		cardrefskillid = TCG_EFF_MELUGASTAOI
-		cardrefbits = ""
+		cardrefbits = "64"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_YERLESWOOD_NEO ) {
@@ -17478,11 +17478,11 @@
 		cardreflvl = 150
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 5
-		cardrefattack = 1
-		cardrefhp = 3
+		cardrefcost = 6
+		cardrefattack = 2
+		cardrefhp = 4
 		cardrefskillid = TCG_EFF_MELUGAST0
-		cardrefbits = ""
+		cardrefbits = "64"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_METAL_VESDA_THE_FIRE_MACHINE ) {

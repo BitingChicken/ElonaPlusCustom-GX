@@ -822,9 +822,18 @@
 					pos x@tcg + 13, y@tcg + 32 - chipc(CHIPC_F, p@tcg) + chipc(CHIPC_HEIGHT, p@tcg) / 6
 					gcopy 5, 0, 960, chipc(CHIPC_WIDTH, p@tcg), chipc(CHIPC_HEIGHT, p@tcg)
 					if ( card@tcg(TCG_CARD_REF_DBID, tcgdrawcard_arg1) == CREATURE_ID_JALDABAOTH_THE_CHAOS_CHILD & cdbit(TCG_BIT_COMMAND, tcgdrawcard_arg1) == 0 ) {
-						pos x@tcg + 13 - 48, y@tcg + 32 - chipc(CHIPC_F, p@tcg) + chipc(CHIPC_HEIGHT, p@tcg) / 6
+						pos x@tcg + 13 - 48, y@tcg + 48 - 63
 						gmode 2, 144, 96
 						gcopy BUFFER_INF, 908 + rnd(3) * 144, 494
+						pos x@tcg + 13, y@tcg + 48 - 40
+						gmode 5, inf_tiles, inf_tiles, 100 + rnd(70)
+						gcopy BUFFER_INF, 192 + 48 * 11 + inf_tiles, 704
+						gmode 2
+					}
+					if ( card@tcg(TCG_CARD_REF_PIC, tcgdrawcard_arg1) == xy2pic(24, 30) ) {
+						pos x@tcg + 13 - 24, y@tcg + 39 - 63
+						gmode 2, 96, 96
+						gcopy BUFFER_INF, 1239, 390
 						gmode 2
 					}
 				}
@@ -1724,10 +1733,14 @@
 		tcgdraw
 	}
 	if ( card@tcg(TCG_CARD_EFFECT, gravecard_arg1) == TCG_EFF_POPPY | card@tcg(TCG_CARD_EFFECT, gravecard_arg1) == TCG_EFF_AINC | card@tcg(TCG_CARD_EFFECT, gravecard_arg1) == TCG_EFF_RETURNTODECKWHENKILLED | card@tcg(TCG_CARD_EFFECT, gravecard_arg1) == TCG_EFF_RETURNTOHANDWHENKILLED | card@tcg(TCG_CARD_EFFECT, gravecard_arg1) == TCG_EFF_GWEN | specialrulenoonedies@tcg ) {
-		returncard gravecard_arg1
+		if ( card@tcg(TCG_CARD_HP, gravecard_arg1) > 0 ) {
+			returncard gravecard_arg1
+		}
 	}
 	if ( card@tcg(TCG_CARD_EFFECT, gravecard_arg1) == TCG_EFF_RETURNTOHANDWHENKILLED | card@tcg(TCG_CARD_EFFECT, gravecard_arg1) == TCG_EFF_GWEN ) {
-		gettargetcard gravecard_arg1
+		if ( card@tcg(TCG_CARD_HP, gravecard_arg1) > 0 ) {
+			gettargetcard gravecard_arg1
+		}
 	}
 	gosub *refresh_bg
 	return

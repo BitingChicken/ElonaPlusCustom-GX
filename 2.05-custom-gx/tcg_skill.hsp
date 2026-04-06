@@ -648,7 +648,7 @@
 		_switch_sw@tcg = 0
 		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
 			if ( hasholdspace(aeft@tcg) == TRUE ) {
-				drawcount@tcg = limit(5 - getholdersum(aeft@tcg), 1, 5)
+				drawcount@tcg = limit(5 - getholdersum(aeft@tcg), 0, 5)
 				mefanplayer@tcg = aeft@tcg
 				repeat drawcount@tcg
 					if ( getdecksum(mefanplayer@tcg) != 0 ) {
@@ -658,6 +658,119 @@
 			}
 			makecardlist
 			tcgdraw
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_MELUGAST0 | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				if ( hasholdspace(aeft@tcg) == TRUE ) {
+					drawcount@tcg = limit(4 - getholdersum(aeft@tcg), 0, 4)
+					mefanplayer@tcg = aeft@tcg
+					repeat drawcount@tcg
+						if ( cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg) >= MAX_CARD_EXTRA ) { break }
+						card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = holderix@tcg(mefanplayer@tcg) + getholdersum(mefanplayer@tcg) * holderspace@tcg + 20
+						card@tcg(TCG_CARD_Y_MOVETO, ac@tcg) = spotiy@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) + 25 - card@tcg(TCG_CARD_CONTROLLER, ac@tcg) * 50
+						tcgpass 20
+						if ( rnd(1) == 0 ) { 
+							cardno = CREATURE_ID_YERLES_MACHINE_INFANTRY
+							if ( rnd(2) == 0 ) { cardno = CREATURE_ID_YERLES_ELITE_MACHINE_INFANTRY }
+							if ( rnd(4) == 0 ) { cardno = CREATURE_ID_YERLES_LATEST_OUTFIT_SOLDIER }
+							if ( rnd(8) == 0 ) { cardno = CREATURE_ID_YERLES_CYBORG_SOLDIER }
+						}
+						if ( rnd(2) == 0 ) { 
+							cardno = CREATURE_ID_YERLES_SELF_PROPELLED_GUN 
+							if ( rnd(2) == 0 ) { cardno = CREATURE_ID_SECURITY_SYSTEM }
+							if ( rnd(4) == 0 ) { cardno = CREATURE_ID_YERLES_MORTAR }
+							if ( rnd(8) == 0 ) { cardno = CREATURE_ID_GRAVITY_CANNON }
+						}
+						if ( rnd(4) == 0 ) { 
+							cardno = CREATURE_ID_YERLES_COMBAT_PLANE
+							if ( rnd(4) == 0 ) { cardno = CREATURE_ID_YERLESWOOD_TYPE_M }
+						}
+						create_extra_card mefanplayer@tcg, cardno
+						if ( cextra@tcg >= 0 ) {
+							card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_HAND, mefanplayer@tcg
+							card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X_MOVETO, ac@tcg), card@tcg(TCG_CARD_Y_MOVETO, ac@tcg)
+							card@tcg(TCG_CARD_X_MOVETO, cextra@tcg) = holderix@tcg(mefanplayer@tcg) + (getholdersum(mefanplayer@tcg) - 1) * holderspace@tcg, holderiy@tcg(mefanplayer@tcg)
+							cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+							tcgpass 20
+							gettargetcard cextra@tcg
+						}
+					loop
+				}
+				makecardlist
+				tcgdraw
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_MELUGASTAOI | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				if ( hasspotspace(aeft@tcg) == TRUE ) {
+					drawcount@tcg = limit(8 - getspotsum(aeft@tcg), 0, 8)
+					mefanplayer@tcg = aeft@tcg
+					mefanac@tcg = ac@tcg
+					if ( drawcount@tcg <= 0 | cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg) >= MAX_CARD_EXTRA ) { 
+						goto *actionproc_SWEND1 
+					}
+					efllistaddcard 18, mefanac@tcg
+					card@tcg(TCG_CARD_X, mefanac@tcg) = basex@tcg + 1000, spotix@tcg(mefanplayer@tcg) - 60, basex@tcg + 1000, spotix@tcg(mefanplayer@tcg) - 60
+					tcgpass 5
+					repeat 4
+						card@tcg(TCG_CARD_X_MOVETO, mefanac@tcg) = card@tcg(TCG_CARD_X, mefanac@tcg) - 100
+						card@tcg(TCG_CARD_Y_MOVETO, mefanac@tcg) = spotix@tcg(mefanplayer@tcg) - 40 - rnd(40)
+						tcgpass 10
+					loop
+
+					repeat drawcount@tcg
+						if ( cpdata@tcg(TCG_PLAYER_EXTRACARD, aeft@tcg) >= MAX_CARD_EXTRA ) { break }
+						tcgpass 5
+						if ( rnd(1) == 0 ) { 
+							cardno = CREATURE_ID_YERLES_MACHINE_INFANTRY
+							if ( rnd(2) == 0 ) { cardno = CREATURE_ID_YERLES_ELITE_MACHINE_INFANTRY }
+							if ( rnd(4) == 0 ) { cardno = CREATURE_ID_YERLES_LATEST_OUTFIT_SOLDIER }
+							if ( rnd(8) == 0 ) { cardno = CREATURE_ID_YERLES_CYBORG_SOLDIER }
+						}
+						if ( rnd(2) == 0 ) { 
+							cardno = CREATURE_ID_YERLES_SELF_PROPELLED_GUN 
+							if ( rnd(2) == 0 ) { cardno = CREATURE_ID_SECURITY_SYSTEM }
+							if ( rnd(4) == 0 ) { cardno = CREATURE_ID_YERLES_MORTAR }
+							if ( rnd(8) == 0 ) { cardno = CREATURE_ID_GRAVITY_CANNON }
+						}
+						if ( rnd(4) == 0 ) { 
+							cardno = CREATURE_ID_YERLES_COMBAT_PLANE
+							if ( rnd(4) == 0 ) { cardno = CREATURE_ID_YERLESWOOD_TYPE_M }
+						}
+						create_extra_card mefanplayer@tcg, cardno
+						if ( cextra@tcg >= 0 ) {
+							card@tcg(TCG_CARD_X_MOVETO, mefanac@tcg) = card@tcg(TCG_CARD_X, mefanac@tcg) - 100
+							card@tcg(TCG_CARD_Y_MOVETO, mefanac@tcg) += 20 - rnd(30)
+							card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_FIELD, mefanplayer@tcg
+							card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, mefanac@tcg), card@tcg(TCG_CARD_Y, mefanac@tcg)
+							card@tcg(TCG_CARD_X_MOVETO, cextra@tcg) = card@tcg(TCG_CARD_X, mefanac@tcg), spotiy@tcg(mefanplayer@tcg)
+							cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+							tcgpass 15
+							putcard cextra@tcg, mefanplayer@tcg
+						}
+					loop
+					repeat 10
+						card@tcg(TCG_CARD_X_MOVETO, mefanac@tcg) = card@tcg(TCG_CARD_X, mefanac@tcg) - 100
+						card@tcg(TCG_CARD_Y_MOVETO, mefanac@tcg) += 20 - rnd(30)
+						tcgpass 10
+					loop
+				}
+				card@tcg(TCG_CARD_X, mefanac@tcg) = basex@tcg + 0, spotix@tcg(mefanplayer@tcg) - 60, basex@tcg + 150, spotix@tcg(mefanplayer@tcg) - 60
+				efllistaddcard 18, mefanac@tcg
+				tcgpass 10
+				makecardlist
+				tcgdraw
+			}
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -1174,6 +1287,37 @@
 			card@tcg(TCG_CARD_COST, aeft@tcg) = limit(card@tcg(TCG_CARD_COST, aeft@tcg), 0, TCG_STAT_MAX)
 			card@tcg(TCG_CARD_REF_COST, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_COST, aeft@tcg), 0, TCG_STAT_MAX)
 			efllistadd 2, effref@tcg(TCG_SKILL_POWER, card@tcg(TCG_CARD_EFFECT, effac@tcg)), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_MOBILECOMM | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( rnd(2) == 0 ) {
+				card@tcg(TCG_CARD_COST, aeft@tcg) -= 1
+				card@tcg(TCG_CARD_REF_COST, aeft@tcg) -= 1
+				card@tcg(TCG_CARD_COST, aeft@tcg) = limit(card@tcg(TCG_CARD_COST, aeft@tcg), 0, TCG_STAT_MAX)
+				card@tcg(TCG_CARD_REF_COST, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_COST, aeft@tcg), 0, TCG_STAT_MAX)
+				efllistadd 2, 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+			} else {
+				card@tcg(TCG_CARD_ATTACK, aeft@tcg) += 1
+				card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) += 1
+				card@tcg(TCG_CARD_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_ATTACK, aeft@tcg), 0, TCG_STAT_MAX)
+				card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg), 0, TCG_STAT_MAX)
+				card@tcg(TCG_CARD_HP, aeft@tcg) += 1
+				card@tcg(TCG_CARD_REF_HP, aeft@tcg) += 1
+				card@tcg(TCG_CARD_HP, aeft@tcg) = limit(card@tcg(TCG_CARD_HP, aeft@tcg), 1, TCG_STAT_MAX)
+				card@tcg(TCG_CARD_REF_HP, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_HP, aeft@tcg), 1, TCG_STAT_MAX)
+				efllistadd 1, 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+				efllistadd 1, -1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+			}
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				card@tcg(TCG_CARD_Y_MOVETO, ac@tcg) = spotiy@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) - 25 + card@tcg(TCG_CARD_CONTROLLER, ac@tcg) * 50
+				efllistaddcard 18, ac@tcg
+			}
+			efllistaddcard 7, aeft@tcg
+			tcgpass 20
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
