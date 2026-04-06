@@ -21247,28 +21247,7 @@
 		animeload 40, cc
 		customtalk cc, DBMODE_FLAVOR_SPECIAL
 		gosub *convert_word
-		if ( cdata(CDATA_RELATION, cc) == RELATION_ENEMY ) {
-			waza = -1
-		}
-		else {
-			waza = 1
-		}
-		pic = cdata(CDATA_PIC, cc) \ 1000 + cdata(CDATA_CHARA_PIC, cc) * 1000 + refchara(cdata(CDATA_ID, cc), DBSPEC_CHARA_COL) * 10000
-		if ( cc == CHARA_PLAYER ) {
-			pic = -1
-		}
-		exist exedir + "user\\graphic2\\cutin" + pic + ".bmp"
-		if ( strsize == (-1) ) {
-			snd SOUNDLIST_MECHA20
-			repeat 2
-				animeload 92, cc
-			loop
-		}
-		else {
-			animeid = ANIMATION_CUT_IN
-			anic = cc
-			gosub *anime
-		}
+		chara_cutin cc
 		snd SOUNDLIST_CHEER
 		animeload 98, cc
 		txtef COLOR_GREEN

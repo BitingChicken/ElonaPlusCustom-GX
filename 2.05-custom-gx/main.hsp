@@ -1127,7 +1127,7 @@
 		}
 	}
 	if ( gdata(GDATA_WEATHER) == WEATHER_HARD_RAIN | gdata(GDATA_WEATHER) == WEATHER_RAIN ) {
-		if ( gdata(GDATA_WORLD_X) > 65 | gdata(GDATA_WORLD_Y) < 10 ) {
+		if ( gdata(GDATA_AREA) == AREA_NORTH_TYRIS & (gdata(GDATA_WORLD_X) > 65 | gdata(GDATA_WORLD_Y) < 10) ) {
 			gdata(GDATA_WEATHER) = WEATHER_SNOW
 			envonly = 1
 			gosub *music_play
@@ -1243,7 +1243,7 @@
 						break
 					}
 				}
-				if ( gdata(GDATA_WORLD_X) > 65 | gdata(GDATA_WORLD_Y) < 10 ) {
+				if ( gdata(GDATA_AREA) == AREA_NORTH_TYRIS & (gdata(GDATA_WORLD_X) > 65 | gdata(GDATA_WORLD_Y) < 10) ) {
 					if ( rnd(2) == 0 ) {
 						gdata(GDATA_WEATHER) = WEATHER_SNOW
 						txt lang("雪が降ってきた。", "It starts to snow.")

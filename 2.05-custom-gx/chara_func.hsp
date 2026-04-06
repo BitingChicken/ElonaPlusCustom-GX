@@ -8717,6 +8717,9 @@
 	return TRUE
 
 #defcfunc charaIsSummoned int charaIsSummoned_charidx
+	if ( TweakData(TWEAK_GAMEPLAY_SUMMONED_MONSTER_TRAINING, TWEAK_CATEGORY_GAMEPLAY) ) {
+		return FALSE
+	}
 	if ( cbit(CHARA_BIT_SPLIT_KEEP_EFFECT, charaIsSummoned_charidx) | cbit(CHARA_BIT_SPLIT_NO_EFFECT, charaIsSummoned_charidx) | cbit(CHARA_BIT_SUMMONED, charaIsSummoned_charidx) ) {
 		return TRUE
 	}
@@ -8724,6 +8727,9 @@
 
 /********** JAMES CUSTOM - BEGINNING **********/
 #defcfunc charaIsSummoned2 int charaIsSummoned2_charidx // Splitting Monsters drop item. Use this check instead
+	if ( TweakData(TWEAK_GAMEPLAY_SUMMONED_MONSTER_TRAINING, TWEAK_CATEGORY_GAMEPLAY) ) {
+		return FALSE
+	}
 	if ( (cbit(CHARA_BIT_SPLIT_KEEP_EFFECT, charaIsSummoned2_charidx) | cbit(CHARA_BIT_SPLIT_NO_EFFECT, charaIsSummoned2_charidx)) & cbit(CHARA_BIT_SUMMONED, charaIsSummoned2_charidx) ) {
 		return TRUE
 	}

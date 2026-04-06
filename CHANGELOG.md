@@ -6,6 +6,7 @@
 
 # Fixed
 - (Plus) Fixed ranch animals receiving EXP from nefia debris, causing lower breed power
+- (Plus) Fixed rain changing into snow on the ocean due to not checking current area
 - Extermination breath flag not set.
 
 # 2.31.1.0

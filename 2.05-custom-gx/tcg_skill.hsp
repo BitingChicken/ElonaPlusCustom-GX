@@ -765,7 +765,7 @@
 						tcgpass 10
 					loop
 				}
-				card@tcg(TCG_CARD_X, mefanac@tcg) = basex@tcg + 0, spotix@tcg(mefanplayer@tcg) - 60, basex@tcg + 150, spotix@tcg(mefanplayer@tcg) - 60
+				card@tcg(TCG_CARD_X, mefanac@tcg) = basex@tcg + 400, spotix@tcg(mefanplayer@tcg) - 60, basex@tcg + 150, spotix@tcg(mefanplayer@tcg) - 60
 				efllistaddcard 18, mefanac@tcg
 				tcgpass 10
 				makecardlist
