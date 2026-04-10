@@ -193,6 +193,7 @@
 	proc "customtalk:Begin"
 	locvar_customtalk_f = 0
 	gdata(GDATA_CUSTOM_TALK) = 100
+	chatc = customtalk_charid
 	chatc@DP = customtalk_charid
 	if ( cbit(CHARA_BIT_MSG_FILE, customtalk_charid) ) {
 		exist exedir + "user\\talk\\" + cdatan(CDATAN_MSG, customtalk_charid)
