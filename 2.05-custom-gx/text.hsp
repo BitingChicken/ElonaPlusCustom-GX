@@ -1668,7 +1668,7 @@
 			s(cnt) = lang("審美眼[交換レート上昇]", "Aesthetic Sense [Increase Exchange Rate]")
 		}
 		if ( p(cnt) == 3 ) {
-			s(cnt) = lang("調達[独自の稼ぎ増加]", "TraitProcurement")
+			s(cnt) = lang("調達[独自の稼ぎ増加]", "Procurement [Earn Gold by Self]")
 		}
 		if ( p(cnt) == 4 ) {
 			s(cnt) = lang("提携力[同行時に売買強化]", "Strong Ties [Increases Sell Value When In Party]")

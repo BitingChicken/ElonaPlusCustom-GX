@@ -1452,9 +1452,7 @@
 			
 			if ( p@tcg == TCG_BIT_WINDFURY_USABLE ) { s@tcg += "Windfury(1) "}
 			if ( p@tcg == TCG_BIT_ENEMY ) { s@tcg += "[Summoned on Opponent Field] "}
-			if ( p@tcg == TCG_BIT_ASSASSIN ) { s@tcg += "[Starts in Opponent Deck] "}
 			if ( p@tcg == TCG_BIT_TEMPO ) { s@tcg += "[Drawn when Mana=Cost] "}
-			if ( p@tcg == TCG_BIT_CONSTANT ) { s@tcg += "[Starts in your Hand] "}
 			if ( p@tcg == TCG_BIT_MILLSUMMON ) { s@tcg += "[Summon itself when Sent to Graveyard from Deck] "}
 			if ( p@tcg == TCG_BIT_DEVIL ) { s@tcg += "[Effect Cost 2 Life] "}
 			if ( p@tcg == TCG_BIT_GHOST ) { s@tcg += "[Return on Begin Phase] "}
@@ -1465,6 +1463,11 @@
 			if ( p@tcg == TCG_BIT_FOSSIL ) { s@tcg += "[Does Nothing until Unfossiled/Graved] "}
 			if ( p@tcg == TCG_BIT_COST_ONE ) { s@tcg += "[Cost at least 1 Mana] "}
 			if ( p@tcg == TCG_BIT_DISTANT ) { s@tcg += "[Cannot be drawn when Mana<=2] "}
+			if ( tcgmode@tcg == 0 ) {
+				if ( p@tcg == TCG_BIT_NOLIMIT ) { s@tcg += "[No Deckbuild Limit] "}
+				if ( p@tcg == TCG_BIT_ASSASSIN ) { s@tcg += "[Starts in Opponent Deck] "}
+				if ( p@tcg == TCG_BIT_CONSTANT ) { s@tcg += "[Starts in your Hand] "}
+			}
 		loop
 		rtvaln2 += "\n" + s@tcg
 		s@tcg = ""
@@ -2340,6 +2343,7 @@
 		decksizebk@tcg = gdata(GDATA_DECK_SIZE + curdeck)
 		snd SOUNDLIST_WEAR
 		calcdecksize
+		tcgmode@tcg = 0
 		deckmode@tcg = 0, rtval@tcg
 		deckmodecp@tcg = 0
 		gosub *select_deck
@@ -2348,6 +2352,7 @@
 	return
 
 #deffunc tcgmain
+	tcgmode@tcg = 1
 	maxcard@tcg = MAX_CARD_DECK_TOTAL * 2
 	tcginit
 	repeat 2
@@ -3845,13 +3850,13 @@
 						snd SOUNDLIST_FAIL1
 						goto *select_deck_loop_WEND2
 					}
-					if ( deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) >= 2 & card@tcg(TCG_CARD_REF_DOMAIN, cc@tcg) == 4 & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOLIMIT & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_POKER & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOVICE ) {
+					if ( deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) >= 2 & card@tcg(TCG_CARD_REF_DOMAIN, cc@tcg) == 4 & cdbit(TCG_BIT_NOLIMIT, cc@tcg) != TRUE & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOLIMIT & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_POKER & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOVICE ) {
 						cardhelp lang("デッキに同じ中立のカードを1枚しか入れることができない。", "You can only put 2 copy of the same Neutral Card in your deck."), 40
 						deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) = 2
 						snd SOUNDLIST_FAIL1
 						goto *select_deck_loop_WEND2
 					}
-					if ( deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) >= 4                                              & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOLIMIT & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_POKER & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOVICE ) {
+					if ( deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) >= 4                                              & cdbit(TCG_BIT_NOLIMIT, cc@tcg) != TRUE & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOLIMIT & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_POKER & card@tcg(TCG_CARD_EFFECT, cc@tcg) != TCG_EFF_NOVICE ) {
 						cardhelp lang("デッキに同じカードを4枚しか入れることができない。", "You can only put 4 copy of the same Card in your deck."), 40
 						deck(card@tcg(TCG_CARD_REF_DBID, cc@tcg)) = 4
 						snd SOUNDLIST_FAIL1

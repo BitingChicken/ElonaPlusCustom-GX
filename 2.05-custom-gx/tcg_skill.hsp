@@ -489,7 +489,8 @@
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
 			if ( card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_FIELD ) {
 				// Reset the power of ryutye because some effect still uses (efp of eff of effac) instead of (aefp)
-				effref@tcg(TCG_SKILL_POWER, TCG_EFF_RYUTYE) = effref@tcg(TCG_SKILL_POWER, aefp@tcg)
+				reconstruct_card_text aeft@tcg
+				effref@tcg(TCG_SKILL_POWER, TCG_EFF_RYUTYE) = effref@tcg(TCG_SKILL_POWER, limit(aefp@tcg, 0, 3000))
 				effac@tcg = aeft@tcg
 				eff@tcg = aefp@tcg
 				efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
@@ -4169,18 +4170,23 @@
 					if ( card@tcg(TCG_CARD_STATUS, aeft@tcg) != TCG_ACTION_NONE ) {
 						cdbitmod TCG_BIT_EXHAUSTED, aeft@tcg, 1
 					}
-					if ( card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_FIELD ) {
-						if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, aeft@tcg)) & TCG_SKILL_TYPE_BATTLECRY) ) {
-							effac@tcg = aeft@tcg
-							eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
-							efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
-							if ( cancopyeffect(eff@tcg) ) {
-								gosub *card_action_choose_target
-								makecardlist
-								tcgdraw
+					repeat 1, aeft@tcg
+						if ( card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_FIELD ) {
+							if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, aeft@tcg)) & TCG_SKILL_TYPE_BATTLECRY) ) {
+								effac@tcg = aeft@tcg
+								eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
+								efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+								if ( cancopyeffect(eff@tcg) ) {
+									gosub *card_action_choose_target
+									makecardlist
+									tcgdraw
+								}
 							}
 						}
-					}
+						if ( getdecksum(card@tcg(TCG_CARD_CONTROLLER, cnt)) != 0 ) {
+							getrandomcard card@tcg(TCG_CARD_CONTROLLER, cnt)
+						}
+					loop
 				}
 			}
 		}
@@ -5022,6 +5028,178 @@
 					}
 				}
 			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_PAWN | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				if ( cardn@tcg(TCG_CARDN_REF_RACE, aeft@tcg) != "piece" & specialruleuberchess@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) <= 0 ) {
+					goto *actionproc_SWEND1
+				}
+				if ( card@tcg(TCG_CARD_X, ac@tcg) <= card@tcg(TCG_CARD_X, aeft@tcg) + 72 + 72 & card@tcg(TCG_CARD_X, ac@tcg) + 72 >= card@tcg(TCG_CARD_X, aeft@tcg) - 72 ) { 
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) += 2 + 2 * (specialruleuberchess@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) > 0)
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_ROOK | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				if ( card@tcg(TCG_CARD_X, ac@tcg) <= card@tcg(TCG_CARD_X, aeft@tcg) + 72 & card@tcg(TCG_CARD_X, ac@tcg) + 72 >= card@tcg(TCG_CARD_X, aeft@tcg) ) { 
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) -= 1 + 1 * (specialruleuberchess@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) > 0)
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_ATTACK, aeft@tcg), 0, 2000)
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_KNIGHT | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				if ( card@tcg(TCG_CARD_X, ac@tcg) + 72 + 30 <= card@tcg(TCG_CARD_X, aeft@tcg) + 72 & card@tcg(TCG_CARD_X, ac@tcg) + 72 + 30 >= card@tcg(TCG_CARD_X, aeft@tcg) ) { 
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) -= 1 + 1 * (specialruleuberchess@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) > 0)
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_ATTACK, aeft@tcg), 0, 2000)
+				}
+				if ( card@tcg(TCG_CARD_X, ac@tcg) - 30 <= card@tcg(TCG_CARD_X, aeft@tcg) + 72 & card@tcg(TCG_CARD_X, ac@tcg) - 30 >= card@tcg(TCG_CARD_X, aeft@tcg) ) { 
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) -= 1 + 1 * (specialruleuberchess@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) > 0)
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_ATTACK, aeft@tcg), 0, 2000)
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_QUEEN | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				if ( cardn@tcg(TCG_CARDN_REF_RACE, aeft@tcg) != "piece" & specialruleuberchess@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) <= 0 ) {
+					goto *actionproc_SWEND1
+				}
+				repeat 26, 5
+					if ( cdbit(cnt, aeft@tcg) == TRUE & cdbit(cnt, ac@tcg) == FALSE ) {
+						cdbitmod cnt, ac@tcg, 1
+					}
+				loop
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_KING | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+				if ( cardn@tcg(TCG_CARDN_REF_RACE, aeft@tcg) != "piece" & specialruleuberchess@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) <= 0 ) {
+					goto *actionproc_SWEND1
+				}
+				if ( cdbit(TCG_BIT_ARMOR, aeft@tcg) == FALSE ) {
+					cdbitmod TCG_BIT_ARMOR, aeft@tcg, 1
+					if ( getdecksum(card@tcg(TCG_CARD_CONTROLLER,  aeft@tcg)) != 0 ) {
+						getrandomcard card@tcg(TCG_CARD_CONTROLLER,  aeft@tcg)
+					}
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_BISHOP | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+			aeftbk@tcg = aeft@tcg
+			acbk@tcg = ac@tcg
+			apbk@tcg = card@tcg(TCG_CARD_CONTROLLER, ac@tcg)
+
+			pawncnt@tcg = 0
+			pawntarget@tcg = 0, 0
+			pawnmax@tcg = 2
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != apbk@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_PAWN ) { continue }
+				if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_DECK ) { continue }
+				pawntarget@tcg(pawncnt@tcg) = cnt + 1
+				pawncnt@tcg++
+				if ( pawncnt@tcg >= pawnmax@tcg ) {
+					pawntarget@tcg(rnd(pawncnt@tcg + 1)) = cnt + 1
+				}
+			loop
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != apbk@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_PAWN ) { continue }
+				if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_GRAVEYARD ) { continue }
+				pawntarget@tcg(pawncnt@tcg) = cnt + 1
+				pawncnt@tcg++
+				if ( pawncnt@tcg >= pawnmax@tcg ) {
+					pawntarget@tcg(rnd(pawncnt@tcg + 1)) = cnt + 1
+				}
+			loop
+
+			repeat 2
+				if ( pawntarget@tcg(cnt) == 0 ) { continue }
+				aeft@tcg = pawntarget@tcg(cnt) - 1
+				card@tcg(TCG_CARD_LOCATION, aeft@tcg) = TCG_LOCATION_ANIM 
+				card@tcg(TCG_CARD_ANIM, aeft@tcg) = 0, 0 
+				cdbitmod TCG_BIT_FACE_UP, aeft@tcg, 1
+				card@tcg(TCG_CARD_X, aeft@tcg) = card@tcg(TCG_CARD_X, acbk@tcg), card@tcg(TCG_CARD_Y, acbk@tcg), card@tcg(TCG_CARD_X, acbk@tcg) - 72 + 144 * cnt, card@tcg(TCG_CARD_Y, acbk@tcg) + 104 - 208 * (apbk@tcg != 0)
+			loop
+			
+			if ( pawntarget@tcg(0) != 0 ) {
+				tcgpass 30
+				repeat maxcard@tcg
+					if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != apbk@tcg ) { continue }
+					if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_ANIM ) { continue }
+					cdbitmod TCG_BIT_FACE_UP, cnt, 1
+					card@tcg(TCG_CARD_LOCATION, cnt) = TCG_LOCATION_FIELD
+					cdbitmod TCG_BIT_EXHAUSTED, cnt, 1
+					card@tcg(TCG_CARD_STATUS, cnt) = TCG_ACTION_EXHAUSTED
+				loop
+				makecardlist
+				cardposhand apbk@tcg, -1
+				cardpos apbk@tcg, -1
+			}
+			tcgdraw
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_GRANDMASTER | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+			if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+				if ( cardn@tcg(TCG_CARDN_REF_RACE, aeft@tcg) != "piece" & specialruleuberchess@tcg(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) <= 0 ) {
+					goto *actionproc_SWEND1
+				}
+				if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, aeft@tcg)) & TCG_SKILL_TYPE_BATTLECRY) ) {
+					card@tcg(TCG_CARD_Y_MOVETO, aeft@tcg) -= 30 - 60 * (card@tcg(TCG_CARD_CONTROLLER, aeft@tcg) != 0)
+					tcgpass 30
+					efllistaddcard 18, aeft@tcg
+					effac@tcg = aeft@tcg
+					eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
+					efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+					if ( cancopyeffect(eff@tcg) ) {
+						gosub *card_action_choose_target
+						makecardlist
+						tcgdraw
+					}
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_SUPERGRANDMASTER | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			specialruleuberchess@tcg(aeft@tcg) = 2
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++

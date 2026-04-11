@@ -2,6 +2,8 @@
 	if ( chainmode@tcg != 0 | selectmode@tcg == 2 ) { return }
 	specialruleeffectdamage@tcg = 0, 0
 	specialrulecloudy@tcg = 0
+	if ( specialruleuberchess@tcg(0) > 0 ) { specialruleuberchess@tcg(0)-- }
+	if ( specialruleuberchess@tcg(1) > 0 ) { specialruleuberchess@tcg(1)-- }
 	repeat maxcard@tcg
 		card@tcg(TCG_CARD_COST, cnt) = limit(card@tcg(TCG_CARD_REF_COST, cnt), 0, TCG_STAT_MAX)
 		card@tcg(TCG_CARD_REF_ATTACK, cnt) = limit(card@tcg(TCG_CARD_REF_ATTACK, cnt), 0, TCG_STAT_MAX)
@@ -642,6 +644,7 @@
 	if ( effref@tcg(TCG_SKILL_EFF, cancopyeffect_arg1_eff) == TCG_SKILL_EFF_COPY_EFFECT ) { return FALSE }
 	if ( effref@tcg(TCG_SKILL_EFF, cancopyeffect_arg1_eff) == TCG_SKILL_EFF_RYUTYE ) { return FALSE }
 	if ( effref@tcg(TCG_SKILL_EFF, cancopyeffect_arg1_eff) == TCG_SKILL_EFF_NERES ) { return FALSE }
+	if ( effref@tcg(TCG_SKILL_EFF, cancopyeffect_arg1_eff) == TCG_SKILL_EFF_GRANDMASTER ) { return FALSE }
 	return TRUE
 	
 #defcfunc getcardattackanime int getcardattackanime_arg1
@@ -1894,18 +1897,19 @@
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_LOYTER_THE_CRIMSON_OF_ZANAN | cdata(CDATA_ID, tc) == CREATURE_ID_WYNAN_THE_LORD_OF_THE_ANCIENT_CASTLE ) {
 		deck_opponent(CREATURE_ID_LOYTER_THE_CRIMSON_OF_ZANAN) = 1
 		deck_opponent(CREATURE_ID_PAWN) = 6
-		deck_opponent(CREATURE_ID_ROOK) = 4
-		deck_opponent(CREATURE_ID_KNIGHT) = 4
+		deck_opponent(CREATURE_ID_ROOK) = 3
+		deck_opponent(CREATURE_ID_KNIGHT) = 3
 		deck_opponent(CREATURE_ID_BISHOP) = 4
-		deck_opponent(CREATURE_ID_QUEEN) = 1
-		deck_opponent(CREATURE_ID_KING) = 1
+		deck_opponent(CREATURE_ID_QUEEN) = 2
+		deck_opponent(CREATURE_ID_KING) = 3
 		deck_opponent(CREATURE_ID_GRANDMASTER) = 2
 		deck_opponent(CREATURE_ID_WYNAN_THE_LORD_OF_THE_ANCIENT_CASTLE) = 1
-		deck_opponent(CREATURE_ID_WARRIOR) = 2
-		deck_opponent(CREATURE_ID_WIZARD) = 2
 		deck_opponent(CREATURE_ID_BARD) = 2
-		deck_opponent(CREATURE_ID_SCHOLAR) = 2
-		deck_opponent(CREATURE_ID_DETECTIVE) = 2
+		deck_opponent(CREATURE_ID_ELDER) = 2
+		deck_opponent(CREATURE_ID_MINER) = 2
+		deck_opponent(CREATURE_ID_SHENA_THE_DRAW) = 1
+		deck_opponent(CREATURE_ID_LUNE_THE_MAID_CHIEF) = 1
+		deck_opponent(CREATURE_ID_RAPHAEL_THE_WOMANIZER) = 1
 		return 1
 	}
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_SHENA_THE_DRAW | cdata(CDATA_ID, tc) == CREATURE_ID_QURUIZA_THE_RED_EYED_DECEIVER | cdata(CDATA_ID, tc) == CREATURE_ID_CORGON_THE_STEEL_DRAGON ) {
@@ -2046,7 +2050,7 @@
 		deck_opponent(CREATURE_ID_MUTANT) = 4
 		deck_opponent(CREATURE_ID_BARD) = 2
 		deck_opponent(CREATURE_ID_JURE_FANATIC) = 2
-		deck_opponent(CREATURE_ID_SPAGHETTI_MONSTER) = 1
+		deck_opponent(CREATURE_ID_CTHUGHA) = 1
 		deck_opponent(CREATURE_ID_CHAOSHAPRINCESS_MEM) = 2
 		deck_opponent(CREATURE_ID_CHAOSHAPRINCESS_FWBS) = 4
 		deck_opponent(CREATURE_ID_CHAOSHAPRINCESS_FSSSY) = 2
@@ -4873,7 +4877,7 @@
 		cardrefsex = "male"
 		cardreflvl = 5
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 7
+		cardrefdomain = 0
 		cardrefcost = 2
 		cardrefattack = 4
 		cardrefhp = 2
@@ -4900,7 +4904,7 @@
 		cardrefclass = "thief"
 		cardreflvl = 129
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 7
+		cardrefdomain = 0
 		cardrefcost = 6
 		cardrefattack = 9
 		cardrefhp = 6
@@ -4927,7 +4931,7 @@
 		cardrefclass = "predator"
 		cardreflvl = 140
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 7
+		cardrefdomain = 0
 		cardrefcost = 6
 		cardrefattack = 7
 		cardrefhp = 7
@@ -4940,7 +4944,7 @@
 		cardrefclass = "wizard"
 		cardreflvl = 180
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 7
+		cardrefdomain = 0
 		cardrefcost = 8
 		cardrefattack = 10
 		cardrefhp = 9
@@ -4953,7 +4957,7 @@
 		cardrefclass = "archer"
 		cardreflvl = 160
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 7
+		cardrefdomain = 0
 		cardrefcost = 7
 		cardrefattack = 1
 		cardrefhp = 8
@@ -4966,7 +4970,7 @@
 		cardrefclass = "predator"
 		cardreflvl = 50
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 7
+		cardrefdomain = 0
 		cardrefcost = 3
 		cardrefattack = 2
 		cardrefhp = 4
@@ -4979,7 +4983,7 @@
 		cardrefclass = "predator"
 		cardreflvl = 45
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 7
+		cardrefdomain = 0
 		cardrefcost = 2
 		cardrefattack = 2
 		cardrefhp = 3
@@ -4992,7 +4996,7 @@
 		cardrefclass = "wizard"
 		cardreflvl = 65
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 7
+		cardrefdomain = 0
 		cardrefcost = 4
 		cardrefattack = 6
 		cardrefhp = 4
@@ -5819,7 +5823,7 @@
 		cardrefcost = 0
 		cardrefattack = 0
 		cardrefhp = 1
-		cardrefskillid = TCG_EFF_DEATHRATTLE_POISONRANDOMENEMY
+		cardrefskillid = TCG_EFF_DEATHRATTLE_POISON2RANDOMENEMY
 		cardrefbits = ""
 		return 1
 	}
@@ -5831,7 +5835,7 @@
 		cardrefcost = 2
 		cardrefattack = 0
 		cardrefhp = 1
-		cardrefskillid = TCG_EFF_DEATHRATTLE_POISON2RANDOMENEMY
+		cardrefskillid = TCG_EFF_DEATHRATTLE_POISONALLENEMY
 		cardrefbits = ""
 		return 1
 	}
@@ -5843,7 +5847,7 @@
 		cardrefcost = 1
 		cardrefattack = 0
 		cardrefhp = 1
-		cardrefskillid = TCG_EFF_DEATHRATTLE_DEBUFF2RANDOMENEMY
+		cardrefskillid = TCG_EFF_DEATHRATTLE_DEBUFFALLENEMY
 		cardrefbits = ""
 		return 1
 	}
@@ -6052,7 +6056,7 @@
 		cardreflvl = 153
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 0
-		cardrefcost = 6
+		cardrefcost = 5
 		cardrefattack = 1
 		cardrefhp = 7
 		cardrefskillid = TCG_EFF_NONE
@@ -6064,7 +6068,7 @@
 		cardrefclass = "gunner"
 		cardreflvl = 129
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 0
+		cardrefdomain = 7
 		cardrefcost = 5
 		cardrefattack = 5
 		cardrefhp = 6
@@ -6078,7 +6082,7 @@
 		cardreflvl = 108
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 0
-		cardrefcost = 6
+		cardrefcost = 5
 		cardrefattack = 5
 		cardrefhp = 6
 		cardrefskillid = TCG_EFF_BATTLECRY_DESTROYCHOSENENEMY
@@ -6147,7 +6151,7 @@
 		cardrefattack = 1
 		cardrefhp = 1
 		cardrefskillid = TCG_EFF_NONE
-		cardrefbits = "7"
+		cardrefbits = "7,11"
 		return 1
 	}
 	// fairy
@@ -6733,7 +6737,7 @@
 		cardrefdomain = 0
 		cardrefcost = 2
 		cardrefattack = 2
-		cardrefhp = 3
+		cardrefhp = 4
 		cardrefskillid = TCG_EFF_BATTLECRY_MILL1CARD
 		cardrefbits = "6"
 		return 1
@@ -10960,8 +10964,8 @@
 		cardrefcost = 2
 		cardrefattack = 2
 		cardrefhp = 2
-		cardrefskillid = TCG_EFF_NOLIMIT
-		cardrefbits = "7,20"
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = "7,20,111"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_HUGE_CHINCHILLA ) {
@@ -10986,8 +10990,8 @@
 		cardrefcost = 1
 		cardrefattack = 2
 		cardrefhp = 2
-		cardrefskillid = TCG_EFF_NOLIMIT
-		cardrefbits = ""
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = "111"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_KYUSO ) {
@@ -11154,8 +11158,8 @@
 		cardrefcost = 0
 		cardrefattack = 1
 		cardrefhp = 1
-		cardrefskillid = TCG_EFF_NOLIMIT
-		cardrefbits = ""
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = "111"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_HEDGEHOG ) {
@@ -11533,7 +11537,7 @@
 		cardreflvl = 155
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 3
-		cardrefcost = 5
+		cardrefcost = 7
 		cardrefattack = 4
 		cardrefhp = 4
 		cardrefskillid = TCG_EFF_SUPERGRANDMASTER
@@ -11546,7 +11550,7 @@
 		cardreflvl = 108
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 3
-		cardrefcost = 4
+		cardrefcost = 3
 		cardrefattack = 3
 		cardrefhp = 3
 		cardrefskillid = TCG_EFF_GRANDMASTER
@@ -11559,11 +11563,11 @@
 		cardreflvl = 12
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 3
-		cardrefcost = 0
-		cardrefattack = 1
-		cardrefhp = 1
-		cardrefskillid = TCG_EFF_NOLIMIT
-		cardrefbits = ""
+		cardrefcost = 1
+		cardrefattack = 0
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_PAWN
+		cardrefbits = "111"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_ROOK ) {
@@ -11572,11 +11576,11 @@
 		cardreflvl = 16
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 3
-		cardrefcost = 1
+		cardrefcost = 2
 		cardrefattack = 2
 		cardrefhp = 2
-		cardrefskillid = TCG_EFF_NONE
-		cardrefbits = ""
+		cardrefskillid = TCG_EFF_ROOK
+		cardrefbits = "6,11"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_BISHOP ) {
@@ -11586,10 +11590,10 @@
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 3
 		cardrefcost = 2
-		cardrefattack = 2
-		cardrefhp = 2
+		cardrefattack = 0
+		cardrefhp = 4
 		cardrefskillid = TCG_EFF_BISHOP
-		cardrefbits = ""
+		cardrefbits = "5,21"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_KNIGHT ) {
@@ -11598,11 +11602,11 @@
 		cardreflvl = 18
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 3
-		cardrefcost = 2
-		cardrefattack = 3
+		cardrefcost = 3
+		cardrefattack = 1
 		cardrefhp = 3
-		cardrefskillid = TCG_EFF_NONE
-		cardrefbits = ""
+		cardrefskillid = TCG_EFF_KNIGHT
+		cardrefbits = "12,25"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_QUEEN ) {
@@ -11612,9 +11616,9 @@
 		cardreflvl = 22
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 3
-		cardrefcost = 5
-		cardrefattack = 3
-		cardrefhp = 3
+		cardrefcost = 4
+		cardrefattack = 4
+		cardrefhp = 4
 		cardrefskillid = TCG_EFF_QUEEN
 		cardrefbits = ""
 		return 1
@@ -11626,9 +11630,9 @@
 		cardreflvl = 22
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 3
-		cardrefcost = 5
+		cardrefcost = 7
 		cardrefattack = 5
-		cardrefhp = 5
+		cardrefhp = 4
 		cardrefskillid = TCG_EFF_KING
 		cardrefbits = ""
 		return 1
@@ -13081,7 +13085,7 @@
 		cardreflvl = 111
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 0
-		cardrefcost = 4
+		cardrefcost = 3
 		cardrefattack = 3
 		cardrefhp = 3
 		cardrefskillid = TCG_EFF_KAMIKAZEMAIMAI
@@ -13094,9 +13098,9 @@
 		cardreflvl = 86
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 0
-		cardrefcost = 3
+		cardrefcost = 2
 		cardrefattack = 1
-		cardrefhp = 5
+		cardrefhp = 3
 		cardrefskillid = TCG_EFF_DEATHRATTLE_WEAKENRANDOM2ENEMYBY2
 		cardrefbits = "39"
 		return 1
@@ -13109,7 +13113,7 @@
 		cardrefdomain = 0
 		cardrefcost = 3
 		cardrefattack = 1
-		cardrefhp = 8
+		cardrefhp = 10
 		cardrefskillid = TCG_EFF_NONE
 		cardrefbits = "39"
 		return 1
@@ -13123,7 +13127,7 @@
 		cardrefcost = 1
 		cardrefattack = 1
 		cardrefhp = 2
-		cardrefskillid = TCG_EFF_DEATHRATTLE_POISONRANDOMENEMY
+		cardrefskillid = TCG_EFF_DEATHRATTLE_POISON2RANDOMENEMY
 		cardrefbits = "39"
 		return 1
 	}
@@ -13340,7 +13344,7 @@
 		cardrefrace = "drake"
 		cardreflvl = 16
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 7
+		cardrefdomain = 0
 		cardrefcost = 2
 		cardrefattack = 2
 		cardrefhp = 3
@@ -14163,7 +14167,7 @@
 		cardreflvl = 2
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 3
+		cardrefcost = 1
 		cardrefattack = 2
 		cardrefhp = 2
 		cardrefskillid = TCG_EFF_RYUTYE
@@ -15687,7 +15691,7 @@
 		cardreflvl = 10
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 0
-		cardrefcost = 2
+		cardrefcost = 1
 		cardrefattack = 0
 		cardrefhp = 1
 		cardrefskillid = TCG_EFF_NONE
@@ -15700,9 +15704,9 @@
 		cardreflvl = 16
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 0
-		cardrefcost = 3
+		cardrefcost = 2
 		cardrefattack = 0
-		cardrefhp = 3
+		cardrefhp = 2
 		cardrefskillid = TCG_EFF_DEATHRATTLE_POISONRANDOMENEMY
 		cardrefbits = "17"
 		return 1
@@ -15714,7 +15718,7 @@
 		cardrefdomain = 0
 		cardrefcost = 2
 		cardrefattack = 1
-		cardrefhp = 2
+		cardrefhp = 3
 		cardrefskillid = TCG_EFF_BATTLECRY_SUMMONACOPY
 		cardrefbits = "23"
 		return 1
@@ -15724,7 +15728,7 @@
 		cardreflvl = 22
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 0
-		cardrefcost = 4
+		cardrefcost = 3
 		cardrefattack = 2
 		cardrefhp = 3
 		cardrefskillid = TCG_EFF_BATTLECRY_SUMMONACOPY
@@ -17750,7 +17754,7 @@
 		cardrefattack = 1
 		cardrefhp = 1
 		cardrefskillid = TCG_EFF_POKER
-		cardrefbits = ""
+		cardrefbits = "111"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_DIAMOND_EYES ) {
