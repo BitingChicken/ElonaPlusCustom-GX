@@ -1081,12 +1081,32 @@
 	if ( deck_opponent(cdata(CDATA_ID, tc)) <= 0 ) {
 		deck_opponent(cdata(CDATA_ID, tc)) = 1
 	}
+	if ( tc > 0 & tc < MAX_CHARA_FOLLOWER ) {
+		deck_opponent(CREATURE_ID_USER) = 1
+	}
 	cc@tcg = MAX_CARD_DECK_TOTAL
 	repeat MAX_CREATURE_ID - 3, 1
 		cnt2@tcg = cnt
 		if ( deck_opponent(cnt2@tcg) > 0 ) {
 			repeat deck_opponent(cnt2@tcg)
+				if ( cnt2@tcg == CREATURE_ID_USER ) {
+					if ( cdata(CDATA_ID, tc) == CREATURE_ID_USER ) {
+						cnpc@tcg = cdata(CDATA_USERNPC_ID, tc) + 1
+					}
+					if ( tc > 0 & tc < MAX_CHARA_FOLLOWER ) {
+						cnpc@tcg = 0
+						pet@tcg = tc
+					}
+				}
 				create_card cc@tcg, cnt2@tcg
+				if ( cnt2@tcg == CREATURE_ID_USER ) {
+					if ( cdata(CDATA_ID, tc) == CREATURE_ID_USER ) {
+						sreplace carddetailneff@tcg(cc@tcg), carddetailneff@tcg(cc@tcg), cardrefn, cdatan(CDATAN_NAME, tc)
+					}
+					if ( tc > 0 & tc < MAX_CHARA_FOLLOWER ) {
+						sreplace carddetailneff@tcg(cc@tcg), carddetailneff@tcg(cc@tcg), cardrefn, cdatan(CDATAN_NAME, tc)
+					}
+				}
 				card@tcg(TCG_CARD_LOCATION, cc@tcg) = TCG_LOCATION_DECK, rp@tcg
 				cc@tcg++
 				cardsize@tcg++
@@ -3408,7 +3428,6 @@
 				cnpclevel@tcg *= 2
 			loop
 		}
-		pet@tcg = 0
 	}
 	if ( cnpc@tcg > 0 ) {
 		cardrefno = "???"
@@ -3448,6 +3467,8 @@
 		if ( (cardrefskillid == TCG_EFF_PLAYER & gdata(GDATA_FLAG_GUILD_FIGHTER)) | (cardrefskillid == TCG_EFF_NOVICE & rnd(4) == 0) ) { cardrefbits = "67,80" }
 		if ( (cardrefskillid == TCG_EFF_PLAYER & gdata(GDATA_FLAG_GUILD_THIEF)) | (cardrefskillid == TCG_EFF_NOVICE & rnd(5) == 0) ) { cardrefbits = "68,80" }
 		if ( (cardrefskillid == TCG_EFF_PLAYER & gdata(GDATA_FLAG_GUILD_MAGE)) | (cardrefskillid == TCG_EFF_NOVICE & rnd(6) == 0) ) { cardrefbits = "69,80" }
+		if ( pet@tcg > 0 ) { cardrefbits = "80" }
+		if ( cnpc@tcg > 0 ) { cardrefbits = "84" }
 		if ( cardrefskillid == TCG_EFF_NOVICE ) { cardrefskillid = TCG_EFF_NONE }
 		if ( cardrefrace == "roran" | cardrefrace == "elea" ) { 
 			cardrefcost -= 1 
@@ -3554,6 +3575,9 @@
 	if ( cnpc@tcg > 0 ) {
 		dbid = CREATURE_ID_NOVICE
 		cnpc@tcg = 0
+	}
+	if ( pet@tcg > 0 ) {
+		pet@tcg = 0
 	}
 	cardrefattack = limit(cardrefattack, 0, TCG_STAT_MAX)
 	cardrefhp = limit(cardrefhp, 1, TCG_STAT_MAX)
