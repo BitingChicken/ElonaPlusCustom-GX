@@ -26,10 +26,18 @@
 		if ( cpdata@tcg(TCG_PLAYER_LIFE, cp@tcg) >= 8 ) {
 			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLD ) { p@tcg -= getholdersum(cp@tcg) / 2 }
 			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDDONTPLAY ) { p@tcg -= 150 }
-			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUHAVE ) {
+			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUHAVE & effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) < TCG_SKILL_AI_PLAYIFYOUHAVEKEEP + 10000 ) {
 				p@tcg = -50
 				repeat clistmax@tcg(cl@tcg)
-					if ( card@tcg(TCG_CARD_REF_DBID, clist@tcg(cnt, cl@tcg)) == effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) - TCG_SKILL_AI_PLAYIFYOUHAVE ) {
+					if ( card@tcg(TCG_CARD_REF_DBID, clist@tcg(cnt, cl@tcg)) == (effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) \ 10000) ) {
+						p@tcg = 100
+					}
+				loop 
+			}
+			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUHAVEINHAND & effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) < TCG_SKILL_AI_PLAYIFYOUHAVEINHANDKEEP + 10000 ) {
+				p@tcg = -50
+				repeat clistmax@tcg(ch@tcg)
+					if ( card@tcg(TCG_CARD_REF_DBID, clist@tcg(cnt, ch@tcg)) == (effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) \ 10000) ) {
 						p@tcg = 100
 					}
 				loop 
@@ -192,7 +200,11 @@
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_SAC ) { p@tcg -= 20 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_COMBOCORESAC ) { p@tcg -= 20 }
 		if ( card@tcg(TCG_CARD_REF_DOMAIN, c@tcg) == 5 ) { p@tcg += 20 }
-		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUHAVE ) { p@tcg += 50 }
+		if ( cdbit(TCG_BIT_FOSSIL, c@tcg) ) { p@tcg = 20 }
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUHAVE & effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) < TCG_SKILL_AI_PLAYIFYOUHAVE + 10000 ) { p@tcg += 50 }
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUHAVEKEEP & effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) < TCG_SKILL_AI_PLAYIFYOUHAVEKEEP + 10000 ) { p@tcg += 200 }
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUHAVEINHAND & effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) < TCG_SKILL_AI_PLAYIFYOUHAVEINHAND + 10000 ) { p@tcg += 50 }
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUHAVEINHANDKEEP & effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) < TCG_SKILL_AI_PLAYIFYOUHAVEINHANDKEEP + 10000 ) { p@tcg += 200 }
 		if ( p@tcg < p@tcg(1) ) {
 			p@tcg(1) = p@tcg
 			cc@tcg = c@tcg

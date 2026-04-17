@@ -344,6 +344,13 @@
 				sreplace s, s, lang("生きている", " alive "), " "
 				p(1) = 1
 			}
+			if ( instr(s, 0, lang("進化", " evolution ")) != (-1) ) {
+				if ( inv(INV_ITEM_EFFECT, cnt2) != EFFECT_EVOLUTION_ITEM ) {
+					continue
+				}
+				sreplace s, s, lang("進化", " evolution "), " "
+				p(1) = 1
+			}
 			s = strtrim(s, 0, 32)
 			while instr(s, 0, "  ") != (-1) != 0
 				sreplace s, s, "  ", " "

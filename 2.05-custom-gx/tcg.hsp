@@ -1452,7 +1452,9 @@
 			
 			if ( p@tcg == TCG_BIT_WINDFURY_USABLE ) { s@tcg += "Windfury(1) "}
 			if ( p@tcg == TCG_BIT_ENEMY ) { s@tcg += "[Summoned on Opponent Field] "}
+			if ( p@tcg == TCG_BIT_ASSASSIN ) { s@tcg += "[Starts in Opponent Deck] "}
 			if ( p@tcg == TCG_BIT_TEMPO ) { s@tcg += "[Drawn when Mana=Cost] "}
+			if ( p@tcg == TCG_BIT_CONSTANT ) { s@tcg += "[Starts in your Hand] "}
 			if ( p@tcg == TCG_BIT_MILLSUMMON ) { s@tcg += "[Summon itself when Sent to Graveyard from Deck] "}
 			if ( p@tcg == TCG_BIT_DEVIL ) { s@tcg += "[Effect Cost 2 Life] "}
 			if ( p@tcg == TCG_BIT_GHOST ) { s@tcg += "[Return on Begin Phase] "}
@@ -1463,11 +1465,9 @@
 			if ( p@tcg == TCG_BIT_FOSSIL ) { s@tcg += "[Does Nothing until Unfossiled/Graved] "}
 			if ( p@tcg == TCG_BIT_COST_ONE ) { s@tcg += "[Cost at least 1 Mana] "}
 			if ( p@tcg == TCG_BIT_DISTANT ) { s@tcg += "[Cannot be drawn when Mana<=2] "}
-			if ( tcgmode@tcg == 0 ) {
-				if ( p@tcg == TCG_BIT_NOLIMIT ) { s@tcg += "[No Deckbuild Limit] "}
-				if ( p@tcg == TCG_BIT_ASSASSIN ) { s@tcg += "[Starts in Opponent Deck] "}
-				if ( p@tcg == TCG_BIT_CONSTANT ) { s@tcg += "[Starts in your Hand] "}
-			}
+			if ( p@tcg == TCG_BIT_NOLIMIT ) { s@tcg += "[No Deckbuild Limit] "}
+			if ( p@tcg == TCG_BIT_UNLUCKY ) { s@tcg += "[???] "}
+			if ( p@tcg == TCG_BIT_NOSACRIFICE ) { s@tcg += "[Cannot Sacrifice] "}
 		loop
 		rtvaln2 += "\n" + s@tcg
 		s@tcg = ""
@@ -1793,6 +1793,9 @@
 	if ( card@tcg(TCG_CARD_HP, dmgcard_arg1) <= 0 & (card@tcg(TCG_CARD_LOCATION, dmgcard_arg1) == TCG_LOCATION_FIELD | card@tcg(TCG_CARD_LOCATION, dmgcard_arg1) == TCG_LOCATION_HAND) ) {
 		card@tcg(TCG_CARD_ANIM, dmgcard_arg1) = TCG_ANIM_FADE, 18
 		tcgdraw
+		gravecard dmgcard_arg1
+	}
+	if ( card@tcg(TCG_CARD_HP, dmgcard_arg1) <= 0 & card@tcg(TCG_CARD_LOCATION, dmgcard_arg1) == TCG_LOCATION_DECK ) {
 		gravecard dmgcard_arg1
 	}
 	return
@@ -2568,12 +2571,12 @@
 		goto *tcgmain_WEND1
 	}
 	gosub *phase_end
-	if ( (specialruletimestop@tcg > 0 & ct@tcg == TCG_CONTROLLER_PLAYER) ) {
-		specialruletimestop@tcg--
+	if ( (specialruletimestop@tcg(0) > 0 & ct@tcg == TCG_CONTROLLER_PLAYER) ) {
+		specialruletimestop@tcg(0)--
 		goto *tcgmain_WHILE1
 	}
-	if ( (specialruletimestop@tcg < 0 & ct@tcg == TCG_CONTROLLER_OPPONENT) ) {
-		specialruletimestop@tcg++
+	if ( (specialruletimestop@tcg(1) > 0 & ct@tcg == TCG_CONTROLLER_OPPONENT) ) {
+		specialruletimestop@tcg(1)--
 		goto *tcgmain_WHILE1
 	}
 	if ( ct@tcg == TCG_CONTROLLER_PLAYER ) {
@@ -2740,6 +2743,13 @@
 		if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != cp@tcg ) { continue }
 		if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD ) { continue }
 		gettargetcard cnt
+	loop
+	repeat maxcard@tcg
+		if ( cdbit(TCG_BIT_FOSSIL, cnt) != TRUE ) { continue }
+		if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != cp@tcg ) { continue }
+		if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND ) { continue }
+		dmgcard cnt, 1 + 1 * (card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_FIELD)
+		cdbitmod TCG_BIT_FACE_UP, cnt, 1
 	loop
 	makecardlist
 	tcgdraw
@@ -4073,7 +4083,7 @@
 				}
 			}
 			if ( sac@tcg == 0 ) {
-				if ( selectmode@tcg == 0 ) {
+				if ( selectmode@tcg == 0 & cdbit(TCG_BIT_NOSACRIFICE, cc@tcg) == FALSE ) {
 					act@tcg(1) = 1
 					s@tcg += lang("↓   カードを捧げてマナを得る(1ターンに1回)。\n", "Down: Sacrifice the card.\n")
 				}
