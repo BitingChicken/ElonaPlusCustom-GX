@@ -200,6 +200,7 @@
 				efllistaddcard getcardattackanime(attackingcard@tcg), attacktarget@tcg
 				dmgcard attacktarget@tcg, attackingcardatk@tcg + cdbit(TCG_BIT_DEATHTOUCH, attackingcard@tcg) * 999, TRUE
 			}
+			if ( attacktarget@tcg < 0 | attacktarget@tcg >= maxcard@tcg ) { goto *tcg_endCombat }
 			if ( cdbit(TCG_BIT_FIRST_STRIKE, attacktarget@tcg) | cdbit(TCG_BIT_DOUBLE_STRIKE, attacktarget@tcg) ) {
 				if ( cdbit(TCG_BIT_LIFELINK, attacktarget@tcg) ) {
 					dmgplayer card@tcg(TCG_CARD_CONTROLLER, attacktarget@tcg), (-1) * limit(attacktargetatk@tcg, 0, card@tcg(TCG_CARD_HP, attackingcard@tcg)), TRUE
@@ -207,6 +208,7 @@
 				efllistaddcard getcardattackanime(attacktarget@tcg), attackingcard@tcg
 				dmgcard attackingcard@tcg, attacktargetatk@tcg + cdbit(TCG_BIT_DEATHTOUCH, attacktarget@tcg) * 999, TRUE
 			}
+			if ( attacktarget@tcg < 0 | attacktarget@tcg >= maxcard@tcg ) { goto *tcg_endCombat }
 			if ( (card@tcg(TCG_CARD_LOCATION, attackingcard@tcg) == TCG_LOCATION_FIELD | card@tcg(TCG_CARD_LOCATION, attackingcard@tcg) == TCG_LOCATION_HAND) & (card@tcg(TCG_CARD_LOCATION, attacktarget@tcg) == TCG_LOCATION_FIELD | card@tcg(TCG_CARD_LOCATION, attacktarget@tcg) == TCG_LOCATION_HAND) ) {
 				attacktargetatk@tcg = card@tcg(TCG_CARD_ATTACK, attacktarget@tcg)
 				attackingcardatk@tcg = card@tcg(TCG_CARD_ATTACK, attackingcard@tcg)
@@ -222,6 +224,7 @@
 					efllistaddcard getcardattackanime(attackingcard@tcg), attacktarget@tcg
 					dmgcard attacktarget@tcg, attackingcardatk@tcg + cdbit(TCG_BIT_DEATHTOUCH,attackingcard@tcg) * 999, TRUE
 				}
+				if ( attacktarget@tcg < 0 | attacktarget@tcg >= maxcard@tcg ) { goto *tcg_endCombat }
 				if ( cdbit(TCG_BIT_FIRST_STRIKE, attacktarget@tcg) != TRUE ) {
 					if ( cdbit(TCG_BIT_LIFELINK, attacktarget@tcg) ) {
 						dmgplayer card@tcg(TCG_CARD_CONTROLLER, attacktarget@tcg), (-1) * limit(attacktargetatk@tcg, 0, card@tcg(TCG_CARD_HP, attackingcard@tcg)), TRUE
@@ -229,6 +232,7 @@
 					efllistaddcard getcardattackanime(attacktarget@tcg), attackingcard@tcg
 					dmgcard attackingcard@tcg, attacktargetatk@tcg + cdbit(TCG_BIT_DEATHTOUCH,attacktarget@tcg) * 999, TRUE
 				}
+				if ( attacktarget@tcg < 0 | attacktarget@tcg >= maxcard@tcg ) { goto *tcg_endCombat }
 			}
 			if ( card@tcg(TCG_CARD_LOCATION, attacktarget@tcg) == TCG_LOCATION_FIELD ) {
 				card@tcg(TCG_CARD_Y_MOVETO, attacktarget@tcg) = spotiy@tcg(card@tcg(TCG_CARD_CONTROLLER, attacktarget@tcg))
@@ -237,6 +241,7 @@
 				cdbitmod TCG_BIT_FACE_UP, attacktarget@tcg, 1
 				card@tcg(TCG_CARD_Y_MOVETO, attacktarget@tcg) = holderiy@tcg(card@tcg(TCG_CARD_CONTROLLER, attacktarget@tcg))
 			}
+			*tcg_endCombat
 		}
 		else {
 			efllistadd getcardattackanime(attackingcard@tcg), 0, cpx@tcg(tp@tcg) + 36, cpy@tcg(tp@tcg) + 15
@@ -407,7 +412,7 @@
 				x@tcg /= 5
 			}
 			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -2 ) { 
-				x@tcg = cpdata@tcg(TCG_PLAYER_LIFE, aeft@tcg) - 20
+				x@tcg = cpdata@tcg(TCG_PLAYER_LIFE, aeft@tcg) - 40
 			}
 			dmgplayer aeft@tcg, x@tcg
 		}
@@ -494,6 +499,7 @@
 				effac@tcg = aeft@tcg
 				eff@tcg = aefp@tcg
 				efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+				effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 				gosub *card_action_choose_target
 				makecardlist
 				tcgdraw
@@ -809,6 +815,7 @@
 					effac@tcg = ac@tcg
 					eff@tcg = TCG_EFF_ZERNARD_DRAW
 					efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+					effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 					gosub *card_action_choose_target
 				}
 			}
@@ -1022,6 +1029,7 @@
 				effac@tcg = ac@tcg
 				eff@tcg = TCG_EFF_BATTLECRY_DEALEVERYONEXDAMAGE
 				efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+				effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 				gosub *card_action_choose_target
 			}
 			makecardlist
@@ -1422,6 +1430,35 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_SOCKS | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			stealamount@tcg = 1
+			if ( card@tcg(TCG_CARD_REF_DBID, aeft@tcg) == CREATURE_ID_KUROYA_THE_LOOKING_UNIVERSE ) {
+				stealamount@tcg = -1
+				efllistaddcard 20, aeft@tcg
+				efllistadd 1, 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+				efllistadd 1, 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+			} else {
+				efllistaddcard 19, aeft@tcg
+				efllistadd 2, (-1) * 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+				efllistadd 2, 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+			}
+			card@tcg(TCG_CARD_ATTACK, aeft@tcg) -= stealamount@tcg
+			card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) -= stealamount@tcg
+			card@tcg(TCG_CARD_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_ATTACK, aeft@tcg), 0, TCG_STAT_MAX)
+			card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg), 0, TCG_STAT_MAX)
+			card@tcg(TCG_CARD_HP, aeft@tcg) -= stealamount@tcg
+			card@tcg(TCG_CARD_REF_HP, aeft@tcg) -= stealamount@tcg
+			card@tcg(TCG_CARD_HP, aeft@tcg) = limit(card@tcg(TCG_CARD_HP, aeft@tcg), 0, TCG_STAT_MAX)
+			card@tcg(TCG_CARD_REF_HP, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_HP, aeft@tcg), 0, TCG_STAT_MAX)
+			if ( card@tcg(TCG_CARD_HP, aeft@tcg) <= 0 ) {
+				dmgcard aeft@tcg, 0
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_ONGOING_GAINATTACKTOHP | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
@@ -1474,10 +1511,20 @@
 				loop
 				x@tcg = (x@tcg(0)+x@tcg(1)+x@tcg(2)+x@tcg(3)+x@tcg(6)+x@tcg(7)) * 3
 			}
-			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -4 ) { 
-				repeat 20
-					if ( card@tcg(TCG_CARD_REF_DBID, 100 * ap@tcg + 39 + cnt) != 0 ) { x@tcg++ }
-				loop
+			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -4 ) {
+				if ( specialrulehighlander@tcg(ap@tcg) > 0 ) {
+					if ( cdata(CDATA_ID, tc) == CREATURE_ID_H_SISTER | cdata(CDATA_ID, tc) == CREATURE_ID_H_SISTER2 ) {
+						efllistaddchatplayer "H means HIGHLANDER!", aeft@tcg
+					}
+					if ( cdata(CDATA_ID, tc) == CREATURE_ID_SCARD_THE_HAPPY_SWALLOW ) {
+						efllistaddchatplayer "Playing Highlander makes me HAPPY! HAPPY!", aeft@tcg
+					}
+					repeat 30
+						if ( card@tcg(TCG_CARD_REF_DBID, 100 * ap@tcg + 30 + cnt) != 0 ) { x@tcg++ }
+					loop
+				} else {
+					efllistaddchat "Something from beyond laughs.", aeft@tcg
+				}
 			}
 			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -5 ) { 
 				x@tcg = 0, 0, 0, 0, 0, 0, 0, 0
@@ -1821,6 +1868,7 @@
 			effac@tcg = ac@tcg
 			eff@tcg = TCG_EFF_DEATHRATTLE_POISONRANDOMENEMY
 			efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+			effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 			gosub *card_action_choose_target
 			makecardlist
 			tcgdraw
@@ -1839,6 +1887,7 @@
 			effac@tcg = ac@tcg
 			eff@tcg = TCG_EFF_DEATHRATTLE_BLEEDRANDOMENEMY
 			efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+			effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 			gosub *card_action_choose_target
 			makecardlist
 			tcgdraw
@@ -2433,11 +2482,13 @@
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg & specialrulelastbattlecry@tcg > 0 & specialrulelastbattlecry@tcg != TCG_SKILL_EFF_ANDROID ) {
 			card@tcg(TCG_CARD_EFFECT, aeft@tcg) = specialrulelastbattlecry@tcg
+			reconstruct_card_text aeft@tcg
 			efllistadd 2, 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
 			if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, aeft@tcg)) & TCG_SKILL_TYPE_BATTLECRY) ) {
 				effac@tcg = aeft@tcg
 				eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
 				efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+				effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 				gosub *card_action_choose_target
 				makecardlist
 				tcgdraw
@@ -2595,6 +2646,7 @@
 			effac@tcg = ac@tcg
 			eff@tcg = TCG_EFF_DEATHRATTLE_POISONRANDOMENEMY
 			efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+			effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 			gosub *card_action_choose_target
 			makecardlist
 			tcgdraw
@@ -2620,6 +2672,7 @@
 			effac@tcg = ac@tcg
 			eff@tcg = TCG_EFF_DEATHRATTLE_BLEEDRANDOMENEMY
 			efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+			effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 			gosub *card_action_choose_target
 			makecardlist
 			tcgdraw
@@ -2648,6 +2701,7 @@
 							eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
 							efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
 							if ( cancopyeffect(eff@tcg) ) {
+								effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 								gosub *card_action_choose_target
 								makecardlist
 								tcgdraw
@@ -2717,6 +2771,7 @@
 						eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
 						efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
 						if ( cancopyeffect(eff@tcg) ) {
+							effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 							gosub *card_action_choose_target
 							makecardlist
 							tcgdraw
@@ -2821,6 +2876,34 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_SNAILABSORB | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+			if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+				cdbitmod TCG_BIT_FACE_UP, ac@tcg, 1
+				card@tcg(TCG_CARD_ANIM, ac@tcg) = 0, 0
+				card@tcg(TCG_CARD_X_MOVETO, ac@tcg) = card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+				tcgpass 15
+
+				efllistaddcard 22, aeft@tcg
+				card@tcg(TCG_CARD_REF_HP, ac@tcg) += card@tcg(TCG_CARD_HP, aeft@tcg)
+				card@tcg(TCG_CARD_HP, ac@tcg) += card@tcg(TCG_CARD_HP, aeft@tcg)
+				card@tcg(TCG_CARD_REF_ATTACK, ac@tcg) += card@tcg(TCG_CARD_ATTACK, aeft@tcg)
+				card@tcg(TCG_CARD_ATTACK, ac@tcg) += card@tcg(TCG_CARD_ATTACK, aeft@tcg)
+				tcgpass 15
+
+				card@tcg(TCG_CARD_LOCATION, aeft@tcg) = TCG_LOCATION_GRAVEYARD
+				cdbitmod TCG_BIT_FACE_UP, aeft@tcg, 0
+				gravecard aeft@tcg
+
+				makecardlist
+				cardpos 0, -1
+				cardpos 1, -1
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_GAVELA | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
@@ -2886,12 +2969,18 @@
 				p@tcg++
 			loop
 			if ( p@tcg > 0 & target@tcg > -1 ) {
-				card@tcg(TCG_CARD_LOCATION, aeft@tcg) = TCG_LOCATION_DEFAULT
+				card@tcg(TCG_CARD_LOCATION, target@tcg) = TCG_LOCATION_ANIM
+				card@tcg(TCG_CARD_X, target@tcg) = spotix@tcg(1-ap@tcg), deckiy@tcg(1-ap@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+				card@tcg(TCG_CARD_LOCATION, aeft@tcg) = TCG_LOCATION_DECK
+				card@tcg(TCG_CARD_X, aeft@tcg) = spotix@tcg(ap@tcg), deckiy@tcg(ap@tcg), spotix@tcg(ap@tcg), deckiy@tcg(ap@tcg)
+				tcgpass 30
 				card@tcg(TCG_CARD_CONTROLLER, target@tcg) = ap@tcg
-				gettargetcard target@tcg
+				card@tcg(TCG_CARD_LOCATION, target@tcg) = TCG_LOCATION_HAND
+				cdbitmod TCG_BIT_FACE_UP, target@tcg, 1
+				makecardlist
 				card@tcg(TCG_CARD_REF_COST, target@tcg) = card@tcg(TCG_CARD_REF_COST, target@tcg) - 2
 				card@tcg(TCG_CARD_COST, target@tcg) = card@tcg(TCG_CARD_COST, target@tcg) - 2
-				makecardlist
+				gettargetcard target@tcg
 				tcgdraw
 			}
 			cardposhand 0, -1
@@ -3468,8 +3557,48 @@
 				effac@tcg = leoldid@tcg
 				eff@tcg = TCG_EFF_BATTLECRY_DEALEVERYONE1DAMAGE
 				efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+				effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 				gosub *card_action_choose_target
 			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_STEALSOCKS | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			aeftbk@tcg = aeft@tcg
+			aeft@tcg = 1 - aeft@tcg
+			cardidbk@tcg = card@tcg(TCG_CARD_REF_DBID, effac@tcg)
+			card@tcg(TCG_CARD_X_MOVETO, effac@tcg) = cpx@tcg(aeftbk@tcg) + 35, cpy@tcg(aeftbk@tcg) + 55
+			tcgpass 30
+			name@tcg = cdatan(CDATAN_NAME, CHARA_PLAYER)
+			if ( aeftbk@tcg == 1 ) {
+				name@tcg = cdatan(CDATAN_NAME, tc)
+			}
+			repeat 1
+				if ( hasholdspace(aeft@tcg) == FALSE ) { break }
+				create_extra_card aeft@tcg, cardidbk@tcg
+				if ( cextra@tcg >= 0 ) {
+					card@tcg(TCG_CARD_COST, cextra@tcg) = 2
+					card@tcg(TCG_CARD_HP, cextra@tcg) = 3
+					card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 3
+					card@tcg(TCG_CARD_REF_COST, cextra@tcg) = 2
+					card@tcg(TCG_CARD_REF_HP, cextra@tcg) = 3
+					card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 3
+					cdbitmod TCG_BIT_COMMAND, cextra@tcg, 1
+					cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+					card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_ANIM
+					card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, effac@tcg), card@tcg(TCG_CARD_Y, effac@tcg), card@tcg(TCG_CARD_X, effac@tcg), card@tcg(TCG_CARD_Y, effac@tcg)
+					card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -53
+					card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_SOCKS
+					card@tcg(TCG_CARD_REF_BG, cextra@tcg) = 4
+					carddetailneff@tcg(cextra@tcg) = "socks of " + name@tcg + "  No.???   socks  Rare:why?\nEffect: Everyone on Field gets -1/-1, Except Kuroya gets +1/+1.\n          If this is in your Hand when you win, get Opponent's socks."
+					gettargetcard cextra@tcg
+					tcgpass 30
+				}
+			loop
+			makecardlist
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -3809,6 +3938,42 @@
 	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_SUNRISE | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			if ( hasholdspace(aeft@tcg) ) {
+				domaindragon@tcg = CREATURE_ID_ELEC_DRAGON, CREATURE_ID_GREEN_DRAGON, CREATURE_ID_WHITE_DRAGON, CREATURE_ID_NETHER_DRAGON, CREATURE_ID_CHAOS_DRAGON, CREATURE_ID_RED_DRAGON
+				repeat 6
+					discover@tcg(cnt) = domaindragon@tcg(cnt)
+					if ( cnt >= 3 ) {
+						discover@tcg(rnd(cnt + 1)) = domaindragon@tcg(cnt)
+					}
+				loop
+				discovercount@tcg = 3
+				generate_extra_card aeft@tcg
+				discover_extra_card aeft@tcg
+				if ( discoverchoice@tcg >= 0 ) {
+					effac@tcg = ac@tcg
+					eff@tcg = TCG_EFF_NONE
+					if (  discoverchoice@tcg == CREATURE_ID_ELEC_DRAGON ) { eff@tcg = TCG_EFF_BLUE_DRAGON }
+					if (  discoverchoice@tcg == CREATURE_ID_GREEN_DRAGON ) { eff@tcg = TCG_EFF_GREEN_DRAGON }
+					if (  discoverchoice@tcg == CREATURE_ID_WHITE_DRAGON ) { eff@tcg = TCG_EFF_WHITE_DRAGON }
+					if (  discoverchoice@tcg == CREATURE_ID_NETHER_DRAGON ) { eff@tcg = TCG_EFF_BLACK_DRAGON }
+					if (  discoverchoice@tcg == CREATURE_ID_CHAOS_DRAGON ) { eff@tcg = TCG_EFF_GRAY_DRAGON }
+					if (  discoverchoice@tcg == CREATURE_ID_RED_DRAGON ) { eff@tcg = TCG_EFF_RED_DRAGON }
+					efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+					if ( cancopyeffect(eff@tcg) & eff@tcg != TCG_EFF_NONE ) {
+						effdonotdouble@tcg = 1 // Proxy effect, do not double proc
+						gosub *card_action_choose_target
+						makecardlist
+						tcgdraw
+					}
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_ELEMENTDRAGON | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
 		if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
 			domainsunrise@tcg = -1, -1, -1, -1, -1, -1, -1, -1
 			repeat maxcard@tcg
@@ -3841,10 +4006,10 @@
 					break
 				loop
 				if ( domainsunrise@tcg(signercnt@tcg) >= 0 ) {
-					card@tcg(TCG_CARD_ATTACK, ac@tcg) += 3
-					card@tcg(TCG_CARD_REF_ATTACK, ac@tcg) += 3
-					card@tcg(TCG_CARD_HP, ac@tcg) += 3
-					card@tcg(TCG_CARD_REF_HP, ac@tcg) += 3
+					card@tcg(TCG_CARD_ATTACK, ac@tcg) += 2
+					card@tcg(TCG_CARD_REF_ATTACK, ac@tcg) += 2
+					card@tcg(TCG_CARD_HP, ac@tcg) += 2
+					card@tcg(TCG_CARD_REF_HP, ac@tcg) += 2
 					card@tcg(TCG_CARD_ATTACK, ac@tcg) = limit(card@tcg(TCG_CARD_ATTACK, ac@tcg), 0, TCG_STAT_MAX)
 					card@tcg(TCG_CARD_REF_ATTACK, ac@tcg) = limit(card@tcg(TCG_CARD_REF_ATTACK, ac@tcg), 0, TCG_STAT_MAX)
 					card@tcg(TCG_CARD_HP, ac@tcg) = limit(card@tcg(TCG_CARD_HP, ac@tcg), 1, TCG_STAT_MAX)
@@ -3862,6 +4027,7 @@
 					effac@tcg = ac@tcg
 					eff@tcg = domaindragoneff@tcg(cnt)
 					efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+					effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 					gosub *card_action_choose_target
 					tcgpass 30
 				}
@@ -4136,6 +4302,7 @@
 			effac@tcg = ac@tcg
 			eff@tcg = TCG_EFF_CLINGHOST11
 			efftrigger@tcg = TCG_SKILL_TYPE_DEATHRATTLE
+			effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 			gosub *card_action_choose_target
 			makecardlist
 			tcgdraw
@@ -4549,6 +4716,7 @@
 							eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
 							efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
 							if ( cancopyeffect(eff@tcg) ) {
+								effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 								gosub *card_action_choose_target
 								makecardlist
 								tcgdraw
@@ -4566,6 +4734,7 @@
 					card@tcg(TCG_CARD_REF_DBID, aeft@tcg) = CREATURE_ID_PAELS_MOM_LILY
 					card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_DEATHRATTLE_DRAW3CARD
 					carddetailneff@tcg(aeft@tcg) = "Pael's mom <Lily>  No.222   female roran warrior  Rare:None\nEffect: Lily's Disease is cured! You get 3 cards! Thank you!"
+					effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 					gosub *card_action_choose_target
 
 				}
@@ -4585,6 +4754,7 @@
 					eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
 					efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
 					if ( cancopyeffect(eff@tcg) ) {
+						effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 						gosub *card_action_choose_target
 						makecardlist
 						tcgdraw
@@ -4604,6 +4774,7 @@
 					eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
 					efftrigger@tcg = TCG_SKILL_TYPE_DEATHRATTLE
 					if ( cancopyeffect(eff@tcg) ) {
+						effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 						gosub *card_action_choose_target
 						makecardlist
 						tcgdraw
@@ -4619,6 +4790,7 @@
 		if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
 			if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
 				card@tcg(TCG_CARD_EFFECT, ac@tcg) = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
+				reconstruct_card_text ac@tcg
 				aeft@tcg = ac@tcg
 				if ( card@tcg(TCG_CARD_LOCATION, ac@tcg) == TCG_LOCATION_FIELD ) {
 					if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, aeft@tcg)) & TCG_SKILL_TYPE_BATTLECRY) ) {
@@ -4626,6 +4798,7 @@
 						eff@tcg = card@tcg(TCG_CARD_EFFECT, aeft@tcg)
 						efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
 						if ( cancopyeffect(eff@tcg) ) {
+							effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 							gosub *card_action_choose_target
 							makecardlist
 							tcgdraw
@@ -5670,6 +5843,31 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_HIGHLANDER_ATTACKALL | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			aeftpplayer@tcg = card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+			if ( aeftpplayer@tcg == 0 | aeftpplayer@tcg == 1 ) {
+				if ( specialrulehighlander@tcg(aeftpplayer@tcg) > 0 ) {
+					if ( cdata(CDATA_ID, tc) == CREATURE_ID_H_SISTER | cdata(CDATA_ID, tc) == CREATURE_ID_H_SISTER2 ) {
+						efllistaddchatplayer "H means HIGHLANDER!", aeft@tcg
+					}
+					if ( cdata(CDATA_ID, tc) == CREATURE_ID_SCARD_THE_HAPPY_SWALLOW ) {
+						efllistaddchatplayer "HAPPY! HAPPY! All of you must be HAPPY!", aeft@tcg
+					}
+					cdbitmod TCG_BIT_IMMUNE, aeft@tcg, 1
+					effac@tcg = aeft@tcg
+					eff@tcg = TCG_EFF_ATTACKALLENEMY
+					efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+					gosub *card_action_choose_target
+				} else {
+					efllistaddchat "Something from beyond laughs.", ac@tcg
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_KARATA | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
@@ -5677,6 +5875,7 @@
 				effac@tcg = ac@tcg
 				eff@tcg = TCG_EFF_DARKARTIFICIALGIANT
 				efftrigger@tcg = TCG_SKILL_TYPE_BATTLECRY
+				effdonotdouble@tcg = 1 // Proxy effect, do not double proc
 				gosub *card_action_choose_target
 			}
 		}
@@ -5849,7 +6048,39 @@
 	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_MIZUKI | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
-		specialruledrawtwocardsperturn@tcg = 1
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			if ( aeft@tcg == 0 ) {
+				card@tcg(TCG_CARD_X_MOVETO, effac@tcg) = basex@tcg + 455 - 36, basey@tcg + 270 - 48
+				card@tcg(TCG_CARD_LOCATION, effac@tcg) = TCG_LOCATION_ANIM
+				cdbitmod TCG_BIT_FACE_UP, effac@tcg, 1
+				tcgpass 30
+				originx@tcg = basex@tcg + 455 - 36, basey@tcg + 270 - 48
+				targetx@tcg = holderix@tcg(0) - holderspace@tcg, holderiy@tcg(0), holderix@tcg(1) - holderspace@tcg, holderiy@tcg(1)
+				efllistadd 20, 0, originx@tcg(0) + 36, originx@tcg(1) + 48
+				repeat 8
+					ratiox@tcg = cnt, 8 - cnt - 1
+					currx@tcg(0) = (originx@tcg(0) * ratiox@tcg(1) + targetx@tcg(0) * ratiox@tcg(0)) / 7 + 36
+					currx@tcg(1) = (originx@tcg(1) * ratiox@tcg(1) + targetx@tcg(1) * ratiox@tcg(0)) / 7 + 48
+					currx@tcg(2) = (originx@tcg(0) * ratiox@tcg(1) + targetx@tcg(2) * ratiox@tcg(0)) / 7 + 36
+					currx@tcg(3) = (originx@tcg(1) * ratiox@tcg(1) + targetx@tcg(3) * ratiox@tcg(0)) / 7 + 48
+					efllistadd 22, 0, currx@tcg(0), currx@tcg(1)
+					efllistadd 22, 0, currx@tcg(2), currx@tcg(3)
+					tcgpass 10
+				loop
+				efllistadd 18, 0, targetx@tcg(0) + 36, targetx@tcg(1) + 48
+				efllistadd 18, 0, targetx@tcg(2) + 36, targetx@tcg(3) + 48
+
+				tcgpass 15
+				repeat maxcard@tcg
+					if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_ANIM ) { continue }
+					card@tcg(TCG_CARD_X_MOVETO, cnt) = holderix@tcg(card@tcg(TCG_CARD_CONTROLLER, cnt)) - holderspace@tcg, holderiy@tcg(card@tcg(TCG_CARD_CONTROLLER, cnt))
+					tcgpass 30
+					cdbitmod TCG_BIT_FACE_UP, cnt, 0
+					card@tcg(TCG_CARD_LOCATION, cnt) = TCG_LOCATION_DECK
+				loop
+			}
+			specialruledrawtwocardsperturn@tcg = 1
+		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}

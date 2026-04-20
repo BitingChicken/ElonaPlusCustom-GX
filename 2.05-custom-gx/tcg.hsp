@@ -156,7 +156,7 @@
 
 #defcfunc cdbit int cdbit_bit, int cdbit_charid
 	if ( cdbit_charid < 0 | cdbit_charid >= maxcard@tcg ) {
-		return
+		return 0
 	}
 	HMMBITCHECK@ card@tcg(30 + cdbit_bit / 32, cdbit_charid), cdbit_bit \ 32
 	return abs(stat)
@@ -937,6 +937,10 @@
 									bmes "Split", 235, 235, 235 
 									p@tcg++
 								}
+								if ( cnt == TCG_BIT_IMMUNE ) { 
+									bmes "Immune", 235, 235, 235 
+									p@tcg++
+								}
 								if ( cnt == TCG_BIT_RIDER ) { 
 									bmes "Rider", 235, 235, 235 
 									p@tcg++
@@ -1268,16 +1272,26 @@
 	efllistadd efllistadd_arg1, 0, card@tcg(TCG_CARD_X, efllistadd_arg2) + elax@tcg, card@tcg(TCG_CARD_Y, efllistadd_arg2) + elay@tcg
 	return
 
+#deffunc efllistaddchatplayer str efllistadd_argstr, int efllistadd_arg2, int efllistadd_arg3
+	if ( efllistadd_arg2 < 0 | efllistadd_arg2 >= maxcard@tcg ) { return }
+	efllistaddchat efllistadd_argstr, card@tcg(TCG_CARD_CONTROLLER, efllistadd_arg2) * (-1) - 1, efllistadd_arg3
+	return
+
 #deffunc efllistaddchat str efllistadd_argstr, int efllistadd_arg2, int efllistadd_arg3
 	proctcg "tcg efllistaddchat: efllistadd_argstr:" + efllistadd_argstr + "/efllistadd_arg2:" + efllistadd_arg2 + "/efllistadd_arg3:" + efllistadd_arg3
-	if ( efllistadd_arg2 < 0 | efllistadd_arg2 >= maxcard@tcg ) { return }
-	if ( efllistadd_arg3 != 1 & card@tcg(TCG_CARD_LOCATION, efllistadd_arg2) <= 0 ) { return }
+	if ( efllistadd_arg2 < -2 | efllistadd_arg2 >= maxcard@tcg ) { return }
 	sprint@tcg = efllistadd_argstr
 	if ( strlen(sprint@tcg) <= 0 ) { return }
 	elax@tcg = 36 - strlen(sprint@tcg) * ((16 - en * 2) / 2 / 2)
 	elay@tcg = -14
 	eflistaddchatstr@tcg = efllistadd_argstr
-	efllistadd -1, 0, card@tcg(TCG_CARD_X, efllistadd_arg2) + elax@tcg, card@tcg(TCG_CARD_Y, efllistadd_arg2) + elay@tcg
+	if ( efllistadd_arg2 < 0 ) {
+		eflistaddchatplayer@tcg = limit((-1) * efllistadd_arg2 - 1, 0, 1)
+		efllistadd -1, 0, cpx@tcg(eflistaddchatplayer@tcg) + elax@tcg, cpy@tcg(eflistaddchatplayer@tcg) + elay@tcg
+	} else {
+		if ( efllistadd_arg3 != 1 & card@tcg(TCG_CARD_LOCATION, efllistadd_arg2) <= 0 ) { return }
+		efllistadd -1, 0, card@tcg(TCG_CARD_X, efllistadd_arg2) + elax@tcg, card@tcg(TCG_CARD_Y, efllistadd_arg2) + elay@tcg
+	}
 	return
 
 #deffunc efllistadd int efllistadd_arg1, int efllistadd_arg2, int efllistadd_arg3, int efllistadd_arg4, int efllistadd_arg5, int efllistadd_arg6
@@ -1413,6 +1427,7 @@
 			if ( p@tcg == TCG_BIT_VIGILANCE ) { s@tcg += "Vigilance "}
 			if ( p@tcg == TCG_BIT_DEFENDER ) { s@tcg += "Defender "}
 			if ( p@tcg == TCG_BIT_SPLIT ) { s@tcg += "Splits "}
+			if ( p@tcg == TCG_BIT_IMMUNE ) { s@tcg += "Immune "}
 			if ( p@tcg == TCG_BIT_RIDER ) { s@tcg += "Rider "}
 			if ( p@tcg == TCG_BIT_BARRIER ) { s@tcg += "Barrier "}
 			if ( p@tcg == TCG_BIT_EVASION ) { s@tcg += "Evasion "}
@@ -1761,6 +1776,10 @@
 	}
 	if ( card@tcg(TCG_CARD_EFFECT, dmgcard_arg1) == TCG_EFF_NOCOMBATDAMAGE & dmgcard_arg_combat == TRUE ) {
 		efllistaddcard 18, dmgcard_arg1
+		return
+	}
+	if ( cdbit(TCG_BIT_IMMUNE, dmgcard_arg1) & dmgcard_dmg > 0 ) {
+		efllistadd 1, 0, card@tcg(TCG_CARD_X, dmgcard_arg1), card@tcg(TCG_CARD_Y, dmgcard_arg1) 
 		return
 	}
 	if ( cdbit(TCG_BIT_BARRIER, dmgcard_arg1) & dmgcard_dmg > 0 & dmgcard_arg_combat != TRUE ) {
@@ -2591,6 +2610,11 @@
 	if ( yaminogemu@tcg == 1 ) {
 		lifestakeend@tcg = cpdata@tcg(TCG_PLAYER_LIFE, TCG_CONTROLLER_PLAYER), cpdata@tcg(TCG_PLAYER_LIFE, TCG_CONTROLLER_OPPONENT)
 	}
+	repeat maxcard@tcg
+		if ( card@tcg(TCG_CARD_EFFECT, cnt) != TCG_EFF_SOCKS ) { continue }
+		if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND ) { continue }
+		specialrulesocks@tcg(limit(1-card@tcg(TCG_CARD_CONTROLLER, cnt),0,1)) = 1
+	loop
 	listmax = 0
 	s = "Draw!"
 	file = "bg_re9"
@@ -2710,6 +2734,9 @@
 		}
 		if ( cdbit(TCG_BIT_WINDFURY, cnt) == TRUE ) {
 			cdbitmod TCG_BIT_WINDFURY_USABLE, cnt, 1
+		}
+		if ( cdbit(TCG_BIT_IMMUNE, cnt) == TRUE ) {
+			cdbitmod TCG_BIT_IMMUNE, cnt, 0
 		}
 		card@tcg(TCG_CARD_STATUS, cnt) = TCG_ACTION_NONE
 		cdbitmod TCG_BIT_EXHAUSTED, cnt, 0
