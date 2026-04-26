@@ -7,8 +7,10 @@
 # Fixed
 - (Plus) Fixed ranch animals receiving EXP from nefia debris, causing lower breed power
 - (Plus) Fixed rain changing into snow on the ocean due to not checking current area
+- (Plus) Astral light pen copies a random CNPC.
 - Extermination breath flag not set.
-- Tone file's Tachi-E emote not working due to renamed variables
+- Tone file's Tachi-E emote not working due to renamed variable
+- Tone file's talk flag not set to 0 when found dialog.
 
 # 2.31.1.0
 

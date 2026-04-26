@@ -12357,6 +12357,9 @@
 					p = cdata(CDATA_ID, tc)
 					flt
 					novoidlv = 1
+					if ( p == CREATURE_ID_USER ) {
+						initunid = cdata(CDATA_USERNPC_ID, tc) + 1
+					}
 					characreate -1, p, cdata(CDATA_X, tc), cdata(CDATA_Y, tc)
 					cdata(CDATA_SEX, rc) = cdata(CDATA_SEX, tc)
 					cdata(CDATA_PIC, rc) = cdata(CDATA_PIC, tc)

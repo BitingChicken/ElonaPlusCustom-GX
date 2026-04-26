@@ -840,6 +840,7 @@
 					buff = ""
 				}
 				tcol@txtfunc = 255, 255, 255
+				gdata(GDATA_CUSTOM_TALK) = 0
 				noteunsel
 				return 1
 			}

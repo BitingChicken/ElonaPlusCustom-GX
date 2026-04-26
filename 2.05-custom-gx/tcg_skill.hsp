@@ -412,7 +412,10 @@
 				x@tcg /= 5
 			}
 			if ( effref@tcg(TCG_SKILL_POWER, aeff@tcg) == -2 ) { 
-				x@tcg = cpdata@tcg(TCG_PLAYER_LIFE, aeft@tcg) - 40
+				x@tcg = cpdata@tcg(TCG_PLAYER_LIFE, aeft@tcg) - 30
+				if ( cpdata@tcg(TCG_PLAYER_LIFE, aeft@tcg) >= 30 ) {
+					x@tcg = 0
+				}
 			}
 			dmgplayer aeft@tcg, x@tcg
 		}
@@ -1798,6 +1801,12 @@
 				if ( stat >= 1 ) {
 					carddetailneff@tcg(aeft@tcg) = lines@tcg(0) + "\nEffect: " + effdesc@tcg(card@tcg(TCG_CARD_EFFECT, aeft@tcg))
 					efllistadd 2, 1, card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+					if ( card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_GRAVEYARD ) {
+						cardn@tcg(TCG_CARDN_REF_TAG, aeft@tcg) = "" + limit(effref@tcg(TCG_SKILL_POWER, card@tcg(TCG_CARD_EFFECT, aeft@tcg)) - card@tcg(TCG_CARD_TURN_COUNT, aeft@tcg), 0, 5)
+						if ( card@tcg(TCG_CARD_REF_HP, aeft@tcg) <= 0 ) {
+							cardn@tcg(TCG_CARDN_REF_TAG, aeft@tcg) = ""
+						}
+					}
 				}
 			}
 		}
@@ -3151,7 +3160,8 @@
 	if ( _switch_val@tcg == TCG_SKILL_EFF_RESURRECT | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
-			if ( hasspotspace(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) == TRUE & card@tcg(TCG_CARD_TURN_COUNT, aeft@tcg) >= effref@tcg(TCG_SKILL_POWER, aeff@tcg) ) {
+			if ( hasspotspace(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) == TRUE & card@tcg(TCG_CARD_TURN_COUNT, aeft@tcg) >= effref@tcg(TCG_SKILL_POWER, aeff@tcg) & card@tcg(TCG_CARD_REF_HP, aeft@tcg) > 0 ) {
+				cardn@tcg(TCG_CARDN_REF_TAG, aeft@tcg) = ""
 				putcardfree@tcg = 1
 				putcard aeft@tcg, card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
 				if ( aeff@tcg == TCG_EFF_LICH | aeff@tcg == TCG_EFF_FASTLICH | aeff@tcg == TCG_EFF_SUPERFASTLICH | aeff@tcg == TCG_EFF_MEGASUPERFASTLICH ) {
@@ -3161,6 +3171,11 @@
 				}
 				makecardlist
 				tcgdraw
+			} else {
+				cardn@tcg(TCG_CARDN_REF_TAG, aeft@tcg) = "" + limit(effref@tcg(TCG_SKILL_POWER, card@tcg(TCG_CARD_EFFECT, aeft@tcg)) - card@tcg(TCG_CARD_TURN_COUNT, aeft@tcg), 0, 5)
+				if ( card@tcg(TCG_CARD_REF_HP, aeft@tcg) <= 0 ) {
+					cardn@tcg(TCG_CARDN_REF_TAG, aeft@tcg) = ""
+				}
 			}
 		}
 		cardposhand 0, -1
@@ -3736,21 +3751,25 @@
 					if ( cardchoice@tcg == 1 ) {
 						card@tcg(TCG_CARD_X, cextra@tcg) = basex@tcg + 455 - 36, basey@tcg + 270 - 48, basex@tcg + 355 - 36, basey@tcg + 220 - 48
 						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_RACHELSBOOK1
+						cardn@tcg(TCG_CARDN_REF_TAG, cextra@tcg) = "-1"
 						carddetailneff@tcg(cextra@tcg) = "Book of Rachel No.1    Lovely fairy tale written by Rachel.  Rare:Very\nEffect: Battlecry: Draw 2 1-cost Cards.\n        If you've played all 4 books, Renton has +6/+6 (wherever he is)."
 					}
 					if ( cardchoice@tcg == 2 ) {
 						card@tcg(TCG_CARD_X, cextra@tcg) = basex@tcg + 455 - 36, basey@tcg + 270 - 48, basex@tcg + 355 - 36, basey@tcg + 320 - 48
 						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_RACHELSBOOK2
+						cardn@tcg(TCG_CARDN_REF_TAG, cextra@tcg) = "-2"
 						carddetailneff@tcg(cextra@tcg) = "Book of Rachel No.2    Lovely fairy tale written by Rachel.  Rare:Very\nEffect: Battlecry: Gain +2 Mana. Draw 1 Card.\n        If you've played all 4 books, Renton has +6/+6 (wherever he is)."
 					}
 					if ( cardchoice@tcg == 3 ) {
 						card@tcg(TCG_CARD_X, cextra@tcg) = basex@tcg + 455 - 36, basey@tcg + 270 - 48, basex@tcg + 555 - 36, basey@tcg + 320 - 48
 						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_RACHELSBOOK3
+						cardn@tcg(TCG_CARDN_REF_TAG, cextra@tcg) = "-3"
 						carddetailneff@tcg(cextra@tcg) = "Book of Rachel No.3    Lovely fairy tale written by Rachel.  Rare:Very\nEffect: Battlecry: Give All Card on your Field +1 HP. Draw 1 Card.\n        If you've played all 4 books, Renton has +6/+6 (wherever he is)."
 					}
 					if ( cardchoice@tcg == 4 ) {
 						card@tcg(TCG_CARD_X, cextra@tcg) = basex@tcg + 455 - 36, basey@tcg + 270 - 48, basex@tcg + 555 - 36, basey@tcg + 220 - 48
 						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_RACHELSBOOK4
+						cardn@tcg(TCG_CARDN_REF_TAG, cextra@tcg) = "-4"
 						carddetailneff@tcg(cextra@tcg) = "Book of Rachel No.4    Lovely fairy tale written by Rachel.  Rare:Very\nEffect: Battlecry: Weaken All Enemies on Field by 1. Draw 1 Card.\n        If you've played all 4 books, Renton has +6/+6 (wherever he is)."
 					}
 					card@tcg(TCG_CARD_ANIM, cextra@tcg) = TCG_ANIM_NONE
@@ -3818,6 +3837,250 @@
 				cdbitmod TCG_BIT_FACE_UP, cnt, 0
 				card@tcg(TCG_CARD_LOCATION, cnt) = TCG_LOCATION_DECK
 			loop
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_TUWEN | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			aeftbk@tcg = aeft@tcg
+			cardidbk@tcg = card@tcg(TCG_CARD_REF_DBID, effac@tcg)
+			card@tcg(TCG_CARD_X_MOVETO, effac@tcg) = basex@tcg + 455 - 36, basey@tcg + 270 - 48
+			card@tcg(TCG_CARD_LOCATION, effac@tcg) = TCG_LOCATION_ANIM
+			cdbitmod TCG_BIT_FACE_UP, effac@tcg, 1
+			tcgpass 20
+			efllistadd 8, 0, basex@tcg + 457, basey@tcg + 270, basex@tcg + 457, basey@tcg + 270
+			
+			create_extra_card aeftbk@tcg, cardidbk@tcg
+			if ( cextra@tcg >= 0 ) {
+				card@tcg(TCG_CARD_COST, cextra@tcg) = 1
+				card@tcg(TCG_CARD_HP, cextra@tcg) = 1
+				card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 1
+				card@tcg(TCG_CARD_REF_COST, cextra@tcg) = 1
+				card@tcg(TCG_CARD_REF_HP, cextra@tcg) = 1
+				card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 1
+				cdbitmod TCG_BIT_COMMAND, cextra@tcg, 1
+				cdbitmod TCG_BIT_CONSTANT, cextra@tcg, 1
+				cardn@tcg(TCG_CARDN_REF_TAG, cextra@tcg) = "-1"
+				card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -54
+				
+				card@tcg(TCG_CARD_X, cextra@tcg) = basex@tcg + 455 - 36, basey@tcg + 270 - 48, basex@tcg + 455 - 36, basey@tcg + 370 - 48
+				card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_SUMMONRITUAL1
+				carddetailneff@tcg(cextra@tcg) = "<the Summoning Ritual>    Questionable card.  Rare:None\nEffect: Destroy a Card in your Hand to try to Summon TUWEN."
+				
+				card@tcg(TCG_CARD_ANIM, cextra@tcg) = TCG_ANIM_NONE
+				card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_ANIM
+				cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+				tcgpass 10
+				repeat 4
+					efllistaddcard 22, cextra@tcg, 1, cnt
+					tcgpass 15
+				loop
+			}
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != ap@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) != cardidbk@tcg ) { continue }
+				card@tcg(TCG_CARD_X_MOVETO, cnt) = deckix@tcg(ap@tcg), deckiy@tcg(ap@tcg)
+				tcgpass 2
+			loop
+			tcgpass 15
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != ap@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) != cardidbk@tcg ) { continue }
+				cdbitmod TCG_BIT_FACE_UP, cnt, 0
+				if ( turn@tcg < 1 ) {
+					card@tcg(TCG_CARD_LOCATION, cnt) = TCG_LOCATION_DECK
+					card@tcg(TCG_CARD_X, cnt) = holderix@tcg(aeft@tcg) - holderspace@tcg, holderiy@tcg(aeft@tcg), holderix@tcg(aeft@tcg) - holderspace@tcg, holderiy@tcg(aeft@tcg)
+				} else {
+					card@tcg(TCG_CARD_LOCATION, cnt) = TCG_LOCATION_FIELD
+				}
+			loop
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_RITUAL1 | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			tuwen@tcg = -1, 1
+			tuwentarget@tcg = -1
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != aeft@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID ) { continue }
+				if ( cdbit(TCG_BIT_COMMAND, cnt) ) { continue }
+				tuwen@tcg(0) = cnt
+				break
+			loop
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != aeft@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID ) { continue }
+				if ( rnd(tuwen@tcg(1)) == 0 ) {
+					tuwentarget@tcg(0) = cnt
+				}
+				tuwen@tcg(1)++
+			loop
+			if ( tuwen@tcg(0) >= 0 & tuwen@tcg(0) < maxcard@tcg & tuwentarget@tcg(0) >= 0 & tuwentarget@tcg(0) < maxcard@tcg ) {
+				efllistaddcard 22, tuwen@tcg(0)
+				card@tcg(TCG_CARD_REF_HP, tuwen@tcg(0)) += card@tcg(TCG_CARD_HP, tuwentarget@tcg(0))
+				card@tcg(TCG_CARD_HP, tuwen@tcg(0)) += card@tcg(TCG_CARD_HP, tuwentarget@tcg(0))
+				card@tcg(TCG_CARD_REF_ATTACK, tuwen@tcg(0)) += card@tcg(TCG_CARD_ATTACK, tuwentarget@tcg(0))
+				card@tcg(TCG_CARD_ATTACK, tuwen@tcg(0)) += card@tcg(TCG_CARD_ATTACK, tuwentarget@tcg(0))
+				tcgpass 15
+				efllistaddcard 22, tuwentarget@tcg(0)
+				tcgpass 15
+				gravecard tuwentarget@tcg(0)
+				aeft@tcg = card@tcg(TCG_CARD_CONTROLLER, tuwen@tcg(0))
+				create_extra_card aeft@tcg, CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID
+				if ( cextra@tcg >= 0 ) {
+					card@tcg(TCG_CARD_COST, cextra@tcg) = 3
+					card@tcg(TCG_CARD_HP, cextra@tcg) = 2
+					card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 2
+					card@tcg(TCG_CARD_REF_COST, cextra@tcg) = 3
+					card@tcg(TCG_CARD_REF_HP, cextra@tcg) = 2
+					card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 2
+					cdbitmod TCG_BIT_COMMAND, cextra@tcg, 1
+					cardn@tcg(TCG_CARDN_REF_TAG, cextra@tcg) = "-2"
+					card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -54
+					
+					card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, ac@tcg), card@tcg(TCG_CARD_Y, ac@tcg), card@tcg(TCG_CARD_X, ac@tcg), card@tcg(TCG_CARD_Y, ac@tcg)
+					card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_SUMMONRITUAL2
+					carddetailneff@tcg(cextra@tcg) = "<the Summoning Ritual RETURNS>    Questionable card.  Rare:None\nEffect: Steal +1/+1 from Cards on Field to try to Summon TUWEN."
+					
+					card@tcg(TCG_CARD_ANIM, cextra@tcg) = TCG_ANIM_NONE
+					card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_ANIM
+					cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+					tcgpass 10
+					repeat 4
+						efllistaddcard 22, cextra@tcg, 1, cnt
+						tcgpass 15
+					loop
+					card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_HAND
+					gettargetcard cextra@tcg
+				}
+			} else {
+				efllistaddchatplayer "No sacrifices?", 1
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_RITUAL2 | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			tuwen@tcg = -1, 0
+			tuwentarget@tcg = -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != aeft@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID ) { continue }
+				if ( cdbit(TCG_BIT_COMMAND, cnt) ) { continue }
+				tuwen@tcg(0) = cnt
+				break
+			loop
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID ) { continue }
+				tuwentarget@tcg(tuwen@tcg(1)) = cnt
+				tuwen@tcg(1)++
+			loop
+			if ( tuwen@tcg(0) >= 0 & tuwen@tcg(0) < maxcard@tcg & tuwen@tcg(1) > 0 ) {
+				repeat tuwen@tcg(1)
+					efllistaddcard 22, tuwen@tcg(0)
+					tcgpass 15
+					efllistaddcard 22, tuwentarget@tcg(cnt)
+					tcgpass 15
+					if ( card@tcg(TCG_CARD_HP, tuwentarget@tcg(cnt)) >= 1 ) {
+						card@tcg(TCG_CARD_REF_HP, tuwen@tcg(0)) += 1
+						card@tcg(TCG_CARD_HP, tuwen@tcg(0)) += 1
+						card@tcg(TCG_CARD_REF_HP, tuwentarget@tcg(cnt)) -= 1
+						card@tcg(TCG_CARD_HP, tuwentarget@tcg(cnt)) -= 1
+					}
+					if ( card@tcg(TCG_CARD_ATTACK, tuwentarget@tcg(cnt)) >= 1 ) {
+						card@tcg(TCG_CARD_REF_ATTACK, tuwen@tcg(0)) += 1
+						card@tcg(TCG_CARD_ATTACK, tuwen@tcg(0)) += 1
+						card@tcg(TCG_CARD_REF_ATTACK, tuwentarget@tcg(cnt)) -= 1
+						card@tcg(TCG_CARD_ATTACK, tuwentarget@tcg(cnt)) -= 1
+					}
+					// Don't grave them now to prevent bugs - they refresh later anyways.
+				loop
+				aeft@tcg = card@tcg(TCG_CARD_CONTROLLER, tuwen@tcg(0))
+				create_extra_card aeft@tcg, CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID
+				if ( cextra@tcg >= 0 ) {
+					card@tcg(TCG_CARD_COST, cextra@tcg) = 4
+					card@tcg(TCG_CARD_HP, cextra@tcg) = 3
+					card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 3
+					card@tcg(TCG_CARD_REF_COST, cextra@tcg) = 4
+					card@tcg(TCG_CARD_REF_HP, cextra@tcg) = 3
+					card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 3
+					cdbitmod TCG_BIT_COMMAND, cextra@tcg, 1
+					cardn@tcg(TCG_CARDN_REF_TAG, cextra@tcg) = "-3"
+					card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -54
+					
+					card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, ac@tcg), card@tcg(TCG_CARD_Y, ac@tcg), card@tcg(TCG_CARD_X, ac@tcg), card@tcg(TCG_CARD_Y, ac@tcg)
+					card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_SUMMONRITUAL3
+					carddetailneff@tcg(cextra@tcg) = "<the Summoning Ritual: Master of the Pyramid>    Questionable card.  Rare:None\nEffect: Destroy your Hand to Summon TUWEN."
+					
+					card@tcg(TCG_CARD_ANIM, cextra@tcg) = TCG_ANIM_NONE
+					card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_ANIM
+					cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+					tcgpass 10
+					repeat 4
+						efllistaddcard 22, cextra@tcg, 1, cnt
+						tcgpass 15
+					loop
+					card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_HAND
+					gettargetcard cextra@tcg
+					gosub *card_resolve_ongoing
+				}
+			} else {
+				efllistaddchatplayer "No one's on the field?", 1
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_RITUAL3 | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg == 0 | aeft@tcg == 1 ) {
+			tuwen@tcg = -1, 0
+			tuwentarget@tcg = -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != aeft@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID ) { continue }
+				if ( cdbit(TCG_BIT_COMMAND, cnt) ) { continue }
+				tuwen@tcg(0) = cnt
+				break
+			loop
+			repeat maxcard@tcg
+				if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != aeft@tcg ) { continue }
+				if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND ) { continue }
+				if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID ) { continue }
+				tuwentarget@tcg(tuwen@tcg(1)) = cnt
+				tuwen@tcg(1)++
+			loop
+			if ( tuwen@tcg(0) >= 0 & tuwen@tcg(0) < maxcard@tcg & tuwen@tcg(1) > 0 ) {
+				repeat tuwen@tcg(1)
+					efllistaddcard 22, tuwen@tcg(0)
+					card@tcg(TCG_CARD_REF_HP, tuwen@tcg(0)) += card@tcg(TCG_CARD_HP, tuwentarget@tcg(cnt))
+					card@tcg(TCG_CARD_HP, tuwen@tcg(0)) += card@tcg(TCG_CARD_HP, tuwentarget@tcg(cnt))
+					tcgpass 15
+					efllistaddcard 22, tuwentarget@tcg(cnt)
+					card@tcg(TCG_CARD_HP, tuwentarget@tcg(cnt)) = 0
+					tcgpass 15
+					// Don't grave them now to prevent bugs - they refresh later anyways.
+				loop
+				aeft@tcg = tuwen@tcg(0)
+				if ( hasspotspace(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) ) {
+					putcardfree@tcg = 1
+					putcard aeft@tcg, card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+				} else {
+					efllistaddchatplayer "No places on your Field?", 1
+				}
+				gosub *card_resolve_ongoing
+			} else {
+				efllistaddchatplayer "No Cards in your Hand?", 1
+			}
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -4114,9 +4377,9 @@
 				}
 				if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_YOUNGER_SISTER ) {
 					if ( card@tcg(TCG_CARD_TEMP, cnt) == 1 ) {
-						card@tcg(TCG_CARD_REF_ATTACK, cnt) = 2
-						card@tcg(TCG_CARD_HP, cnt) = 2
-						card@tcg(TCG_CARD_REF_HP, cnt) = 2
+						card@tcg(TCG_CARD_REF_ATTACK, cnt) = 1
+						card@tcg(TCG_CARD_HP, cnt) = 1
+						card@tcg(TCG_CARD_REF_HP, cnt) = 1
 						card@tcg(TCG_CARD_REF_COST, cnt) = 2
 						card@tcg(TCG_CARD_REF_PIC, cnt) = xy2pic(10, 9)
 						cdbitmod TCG_BIT_DOUBLE_STRIKE, cnt, 1
