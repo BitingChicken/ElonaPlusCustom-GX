@@ -12174,7 +12174,7 @@
 		dmghp tc, limit((weap + 1) / 2, 2, 2500) * sqrt(weap) * sqrt(eqlv - 2) + rnd(weap * 2 + 1), cc, SKILL_SPACT_FLASH_OF_SWIFTNESS
 		chara_guardbreak tc, 30
 		gdata(GDATA_ABSORB_CHARGE) += 10
-		txt lang("充填用魔力を10獲得した(魔力の貯蓄：" + gdata(GDATA_ABSORB_CHARGE) + ")", "You get 10 recharge powers. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
+		txt lang("充填用魔力を10獲得した(魔力の貯蓄：" + gdata(GDATA_ABSORB_CHARGE) + ")", "You get 10 mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
 		eqlv = 0
 		eqbui = 0
 		weap = 0
@@ -15683,11 +15683,11 @@
 		}
 		if ( efid == SKILL_SPACT_FILL_CHARGE ) {
 			if ( gdata(GDATA_ABSORB_CHARGE) < 10 ) {
-				txt lang("充填するには最低でも魔力の貯蓄が10必要だ。", "You need at least 10 recharge powers to recharge items.")
+				txt lang("充填するには最低でも魔力の貯蓄が10必要だ。", "You need at least 10 mana charge to recharge items.")
 				goto *effect_end
 			}
 			gdata(GDATA_ABSORB_CHARGE) -= 10
-			txt lang("魔力の貯蓄を10消費した(残り" + gdata(GDATA_ABSORB_CHARGE) + ")", "You spend 10 recharge powers. (Remaining:" + gdata(GDATA_ABSORB_CHARGE) + ")")
+			txt lang("魔力の貯蓄を10消費した(残り" + gdata(GDATA_ABSORB_CHARGE) + ")", "You spend 10 mana charge. (Remaining:" + gdata(GDATA_ABSORB_CHARGE) + ")")
 		}
 		invsubroutine = 1
 		invctrl = 23, 3
@@ -15806,7 +15806,7 @@
 				p = p * inv(INV_ITEM_CHARGE, ci)
 				gdata(GDATA_ABSORB_CHARGE) += p
 			}
-			txt lang(itemname(ci) + "を破壊して" + p + "の魔力を抽出した(計" + gdata(GDATA_ABSORB_CHARGE) + ")", "You destroy " + itemname(ci) + " and extract " + p + " recharge powers. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
+			txt lang(itemname(ci) + "を破壊して" + p + "の魔力を抽出した(計" + gdata(GDATA_ABSORB_CHARGE) + ")", "You destroy " + itemname(ci) + " and extract " + p + " mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
 			inv(INV_ITEM_NUM, ci) = 0
 			gosub *calcBurdenPc
 			skillexp SKILL_NORMAL_MAGIC_CAPACITY, CHARA_PLAYER, 100
@@ -26320,7 +26320,7 @@
 		chara_cutin cc
 		if ( cdata(CDATA_ID, cc) == CREATURE_ID_MAILE_THE_MARIONETTE_SHAMAN ) {
 			txtef COLOR_YELLOW
-			txt lang("「くっ…やはり合意がないと充分な力が出ませんね」", "Maile seems to not have enough power.")
+			txt lang("「くっ…やはり合意がないと充分な力が出ませんね」", cnvtalk("Hmmm. I guess I can't exert my full power without your consent."))
 		}
 		else {
 			if ( gdata(GDATA_FLAG_MAIN) >= 780 ) {

@@ -153,7 +153,7 @@
 		locvar_txttargetnpc_dy++
 		bmes "Target: " + cdatan(CDATAN_NAME, cdata(CDATA_TARGET, txttargetnpc_arg_tc)) + "(" + cdata(CDATA_AI_AGGRO, txttargetnpc_arg_tc) + ")", 255, 2552, 255
 	}
-	locvar_txttargetnpc_pic = cdata(CDATA_PIC, locvar_txttargetnpc_i) \ 1000 + cdata(CDATA_CHARA_PIC, locvar_txttargetnpc_i) * 1000
+	locvar_txttargetnpc_pic = cdata(CDATA_PIC, locvar_txttargetnpc_i) \ COLOR_TINT_MULT + cdata(CDATA_CHARA_PIC, locvar_txttargetnpc_i) * COLOR_TINT_MULT
 	color 0, 0, 0
 	pos 100, windowh - inf_verh - 45 - locvar_txttargetnpc_dy * 20
 	locvar_txttargetnpc_dy++
@@ -5118,7 +5118,7 @@
 	itemcreate -1, ITEM_ID_GOLDEN_DOLL, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 	inv(INV_ITEM_PIC, ci) = xy2pic(18, 36)
 	remain_make ci, MAX_CHARA_NC
-	inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, MAX_CHARA_NC) \ 1000 + cdata(CDATA_CHARA_PIC, MAX_CHARA_NC) * 1000
+	inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, MAX_CHARA_NC) \ COLOR_TINT_MULT + cdata(CDATA_CHARA_PIC, MAX_CHARA_NC) * COLOR_TINT_MULT
 	inv(INV_ITEM_SUB_NAME, ci) = cdata(CDATA_ID, MAX_CHARA_NC)
 	cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 	chara_vanquish MAX_CHARA_NC
@@ -5136,7 +5136,7 @@
 	inv(INV_ITEM_PARAM2, ci) = 10
 	inv(INV_ITEM_PARAM3, ci) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 + 240
 	remain_make ci, rc
-	inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, MAX_CHARA_NC) \ 1000 + cdata(CDATA_CHARA_PIC, MAX_CHARA_NC) * 1000
+	inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, MAX_CHARA_NC) \ COLOR_TINT_MULT + cdata(CDATA_CHARA_PIC, MAX_CHARA_NC) * COLOR_TINT_MULT
 	inv(INV_ITEM_SUB_NAME, ci) = cdata(CDATA_ID, MAX_CHARA_NC)
 	cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 	chara_vanquish MAX_CHARA_NC
@@ -10736,7 +10736,7 @@
 		if ( cdata(CDATA_EQUIP_WEIGHT, cc) < 35000 & cdata(CDATA_EQUIP_WEIGHT, cc) >= 15000 & findbuff(cc, BUFF_MAGIC_EQUIP) != (-1) ) {
 			hoseis = hoseis * 6 / 5
 		}
-		if ( cdata(CDATA_CUSTOM_TALK_LINE, CHARA_PLAYER) == 1 & (cdata(CDATA_ALLIED, cc) == 100 | cc == CHARA_PLAYER) ) {
+		if ( cdata(CDATA_ADVANCED_CASTING_ENABLED, CHARA_PLAYER) == 1 & (cdata(CDATA_ALLIED, cc) == 100 | cc == CHARA_PLAYER) ) {
 			hoseis = hoseis * 6 / 5
 		}
 		attackskill = SKILL_WEAPON_MARTIAL_ARTS

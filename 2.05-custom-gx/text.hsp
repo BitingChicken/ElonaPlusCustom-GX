@@ -2232,14 +2232,14 @@
 	loop
 	repeat txtsetpforce_arg1
 		if ( p(cnt) == 0 ) {
-			s(cnt) = lang("ショウダウン・ハイカード　精霊リセット/威力" + raise + "%/単体", "<Showdown High Card>  Spirits reset /Attack")
+			s(cnt) = lang("ショウダウン・ハイカード　精霊リセット/威力" + raise + "%/単体", "<Showdown High Card>  Reset/Pow" + raise + "%/Attack")
 		}
 		if ( p(cnt) == 1 ) {
 			if ( pair <= 0 ) {
 				s(cnt) = lang("未成立", "Not established")
 			}
 			else {
-				s(cnt) = lang("ショウダウン・ペアカード　精霊リセット/回復" + pair + "%/全体", "<Showdown Pair Cards> Spirits reset /Ally recovery")
+				s(cnt) = lang("ショウダウン・ペアカード　精霊リセット/回復" + pair + "%/全体", "<Showdown Pair Cards> Reset/Pow" + pair + "%/Recovery")
 			}
 		}
 		if ( p(cnt) == 2 ) {
@@ -2247,7 +2247,7 @@
 				s(cnt) = lang("未成立", "Not established")
 			}
 			else {
-				s(cnt) = lang("ショウダウン・ストレート　精霊リセット/威力" + straight + "%/直線", "<Showdown Straight>   Spirits reset /Attack(line) ")
+				s(cnt) = lang("ショウダウン・ストレート　精霊リセット/威力" + straight + "%/直線", "<Showdown Straight>   Reset/Pow" + straight + "%/Attack(line) ")
 			}
 		}
 		if ( p(cnt) == 3 ) {
@@ -2255,7 +2255,7 @@
 				s(cnt) = lang("未成立", "Not established")
 			}
 			else {
-				s(cnt) = lang("ショウダウン・フラッシュ　精霊リセット/威力" + flash + "%/広範囲", "<Showdown Flash>      Spirits reset /Attack(wide) ")
+				s(cnt) = lang("ショウダウン・フラッシュ　精霊リセット/威力" + flash + "%/広範囲", "<Showdown Flash>      Reset/Pow" + flash + "%/Attack(wide) ")
 			}
 		}
 		if ( p(cnt) == 4 ) {
@@ -2264,14 +2264,14 @@
 				s(cnt) = lang("未成立", "Not established")
 			}
 			else {
-				s(cnt) = lang("ショウダウンＳフラッシュ　精霊リセット/威力" + sflash + "%/全域", "<Showdown S-Flash>    Spirits reset /Attack(all) ")
+				s(cnt) = lang("ショウダウンＳフラッシュ　精霊リセット/威力" + sflash + "%/全域", "<Showdown S-Flash>    Reset/Pow" + sflash + "%/Attack(all) ")
 			}
 		}
 		if ( p(cnt) == 5 ) {
-			s(cnt) = lang("【ワイルドカードチェンジ】ゲージ50％/未実装", "[Wild Card Change]    gauge50% /Not implemented")
+			s(cnt) = lang("【ワイルドカードチェンジ】ゲージ50％/未実装", "[Wild Card Change]    [50% Gauge]/Summon Joker")
 		}
 		if ( p(cnt) == 6 ) {
-			s(cnt) = lang("ランクレイズマジック　　　ゲージ5％/ランクを2つ上げる", "<Rank Raise Magic>    gauge5% /Raise rank by 2")
+			s(cnt) = lang("ランクレイズマジック　　　ゲージ5％/ランクを2つ上げる", "<Rank Up Magic>       [5% Gauge]/Raise Rank by 2")
 		}
 		if ( p(cnt) == 7 ) {
 			s(cnt) = lang("フォールド　　　　　　　　やっぱりやめる", "<Fold>                Cancel")

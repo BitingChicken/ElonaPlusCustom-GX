@@ -3242,12 +3242,12 @@
 		gosub *add_ally
 		flt
 		itemcreate -1, ITEM_ID_FIGURINE, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
-		inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, rc) \ 1000 + cdata(CDATA_CHARA_PIC, rc) * 1000
+		inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, rc) \ COLOR_TINT_MULT + cdata(CDATA_CHARA_PIC, rc) * COLOR_TINT_MULT
 		inv(INV_ITEM_SUB_NAME, ci) = cdata(CDATA_ID, rc)
 		cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 		flt
 		itemcreate -1, ITEM_ID_CARD, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
-		inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, rc) \ 1000 + cdata(CDATA_CHARA_PIC, rc) * 1000
+		inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, rc) \ COLOR_TINT_MULT + cdata(CDATA_CHARA_PIC, rc) * COLOR_TINT_MULT
 		inv(INV_ITEM_SUB_NAME, ci) = cdata(CDATA_ID, rc)
 		cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 		goto *blend_act_SWEND1

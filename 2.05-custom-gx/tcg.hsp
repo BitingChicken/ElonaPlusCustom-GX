@@ -269,6 +269,9 @@
 	return s@tcg
 
 #defcfunc gameover
+	if ( gameresult@tcg != 0 ) {
+		return 1 + limit(gameresult@tcg \ 2, 0, 1)
+	}
 	if ( cpdata@tcg(TCG_PLAYER_LIFE, 1) <= 0 ) {
 		return 2
 	}
@@ -524,7 +527,7 @@
 			if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_EXILE ) { continue }
 			cnt2@tcg = cnt
 			f@tcg = 1
-			repeat gravesum@tcg(cardposn@tcg)
+			repeat landsum@tcg(cardposn@tcg)
 				if ( cnt2@tcg == landlist@tcg(cnt, cardposn@tcg) ) {
 					f@tcg = 0
 					break
@@ -1220,24 +1223,45 @@
 			pos efllist@tcg(5, cnt), efllist@tcg(6, cnt)
 			gcopy 7, efllist@tcg(2, cnt) + 72 * limit(efllist@tcg(1, cnt) - 1 - (efllist@tcg(4, cnt) / animespeed@tcg), 0, efllist@tcg(1, cnt) - 1), efllist@tcg(3, cnt), 64, 64
 		}
-		if ( efllist@tcg(0, cnt) == 4 ) {
-			gmode 2, 48, 48
-			color 0, 0, 0
-			pos efllist@tcg(5, cnt), efllist@tcg(6, cnt)
-			grotate 7, efllist@tcg(2, cnt) + 48 * limit(efllist@tcg(1, cnt) - 1 - (efllist@tcg(4, cnt) / animespeed@tcg), 0, efllist@tcg(1, cnt) - 1), efllist@tcg(3, cnt), 0, 48, 48
+		if ( efllist@tcg(0, cnt) == 50 ) {
+			gmode 2, 96, 192
+			pos (efllist@tcg(5, cnt) + efllist@tcg(7, cnt)) / 2, (efllist@tcg(6, cnt) + efllist@tcg(8, cnt)) / 2
+			adist@tcg = limit(dist(efllist@tcg(5, cnt), efllist@tcg(6, cnt), efllist@tcg(7, cnt), efllist@tcg(8, cnt)), 20, 2000)
+			aangle@tcg = atan(efllist@tcg(7, cnt) - efllist@tcg(5, cnt), efllist@tcg(6, cnt) - efllist@tcg(8, cnt))
+			grotate 7, 496 + 96 * limit(efllist@tcg(1, cnt) - 1 - (efllist@tcg(4, cnt) / animespeed@tcg / 2), 0, efllist@tcg(1, cnt) - 1), 1344, aangle@tcg, limit(efllist@tcg(2, cnt), 1, 192), adist@tcg
 		}
-		if ( efllist@tcg(0, cnt) >= 5 & efllist@tcg(0, cnt) <= 23 ) {
+		; if ( efllist@tcg(0, cnt) == 4 ) {
+		; 	gmode 2, 48, 48
+		; 	color 0, 0, 0
+		; 	pos efllist@tcg(5, cnt), efllist@tcg(6, cnt)
+		; 	grotate 7, efllist@tcg(2, cnt) + 48 * limit(efllist@tcg(1, cnt) - 1 - (efllist@tcg(4, cnt) / animespeed@tcg), 0, efllist@tcg(1, cnt) - 1), efllist@tcg(3, cnt), 0, 48, 48
+		; }
+		if ( efllist@tcg(0, cnt) >= 4 & efllist@tcg(0, cnt) <= 36 ) {
 			gmode 2, 96, 96
 			color 0, 0, 0
 			pos efllist@tcg(5, cnt), efllist@tcg(6, cnt)
 			grotate 7, efllist@tcg(2, cnt) + 96 * limit(efllist@tcg(1, cnt) - 1 - (efllist@tcg(4, cnt) / animespeed@tcg / 2), 0, efllist@tcg(1, cnt) - 1), efllist@tcg(3, cnt), 0, 96, 96
+			if ( efllist@tcg(0, cnt) >= 5 & efllist@tcg(0, cnt) <= 36 ) {
+				if ( efllist@tcg(5, cnt) != efllist@tcg(7, cnt) ) { 
+					efllist@tcg(5, cnt) += limit((efllist@tcg(7, cnt) - efllist@tcg(5, cnt)) / 2, -30, 30)
+					if ( abs(efllist@tcg(7, cnt) - efllist@tcg(5, cnt)) < 2 ) {
+						efllist@tcg(5, cnt) = efllist@tcg(7, cnt) 
+					}
+				}
+				if ( efllist@tcg(6, cnt) != efllist@tcg(8, cnt) ) { 
+					efllist@tcg(6, cnt) += limit((efllist@tcg(8, cnt) - efllist@tcg(6, cnt)) / 2, -30, 30)
+					if ( abs(efllist@tcg(8, cnt) - efllist@tcg(6, cnt)) < 2 ) {
+						efllist@tcg(6, cnt) = efllist@tcg(8, cnt) 
+					}
+				}
+			}
 		}
 	loop
 	if ( specialrulecloudy@tcg ) {
 		currenttimecloud@tcg = 50 - abs((timeGetTime() / 100) \ 200 - 100)
 		gmode 5, , , 250
 		pos basex@tcg + 200 + currenttimecloud@tcg, basey@tcg + 170
-		gcopy 6, 935, 976, 496, 224
+		gcopy 7, 0, 1344, 496, 224
 	}
 	gmode 2
 	if ( screenupdate@tcg == (-1) ) {
@@ -1259,7 +1283,7 @@
 	*tcgdraw_WEND1
 	return
 
-#deffunc efllistaddcard int efllistadd_arg1, int efllistadd_arg2, int efllistadd_arg3, int efllistadd_arg4
+#deffunc efllistaddcard int efllistadd_arg1, int efllistadd_arg2, int efllistadd_arg3, int efllistadd_arg4, int efllistadd_arg5
 	proctcg "tcg efllistaddcard: efllistadd_arg1:" + efllistadd_arg1 + "/efllistadd_arg2:" + efllistadd_arg2 + "/efllistadd_arg3:" + efllistadd_arg3 + "/efllistadd_arg4:" + efllistadd_arg4
 	if ( efllistadd_arg2 < 0 | efllistadd_arg2 >= maxcard@tcg ) { return }
 	if ( efllistadd_arg3 != 1 & card@tcg(TCG_CARD_LOCATION, efllistadd_arg2) <= 0 ) { return }
@@ -1278,7 +1302,13 @@
 		elax@tcg = 61
 		elay@tcg = 88
 	}
-	efllistadd efllistadd_arg1, 0, card@tcg(TCG_CARD_X, efllistadd_arg2) + elax@tcg, card@tcg(TCG_CARD_Y, efllistadd_arg2) + elay@tcg
+	mtx@tcg = card@tcg(TCG_CARD_X, efllistadd_arg2)
+	mty@tcg = card@tcg(TCG_CARD_Y, efllistadd_arg2)
+	if ( efllistadd_arg5 > 0 & efllistadd_arg5 <= maxcard@tcg ) {
+		mtx@tcg = card@tcg(TCG_CARD_X, efllistadd_arg5 - 1)
+		mty@tcg = card@tcg(TCG_CARD_Y, efllistadd_arg5 - 1)
+	}
+	efllistadd efllistadd_arg1, 0, card@tcg(TCG_CARD_X, efllistadd_arg2) + elax@tcg, card@tcg(TCG_CARD_Y, efllistadd_arg2) + elay@tcg, mtx@tcg + elax@tcg, mty@tcg + elay@tcg
 	return
 
 #deffunc efllistaddchatplayer str efllistadd_argstr, int efllistadd_arg2, int efllistadd_arg3
@@ -1308,39 +1338,66 @@
 		if ( efllist@tcg(4, cnt) <= 0 ) {
 			efllist@tcg(0, cnt) = efllistadd_arg1
 			efllist@tcg(1, cnt) = efllistadd_arg2
+			// Talk: Displays eflistaddchatstr@tcg for duration.
 			if ( efllistadd_arg1 == -1 ) {
 				efllisttalk@tcg(cnt) = eflistaddchatstr@tcg
 				efllist@tcg(4, cnt) = 60
 				efllist@tcg(5, cnt) = efllistadd_arg3, efllistadd_arg4
 			}
+			// Damage/Heal: Pops a red number/green number.
+			// If <= 0: Red number
+			// If > 0: Green number
 			if ( efllistadd_arg1 == 1 ) {
 				efllist@tcg(4, cnt) = 60
 				efllist@tcg(5, cnt) = efllistadd_arg3 + rnd(30), efllistadd_arg4 + rnd(20)
 			}
+			// Sac: Blue number at point 3,4 and point 5,6
 			if ( efllistadd_arg1 == 2 ) {
 				efllist@tcg(4, cnt) = 60
 				efllist@tcg(5, cnt) = efllistadd_arg3, efllistadd_arg4
 				efllist@tcg(2, cnt) = efllistadd_arg5, efllistadd_arg6
 			}
+			// Flash: Effect activate
 			if ( efllistadd_arg1 == 3 ) {
 				efllist@tcg(1, cnt) = 2, 8, 576
 				efllist@tcg(4, cnt) = efllist@tcg(1, cnt) * animespeed@tcg
 				efllist@tcg(5, cnt) = efllistadd_arg3 - 32, efllistadd_arg4 - 32
 			}
+			// Dramatic explosion: Unused in original
 			if ( efllistadd_arg1 == 4 ) {
-				efllist@tcg(1, cnt) = 10, 336, 1248
-				efllist@tcg(4, cnt) = efllist@tcg(1, cnt) * animespeed@tcg
-				efllist@tcg(5, cnt) = efllistadd_arg3, efllistadd_arg4
-			}
-			if ( efllistadd_arg1 >= 5 & efllistadd_arg1 <= 17 ) {
-				efllist@tcg(1, cnt) = 5 + 1 * (efllistadd_arg1 != 7), 720, (efllistadd_arg1 - 5) * 96
-				efllist@tcg(4, cnt) = efllist@tcg(1, cnt) * animespeed@tcg
-				efllist@tcg(5, cnt) = efllistadd_arg3, efllistadd_arg4
-			}
-			if ( efllistadd_arg1 >= 18 & efllistadd_arg1 <= 23 ) {
-				efllist@tcg(1, cnt) = 5 + 1 * (efllistadd_arg1 > 20), 0, 640 + (efllistadd_arg1 - 18) * 96
+				efllist@tcg(1, cnt) = 10, 0, 1248
 				efllist@tcg(4, cnt) = efllist@tcg(1, cnt) * animespeed@tcg * 2
 				efllist@tcg(5, cnt) = efllistadd_arg3, efllistadd_arg4
+			}
+			// Custom: 5:flame 6:ice 7:elec 8:dark 9:mind 10:poison 11:nether 12:sound 13:nerve 14:chaos
+			// 15:slash 16:blunt 17:magic ball
+			if ( efllistadd_arg1 >= 5 & efllistadd_arg1 <= 17 ) {
+				efllist@tcg(1, cnt) = 6, 720, (efllistadd_arg1 - 5) * 96
+				efllist@tcg(4, cnt) = efllist@tcg(1, cnt) * animespeed@tcg
+				efllist@tcg(5, cnt) = efllistadd_arg3, efllistadd_arg4
+			}
+			// 18:Holy  19:Curse  20:Love  21:Mutate  22:Tentacles  23:TimeStop
+			if ( efllistadd_arg1 >= 18 & efllistadd_arg1 <= 23 ) {
+				efllist@tcg(1, cnt) = 6, 0, 640 + (efllistadd_arg1 - 18) * 96
+				efllist@tcg(4, cnt) = efllist@tcg(1, cnt) * animespeed@tcg * 2
+				efllist@tcg(5, cnt) = efllistadd_arg3, efllistadd_arg4
+			}
+			// 24:GatherPower 25:ultflash 26:redhit 27:talk 28:cyclone
+			if ( efllistadd_arg1 >= 24 & efllistadd_arg1 <= 36 ) {
+				efllist@tcg(1, cnt) = 6, 1296, (efllistadd_arg1 - 24) * 96
+				efllist@tcg(4, cnt) = efllist@tcg(1, cnt) * animespeed@tcg * 2
+				efllist@tcg(5, cnt) = efllistadd_arg3, efllistadd_arg4
+			}
+			if ( efllistadd_arg1 >= 5 & efllistadd_arg1 <= 36 ) {
+				efllist@tcg(7, cnt) = efllistadd_arg5, efllistadd_arg6
+				if ( efllistadd_arg5 == 0 & efllistadd_arg6 == 0 ) {
+					efllist@tcg(7, cnt) = efllistadd_arg3, efllistadd_arg4
+				}
+			}
+			// 50: Laser, aiming from 3,4 to 5,6, efllistadd_arg2 is width
+			if ( efllistadd_arg1 == 50 ) {
+				efllist@tcg(1, cnt) = 5, efllistadd_arg2, 0, 60, efllistadd_arg3, efllistadd_arg4, efllistadd_arg5, efllistadd_arg6
+				if ( efllistadd_arg2 == 0 ) { efllist@tcg(2, cnt) = 96 }
 			}
 			break
 		}
@@ -1492,6 +1549,7 @@
 			if ( p@tcg == TCG_BIT_NOLIMIT ) { s@tcg += "[No Deckbuild Limit] "}
 			if ( p@tcg == TCG_BIT_UNLUCKY ) { s@tcg += "[???] "}
 			if ( p@tcg == TCG_BIT_NOSACRIFICE ) { s@tcg += "[Cannot Sacrifice] "}
+			if ( p@tcg == TCG_BIT_ILLEGAL ) { s@tcg += "[Illegal Card] "}
 		loop
 		rtvaln2 += "\n" + s@tcg
 		s@tcg = ""
@@ -1551,7 +1609,7 @@
 	return create_card_arg1
 
 #deffunc generate_extra_card int create_extra_card_player
-	if ( cpdata@tcg(TCG_PLAYER_EXTRACARD, create_extra_card_player) + discovercount@tcg > MAX_CARD_EXTRA ) { 
+	if ( cpdata@tcg(TCG_PLAYER_EXTRACARD, create_extra_card_player) + discovercount@tcg > MAX_CARD_EXTRA | specialrulenoextracard@tcg != FALSE ) { 
 		cextra@tcg = -1
 		return -1 
 	}
@@ -1588,6 +1646,12 @@
 	return cextra@tcg
 
 #deffunc discover_extra_card int create_extra_card_player
+	if ( specialrulenoextracard@tcg != FALSE ) {
+		if ( specialrulenoextracard@tcg > 0 & specialrulenoextracard@tcg <= maxcard@tcg ) { efllistaddcard 28, specialrulenoextracard@tcg - 1 }
+		discoverchoice@tcg = -1
+		cextra@tcg = -1
+		return -1 
+	}
 	// Select from candidate cards in Anim area.
 	rtval@tcg = -1
 	if ( create_extra_card_player == player@tcg ) {
@@ -1626,7 +1690,8 @@
 	return cextra@tcg
 
 #deffunc create_extra_card int create_extra_card_player, int create_extra_card_id
-	if ( cpdata@tcg(TCG_PLAYER_EXTRACARD, create_extra_card_player) >= MAX_CARD_EXTRA ) { 
+	if ( cpdata@tcg(TCG_PLAYER_EXTRACARD, create_extra_card_player) >= MAX_CARD_EXTRA | specialrulenoextracard@tcg != FALSE ) { 
+		if ( specialrulenoextracard@tcg > 0 & specialrulenoextracard@tcg <= maxcard@tcg ) { efllistaddcard 28, specialrulenoextracard@tcg - 1 }
 		cextra@tcg = -1
 		return -1 
 	}
@@ -1792,6 +1857,10 @@
 		return
 	}
 	if ( cdbit(TCG_BIT_IMMUNE, dmgcard_arg1) & dmgcard_dmg > 0 ) {
+		if ( card@tcg(TCG_CARD_REF_DBID, dmgcard_arg1) == CREATURE_ID_IMARITUKA_THE_ZASIKI_WARAI ) {
+			imaritsuka@tcg = "Acting kinda sus lately~", "Pfft! What's that~?", "Weakling~ weakling!", "Rent-free!"
+			efllistaddchat imaritsuka@tcg(rnd(4)), dmgcard_arg1
+		}
 		efllistadd 1, 0, card@tcg(TCG_CARD_X, dmgcard_arg1), card@tcg(TCG_CARD_Y, dmgcard_arg1) 
 		return
 	}
@@ -1838,6 +1907,10 @@
 		snd SOUNDLIST_ATK1
 	}
 	efllistadd 1, -dmgplayer_dmg, cpx@tcg(dmgplayer_arg1), cpy@tcg(dmgplayer_arg1)
+	if ( cpdata@tcg(TCG_PLAYER_LIFE, dmgplayer_arg1) > 0 & cpdata@tcg(TCG_PLAYER_LIFE, dmgplayer_arg1) - dmgplayer_dmg <= 0 ) {
+		efllistadd 4, 0, cpx@tcg(dmgplayer_arg1) + 36, cpy@tcg(dmgplayer_arg1) + 40
+		tcgpass 30
+	}
 	cpdata@tcg(TCG_PLAYER_LIFE, dmgplayer_arg1) -= dmgplayer_dmg
 	if ( cpdata@tcg(TCG_PLAYER_LIFE, dmgplayer_arg1) <= 0 ) {
 		cpdata@tcg(TCG_PLAYER_LIFE, dmgplayer_arg1) = 0
@@ -2556,6 +2629,7 @@
 					gravecard cnt
 				} else {
 					cdbitmod TCG_BIT_CONSTANT, cnt, 1
+					cdbitmod TCG_BIT_EVASION, cnt, 1
 				}
 			}
 		loop
@@ -2702,7 +2776,8 @@
 		sac@tcg = 1
 		cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg)++
 	}
-	cpdata@tcg(TCG_PLAYER_MANA, cp@tcg) = limit(cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) + specialrulenextturnmana@tcg(cp@tcg), 0, 10000)
+	cpdata@tcg(TCG_PLAYER_MANA, cp@tcg) = limit(cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) + specialrulenextturnmana@tcg(cp@tcg) + specialrulestarlord@tcg(cp@tcg) * specialruleturnendmanaleft@tcg(cp@tcg), 0, 10000)
+	specialrulestarlord@tcg(cp@tcg) = 0
 	specialrulenextturnmana@tcg(cp@tcg) = 0
 	repeat maxcard@tcg
 		if ( card@tcg(TCG_CARD_CONTROLLER, cnt) != cp@tcg ) { continue }
@@ -2768,6 +2843,12 @@
 		eff@tcg = card@tcg(TCG_CARD_EFFECT, cnt)
 		efftrigger@tcg = TCG_SKILL_TYPE_TURN_START
 		if ( (effref@tcg(TCG_SKILL_TYPE, eff@tcg) & TCG_SKILL_TYPE_TURN_START) ) {
+			proctcg "tcg proc/phase-begin: effac:" + effac@tcg + "/eff" + eff@tcg
+			gosub *card_action_choose_target
+		}
+		if ( cdbit(TCG_BIT_ILLEGAL, cnt) ) {
+			eff@tcg = TCG_EFF_CHEETAH
+			efftrigger@tcg = TCG_SKILL_TYPE_TURN_START
 			proctcg "tcg proc/phase-begin: effac:" + effac@tcg + "/eff" + eff@tcg
 			gosub *card_action_choose_target
 		}
@@ -2850,6 +2931,7 @@
 
 *phase_end
 	specialrulemanalastturn@tcg(cp@tcg) = cpdata@tcg(TCG_PLAYER_MANA)
+	if ( cpdata@tcg(TCG_PLAYER_MANA) > 0 ) { specialruleturnendmanaleft@tcg(cp@tcg)++ }
 	repeat maxcard@tcg
 		if ( card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD ) {
 			continue
@@ -3074,7 +3156,7 @@
 				gcopy 7, 72 + card@tcg(TCG_CARD_REF_BG, m@tcg) * 72, 0, 72, 96
 				if ( gravesum@tcg(cnt2@tcg) <= 3 | cnt == gravesum@tcg(cnt2@tcg) - 1 ) {
 					usepcc@tcg = 0
-					if ( card@tcg(TCG_CARD_REF_DBID, m@tcg) != CREATURE_ID_USER ) {
+					if ( card@tcg(TCG_CARD_REF_NPCID, m@tcg) < 0 | card@tcg(TCG_CARD_REF_NPCID, m@tcg) >= MAX_CHARA_FOLLOWER ) {
 						n@tcg = card@tcg(TCG_CARD_REF_PIC, m@tcg) \ COLOR_TINT_MULT + card@tcg(TCG_CARD_REF_CHARA_PIC, m@tcg) * COLOR_TINT_MULT
 						chara_preparepic n@tcg, (card@tcg(TCG_CARD_REF_PIC, m@tcg) - card@tcg(TCG_CARD_REF_CHARA_PIC, m@tcg) * COLOR_TINT_MULT) / COLOR_TINT_MULT
 						gsel 4
@@ -3083,7 +3165,7 @@
 						usepcc@tcg = 10
 						locvar_cell_draw_col = 0
 						locvar_cell_draw_p = 1
-						petuse@tcg = card@tcg(TCG_CARD_REF_CHARA_PIC, m@tcg)
+						petuse@tcg = card@tcg(TCG_CARD_REF_NPCID, m@tcg)
 						if ( petuse@tcg > 0 & petuse@tcg < MAX_CHARA_TOTAL ) {
 							usepcc@tcg = (cbit(CHARA_BIT_PCC, petuse@tcg) == TRUE) * (BUFFER_PCC + petuse@tcg)
 							locvar_cell_draw_col = (cdata(CDATA_PIC, petuse@tcg) - cdata(CDATA_CHARA_PIC, petuse@tcg) * COLOR_TINT_MULT) / COLOR_TINT_MULT

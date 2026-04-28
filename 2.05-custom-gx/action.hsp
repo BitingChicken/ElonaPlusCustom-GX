@@ -598,7 +598,11 @@
 			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 			flt
 			itemcreate -1, ITEM_ID_CARD, cdata(CDATA_X, tc), cdata(CDATA_Y, tc), 0
-			inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, tc) \ 1000 + cdata(CDATA_CHARA_PIC, tc) * 1000
+			picols = cdata(CDATA_CHARA_PIC, tc)
+			if ( cdata(CDATA_PIC, tc) >= xy2pic(1, 21) & cdata(CDATA_PIC, tc) <= xy2pic(31, 21) ) {
+				picols = 0
+			}
+			inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, tc) \ COLOR_TINT_MULT + picols * COLOR_TINT_MULT
 			inv(INV_ITEM_SUB_NAME, ci) = cdata(CDATA_ID, tc)
 			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 			if ( cdata(CDATA_RELATION, tc) == RELATION_NEUTRAL & tc >= MAX_CHARA_FOLLOWER ) {
@@ -8479,7 +8483,11 @@
 				inv(INV_ITEM_AMUR_CAGE, ci) = 1
 			}
 			remain_make ci, tc
-			inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, tc) \ 1000 + cdata(CDATA_CHARA_PIC, tc) * 1000
+			picols = cdata(CDATA_CHARA_PIC, tc)
+			if ( cdata(CDATA_PIC, tc) >= xy2pic(1, 21) & cdata(CDATA_PIC, tc) <= xy2pic(31, 21) ) {
+				picols = 0
+			}
+			inv(INV_ITEM_COL, ci) = cdata(CDATA_PIC, tc) \ COLOR_TINT_MULT + picols * COLOR_TINT_MULT
 			inv(INV_ITEM_SUB_NAME, ci) = cdata(CDATA_ID, tc)
 			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 		}
@@ -10310,13 +10318,13 @@
 			if ( inv(INV_ITEM_CHARGE, ci) <= 0 ) {
 				if ( gdata(GDATA_ABSORB_CHARGE) < 10 ) {
 					cdata(CDATA_AI_ITEM, cc) = 0
-					txt lang("魔力の貯蓄が足りない…。", "Not enough recharge powers...")
+					txt lang("魔力の貯蓄が足りない…。", "Not enough mana charge...")
 					snd SOUNDLIST_FAIL1
 					goto *act_use_SWEND1
 				}
 				snd SOUNDLIST_TM2_SWITCH001
 				gdata(GDATA_ABSORB_CHARGE) -= 10
-				txt lang(name(cc) + "は魔力の貯蓄を10消費した(残り" + gdata(GDATA_ABSORB_CHARGE) + ")", name(cc) + " spend 10 recharge powers. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
+				txt lang(name(cc) + "は魔力の貯蓄を10消費した(残り" + gdata(GDATA_ABSORB_CHARGE) + ")", name(cc) + " spend 10 mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
 				inv(INV_ITEM_CHARGE, ci) = 1
 				goto *act_use_SWEND1
 			}
@@ -10380,13 +10388,13 @@
 			if ( inv(INV_ITEM_CHARGE, ci) <= 0 ) {
 				if ( gdata(GDATA_ABSORB_CHARGE) < 10 ) {
 					cdata(CDATA_AI_ITEM, cc) = 0
-					txt lang("魔力の貯蓄が足りない…。", "Not enough recharge powers...")
+					txt lang("魔力の貯蓄が足りない…。", "Not enough mana charge...")
 					snd SOUNDLIST_FAIL1
 					goto *act_use_SWEND1
 				}
 				snd SOUNDLIST_TM2_SWITCH001
 				gdata(GDATA_ABSORB_CHARGE) -= 10
-				txt lang(name(cc) + "は魔力の貯蓄を10消費した(残り" + gdata(GDATA_ABSORB_CHARGE) + ")", name(cc) + " spend 10 recharge powers. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
+				txt lang(name(cc) + "は魔力の貯蓄を10消費した(残り" + gdata(GDATA_ABSORB_CHARGE) + ")", name(cc) + " spend 10 mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
 				inv(INV_ITEM_CHARGE, ci) = 1
 				goto *act_use_SWEND1
 			}
@@ -10450,13 +10458,13 @@
 			if ( inv(INV_ITEM_CHARGE, ci) <= 0 ) {
 				if ( gdata(GDATA_ABSORB_CHARGE) < 10 ) {
 					cdata(CDATA_AI_ITEM, cc) = 0
-					txt lang("魔力の貯蓄が足りない…。", "Not enough recharge powers...")
+					txt lang("魔力の貯蓄が足りない…。", "Not enough mana charge...")
 					snd SOUNDLIST_FAIL1
 					goto *act_use_SWEND1
 				}
 				snd SOUNDLIST_TM2_SWITCH001
 				gdata(GDATA_ABSORB_CHARGE) -= 10
-				txt lang(name(cc) + "は魔力の貯蓄を10消費した(残り" + gdata(GDATA_ABSORB_CHARGE) + ")", name(cc) + " spend 10 recharge powers. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
+				txt lang(name(cc) + "は魔力の貯蓄を10消費した(残り" + gdata(GDATA_ABSORB_CHARGE) + ")", name(cc) + " spend 10 mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
 				inv(INV_ITEM_CHARGE, ci) = 1
 				goto *act_use_SWEND1
 			}
@@ -15063,7 +15071,7 @@
 		}
 		txt lang("深淵魔力を" + darkness + "獲得した[深淵魔力: " + gdata(GDATA_FLAG_ABYSS_POWER) + "] ", "You get " + darkness + " abyss powers.[Abyss power: " + gdata(GDATA_FLAG_ABYSS_POWER) + "] ")
 		txtvalid = 0
-		txt lang("充填用魔力を" + darkness2 + "獲得した(魔力の貯蓄：" + gdata(GDATA_ABSORB_CHARGE) + ")", "You get " + darkness2 + " recharge powers. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
+		txt lang("充填用魔力を" + darkness2 + "獲得した(魔力の貯蓄：" + gdata(GDATA_ABSORB_CHARGE) + ")", "You get " + darkness2 + " mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
 		goto *act_use_SWEND1
 		_switch_sw++
 	}

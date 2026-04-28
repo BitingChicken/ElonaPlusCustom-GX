@@ -7,6 +7,7 @@
 	return
 
 *ai_evaluate
+	if ( gameover() ) { return }
 	emax@tcg = 0
 	repeat clistmax@tcg(ch@tcg)
 		if ( aiblock@tcg ) {
@@ -16,10 +17,11 @@
 		p@tcg = 10
 		if ( card@tcg(TCG_CARD_REF_TYPE, c@tcg) == TCG_TYPE_CREATURE ) {
 			p@tcg = 20
-			p@tcg -= abs(cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) - card@tcg(TCG_CARD_REF_COST, c@tcg) + (sac@tcg == 0))
+			p@tcg -= abs(cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) - card@tcg(TCG_CARD_COST, c@tcg) + (sac@tcg == 0))
 		}
 		// Legendary cards are played first and discarded last.
 		if ( card@tcg(TCG_CARD_REF_DOMAIN, c@tcg) == 5 ) { p@tcg += 10 }
+		if ( card@tcg(TCG_CARD_COST, c@tcg) < card@tcg(TCG_CARD_REF_COST, c@tcg) ) { p@tcg -= 2 * limit(card@tcg(TCG_CARD_COST, c@tcg) - card@tcg(TCG_CARD_REF_COST, c@tcg),-10,10) }
 		if ( cdbit(TCG_BIT_FLEETING, c@tcg) ) { p@tcg += 20 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_COMBOCOREKEEPALIVE ) { p@tcg += 10 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_COMBOCOREPLAY ) { p@tcg += 10 }
@@ -57,7 +59,17 @@
 					}
 				loop 
 			}
+			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_MANTICORE ) {
+				repeat clistmax@tcg(3 - limit(ch@tcg,0,3))
+					if ( card@tcg(TCG_CARD_ATTACK, clist@tcg(cnt, 3 - limit(ch@tcg,0,3))) > card@tcg(TCG_CARD_REF_ATTACK, c@tcg) ) {
+						p@tcg -= 20
+					} else {
+						p@tcg += 5
+					}
+				loop
+			}
 		}
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HPCOST ) { p@tcg += cpdata@tcg(TCG_PLAYER_LIFE, cp@tcg) - 25 - 2000 * specialrulebattlecrytwice@tcg(cp@tcg) }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_AOE ) { p@tcg += (-20) + 15 * (clistmax@tcg(tl@tcg) - clistmax@tcg(cl@tcg)) }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDAWHILE ) { p@tcg = (-20) + 15 * card@tcg(TCG_CARD_TURN_COUNT, c@tcg) }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_DRAW ) { p@tcg += 2 * limit(maxholdersum@tcg(cp@tcg) - 2 - getholdersum(cp@tcg),-2,7) }
@@ -206,18 +218,15 @@
 	return
 
 *ai_sac
+	if ( gameover() ) { return 0 }
 	gosub *ai_evaluate
 	if ( sac@tcg > 0 ) {
 		return 0
 	}
-	if ( getholdersum(cp@tcg) <= cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) / 4 + 1 ) {
-		if ( rnd(4) ) {
-			return 0
-		}
-	}
 	f@tcg = 0
 	p@tcg(1) = 50
 	aimaxmana@tcg = 0
+	aisacable@tcg = 0
 	repeat emax@tcg
 		c@tcg = elist@tcg(TCG_EVAL_TARGET, cnt)
 		p@tcg = elist@tcg(TCG_EVAL_PROB, cnt)
@@ -231,8 +240,10 @@
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDDONTPLAY ) { p@tcg += 200 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDAWHILE ) { p@tcg += 100 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_AOE ) { p@tcg = 40 + 5 * (clistmax@tcg(tl@tcg) - clistmax@tcg(cl@tcg)) }
-		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_SAC ) { p@tcg -= 20 }
-		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_COMBOCORESAC ) { p@tcg -= 20 }
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_SAC | effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_COMBOCORESAC ) { 
+			p@tcg -= 20 
+			aisacable@tcg = 1
+		}
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_UNDEAD ) { 
 			if ( cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) < card@tcg(TCG_CARD_REF_COST, c@tcg) ) {
 				p@tcg -= 20
@@ -257,8 +268,13 @@
 		card@tcg(TCG_CARD_AI_SAC, c@tcg) = p@tcg
 		efllistaddeval 2, p@tcg - 50, c@tcg
 	loop
-	if ( aimaxmana@tcg <= cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) & rnd(limit(10 - cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg), 1, 10)) == 0 ) {
+	if ( aisacable@tcg == 0 & aimaxmana@tcg <= cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) & rnd(limit(10 - cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg), 1, 10)) == 0 ) {
 		f@tcg = 0
+	}
+	if ( aisacable@tcg == 0 & getholdersum(cp@tcg) <= cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) / 4 + 1 ) {
+		if ( rnd(4) ) {
+			return 0
+		}
 	}
 	if ( f@tcg ) {
 		saccard cc@tcg, cp@tcg
@@ -268,6 +284,7 @@
 	return 0
 
 *card_ai
+	if ( gameover() ) { goto *card_ai_WEND1 }
 	spellused@tcg = 0
 	aievacycle@tcg = 0
 	*card_ai_RETRY
@@ -292,12 +309,14 @@
 				return
 			} else {
 				gosub *ai_evaluate
+				if ( gameover() ) { goto *card_ai_WEND1 }
 				goto *card_ai_WHILE1
 			}
 		}
 	}
 	gosub *card_resolve_ongoing
 	makecardlist
+	if ( gameover() ) { goto *card_ai_WEND1 }
 	// If AI had a high mana cost card, try to sacrifice a card before playing.
 	if ( sac@tcg == 0 & aiblock@tcg == 0 ) {
 		f@tcg = 0, 0
@@ -323,9 +342,7 @@
 	gosub *ai_evaluate
 	ec@tcg = 0
 	*card_ai_WHILE1
-	if ( gameover() ) {
-		goto *card_ai_WEND1
-	}
+	if ( gameover() ) { goto *card_ai_WEND1 }
 	if ( ec@tcg >= emax@tcg ) {
 		goto *card_ai_WEND1
 	}
@@ -339,9 +356,7 @@
 			if ( stat == -1 ) {
 				goto *card_ai_CARDSKIP
 			}
-			if ( gameover() ) {
-				goto *card_ai_WEND1
-			}
+			if ( gameover() ) { goto *card_ai_WEND1 }
 			if ( card@tcg(TCG_CARD_REF_TYPE, ecc@tcg) == TCG_TYPE_SPELL ) {
 				cardstack@tcg(TCG_STACK, stack@tcg) = ecc@tcg, TCG_ACTION_INVOKING, cp@tcg
 				stack@tcg++
@@ -363,6 +378,7 @@
 			}
 		}
 	}
+	if ( gameover() ) { goto *card_ai_WEND1 }
 	ecc@tcg = elist@tcg(TCG_EVAL_TARGET, ec@tcg)
 	if ( elist@tcg(TCG_EVAL_ACTION, ec@tcg) == TCG_ACTION_ATTACKING & card@tcg(TCG_CARD_LOCATION, ecc@tcg) == TCG_LOCATION_FIELD ) {
 		cardstack@tcg(TCG_STACK, stack@tcg) = ecc@tcg, TCG_ACTION_ATTACKING, cp@tcg, -1
@@ -379,6 +395,7 @@
 	}
 	gosub *card_resolve_ongoing
 	*card_ai_CARDSKIP
+	if ( gameover() ) { goto *card_ai_WEND1 }
 	ec@tcg++
 	goto *card_ai_WHILE1
 	*card_ai_WEND1
@@ -392,9 +409,6 @@
 		if ( aievacycle@tcg < 3 ) {
 			goto *card_ai_RETRY
 		}
-	}
-	if ( gameover() ) {
-		return
 	}
 	return
 

@@ -5,12 +5,17 @@
   - E.g. Death animations are all played at the same time, and no longer causes pause.
 
 # Fixed
-- (Plus) Fixed ranch animals receiving EXP from nefia debris, causing lower breed power
-- (Plus) Fixed rain changing into snow on the ocean due to not checking current area
-- (Plus) Astral light pen copies a random CNPC.
+- (Plus) Fixed ranch breeder receiving EXP from nefia debris, causing lower breed power
+- (Plus) Fixed rain changing into snow on the ocean due to using snow region check of North Tyris
+- (Plus) Astral Light Pen + CNPC => copies a random CNPC.
+- (Plus) Blank Card + Shape Changed pet with 1000+ spriteID => card with bugged image. (This crashes original plus)
 - Extermination breath flag not set.
 - Tone file's Tachi-E emote not working due to renamed variable
 - Tone file's talk flag not set to 0 when found dialog.
+
+# TCG
+- Random Opponent Decks now contains utilities/counters (at higher winstreak).
+- Fixed AI issues, and 0HP Gwens stucking in death loops.
 
 # 2.31.1.0
 
