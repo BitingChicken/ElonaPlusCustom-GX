@@ -8975,5 +8975,12 @@
 	if ( cdata(CDATA_DIRECTIVE_MODE, charaCanGauge_charidx) == DIRECTIVE_MODE_DEFENSIVE | cdata(CDATA_DIRECTIVE_MODE, charaCanGauge_charidx) == DIRECTIVE_MODE_INTERCEPT ) {
 		locvar_powsel = 0
 	}
+	if ( TweakData(TWEAK_GAMEPLAY_REVERT_GAUGE_MECHANICS, TWEAK_CATEGORY_GAMEPLAY) != FALSE ) {
+		if ( charaCanGauge_charidx == CHARA_PLAYER ) {
+			if ( cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) == 0 ) {
+				locvar_powsel = 0
+			}
+		}
+	}
 	return locvar_powsel
 /********** JAMES CUSTOM - ENDING **********/

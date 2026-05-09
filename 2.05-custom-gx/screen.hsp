@@ -533,8 +533,18 @@
 			}
 		}
 	}
+	if ( TweakData(TWEAK_GAMEPLAY_REVERT_GAUGE_MECHANICS, TWEAK_CATEGORY_GAMEPLAY) != FALSE ) {
+		if ( cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) ) {
+			color 0, 0, 200
+			pos sx, sy
+			gcopy BUFFER_INF, 0 + en * 84, 416, 65 + en * 30, 15
+			pos sx + 6, sy + 1
+			mes lang("力の解放", "Gauge Ready")
+			sy -= 20
+		}
+	}
 	if ( cbit(CHARA_BIT_MAGNETISM_S_POLE, CHARA_PLAYER) ) {
-		color 0, 0, 100
+		color 0, 0, 200
 		pos sx, sy
 		gcopy BUFFER_INF, 0 + en * 84, 416, 65 + en * 30, 15
 		pos sx + 6, sy + 1

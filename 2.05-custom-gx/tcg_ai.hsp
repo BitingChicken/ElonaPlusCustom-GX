@@ -48,11 +48,6 @@
 			}
 			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) >= TCG_SKILL_AI_PLAYIFYOUDONTHAVE & effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) < TCG_SKILL_AI_PLAYIFYOUDONTHAVEKEEP + 10000 ) {
 				p@tcg = 100
-				repeat clistmax@tcg(ch@tcg)
-					if ( card@tcg(TCG_CARD_REF_DBID, clist@tcg(cnt, ch@tcg)) == (effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) \ 10000) ) {
-						p@tcg = -200
-					}
-				loop 
 				repeat clistmax@tcg(cl@tcg)
 					if ( card@tcg(TCG_CARD_REF_DBID, clist@tcg(cnt, cl@tcg)) == (effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) \ 10000) ) {
 						p@tcg = -200
@@ -68,9 +63,18 @@
 					}
 				loop
 			}
+			if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_MONSTERBALL ) {
+				p@tcg = -200
+				repeat clistmax@tcg(3 - limit(tl@tcg,0,3))
+					if ( card@tcg(TCG_CARD_HP, clist@tcg(cnt, 3 - limit(tl@tcg,0,3))) == 1 ) {
+						p@tcg = 100
+					}
+				loop
+			}
 		}
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HPCOST ) { p@tcg += cpdata@tcg(TCG_PLAYER_LIFE, cp@tcg) - 25 - 2000 * specialrulebattlecrytwice@tcg(cp@tcg) }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_AOE ) { p@tcg += (-20) + 15 * (clistmax@tcg(tl@tcg) - clistmax@tcg(cl@tcg)) }
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_FIELDBUFF ) { p@tcg += (-20) + 10 * clistmax@tcg(cl@tcg) }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDAWHILE ) { p@tcg = (-20) + 15 * card@tcg(TCG_CARD_TURN_COUNT, c@tcg) }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_DRAW ) { p@tcg += 2 * limit(maxholdersum@tcg(cp@tcg) - 2 - getholdersum(cp@tcg),-2,7) }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_SAC ) { p@tcg -= 2 * (1 + getspotsum(cp@tcg)) }
@@ -240,6 +244,8 @@
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDDONTPLAY ) { p@tcg += 200 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_HOLDAWHILE ) { p@tcg += 100 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_AOE ) { p@tcg = 40 + 5 * (clistmax@tcg(tl@tcg) - clistmax@tcg(cl@tcg)) }
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_FIELDBUFF ) { p@tcg = 30 }
+		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_MONSTERBALL ) { p@tcg = 30 }
 		if ( effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_SAC | effref@tcg(TCG_SKILL_AI_PREFERENCE, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_AI_COMBOCORESAC ) { 
 			p@tcg -= 20 
 			aisacable@tcg = 1

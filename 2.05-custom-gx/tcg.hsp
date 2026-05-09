@@ -280,6 +280,20 @@
 	}
 	return 0
 
+#deffunc specialvictory int specialvictory_winner, int specialvictory_type
+	if ( specialvictory_winner != 0 & specialvictory_winner != 1 ) { return }
+	if ( yaminogemu@tcg == 1 & specialvictory_winner == TCG_CONTROLLER_PLAYER ) {
+		specialruleusenofatiguerecoil@tcg(specialvictory_winner) = 1
+		specialruleusealwaysfatigue@tcg(1 - specialvictory_winner) = 1
+		repeat 10
+			fatigueplayer 1 - specialvictory_winner, 1
+		loop
+	} else {
+		cpdata@tcg(TCG_PLAYER_LIFE, 1 - specialvictory_winner) = 0
+		gameresult@tcg = specialvictory_type + (specialvictory_winner == 1)
+	}
+	return
+
 #defcfunc cardcandeclareattack int cardcandeclareattack_arg1
 	if ( card@tcg(TCG_CARD_LOCATION, cardcandeclareattack_arg1) != TCG_LOCATION_FIELD ) {
 		return 0
@@ -728,9 +742,9 @@
 						if ( card@tcg(TCG_CARD_REF_TYPE, tcgdrawcard_arg1) == TCG_TYPE_CREATURE & card@tcg(TCG_CARD_ANIM, tcgdrawcard_arg1) == TCG_ANIM_NONE ) {
 							drawnhp@tcg = card@tcg(TCG_CARD_HP, tcgdrawcard_arg1)
 							drawnmaxhp@tcg = card@tcg(TCG_CARD_REF_HP, tcgdrawcard_arg1)
-							drawnatk@tcg = card@tcg(TCG_CARD_ATTACK, tcgdrawcard_arg1)
+							drawnatk@tcg = card@tcg(TCG_CARD_SHOWN_ATTACK, tcgdrawcard_arg1)
 							drawnbaseatk@tcg = card@tcg(TCG_CARD_REF_ATTACK, tcgdrawcard_arg1)
-							drawncost@tcg = card@tcg(TCG_CARD_COST, tcgdrawcard_arg1)
+							drawncost@tcg = card@tcg(TCG_CARD_SHOWN_COST, tcgdrawcard_arg1)
 							drawnbasecost@tcg = card@tcg(TCG_CARD_REF_COST, tcgdrawcard_arg1)
 							if ( tcgdrawcard_arg2 == 1 ) {
 								drawnhp@tcg = card@tcg(TCG_CARD_REF_HP, tcgdrawcard_arg1)
@@ -856,24 +870,21 @@
 			gcopy 7, 0, 0, 72, 96
 		}
 		if ( cnt == 0 ) {
+			font lang(cfg_font1, cfg_font2), 10 + en - en * 2, 0
 			if ( card@tcg(TCG_CARD_LOCATION, tcgdrawcard_arg1) == TCG_LOCATION_HAND ) {
 				if ( cdbit(TCG_BIT_FACE_UP, tcgdrawcard_arg1) & card@tcg(TCG_CARD_REF_TYPE, tcgdrawcard_arg1) == TCG_TYPE_CREATURE ) {
 					p@tcg = 0
+					pos x@tcg, y@tcg + 72 - 7 * p@tcg
+					color 0, 0, 0
 					if ( cdbit(TCG_BIT_SILENCED, tcgdrawcard_arg1) == 1 ) {
-						pos x@tcg, y@tcg + 69 - 13 * p@tcg
-						color 0, 0, 0
 						bmes "Silenced", 235, 125, 125 
 						p@tcg++
 					}
 					if ( cdbit(TCG_BIT_CONFUSED, tcgdrawcard_arg1) == 1 ) {
-						pos x@tcg, y@tcg + 69 - 13 * p@tcg
-						color 0, 0, 0
 						bmes "Confused", 235, 125, 125
 						p@tcg++
 					}
 					if ( cdbit(TCG_BIT_POISONED, tcgdrawcard_arg1) == 1 ) {
-						pos x@tcg, y@tcg + 69 - 13 * p@tcg
-						color 0, 0, 0
 						bmes "Poisoned", 235, 125, 125
 						p@tcg++
 					}
@@ -885,7 +896,7 @@
 						p@tcg = 0
 						repeat 128
 							if ( cdbit(cnt, tcgdrawcard_arg1) == 1 ) {
-								pos x@tcg, y@tcg + 69 - 13 * p@tcg
+								pos x@tcg, y@tcg + 72 - 7 * p@tcg
 								color 0, 0, 0
 								if ( cnt == TCG_BIT_REGENERATION ) { 
 									bmes "Regeneration", 235, 235, 235 
@@ -911,7 +922,6 @@
 									bmes "Lifelink", 235, 235, 235 
 									p@tcg++
 								}
-								// if ( cnt == TCG_BIT_HASTE ) { bmes "Regeneration", 235, 235, 235 }
 								if ( cnt == TCG_BIT_TRAMPLE ) { 
 									bmes "Trample", 235, 235, 235 
 									p@tcg++
@@ -932,7 +942,6 @@
 									bmes "Critical", 235, 235, 235 
 									p@tcg++
 								}
-								// if ( cnt == TCG_BIT_WINDFURY ) { bmes "Windfury", 235, 235, 235 }
 								if ( cnt == TCG_BIT_WINDFURY_USABLE ) { 
 									bmes "Windfury", 235, 235, 235 
 									p@tcg++
@@ -1031,6 +1040,7 @@
 					}
 				}
 			}
+			font lang(cfg_font1, cfg_font2), 13 + en - en * 2, 0
 		}
 	loop
 	return
@@ -1177,7 +1187,7 @@
 		if ( efllist@tcg(4, cnt) <= 0 ) {
 			continue
 		}
-		efllist@tcg(4, cnt) -= limitmax(drawpace@tcg(1), efllist@tcg(4, cnt))
+		efllist@tcg(4, cnt) -= limitmax(drawpace@tcg(1), limit(efllist@tcg(4, cnt) / limit(efllist@tcg(1,cnt),1,10), 1, 100))
 		if ( efllist@tcg(0, cnt) == -1 ) {
 			pos efllist@tcg(5, cnt), efllist@tcg(6, cnt)
 			color 0, 0, 0
@@ -1229,6 +1239,18 @@
 			adist@tcg = limit(dist(efllist@tcg(5, cnt), efllist@tcg(6, cnt), efllist@tcg(7, cnt), efllist@tcg(8, cnt)), 20, 2000)
 			aangle@tcg = atan(efllist@tcg(7, cnt) - efllist@tcg(5, cnt), efllist@tcg(6, cnt) - efllist@tcg(8, cnt))
 			grotate 7, 496 + 96 * limit(efllist@tcg(1, cnt) - 1 - (efllist@tcg(4, cnt) / animespeed@tcg / 2), 0, efllist@tcg(1, cnt) - 1), 1344, aangle@tcg, limit(efllist@tcg(2, cnt), 1, 192), adist@tcg
+			if ( efllist@tcg(7, cnt) != efllist@tcg(9, cnt) ) { 
+				efllist@tcg(7, cnt) += limit((efllist@tcg(9, cnt) - efllist@tcg(7, cnt)) / 2, -30, 30)
+				if ( abs(efllist@tcg(9, cnt) - efllist@tcg(7, cnt)) < 2 ) {
+					efllist@tcg(7, cnt) = efllist@tcg(9, cnt) 
+				}
+			}
+			if ( efllist@tcg(8, cnt) != efllist@tcg(10, cnt) ) { 
+				efllist@tcg(8, cnt) += limit((efllist@tcg(10, cnt) - efllist@tcg(8, cnt)) / 2, -30, 30)
+				if ( abs(efllist@tcg(10, cnt) - efllist@tcg(8, cnt)) < 2 ) {
+					efllist@tcg(8, cnt) = efllist@tcg(10, cnt) 
+				}
+			}
 		}
 		; if ( efllist@tcg(0, cnt) == 4 ) {
 		; 	gmode 2, 48, 48
@@ -1396,12 +1418,22 @@
 			}
 			// 50: Laser, aiming from 3,4 to 5,6, efllistadd_arg2 is width
 			if ( efllistadd_arg1 == 50 ) {
-				efllist@tcg(1, cnt) = 5, efllistadd_arg2, 0, 60, efllistadd_arg3, efllistadd_arg4, efllistadd_arg5, efllistadd_arg6
+				efllist@tcg(1, cnt) = 5, efllistadd_arg2, 0, 60, efllistadd_arg3, efllistadd_arg4, efllistadd_arg5, efllistadd_arg6, efllistadd_arg5, efllistadd_arg6
 				if ( efllistadd_arg2 == 0 ) { efllist@tcg(2, cnt) = 96 }
+				if ( lasertargetx@tcg != 0 ) {
+					efllist@tcg(9, cnt) = lasertargetx@tcg
+					lasertargetx@tcg = 0
+				}
+				if ( lasertargety@tcg != 0 ) {
+					efllist@tcg(10, cnt) = lasertargety@tcg
+					lasertargety@tcg = 0
+				}
 			}
 			break
 		}
 	loop
+	lasertargetx@tcg = 0
+	lasertargety@tcg = 0
 	eflistaddchatstr@tcg = ""
 	return
 
@@ -1589,6 +1621,8 @@
 	card@tcg(TCG_CARD_REF_CHARA_PIC, create_card_arg1) = cardrefpicchar
 	card@tcg(TCG_CARD_REF_NPCID, create_card_arg1) = cardrefmapnpcid
 	card@tcg(TCG_CARD_REF_BG, create_card_arg1) = cardrefbg
+	card@tcg(TCG_CARD_SHOWN_ATTACK, create_card_arg1) = cardrefattack
+	card@tcg(TCG_CARD_SHOWN_COST, create_card_arg1) = cardrefcost
 	carddetailn@tcg(create_card_arg1) = rtvaln
 	carddetailneff@tcg(create_card_arg1) = rtvaln2
 	repeat 128
@@ -1885,7 +1919,12 @@
 		}
 	}
 	if ( dmgcard_dmg != 0 ) { 
-		efllistadd 1, -dmgcard_dmg, card@tcg(TCG_CARD_X, dmgcard_arg1), card@tcg(TCG_CARD_Y, dmgcard_arg1) 
+		efllistadd 1, -dmgcard_dmg, card@tcg(TCG_CARD_X, dmgcard_arg1), card@tcg(TCG_CARD_Y, dmgcard_arg1)
+		if ( (dmgcard_dmg > 0) & card@tcg(TCG_CARD_REF_PIC, dmgcard_arg1) == xy2pic(25, 35) & card@tcg(TCG_CARD_REF_CHARA_PIC, dmgcard_arg1) == 1 ) {
+			efllistaddcard 26, dmgcard_arg1
+			efllistaddchat "Ahhh! I don't want to lose!", dmgcard_arg1
+			card@tcg(TCG_CARD_REF_PIC, dmgcard_arg1) = xy2pic(25, 36)
+		}
 	}
 	card@tcg(TCG_CARD_HP, dmgcard_arg1) -= dmgcard_dmg
 	if ( card@tcg(TCG_CARD_HP, dmgcard_arg1) < 0 ) {
@@ -2477,6 +2516,9 @@
 		} else {
 			gosub *card_generateopponentdeck
 		}
+		if ( deck(CREATURE_ID_AIME_THE_STORY_TELLER) >= 1 ) {
+			gosub *card_generateplayerdeck
+		}
 		if ( cardsize@tcg < MIN_CARD_DECK ) {
 			repeat MIN_CARD_DECK - cardsize@tcg
 				cc@tcg = rp@tcg * MAX_CARD_DECK_TOTAL + cnt + cardsize@tcg
@@ -2618,7 +2660,7 @@
 	} 
 	if ( deck(CREATURE_ID_THE_ELEMENT) > 0 | cdata(CDATA_ID, tc) == CREATURE_ID_ITZPALT | cdata(CDATA_ID, tc) == CREATURE_ID_THE_ELEMENT ) {
 		specialruledrawswhenhandfull@tcg = 1 
-		specialruledrawtwocardsperturn@tcg = 1 
+		specialruledrawtwocardsperturn@tcg = 1, 1
 		specialruleanyonecanblock@tcg = 1
 		specialruleusefatigue@tcg = 1
 	} 
@@ -2882,7 +2924,7 @@
 	tcgdraw
 	await 50
 	getrandomcard cp@tcg
-	if ( specialruledrawtwocardsperturn@tcg ) {
+	if ( specialruledrawtwocardsperturn@tcg(cp@tcg) ) {
 		await 50
 		getrandomcard cp@tcg
 	}
@@ -3425,6 +3467,8 @@
 		font lang(cfg_font1, cfg_font2), 10, 0
 		if ( displayinfo@tcg == 1 ) {
 			font cfg_font2, 13, 0
+			split helpmsg@tcg, "\n", splitbuff
+			if ( stat >= 4 ) { font cfg_font2, 11, 0 }
 		}
 		pos basex@tcg + 120, basey@tcg + 537
 		mes helpmsg@tcg

@@ -2734,6 +2734,10 @@
 	}
 	// JAMES CUSTOM - Prevent foe from spamming angered flavor text
 	jamesangerhack = 0
+	if ( TweakData(TWEAK_GAMEPLAY_REVERT_GAUGE_MECHANICS, TWEAK_CATEGORY_GAMEPLAY) != FALSE ) {
+		// JAMES CUSTOM - Reset Gauge skill in case of killed target pre-emptively.
+		cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
+	}
 	
 
 	proc "pc_turn_init"

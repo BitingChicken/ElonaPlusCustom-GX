@@ -3,6 +3,7 @@
 # Added
 - (MMAH) Tweak to change some animations into Async mode
   - E.g. Death animations are all played at the same time, and no longer causes pause.
+- Tweak to revert Gauge Skill Activation to pre-2.24.
 
 # Fixed
 - (Plus) Fixed ranch breeder receiving EXP from nefia debris, causing lower breed power

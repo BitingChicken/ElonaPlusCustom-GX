@@ -818,21 +818,21 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	listn(0, 14) = "Revert post-2.22 ranged ammo nerf." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_AMMO_NERF)
 	listn(0, 15) = "Go back."
 	
-	listn(0, 16) = "Disable Mob begging-for-life System post-2.27." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_CLEMENTIA)
-	listn(0, 17) = "=== EXP/Progression related changes ==="
-	listn(0, 18) = "Sandbag training." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SANDBAG_TRAINING)
-	listn(0, 19) = "Summoned monster training." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SUMMONED_MONSTER_TRAINING)
-	listn(0, 20) = "Increase Dojo EXP gain: " + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_INCREASED_DOJO_EXP) + "% increase."
-	listn(0, 21) = "Revert post-1.90 weapon skill exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_190_EXP_CHANGES)
-	listn(0, 22) = "Disable study days (triple skill exp)" + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_STUDY_DAYS)
-	listn(0, 23) = "Disable DESTINY." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_DESTINY)
-	listn(0, 24) = "Revert post-2.13 combat exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_213_EXP_CHANGES)
-	listn(0, 25) = "Revert post-2.17 skill exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_217_EXP_CHANGES)
-	listn(0, 26) = "Revert post-2.31 4x exp bonus on low-level skills." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_231_DEEPEST_EXP)
-	listn(0, 27) = "" 
-	listn(0, 28) = "" 
-	listn(0, 29) = "" 
-	listn(0, 30) = "" 
+	listn(0, 16) = "Revert Gauge-Release Toggle post-2.24." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_GAUGE_MECHANICS)
+	listn(0, 17) = "Disable Mob begging-for-life System post-2.27." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_CLEMENTIA)
+	listn(0, 18) = "" 
+	listn(0, 19) = "" 
+	listn(0, 20) = "" 
+	listn(0, 21) = "=== EXP/Progression related changes ==="
+	listn(0, 22) = "Sandbag training." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SANDBAG_TRAINING)
+	listn(0, 23) = "Summoned monster training." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_SUMMONED_MONSTER_TRAINING)
+	listn(0, 24) = "Increase Dojo EXP gain: " + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_INCREASED_DOJO_EXP) + "% increase."
+	listn(0, 25) = "Revert post-1.90 weapon skill exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_190_EXP_CHANGES)
+	listn(0, 26) = "Disable study days (triple skill exp)" + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_STUDY_DAYS)
+	listn(0, 27) = "Disable DESTINY." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_DESTINY)
+	listn(0, 28) = "Revert post-2.13 combat exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_213_EXP_CHANGES)
+	listn(0, 29) = "Revert post-2.17 skill exp formula changes." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_217_EXP_CHANGES)
+	listn(0, 30) = "Revert post-2.31 4x exp bonus on low-level skills." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_231_DEEPEST_EXP)
 	listn(0, 31) = "Go back."
 	
 	listn(0, 32) = "=== Anti-powergaming/Misc changes ==="
@@ -926,33 +926,36 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 			}
 
 			if ( p == 16 ) {
+				s = "Revert Post-2.24 Gauge Active method change.\nBefore 2.24, You press gauge release before attacking to activate it.\nAfter 2.24, it was changed to a toggle on/off.\nIt also resets Gauge flag at the start of your turn to prevent misfire."
+			}
+			if ( p == 17 ) {
 				s = "Revert Post-2.27 Begging-for-life-Flag setting.\nThis flag will change hostile mob NPCs into a pacified state.\nWhere your bump melee is changed into dialog with the pacified mob."
 			}
-			if ( p == 18 ) {
+			if ( p == 22 ) {
 				s = "Sandbagged monsters will give experience."
 			}
-			if ( p == 19 ) {
+			if ( p == 23 ) {
 				s = "Summoned monsters and monsters that split up will give experience."
 			}
-			if ( p == 20 ) {
+			if ( p == 24 ) {
 				s = "Increase Dojo EXP gain. \nDojo EXP is gained by traveling on world map, at ~3.5 EXP per tile.\nWhile slightly higher than travel EXP, it may be underwhelming for \nthose who doesn't visit Dojo very often."
 			}
-			if ( p == 21 ) {
+			if ( p == 25 ) {
 				s = "Reverts changes to the weapon skill experience formula after version 1.90.\nThis mainly addresses the three-fold increase in player weapon skill exp gain.\nIt does not change the study day triple exp bonus."
 			}
-			if ( p == 22 ) {
+			if ( p == 26 ) {
 				s = "Disables the \"study day bonus\" feature.\nThis will prevent certain skills from gaining triple skill experience based on the\nstudy day type."
 			}
-			if ( p == 23 ) {
+			if ( p == 27 ) {
 				s = "Disables the \"DESTINY\" feature.\nThis restores the chances of godly equipment being generated, regardless of\nDESTINY triggers."
 			}
-			if ( p == 24 ) {
+			if ( p == 28 ) {
 				s = "Reverts changes to the killing experience formula after version 2.13.\nAddresses \"increased EXP multipliers when defeating enemies above the PC's level\".\nToggling this also reverts the changes to the taxation mechanic."
 			}
-			if ( p == 25 ) {
+			if ( p == 29 ) {
 				s = "Reverts changes to the skill experience formula after version 2.17.\nThis will lock your growth rate at 400% (100% compared to growth in 2.17)."
 			}
-			if ( p == 26 ) {
+			if ( p == 30 ) {
 				s = "Reverts the 400% increase in EXP if (skill level < deepest level), in 2.31."
 			}
 
@@ -1091,53 +1094,59 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	
 	if ( p == 16 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
+		tn = TWEAK_GAMEPLAY_REVERT_GAUGE_MECHANICS
+		gosub *ToggleTweak
+		gosub *ApplyCGSkillTweak
+	}
+	if ( p == 17 ) {
+		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_DISABLE_CLEMENTIA
 		gosub *ToggleTweak
 	}
-	if ( p == 18 ) {
+	if ( p == 22 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_SANDBAG_TRAINING
 		gosub *ToggleTweak
 	}
-	if ( p == 19 ) {
+	if ( p == 23 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_SUMMONED_MONSTER_TRAINING
 		gosub *ToggleTweak
 	}
-	if ( p == 20 ) {
+	if ( p == 24 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_INCREASED_DOJO_EXP
 		ts = 100 // Increments by
 		tm = 1900 // Max
 		gosub *IncrementTweak
 	}
-	if ( p == 21 ) {
+	if ( p == 25 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_REVERT_POST_190_EXP_CHANGES
 		gosub *ToggleTweak
 	}
-	if ( p == 22 ) {
+	if ( p == 26 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_DISABLE_STUDY_DAYS
 		gosub *ToggleTweak
 	}
-	if ( p == 23 ) {
+	if ( p == 27 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_DISABLE_DESTINY
 		gosub *ToggleTweak
 		gosub *ApplyCGSkillTweak
 	}
-	if ( p == 24 ) {
+	if ( p == 28 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_REVERT_POST_213_EXP_CHANGES
 		gosub *ToggleTweak
 	}
-	if ( p == 25 ) {
+	if ( p == 29 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_REVERT_POST_217_EXP_CHANGES
 		gosub *ToggleTweak
 	}
-	if ( p == 26 ) {
+	if ( p == 30 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_REVERT_POST_231_DEEPEST_EXP
 		gosub *ToggleTweak
@@ -1241,6 +1250,16 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 		gdata(GDATA_FLAG_STUDY_BONUS_STUDY_EXP) = 0
 		gdata(GDATA_FLAG_DESTINY_NEFIA_BOSSES_DEFEATED) = 0
 		gdata(GDATA_FLAG_DESTINY_TIMES_SLEPT) = 0
+	}
+	if ( TweakData(TWEAK_GAMEPLAY_REVERT_GAUGE_MECHANICS, TWEAK_CATEGORY_GAMEPLAY) != FALSE ) {
+		skillname(SKILL_SPACT_GAUGE_RELEASE) = lang("【力の解放】", "<Gauge Release>")
+		skilldesc(SKILL_SPACT_GAUGE_RELEASE) = lang("次の攻撃時にゲージ技で追加攻撃", "Use gauge skill on the next attack")
+		cdata(CDATA_DIRECTIVE_MODE, CHARA_PLAYER) = DIRECTIVE_MODE_OFFENSIVE
+		cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
+	} else {
+		skillname(SKILL_SPACT_GAUGE_RELEASE) = lang("【力の温存/解放】", "<Gauge Save/Release>")
+		skilldesc(SKILL_SPACT_GAUGE_RELEASE) = lang("ゲージ技の使用を切替", "Enable/Disable the use of power gauge")
+		cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
 	}
 	return
 

@@ -2049,39 +2049,7 @@
 
 *skill_act_cheer
 	if ( cdata(CDATA_ROW_ACT, cc) == ACTION_NONE ) {
-		powsel = 0
-		if ( gdata(GDATA_FLAG_MAIN) < 350 ) {
-			if ( cdata(CDATA_LEVEL, cc) >= 130 ) {
-				powsel = 100
-			}
-		}
-		if ( gdata(GDATA_FLAG_MAIN) >= 350 ) {
-			if ( cdata(CDATA_LEVEL, cc) >= 50 ) {
-				powsel = 100
-			}
-		}
-		if ( cc < MAX_CHARA_FOLLOWER | cdata(CDATA_ALLIED, cc) == 100 | cc == CHARA_PLAYER ) {
-			powsel = 100
-		}
-		if ( gdata(GDATA_FLAG_GAME_MODE) == 1 ) {
-			powsel = 100
-		}
-		if ( cc >= MAX_CHARA_FOLLOWER & cdata(CDATA_QUALITY, cc) > FIX_QUALITY_GREAT & cdata(CDATA_HP, cc) > cdata(CDATA_MAX_HP, cc) / 2 & cdata(CDATA_POWER_GAUGE, cc) < 200 ) {
-			if ( exgauge != 100 ) {
-				powsel = 0
-			}
-		}
-		if ( gdata(GDATA_TEMPORARY_FLAGS2) == 888 ) {
-			powsel = 0
-		}
-		if ( cdata(CDATA_DIRECTIVE_MODE, cc) == DIRECTIVE_MODE_TEMPORARY ) {
-			if ( cdata(CDATA_DIRECTIVE_MODE_ORG, cc) != 0 ) {
-				powsel = 0
-			}
-		}
-		if ( cdata(CDATA_DIRECTIVE_MODE, cc) == DIRECTIVE_MODE_DEFENSIVE | cdata(CDATA_DIRECTIVE_MODE, cc) == DIRECTIVE_MODE_INTERCEPT ) {
-			powsel = 0
-		}
+		powsel = charaCanGauge(cc)
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
 			if ( powsel == 100 ) {
 				efid = SKILL_SPACT_DYNAMIC_YELL
@@ -12907,6 +12875,24 @@
 			goto *effect_end
 		}
 		snd SOUNDLIST_ENC
+		if ( TweakData(TWEAK_GAMEPLAY_REVERT_GAUGE_MECHANICS, TWEAK_CATEGORY_GAMEPLAY) != FALSE ) {
+			if ( cdata(CDATA_POWER_GAUGE, cc) < 98 ) {
+				txt_nothinghappens
+				return 0
+			}
+			if ( cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) == 0 ) {
+				cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 1
+				txtef COLOR_GREEN
+				txt lang(name(cc) + "は次の攻撃に意識を集中させた！", name(cc) + " put" + _s(cc) + " all of " + his(cc) + " strength into the next blow!")
+			}
+			else {
+				cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
+				txt lang(name(cc) + "は次の攻撃に意識を集中させていたが、やっぱりやめた。", name(cc) + " decide" + _s(cc) + " not to put all of " + his(cc) + " strength into the next blow.")
+			}
+			snd SOUNDLIST_ENC
+			animeload 36, cc
+			return 0
+		}
 		if ( cdata(CDATA_DIRECTIVE_MODE, CHARA_PLAYER) == DIRECTIVE_MODE_OFFENSIVE ) {
 			cdata(CDATA_DIRECTIVE_MODE, CHARA_PLAYER) = DIRECTIVE_MODE_INTERCEPT
 			txtef COLOR_ORANGE
@@ -21324,21 +21310,7 @@
 			if ( cbit(CHARA_BIT_SPLIT_KEEP_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SPLIT_NO_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SUMMONED, tc) != TRUE & cbit(CHARA_BIT_LIVESTOCK, tc) != TRUE & cbit(CHARA_BIT_NECRO, tc) != TRUE & cbit(CHARA_BIT_SANDBAG, tc) != TRUE & tc != CHARA_PLAYER ) {
 				f = 1
 			}
-			if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
-				if ( cdata(CDATA_GUARD_BREAK, tc) < 100 ) {
-					cdata(CDATA_GUARD_BREAK, tc) += 30
-					if ( cdata(CDATA_GUARD_BREAK, tc) >= 100 ) {
-						cdata(CDATA_GUARD_BREAK, tc) = 120
-						waitbk = cfg_animewait
-						if ( cfg_animewait < 50 ) {
-							cfg_animewait = 50
-						}
-						animeload 87, tc
-						snd SOUNDLIST_CRASH14
-						cfg_animewait = waitbk
-					}
-				}
-			}
+			chara_guardbreak tc, 30
 		loop
 		waza = 0
 		goto *effect_end

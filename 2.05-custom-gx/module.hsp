@@ -1050,7 +1050,11 @@
 	return
 
 #deffunc chara_preparepic int chara_preparepic_arg1, int chara_preparepic_arg2
-	// proc "chara_preparepic:" + "/chara_preparepic_arg1:" + chara_preparepic_arg1 + "/chara_preparepic_arg2:" + chara_preparepic_arg2
+	if ( chara_preparepic_arg1 < 0 | chara_preparepic_arg1 >= SPRITE_SHEET_COLS_CHARA * SPRITE_SHEET_ROWS_CHARA + 240 ) {
+		proc "Chara pic out of bound! ID:" + chara_preparepic_arg1 + " Offset: " + chara_preparepic_arg2
+		title "Chara pic out of bound! ID:" + chara_preparepic_arg1 + " Offset: " + chara_preparepic_arg2
+		return
+	}
 	if ( chara_preparepic_arg2 == 0 ) {
 		locvar_chara_preparepic_p = chara_preparepic_arg1 / 1000
 	}
