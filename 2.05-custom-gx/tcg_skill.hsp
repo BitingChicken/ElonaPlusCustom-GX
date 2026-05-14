@@ -6508,6 +6508,15 @@
 	if ( _switch_val@tcg == TCG_SKILL_EFF_RIANNA | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg == player@tcg ) {
+			card@tcg(TCG_CARD_Y_MOVETO, effac@tcg) = holderiy@tcg(0) - 30
+			cdbitmod TCG_BIT_FACE_UP, effac@tcg, 1
+			tcgpass 30
+			efllistaddcard 18 + rnd(3), effac@tcg
+			tcgpass 30
+			card@tcg(TCG_CARD_Y_MOVETO, effac@tcg) = holderiy@tcg(0)
+			tcgpass 30
+			randomchat@tcg = "I'm not good at card games, hehe.", "What would Bethel play...", "Your deck is ASS, seriously!", "You do have Bethel in your Deck, right? Right?", "What is this Hand?! Chikusho!", "Aaaaah! I'm going to lose!", "DESTINY DRAW! Oh come on!", "Faaaaaaaa!! Oh Oh Oh Oh!", "I will give up!! I give up!!", "Bethel... *sob*"
+			efllistaddchat randomchat@tcg(rnd(10)), effac@tcg
 			specialruleaitakeover@tcg = 1
 		}
 		goto *actionproc_SWEND1
@@ -7175,7 +7184,7 @@
 			repeat 1
 				if ( hasholdspace(aeftbk@tcg) == FALSE ) { break }
 				create_extra_card aeftbk@tcg, cardidbk@tcg
-				if ( cextra@tcg >= 0 ) {
+				if ( cextra@tcg >= 0 & specialrulekamui@tcg >= 1 & specialrulekamui@tcg <= 7 ) {
 					card@tcg(TCG_CARD_COST, cextra@tcg) = 0
 					card@tcg(TCG_CARD_HP, cextra@tcg) = 1
 					card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 1
@@ -7196,7 +7205,7 @@
 					if ( specialrulekamui@tcg(aeft@tcg) == 7 ) { efllistaddchat cnvtalk("<End of All Things>"), ac@tcg }
 					card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, effac@tcg), card@tcg(TCG_CARD_Y, effac@tcg)
 					kamuilist@tcg = 0, TCG_EFF_KAMUI1, TCG_EFF_KAMUI2, TCG_EFF_KAMUI3, TCG_EFF_KAMUI4, TCG_EFF_KAMUI5, TCG_EFF_KAMUI6, TCG_EFF_KAMUI7
-					cardn@tcg(TCG_CARDN_REF_TAG, cextra@tcg) = "-" + limit(specialrulekamui@tcg(aeft@tcg), 1, 7)
+					cardn@tcg(TCG_CARDN_REF_TAG, cextra@tcg) = "-" + specialrulekamui@tcg(aeft@tcg)
 					card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -23 - specialrulekamui@tcg(aeft@tcg)
 					card@tcg(TCG_CARD_EFFECT, cextra@tcg) = kamuilist@tcg(specialrulekamui@tcg(aeft@tcg))
 					card@tcg(TCG_CARD_REF_BG, cextra@tcg) = specialrulekamui@tcg(aeft@tcg)
@@ -7315,13 +7324,13 @@
 	if ( _switch_val@tcg == TCG_SKILL_EFF_AIME | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg == 0 ) {
-			card@tcg(TCG_CARD_X, effac@tcg) = holderix@tcg(0) - holderspace@tcg, holderiy@tcg(0), holderix@tcg(0) - holderspace@tcg, holderiy@tcg(0) - 200
+			card@tcg(TCG_CARD_X, effac@tcg) = holderix@tcg(0) - holderspace@tcg, holderiy@tcg(0), holderix@tcg(0) - holderspace@tcg, holderiy@tcg(0) - 100
 			card@tcg(TCG_CARD_LOCATION, effac@tcg) = TCG_LOCATION_ANIM
 			cdbitmod TCG_BIT_FACE_UP, effac@tcg, 1
 			tcgdraw
 			efllistaddcard 20, effac@tcg
 			efllistaddchat "Hahaha! Hope you like Aime's Deck, " + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!", effac@tcg
-			tcgpass 60
+			tcgpass 180
 			card@tcg(TCG_CARD_X_MOVETO, effac@tcg) = holderix@tcg(0) - holderspace@tcg, holderiy@tcg(0)
 			tcgdraw
 			cdbitmod TCG_BIT_FACE_UP, effac@tcg, 0

@@ -1462,7 +1462,6 @@
 	cardrefdomain = 0
 	cardrefrare = 100
 	dbid = card_ref_arg1
-	gosub *db_card@
 	gosub *db_card_custom
 	if ( cardreftype == 0 ) {
 		cardreftype = 10
@@ -1688,7 +1687,7 @@
 	}
 	// Select from candidate cards in Anim area.
 	rtval@tcg = -1
-	if ( create_extra_card_player == player@tcg ) {
+	if ( create_extra_card_player == player@tcg & specialruleaitakeover@tcg == 0 ) {
 		deckmode@tcg = -2
 		deckmodecp@tcg = create_extra_card_player
 		gosub *select_deck
@@ -2417,7 +2416,6 @@
 	dim deck, MAX_CARD
 	repeat MAX_CARD
 		dbid = cnt
-		gosub *db_card@
 		gosub *db_card_custom
 		if ( stat == 0 ) {
 			continue
@@ -2763,6 +2761,13 @@
 		s = "You Lose!"
 		file = "bg_re7"
 		chatList 1, lang("また今度ね", "Noooooooooooooo!")
+		repeat clistmax@tcg(0)
+			c@tcg = clist@tcg(cnt, 0)
+			if ( card@tcg(TCG_CARD_REF_DBID, c@tcg) == CREATURE_ID_RIANNA_THE_DAYDREAMER ) {
+				efllistaddchat "Totally not my fault.", c@tcg
+				break
+			}
+		loop
 	}
 	if ( listmax == 0 ) {
 		chatList 1, lang("また今度ね", "Maybe next time.")

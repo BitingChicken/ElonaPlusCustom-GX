@@ -1014,6 +1014,7 @@
 	loop
 	repeat MAX_CREATURE_ID - 3, 1
 		if ( cnt == CREATURE_ID_AIME_THE_STORY_TELLER ) { continue }
+		if ( cnt == CREATURE_ID_RIANNA_THE_DAYDREAMER ) { continue }
 		deck(cnt) = 0
 	loop
 	dueldecksize@tcg = MIN_CARD_DECK + rnd(20) + 1
@@ -1752,10 +1753,12 @@
 			if ( cardno == CREATURE_ID_EHEKATL ) { continue }
 			if ( cardno == CREATURE_ID_GOD_INSIDE_EHEKATL ) { continue }
 			if ( cardno == CREATURE_ID_LULWY ) { continue }
+			if ( cardno == CREATURE_ID_YAYAUHQUI_TEZCATLIPOCA ) { continue }
+			if ( cardno == CREATURE_ID_THE_CHAOS_CHILD ) { continue }
+			if ( cardno == CREATURE_ID_JALDABAOTH_THE_CHAOS_CHILD ) { continue }
 
 			if ( cnt2@tcg < 2 ) {
 				dbid = cardno
-				gosub *db_card@
 				gosub *db_card_custom
 				cardno = dbid
 				if ( cnt2@tcg < 1 ) {
@@ -1794,7 +1797,6 @@
 		cardno = cardnochoice@tcg(0)
 		if ( cardno < 0 ) { continue }
 		dbid = cardno
-		gosub *db_card@
 		gosub *db_card_custom
 		cardno = dbid
 		break
@@ -4400,28 +4402,73 @@
 	}
 	return 0
 	
+*db_card_build
+	if ( length(dbc_card) >= 10 ) { return }
+	dbidbk = dbid
+	dim dbc_card, 12, MAX_CREATURE_ID
+	sdim dbs_card, 16, 8, MAX_CREATURE_ID
+	repeat MAX_CREATURE_ID
+		dbid = cnt
+		cardreftype = 10
+		cardrefdomain = 0
+		cardrefn = ""
+		cardrefpic = 0
+		gosub *db_card
+		cardrefdescription = cardrefskill
+		cardrefno = str(dbid)
+		cardrefpicchar = cardrefcost
+		cardrefpic2 = 0
+		cardrefrare = 1
+		cardrefskillid = TCG_EFF_NONE
+		cardrefskill = ""
+		cardrefrace = ""
+		cardrefclass = ""
+		cardrefsex = ""
+		cardrefbits = ""
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 1
+		cardreflvl = 200
+		cardrefquality = FIX_QUALITY_GOOD
+		gosub *db_card_custom_search
+		if ( cardrefdomain == 4 ) { cardrefrare++ }
+		if ( cardrefdomain == 5 ) { cardrefrare += 2 }
+		dbc_card(0, dbid) = cardreftype, cardrefrare, cardreflvl, cardrefquality, cardrefpic, cardrefpic2, cardrefpicchar, cardrefdomain, cardrefcost, cardrefattack, cardrefhp, cardrefskillid
+		dbs_card(0, dbid) = cardrefno, cardrefn, cardrefdescription, cardrefrace, cardrefclass, cardrefsex, cardrefskill, cardrefbits
+	loop
+	dbid = dbidbk
+	return
+
+*db_card_query
+	gosub *db_card_build
+	if ( dbid <= 0 | dbid > MAX_CREATURE_ID - 3 ) {
+		return 0 
+	}
+	cardreftype = dbc_card(0, dbid)
+	cardrefrare = dbc_card(1, dbid)
+	cardreflvl = dbc_card(2, dbid)
+	cardrefquality = dbc_card(3, dbid)
+	cardrefpic = dbc_card(4, dbid)
+	cardrefpic2 = dbc_card(5, dbid)
+	cardrefpicchar = dbc_card(6, dbid)
+	cardrefdomain = dbc_card(7, dbid)
+	cardrefcost = dbc_card(8, dbid)
+	cardrefattack = dbc_card(9, dbid)
+	cardrefhp = dbc_card(10, dbid)
+	cardrefskillid = dbc_card(11, dbid)
+	cardrefno = dbs_card(0, dbid)
+	cardrefn = dbs_card(1, dbid)
+	cardrefdescription = dbs_card(2, dbid)
+	cardrefrace = dbs_card(3, dbid)
+	cardrefclass = dbs_card(4, dbid)
+	cardrefsex = dbs_card(5, dbid)
+	cardrefskill = dbs_card(6, dbid)
+	cardrefbits = dbs_card(7, dbid)
+	return dbid
+
 *db_card_custom
-	cardrefdescription = cardrefskill
-	cardrefno = str(dbid)
-	cardrefpicchar = cardrefcost
-	cardrefpic2 = 0
-	cardrefoucchar2 = 0
+	gosub *db_card_query
 	cardrefmapnpcid = -1
-	cardrefrare = 1
-	cardrefskillid = TCG_EFF_NONE
-	cardrefskill = ""
-	cardrefrace = ""
-	cardrefclass = ""
-	cardrefsex = ""
-	cardrefbits = ""
-	cardrefcost = 1
-	cardrefattack = 1
-	cardrefhp = 1
-	cardreflvl = 200
-	cardrefquality = FIX_QUALITY_GOOD
-	gosub *db_card_custom_search
-	if ( cardrefdomain == 4 ) { cardrefrare++ }
-	if ( cardrefdomain == 5 ) { cardrefrare += 2 }
 	if ( cardrefsex == "random" & cardmode@tcg != 1 & rndsex@tcg == "" ) {
 		if ( rnd(2) == 0 ) {
 			cardrefsex = "male"
@@ -15517,8 +15564,8 @@
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
 		cardrefcost = 4
-		cardrefattack = 3
-		cardrefhp = 3
+		cardrefattack = 4
+		cardrefhp = 4
 		cardrefskillid = TCG_EFF_RIANNA
 		cardrefbits = "100,8"
 		return 1
