@@ -478,6 +478,7 @@
 
 *map_exit
 	proc "map_exit"
+	usedpoker@cgx = 0
 	gdata(GDATA_TIME_LIMIT) = 0
 	gdata(GDATA_MAP_EVENT) = 0
 	if ( mdata(MDATA_TYPE) == MAP_TYPE_HOME ) {
@@ -12395,8 +12396,10 @@
 						}
 					}
 					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_MOTUHEGUI | cdata(CDATA_ID, cnt) == CREATURE_ID_GAKI_MOTUHEGUI ) {
-						cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
-						map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), MAP_CHARA_INDEX_PLUS_ONE) = 0
+						if ( cdata(CDATA_RELATION_ORG, cnt) < (-1) ) {
+							cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
+							map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), MAP_CHARA_INDEX_PLUS_ONE) = 0
+						}
 					}
 				}
 				if ( gdata(GDATA_AREA) == AREA_HOME ) {

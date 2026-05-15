@@ -1005,6 +1005,46 @@
 			sy -= 20
 		}
 	}
+	if ( usedpoker@cgx ) {
+		repeat 53
+			pokert@cgx(cnt) = 0
+		loop
+		repeat MAX_CHARA_TOTAL
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) { continue }
+			if ( cnt == CHARA_PLAYER ) { continue }
+			if ( cbit(CHARA_BIT_NECRO, cnt) != TRUE ) { continue }
+			if ( cdata(CDATA_ID, cnt) >= CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, cnt) <= CREATURE_ID_HEART_WITCH ) {
+				if ( cdata(CDATA_EVOLUTION_STAGE, cnt) > 0 & cdata(CDATA_EVOLUTION_STAGE, cnt) <= 13 ) {
+					pokert@cgx(limit((cdata(CDATA_EVOLUTION_STAGE, cnt) - 1) * 4 + cdata(CDATA_ID, cnt) - CREATURE_ID_SPADE_WARRIOR, 0, 51)) = 1
+					pokert@cgx(52) += 1
+					if ( pokert@cgx(52) >= 5 ) { break }
+				}
+			}
+		loop
+		if ( pokert@cgx(52) >= 5 ) {
+			pokert@cgx(52) = 0
+			pokertt@cgx = "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"
+			pos sx, sy
+			gcopy 3, 0, 416, 65 + en * 15, 15
+			pos sx + 6, sy + 1
+			color 0, 0, 0
+			mes "PF"
+			repeat 52
+				if ( pokert@cgx(cnt) ) {
+					if ( cnt \ 4 == 0 ) { color 80, 100, 150 }
+					if ( cnt \ 4 == 1 ) { color 50, 150, 50 }
+					if ( cnt \ 4 == 2 ) { color 255, 25, 25 }
+					if ( cnt \ 4 == 3 ) { color 255, 90, 255 }
+					pos sx + 22 + 12 * pokert@cgx(52) - 4 * (cnt / 4 == 9), sy + 1
+					mes "" + pokertt@cgx(cnt / 4)
+					pokert@cgx(52)++
+				}
+			loop
+			sy -= 20
+		} else {
+			usedpoker@cgx = 0
+		}
+	}
 	color 0
 	if ( navi == (-1) ) {
 		navi = 0

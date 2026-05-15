@@ -712,6 +712,13 @@
 		if ( card@tcg(TCG_CARD_ANIM, tcgdrawcard_arg1) == TCG_ANIM_FADE & deckmode@tcg <= 0 ) {
 			gmode 4, , , card@tcg(TCG_CARD_ANIM_DURATION, tcgdrawcard_arg1) * 15
 		}
+		if ( card@tcg(TCG_CARD_ANIM, tcgdrawcard_arg1) == TCG_ANIM_SLASH & deckmode@tcg <= 0 ) {
+			if ( card@tcg(TCG_CARD_ANIM_DURATION, tcgdrawcard_arg1) > 0 ) {
+				pos x@tcg - 12, y@tcg
+				gcopy 7, 1296 + 96 * (5 - limit(card@tcg(TCG_CARD_ANIM_DURATION, tcgdrawcard_arg1) / 10, 0, 5)), 11 * 96, 96, 96
+			}
+			break
+		}
 		pos x@tcg, y@tcg
 		if ( cdbit(TCG_BIT_FACE_UP, tcgdrawcard_arg1) == 1 | deckmode@tcg > 0 | (card@tcg(TCG_CARD_CONTROLLER, tcgdrawcard_arg1) == TCG_CONTROLLER_PLAYER & cnt == 1) | ( dbg_tcg & ( card@tcg(TCG_CARD_LOCATION, tcgdrawcard_arg1) == TCG_LOCATION_HAND | card@tcg(TCG_CARD_LOCATION, tcgdrawcard_arg1) == TCG_LOCATION_FIELD ) ) ) {
 			if ( card@tcg(TCG_CARD_REF_PIC, tcgdrawcard_arg1) > 0 ) {
@@ -1076,6 +1083,16 @@
 		pos x@tcg + 14, y@tcg + 75
 		mes "" + cpdata@tcg(TCG_PLAYER_DECK, cnt) + "/" + cpdata@tcg(TCG_PLAYER_GRAVEYARD, cnt)
 	loop
+	font lang(cfg_font1, cfg_font2), 10 + en - en * 2, 0
+	pos holderix@tcg(0) + (-1) * holderspace@tcg, holderiy@tcg(0) + 99
+	color 0, 0, 0
+	bmes "F [View Deck]", 20, 80, 115
+	pos holderix@tcg(0) + 6 * holderspace@tcg, holderiy@tcg(0) + 99
+	color 0, 0, 0
+	bmes "G [View Grave]", 20, 80, 115
+	pos holderix@tcg(0) + (-1) * holderspace@tcg, holderiy@tcg(1) - 14
+	color 0, 0, 0
+	bmes "S [Surrender]", 20, 80, 115
 	font lang(cfg_font1, cfg_font2), 13 + en - en * 2, 0
 	// Calculate the time spent draw, normally the logic between draw takes about 1/8 of the draw.
 	drawcardcount@tcg = 0
@@ -1313,7 +1330,7 @@
 	elax@tcg = 36
 	elay@tcg = 48
 	if ( efllistadd_arg4 == 1 ) { // Cost
-		elax@tcg = 12
+		elax@tcg = 10
 		elay@tcg = 12
 	}
 	if ( efllistadd_arg4 == 2 ) { // Attack
@@ -1323,6 +1340,10 @@
 	if ( efllistadd_arg4 == 3 ) { // HP
 		elax@tcg = 61
 		elay@tcg = 88
+	}
+	if ( efllistadd_arg4 == 4 ) { // Tag
+		elax@tcg = 61
+		elay@tcg = 12
 	}
 	mtx@tcg = card@tcg(TCG_CARD_X, efllistadd_arg2)
 	mty@tcg = card@tcg(TCG_CARD_Y, efllistadd_arg2)
@@ -1405,6 +1426,7 @@
 				efllist@tcg(5, cnt) = efllistadd_arg3, efllistadd_arg4
 			}
 			// 24:GatherPower 25:ultflash 26:redhit 27:talk 28:cyclone
+			// 35:Cardslash
 			if ( efllistadd_arg1 >= 24 & efllistadd_arg1 <= 36 ) {
 				efllist@tcg(1, cnt) = 6, 1296, (efllistadd_arg1 - 24) * 96
 				efllist@tcg(4, cnt) = efllist@tcg(1, cnt) * animespeed@tcg * 2
@@ -2135,7 +2157,9 @@
 	}
 	if ( cdbit(TCG_BIT_SURGE, gettargetcard_arg1) ) {
 		cdbitmod TCG_BIT_FACE_UP, gettargetcard_arg1, 1
-		tcgpass 15
+		card@tcg(TCG_CARD_Y_MOVETO, gettargetcard_arg1) -= 30
+		tcgdraw
+		efllistaddcard 19, gettargetcard_arg1
 		cdbitmod TCG_BIT_SURGE, gettargetcard_arg1, 0
 		card@tcg(TCG_CARD_ANIM, gettargetcard_arg1) = TCG_ANIM_FADE, 18
 		tcgdraw
@@ -2310,6 +2334,10 @@
 		card@tcg(TCG_CARD_CONTROLLER, putcard_arg1) = 1 - card@tcg(TCG_CARD_CONTROLLER, putcard_arg1)
 		cdbitmod TCG_BIT_PUMPKIN, putcard_arg1, 0
 		cdbitmod TCG_BIT_SURGE, putcard_arg1, 1
+		card@tcg(TCG_CARD_X_MOVETO, putcard_arg1) = holderix@tcg(card@tcg(TCG_CARD_CONTROLLER, putcard_arg1)) - holderspace@tcg, holderiy@tcg(card@tcg(TCG_CARD_CONTROLLER, putcard_arg1)) - 100 + 200 * card@tcg(TCG_CARD_CONTROLLER, putcard_arg1)
+		tcgpass 30
+		card@tcg(TCG_CARD_X_MOVETO, putcard_arg1) = holderix@tcg(card@tcg(TCG_CARD_CONTROLLER, putcard_arg1)) - holderspace@tcg, holderiy@tcg(card@tcg(TCG_CARD_CONTROLLER, putcard_arg1))
+		tcgdraw
 		returncard putcard_arg1
 		return 1
 	}

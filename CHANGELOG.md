@@ -4,19 +4,26 @@
 - (MMAH) Tweak to change some animations into Async mode
   - E.g. Death animations are all played at the same time, and no longer causes pause.
 - Tweak to revert Gauge Skill Activation to pre-2.24.
+- Poker-Force indicator for current poker spirits.
 
 # Fixed
 - (Plus) Fixed ranch breeder receiving EXP from nefia debris, causing lower breed power
 - (Plus) Fixed rain changing into snow on the ocean due to using snow region check of North Tyris
 - (Plus) Astral Light Pen + CNPC => copies a random CNPC.
 - (Plus) Blank Card + Shape Changed pet with 1000+ spriteID => card with bugged image. (This crashes original plus)
+- (Plus) Captured Motuhegui despawning.
 - Extermination breath flag not set.
 - Tone file's Tachi-E emote not working due to renamed variable
 - Tone file's talk flag not set to 0 when found dialog.
+- CGX Deliver Quest tweak causing entire stack of auto-identified item (bronze coin) to be heavier.
+- Damage meter goes into negative due to overflow.
 
 # TCG
-- Random Opponent Decks now contains utilities/counters (at higher winstreak).
-- Fixed AI issues, and 0HP Gwens stucking in death loops.
+- New effect for most of the Act II/III unique cards. Added VFXs, Shop card packs.
+- Random Opponent Decks are now stronger (at higher winstreaks):
+  - Card Pool goes up by 1 Act every 10 winstreaks.
+  - Contains Utilities/Counters/Boardwipes.
+- Optimizations, Fixed AI issues, and 0HP Gwens stucking in death loops.
 
 # 2.31.1.0
 

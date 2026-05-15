@@ -72,7 +72,7 @@
     if ( cbit(CHARA_BIT_SANDBAG, dmg_parses_add_tc) != TRUE ) { 
         p@DP = limitmax(p@DP, cdata(CDATA_HP, dmg_parses_add_tc))
     }
-    if ( p@DP < 0 ) { 
+    if ( p@DP <= 0 ) { 
         return 
     }
     DmgParses(0, DmgParsesNext) = gdata(GDATA_TURN), dmg_parses_add_cc, dmg_parses_add_tc, p@DP, dmg_parses_add_type
@@ -95,6 +95,9 @@
             continue
         }
         DmgParsesResult(DmgParses(1, cnt2)) += DmgParses(3, cnt2)
+        if ( DmgParsesResult(DmgParses(1, cnt2)) < 0 ) {
+            DmgParsesResult(DmgParses(1, cnt2)) = 2147483647
+        }
     loop
 
     repeat MAX_CHARA_TOTAL
@@ -132,7 +135,11 @@
         bmes s, 255, 255, 255
 
         // Draw the bar
-        DmgParseX = (140 + limit(xshift@DP,-96,0)) * DmgParsesResult(DmgParsesOrder(cnt)) / DmgParsesMax
+        if ( DmgParsesMax > 1000000 ) {
+            DmgParseX = DmgParsesResult(DmgParsesOrder(cnt)) / (DmgParsesMax / 1000) * (140 + limit(xshift@DP,-96,0)) / 1000
+        } else {
+            DmgParseX = (140 + limit(xshift@DP,-96,0)) * DmgParsesResult(DmgParsesOrder(cnt)) / DmgParsesMax
+        }
         DmgParseY = inf_clocky + 105 + ap3 * 16 + ap@DP * (24 + jp * 4) + 16
         color 0, 0, 0
         boxf 15 + xshiftmove@DP, DmgParseY - 1, DmgParseX + 17 + xshiftmove@DP, DmgParseY + 9 + jp * 2

@@ -130,9 +130,9 @@
 	if ( cdbit(TCG_BIT_DEVIL, effac@tcg) ) {
 		dmgplayer card@tcg(TCG_CARD_CONTROLLER, effac@tcg), 2
 	}
-	if ( (effref@tcg(TCG_SKILL_TYPE, eff@tcg) & TCG_SKILL_TYPE_BATTLECRY) ) {
+	if ( (effref@tcg(TCG_SKILL_TYPE, eff@tcg) & TCG_SKILL_TYPE_BATTLECRY) != FALSE & efftrigger@tcg == TCG_SKILL_TYPE_BATTLECRY ) {
 		if ( cancopyeffect(eff@tcg) ) {
-			specialrulelastbattlecry@tcg = eff@tcg
+			specialrulelastbattlecry@tcg = eff@tcg, effac@tcg
 		}
 	}
 	makecardlist
@@ -1019,10 +1019,13 @@
 	loop
 	dueldecksize@tcg = MIN_CARD_DECK + rnd(20) + 1
 	gosub *card_setrandomdecktheme
+	usediff@tcg = TweakData(TWEAK_TCG_WIN_STREAK, TWEAK_CATEGORY_TCG)
+	if ( yaminogemu@tcg == 1 ) { usediff@tcg = TweakData(TWEAK_TCG_WIN_LETHAL, TWEAK_CATEGORY_TCG) }
 	repeat dueldecksize@tcg
 		gosub *card_filter_reset
-		targetdeck@tcg = 1 
-		if ( rnd(3) == 0 ) { 
+		rndignorecardpool@tcg = limit(usediff@tcg / 10, 0, 3)
+		targetdeck@tcg = 1
+		if ( rnd(2) == 0 ) { 
 			rndfixlvl@tcg = 2
 			rndrace@tcg = duelrace@tcg
 			rnddomain@tcg = deckuserdomain@tcg
@@ -1049,6 +1052,7 @@
 		gosub *card_filter
 		if ( cardno <= 0 | cardno > MAX_CREATURE_ID - 3 ) { continue }
 		deck(cardno)++
+		// Add cards with synergy to deck.
 		if ( cardno == CREATURE_ID_YERLES_MACHINE_INFANTRY ) {
 			if (deck(CREATURE_ID_YERLES_COMBAT_PLANE) < 4 ) { deck(CREATURE_ID_YERLES_COMBAT_PLANE)++ }
 		}
@@ -1058,6 +1062,44 @@
 		}
 		if ( cardno == CREATURE_ID_CAPTAIN ) {
 			if (deck(CREATURE_ID_SAILOR) < 2 ) { deck(CREATURE_ID_SAILOR) = 2 }
+		}
+		if ( cardno == CREATURE_ID_CONDUCTOR_KOALA & deckuserdomain@tcg == 2 ) {
+			if (deck(CREATURE_ID_DARK_KOALA) < 2 ) { deck(CREATURE_ID_DARK_KOALA) = 2 }
+		}
+		if ( cardno == CREATURE_ID_ROGUE_BOSS & deckuserdomain@tcg == 3 ) {
+			if (deck(CREATURE_ID_ROGUE_WARRIOR) < 3 ) { deck(CREATURE_ID_ROGUE_WARRIOR) = 3 }
+		}
+		if ( (cardno == CREATURE_ID_MOB_OF_ELEA | cardno == CREATURE_ID_INSTIGATOR_OF_ELEA) & deckuserdomain@tcg == 3 ) {
+			if (deck(CREATURE_ID_MOB_OF_ELEA) < 2 ) { deck(CREATURE_ID_SAILOR) = 2 }
+			deck(CREATURE_ID_INSTIGATOR_OF_ELEA) = 1
+		}
+		if ( cardno == CREATURE_ID_BISHOP & deckuserdomain@tcg == 4 ) {
+			if (deck(CREATURE_ID_PAWN) < 4 ) { deck(CREATURE_ID_PAWN) = 4 }
+		}
+		if ( cardno == CREATURE_ID_SIRAHA_THE_WHITE_CLOTH | cardno == CREATURE_ID_KURON_THE_BLACK_CLOTH ) {
+			deck(CREATURE_ID_SIRAHA_THE_WHITE_CLOTH) = 1
+			deck(CREATURE_ID_KURON_THE_BLACK_CLOTH) = 1
+		}
+		if ( cardno == CREATURE_ID_PAELS_MOM_LILY | cardno == CREATURE_ID_LONELY_PAEL ) {
+			deck(CREATURE_ID_LONELY_PAEL) = 1
+			deck(CREATURE_ID_PAELS_MOM_LILY) = 1
+		}
+		if ( cardno == CREATURE_ID_LITTLE_SISTER | cardno == CREATURE_ID_STRANGE_SCIENTIST ) {
+			deck(CREATURE_ID_STRANGE_SCIENTIST) = 1
+			deck(CREATURE_ID_LITTLE_SISTER) = 1
+		}
+		if ( cardno == CREATURE_ID_IRMA_THE_INDOMITABLE_SMITH | cardno == CREATURE_ID_THALIA_THE_STAR_VIEWER ) {
+			deck(CREATURE_ID_THALIA_THE_STAR_VIEWER) = 1
+			deck(CREATURE_ID_IRMA_THE_INDOMITABLE_SMITH) = 1
+		}
+		if ( cardno == CREATURE_ID_SAIMEF_THE_DOGGOD | cardno == CREATURE_ID_ESTORK_THE_DOGGOD ) {
+			deck(CREATURE_ID_SAIMEF_THE_DOGGOD) = 1
+			deck(CREATURE_ID_ESTORK_THE_DOGGOD) = 1
+		}
+		if ( cardno == CREATURE_ID_BLUE_DARK_GUARDIAN | cardno == CREATURE_ID_GREEN_DARK_GUARDIAN | cardno == CREATURE_ID_CRIMSON_DARK_GUARDIAN ) {
+			deck(CREATURE_ID_BLUE_DARK_GUARDIAN) = 1
+			deck(CREATURE_ID_GREEN_DARK_GUARDIAN) = 1
+			deck(CREATURE_ID_CRIMSON_DARK_GUARDIAN) = 1
 		}
 	loop
 	cc@tcg = 0
@@ -1206,9 +1248,15 @@
 		gosub *card_setrandomdecktheme
 	}
 	randomize
+	// The following 'gamediff' code ups the opponent deck quality/difficulty
+	// -in case of forever-Act-I card pool decks and provides a occasional challenge at higher winstreaks.
+	usediff@tcg = TweakData(TWEAK_TCG_WIN_STREAK, TWEAK_CATEGORY_TCG)
+	if ( yaminogemu@tcg == 1 ) { usediff@tcg = TweakData(TWEAK_TCG_WIN_LETHAL, TWEAK_CATEGORY_TCG) }
+	gamediff@tcg = 1 + limit(usediff@tcg,0,100) / 2 + limit(usediff@tcg-100,0,100) / 5 + limit(usediff@tcg-200,0,100) / 4
 	repeat dueldecksize@tcg
 		gosub *card_filter_reset
 		rndlvl@tcg = cdata(CDATA_LEVEL, tc) + 80
+		rndignorecardpool@tcg = limit(usediff@tcg / 10, 0, 3)
 		targetdeck@tcg = 2 
 		if ( rnd(2) > 0 ) { 
 			rndfixlvl@tcg = 2
@@ -1248,16 +1296,11 @@
 			if (deck_opponent(CREATURE_ID_SAILOR) < 2 ) { deck_opponent(CREATURE_ID_SAILOR) = 2 }
 		}
 	loop
-	// The following 'gamediff' code ups the opponent deck quality/difficulty
-	// -in case of forever-Act-I card pool decks and provides a occasional challenge at higher winstreaks.
 	// It targets 4 types of player decks - base on the class they choose, hopefully:
 	// Warrior/Farmer/Priest - Slow decks with quality cards.   [Counter: Steal Cards/Cheap Board Filler/Board Wipes]
 	// Claymore/Predator - Fast decks that focus on damage.     [Counter: LowCost Heal/Stall]
 	// Thief/Wizard - Decks with wombo combos.                  [Counter: Silence/Disrupt]
 	// Gunner/Archer/Warmage - Board Advantage decks.           [Counter: Board Wipes/Hard-to-remove Cards]
-	usediff@tcg = TweakData(TWEAK_TCG_WIN_STREAK, TWEAK_CATEGORY_TCG)
-	if ( yaminogemu@tcg == 1 ) { usediff@tcg = TweakData(TWEAK_TCG_WIN_LETHAL, TWEAK_CATEGORY_TCG) }
-	gamediff@tcg = 1 + limit(usediff@tcg,0,100) / 2 + limit(usediff@tcg-100,0,100) / 5 + limit(usediff@tcg-200,0,100) / 4
 	if ( gamediff@tcg > rnd(100) ) {
 		if ( deckuserdomain@tcg == 1 ) {
 			if ( rnd(2) == 0 ) { deck_opponent(CREATURE_ID_CHICKEN) = 4 }
@@ -1706,42 +1749,44 @@
 		repeat MAX_CREATURE_ID - 3, 1
 			cardno = cnt
 			if ( gdata(GDATA_FLAG_MAIN) < 200 ) {
-				if ( cardno > 347 ) { continue }
+				if ( cardno > 347 & rndignorecardpool@tcg < 1 ) { continue }
+			}
+			if ( gdata(GDATA_FLAG_MAIN) < 350 ) {
+				if ( cardno > 528 & rndignorecardpool@tcg < 2 ) { continue }
+			}
+			if ( gdata(GDATA_FLAG_MAIN) < 715 ) {
+				if ( cardno > 918 & rndignorecardpool@tcg < 3 ) { continue }
+			}
+			if ( gdata(GDATA_FLAG_MAIN) < 200 ) {
 				if ( cardno == CREATURE_ID_ZEOME_THE_FALSE_PROPHET ) { continue }
 				if ( cardno == CREATURE_ID_ORPHE_THE_CHAOS_CHILD ) { continue }
 			}
-			if ( gdata(GDATA_FLAG_MAIN) < 350 & gdata(GDATA_FLAG_MAIN) >= 200 ) {
-				if ( cardno > 528 ) { continue }
+			if ( gdata(GDATA_FLAG_MAIN) < 350 ) {
 				if ( cardno == CREATURE_ID_MESHERA_ALPHA_THE_DEFORMED_ANGEL ) { continue }
 				if ( cardno == CREATURE_ID_MESHERA_PLANT ) { continue }
 				if ( cardno == CREATURE_ID_ORPHE_THE_CHAOS_FOLLOWER ) { continue }
 			}
-			if ( gdata(GDATA_FLAG_MAIN) < 715 & gdata(GDATA_FLAG_MAIN) >= 350 ) {
-				if ( cardno > 918 ) { continue }
-				if ( gdata(GDATA_FLAG_SUB_REGULUS_ZANAN) < 1003 ) {
-					if ( cardno == CREATURE_ID_RENAI_THE_OVER_MESHERA ) { continue }
-				}
-				if ( gdata(GDATA_FLAG_MAIN) < 540 ) {
-					if ( cardno == CREATURE_ID_FASHIONABLE_KUNOICHI ) { continue }
-				}
-				if ( gdata(GDATA_FLAG_MAIN) < 540 ) {
-					if ( cardno <= CREATURE_ID_TEZCATLIPOCA & cardno >= CREATURE_ID_TALON_SOLDIER ) { continue }
-				}
+			if ( gdata(GDATA_FLAG_SUB_REGULUS_ZANAN) < 1003 ) {
+				if ( cardno == CREATURE_ID_RENAI_THE_OVER_MESHERA ) { continue }
 			}
-			if ( gdata(GDATA_FLAG_MAIN) >= 715 ) {
-				if ( gdata(GDATA_FLAG_MAIN) < 760 ) {
-					if ( cardno == CREATURE_ID_ENTHUMESIS ) { continue }
-				}
-				if ( gdata(GDATA_FLAG_MAIN) < 760 ) {
-					if ( cardno <= CREATURE_ID_MELUGAST_AO_I_THE_DIMENSION_DRIVER & cardno >= CREATURE_ID_THE_CHAOS_CHILD ) { continue }
-				}
-				if ( gdata(GDATA_FLAG_MAIN) < 950 ) {
-					if ( cardno <= CREATURE_ID_OBLIVION_BEAST & cardno >= CREATURE_ID_LOYTER_THE_CRIMSON_OF_DOLE ) { continue }
-					if ( cardno <= CREATURE_ID_TONI_THE_ANGLER & cardno >= CREATURE_ID_CARTER_THE_SKILLED_FOOT ) { continue }
-					if ( cardno <= CREATURE_ID_STRANGE_OLD_PERSON & cardno >= CREATURE_ID_MANSON_THE_CAREFUL_ADVENTURER ) { continue }
-					if ( cardno == CREATURE_ID_BONYAC_THE_GENERAL_VENDOR ) { continue }
-					if ( cardno <= CREATURE_ID_YAYAUHQUI_TEZCATLIPOCA & cardno >= CREATURE_ID_MIKRAANESIS ) { continue }
-				}
+			if ( gdata(GDATA_FLAG_MAIN) < 540 ) {
+				if ( cardno == CREATURE_ID_FASHIONABLE_KUNOICHI ) { continue }
+			}
+			if ( gdata(GDATA_FLAG_MAIN) < 540 ) {
+				if ( cardno <= CREATURE_ID_TEZCATLIPOCA & cardno >= CREATURE_ID_TALON_SOLDIER ) { continue }
+			}
+			if ( gdata(GDATA_FLAG_MAIN) < 760 ) {
+				if ( cardno == CREATURE_ID_ENTHUMESIS ) { continue }
+			}
+			if ( gdata(GDATA_FLAG_MAIN) < 760 ) {
+				if ( cardno <= CREATURE_ID_MELUGAST_AO_I_THE_DIMENSION_DRIVER & cardno >= CREATURE_ID_THE_CHAOS_CHILD ) { continue }
+			}
+			if ( gdata(GDATA_FLAG_MAIN) < 950 ) {
+				if ( cardno <= CREATURE_ID_OBLIVION_BEAST & cardno >= CREATURE_ID_LOYTER_THE_CRIMSON_OF_DOLE ) { continue }
+				if ( cardno <= CREATURE_ID_TONI_THE_ANGLER & cardno >= CREATURE_ID_CARTER_THE_SKILLED_FOOT ) { continue }
+				if ( cardno <= CREATURE_ID_STRANGE_OLD_PERSON & cardno >= CREATURE_ID_MANSON_THE_CAREFUL_ADVENTURER ) { continue }
+				if ( cardno == CREATURE_ID_BONYAC_THE_GENERAL_VENDOR ) { continue }
+				if ( cardno <= CREATURE_ID_YAYAUHQUI_TEZCATLIPOCA & cardno >= CREATURE_ID_MIKRAANESIS ) { continue }
 			}
 			if ( cardno == CREATURE_ID_USER ) { continue }
 			if ( cardno == CREATURE_ID_AT_SIGN ) { continue }
@@ -1753,9 +1798,20 @@
 			if ( cardno == CREATURE_ID_EHEKATL ) { continue }
 			if ( cardno == CREATURE_ID_GOD_INSIDE_EHEKATL ) { continue }
 			if ( cardno == CREATURE_ID_LULWY ) { continue }
+			if ( cardno == CREATURE_ID_RUDRAS ) { continue }
 			if ( cardno == CREATURE_ID_YAYAUHQUI_TEZCATLIPOCA ) { continue }
 			if ( cardno == CREATURE_ID_THE_CHAOS_CHILD ) { continue }
 			if ( cardno == CREATURE_ID_JALDABAOTH_THE_CHAOS_CHILD ) { continue }
+			if ( targetdeck@tcg == 1 ) {
+				if ( cardno == CREATURE_ID_BLACK_CAT ) { continue }
+				if ( cardno == CREATURE_ID_CUTE_FAIRY ) { continue }
+				if ( cardno == CREATURE_ID_ANDROID ) { continue }
+				if ( cardno == CREATURE_ID_BLACK_ANGEL ) { continue }
+				if ( cardno == CREATURE_ID_EXILE ) { continue }
+				if ( cardno == CREATURE_ID_GOLDEN_KNIGHT ) { continue }
+				if ( cardno == CREATURE_ID_GOLDEN_KNIGHT ) { continue }
+				if ( cardno == CREATURE_ID_GOOSE ) { continue }
+			}
 
 			if ( cnt2@tcg < 2 ) {
 				dbid = cardno
@@ -1766,7 +1822,7 @@
 					if ( cardrefsex != rndsex@tcg & rndsex@tcg != "" ) { continue }
 					if ( cardreflvl > rndlvl@tcg & rndlvl@tcg != 0 ) { continue }
 					if ( cardrefquality != rndfixlvl@tcg & rndfixlvl@tcg != 0 ) { continue }
-					if ( cardrefcost != rndcost@tcg & rndcost@tcg != 0 ) { continue }
+					if ( cardrefcost != rndcost@tcg & rndcost@tcg >= 0 ) { continue }
 					if ( cardrefrace != rndrace@tcg & rndrace@tcg != "" ) { 
 						if ( dbid == CREATURE_ID_INSTIGATOR_OF_ELEA ) {
 							if ( rndrace@tcg != "elea" ) { continue }
@@ -1809,7 +1865,8 @@
 	rnddomain@tcg = 0
 	rndlvl@tcg = 0
 	rndfixlvl@tcg = 0 // 2 OR 6
-	rndcost@tcg = 0
+	rndcost@tcg = -1
+	rndignorecardpool@tcg = 0
 	return
 
 *chat_purchase_cards
@@ -1912,8 +1969,28 @@
 		}
 		cpicurr@tcg++
 	}
-	if ( card(0, CREATURE_ID_HEART_WITCH) < 13 | card(0, CREATURE_ID_DIAMOND_EYES) < 13 | card(0, CREATURE_ID_CLUB_FEATHER) < 13 | card(0, CREATURE_ID_SPADE_WARRIOR) < 13 ) {
+	if ( card(0, CREATURE_ID_AIME_THE_STORY_TELLER) < 1 ) {
 		currentthing@tcg = 26
+		cardprice@tcg(currentthing@tcg) = 300
+		cardsetcontent@tcg(0, currentthing@tcg) = CREATURE_ID_AIME_THE_STORY_TELLER
+		cardsetdesc@tcg(currentthing@tcg) = lang("謎めいた語り手のカード。彼女は、子供向けのカードゲームを通して、様々な可能性の世界を繋げる能力を持っていると語っている。さて、彼女をデッキに入れると、決闘開始時にデッキ全体が他人のデッキと入れ替わってしまう。かなり厄介だが、そういうのが好きな人もいるかもしれない。", "Card of a mysterious narrator - Aime. She said that she possesses the ability to connect worlds of possibility through children's card games.\n\nWell, what happens is, if you put her in your deck, she replaces your entire deck with someone else's deck when the duel begins, pretty annoying, but some weird dudes might be into that kind of stuff.")
+		if ( cpicurr@tcg >= cardpage@tcg * cpimax@tcg & cpicurr@tcg < (cardpage@tcg + 1) * cpimax@tcg) {
+			chatList currentthing@tcg, lang("[チケット"+cardprice@tcg(currentthing@tcg)+"枚]ストーリーテラーのカード", "["+cardprice@tcg(currentthing@tcg)+" Tickets] Card of a Mysterious Storyteller.")
+		}
+		cpicurr@tcg++
+	}
+	if ( card(0, CREATURE_ID_RIANNA_THE_DAYDREAMER) < 1 ) {
+		currentthing@tcg = 27
+		cardprice@tcg(currentthing@tcg) = 500
+		cardsetcontent@tcg(0, currentthing@tcg) = CREATURE_ID_RIANNA_THE_DAYDREAMER
+		cardsetdesc@tcg(currentthing@tcg) = lang("リアナのカード、放浪中に誤って子供向けのカードゲームの賭博の裏の業界へ踏み入ってしまうが、記憶力と洞察力で賭博に逆転勝利し生き残った。", "Card of a legendary gambler - Rianna. While messing around with her life, she accidentally stumbles into the underground world of gambling on children's card games, but uses her memory and insight to turn the tables and win at gambling, thus surviving. \n\nWhen putted into your deck, she plays the game for you - for the first few turns, pretty neat, huh?")
+		if ( cpicurr@tcg >= cardpage@tcg * cpimax@tcg & cpicurr@tcg < (cardpage@tcg + 1) * cpimax@tcg) {
+			chatList currentthing@tcg, lang("[チケット"+cardprice@tcg(currentthing@tcg)+"枚]伝説のギャンブラーのカード", "["+cardprice@tcg(currentthing@tcg)+" Tickets] Card of a Legendary Gambler.")
+		}
+		cpicurr@tcg++
+	}
+	if ( card(0, CREATURE_ID_HEART_WITCH) < 13 | card(0, CREATURE_ID_DIAMOND_EYES) < 13 | card(0, CREATURE_ID_CLUB_FEATHER) < 13 | card(0, CREATURE_ID_SPADE_WARRIOR) < 13 ) {
+		currentthing@tcg = 28
 		cardprice@tcg(currentthing@tcg) = 1000 * (1 + limit(limit(limit(card(0, CREATURE_ID_HEART_WITCH), 0, card(0, CREATURE_ID_DIAMOND_EYES)), 0, card(0, CREATURE_ID_CLUB_FEATHER)), 0, card(0, CREATURE_ID_SPADE_WARRIOR)))
 		cardsetcontent@tcg(0, currentthing@tcg) = CREATURE_ID_HEART_WITCH, CREATURE_ID_DIAMOND_EYES, CREATURE_ID_CLUB_FEATHER, CREATURE_ID_SPADE_WARRIOR
 		cardsetdesc@tcg(currentthing@tcg) = lang("最近「ポーカー」と呼ばれる52枚のカードが入ったデックを手に入れたんだ。僕はこのデッキをプレイするつもりはないんだけど、コレクターの間ではかなり人気があるみたいなんだ。そこで、このデッキのカードを1枚ずつバンドルして売るんだけど、買わない？", "I recently came into possession of a rather... unusual deck of 52 cards, called 'poker' apparently. I have no particular interest in playing this game myself, but it seems to be quite the collectors' item. So, in an effort to clear some space, I've decided to sell bundles containing a single copy of each suit from this deck. Fancy a set, perchance? \n[Contains]\n 1 Spade Warrior.\n 1 Club Feather.\n 1 Diamond Eyes.\n 1 Heart Witch.")
@@ -1923,7 +2000,7 @@
 		cpicurr@tcg++
 	}
 	if ( card(0, CREATURE_ID_CRIMSON_DARK_GUARDIAN) < 1 | card(0, CREATURE_ID_BLUE_DARK_GUARDIAN) < 1 | card(0, CREATURE_ID_GREEN_DARK_GUARDIAN) < 1 ) {
-		currentthing@tcg = 27
+		currentthing@tcg = 29
 		cardprice@tcg(currentthing@tcg) = 3000
 		cardsetcontent@tcg(0, currentthing@tcg) = CREATURE_ID_CRIMSON_DARK_GUARDIAN, CREATURE_ID_BLUE_DARK_GUARDIAN, CREATURE_ID_GREEN_DARK_GUARDIAN
 		cardsetdesc@tcg(currentthing@tcg) = lang("レインボー・ダーク・ガーディアンのイルヴァ、悪人用スーパーヒーロー戦隊。イエロー・ダークガーディアン、ピンク・ダークガーディアンは付属しません。", "Oh, let me introduce you to the Rainbow Dark Guardians of Irva, the sentai team for all the lovely evil dudes out there. Now, I know what you're thinking: 'Hey, wait a second! Where are the Yellow and Pink Dark Guardians?' Well, apparently, those two just couldn't keep up with the rest of the team's... villainous fervor. It's a shame, really - I bet they had great color coordination. \n[Contains]\n 1 Crimson Dark Guardian\n 1 Blue Dark Guardian\n 1 Green Dark Guardian.")
@@ -5172,8 +5249,8 @@
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
 		cardrefcost = 5
-		cardrefattack = 0
-		cardrefhp = 1
+		cardrefattack = 4
+		cardrefhp = 5
 		cardrefskillid = TCG_EFF_OBLIVIONSHAMAN
 		cardrefbits = "8,100,77"
 		return 1
@@ -7329,9 +7406,9 @@
 		cardreflvl = 88
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 1
-		cardrefcost = 3
-		cardrefattack = 1
-		cardrefhp = 1
+		cardrefcost = 2
+		cardrefattack = 2
+		cardrefhp = 2
 		cardrefskillid = TCG_EFF_GIGANTICFAIRY
 		cardrefbits = ""
 		return 1
@@ -18692,7 +18769,7 @@
 		cardreflvl = 152
 		cardrefquality = FIX_QUALITY_UNIQUE
 		cardrefdomain = 5
-		cardrefcost = 5
+		cardrefcost = 2
 		cardrefattack = 2
 		cardrefhp = 3
 		cardrefskillid = TCG_EFF_MANYTIA

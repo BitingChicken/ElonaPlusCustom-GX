@@ -19996,6 +19996,7 @@
 			txt lang("カード精霊が5体必要だ。", "Requires 5 card spirits.")
 			goto *effect_end
 		}
+		usedpoker@cgx = 1
 		if ( cdata(CDATA_EVOLUTION_STAGE, tc1) == cdata(CDATA_EVOLUTION_STAGE, tc2) | cdata(CDATA_EVOLUTION_STAGE, tc1) == cdata(CDATA_EVOLUTION_STAGE, tc3) | cdata(CDATA_EVOLUTION_STAGE, tc1) == cdata(CDATA_EVOLUTION_STAGE, tc4) | cdata(CDATA_EVOLUTION_STAGE, tc1) == cdata(CDATA_EVOLUTION_STAGE, tc5) ) {
 			pair += cdata(CDATA_EVOLUTION_STAGE, tc1) + 20
 		}

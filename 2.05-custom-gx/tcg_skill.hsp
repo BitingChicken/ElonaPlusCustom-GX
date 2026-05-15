@@ -1125,7 +1125,7 @@
 				gosub *card_action_choose_target
 			} else {
 				if ( card@tcg(TCG_CARD_REF_DBID, ac@tcg) == CREATURE_ID_RAIZEL_THE_OLD_WIZARD ) {
-					efllistaddchat "No Mana? You reminds me of... ummm.."
+					efllistaddchat "No Mana? You reminds me of... ummm..", ac@tcg
 				}
 			}
 			makecardlist
@@ -1277,6 +1277,35 @@
 	if ( _switch_val@tcg == TCG_SKILL_EFF_GRAVECARD | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			gravecard aeft@tcg
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_CUTCARD | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_HAND | card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_FIELD ) {
+				card@tcg(TCG_CARD_Y_MOVETO, aeft@tcg) -= 30
+				tcgpass 30
+				card@tcg(TCG_CARD_ANIM, aeft@tcg) = TCG_ANIM_SLASH, 60
+				tcgdraw
+			}
+			gravecard aeft@tcg
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_DESTROYCARD | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_HAND | card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_FIELD ) {
+				if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+					efllistadd 50, 24, card@tcg(TCG_CARD_X, ac@tcg) + 36, card@tcg(TCG_CARD_Y, ac@tcg) + 48, card@tcg(TCG_CARD_X, aeft@tcg) + 36, card@tcg(TCG_CARD_Y, aeft@tcg) + 48
+				}
+				efllistaddcard 4, aeft@tcg
+				tcgpass 30
+			}
 			gravecard aeft@tcg
 		}
 		goto *actionproc_SWEND1
@@ -2388,7 +2417,11 @@
 
 				effref@tcg(TCG_SKILL_TYPE, granteff@tcg) = effref@tcg(TCG_SKILL_TYPE, granteff@tcg + 1) | effref@tcg(TCG_SKILL_TYPE, granteff@tcg + 2)
 				card@tcg(TCG_CARD_EFFECT, aeft@tcg) = granteff@tcg
-				reconstruct_card_text aeft@tcg
+				repeat maxcard@tcg
+					if ( card@tcg(TCG_CARD_EFFECT, cnt) == granteff@tcg ) {
+						reconstruct_card_text cnt
+					}
+				loop
 				efllistaddcard 7, aeft@tcg
 				tcgpass 15
 				efllistaddcard 7, aeft@tcg
@@ -2883,6 +2916,15 @@
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg & specialrulelastbattlecry@tcg > 0 & specialrulelastbattlecry@tcg != TCG_SKILL_EFF_ANDROID ) {
 			card@tcg(TCG_CARD_EFFECT, aeft@tcg) = specialrulelastbattlecry@tcg
+			if ( specialrulelastbattlecry@tcg(1) >= 0 & specialrulelastbattlecry@tcg(1) < maxcard@tcg ) {
+				if ( card@tcg(TCG_CARD_LOCATION, specialrulelastbattlecry@tcg(1)) == TCG_LOCATION_HAND | card@tcg(TCG_CARD_LOCATION, specialrulelastbattlecry@tcg(1)) == TCG_LOCATION_FIELD ) {
+					lasertargety@tcg = card@tcg(TCG_CARD_Y, specialrulelastbattlecry@tcg(1)) + 96
+					efllistadd 50, 4, card@tcg(TCG_CARD_X, aeft@tcg) + 36, card@tcg(TCG_CARD_Y, aeft@tcg) + 48, card@tcg(TCG_CARD_X, specialrulelastbattlecry@tcg(1)) + 0, card@tcg(TCG_CARD_Y, specialrulelastbattlecry@tcg(1)) - 30
+					lasertargety@tcg = card@tcg(TCG_CARD_Y, specialrulelastbattlecry@tcg(1)) + 96
+					efllistadd 50, 4, card@tcg(TCG_CARD_X, aeft@tcg) + 36, card@tcg(TCG_CARD_Y, aeft@tcg) + 48, card@tcg(TCG_CARD_X, specialrulelastbattlecry@tcg(1)) + 72, card@tcg(TCG_CARD_Y, specialrulelastbattlecry@tcg(1)) - 30
+					tcgpass 60
+				}
+			}
 			reconstruct_card_text aeft@tcg
 			if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, aeft@tcg)) & TCG_SKILL_TYPE_BATTLECRY) ) {
 				effac@tcg = aeft@tcg
@@ -5044,11 +5086,69 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_MANYTIA | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( ac@tcg >= 0 & ac@tcg < maxcard@tcg ) {
+			manytia@tcg = ac@tcg
+			manytiaap@tcg = ap@tcg
+			if ( aeftg@tcg == TCG_SKILL_TYPE_BATTLECRY ) {
+				if ( specialrulemanytia@tcg(manytiaap@tcg) <= rnd(5) ) { 
+					efllistaddchat "Cheapskate.", manytia@tcg
+				}
+				manytiadialog@tcg = "One!", "Two!", "Three!", "And..!"
+				manytiasummoned@tcg = 0
+				repeat limit((specialrulemanytia@tcg(manytiaap@tcg) / 10) + 1, 1, 10)
+					if ( specialrulemanytia@tcg(manytiaap@tcg) <= 0 & manytiasummoned@tcg >= 1 ) { break }
+					if ( hasspotspace(manytiaap@tcg) == TRUE ) {
+						manytiause@tcg = limit(specialrulemanytia@tcg(manytiaap@tcg), 0, 10)
+						specialrulemanytia@tcg(manytiaap@tcg) -= manytiause@tcg
+						cardn@tcg(TCG_CARDN_REF_TAG, manytia@tcg) = "" + specialrulemanytia@tcg(manytiaap@tcg)
+
+						rndcost@tcg = manytiause@tcg
+						gosub *card_filter
+						if ( cardno >= 0 ) {
+							create_extra_card manytiaap@tcg, cardno
+							if ( cextra@tcg >= 0 ) {
+								manytiatarget@tcg = cextra@tcg
+								card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, manytiaap@tcg), card@tcg(TCG_CARD_Y, manytiaap@tcg), card@tcg(TCG_CARD_X, manytiaap@tcg), card@tcg(TCG_CARD_Y, manytiaap@tcg)
+								putcard cextra@tcg, manytiaap@tcg
+								tcgpass 60
+								efllistaddchat manytiadialog@tcg(limit(manytiasummoned@tcg, 0, 3)), manytiatarget@tcg
+							}
+						}
+					} else {
+						efllistaddchat "No board spaces, are you daft?", manytia@tcg
+						manytiasummoned@tcg = 0
+						break
+					}
+					manytiasummoned@tcg += 1
+				loop
+				if ( manytiasummoned@tcg > 0 ) {
+					efllistaddchat "..and done!", manytia@tcg
+				}
+			} else {
+				if ( specialrulemanalastturn@tcg(manytiaap@tcg) > 0 ) {
+					cdbitmod TCG_BIT_FACE_UP, manytia@tcg, 1
+					specialrulemanytia@tcg(manytiaap@tcg) += specialrulemanalastturn@tcg(manytiaap@tcg)
+					efllistaddcard 24, manytia@tcg, 0, 4
+				}
+			}
+			if ( specialrulemanytia@tcg(manytiaap@tcg) == 0 ) {
+				cardn@tcg(TCG_CARDN_REF_TAG, manytia@tcg) = ""
+			} else {
+				cardn@tcg(TCG_CARDN_REF_TAG, manytia@tcg) = "" + specialrulemanytia@tcg(manytiaap@tcg)
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_HALION | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
 			create_extra_card card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), card@tcg(TCG_CARD_REF_DBID, aeft@tcg)
-			dmgplayer card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), -1
+			if ( cpdata@tcg(TCG_PLAYER_LIFE_TOTAL, card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) > cpdata@tcg(TCG_PLAYER_LIFE, card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)) ) {
+				dmgplayer card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), -1
+			}
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
@@ -5336,14 +5436,14 @@
 				}
 				if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_YOUNGER_SISTER ) {
 					if ( card@tcg(TCG_CARD_TEMP, cnt) == 1 ) {
-						card@tcg(TCG_CARD_REF_ATTACK, cnt) = 1
-						card@tcg(TCG_CARD_HP, cnt) = 1
-						card@tcg(TCG_CARD_REF_HP, cnt) = 1
+						card@tcg(TCG_CARD_REF_ATTACK, cnt) = 2
+						card@tcg(TCG_CARD_HP, cnt) = 2
+						card@tcg(TCG_CARD_REF_HP, cnt) = 2
 						card@tcg(TCG_CARD_REF_COST, cnt) = 2
 						card@tcg(TCG_CARD_REF_PIC, cnt) = xy2pic(10, 9)
-						cdbitmod TCG_BIT_DOUBLE_STRIKE, cnt, 1
+						cdbitmod TCG_BIT_FIRST_STRIKE, cnt, 1
 						cdbitmod TCG_BIT_HASTE, cnt, 1
-						carddetailneff@tcg(cnt) = "Sister Cat? No.???    Roran Thief  Rare:Very\nBits:  Double-Strike Haste\nEffect: "
+						carddetailneff@tcg(cnt) = "Sister Cat? No.???    Roran Thief  Rare:Very\nBits:  First-Strike Haste\nEffect: "
 					}
 					if ( card@tcg(TCG_CARD_TEMP, cnt) == 2 ) {
 						card@tcg(TCG_CARD_REF_ATTACK, cnt) = 1
@@ -5934,6 +6034,7 @@
 				if ( evtarget@tcg == -2 ) {
 					aeftlily@tcg = aeft@tcg
 					card@tcg(TCG_CARD_EFFECT, aeft@tcg) = TCG_EFF_SIVA
+					reconstruct_card_text aeft@tcg
 					if ( card@tcg(TCG_CARD_LOCATION, aeft@tcg) == TCG_LOCATION_FIELD ) {
 						if ( (effref@tcg(TCG_SKILL_TYPE, card@tcg(TCG_CARD_EFFECT, aeft@tcg)) & TCG_SKILL_TYPE_BATTLECRY) ) {
 							effac@tcg = aeft@tcg
@@ -6508,15 +6609,17 @@
 	if ( _switch_val@tcg == TCG_SKILL_EFF_RIANNA | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg == player@tcg ) {
-			card@tcg(TCG_CARD_Y_MOVETO, effac@tcg) = holderiy@tcg(0) - 30
-			cdbitmod TCG_BIT_FACE_UP, effac@tcg, 1
-			tcgpass 30
-			efllistaddcard 18 + rnd(3), effac@tcg
-			tcgpass 30
-			card@tcg(TCG_CARD_Y_MOVETO, effac@tcg) = holderiy@tcg(0)
-			tcgpass 30
-			randomchat@tcg = "I'm not good at card games, hehe.", "What would Bethel play...", "Your deck is ASS, seriously!", "You do have Bethel in your Deck, right? Right?", "What is this Hand?! Chikusho!", "Aaaaah! I'm going to lose!", "DESTINY DRAW! Oh come on!", "Faaaaaaaa!! Oh Oh Oh Oh!", "I will give up!! I give up!!", "Bethel... *sob*"
-			efllistaddchat randomchat@tcg(rnd(10)), effac@tcg
+			if ( turn@tcg > 0 ) {
+				card@tcg(TCG_CARD_Y_MOVETO, effac@tcg) = holderiy@tcg(0) - 30
+				cdbitmod TCG_BIT_FACE_UP, effac@tcg, 1
+				tcgpass 30
+				efllistaddcard 18 + rnd(3), effac@tcg
+				tcgpass 30
+				card@tcg(TCG_CARD_Y_MOVETO, effac@tcg) = holderiy@tcg(0)
+				tcgpass 30
+				randomchat@tcg = "I'm not good at card games, hehe.", "What would Bethel play...", "Your deck is ASS, seriously!", "You do have Bethel in your Deck, right? Right?", "What is this Hand?! Chikusho!", "Aaaaah! I'm going to lose!", "DESTINY DRAW! Oh come on!", "Faaaaaaaa!! Oh Oh Oh Oh!", "I will give up!! I give up!!", "Bethel... *sob*"
+				efllistaddchat randomchat@tcg(rnd(10)), effac@tcg
+			}
 			specialruleaitakeover@tcg = 1
 		}
 		goto *actionproc_SWEND1

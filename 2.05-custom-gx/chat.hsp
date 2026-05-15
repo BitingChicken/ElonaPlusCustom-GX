@@ -24865,6 +24865,7 @@
 			itemcreate 0, qdata(QDATA_DEST_ITEM, rq), cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 			/********** JAMES CUSTOM - JOB QUESTS - BEGINNING **********/
 			if ( TweakData(TWEAK_GAMEPLAY_CUSTOM_JOB_QUESTS, TWEAK_CATEGORY_GAMEPLAY) != 0 ) {
+				item_separate ci
 				inv(INV_ITEM_WEIGHT, ci) += (rnd(11) + 5) * 400 * qdata(QDATA_LEVEL, rq)
 				ibitmod ITEM_BIT_HANDMADE, ci, 1
 			}
