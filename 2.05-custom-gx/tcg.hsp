@@ -682,6 +682,7 @@
 		}
 	}
 	if ( selected@tcg ) {
+		selectedtext@tcg = carddetailneff@tcg(tcgdrawcard_arg1)
 		gmode 2
 		pos card@tcg(TCG_CARD_X, tcgdrawcard_arg1) - 5, card@tcg(TCG_CARD_Y, tcgdrawcard_arg1) - 5
 		gcopy 7, 168, 144, 82, 106
@@ -863,9 +864,16 @@
 								color 0, 0, 0
 								bmes "" + drawntag@tcg, 235, 125, 125
 							} else {
-								pos x@tcg + 48 + 12 - 3 * strlen(str(drawntag@tcg)), y@tcg + 4
-								color 0, 0, 0
-								bmes "" + drawntag@tcg, 235, 235, 235
+								if ( strmid(drawntag@tcg, 0, 1) == "*" ) {
+									drawntag@tcg = strmid(drawntag@tcg, 1, strlen(drawntag@tcg))
+									pos x@tcg + 48 + 12 - 3 * strlen(str(drawntag@tcg)), y@tcg + 4
+									color 150, 150, 150
+									bmes "" + drawntag@tcg, 0, 0, 0
+								} else {
+									pos x@tcg + 48 + 12 - 3 * strlen(str(drawntag@tcg)), y@tcg + 4
+									color 0, 0, 0
+									bmes "" + drawntag@tcg, 235, 235, 235
+								}
 							}
 						}
 					}
@@ -2711,6 +2719,9 @@
 			getrandomcard initcp@tcg
 		loop
 	loop
+	repeat maxcard@tcg
+		if ( card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_HAND ) { cdbitmod TCG_BIT_OPENINGHAND, cnt, 1 }
+	loop
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_JALDABAOTH_THE_CHAOS_CHILD | cdata(CDATA_ID, tc) == CREATURE_ID_THE_CHAOS_CHILD | cdata(CDATA_ID, tc) == CREATURE_ID_AIME_THE_STORY_TELLER ) {
 		f@tcg = 0
 		repeat maxcard@tcg
@@ -3932,7 +3943,10 @@
 	gosub *tcg_drawInterface
 	gosub *tcg_drawDeck
 	if ( deckmode@tcg > 0 & eff@tcg >= 0 & eff@tcg < 3000 ) {
-		cardhelp effdesc@tcg(eff@tcg), 10
+		cardhelp effdesc@tcg(eff@tcg) + "\n" + selectedtext@tcg, 10
+	}
+	if ( deckmode@tcg == -2 ) {
+		cardhelp "Discover: Choose 1 Card\n" + selectedtext@tcg, 10
 	}
 	redraw 1
 	await 30
@@ -4167,7 +4181,7 @@
 	}
 	*card_player_WHILE1
 	if ( selectmode@tcg == 2 & eff@tcg >= 0 & eff@tcg < 3000 ) {
-		cardhelp effdesc@tcg(eff@tcg), 10
+		cardhelp effdesc@tcg(eff@tcg) + "\n" + selectedtext@tcg, 10
 	}
 	makecardlist
 	if ( player@tcg == 0 ) {

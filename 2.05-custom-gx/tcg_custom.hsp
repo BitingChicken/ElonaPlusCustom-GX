@@ -205,8 +205,8 @@
 					if ( targetplayer@tcg == 2 & cnt < MAX_CARD_DECK_TOTAL ) { continue }
 				}
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_YOU ) {
-					if ( targetplayer@tcg == 1 & instr(carddetailneff@tcg(cnt), 0, cdatan(CDATAN_NAME, CHARA_PLAYER)) != (-1)) { continue }
-					if ( targetplayer@tcg == 2 & instr(carddetailneff@tcg(cnt), 0, cdatan(CDATAN_NAME, tc)) != (-1)) { continue }
+					if ( targetplayer@tcg == 1 & instr(carddetailneff@tcg(cnt), 0, cdatan(CDATAN_NAME, CHARA_PLAYER)) == (-1)) { continue }
+					if ( targetplayer@tcg == 2 & instr(carddetailneff@tcg(cnt), 0, cdatan(CDATAN_NAME, tc)) == (-1)) { continue }
 				}
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_NOTSELF ) {
 					if ( cnt == effac@tcg ) { continue }
@@ -245,8 +245,8 @@
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_NOT_MICHES ) {
 					if ( card@tcg(TCG_CARD_REF_DBID, cnt) == CREATURE_ID_MICHES_THE_APPRENTICE ) { continue }
 				}
-				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_LESSER_PIECE ) {
-					if ( card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_PAWN & card@tcg(TCG_CARD_REF_DBID, cnt) != CREATURE_ID_ROOK ) { continue }
+				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_POKERKING ) {
+					if ( cardn@tcg(TCG_CARDN_REF_TAG, cnt) != "-K" & cardn@tcg(TCG_CARDN_REF_TAG, cnt) != "*K" ) { continue }
 				}
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_GOBLIN_TARGET ) {
 					if ( card@tcg(TCG_CARD_REF_DOMAIN, cnt) != 4 | card@tcg(TCG_CARD_COST, cnt) > 1 ) { continue }
@@ -1487,6 +1487,9 @@
 			if ( rnd(8) == 0 ) { deck_opponent(CREATURE_ID_ANTITANK_LANDMINE_GIRL) = 2 }
 		}
 		if ( rnd(100) == 0 ) { deck_opponent(CREATURE_ID_RUDRAS) = 2 }
+	}
+	if ( cdata(CDATA_ID, tc) >= CREATURE_ID_SPADE_WARRIOR & cdata(CDATA_ID, tc) <= CREATURE_ID_HEART_WITCH ) {
+		deck_opponent(cdata(CDATA_ID, tc)) = 13
 	}
 	if ( deck_opponent(cdata(CDATA_ID, tc)) <= 0 ) {
 		deck_opponent(cdata(CDATA_ID, tc)) = 1
@@ -4600,6 +4603,10 @@
 		}
 	}
 	if ( dbid == CREATURE_ID_USER ) {
+		cardrefn = cdatan(CDATAN_AKA, CHARA_PLAYER) + " " + cdatan(CDATAN_NAME, CHARA_PLAYER)
+		cardrefrace = cdatan(CDATAN_RACE, CHARA_PLAYER)
+		cardrefclass = cdatan(CDATAN_CLASS, CHARA_PLAYER)
+		cardrefsex = cdatan(CDATAN_NEWSEX, CHARA_PLAYER)
 		cardrefmapnpcid = pet@tcg
 		if ( pet@tcg > 0 & pet@tcg < MAX_CHARA_TOTAL ) {
 			cardrefn = cdatan(CDATAN_NAME, pet@tcg)
@@ -4671,6 +4678,8 @@
 		if ( pet@tcg > 0 ) { cardrefbits = "80" }
 		if ( cnpc@tcg > 0 ) { cardrefbits = "84" }
 		if ( cardrefskillid == TCG_EFF_NOVICE ) { cardrefskillid = TCG_EFF_NONE }
+		if ( pet@tcg > 0 ) { cardrefskillid = TCG_EFF_PET }
+		if ( cnpc@tcg > 0 ) { cardrefskillid = TCG_EFF_CNPC }
 		if ( cardrefrace == "roran" | cardrefrace == "elea" ) { 
 			cardrefcost -= 1 
 			if ( cardrefrace == "roran" ) { cardrefattack -= 1 }
@@ -4717,7 +4726,7 @@
 			}
 		}
 		if ( cardrefclass == "priest" ) { 
-			cardrefskillid = TCG_EFF_BATTLECRY_HEALPLAYER2DAMAGE 
+			cardrefskillid = TCG_EFF_BATTLECRY_HEALPLAYER3DAMAGE 
 			if ( dbid == CREATURE_ID_USER & cardrefdomain == 5 ) { 
 				cardrefskillid = TCG_EFF_BATTLECRY_TARGETFIELDCREATUREGET22
 				cardrefbits += ",5,10" 
@@ -4773,8 +4782,12 @@
 			if ( dbid == CREATURE_ID_USER & cardrefdomain == 5 ) { cardrefskillid = TCG_EFF_USERTOURIST }
 		}
 	}
-	if ( cnpc@tcg != 0 ) { cnpc@tcg = 0 }
-	if ( pet@tcg != 0 ) { pet@tcg = 0 }
+	if ( cnpc@tcg != 0 ) { 
+		cnpc@tcg = 0 
+	}
+	if ( pet@tcg != 0 ) { 
+		pet@tcg = 0 
+	}
 	cardrefattack = limit(cardrefattack, 0, TCG_STAT_MAX)
 	cardrefhp = limit(cardrefhp, 1, TCG_STAT_MAX)
 	cardrefskill = effdesc@tcg(cardrefskillid)
@@ -14437,7 +14450,7 @@
 		cardrefquality = FIX_QUALITY_GOOD
 		cardrefdomain = 7
 		cardrefcost = 6
-		cardrefattack = 10
+		cardrefattack = 6
 		cardrefhp = 6
 		cardrefskillid = TCG_EFF_NONE
 		cardrefbits = "7,11"
@@ -18362,7 +18375,7 @@
 		cardrefattack = 5
 		cardrefhp = 6
 		cardrefskillid = TCG_EFF_EGELVEIL
-		cardrefbits = "10"
+		cardrefbits = "10,102"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_ROATONIS_THE_INFECTIONS ) {
@@ -20000,7 +20013,7 @@
 		cardrefcost = 1
 		cardrefattack = 2
 		cardrefhp = 2
-		cardrefskillid = TCG_EFF_BATTLECRY_HEALPLAYER2DAMAGE
+		cardrefskillid = TCG_EFF_BATTLECRY_HEALPLAYER3DAMAGE
 		cardrefbits = ""
 		return 1
 	}

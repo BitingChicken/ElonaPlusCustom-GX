@@ -7354,8 +7354,8 @@
 	if ( sdataref(SKILL_DATAREF_TYPE, efid) != 1 & sdataref(SKILL_DATAREF_TYPE, efid) != 2 & sdataref(SKILL_DATAREF_TYPE, efid) != 3 ) {
 		return 1
 	}
-	if ( cdata(CDATA_DIRECTIVE_MODE, cc) == DIRECTIVE_MODE_OFFENSIVE ) {
-		powsel = 0
+	powsel = charaCanGauge(cc)
+	if ( powsel == 100 ) {
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
 			if ( gdata(GDATA_ACTIVATE_PROC) == 0 ) {
 				if ( sdataref(SKILL_DATAREF_TYPE, efid) == 1 | sdataref(SKILL_DATAREF_TYPE, efid) == 2 | (sdataref(SKILL_DATAREF_TYPE, efid) == 3 & efid != SKILL_SPACT_RAIN_OF_SANITY & efid != SKILL_SPELL_HEALING_RAIN) ) {
