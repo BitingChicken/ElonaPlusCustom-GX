@@ -2029,9 +2029,11 @@
 	if ( hasholdspace(create_extra_card_player) == FALSE ) {
 		return
 	}
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_FATIGUE) = 0, TCG_SKILL_TYPE_ONDRAW, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_FATIGUE, 1, 1
+	effdesc@tcg(TCG_EFF_FATIGUE) = "You are out of Cards!!!"
 	cpdata@tcg(TCG_PLAYER_FATIGUE, create_extra_card_player)++
 	cextra@tcg = MAX_CARD_DECK + MAX_CARD_EXTRA + create_extra_card_player * MAX_CARD_DECK_TOTAL
-	create_card cextra@tcg, CREATURE_ID_BUG
+	create_card cextra@tcg, CREATURE_ID_SKELETON_WARRIOR
 	card@tcg(TCG_CARD_TEMP, cextra@tcg) = cpdata@tcg(TCG_PLAYER_FATIGUE, create_extra_card_player)
 	card@tcg(TCG_CARD_COST, cextra@tcg) = cpdata@tcg(TCG_PLAYER_FATIGUE, create_extra_card_player)
 	card@tcg(TCG_CARD_HP, cextra@tcg) = cpdata@tcg(TCG_PLAYER_FATIGUE, create_extra_card_player)

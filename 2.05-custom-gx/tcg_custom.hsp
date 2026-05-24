@@ -190,6 +190,7 @@
 				if ( targetloc@tcg == 5 & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND ) { continue } // in Hand / on Field
 				if ( targetloc@tcg == 6 & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_DECK & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND ) { continue } // in Hand / Deck
 				if ( targetloc@tcg == 7 & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_DECK & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_HAND & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_FIELD  & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_GRAVEYARD ) { continue } // Everywhere
+				if ( targetloc@tcg == 8 & (card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_DEFAULT | card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_DISCOVER | card@tcg(TCG_CARD_LOCATION, cnt) == TCG_LOCATION_ANIM) ) { continue } // anywhere
 				if ( targetloc@tcg == 9 & card@tcg(TCG_CARD_LOCATION, cnt) != TCG_LOCATION_EXILE ) { continue } // in Deck
 				
 				if ( effref@tcg(TCG_SKILL_FILTER, eff@tcg) == TCG_SKILL_FILTER_NOTYOURS ) {

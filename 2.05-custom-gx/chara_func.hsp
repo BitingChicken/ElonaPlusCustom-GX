@@ -5363,7 +5363,7 @@
 		if ( locvar_dmghp_ele ) {
 			if ( TweakData(TWEAK_GAMEPLAY_REVERT_POST_208_ELEMENT_CHANGE, TWEAK_CATEGORY_GAMEPLAY) != FALSE ) {
 				// BEGINNING - Pre-2.08 behavior, do not apply changes here.
-				if ( locvar_dmghp_ele != SKILL_SPACT_DANCE_OF_BLOW & locvar_dmghp_ele != SKILL_SPACT_FLASH_OF_SWIFTNESS & locvar_dmghp_ele != SKILL_RES_MAGIC & locvar_dmghp_ele != SKILL_RESDMG_CONSTITUTION ) {
+				if ( locvar_dmghp_ele != SKILL_SPACT_DANCE_OF_BLOW & locvar_dmghp_ele != SKILL_SPACT_FLASH_OF_SWIFTNESS & locvar_dmghp_ele != SKILL_RES_MAGIC & locvar_dmghp_ele != SKILL_RESDMG_CRUSH & locvar_dmghp_ele != SKILL_RESDMG_CONSTITUTION ) {
 					if ( cbit(CHARA_BIT_RES_ELEMENTAL, dmghp_charid) ) {
 						locvar_dmghp_dmg = 0
 					}

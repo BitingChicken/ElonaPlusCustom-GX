@@ -36740,7 +36740,7 @@
 			dbtmp = 1
 			dbtmp2 = cnt
 			repeat filtermax
-				if ( instr(filter_creature(1074), 0, filtern(cnt)) == (-1) ) {
+				if ( instr(userdatan(4, dbtmp2), 0, filtern(cnt)) == (-1) ) {
 					dbtmp = 0
 					break
 				}

@@ -351,6 +351,12 @@
 				dmgplayer 1 - card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), card@tcg(TCG_CARD_TEMP, aeft@tcg) / 5
 			}
 			dmgplayer card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), card@tcg(TCG_CARD_TEMP, aeft@tcg)
+			repeat 50
+				card@tcg(cnt, aeft@tcg) = 0
+			loop
+			repeat 5
+				cardn@tcg(cnt, aeft@tcg) = ""
+			loop
 			if ( gameresult@tcg == 2 ) {
 				gameresult@tcg = 4
 			}
@@ -4485,7 +4491,7 @@
 							card@tcg(TCG_CARD_REF_COST, cextra@tcg) = 3
 							card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_TEZ_SMOKE
 							card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -56
-							carddetailneff@tcg(cextra@tcg) = "Ehecatlipoca-Nahuaque    Weird Smoky Orb.  Rare:Antique\nEffect: Make Target Enemy Card a 0/0."
+							carddetailneff@tcg(cextra@tcg) = "Ehecatlipoca-Nahuaque    Weird Smoky Orb.  Rare:Antique\nEffect: Make Strongest Enemy Card on Field a 0/0."
 						}
 						if ( cardchoice@tcg == 3 ) {
 							card@tcg(TCG_CARD_X, cextra@tcg) = basex@tcg + 455 - 36, basey@tcg + 270 - 48, basex@tcg + 555 - 36, basey@tcg + 320 - 48

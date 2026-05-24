@@ -1,3 +1,10 @@
+# Upcoming
+
+# Fixed
+- CNPCs not appearing in slave npc pool.
+- Tweak of Element revert causing bells to be immune to PVDV damage.
+- (TCG) Balzak drawing cards not in the game.
+
 # 2.31.2.0
 
 # Added
@@ -20,6 +27,7 @@
 
 # TCG
 - New effect for most of the Act II/III unique cards. Added VFXs, Shop card packs.
+- Changed effects: [CGX TCG card effect DB Diff](https://elona.fandom.com/wiki/User_blog:JianmengYu/CGX_TCG_card_effect_DB?diff=81339)
 - Random Opponent Decks are now stronger (at higher winstreaks):
   - Card Pool goes up by 1 Act every 10 winstreaks.
   - Contains Utilities/Counters/Boardwipes.
