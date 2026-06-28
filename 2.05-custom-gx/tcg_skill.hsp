@@ -1601,6 +1601,25 @@
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++
 	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_SHEESHERPENT | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			card@tcg(TCG_CARD_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_ATTACK, aeft@tcg) + 2, 0, TCG_STAT_MAX)
+			card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg) + 2, 0, TCG_STAT_MAX)
+			card@tcg(TCG_CARD_HP, aeft@tcg) = limit(card@tcg(TCG_CARD_HP, aeft@tcg) + 2, 1, TCG_STAT_MAX)
+			card@tcg(TCG_CARD_REF_HP, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_HP, aeft@tcg) + 2, 1, TCG_STAT_MAX)
+			efllistadd 1, effref@tcg(TCG_SKILL_POWER, card@tcg(TCG_CARD_EFFECT, effac@tcg)), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+			efllistadd 1, (-1) * effref@tcg(TCG_SKILL_POWER, card@tcg(TCG_CARD_EFFECT, effac@tcg)), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+			card@tcg(TCG_CARD_REF_COST, aeft@tcg) = limit(card@tcg(TCG_CARD_REF_COST, aeft@tcg) - 1, 0, TCG_STAT_MAX)
+			efllistadd 2, effref@tcg(TCG_SKILL_POWER, card@tcg(TCG_CARD_EFFECT, effac@tcg)), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+
+			card@tcg(TCG_CARD_TURN_COUNT, aeft@tcg) = 0
+			cdbitmod TCG_BIT_DRUGGED, aeft@tcg, 1
+			efllistaddcard 19, aeft@tcg
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
 	if ( _switch_val@tcg == TCG_SKILL_EFF_STEAL11 | _switch_sw@tcg ) {
 		_switch_sw@tcg = 0
 		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
@@ -2796,6 +2815,80 @@
 						carddetailneff@tcg(cextra@tcg) = "Fried Tofu  No.???   fried tofu  Rare:None\nEffect: Battlecry: Feed the Fried Tofu to 1 of your Card."
 						gettargetcard cextra@tcg
 					}
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_MARIMO | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			if ( aeftg@tcg == TCG_SKILL_TYPE_ONGOING ) {
+				etl@tcg = limit(0 + 3 * card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), 0, 3)
+				marimo@tcg = 0
+				repeat clistmax@tcg(etl@tcg)
+					c@tcg =  clist@tcg(cnt, etl@tcg)
+					if ( card@tcg(TCG_CARD_REF_DBID, c@tcg) != CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN ) { continue }
+					marimo@tcg++
+				loop
+				card@tcg(TCG_CARD_ATTACK, aeft@tcg) += marimo@tcg * 3
+			} else {
+				aeftpplayer@tcg = card@tcg(TCG_CARD_CONTROLLER, aeft@tcg)
+				if ( hasholdspace(card@tcg(TCG_CARD_CONTROLLER, ac@tcg)) ) {
+					create_extra_card card@tcg(TCG_CARD_CONTROLLER, ac@tcg), CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN
+					if ( cextra@tcg >= 0 ) {
+						card@tcg(TCG_CARD_COST, cextra@tcg) = 0
+						card@tcg(TCG_CARD_REF_COST, cextra@tcg) = 0
+						card@tcg(TCG_CARD_LOCATION, cextra@tcg) = TCG_LOCATION_ANIM
+						card@tcg(TCG_CARD_HP, cextra@tcg) = 1
+						card@tcg(TCG_CARD_REF_HP, cextra@tcg) = 1
+						card@tcg(TCG_CARD_ATTACK, cextra@tcg) = 1
+						card@tcg(TCG_CARD_REF_ATTACK, cextra@tcg) = 1
+						card@tcg(TCG_CARD_X, cextra@tcg) = card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg), card@tcg(TCG_CARD_X, aeft@tcg), card@tcg(TCG_CARD_Y, aeft@tcg)
+						card@tcg(TCG_CARD_REF_PIC, cextra@tcg) = -68
+						card@tcg(TCG_CARD_REF_CHARA_PIC, cextra@tcg) = 0
+						cdbitmod TCG_BIT_FACE_UP, cextra@tcg, 1
+						card@tcg(TCG_CARD_EFFECT, cextra@tcg) = TCG_EFF_SACRIFICE_DRAW1CARD
+						carddetailneff@tcg(cextra@tcg) = "Marimo  No.Marimomo   Morimo  Rare:None\nEffect: Sacrifice: Draw 1 Card."
+						card@tcg(TCG_CARD_Y_MOVETO, cextra@tcg) -= 15 - 30 * aeftpplayer@tcg
+						tcgpass 30
+						card@tcg(TCG_CARD_Y_MOVETO, cextra@tcg) -= 25 - 50 * aeftpplayer@tcg
+						tcgpass 30
+						card@tcg(TCG_CARD_Y_MOVETO, cextra@tcg) -= 35 - 70 * aeftpplayer@tcg
+						tcgpass 30
+						gettargetcard cextra@tcg
+						tcgpass 20
+					}
+				}
+			}
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_KETSUGLIMMER | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			repeat 2
+				etl@tcg = 1 + cnt
+				ketsu@tcg(etl@tcg) = -1
+				repeat clistmax@tcg(etl@tcg)
+					c@tcg =  clist@tcg(cnt, etl@tcg)
+					if ( card@tcg(TCG_CARD_REF_COST, c@tcg) > ketsu@tcg(etl@tcg) ) { 
+						ketsu@tcg(etl@tcg) = card@tcg(TCG_CARD_REF_COST, c@tcg)
+					}
+				loop
+			loop
+			cdbitmod TCG_BIT_GLIMMER, aeft@tcg, 0
+			if ( card@tcg(TCG_CARD_CONTROLLER, aeft@tcg) == 0 ) {
+				if ( ketsu@tcg(1) >= 0 & (ketsu@tcg(1) >= ketsu@tcg(2) | gdata(GDATA_MONTH) == 6) ) {
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) += 4
+					cdbitmod TCG_BIT_GLIMMER, aeft@tcg, 1
+				}
+			} else {
+				if ( ketsu@tcg(2) >= 0 & (ketsu@tcg(1) <= ketsu@tcg(2) | gdata(GDATA_MONTH) == 6) ) {
+					card@tcg(TCG_CARD_ATTACK, aeft@tcg) += 4
+					cdbitmod TCG_BIT_GLIMMER, aeft@tcg, 1
 				}
 			}
 		}
@@ -7569,6 +7662,17 @@
 			cdbitmod TCG_BIT_FACE_UP, effac@tcg, 0
 			card@tcg(TCG_CARD_LOCATION, effac@tcg) = TCG_LOCATION_DECK
 			specialruledrawtwocardsperturn@tcg(0) = 1
+		}
+		goto *actionproc_SWEND1
+		_switch_sw@tcg++
+	}
+	if ( _switch_val@tcg == TCG_SKILL_EFF_OLDWOLF | _switch_sw@tcg ) {
+		_switch_sw@tcg = 0
+		if ( aeft@tcg >= 0 & aeft@tcg < maxcard@tcg ) {
+			aeftpplayer@tcg = limit(card@tcg(TCG_CARD_CONTROLLER, aeft@tcg), 0, 1)
+			specialruleoldwolf@tcg(aeftpplayer@tcg * 3) += card@tcg(TCG_CARD_REF_ATTACK, aeft@tcg)
+			specialruleoldwolf@tcg(aeftpplayer@tcg * 3 + 1) += card@tcg(TCG_CARD_REF_HP, aeft@tcg)
+			specialruleoldwolf@tcg(aeftpplayer@tcg * 3 + 2) = aeft@tcg + 1
 		}
 		goto *actionproc_SWEND1
 		_switch_sw@tcg++

@@ -9029,21 +9029,6 @@
 		cardrefbits = "78,99"
 		return 1
 	}
-	if ( dbid == CREATURE_ID_CITIZEN2 ) {
-		cardrefrace = "yerles"
-		cardrefclass = "warrior"
-		cardrefsex = "random"
-		cardrefpic2 = xy2pic(3, 4)
-		cardreflvl = 5
-		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 4
-		cardrefcost = 2
-		cardrefattack = 1
-		cardrefhp = 2
-		cardrefskillid = TCG_EFF_DEATHRATTLE_DRAW1CARD
-		cardrefbits = "78,99"
-		return 1
-	}
 	if ( dbid == CREATURE_ID_CITIZEN_OF_CYBER_DOME ) {
 		cardrefrace = "yerles"
 		cardrefclass = "gunner"
@@ -9387,6 +9372,36 @@
 		return 1
 	}
 	// juere
+	if ( dbid == CREATURE_ID_TOWN_CHILD3 ) {
+		cardrefrace = "juere"
+		cardrefclass = "tourist"
+		cardrefsex = "random"
+		cardrefpic2 = xy2pic(30, 35)
+		cardreflvl = 2
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 1
+		cardrefattack = 0
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_AFTERCOMBAT_GAIN1MANANEXTTURN
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_TOWN_CHILD4 ) {
+		cardrefrace = "juere"
+		cardrefclass = "tourist"
+		cardrefsex = "random"
+		cardrefpic2 = xy2pic(32, 35)
+		cardreflvl = 5
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 2
+		cardrefattack = 2
+		cardrefhp = 3
+		cardrefskillid = TCG_EFF_ONKILL_GAIN2MANANEXTTURN
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_ROUGH_PIRATE ) {
 		cardrefrace = "juere"
 		cardrefclass = "predator"
@@ -12844,6 +12859,19 @@
 		return 1
 	}
 	// beetle
+	if ( dbid == CREATURE_ID_KETSU_GLIMMER ) {
+		cardrefrace = "beetle"
+		cardrefclass = "warrior"
+		cardreflvl = 77
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 1
+		cardrefcost = 3
+		cardrefattack = 2
+		cardrefhp = 4
+		cardrefskillid = TCG_EFF_KESTUGLIMMER
+		cardrefbits = "5"
+		return 1
+	}
 	if ( dbid == CREATURE_ID_BIG_MOSQUITO ) {
 		cardrefrace = "beetle"
 		cardrefclass = "predator"
@@ -15464,6 +15492,21 @@
 		return 1
 	}
 	// norland
+	if ( dbid == CREATURE_ID_TOWN_CHILD2 ) {
+		cardrefrace = "norland"
+		cardrefclass = "tourist"
+		cardrefsex = "random"
+		cardrefpic2 = xy2pic(15, 3)
+		cardreflvl = 3
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 2
+		cardrefattack = 2
+		cardrefhp = 3
+		cardrefskillid = TCG_EFF_ONKILL_GAIN2MANA
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_BONYAC_THE_GENERAL_VENDOR ) {
 		cardrefrace = "norland"
 		cardrefclass = "gunner"
@@ -16017,6 +16060,21 @@
 		cardrefhp = 4
 		cardrefskillid = TCG_EFF_BATTLECRY_SEARCHDECKFOR1WARMAGE
 		cardrefbits = "5,78"
+		return 1
+	}
+	if ( dbid == CREATURE_ID_CITIZEN2 ) {
+		cardrefrace = "norland"
+		cardrefclass = "warrior"
+		cardrefsex = "random"
+		cardrefpic2 = xy2pic(3, 4)
+		cardreflvl = 5
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 4
+		cardrefcost = 2
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_DEATHRATTLE_DRAW1CARD
+		cardrefbits = "78,99"
 		return 1
 	}
 	if ( dbid == CREATURE_ID_ELDER ) {
@@ -18921,6 +18979,20 @@
 		return 1
 	}
 	// spirit
+	if ( dbid == CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN ) {
+		cardrefrace = "spirit"
+		cardrefclass = "predator"
+		cardrefsex = "female"
+		cardreflvl = 90
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 5
+		cardrefcost = 5
+		cardrefattack = 1
+		cardrefhp = 6
+		cardrefskillid = TCG_EFF_MARIMO
+		cardrefbits = "10,12"
+		return 1
+	}
 	if ( dbid == CREATURE_ID_DEVIANT_MINECART ) {
 		cardrefrace = "spirit"
 		cardrefclass = "predator"
@@ -19580,6 +19652,20 @@
 		return 1
 	}
 	// snake
+	if ( dbid == CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE ) {
+		cardrefrace = "snake"
+		cardrefclass = "priest"
+		cardrefsex = "male"
+		cardreflvl = 40
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 5
+		cardrefcost = 3
+		cardrefattack = 3
+		cardrefhp = 3
+		cardrefskillid = TCG_EFF_SHEESHERPENT
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_OYAUKAMUI ) {
 		cardrefrace = "snake"
 		cardrefclass = "wizard"
@@ -19684,6 +19770,20 @@
 		return 1
 	}
 	// dog
+	if ( dbid == CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF ) {
+		cardrefrace = "dog"
+		cardrefclass = "priest"
+		cardrefsex = "male"
+		cardreflvl = 20
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 5
+		cardrefcost = 3
+		cardrefattack = 2
+		cardrefhp = 3
+		cardrefskillid = TCG_EFF_OLDWOLF
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_RESTOROID_DIRE_WOLF ) {
 		cardrefrace = "dog"
 		cardrefclass = "predator"

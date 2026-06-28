@@ -454,7 +454,6 @@
 			promptAdd lang("営業フィート獲得", "Get shopkeeper feat"), "null", 13
 		}
 		promptAdd lang("1日の販売数を制限", "Limit sales per day"), "null", 14
-		promptAdd lang("バイトを雇う（未実装）", "Hire part time worker (Unimplemented)"), "null", 15
 	}
 	if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_RANCH ) {
 		promptAdd lang("ブリーダーを任命する", "Assign a breeder"), "null", 4
@@ -504,8 +503,10 @@
 			promptAdd lang("施設名称変更", "Change Map Name"), "null", 10
 		}
 	}
-	promptl(0, promptmax) = lang("お片付け機能", "Collecting function"), "null", "" + 23
-	promptmax++
+	promptAdd lang("お片付け機能", "Collecting function"), "null", 23
+	if ( gdata(GDATA_AREA) != AREA_HOME ) {
+		promptAdd lang("バイトを募集する", "Hire part time worker"), "null", 15
+	}
 	homemakewall = 0
 
 	/********** BLOODYSHADE CUSTOM - BEGINNING **********/ // House Board - Plant seeds/Collect yield
@@ -681,7 +682,7 @@
 					continue
 				}
 				tc = cnt
-				gain1 = gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, tc) * 30 + sdata(SKILL_ATTR_LER, tc) * 10
+				gain1 = gdata(GDATA_TRAVEL_DISTANCE) * 30 + sdata(SKILL_NORMAL_TRAVELING, tc) * 30 + sdata(SKILL_ATTR_LER, tc) * 10
 				gain2 = gain1 - cdata(CDATA_ACCUMULATED_TRAVEL_EXP, tc)
 				if ( gain2 < 900 ) {
 					txt lang(name(tc) + "は特に得るものが無かったようだ。", name(tc) + " didn't seem to have anything to gain from the travel.")
@@ -1108,8 +1109,7 @@
 		txt lang("落ちているアイテム全てを足元に集める機能だ。", "This is a function to collect all the dropped items at your feet.")
 		txtselectuse 2
 		repeat 2
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 200, 1
 		gosub *prompt_key
@@ -1194,8 +1194,7 @@
 		_switch_sw = 0
 		txtsetwlevel 5
 		repeat 5
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 450 - 100 * en, 1
 		gosub *prompt_key
@@ -1227,8 +1226,7 @@
 		_switch_sw = 0
 		txtsetwpoint 11
 		repeat 11
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 450 - 50 * en, 1
 		gosub *prompt_key
@@ -1571,11 +1569,6 @@
 		snd SOUNDLIST_BUILD1
 		goto *com_home_SWEND1
 	}
-	if ( _switch_val == 15 | _switch_sw ) {
-		_switch_sw = 0
-		snd SOUNDLIST_FAIL1
-		goto *com_home_SWEND1
-	}
 	if ( _switch_val == 7 | _switch_sw ) {
 		_switch_sw = 0
 		txtnew
@@ -1651,6 +1644,36 @@
 		txtef COLOR_GREEN
 		txt lang("変更を完全に適用するにはマップに入りなおす必要がある。", "You have to enter the map again to apply the changes.")
 		goto *com_home_SWEND1
+	}
+	if ( _switch_val == 28 | _switch_sw ) {
+		_switch_sw = 0
+		if ( cdata(CDATA_GOLD, CHARA_PLAYER) < mdata(MDATA_HEIGHT) * 500 ) {
+			txt lang("お金が足りない…", "You dont't have enough money...")
+			goto *com_home_SWEND1
+		}
+		cdata(CDATA_GOLD, CHARA_PLAYER) -= mdata(MDATA_HEIGHT) * 500
+		txtnew
+		snd SOUNDLIST_BUILD1
+		mdata(MDATA_HEIGHT)++
+		txtef COLOR_GREEN
+		txt lang("変更を完全に適用するにはマップに入りなおす必要がある。", "You have to enter map again to apply changes.")
+		goto *com_home_SWEND1
+		_switch_sw++
+	}
+	if ( _switch_val == 29 | _switch_sw ) {
+		_switch_sw = 0
+		if ( cdata(CDATA_GOLD, CHARA_PLAYER) < mdata(MDATA_WIDTH) * 500 ) {
+			txt lang("お金が足りない…", "You dont't have enough money...")
+			goto *com_home_SWEND1
+		}
+		cdata(CDATA_GOLD, CHARA_PLAYER) -= mdata(MDATA_WIDTH) * 500
+		txtnew
+		snd SOUNDLIST_BUILD1
+		mdata(MDATA_WIDTH)++
+		txtef COLOR_GREEN
+		txt lang("変更を完全に適用するにはマップに入りなおす必要がある。", "You have to enter map again to apply changes.")
+		goto *com_home_SWEND1
+		_switch_sw++
 	}
 	if ( _switch_val == 9 | _switch_sw ) {
 		_switch_sw = 0
@@ -1776,6 +1799,67 @@
 			}
 		}
 		goto *pc_turn
+	}
+	if ( _switch_val == 15 | _switch_sw ) {
+		_switch_sw = 0
+		txtnew
+		p = 0
+		repeat 245 - 57, 57
+			if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_ALIVE | cdata(CDATA_EXIST, cnt) == CHAR_STATE_SPIRIT ) {
+				if ( cdata(CDATA_ROLE, cnt) != ROLE_NONE ) {
+					p++
+				}
+			}
+		loop
+		if ( p >= 50 ) {
+			snd SOUNDLIST_FAIL1
+			txt lang("この場所はすでに人であふれかえっている。", "You already have too many guests in this place.")
+			goto *com_home_SWEND1
+		}
+		if ( gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 < mdata(MDATA_WEREWOLF_STAGE) ) {
+			snd SOUNDLIST_FAIL1
+			txt lang("次に応募者が集まるのは" + cnvdate(mdata(MDATA_WEREWOLF_STAGE), 1) + "だ。", "The next time you get applicants is " + cnvdate(mdata(MDATA_WEREWOLF_STAGE), 1) + ".")
+			goto *com_home_SWEND1
+		}
+		repeat 16
+			flt 50
+			characreate -1, CREATURE_ID_BUG, -3, 0
+			if ( stat == 0 ) {
+				continue
+			}
+			if ( cdata(CDATA_QUALITY, rc) >= FIX_QUALITY_MIRACLE ) {
+				chara_vanquish rc
+				continue
+			}
+			if ( cdata(CDATA_LEVEL, rc) > 50 ) {
+				chara_vanquish rc
+				continue
+			}
+			cdata(CDATA_MATERIAL3_COUNTER, rc) = rnd(20)
+			cdata(CDATA_EXIST, rc) = CHAR_STATE_TEMP
+		loop
+		randomize
+		txtnew
+		txt lang("誰を雇用する？", "Who do you want to hire?")
+		allyctrl = 7
+		gosub *com_listNpc
+		if ( stat != (-1) ) {
+			tc = stat
+			cdatan(CDATAN_NAME, tc) = lang("バイトの" + cdatan(CDATAN_NAME, tc), cdatan(CDATAN_NAME, tc) + " the part-time worker")
+			cdata(CDATA_ROLE, tc) = ROLE_PART_TIME_WORKER
+			cdata(CDATA_RELATION, tc) = RELATION_NEUTRAL
+			cbitmod CHARA_BIT_EVENT_TALK, tc, TRUE
+			gosub *chat
+		}
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) == CHAR_STATE_TEMP ) {
+				chara_vanquish cnt
+			}
+		loop
+		mdata(MDATA_WEREWOLF_STAGE) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 + 240
+		autosave = 1 * (gdata(GDATA_AREA) != AREA_SHOW_HOUSE)
+		goto *com_home_SWEND1
+		_switch_sw++
 	}
 	if ( _switch_val == 6 | _switch_sw ) {
 		_switch_sw = 0

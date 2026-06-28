@@ -821,9 +821,7 @@
 		s = lang("ささやかな支援", "Small relief supplies")
 		file = "bg_re4"
 		buff = lang("ガイドが支援物資を調達してきたようだ。", "It seems the guide has brought in some relief supplies.")
-		list(0, listmax) = 1
-		listn(0, listmax) = lang("サンキュー", "(Receive)")
-		listmax++
+		chatList 1, lang("サンキュー", "(Receive)")
 		gosub *re_select
 		if ( gdata(GDATA_FLAG_MAIN) < 210 ) {
 			flt

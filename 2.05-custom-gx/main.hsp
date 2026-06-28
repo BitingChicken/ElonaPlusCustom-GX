@@ -18,9 +18,9 @@
 #include "mock_defines.hsp"
 #endif
 
-#define global VARIANT_NAME "ElonaPlus Custom-GX 2.31.2.0"
-#define global VARIANT_TITLE "Elona+ Custom-GX 2.31.2.0"
-#define global VERSION_STRING "6.41"
+#define global VARIANT_NAME "ElonaPlus Custom-GX 2.32.1.0"
+#define global VARIANT_TITLE "Elona+ Custom-GX 2.32.1.0"
+#define global VERSION_STRING "6.42"
 #define global VERSION_NUMBER int(double(VERSION_STRING) * 1000)
 #define global NET_VERSION	200000
 
@@ -871,31 +871,31 @@
 		if ( jp ) {
 			screen 20, 800, 190
 			font lang(cfg_font1, cfg_font2), 13 - en * 2, 0
-			s = lang("★初心者向け基本操作（初期設定）（大文字コマンドはshift押しながら入力）", "Essential is normal mode.")
+			s = lang("★初心者向け基本操作（初期設定）（大文字コマンドはshift押しながら入力）", "Basic operation for beginners (initial settings) (Press Shift while entering uppercase commands) ")
 			pos 10, 0
 			mes s
-			s = lang("※このウインドウを閉じると連動してゲームも閉じます。設定からこのウインドウが出ないようにもできます。", "Essential is normal mode.")
+			s = lang("※このウインドウを閉じると連動してゲームも閉じます。設定からこのウインドウが出ないようにもできます。", "*Closing this window will also close the game. You can disable this window in the settings.")
 			pos 10, 20
 			mes s
-			s = lang("←↑↓→:移動　enter:決定　shift:キャンセル　space:汎用　?:ヘルプを表示(その他操作方法もここ)", "Essential is normal mode.")
+			s = lang("←↑↓→:移動　enter:決定　shift:キャンセル　space:汎用　?:ヘルプを表示(その他操作方法もここ)", "Arrow:move /Enter:confirm /Shift:cancel /Space:general /?:help (Other operation methods are also here) ")
 			pos 10, 40
 			mes s
-			s = lang("q:quaff(飲む)　w:wear(装備)　e:eat(食べる)　r:read(読む)　t:tool(使う)　　 i:interact(干渉する)　o:open(開く)　", "Essential is normal mode.")
+			s = lang("q:quaff(飲む)　w:wear(装備)　e:eat(食べる)　r:read(読む)　t:tool(使う)　　 i:interact(干渉する)　o:open(開く)　", "q:quaff /w:wear /e:eat /r:read /t:tool /i:interact /o:open")
 			pos 10, 65
 			mes s
-			s = lang("　　　　　　　 W:WideApply(広域能力を使う)　R:Rest(休息)　T:Throw(投げる)　I:itemstack(アイテムスタック)", "Essential is normal mode.")
+			s = lang("　　　　　　　 W:WideApply(広域能力を使う)　R:Rest(休息)　T:Throw(投げる)　I:Itemstack(アイテムスタック)", "W:WideApply /R:Rest /T:Throw /I:Itemstack ")
 			pos 10, 85
 			mes s
-			s = lang("a:apply(能力を使う)　s:search(調べる)　　　d:drop(置く)　　 f:fire(射撃)　g:get(取る)　h:hijump(ハイジャンプ)　", "Essential is normal mode.")
+			s = lang("a:apply(能力を使う)　s:search(調べる)　　　d:drop(置く)　　 f:fire(射撃)　g:get(取る)　h:hijump(ハイジャンプ)　", "a:apply /s:search /d:drop /f:fire /g:get /h:hijump")
 			pos 10, 110
 			mes s
-			s = lang("A:Ammo(特殊弾切替)　 S:Save(セーブ・設定)　D:Dig(穴を掘る)　F:Feat(特徴)　j:journal(日誌)　*:ターゲット指定", "Essential is normal mode.")
+			s = lang("A:Ammo(特殊弾切替)　 S:Save(セーブ・設定)　D:Dig(穴を掘る)　F:Feat(特徴)　j:journal(日誌)　*:ターゲット指定", "A:Ammo /S:Save /D:Dig /F:Feat /j:journal /*:Target selection")
 			pos 10, 130
 			mes s
-			s = lang("z:行動選択　x:アイテム調べる　c:chara(キャラ情報)　v:魔法を唱える　b:bash(体当たり)　m:material(所持マテリアル)", "Essential is normal mode.")
+			s = lang("z:行動選択　x:アイテム調べる　c:chara(キャラ情報)　v:魔法を唱える　b:bash(体当たり)　m:material(所持マテリアル)", "z:Action choices /x:Examine items /c:chara /v:cast spells /b:bash /m:material")
 			pos 10, 155
 			mes s
-			s = lang("Z:Zap(杖を振る)　　　　　　　 C:close(ドアを閉める)　　　　　　　　B:Blend(調合)　", "Essential is normal mode.")
+			s = lang("Z:Zap(杖を振る)　　　　　　　 C:close(ドアを閉める)　　　　　　　　B:Blend(調合)　", "Z:Zap rods /C:Close door /B:Blend ")
 			pos 10, 175
 			mes s
 		}
@@ -903,16 +903,46 @@
 			if ( cfg_displayLog ) {
 				screen 20, windoww - inf_msgx, 465
 				screen20displayed = 1
-				title "log"
+				title "log    You can disable this window in game settings."
 				pos 0, 0
 				gzoom windoww - inf_msgx, 465, 3, 496, 536, 180, 60
 			} else {
 				exist exedir + "controls.jpg"
 				if ( strsize != (-1) ) {
 					screen 20, 800, 600
-					title "Controls.jpg"
+					title "Controls.jpg    You can disable this window in game settings - message."
 					pos 0, 0
 					picload exedir + "controls.jpg", 1
+				} else {
+					screen 20, 800, 190
+					font lang(cfg_font1, cfg_font2), 13 - en * 2, 0
+					s = lang("★初心者向け基本操作（初期設定）（大文字コマンドはshift押しながら入力）", "Basic operation for beginners (initial settings) (Press Shift while entering uppercase commands) ")
+					pos 10, 0
+					mes s
+					s = lang("※このウインドウを閉じると連動してゲームも閉じます。設定からこのウインドウが出ないようにもできます。", "*Closing this window will also close the game. You can disable this window in the settings.")
+					pos 10, 20
+					mes s
+					s = lang("←↑↓→:移動　enter:決定　shift:キャンセル　space:汎用　?:ヘルプを表示(その他操作方法もここ)", "Arrow:move /Enter:confirm /Shift:cancel /Space:general /?:help (Other operation methods are also here) ")
+					pos 10, 40
+					mes s
+					s = lang("q:quaff(飲む)　w:wear(装備)　e:eat(食べる)　r:read(読む)　t:tool(使う)　　 i:interact(干渉する)　o:open(開く)　", "q:quaff /w:wear /e:eat /r:read /t:tool /i:interact /o:open")
+					pos 10, 65
+					mes s
+					s = lang("　　　　　　　 W:WideApply(広域能力を使う)　R:Rest(休息)　T:Throw(投げる)　I:Itemstack(アイテムスタック)", "W:WideApply /R:Rest /T:Throw /I:Itemstack ")
+					pos 10, 85
+					mes s
+					s = lang("a:apply(能力を使う)　s:search(調べる)　　　d:drop(置く)　　 f:fire(射撃)　g:get(取る)　h:hijump(ハイジャンプ)　", "a:apply /s:search /d:drop /f:fire /g:get /h:hijump")
+					pos 10, 110
+					mes s
+					s = lang("A:Ammo(特殊弾切替)　 S:Save(セーブ・設定)　D:Dig(穴を掘る)　F:Feat(特徴)　j:journal(日誌)　*:ターゲット指定", "A:Ammo /S:Save /D:Dig /F:Feat /j:journal /*:Target selection")
+					pos 10, 130
+					mes s
+					s = lang("z:行動選択　x:アイテム調べる　c:chara(キャラ情報)　v:魔法を唱える　b:bash(体当たり)　m:material(所持マテリアル)", "z:Action choices /x:Examine items /c:chara /v:cast spells /b:bash /m:material")
+					pos 10, 155
+					mes s
+					s = lang("Z:Zap(杖を振る)　　　　　　　 C:close(ドアを閉める)　　　　　　　　B:Blend(調合)　", "Z:Zap rods /C:Close door /B:Blend ")
+					pos 10, 175
+					mes s
 				}
 			}
 		}
@@ -1595,6 +1625,7 @@
 						flt
 						characreate -1, CREATURE_ID_DETECTIVE, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER)
 					}
+					cdata(CDATA_SANITY, rc) = rnd(15)
 				}
 			}
 			if ( kitune == 10 ) {
@@ -6911,6 +6942,12 @@
 		txtmore
 		txt lang("" + gdata(GDATA_QUEST_FAME) + "の名声値を手に入れた。", "You gain " + gdata(GDATA_QUEST_FAME) + " fame.")
 		cdata(CDATA_FAME, CHARA_PLAYER) += gdata(GDATA_QUEST_FAME)
+		txtef COLOR_ORANGE
+		gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) += 3
+		txt lang("インスピレーションを3得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired (+3). [Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+		txtef COLOR_LIGHT_GREEN
+		gdata(GDATA_TRAVEL_DISTANCE) += 3
+		txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You gained a good amount of travel experience (+3). [Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 		if ( gdata(GDATA_AREA) == AREA_VOID ) {
 			adata(ADATA_BOSS, gdata(GDATA_AREA)) = 0
 			gdata(GDATA_VOID_BOSS) = gdata(GDATA_VOID_BOSS) + 5
@@ -7256,6 +7293,11 @@
 		if ( gdata(GDATA_AREA) == AREA_ST_NORTH_BORDER ) {
 			flt
 			characreate -1, CREATURE_ID_ZISILION_THE_MINE_KING, 9, 10
+			cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
+		}
+		if ( gdata(GDATA_AREA) == AREA_GRAVEYARD ) {
+			flt
+			characreate -1, CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF, 19, 13
 			cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
 		}
 		if ( gdata(GDATA_AREA) == AREA_TRUCE_GROUND ) {
@@ -8425,8 +8467,7 @@
 		await 500
 		txtsetendword 3
 		repeat 3
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 300, 0
 		gosub *prompt_key
@@ -8469,7 +8510,7 @@
 		}
 		if ( cfg_travelexp_select == 0 ) {
 			if ( gdata(GDATA_TRAVEL_DISTANCE) >= 10 ) {
-				if ( gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, CHARA_PLAYER) * 30 + sdata(SKILL_ATTR_LER, CHARA_PLAYER) * 10 > cdata(CDATA_ACCUMULATED_TRAVEL_EXP, CHARA_PLAYER) + 900 ) {
+				if ( gdata(GDATA_TRAVEL_DISTANCE) * 30 + sdata(SKILL_NORMAL_TRAVELING, CHARA_PLAYER) * 30 + sdata(SKILL_ATTR_LER, CHARA_PLAYER) * 10 > cdata(CDATA_ACCUMULATED_TRAVEL_EXP, CHARA_PLAYER) + 900 ) {
 					snd SOUNDLIST_LOG
 					txtef COLOR_LIGHT_GREEN
 					txt lang("蓄積した" + gdata(GDATA_TRAVEL_DISTANCE) + "の旅経験を整理・共有しようか？", "Organize and share your accumulated " + gdata(GDATA_TRAVEL_DISTANCE) + " travelExp?")
@@ -8484,7 +8525,7 @@
 								continue
 							}
 							tc = cnt
-							gain1 = gdata(GDATA_TRAVEL_DISTANCE) * 10 + sdata(SKILL_NORMAL_TRAVELING, tc) * 30 + sdata(SKILL_ATTR_LER, tc) * 10
+							gain1 = gdata(GDATA_TRAVEL_DISTANCE) * 30 + sdata(SKILL_NORMAL_TRAVELING, tc) * 30 + sdata(SKILL_ATTR_LER, tc) * 10
 							gain2 = gain1 - cdata(CDATA_ACCUMULATED_TRAVEL_EXP, tc)
 							if ( 0 ) {
 								txt lang(name(tc) + "は、" + gain1 + "で" + gain2 + "だ。", name(tc) + " didn't seem to have anything to gain from the travel.")

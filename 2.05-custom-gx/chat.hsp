@@ -895,6 +895,58 @@
 		goto *chat_event_SWEND1
 		_switch_sw++
 	}
+	if ( _switch_val == ROLE_PART_TIME_WORKER | _switch_sw ) {
+		_switch_sw = 0
+		buff = lang("お給料は先払いでお願いする" + _yo(), "I'd like to be paid my salary in advance.")
+		hire30 = cdata(CDATA_LEVEL, tc) * 10
+		hire180 = cdata(CDATA_LEVEL, tc) * 60
+		hire360 = cdata(CDATA_LEVEL, tc) * 120
+		if ( cdata(CDATA_GOLD, CHARA_PLAYER) >= hire30 ) {
+			chatList 1, lang("30日分払う( " + hire30 + " gold)", "Hire for 30 days (" + hire30 + " gold).")
+		}
+		if ( cdata(CDATA_GOLD, CHARA_PLAYER) >= hire180 ) {
+			chatList 2, lang("180日分払う( " + hire180 + " gold)", "Hire for 180 days (" + hire180 + " gold).")
+		}
+		if ( cdata(CDATA_GOLD, CHARA_PLAYER) >= hire360 ) {
+			chatList 2, lang("360日分払う( " + hire360 + " gold)", "Hire for 360 days (" + hire360 + " gold).")
+		}
+		chatList 0, lang("やっぱりやめる", "Some other time.")
+		chatesc = 1
+		gosub *chat_select
+		if ( chatval == 1 | chatval == 2 | chatval == 3 ) {
+			cbitmod CHARA_BIT_HIRED, tc, TRUE
+			snd SOUNDLIST_PAYGOLD1
+			if ( cdata(CDATA_HIRE_DATE, tc) < gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 ) {
+				cdata(CDATA_HIRE_DATE, tc) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12
+			}
+			if ( chatval == 1 ) {
+				cdata(CDATA_GOLD, CHARA_PLAYER) -= hire30
+				cdata(CDATA_HIRE_DATE, tc) += 24 * 30
+			}
+			if ( chatval == 2 ) {
+				cdata(CDATA_GOLD, CHARA_PLAYER) -= hire180
+				cdata(CDATA_HIRE_DATE, tc) += 24 * 120
+			}
+			if ( chatval == 3 ) {
+				cdata(CDATA_GOLD, CHARA_PLAYER) -= hire360
+				cdata(CDATA_HIRE_DATE, tc) += 24 * 360
+			}
+			snd SOUNDLIST_PRAY1
+			txtef COLOR_YELLOW
+			txt lang(cnvdate(cdata(CDATA_HIRE_DATE, tc), 1) + "まで雇った。", "The hire contract expires at " + cnvdate(cdata(CDATA_HIRE_DATE, tc), 1) + ".")
+			await 250
+			cdata(CDATA_EXIST, tc) = CHAR_STATE_ALIVE
+			cdata(CDATA_RELATION, tc) = RELATION_NEUTRAL
+			cdata(CDATA_RELATION_ORG, tc) = RELATION_NEUTRAL
+			cdata(CDATA_AI_AGGRO, tc) = 0
+			buff = lang(_thanks(2), "Thanks!")
+		}
+		else {
+			buff = lang("冷やかし" + _ka(1), "You kidding? ")
+		}
+		goto *chat_event_SWEND1
+		_switch_sw++
+	}
 	if ( _switch_val == ROLE_CARAVAN_MASTER | _switch_sw ) {
 		_switch_sw = 0
 		if ( gdata(GDATA_AREA) == AREA_DOCK ) {
@@ -6967,7 +7019,7 @@
 		if ( gdata(GDATA_FLAG_SUB_JUERES_IMPERTINENCE) == 1000 ) {
 			chatList 2, lang("がんばれ", "Keep up the good work.")
 			if ( mdata(MDATA_CITY_COMPLAINTS) == 0 ) {
-				chatList 1, lang("管理代行するよ", "I want on behalf of the town management.")
+				chatList 1, lang("管理代行するよ", "I want to take over the town management.")
 			}
 			if ( mdata(MDATA_CITY_COMPLAINTS) > 0 ) {
 				chatList 0, lang("管理コマンド", "I want to run the town management.")
@@ -7017,8 +7069,14 @@
 				gosub *chat_select
 				if ( chatval == 1 ) {
 					chatList 0, lang("キャンセル", "Cancel")
-					chatList 2, lang("ご当地キャラ配置（運営予算200cgp消費）", "Placement of the local mascot (Budget:200) ")
-					chatList 3, lang("準備中", "Cancel")
+					chatList 2, lang("ご当地キャラ配置（運営予算200cgp消費）", "Placement of the local mascot (Budget: 200 cgp) ")
+					cost = mdata(MDATA_CITY_MAINTENANCE_COST) / 2
+					if ( mdata(MDATA_CITY_APPROVAL_RATE) != 1000 ) {
+						chatList 3, lang("定期維持補修の停止（維持費" + cost + "cgp削減）", "Suspension of scheduled maintenance (-" + cost + " Mnt. cgp).")
+					}
+					if ( mdata(MDATA_CITY_APPROVAL_RATE) == 1000 ) {
+						chatList 4, lang("定期維持補修の再開（維持費" + cost + "cgp増加）", "Resumption of scheduled maintenance (+" + cost + " Mnt. cgp)")
+					}
 					buff = lang("どういう政策を行う" + _noka(3) + "？", "What the policy are you going to do ?")
 					gosub *chat_select
 					if ( chatval == 1 ) {
@@ -7059,6 +7117,43 @@
 							txt lang("観光収入" + mdata(MDATA_CITY_TOURISM_REVENUE) + "→" + afterau + " ", "Tourism revenue :" + mdata(MDATA_CITY_TOURISM_REVENUE) + " -> " + afterau + " ")
 							mdata(MDATA_CITY_TOURISM_REVENUE) += 20
 						}
+						goto *chat_end
+					}
+					if ( chatval == 3 ) {
+						snd SOUNDLIST_DING2
+						repeat 245
+							if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+								continue
+							}
+							if ( cnt == 0 ) {
+								continue
+							}
+							if ( cdata(CDATA_RELATION, cnt) == RELATION_ALLY ) {
+								continue
+							}
+							if ( cdata(CDATA_PERSONALITY, cnt) == 1 | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
+								modimp cnt, 5
+								if ( rnd(5) == 0 ) {
+									txt lang("「壊れたところだけ直せば安上がりだもんな！」", cnvtalk("If we just fix what's broken, we'll save a ton of money!")), lang("「カネのムダを徹底的に無くそう！」", cnvtalk("Eliminate all wasteful spending!")), lang("「無くなっても自分は困らない」", cnvtalk("Even if maintenance were discontinued, I won't be affected.")), lang("「前から維持費が高いと思っていたんだ！」", cnvtalk("I've always thought the maintenance costs were high!"))
+								}
+							}
+							else {
+								modimp cnt, -5
+								if ( rnd(5) == 0 ) {
+									txt lang("「街が壊れたら責任取って修繕しろよ」", cnvtalk("You better take responsibility and fix the streets if they fall into disrepair!")), lang("「そこの予算を削ったらダメでしょ」", cnvtalk("Cutting that budget is a bad idea.")), lang("「これはインフラ破壊工作では？」", cnvtalk("Isn't this an act of sabotage against infrastructure?")), lang("「物が盗まれたら誰が補填してくれるんだ？」", cnvtalk("If something gets stolen, who will compensate me?"))
+								}
+							}
+						loop
+						afterau = mdata(MDATA_CITY_MAINTENANCE_COST) / 2
+						txt lang("維持費" + mdata(MDATA_CITY_MAINTENANCE_COST) + "→" + afterau + " ", "Maintenance costs :" + mdata(MDATA_CITY_MAINTENANCE_COST) + " -> " + afterau + " ")
+						mdata(MDATA_CITY_APPROVAL_RATE) = 1000
+						goto *chat_end
+					}
+					if ( chatval == 4 ) {
+						snd SOUNDLIST_DING2
+						afterau = mdata(MDATA_CITY_MAINTENANCE_COST) / 2
+						txt lang("維持費" + afterau + "→" + mdata(MDATA_CITY_MAINTENANCE_COST) + " ", "Maintenance costs :" + afterau + " -> " + mdata(MDATA_CITY_MAINTENANCE_COST) + " ")
+						mdata(MDATA_CITY_APPROVAL_RATE) = 0
 						goto *chat_end
 					}
 					goto *chat_end
@@ -7129,13 +7224,34 @@
 		}
 		if ( gdata(GDATA_FLAG_SUB_UNPAID_COMPENSATION) == 1 ) {
 			chatList 1, lang("聞き流す", "Yeah.")
+			rctar = -1, -1, -1, -1, -1, -1
 			if ( findally(CREATURE_ID_TOWN_CHILD) != (-1) ) {
 				rc = findally(CREATURE_ID_TOWN_CHILD)
 				chatList 2, lang(cdatan(CDATAN_NAME, rc) + "を引き渡す", "(Turn over " + cdatan(CDATAN_NAME, rc) + ".)")
+				rctar(2) = rc
+			}
+			if ( findally(CREATURE_ID_TOWN_CHILD2) != (-1) ) {
+				rc = findally(CREATURE_ID_TOWN_CHILD2)
+				chatList 3, lang(cdatan(CDATAN_NAME, rc) + "を引き渡す", "(Turn over " + cdatan(CDATAN_NAME, rc) + ".)")
+				rctar(3) = rc
+			}
+			if ( findally(CREATURE_ID_TOWN_CHILD3) != (-1) ) {
+				rc = findally(CREATURE_ID_TOWN_CHILD3)
+				chatList 4, lang(cdatan(CDATAN_NAME, rc) + "を引き渡す", "(Turn over " + cdatan(CDATAN_NAME, rc) + ".)")
+				rctar(4) = rc
+			}
+			if ( findally(CREATURE_ID_TOWN_CHILD4) != (-1) ) {
+				rc = findally(CREATURE_ID_TOWN_CHILD4)
+				chatList 5, lang(cdatan(CDATAN_NAME, rc) + "を引き渡す", "(Turn over " + cdatan(CDATAN_NAME, rc) + ".)")
+				rctar(5) = rc
 			}
 			buff = lang("どんどんさらってきてくれ。私を馬鹿にしたことを世間に後悔させてやる。", "Bring them to me as soon as you can. I'll make these people regret making a fool out of me.")
 			gosub *chat_select
-			if ( chatval == 2 ) {
+			if ( chatval >= 2 & chatval <= 5 ) {
+				rc = rctar(chatval)
+				if ( rc == (-1) ) {
+					goto *chat_end
+				}
 				if ( cbit(CHARA_BIT_PRECIOUS_ALLY, rc) == 1 ) {
 					snd SOUNDLIST_FAIL1
 					txt_preciousally
@@ -7177,12 +7293,12 @@
 
 				/********** BLOODYSHADE CUSTOM - BEGINNING **********/
 
-				AllyID = findally(CREATURE_ID_TOWN_CHILD)
+				AllyID = rc
 				gosub *DeleteAIInfo
 
 				/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-				chara_vanquish findally(CREATURE_ID_TOWN_CHILD)
+				chara_vanquish rc
 				goto *chat_end
 			}
 		}
@@ -15682,6 +15798,30 @@
 		}
 		goto *chat_end
 	}
+	if ( _switch_val == CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF | _switch_sw ) {
+		_switch_sw = 0
+		chatList 0, lang("未実装", "under development")
+		chatList 1, lang("未実装", "under development")
+		chatList 2, lang("未実装", "under development")
+		chatList 3, lang("未実装", "under development")
+		buff = lang("なんじゃあ、ジロジロと…わしの顔に何かついとるんか？", "Why are you staring at me like that... Is there something on my face?")
+		gosub *chat_select
+		if ( chatval == 0 ) {
+			goto *chat_end
+		}
+		if ( chatval == 1 ) {
+			goto *chat_end
+		}
+		if ( chatval == 2 ) {
+			goto *chat_end
+		}
+		if ( chatval == 3 ) {
+			goto *chat_end
+		}
+		goto *chat_end
+		goto *chat_unique_SWEND1
+		_switch_sw++
+	}
 	if ( _switch_val == CREATURE_ID_TALKA_THE_LONG_TWINTAIL | _switch_sw ) {
 		_switch_sw = 0
 		chatList 0, lang("信仰の深さについて", "I want to know about Piety.")
@@ -19500,6 +19640,27 @@
 				}
 			}
 		}
+		if ( cdata(CDATA_ROLE, tc) == ROLE_PART_TIME_WORKER ) {
+			hire30 = cdata(CDATA_LEVEL, tc) * 10
+			hire180 = cdata(CDATA_LEVEL, tc) * 60
+			hire360 = cdata(CDATA_LEVEL, tc) * 120
+			if ( cdata(CDATA_GOLD, CHARA_PLAYER) >= hire30 ) {
+				chatList 154, lang("雇用期間30日延長( " + hire30 + " gold)", "Extend contract for 30 days ( " + hire30 + " gold).")
+			}
+			if ( cdata(CDATA_GOLD, CHARA_PLAYER) >= hire180 ) {
+				chatList 155, lang("雇用期間180日延長( " + hire180 + " gold)", "Extend contract for 180 days ( " + hire180 + " gold).")
+			}
+			if ( cdata(CDATA_GOLD, CHARA_PLAYER) >= hire360 ) {
+				chatList 156, lang("雇用期間360日延長( " + hire360 + " gold)", "Extend contract for 360 days ( " + hire360 + " gold).")
+			}
+			if ( cdata(CDATA_HIRE_DATE, tc) >= gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 ) {
+				chatList 157, lang("作業の指示(未実装)　", "Work instructions (under development) ")
+			}
+			if ( cdata(CDATA_HIRE_DATE, tc) < gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 ) {
+				txtef COLOR_RED
+				txt lang(cdatan(CDATAN_NAME, tc) + "との契約期間は切れている。", "The period of contract with " + cdatan(CDATAN_NAME, tc) + " has expired.")
+			}
+		}
 		if ( cbit(CHARA_BIT_LABOR_CAMP, tc) == TRUE & gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
 			if ( cdata(CDATA_EVOCHAT_POINTS, CHARA_PLAYER) > 0 ) {
 				chatList 132, lang("【暗黒evochat】", "<Darkness evochat>")
@@ -19549,10 +19710,12 @@
 			}
 		}
 		if ( cdata(CDATA_ROLE, tc) == ROLE_IDENTIFIER ) {
-			chatList 75, lang("魔法実習を受けたい", "Attend a magic practice.")
 			chatList 14, lang("鑑定したい", "I need you to identify an item.") + " (" + calcidentifyvalue(0) + strgold + ")"
 			chatList 15, lang("全て鑑定してほしい", "Identify all of my stuff.") + " (" + calcidentifyvalue(1) + strgold + ")"
 			chatList 16, lang("調査したい", "Investigate an item.") + " (" + calcidentifyvalue(2) + strgold + ")"
+			chatList 75, lang("魔法実習を受けたい", "Attend a magic practice.")
+			chatList 158, lang("不要な魔法ストックの交換", "Exchange unnecessary magic stocks.")
+			chatList 159, lang("不要な魔法ストックまとめて交換", "Exchange unnecessary all magic stocks.")
 		}
 		if ( cdata(CDATA_ROLE, tc) == ROLE_TRAINER ) {
 			chatList 17, lang("訓練したい", "Train me.")
@@ -19560,7 +19723,7 @@
 		}
 		if ( cdata(CDATA_ROLE, tc) == ROLE_MAYOR ) {
 			if ( mdata(MDATA_CITY_COMPLAINTS) == 0 ) {
-				chatList 73, lang("街の管理代行（必要発言力" + mdata(MDATA_CITY_AUTHORITY) + "/2000）", "I want on behalf of the town management.(Authority" + mdata(MDATA_CITY_AUTHORITY) + "/2000)")
+				chatList 73, lang("街の管理代行（必要発言力" + mdata(MDATA_CITY_AUTHORITY) + "/2000）", "I want to take over the town management. (Authority: " + mdata(MDATA_CITY_AUTHORITY) + "/2000)")
 			}
 			if ( mdata(MDATA_CITY_COMPLAINTS) > 0 ) {
 				chatList 74, lang("街の管理コマンド", "I want to run the town management.")
@@ -20130,15 +20293,7 @@
 		snd SOUNDLIST_CARD1
 		await 50
 		snd SOUNDLIST_CARD1
-		cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) += 16
-		if ( cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) > 100 ) {
-			if ( cdata(CDATA_SHIFT_FORM, CHARA_PLAYER) <= SHIFT_FORM_NONE & cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) <= 0 ) {
-				cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) = 100
-			}
-		}
-		if ( cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) > 200 ) {
-			cdata(CDATA_POWER_GAUGE, CHARA_PLAYER) = 200
-		}
+		modgauge CHARA_PLAYER, 16
 		kaiwa = rnd(3)
 		if ( kaiwa == 0 ) {
 			txt lang("「ざーこｗざーこｗ」", cnvtalk("Zaaaaako!"))
@@ -23354,6 +23509,34 @@
 		gosub *sexsex2
 		goto *chat_end
 	}
+	if ( chatval == 154 | chatval == 155 | chatval == 156 ) {
+		snd SOUNDLIST_PAYGOLD1
+		if ( cdata(CDATA_HIRE_DATE, tc) < gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 ) {
+			cdata(CDATA_HIRE_DATE, tc) = gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12
+		}
+		if ( chatval == 154 ) {
+			cdata(CDATA_GOLD, CHARA_PLAYER) -= hire30
+			cdata(CDATA_HIRE_DATE, tc) += 24 * 30
+		}
+		if ( chatval == 155 ) {
+			cdata(CDATA_GOLD, CHARA_PLAYER) -= hire180
+			cdata(CDATA_HIRE_DATE, tc) += 24 * 120
+		}
+		if ( chatval == 156 ) {
+			cdata(CDATA_GOLD, CHARA_PLAYER) -= hire360
+			cdata(CDATA_HIRE_DATE, tc) += 24 * 360
+		}
+		snd SOUNDLIST_PRAY1
+		txtef COLOR_YELLOW
+		txt lang(cnvdate(cdata(CDATA_HIRE_DATE, tc), 1) + "まで" + name(tc) + "を雇った。", "You extended the hire contract with " + name(tc) + ".")
+		await 250
+		cdata(CDATA_EXIST, tc) = CHAR_STATE_ALIVE
+		cdata(CDATA_RELATION, tc) = RELATION_NEUTRAL
+		cdata(CDATA_RELATION_ORG, tc) = RELATION_NEUTRAL
+		cdata(CDATA_AI_AGGRO, tc) = 0
+		buff = lang(_thanks(2), "Thanks!")
+		goto *chat_default
+	}
 	if ( chatval == 56 ) {
 		chatList 1, lang("はじめる", "Let's do it.")
 		chatList 0, lang("やめる", "W-Wait...")
@@ -23932,15 +24115,21 @@
 		chatList 1, lang("政策の実施", "Policy implementation")
 		chatList 2, lang("法律整備", "Policy development")
 		chatList 3, lang("周辺施設の建設", "Construction of the facility")
-		buff = lang("どういう管理を行う" + _noka(3) + "？", "What the management are you going to do ?")
+		buff = lang("どういう管理を行う" + _noka(3) + "？", "What the management are you going to do?")
 		gosub *chat_select
 		if ( chatval == 1 ) {
 			chatList 0, lang("キャンセル", "Cancel")
 			if ( gdata(GDATA_NEXT_VOTE) > gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 ) {
-				chatList 1, lang("貢献度の高い有権者に追加投票権（発言力50消費）", "Revival of the right to vote(Authority:50) ")
+				chatList 1, lang("貢献度の高い有権者に追加投票権（発言力50消費）", "Revival of the right to vote (Authority:50) ")
 			}
-			chatList 2, lang("ご当地キャラ配置（運営予算200cgp消費）", "Placement of the local mascot (Budget:200) ")
-			chatList 3, lang("準備中", "Cancel")
+			chatList 2, lang("ご当地キャラ配置（運営予算200cgp消費）", "Placement of the local mascot (Budget: 200 cgp) ")
+			cost = mdata(MDATA_CITY_MAINTENANCE_COST) / 2
+			if ( mdata(MDATA_CITY_APPROVAL_RATE) != 1000 ) {
+				chatList 3, lang("定期維持補修の停止（維持費" + cost + "cgp削減）", "Suspension of scheduled maintenance (-" + cost + " Mnt. cgp).")
+			}
+			if ( mdata(MDATA_CITY_APPROVAL_RATE) == 1000 ) {
+				chatList 4, lang("定期維持補修の再開（維持費" + cost + "cgp増加）", "Resumption of scheduled maintenance (+" + cost + " Mnt. cgp)")
+			}
 			buff = lang("どういう政策を行う" + _noka(3) + "？", "What the policy are you going to do ?")
 			gosub *chat_select
 			if ( chatval == 1 ) {
@@ -23960,7 +24149,7 @@
 					chatMore lang("そんな運営予算は無い" + _na(3) + "。", "We don't have that kind of operating budget."), strmore
 					goto *chat_default
 				}
-				if ( gdata(GDATA_AREA) != AREA_VERNIS & gdata(GDATA_AREA) != AREA_PORT_KAPUL ) {
+				if ( gdata(GDATA_AREA) != AREA_VERNIS & gdata(GDATA_AREA) != AREA_PORT_KAPUL & gdata(GDATA_AREA) != AREA_DERPHY & gdata(GDATA_AREA) != AREA_ARCBELC ) {
 					chatMore lang("この街では準備中。", "This town is still under preparation."), strmore
 					goto *chat_default
 				}
@@ -23972,6 +24161,16 @@
 				}
 				if ( gdata(GDATA_AREA) == AREA_PORT_KAPUL ) {
 					if ( findchara(CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL) == 0 ) {
+						kazu = 0
+					}
+				}
+				if ( gdata(GDATA_AREA) == AREA_DERPHY ) {
+					if ( findchara(CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE) == 0 ) {
+						kazu = 0
+					}
+				}
+				if ( gdata(GDATA_AREA) == AREA_ARCBELC ) {
+					if ( findchara(CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN) == 0 ) {
 						kazu = 0
 					}
 				}
@@ -23991,6 +24190,16 @@
 						characreate -1, CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL, 9, 9
 						cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
 					}
+					if ( gdata(GDATA_AREA) == AREA_DERPHY ) {
+						flt
+						characreate -1, CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE, 12, 25
+						cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
+					}
+					if ( gdata(GDATA_AREA) == AREA_ARCBELC ) {
+						flt
+						characreate -1, CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN, 17, 12
+						cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
+					}
 					afterau = mdata(MDATA_CITY_BUDGET) - 200
 					txt lang("運営予算" + mdata(MDATA_CITY_BUDGET) + "→" + afterau + " ", "Budget :" + mdata(MDATA_CITY_BUDGET) + " -> " + afterau + " ")
 					mdata(MDATA_CITY_BUDGET) -= 200
@@ -23998,6 +24207,43 @@
 					txt lang("観光収入" + mdata(MDATA_CITY_TOURISM_REVENUE) + "→" + afterau + " ", "Tourism revenue :" + mdata(MDATA_CITY_TOURISM_REVENUE) + " -> " + afterau + " ")
 					mdata(MDATA_CITY_TOURISM_REVENUE) += 20
 				}
+				goto *chat_end
+			}
+			if ( chatval == 3 ) {
+				snd SOUNDLIST_DING2
+				repeat 245
+					if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+						continue
+					}
+					if ( cnt == 0 ) {
+						continue
+					}
+					if ( cdata(CDATA_RELATION, cnt) == RELATION_ALLY ) {
+						continue
+					}
+					if ( cdata(CDATA_PERSONALITY, cnt) == 1 | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
+						modimp cnt, 5
+						if ( rnd(5) == 0 ) {
+							txt lang("「壊れたところだけ直せば安上がりだもんな！」", cnvtalk("If we just fix what's broken, we'll save a ton of money!")), lang("「カネのムダを徹底的に無くそう！」", cnvtalk("Eliminate all wasteful spending!")), lang("「無くなっても自分は困らない」", cnvtalk("Even if maintenance were discontinued, I won't be affected.")), lang("「前から維持費が高いと思っていたんだ！」", cnvtalk("I've always thought the maintenance costs were high!"))
+						}
+					}
+					else {
+						modimp cnt, -5
+						if ( rnd(5) == 0 ) {
+							txt lang("「街が壊れたら責任取って修繕しろよ」", cnvtalk("You better take responsibility and fix the streets if they fall into disrepair!")), lang("「そこの予算を削ったらダメでしょ」", cnvtalk("Cutting that budget is a bad idea.")), lang("「これはインフラ破壊工作では？」", cnvtalk("Isn't this an act of sabotage against infrastructure?")), lang("「物が盗まれたら誰が補填してくれるんだ？」", cnvtalk("If something gets stolen, who will compensate me?"))
+						}
+					}
+				loop
+				afterau = mdata(MDATA_CITY_MAINTENANCE_COST) / 2
+				txt lang("維持費" + mdata(MDATA_CITY_MAINTENANCE_COST) + "→" + afterau + " ", "Maintenance costs :" + mdata(MDATA_CITY_MAINTENANCE_COST) + " -> " + afterau + " ")
+				mdata(MDATA_CITY_APPROVAL_RATE) = 1000
+				goto *chat_end
+			}
+			if ( chatval == 4 ) {
+				snd SOUNDLIST_DING2
+				afterau = mdata(MDATA_CITY_MAINTENANCE_COST) / 2
+				txt lang("維持費" + afterau + "→" + mdata(MDATA_CITY_MAINTENANCE_COST) + " ", "Maintenance costs :" + afterau + " -> " + mdata(MDATA_CITY_MAINTENANCE_COST) + " ")
+				mdata(MDATA_CITY_APPROVAL_RATE) = 0
 				goto *chat_end
 			}
 			goto *chat_end
@@ -24010,7 +24256,7 @@
 			if ( mdata(MDATA_WEREWOLF_POLICY) != (-1) ) {
 				chatList 2, lang("人狼共生法（発言力750消費）", "Werewolf Conservation Zone (Authority:750) ")
 			}
-			chatList 3, lang("準備中", "Cancel")
+			chatList 3, lang("準備中", "Under development.")
 			buff = lang("どういう法律を制定する" + _noka(3) + "？", "What the policy are you going to do ?")
 			gosub *chat_select
 			if ( chatval == 1 ) {
@@ -24033,7 +24279,7 @@
 						if ( cdata(CDATA_RELATION, cnt) == RELATION_ALLY ) {
 							continue
 						}
-						if ( cdata(CDATA_SANITY, cnt) > 0 | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
+						if ( cdata(CDATA_SANITY, cnt) >= 10 | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
 							modimp cnt, -10
 							if ( rnd(2) == 0 ) {
 								txt lang("「まだ殺人していない人狼もいるのにかわいそう」", cnvtalk("I feel sorry for the werewolves who haven't killed anyone yet.")), lang("「人狼が暮らしにくくなるじゃないか！許されない差別だ！」", cnvtalk("It will make life difficult for werewolves! It's unacceptable discrimination!")), lang("「こんな管理者を支持する奴は馬鹿丸出しだよ」", cnvtalk("Anyone who supports the town manager like this is a complete idiot.")), lang("「人狼の機嫌を損ねて戦争になりかねない。友好のために撤回しろ」", cnvtalk("This law will upset the werewolves and could lead to war. Repeal it for the sake of friendship.")), lang("「争いは醜いので人狼に抵抗するべきではない」", cnvtalk("The conflict is ugly, so we shouldn't resist the werewolves.")), lang("「人狼は平和を望んでいる。野蛮な人類は寛容さを取り戻すべき」", cnvtalk("Werewolves want peace. Barbaric humans should regain tolerance.")), lang("「人狼がいると殺人が増えるというデータはありません！」", cnvtalk("There is no data that suggests that the presence of werewolves increases murder!"))
@@ -24068,7 +24314,7 @@
 						if ( cdata(CDATA_RELATION, cnt) == RELATION_ALLY ) {
 							continue
 						}
-						if ( cdata(CDATA_SANITY, cnt) > 0 | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
+						if ( cdata(CDATA_SANITY, cnt) >= 10 | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF | cdata(CDATA_ID, cnt) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
 							modimp cnt, 10
 							if ( rnd(5) == 0 ) {
 								txt lang("「人狼に配慮した優しい社会を作りましょう」", cnvtalk("Let's create a kind society that is considerate of werewolves.")), lang("「当然の法律。まだ足りないくらい」", cnvtalk("It's a natural law, but it's still not enough.")), lang("「試しに人狼に街を管理させてみてもいいのでは？」", cnvtalk("First, let's try having a werewolf manage the town."))
@@ -24087,6 +24333,67 @@
 		}
 		if ( chatval == 3 ) {
 			chatMore lang("開発中！", "Sorry, this is undeveloped.")
+		}
+		goto *chat_end
+	}
+	if ( chatval == 158 ) {
+		chatMore lang("不要な魔法はある" + _kana(3) + "？ストックを半分くれれば、その量に応じて充填用魔力をあげる" + _yo(), "If you give me half of the specified magic stock, I will give you mana charge to that amount."), strmore
+		efid = -1
+		gosub *com_spell_loop_pgchk
+		if ( efid > SKILL_NONE ) {
+			darkness2 = spell(efid - 400) / 200
+			if ( efid == SKILL_SPELL_METEOR ) {
+				darkness2 = darkness2 * 5
+			}
+			if ( efid == SKILL_SPELL_WISH ) {
+				darkness2 = darkness2 * 50
+			}
+			spell(efid - 400) /= 2
+			gdata(GDATA_ABSORB_CHARGE) += darkness2
+			txt lang("充填用魔力を" + darkness2 + "獲得した(魔力の貯蓄：" + gdata(GDATA_ABSORB_CHARGE) + ")", "You get " + darkness2 + " mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
+		}
+		else {
+			buff = lang("冷やかし" + _ka(1), "You kidding? ")
+		}
+		goto *chat_end
+	}
+	if ( chatval == 159 ) {
+		darkness = 0
+		darkness2 = 0
+		repeat 492 - 400, 400
+			if ( spell(cnt - 400) < 200 ) {
+				continue
+			}
+			darkness = spell(cnt - 400) / 200
+			if ( cnt == 465 ) {
+				darkness = darkness * 5
+			}
+			if ( cnt == 441 ) {
+				darkness = darkness * 50
+			}
+			darkness2 += darkness
+		loop
+		if ( darkness2 < 10 ) {
+			chatMore lang("もう少しストックを貯めてからまた来て" + _yo(), "Please come back after you've stocked up a bit more."), strmore
+			goto *chat_end
+		}
+		chatList 0, lang("やっぱりやめる", "Cancel")
+		chatList 1, lang("まとめて交換する", "Exchange them all at once.")
+		buff = lang("じゃあストックが200以上の全ての魔法について、ストックを半分ずつもらおう" + _kana(3) + "？そうすれば充填用魔力をまとめて" + darkness2 + "あげる" + _ga(3) + "、どうする？", "So, how about I take half of the stock for all the spells with more than 200 in stock? If that's okay with you, I'll increase your mana charge by " + darkness2 + ". What do you think?")
+		gosub *chat_select
+		if ( chatval == 1 ) {
+			snd SOUNDLIST_ENC
+			gdata(GDATA_ABSORB_CHARGE) += darkness2
+			txt lang("充填用魔力を" + darkness2 + "獲得した(魔力の貯蓄：" + gdata(GDATA_ABSORB_CHARGE) + ")", "You get " + darkness2 + " mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
+			repeat 492 - 400, 400
+				if ( spell(cnt - 400) <= 200 ) {
+					continue
+				}
+				spell(cnt - 400) /= 2
+			loop
+		}
+		else {
+			buff = lang("冷やかし" + _ka(1), "You kidding? ")
 		}
 		goto *chat_end
 	}
@@ -24566,7 +24873,7 @@
 			}
 		}
 		if ( cdata(CDATA_ROLE_SHOP_LEVEL, tc) > 0 ) {
-			if ( cdata(CDATA_SANITY, tc) >= 5 | cdata(CDATA_ID, tc) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
+			if ( cdata(CDATA_SANITY, tc) >= 10 | cdata(CDATA_ID, tc) == CREATURE_ID_WEREWOLF_DETECTIVE ) {
 				chatMore lang("身辺調査をしてみた結果、どうも" + cdatan(CDATAN_NAME, cdata(CDATA_ROLE_SHOP_LEVEL, tc)) + "は正真正銘の人間のよう" + _da(), "From what we've gathered from our investigation, " + cdatan(CDATAN_NAME, cdata(CDATA_ROLE_SHOP_LEVEL, tc)) + " is most definitely a genuine human.")
 				goto *chat_end
 			}

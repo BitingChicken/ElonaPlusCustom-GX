@@ -175,6 +175,7 @@
 #define global	TCG_BIT_PIRATE 82  // pirates
 #define global	TCG_BIT_ELEAMOB 83  // Elea mobs
 #define global	TCG_BIT_CNPC 84  // CNPC
+#define global	TCG_BIT_GLIMMER 85  // Shines
 
 #define global	TCG_BIT_WINDFURY_USABLE 96
 #define global	TCG_BIT_ENEMY 97 // Summon this on your Opponent's Field
@@ -196,6 +197,7 @@
 #define global	TCG_BIT_NOSACRIFICE 113 // No SAC allowed
 #define global	TCG_BIT_ILLEGAL 114 // Ban player if on field with 1/10 chance
 #define global	TCG_BIT_OPENINGHAND 115 // Card is in your opening Hand
+#define global	TCG_BIT_DRUGGED 116 // Can't be played for 2 turns.
 
 #define global	TCG_SKILL_TYPE_NONE 0
 #define global	TCG_SKILL_TYPE_ACTIVATE 1
@@ -233,6 +235,7 @@
 #define global	TCG_SKILL_TARGET_PLAYER_HAND_CHOOSE 121
 #define global	TCG_SKILL_TARGET_PLAYER_HAND_RANDOM 122
 #define global	TCG_SKILL_TARGET_PLAYER_HAND_RANDOM2 123
+#define global	TCG_SKILL_TARGET_PLAYER_HAND_RANDOM3 124
 #define global	TCG_SKILL_TARGET_PLAYER_HAND_RANDOM8 129
 #define global	TCG_SKILL_TARGET_PLAYER_GRAVE_ALL 130
 #define global	TCG_SKILL_TARGET_PLAYER_GRAVE_CHOOSE 131
@@ -568,6 +571,10 @@
 #define global	TCG_SKILL_EFF_DESTROYCARD 263
 #define global	TCG_SKILL_EFF_SPADECUT 264
 #define global	TCG_SKILL_EFF_EGELVEIL 265
+#define global	TCG_SKILL_EFF_MARIMO 266
+#define global	TCG_SKILL_EFF_KETSUGLIMMER 267
+#define global	TCG_SKILL_EFF_OLDWOLF 268
+#define global	TCG_SKILL_EFF_SHEESHERPENT 269
 
 #define global	TCG_SKILL_FILTER_NONE 0
 #define global	TCG_SKILL_FILTER_MALE 1
@@ -1365,6 +1372,10 @@
 #define global  TCG_EFF_POKERCLUB 1055
 #define global  TCG_EFF_POKERSPADE 1056
 #define global  TCG_EFF_POKERJOKER 1057
+#define global	TCG_EFF_MARIMO 1058
+#define global	TCG_EFF_KESTUGLIMMER 1059
+#define global	TCG_EFF_OLDWOLF 1060
+#define global	TCG_EFF_SHEESHERPENT 1061
 
 #define global	TCG_EFF_BATTLECRY_SUMMONACOPY 2001
 #define global	TCG_EFF_BATTLECRY_SUMMONACOPY01 2002
@@ -1543,6 +1554,9 @@
 #define global	TCG_EFF_SACRIFICE_BOUNCECARD 2624
 #define global	TCG_EFF_SACRIFICE_TARGETCREATUREGETABIKE 2625
 #define global	TCG_EFF_ONKILL_DRAW1CARD 2710
+#define global	TCG_EFF_ONKILL_GAIN2MANA 2711
+#define global	TCG_EFF_ONKILL_GAIN2MANANEXTTURN 2712
+#define global	TCG_EFF_AFTERCOMBAT_GAIN1MANANEXTTURN 2801
 #define global	TCG_EFF_AFTERCOMBAT_POISONOPPONENT 2800
 #define global	TCG_EFF_AFTERCOMBAT_PARALYSEOPPONENT 2802
 #define global	TCG_EFF_AFTERCOMBAT_BLEEDOPPONENT 2805
@@ -1993,6 +2007,12 @@
 
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_ONKILL_DRAW1CARD) = 0, TCG_SKILL_TYPE_ONKILL, TCG_SKILL_TARGET_PLAYER, TCG_SKILL_EFF_DRAW_CARD, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_DRAW
 	effdesc@tcg(TCG_EFF_ONKILL_DRAW1CARD) = "Deathblow: Draw 1 Card."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_ONKILL_GAIN2MANA) = 0, TCG_SKILL_TYPE_ONKILL, TCG_SKILL_TARGET_PLAYER, TCG_SKILL_EFF_GAIN_MANA, 2, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_NONE
+	effdesc@tcg(TCG_EFF_ONKILL_GAIN2MANA) = "Deathblow: Gain 2 Mana."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_ONKILL_GAIN2MANANEXTTURN) = 0, TCG_SKILL_TYPE_ONKILL, TCG_SKILL_TARGET_PLAYER, TCG_SKILL_EFF_GAIN_MANA_NEXT_TURN, 2, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_NONE
+	effdesc@tcg(TCG_EFF_ONKILL_GAIN2MANANEXTTURN) = "Deathblow: Gain 2 Mana next turn."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_AFTERCOMBAT_GAIN1MANANEXTTURN) = 0, TCG_SKILL_TYPE_ONKILL, TCG_SKILL_TARGET_PLAYER, TCG_SKILL_EFF_GAIN_MANA, 2, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_NONE
+	effdesc@tcg(TCG_EFF_AFTERCOMBAT_GAIN1MANANEXTTURN) = "After Combat: Gain 1 Mana next turn."
 
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_AFTERCOMBAT_POISONOPPONENT) = 0, TCG_SKILL_TYPE_AFTERCOMBAT, TCG_SKILL_TARGET_COMBAT_OPPONENT, TCG_SKILL_EFF_SETBIT, TCG_BIT_POISONED, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_NONE, 10, TCG_SKILL_TARGET_COMBAT_OPPONENT
 	effdesc@tcg(TCG_EFF_AFTERCOMBAT_POISONOPPONENT) = "After Combat: Poison Opponent."
@@ -2288,6 +2308,15 @@
 	effdesc@tcg(TCG_EFF_KYUBI) = "Battlecry/OnKill: Kyu-bi gives you a Fried Tofu.\n          (You'd better feed them to Kyu-bi)"
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_GODWOLF) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER_FIELD_ALL, TCG_SKILL_EFF_MUTATE, TCG_SKILL_FILTER_LEGENDARY, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_HOLDAWHILE
 	effdesc@tcg(TCG_EFF_GODWOLF) = "Battlecry: Transform all Cards on your Field into random Legendaries."
+
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_MARIMO) = 0, TCG_SKILL_TYPE_TURN_END + TCG_SKILL_TYPE_ONKILL + TCG_SKILL_TYPE_ONGOING, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_MARIMO, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_KEEPALIVE
+	effdesc@tcg(TCG_EFF_MARIMO) = "EndPhase/OnKill: Gives you a Marimo.\n        Ongoing: Gain 3 Attack for each Marimo in your Hand."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_KESTUGLIMMER) = 0, TCG_SKILL_TYPE_ONGOING + TCG_SKILL_TYPE_ONGOINGHAND, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_KETSUGLIMMER, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_NONE
+	effdesc@tcg(TCG_EFF_KESTUGLIMMER) = "Ongoing: Gain 4 Attack if you control the Higest-Cost Card,\n                or when it is June."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_OLDWOLF) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_SELF, TCG_SKILL_EFF_OLDWOLF, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_HOLDAWHILE
+	effdesc@tcg(TCG_EFF_OLDWOLF) = "Battlecry: Give the next Card you play this Card's stats."
+	effref@tcg(TCG_SKILL_REF, TCG_EFF_SHEESHERPENT) = 0, TCG_SKILL_TYPE_BATTLECRY, TCG_SKILL_TARGET_PLAYER_HAND_RANDOM3, TCG_SKILL_EFF_SHEESHERPENT, 1, 1, TCG_SKILL_FILTER_NONE, TCG_SKILL_AI_COMBOCOREPLAY
+	effdesc@tcg(TCG_EFF_SHEESHERPENT) = "Battlecry: Give 3 Cards in your Hand +2/+2 and -1 Cost.\n                They can't be played for 2 turns."
 
 	effref@tcg(TCG_SKILL_REF, TCG_EFF_HOUND) = 0, TCG_SKILL_TYPE_ONKILL, TCG_SKILL_TARGET_PLAYER_DECK_RANDOM, TCG_SKILL_EFF_TRANSFORMTO, 1, 1, TCG_SKILL_FILTER_HOUND_EFFECT
 	effdesc@tcg(TCG_EFF_HOUND) = "Evolves into another Hound in your Deck when it Kills Something."
@@ -3443,6 +3472,7 @@
 	specialrulenoextracard@tcg = 0
     specialrulegoda@tcg = 0, 0
     specialrulemanytia@tcg = 0, 0
+    specialruleoldwolf@tcg = 0, 0, 0, 0, 0, 0
 	effdonotdouble@tcg = 0
 	rndrace@tcg = ""
 	rndclass@tcg = ""
@@ -3639,6 +3669,7 @@
 	useitemimages@tcg(37) = 354 // Potion -59
 	useitemimages@tcg(38) = 1243, 1244, 1245, 1246, 1247, 1248, 1249 // X-Frame for projet. -60 to -66
 	useitemimages@tcg(45) = 874 // Dangerous swimsuit -67
+	useitemimages@tcg(46) = 730 // Marimo -68
 	repeat length(useitemimages@tcg)
 		pos (cnt\22) * 72 + 12, (cnt/22) * 96 + 96 + 24 + (chipi(CHIPI_HEIGHT, useitemimages@tcg(cnt)) > 48) * 24
 		gcopy 1, useitemimages@tcg(cnt)\33*48, useitemimages@tcg(cnt)/33*48, 48, 48

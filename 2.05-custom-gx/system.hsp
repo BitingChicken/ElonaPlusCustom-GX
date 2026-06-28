@@ -1598,6 +1598,9 @@
 	buffer 5, SPRITE_SHEET_COLS_CHARA * 48, (SPRITE_SHEET_ROWS_CHARA + (usernpcmax / SPRITE_SHEET_COLS_CHARA + 1) * 2) * 48
 	pos 0, 0
 	picload exedir + "\\graphic\\character" + devfile + ".bmp", 1
+	// James: Fixed the little white line bug:
+	color 0, 0, 0
+	boxf 32 * 48, 4 * 48 - 1, 33 * 48, 4 * 48
 	/********** OOMSESTEPNC - EXTRA CNPC CONFIG - BEGINNING *********/
 	dim userdata2, 11, usernpcmax + 1
 	dim userdata3, 5, usernpcmax + 1

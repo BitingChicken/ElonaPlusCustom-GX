@@ -1070,7 +1070,7 @@
 		}
 		if ( locvar_itemowner_a == FILTER_FURNITURE ) {
 			if ( jp ) {
-				if ( inv(INV_ITEM_SUB_NAME, itemowner_itemid) >= 12 ) {
+				if ( inv(INV_ITEM_SUB_NAME, itemowner_itemid) >= 13 ) {
 					inv(INV_ITEM_SUB_NAME, itemowner_itemid) = 0
 				}
 				else {
@@ -1317,7 +1317,7 @@
 		}
 		if ( inv(INV_ITEM_SUB_NAME, itemname_itemid) != 0 ) {
 			if ( locvar_itemowner_a == FILTER_FURNITURE ) {
-				if ( inv(INV_ITEM_SUB_NAME, itemname_itemid) >= 12 ) {
+				if ( inv(INV_ITEM_SUB_NAME, itemname_itemid) >= 13 ) {
 					inv(INV_ITEM_SUB_NAME, itemname_itemid) = 0
 				}
 				else {

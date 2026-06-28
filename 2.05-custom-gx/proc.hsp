@@ -2150,15 +2150,7 @@
 				cdata(CDATA_CONDITION_DIM, tc) = 59
 			}
 			cdata(CDATA_CONDITION_SLEEP, tc) = 0
-			cdata(CDATA_POWER_GAUGE, tc) += 2
-			if ( cdata(CDATA_POWER_GAUGE, tc) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, tc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, tc) <= 0 | tc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, tc) < FIX_QUALITY_MIRACLE | tc <= MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, tc) = 100
-				}
-			}
-			if ( cdata(CDATA_POWER_GAUGE, tc) > 200 ) {
-				cdata(CDATA_POWER_GAUGE, tc) = 200
-			}
+			modgauge2 tc, 2
 			if ( rnd(sdata(SKILL_ATTR_CHA, cc) + kyouka) > rnd(sdata(SKILL_ATTR_CHA, tc)) ) {
 				cdata(CDATA_EMO_ICON, tc) = 6 + 100
 				talkfix = 1
@@ -3267,6 +3259,140 @@
 	rowactend cc
 	return
 
+*sexsex_dmg
+	make_sound cdata(CDATA_X, cc), cdata(CDATA_Y, cc), 5, 8, 0, cc
+	if ( cc == CHARA_PLAYER | tc == CHARA_PLAYER ) {
+		if ( cdata(CDATA_ACTION_PERIOD, CHARA_PLAYER) \ 5 == 0 ) {
+			kaiwa = rnd(17) + 1
+			powx = 1
+			if ( cdata(CDATA_AI, CHARA_PLAYER) > 0 ) {
+				kaiwa = cdata(CDATA_AI, CHARA_PLAYER)
+			}
+			if ( cc == CHARA_PLAYER ) {
+				aite = tc
+			}
+			if ( tc == CHARA_PLAYER ) {
+				aite = cc
+			}
+			txtef COLOR_SKY_BLUE
+			if ( kaiwa == 1 ) {
+				txt lang("あなたは荒々しく" + name(aite) + "を攻めている…。", "You are giving " + name(aite) + " raw, animalisticly.")
+			}
+			if ( kaiwa == 2 ) {
+				txt lang("あなたは焦らしながら" + name(aite) + "を攻めている…。", "You are giving " + name(aite) + " slowly, passionately.")
+			}
+			if ( kaiwa == 3 ) {
+				txt lang("あなたはテクニカルに" + name(aite) + "を攻めている…。", "You are giving " + name(aite) + " teasingly, skillfully.")
+			}
+			if ( kaiwa == 4 ) {
+				txt lang("あなたは囁きながら" + name(aite) + "を攻めている…。", "You are giving " + name(aite) + " sensually, whispering in their ears.")
+			}
+			if ( kaiwa == 5 ) {
+				txt lang("あなたはマニアックに" + name(aite) + "を攻めている…。", "You are giving " + name(aite) + " experimentally, in a niche angle.")
+			}
+			if ( kaiwa == 6 ) {
+				txt lang("あなたはねちっこく" + name(aite) + "を攻めている…。", "You are giving " + name(aite) + " intensely, dominantly.")
+			}
+			if ( kaiwa == 7 ) {
+				txt lang("あなたは魔力を使って" + name(aite) + "を攻めている…。", "You are giving " + name(aite) + " it using magic.")
+			}
+			if ( kaiwa == 8 ) {
+				txt lang("あなたは甘えるように" + name(aite) + "を攻めている…。", "You are giving " + name(aite) + " romantically.")
+			}
+			if ( kaiwa == 9 ) {
+				txt lang("あなたは" + name(aite) + "に荒々しく攻めてられている…。", "You let " + name(aite) + " take you raw, animalisticly.")
+			}
+			if ( kaiwa == 10 ) {
+				txt lang("あなたは" + name(aite) + "に焦らしながら攻められている…。", "You let " + name(aite) + " take you slowly, passionately.")
+			}
+			if ( kaiwa == 11 ) {
+				txt lang("あなたは" + name(aite) + "にテクニカルに攻められている…。", "You let " + name(aite) + " take you teasingly, skillfully.")
+			}
+			if ( kaiwa == 12 ) {
+				txt lang("あなたは" + name(aite) + "に囁きながら攻められている…。", "You let " + name(aite) + " take you sensually, whispering.")
+			}
+			if ( kaiwa == 13 ) {
+				txt lang("あなたは" + name(aite) + "にマニアックに攻められている…。", "You let " + name(aite) + " take you in a maniac way.")
+			}
+			if ( kaiwa == 14 ) {
+				txt lang("あなたは" + name(aite) + "にねちっこく攻められている…。", "You let " + name(aite) + " take you intensely, dominantly.")
+			}
+			if ( kaiwa == 15 ) {
+				txt lang("あなたは" + name(aite) + "に魔力を使って攻められている…。", "You let " + name(aite) + " take you with magic assisting.")
+			}
+			if ( kaiwa == 16 ) {
+				txt lang("あなたは" + name(aite) + "に甘えるように攻められている…。", "You let " + name(aite) + " take you romantically.")
+			}
+			if ( kaiwa == 1 ) {
+				powx = sdata(SKILL_ATTR_STR, CHARA_PLAYER)
+			}
+			if ( kaiwa == 2 ) {
+				powx = sdata(SKILL_ATTR_CON, CHARA_PLAYER)
+			}
+			if ( kaiwa == 3 ) {
+				powx = sdata(SKILL_ATTR_DEX, CHARA_PLAYER)
+			}
+			if ( kaiwa == 4 ) {
+				powx = sdata(SKILL_ATTR_PER, CHARA_PLAYER)
+			}
+			if ( kaiwa == 5 ) {
+				powx = sdata(SKILL_ATTR_LER, CHARA_PLAYER)
+			}
+			if ( kaiwa == 6 ) {
+				powx = sdata(SKILL_ATTR_WIL, CHARA_PLAYER)
+			}
+			if ( kaiwa == 7 ) {
+				powx = sdata(SKILL_ATTR_MAG, CHARA_PLAYER)
+			}
+			if ( kaiwa == 8 ) {
+				powx = sdata(SKILL_ATTR_STR, aite)
+			}
+			if ( kaiwa == 9 ) {
+				powx = sdata(SKILL_ATTR_CON, aite)
+			}
+			if ( kaiwa == 10 ) {
+				powx = sdata(SKILL_ATTR_DEX, aite)
+			}
+			if ( kaiwa == 11 ) {
+				powx = sdata(SKILL_ATTR_PER, aite)
+			}
+			if ( kaiwa == 12 ) {
+				powx = sdata(SKILL_ATTR_LER, aite)
+			}
+			if ( kaiwa == 13 ) {
+				powx = sdata(SKILL_ATTR_WIL, aite)
+			}
+			if ( kaiwa == 14 ) {
+				powx = sdata(SKILL_ATTR_MAG, aite)
+			}
+			if ( cdata(CDATA_AI, CHARA_PLAYER) == 0 ) {
+				powx = 1
+			}
+			if ( rnd(sqrt(powx + 100)) > rnd(100) ) {
+				cdata(CDATA_GUARD_BREAK, aite) += 10
+			}
+		}
+	}
+	chara_guardbreak cc, 2
+	chara_guardbreak tc, 2
+	if ( cdata(CDATA_FIELD_EFFECT, CHARA_PLAYER) == 7 ) {
+		modgauge2 cc, 2
+		modgauge2 tc, 2
+		cdata(CDATA_MP, cc) -= sqrt(limit(sdata(SKILL_ATTR_CHA, tc) * 2 - sdata(SKILL_ATTR_WIL, cc), 4, 3600)) * (cdata(CDATA_POWER_GAUGE, cc) + 100) / 20
+		cdata(CDATA_MP, tc) -= sqrt(limit(sdata(SKILL_ATTR_CHA, cc) * 2 - sdata(SKILL_ATTR_WIL, tc), 4, 3600)) * (cdata(CDATA_POWER_GAUGE, tc) + 100) / 20
+		if ( cdata(CDATA_MP, cc) < 0 & cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
+			snd SOUNDLIST_ATK_MIND
+			animeload 30, cc
+			dmgmp cc, cdata(CDATA_LEVEL, cc)
+		}
+		if ( cdata(CDATA_MP, tc) < 0 & cdata(CDATA_POWER_GAUGE, tc) >= 100 ) {
+			snd SOUNDLIST_ATK_MIND
+			animeload 30, tc
+			dmgmp tc, cdata(CDATA_LEVEL, tc)
+		}
+	}
+	return
+
 *sexsex
 	if ( cdata(CDATA_ROW_ACT, cc) == ACTION_NONE ) {
 		cdata(CDATA_ROW_ACT, cc) = ACTION_SEX
@@ -3304,6 +3430,7 @@
 	}
 	cdata(CDATA_EMO_ICON, cc) = 17 + 100 * 3
 	if ( cdata(CDATA_ACTION_PERIOD, cc) > 0 ) {
+		gosub *sexsex_dmg
 		if ( sexhost == 0 ) {
 			if ( cdata(CDATA_ACTION_PERIOD, cc) \ 5 == 0 ) {
 				if ( synccheck(cc, -1) ) {
@@ -3472,6 +3599,7 @@
 	}
 	cdata(CDATA_EMO_ICON, cc) = 17 + 100 * 3
 	if ( cdata(CDATA_ACTION_PERIOD, cc) > 0 ) {
+		gosub *sexsex_dmg
 		if ( sexhost == 0 ) {
 			if ( cdata(CDATA_ACTION_PERIOD, cc) \ 5 == 0 ) {
 				if ( synccheck(cc, -1) ) {
@@ -3481,10 +3609,10 @@
 					gosub *convert_word
 					if ( gdata(GDATA_CUSTOM_TALK) == 100 ) {
 						if ( jp ) {
-							txt "「きくぅ」", "「もふもふ」", "「くやしい、でも…」", "「はぁはぁ！」", "「ウフフフ」"
+							txt "「ぐぅぅ」", "「もっふもふ！？」", "「くやしいぃ…」", "「はぁっはぁっ！！」", "「激しい…！」"
 						}
 						if ( en ) {
-							txt cnvtalk("Yes!"), cnvtalk("Ohhh"), "*gasp*", "*rumble*", cnvtalk("come on!")
+							txt cnvtalk("No!"), cnvtalk("Ohhh!?"), "*gasp*", cnvtalk("Haaah haaah!!"), cnvtalk("I can't!!")
 						}
 					}
 				}
@@ -3545,9 +3673,8 @@
 	if ( cdata(CDATA_ROW_ACT, cc) == ACTION_NONE ) {
 		cdata(CDATA_ROW_ACT, cc) = ACTION_TUIN_DER_LUSTEN
 		cdata(CDATA_ACTION_PERIOD, cc) = limit(sdata(SKILL_ATTR_SPD, cc) / 10, 10, 50)
-		cdata(CDATA_ROW_ACT_TC, cc) = tc
-		cdata(CDATA_ROW_ACT, tc) = ACTION_TUIN_DER_LUSTEN
-		cdata(CDATA_ACTION_PERIOD, tc) = 100
+		cdata(CDATA_ROW_ACT_TC, cc) = 11
+		cdata(CDATA_ROW_ACT, tc) = ACTION_TUIN_DER_LUSTEN, cdata(CDATA_ACTION_PERIOD, cc) * 2
 		cdata(CDATA_ROW_ACT_TC, tc) = cc + 10000
 		if ( synccheck(cc, -1) ) {
 			txt lang(name(cc) + "は服を脱ぎ始めた。", name(cc) + " begin" + _s(cc) + " to take " + his(cc) + " clothes off.")
@@ -3560,18 +3687,37 @@
 		tc -= 10000
 		sexhost = 0
 	}
+	if ( cdata(CDATA_EXIST, tc) != CHAR_STATE_ALIVE | cdata(CDATA_ROW_ACT, tc) != ACTION_TUIN_DER_LUSTEN ) {
+		if ( synccheck(cc, -1) ) {
+			txt lang(name(cc) + "は我に返った。", name(cc) + " calmed down.")
+		}
+		rowactend cc
+		rowactend tc
+		return
+	}
+	if ( cc == CHARA_PLAYER ) {
+		dmgsp CHARA_PLAYER, 5
+	}
+	if ( cc != CHARA_PLAYER ) {
+		dmgspt cc, 5
+	}
 	cdata(CDATA_EMO_ICON, cc) = 17 + 100 * 3
 	if ( cdata(CDATA_ACTION_PERIOD, cc) > 0 ) {
+		gosub *sexsex_dmg
 		if ( sexhost == 0 ) {
 			if ( cdata(CDATA_ACTION_PERIOD, cc) \ 5 == 0 ) {
 				if ( synccheck(cc, -1) ) {
 					txtef COLOR_SKY_BLUE
 					chatc@DP = cc
-					if ( jp ) {
-						txt "「もふもふ」", "「くやしい、でも…」", "「はぁはぁ！」", "「ウフフフ」"
-					}
-					if ( en ) {
-						txt cnvtalk("Yes!"), cnvtalk("Ohhh"), "*gasp*", "*rumble*", cnvtalk("Come on!")
+					customtalk cc, DBMODE_PLEASURE
+					gosub *convert_word
+					if ( gdata(GDATA_CUSTOM_TALK) == 100 ) {
+						if ( jp ) {
+							txt "「きくぅ」", "「もふもふ」", "「くやしい、でも…」", "「はぁはぁ！」", "「ウフフフ」"
+						}
+						if ( en ) {
+							txt cnvtalk("Yes!"), cnvtalk("Ohhh"), "*gasp*", "*rumble*", cnvtalk("come on!")
+						}
 					}
 				}
 			}
@@ -3589,24 +3735,25 @@
 		else {
 			c = tc
 		}
-		cdata(CDATA_CONDITION_DRUNK, cc) = 0
 		if ( cnt == 1 ) {
-			skillexp SKILL_ATTR_CON, c, 250 + (c >= 57) * 1000
-			skillexp SKILL_ATTR_WIL, c, 250 + (c >= 57) * 1000
+			if ( rnd(3) == 0 ) {
+				dmgcon c, CONDITION_INSANE, 50
+			}
+			if ( rnd(5) == 0 ) {
+				dmgcon c, CONDITION_PARALYZE, 50
+			}
+			dmgcon c, CONDITION_INSANE, 30
+			healsan c, 1
+			skillexp SKILL_ATTR_CON, c, 25 + (c >= 57) * 100
+			skillexp SKILL_ATTR_WIL, c, 25 + (c >= 57) * 100
 		}
-		if ( cdata(CDATA_ID, cc) == 335 | cdata(CDATA_ID, cc) == 352 ) {
-			skillexp SKILL_ATTR_CON, cc, 250
-			skillexp SKILL_ATTR_WIL, cc, 250
-		}
-		if ( rnd(15) == 0 ) {
-			dmgcon c, CONDITION_SICK, 200
-		}
-		skillexp SKILL_ATTR_CHA, c, 250 + (c >= 57) * 1000
+		skillexp SKILL_ATTR_CHA, c, 25 * 5 + (c >= 57) * 100
 	loop
-	sexvalue = sdata(SKILL_ATTR_CHA, cc) * (50 + rnd(50)) + 100
 	if ( cc == CHARA_PLAYER | tc == CHARA_PLAYER ) {
 		gdata(GDATA_FLAG_PROSTITUTION_COUNTER)++
 	}
+	gain_iden tc, cc, 10
+	gain_iden cc, tc, 10
 	if ( synccheck(cc, -1) ) {
 		txtef COLOR_SKY_BLUE
 		chatc@DP = tc
@@ -3614,54 +3761,11 @@
 			txt "「よかった" + _yo(3) + "」", "「す、すごい" + _yo(3) + "」", "「も、もうだめ" + _da(3) + "」", "「は、激しかった" + _yo(3) + "」", "「か、完敗" + _da(3) + "」"
 		}
 		if ( en ) {
-			txt "\"You are awesome!", "\"Oh my god...", "\"Okay, okay, you win!", "\"Holy...!"
+			txt cnvtalk("You are awesome!"), cnvtalk("Oh my god..."), cnvtalk("Okay, okay, you win!"), cnvtalk("Holy...!")
 		}
 		txtef COLOR_TALK
 		if ( tc == CHARA_PLAYER ) {
 			txt lang("」", "\"")
-		}
-	}
-	if ( tc != CHARA_PLAYER ) {
-		snd SOUNDLIST_AMMO
-		if ( cdata(CDATA_GOLD, tc) >= sexvalue ) {
-			if ( synccheck(cc, -1) ) {
-				chatc@DP = tc
-				txt lang("！さあ、小遣いを受け取って" + _kure(3) + "」", "Here, take this.\"")
-			}
-		}
-		else {
-			if ( synccheck(cc, -1) ) {
-				chatc@DP = tc
-				txt lang("！これが" + _ore(3) + "の財布の中身の全て" + _da() + "」", "Take this money, it's all I have!\"")
-				if ( rnd(3) == 0 ) {
-					if ( cc != 0 ) {
-						chatc@DP = tc
-						txt lang(name(cc) + "は激怒した。「なめてんの？」", name(cc) + " gets furious, " + cnvtalk("And you think you can just run away?"))
-						cdata(CDATA_TARGET, cc) = tc
-						cdata(CDATA_AI_AGGRO, cc) = 20
-					}
-				}
-			}
-			if ( cdata(CDATA_GOLD, tc) <= 0 ) {
-				cdata(CDATA_GOLD, tc) = 1
-			}
-			sexvalue = cdata(CDATA_GOLD, tc)
-		}
-		cdata(CDATA_GOLD, tc) -= sexvalue
-		if ( cc == CHARA_PLAYER ) {
-			modimp tc, 5
-			flt
-			itemcreate -1, 54, cdata(CDATA_X, cc), cdata(CDATA_Y, cc), sexvalue
-			txt_questitem
-			modkarma 0, -1
-		}
-		else {
-			cdata(CDATA_GOLD, cc) += sexvalue
-			if ( cc < MAX_CHARA_FOLLOWER ) {
-				txtef COLOR_SKY_BLUE
-				txt lang(name(cc) + "は" + sexvalue + "gp稼いだ。", name(cc) + " earned " + sexvalue + "gp.")
-				snd SOUNDLIST_GETGOLD1
-			}
 		}
 	}
 	rowactend cc
@@ -6173,8 +6277,7 @@
 		txt lang("開いたページから異様な冷気が溢れ出ている…。", "A strange air exudes from the open book...")
 		txtsetabyss 10
 		repeat 10
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 500, 1
 		gosub *prompt_key
@@ -6528,8 +6631,7 @@
 			txt lang("落ちているアイテムの全てが深淵に呑み込まれる。本当にこの魔術を使う？", "All the dropped items are swallowed in the abyss. Do you really use this magic?")
 			txtselectuse 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -6796,15 +6898,7 @@
 		efp = efp * 6 / 5
 	}
 	if ( cbit(CHARA_BIT_UPLIFTED_WHILE_CASTING, cc) ) {
-		cdata(CDATA_POWER_GAUGE, cc) += 5
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-			if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 100
-			}
-		}
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-			cdata(CDATA_POWER_GAUGE, cc) = 200
-		}
+		modgauge2 cc, 5
 	}
 	rapidmagic = 0
 	if ( cbit(CHARA_BIT_RAPID_MAGIC, cc) & sdataref(SKILL_DATAREF_TYPE, efid) == SKILL_TYPE_ARROW ) {
@@ -7851,6 +7945,22 @@
 								continue
 							}
 							dmg = role(dice1, dice2, bonus)
+							mps = calcmagicrit()
+							if ( critical == 1 ) {
+								dmg = rolemax(dice1, dice2, bonus)
+								snd SOUNDLIST_ATK2
+								if ( cc == CHARA_PLAYER ) {
+									txtef COLOR_RED
+									txt lang("会心の一撃！ ", "Critical Hit!")
+									txtmore
+								}
+								if ( cc != CHARA_PLAYER ) {
+									txtef COLOR_BLUE
+									txt lang("会心の一撃！ ", "Critical Hit!")
+									txtmore
+								}
+								critical = 0
+							}
 							calcmagiccontrol cc, tc
 							if ( stat == 1 ) {
 								continue
@@ -8269,6 +8379,22 @@
                         maga = 0
 						if ( cc != tc ) {
 							dmg = role(dice1, dice2, bonus)
+							mps = calcmagicrit()
+							if ( critical == 1 ) {
+								dmg = rolemax(dice1, dice2, bonus)
+								snd SOUNDLIST_ATK2
+								if ( cc == CHARA_PLAYER ) {
+									txtef COLOR_RED
+									txt lang("会心の一撃！ ", "Critical Hit!")
+									txtmore
+								}
+								if ( cc != CHARA_PLAYER ) {
+									txtef COLOR_BLUE
+									txt lang("会心の一撃！ ", "Critical Hit!")
+									txtmore
+								}
+								critical = 0
+							}
 							txtmore
 							calcmagiccontrol cc, tc
 							if ( stat == 1 ) {
@@ -8520,6 +8646,22 @@
 				animeid = ANIMATION_ARROW
 				gosub *anime
 				dmg = role(dice1, dice2, bonus)
+				mps = calcmagicrit()
+				if ( critical == 1 ) {
+					dmg = rolemax(dice1, dice2, bonus)
+					snd SOUNDLIST_ATK2
+					if ( cc == CHARA_PLAYER ) {
+						txtef COLOR_RED
+						txt lang("会心の一撃！ ", "Critical Hit!")
+						txtmore
+					}
+					if ( cc != CHARA_PLAYER ) {
+						txtef COLOR_BLUE
+						txt lang("会心の一撃！ ", "Critical Hit!")
+						txtmore
+					}
+					critical = 0
+				}
 				if ( findbuff(cc, BUFF_CHARGE) != (-1) ) {
 					if ( cc != CHARA_PLAYER | cdata(CDATA_RELATION, tc) == (-3) ) {
 						dmg = dmg * 11
@@ -9873,15 +10015,7 @@
 			if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
 				cdata(CDATA_POWER_GAUGE, tc) = 0
 			}
-			cdata(CDATA_POWER_GAUGE, cc) += 2
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, cc) = 100
-				}
-			}
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 200
-			}
+			modgauge2 cc, 2
 		}
 		powsel = charaCanGauge(cc)
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
@@ -13820,15 +13954,7 @@
 		_switch_sw = 0
 		snd SOUNDLIST_MECHA20
 		animeload 32, cc
-		cdata(CDATA_POWER_GAUGE, cc) += 5
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-			if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 100
-			}
-		}
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-			cdata(CDATA_POWER_GAUGE, cc) = 200
-		}
+		modgauge2 cc, 5
 		animeid = ANIMATION_SHINING_THROW
 		gosub *anime
 		tcbbk = -1
@@ -17388,6 +17514,79 @@
 		}
 		goto *effect_end
 	}
+	if ( _switch_val == SKILL_SPACT_STANCE_SELECT | _switch_sw ) {
+		_switch_sw = 0
+		txtsetstance 17
+		repeat 17
+			promptAdd s(cnt), key_select(cnt), promptmax
+		loop
+		if ( jp ) {
+			val = promptx, prompty, 400, 1
+		}
+		if ( en ) {
+			val = promptx, prompty, 480, 1
+		}
+		gosub *prompt_key
+		if ( stat == 0 ) {
+			goto *effect_end
+		}
+		cdata(CDATA_AI, CHARA_PLAYER) = rtval
+		snd SOUNDLIST_ATK_MIND
+		txtef COLOR_PINK
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 0 ) {
+			txt lang("あなたは気の向くまま、気持ちいいことをすることにした。", "You decided to do whatever felt good to you, following your heart.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 1 ) {
+			txt lang("あなたは気持ちいいことの際に、荒々しく攻めることにした。", "You decided to give your opponent roughly.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 2 ) {
+			txt lang("あなたは気持ちいいことの際に、焦らしながら攻めることにした。", "You decided to give your opponent slowly.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 3 ) {
+			txt lang("あなたは気持ちいいことの際に、テクニカルに攻めることにした。", "You decided to give your opponent technically.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 4 ) {
+			txt lang("あなたは気持ちいいことの際に、囁きながら攻めることにした。", "You decided to give your opponent while whispering.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 5 ) {
+			txt lang("あなたは気持ちいいことの際に、マニアックに攻めることにした。", "You decided to give your opponent in a niche way.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 6 ) {
+			txt lang("あなたは気持ちいいことの際に、ねちっこく攻めることにした。", "You decided to give your opponent persistently.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 7 ) {
+			txt lang("あなたは気持ちいいことの際に、魔力を使って攻めることにした。", "You decided to give your opponent using magic.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 8 ) {
+			txt lang("あなたは気持ちいいことの際に、甘えるように攻めることにした。", "You decided to give your opponent while sweat talking.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 9 ) {
+			txt lang("あなたは気持ちいいことの際に、荒々しく攻められることにした。", "You decided to let your opponent take you roughly.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 10 ) {
+			txt lang("あなたは気持ちいいことの際に、焦らしながら攻められることにした。", "You decided to let your opponent take you slowly.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 11 ) {
+			txt lang("あなたは気持ちいいことの際に、テクニカルに攻められることにした。", "You decided to let your opponent take you technically.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 12 ) {
+			txt lang("あなたは気持ちいいことの際に、囁きながら攻められる　ことにした。", "You decided to let your opponent take you while whispering.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 13 ) {
+			txt lang("あなたは気持ちいいことの際に、マニアックに攻められることにした。", "You decided to let your opponent take you in a niche way.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 14 ) {
+			txt lang("あなたは気持ちいいことの際に、ねちっこく攻められる　ことにした。", "You decided to let your opponent take you persistently.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 15 ) {
+			txt lang("あなたは気持ちいいことの際に、魔力を使って攻められることにした。", "You decided to let your opponent take you using magic.")
+		}
+		if ( cdata(CDATA_AI, CHARA_PLAYER) == 16 ) {
+			txt lang("あなたは気持ちいいことの際に、甘えるように攻められることにした。", "You decided to let your opponent take you sweat talking.")
+		}
+		goto *effect_end
+		_switch_sw++
+	}
 	if ( _switch_val == SKILL_SPACT_CUSTOM_CHANGE | _switch_sw ) {
 		_switch_sw = 0
 		txt lang("対象にするアイテムは？", "Which item?")
@@ -17399,8 +17598,7 @@
 			item_separate ci
 			txtsetcustom 7
 			repeat 7
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 280, 1
 			gosub *prompt_key
@@ -17722,15 +17920,7 @@
 				}
 			}
 			if ( cbit(CHARA_BIT_UPLIFTED_WHILE_CASTING, tc) ) {
-				cdata(CDATA_POWER_GAUGE, tc) += 5
-				if ( cdata(CDATA_POWER_GAUGE, tc) > 100 ) {
-					if ( cdata(CDATA_SHIFT_FORM, tc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, tc) <= 0 | tc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, tc) < FIX_QUALITY_MIRACLE | tc < MAX_CHARA_FOLLOWER) ) {
-						cdata(CDATA_POWER_GAUGE, tc) = 100
-					}
-				}
-				if ( cdata(CDATA_POWER_GAUGE, tc) > 200 ) {
-					cdata(CDATA_POWER_GAUGE, tc) = 200
-				}
+				modgauge2 tc, 5
 			}
 			animeload 46, tc
 			snd SOUNDLIST_ATK_MIND
@@ -19791,14 +19981,7 @@
 				cdata(CDATA_POWER_GAUGE, cc)++
 			}
 		loop
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-			if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 100
-			}
-		}
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-			cdata(CDATA_POWER_GAUGE, cc) = 200
-		}
+		modgauge2 cc, 0
 		tyouhatu = 0
 		goto *effect_end
 	}
@@ -20037,8 +20220,7 @@
 		}
 		txtsetpforce 8
 		repeat 8
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 470, 1
 		gosub *prompt_key
@@ -20542,8 +20724,7 @@
 		_switch_sw = 0
 		txtsetclementia 5
 		repeat 5
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 380, 1
 		gosub *prompt_key
@@ -21265,15 +21446,7 @@
 			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
 				continue
 			}
-			cdata(CDATA_POWER_GAUGE, tc) += 5
-			if ( cdata(CDATA_POWER_GAUGE, tc) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, tc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, tc) <= 0 | tc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, tc) < FIX_QUALITY_MIRACLE | tc < MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, tc) = 100
-				}
-			}
-			if ( cdata(CDATA_POWER_GAUGE, tc) > 200 ) {
-				cdata(CDATA_POWER_GAUGE, tc) = 200
-			}
+			modgauge2 tc, 5
 			cdata(CDATA_GUARD_BREAK, tc) -= 15
 			if ( cdata(CDATA_GUARD_BREAK, cc) >= 100 ) {
 				cdata(CDATA_GUARD_BREAK, cc) = 99
@@ -22150,6 +22323,89 @@
 			}
 		loop
 		goto *effect_end
+	}
+	if ( _switch_val == 878 | _switch_sw ) {
+		_switch_sw = 0
+		if ( cdata(CDATA_POWER_GAUGE, cc) < 80 ) {
+			txt lang("何もおきない… ", "Nothing happens...")
+			goto *effect_end
+		}
+		snd SOUNDLIST_ENC
+		animeload 40, cc
+		if ( synccheck(cc, -1) ) {
+			snd SOUNDLIST_SONIC
+			animeid = ANIMATION_EVOCHAT_GENTLY
+			aniref = 1
+			gosub *anime
+		}
+		cdata(CDATA_POWER_GAUGE, cc) -= 80
+		if ( cdata(CDATA_FIELD_EFFECT, CHARA_PLAYER) >= 0 ) {
+			cdata(CDATA_FIELD_EFFECT, CHARA_PLAYER) = 7
+		}
+		if ( cc == CHARA_PLAYER ) {
+			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
+		}
+		if ( weap == 0 ) {
+			weap = limit(sdata(SKILL_ATTR_CHA, cc) / 4, 1, 1000)
+		}
+		inv_getheader cc
+		eqlv = 1
+		eqbui = 0
+		repeat invrange, invhead
+			if ( inv(INV_ITEM_NUM, cnt) == 0 | inv(INV_ITEM_EQUIP, cnt) == 0 ) {
+				continue
+			}
+			eqlv += limit(inv(INV_ITEM_LEVEL, cnt), 0, 20)
+			eqbui++
+		loop
+		if ( eqlv <= 0 ) {
+			eqlv = 1
+		}
+		if ( eqbui <= 0 ) {
+			eqbui = 1
+		}
+		eqlv = limit(eqlv / eqbui * 3 + 10, 13, 40)
+		dmg = limit((weap + 1) / 2, 2, 2500) * sqrt(weap) * sqrt(eqlv - 2) + rnd(weap + 1)
+		repeat 245
+			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+			if ( cc == cnt ) {
+				continue
+			}
+			if ( cc < MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION, cnt) != RELATION_ENEMY ) {
+					continue
+				}
+			}
+			if ( cc >= MAX_CHARA_FOLLOWER ) {
+				if ( cdata(CDATA_RELATION, cnt) == cdata(CDATA_RELATION, cc) ) {
+					continue
+				}
+			}
+			tc = cnt
+			dx = cdata(CDATA_X, tc)
+			dy = cdata(CDATA_Y, tc)
+			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
+				continue
+			}
+			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
+				continue
+			}
+			if ( cbit(CHARA_BIT_SPLIT_KEEP_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SPLIT_NO_EFFECT, tc) != TRUE & cbit(CHARA_BIT_SUMMONED, tc) != TRUE & cbit(CHARA_BIT_LIVESTOCK, tc) != TRUE & cbit(CHARA_BIT_NECRO, tc) != TRUE & cbit(CHARA_BIT_SANDBAG, tc) != TRUE & tc != CHARA_PLAYER ) {
+				f = 1
+			}
+			dmgmp tc, dmg / 5 + 5
+			if ( cdata(CDATA_EXIST, tc) != CHAR_STATE_ALIVE ) {
+				continue
+			}
+		loop
+		if ( f == 1 ) {
+			f = 0
+			skillexp SKILL_ATTR_CHA, cc, 200
+		}
+		goto *effect_end
+		_switch_sw++
 	}
 	if ( _switch_val == SKILL_SPACT_E_MAG_CAGE | _switch_sw ) {
 		_switch_sw = 0
@@ -23989,9 +24245,12 @@
 			gosub *anime
 		}
 		txtef COLOR_YELLOW
-		txt lang("強烈なフェロモンをまき散らした。", "A strong pheromone was scattered around.")
+		txt lang(name(cc) + "はフェロモンをまき散らした。", "Strong pheromone was scattered around by " + name(cc) + ".")
 		ccbk = cc
 		repeat MAX_CHARA_TOTAL
+			if ( cnt == cc ) {
+				continue
+			}
 			if ( cdata(0, cnt) != 1 ) {
 				continue
 			}
@@ -24004,6 +24263,20 @@
 			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
 				continue
 			}
+			if ( cdata(CDATA_ROW_ACT, tc) != ACTION_NONE ) {
+				continue
+			}
+			teikou = limit(cdata(CDATA_HP, tc) * 10 / cdata(CDATA_MAX_HP, tc), 1, 10) * sdata(SKILL_ATTR_WIL, tc) / 5
+			if ( rnd(sdata(SKILL_ATTR_CHA, cc)) < teikou ) {
+				cdata(CDATA_EMO_ICON, tc) = 21 + 100
+				continue
+			}
+			cdata(CDATA_EMO_ICON, tc) = 17 + 100
+			if ( synccheck(tc, -1) ) {
+				txtef COLOR_PINK
+				txt lang(name(tc) + "の身体が快楽を求め始めた。", name(cc) + "'s body began to seek pleasure.")
+			}
+			hostileaction cc, tc
 			cc = tc
 			tc = ccbk
 			gosub *skill_tuin_der_lusten
@@ -24042,29 +24315,13 @@
 				}
 				if ( cc < MAX_CHARA_FOLLOWER | cc == CHARA_PLAYER ) {
 					if ( cdata(CDATA_RELATION, tc) != (-3) ) {
-						cdata(CDATA_POWER_GAUGE, tc) += 15
-						if ( cdata(CDATA_POWER_GAUGE, tc) > 100 ) {
-							if ( cdata(CDATA_SHIFT_FORM, tc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, tc) <= 0 | tc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, tc) < FIX_QUALITY_MIRACLE | tc < MAX_CHARA_FOLLOWER) ) {
-								cdata(CDATA_POWER_GAUGE, tc) = 100
-							}
-						}
-						if ( cdata(CDATA_POWER_GAUGE, tc) > 200 ) {
-							cdata(CDATA_POWER_GAUGE, tc) = 200
-						}
+						modgauge2 tc, 15
 						healmp tc, cdata(CDATA_MAX_MP, tc) / 50 + rnd(5 + sdata(SKILL_NORMAL_GARDENING, cc)) + sdata(SKILL_NORMAL_GARDENING, cc) / 2 * sqrt(sdata(SKILL_NORMAL_GARDENING, cc) + 1)
 					}
 				}
 				if ( cc >= MAX_CHARA_FOLLOWER ) {
 					if ( cdata(CDATA_RELATION, tc) == cdata(CDATA_RELATION, cc) ) {
-						cdata(CDATA_POWER_GAUGE, tc) += 15
-						if ( cdata(CDATA_POWER_GAUGE, tc) > 100 ) {
-							if ( cdata(CDATA_SHIFT_FORM, tc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, tc) <= 0 | tc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, tc) < FIX_QUALITY_MIRACLE | tc < MAX_CHARA_FOLLOWER) ) {
-								cdata(CDATA_POWER_GAUGE, tc) = 100
-							}
-						}
-						if ( cdata(CDATA_POWER_GAUGE, tc) > 200 ) {
-							cdata(CDATA_POWER_GAUGE, tc) = 200
-						}
+						modgauge2 tc, 15
 						healmp tc, cdata(CDATA_MAX_MP, tc) / 50 + rnd(5 + sdata(SKILL_NORMAL_GARDENING, cc)) + sdata(SKILL_NORMAL_GARDENING, cc) / 2 * sqrt(sdata(SKILL_NORMAL_GARDENING, cc) + 1)
 					}
 				}
@@ -24255,15 +24512,7 @@
 		snd SOUNDLIST_DING1
 		txtef COLOR_YELLOW
 		txt lang(name(cc) + "は自信満々に決めポーズを繰り出した！", name(cc) + " struck a pose with full of confidence!")
-		cdata(CDATA_POWER_GAUGE, cc) += 15
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-			if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 100
-			}
-		}
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-			cdata(CDATA_POWER_GAUGE, cc) = 200
-		}
+		modgauge2 cc, 15
 		cdata(CDATA_GUARD_BREAK, cc) -= 15
 		if ( cdata(CDATA_GUARD_BREAK, cc) <= 100 & cdata(CDATA_GUARD_BREAK, cc) >= 85 ) {
 			cdata(CDATA_GUARD_BREAK, cc) = 0
@@ -24285,19 +24534,8 @@
 		}
 		flt
 		itemcreate tc, ITEM_ID_SLIME_FUKAGURUMI, -1, -1, 0
-		cdata(CDATA_POWER_GAUGE, tc) -= 20
-		if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
-			cdata(CDATA_POWER_GAUGE, tc) = 0
-		}
-		cdata(CDATA_POWER_GAUGE, cc) += 20
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-			if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 100
-			}
-		}
-		if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-			cdata(CDATA_POWER_GAUGE, cc) = 200
-		}
+		modgauge2 tc, -20
+		modgauge2 cc, 20
 		goto *effect_end
 		_switch_sw++
 	}
@@ -24406,14 +24644,7 @@
 					cdata(CDATA_POWER_GAUGE, cnt) += 52
 					cdata(CDATA_GUARD_BREAK, cnt) += 52
 					cdata(CDATA_WEIGHT, cnt) = 15000
-					if ( cdata(CDATA_POWER_GAUGE, cnt) > 100 ) {
-						if ( cdata(CDATA_SHIFT_FORM, cnt) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cnt) <= 0 | cnt == 0) & (cdata(CDATA_QUALITY, cnt) < FIX_QUALITY_MIRACLE | cnt < MAX_CHARA_FOLLOWER) ) {
-							cdata(CDATA_POWER_GAUGE, cnt) = 100
-						}
-					}
-					if ( cdata(CDATA_POWER_GAUGE, cnt) > 200 ) {
-						cdata(CDATA_POWER_GAUGE, cnt) = 200
-					}
+					modgauge2 cnt, 0
 					cdata(CDATA_IMPRESSION, cnt) = 200
 					cdata(CDATA_MASTER_SERVANT, cnt) = 200
 					cdata(CDATA_SKILLPOINT, cnt) += 100
@@ -24857,8 +25088,7 @@
 		}
 		txtsetlimitp 10
 		repeat 10
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 200, 1
 		gosub *prompt_key
@@ -25839,19 +26069,8 @@
 			healhp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
 			dmgmp tc, sdata(SKILL_ATTR_MAG, cc) / 6 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 6)
 			healmp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
-			cdata(CDATA_POWER_GAUGE, tc) -= 2
-			if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
-				cdata(CDATA_POWER_GAUGE, tc) = 0
-			}
-			cdata(CDATA_POWER_GAUGE, cc) += 2
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, cc) = 100
-				}
-			}
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 200
-			}
+			modgauge2 tc, -2
+			modgauge2 cc, 2
 		}
 		powsel = charaCanGauge(cc)
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
@@ -25880,19 +26099,8 @@
 			healhp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
 			dmgmp tc, sdata(SKILL_ATTR_MAG, cc) / 6 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 6)
 			healmp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
-			cdata(CDATA_POWER_GAUGE, tc) -= 2
-			if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
-				cdata(CDATA_POWER_GAUGE, tc) = 0
-			}
-			cdata(CDATA_POWER_GAUGE, cc) += 2
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, cc) = 100
-				}
-			}
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 200
-			}
+			modgauge2 tc, -2
+			modgauge2 cc, 2
 		}
 		powsel = charaCanGauge(cc)
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
@@ -25966,19 +26174,8 @@
 			healhp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
 			dmgmp tc, sdata(SKILL_ATTR_MAG, cc) / 6 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 6)
 			healmp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
-			cdata(CDATA_POWER_GAUGE, tc) -= 2
-			if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
-				cdata(CDATA_POWER_GAUGE, tc) = 0
-			}
-			cdata(CDATA_POWER_GAUGE, cc) += 2
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, cc) = 100
-				}
-			}
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 200
-			}
+			modgauge2 tc, -2
+			modgauge2 cc, 2
 		}
 		powsel = charaCanGauge(cc)
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
@@ -26048,19 +26245,8 @@
 				healhp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
 				dmgmp tc, sdata(SKILL_ATTR_MAG, cc) / 6 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 6)
 				healmp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
-				cdata(CDATA_POWER_GAUGE, tc) -= 2
-				if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
-					cdata(CDATA_POWER_GAUGE, tc) = 0
-				}
-				cdata(CDATA_POWER_GAUGE, cc) += 2
-				if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-					if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-						cdata(CDATA_POWER_GAUGE, cc) = 100
-					}
-				}
-				if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-					cdata(CDATA_POWER_GAUGE, cc) = 200
-				}
+				modgauge2 tc, -2
+				modgauge2 cc, 2
 			}
 			powsel = charaCanGauge(cc)
 			if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
@@ -26089,19 +26275,8 @@
 			healhp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
 			dmgmp tc, sdata(SKILL_ATTR_MAG, cc) / 6 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 6)
 			healmp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
-			cdata(CDATA_POWER_GAUGE, tc) -= 2
-			if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
-				cdata(CDATA_POWER_GAUGE, tc) = 0
-			}
-			cdata(CDATA_POWER_GAUGE, cc) += 2
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, cc) = 100
-				}
-			}
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 200
-			}
+			modgauge2 tc, -2
+			modgauge2 cc, 2
 		}
 		powsel = charaCanGauge(cc)
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
@@ -26127,19 +26302,8 @@
 			healhp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
 			dmgmp tc, sdata(SKILL_ATTR_MAG, cc) / 6 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 6)
 			healmp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
-			cdata(CDATA_POWER_GAUGE, tc) -= 2
-			if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
-				cdata(CDATA_POWER_GAUGE, tc) = 0
-			}
-			cdata(CDATA_POWER_GAUGE, cc) += 2
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, cc) = 100
-				}
-			}
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 200
-			}
+			modgauge2 tc, -2
+			modgauge2 cc, 2
 		}
 		powsel = charaCanGauge(cc)
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
@@ -26172,19 +26336,8 @@
 			healhp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
 			dmgmp tc, sdata(SKILL_ATTR_MAG, cc) / 6 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 6)
 			healmp cc, sdata(SKILL_ATTR_MAG, cc) / 2 + rnd(5 + sdata(SKILL_ATTR_MAG, cc) / 2)
-			cdata(CDATA_POWER_GAUGE, tc) -= 2
-			if ( cdata(CDATA_POWER_GAUGE, tc) < 0 ) {
-				cdata(CDATA_POWER_GAUGE, tc) = 0
-			}
-			cdata(CDATA_POWER_GAUGE, cc) += 2
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, cc) = 100
-				}
-			}
-			if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-				cdata(CDATA_POWER_GAUGE, cc) = 200
-			}
+			modgauge2 tc, -2
+			modgauge2 cc, 2
 		}
 		powsel = charaCanGauge(cc)
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {

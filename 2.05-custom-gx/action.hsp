@@ -4428,14 +4428,7 @@
 			}
 		}
 	}
-	if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-		if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-			cdata(CDATA_POWER_GAUGE, cc) = 100
-		}
-	}
-	if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-		cdata(CDATA_POWER_GAUGE, cc) = 200
-	}
+	modgauge2 cc, 0
 	if ( cbit(CHARA_BIT_QUICK_SHOOTING, tc) ) {
 		if ( cbit(CHARA_BIT_SANDBAG, tc) != TRUE ) {
 			if ( slinger == 0 ) {
@@ -8147,8 +8140,7 @@
 		if ( gdata(GDATA_AREA) == AREA_DOCK & gdata(GDATA_LEVEL) == 70 ) {
 			txtsetwork 8
 			repeat 8
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 250, 1
 			gosub *prompt_key
@@ -8304,8 +8296,7 @@
 				if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 					txtselecttc 2
 					repeat 2
-						promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-						promptmax++
+						promptAdd s(cnt), key_select(cnt), promptmax
 					loop
 					val = promptx, prompty, 200, 1
 					gosub *prompt_key
@@ -8743,8 +8734,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -8827,8 +8817,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -8897,8 +8886,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -8969,8 +8957,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -9027,8 +9014,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -9078,8 +9064,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -9129,8 +9114,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -9227,8 +9211,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -9331,8 +9314,7 @@
 			txt lang("ボーナスに変換するには、対応するスキルのレベルが5は必要だ。このまま使うとスキルが消滅するが、本当に使う？", "The corresponding skill needs to be at least level 5. If you use this now, the skill will disappear. Do you really want to use this?")
 			txtselectuse 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -9359,8 +9341,7 @@
 		txt lang("対応スキルが半減するが、本当に使う？", "Corresponding skills will be halved, do you really use it?")
 		txtselectuse 2
 		repeat 2
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 200, 1
 		gosub *prompt_key
@@ -9721,15 +9702,7 @@
 		else {
 			txt lang(" *スパー* ", " *puff* ")
 		}
-		cdata(CDATA_POWER_GAUGE, tc) += 100
-		if ( cdata(CDATA_POWER_GAUGE, tc) > 100 ) {
-			if ( cdata(CDATA_SHIFT_FORM, tc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, tc) <= 0 | tc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, tc) < FIX_QUALITY_MIRACLE | tc <= MAX_CHARA_FOLLOWER) ) {
-				cdata(CDATA_POWER_GAUGE, tc) = 100
-			}
-		}
-		if ( cdata(CDATA_POWER_GAUGE, tc) > 200 ) {
-			cdata(CDATA_POWER_GAUGE, tc) = 200
-		}
+		modgauge2 tc, 100
 		cdata(CDATA_DRUG_DEPENDENCE, tc) += 30
 		toba = limit(cdata(CDATA_DRUG_DEPENDENCE, tc) / 3, 1, 100)
 		txt lang(name(tc) + "は麻薬に" + toba + "％依存している。", name(tc) + " " + is(tc) + " " + toba + "% addicted to drugs.")
@@ -10022,13 +9995,23 @@
 		ci = cibk
 		if ( cdata(CDATA_EXIST, tc) == CHAR_STATE_ALIVE ) {
 			if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CRUSH_POTIOMAN ) {
-				if ( inv(INV_ITEM_PARAM2, ci) == 0 ) {
+				gre = 0
+				if ( inv(INV_ITEM_PARAM2, ci) == 1 ) {
+					gre = 1
+				}
+				if ( inv(INV_ITEM_PARAM3, ci) \ 100 == 3 | inv(INV_ITEM_AMUR_CAGE, ci) == 3 ) {
+					if ( inv(INV_ITEM_PARAM2, ci) == 2 ) {
+						gre = 1
+					}
+				}
+				if ( gre == 1 ) {
 					tcbk = tc
 					efid = SKILL_SPACT_GRENADE
 					efp = limit(sdata(SKILL_ATTR_STR, cc) * 5 + sdata(SKILL_NORMAL_MARKSMAN, cc) * 20 + 500, 800, 50000)
 					gosub *effect
 					tc = tcbk
 				}
+				gre = 0
 			}
 		}
 		ci = cibk
@@ -12944,8 +12927,7 @@
 			item_separate ci
 			txtsetcustom 7
 			repeat 7
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 280, 1
 			gosub *prompt_key
@@ -13133,8 +13115,7 @@
 				if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 					txtselecttc 2
 					repeat 2
-						promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-						promptmax++
+						promptAdd s(cnt), key_select(cnt), promptmax
 					loop
 					val = promptx, prompty, 200, 1
 					gosub *prompt_key
@@ -13383,8 +13364,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -13460,8 +13440,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -13529,8 +13508,7 @@
 		if ( cdata(CDATA_IN_TAGTEAM, tc) != 0 ) {
 			txtselecttc 2
 			repeat 2
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 200, 1
 			gosub *prompt_key
@@ -14332,8 +14310,7 @@
 		txt lang("ヤカテクト「今" + gdata(GDATA_FLAG_YACA_POINTS) + "ヤカポイント溜まっとるけど、どうするん？」", "A voice echoes, " + cnvtalk("You have " + gdata(GDATA_FLAG_YACA_POINTS) + " YacaPoints! So, what do you want in exchange?"))
 		txtsetypoint 8
 		repeat 8
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 450, 1
 		gosub *prompt_key
@@ -14554,8 +14531,7 @@
 				if ( tc != CHARA_PLAYER ) {
 					txtsetmimikaki 3
 					repeat 3
-						promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-						promptmax++
+						promptAdd s(cnt), key_select(cnt), promptmax
 					loop
 					val = promptx, prompty, 250, 1
 					gosub *prompt_key
@@ -15143,15 +15119,7 @@
 					if ( cbit(CHARA_BIT_SANDBAG, cdata(CDATA_TARGET, cc)) ) {
 						continue
 					}
-					cdata(CDATA_POWER_GAUGE, cc) += 5
-					if ( cdata(CDATA_POWER_GAUGE, cc) > 100 ) {
-						if ( cdata(CDATA_SHIFT_FORM, cc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, cc) <= 0 | cc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, cc) < FIX_QUALITY_MIRACLE | cc < MAX_CHARA_FOLLOWER) ) {
-							cdata(CDATA_POWER_GAUGE, cc) = 100
-						}
-					}
-					if ( cdata(CDATA_POWER_GAUGE, cc) > 200 ) {
-						cdata(CDATA_POWER_GAUGE, cc) = 200
-					}
+					modgauge2 cc, 5
 				}
 			}
 		loop
@@ -18863,8 +18831,7 @@
 			txtsetplantr 5
 		}
 		repeat 5
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 250, 1
 		gosub *prompt_key

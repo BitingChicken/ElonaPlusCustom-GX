@@ -628,8 +628,10 @@
 #define global	SKILL_SPACT_RESCUE_REQUEST	874
 #define global	SKILL_SPACT_GENUINE_CHEERING	875
 #define global	SKILL_SPACT_DYNAMIC_YELL	876
+#define global	SKILL_SPACT_STANCE_SELECT	877
+#define global	SKILL_SPACT_DESTRUDO_HYPNOTISM	878
 
-#define global	MAX_SKILL	(SKILL_SPACT_DYNAMIC_YELL + 1)
+#define global	MAX_SKILL	(SKILL_SPACT_DESTRUDO_HYPNOTISM + 1)
 
 // Absolute skill limits
 #define global	MAX_SPACT_COUNT	500 // Maximum number of spact slots available in the array, beginning at STARTING_SKILL_SPACT, meaning the effective max skillid is 1099 (1100 if you really push it)
@@ -2562,8 +2564,10 @@
 #define global	RF_BLANKET	(EXT_RF + 28)
 #define global	RF_DEBUFF_POTION	(EXT_RF + 29)
 #define global	RF_REFERENCE_ITEM	(EXT_RF + 30)
+#define global	RF_REINFORCE_FURNITURE	(EXT_RF + 31)
+#define global	RF_MATERIAL_FURNITURE	(EXT_RF + 32)
 
-#define global	MAX_RF	(RF_DEBUFF_POTION + 1)
+#define global	MAX_RF	(RF_MATERIAL_FURNITURE + 1)
 
 // RP actions
 #define global	RPACTION_LOVE	EXT_RPACTION
@@ -2601,6 +2605,7 @@
 #define global	RECIPE_BLEND_ACTION_POTTERY	10022
 #define global	RECIPE_BLEND_ACTION_BIOLOGICAL_RESTORATION	10023
 #define global	RECIPE_BLEND_ACTION_APPEARANCE_IMITATION	10024
+#define global	RECIPE_BLEND_ACTION_FURNITURE_SYNTHESIS	10025
 
 // Equip slots / limbs
 #define global	EQUIP_SLOT_NONE	0
@@ -3680,6 +3685,7 @@
 #define global	ROLE_HORSE_MASTER	22
 #define global	ROLE_CARAVAN_MASTER	23
 #define global	ROLE_BOUNTY_HUNTER	24
+#define global	ROLE_PART_TIME_WORKER	26
 
 #define global	ROLE_SHOP_MIN	1000
 #define global	ROLE_SHOP_WEAPON	1000
@@ -7212,8 +7218,15 @@
 #define global	CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL	1141
 #define global	CREATURE_ID_BIG_MOSQUITO	1142
 #define global	CREATURE_ID_MOMALARIA_THE_BLOODSUCKER	1143
+#define global	CREATURE_ID_KETSU_GLIMMER	1144
+#define global	CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF	1145
+#define global	CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE	1146
+#define global	CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN	1147
+#define global	CREATURE_ID_TOWN_CHILD2	1148
+#define global	CREATURE_ID_TOWN_CHILD3	1149
+#define global	CREATURE_ID_TOWN_CHILD4	1150
 
-#define global	MAX_CREATURE_ID	(CREATURE_ID_MOMALARIA_THE_BLOODSUCKER + 3)
+#define global	MAX_CREATURE_ID	(CREATURE_ID_TOWN_CHILD4 + 3)
 
 // Buffer
 #define global	BUFFER_SCREEN	0

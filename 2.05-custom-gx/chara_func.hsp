@@ -1728,6 +1728,12 @@
 		if ( cdata(CDATA_CONDITION_DIM, cnt) > 60 ) {
 			continue
 		}
+		if ( cdata(CDATA_INCAPACITATED, cnt) < 0 ) {
+			continue
+		}
+		if ( cdata(CDATA_ROW_ACT, cnt) != ACTION_NONE ) {
+			continue
+		}
 		if ( dist(make_sound_arg1, make_sound_arg2, cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt)) < make_sound_arg3 ) {
 			if ( rnd(make_sound_arg4) == 0 ) {
 				if ( cdata(CDATA_CONDITION_SLEEP, cnt) != 0 ) {
@@ -1750,6 +1756,9 @@
 						}
 					}
 				}
+			}
+			if ( cdata(CDATA_ROW_ACT, make_sound_arg6) == ACTION_SEX | cdata(CDATA_ROW_ACT, make_sound_arg6) == ACTION_SEX_2 | cdata(CDATA_ROW_ACT, make_sound_arg6) == ACTION_TUIN_DER_LUSTEN ) {
+				cdata(CDATA_EMO_ICON, cnt) = 26 + 100 * 10
 			}
 		}
 	loop
@@ -6102,16 +6111,7 @@
 		}
 	}
 	if ( dmghp_source >= DAMAGE_FROM_CHARA ) {
-		if ( cdata(CDATA_POWER_GAUGE, dmghp_source) > 100 ) {
-			if ( cdata(CDATA_POWER_GAUGE, dmghp_source) > 100 ) {
-				if ( cdata(CDATA_SHIFT_FORM, dmghp_source) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, dmghp_source) <= 0 | dmghp_source == DAMAGE_FROM_CHARA) & (cdata(CDATA_QUALITY, dmghp_source) < FIX_QUALITY_MIRACLE | dmghp_source <= MAX_CHARA_FOLLOWER) ) {
-					cdata(CDATA_POWER_GAUGE, dmghp_source) = 100
-				}
-			}
-		}
-		if ( cdata(CDATA_POWER_GAUGE, dmghp_source) > 200 ) {
-			cdata(CDATA_POWER_GAUGE, dmghp_source) = 200
-		}
+		modgauge2 dmghp_source, 0
 	}
 	if ( locvar_dmghp_dmg <= 0 ) {
 		locvar_dmghp_dmglevel = -1
@@ -6753,6 +6753,10 @@
 		}
 	}
 	if ( cdata(CDATA_HP, dmghp_charid) < 0 ) {
+		cdata(CDATA_SANITY, dmghp_charid) += rnd(3) + 1
+		if ( cdata(CDATA_SANITY, dmghp_charid) > 100 ) {
+			cdata(CDATA_SANITY, dmghp_charid) = 100
+		}
 		locvar_dmghp_se = eleinfo(locvar_dmghp_ele, 1)
 		if ( locvar_dmghp_se ) {
 			snd locvar_dmghp_se, 0, 1

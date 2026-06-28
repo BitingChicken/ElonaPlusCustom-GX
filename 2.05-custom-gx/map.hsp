@@ -8,6 +8,14 @@
 	if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN | mdata(MDATA_TYPE) == MAP_TYPE_VILLAGE ) {
 		flt calcobjlv(10), calcfixlv(FIX_QUALITY_GOOD)
 		fltselect = 5
+		if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS ) {
+			flt calcobjlv(10), calcfixlv(FIX_QUALITY_GOOD)
+			fltselect = 11
+		}
+		if ( gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
+			flt calcobjlv(10), calcfixlv(FIX_QUALITY_GOOD)
+			fltselect = 12
+		}
 		if ( gdata(GDATA_LEVEL) == 1 ) {
 			if ( gdata(GDATA_FLAG_MAIN) >= 390 & gdata(GDATA_FLAG_MAIN) <= 660 ) {
 				if ( gdata(GDATA_WORLD) == AREA_NORTH_TYRIS | gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
@@ -531,6 +539,11 @@
 		}
 		if ( charaIsShadowhopSummon(cnt) ) {
 			chara_vanquish cnt
+		}
+		if ( cdata(CDATA_ROLE, cnt) == ROLE_PART_TIME_WORKER ) {
+			if ( cdata(CDATA_HIRE_DATE, cnt) < gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 ) {
+				chara_vanquish cnt
+			}
 		}
 		cdata(CDATA_FIELD_EFFECT, CHARA_PLAYER) = 0
 		cbitmod CHARA_BIT_SHADOW_CLONE, cnt, FALSE
@@ -1626,6 +1639,11 @@
 	if ( gdata(GDATA_AREA) == AREA_GRAVEYARD ) {
 		map_initcustom "grave_1"
 		mdata(MDATA_MODERATE_CROWD) = 7
+		if ( gdata(GDATA_FLAG_TALKA_IN_TRUCE_GROUND) == 11 ) {
+			flt
+			characreate -1, CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF, 19, 13
+			cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
+		}
 		mdata(MDATA_MUSIC) = MUSICLIST_MCRUIN
 		map_placeplayer
 		flt
@@ -1651,7 +1669,7 @@
 	if ( gdata(GDATA_AREA) == AREA_TRUCE_GROUND ) {
 		map_initcustom "shrine_1"
 		mdata(MDATA_MODERATE_CROWD) = 10
-		if ( gdata(GDATA_FLAG_TALKA_IN_TRUCE_GROUND) == 1 ) {
+		if ( gdata(GDATA_FLAG_TALKA_IN_TRUCE_GROUND) >= 1 ) {
 			flt
 			characreate -1, CREATURE_ID_TALKA_THE_LONG_TWINTAIL, 16, 4
 			cdata(CDATA_ROLE, rc) = ROLE_SPECIAL
@@ -3870,6 +3888,12 @@
 					flt
 					characreate -1, CREATURE_ID_BUG, -3, 0
 				loop
+				if ( gdata(GDATA_MONTH) == 6 ) {
+					repeat 9 + rnd(5)
+						flt
+						characreate -1, CREATURE_ID_KETSU_GLIMMER, -3, 0
+					loop
+				}
 			}
 		}
 		if ( gdata(GDATA_WEATHER) == WEATHER_HARD_RAIN ) {
@@ -9226,135 +9250,137 @@
 								}
 							}
 						}
-						if ( gdata(GDATA_AREA) == AREA_SEMINAR ) {
-							map_reload "semi1"
-						}
-						if ( gdata(GDATA_AREA) == AREA_LUMIEST ) {
-							map_reload "lumiest"
-						}
-						if ( gdata(GDATA_AREA) == AREA_VERNIS ) {
-							map_reload "vernis"
-						}
-						if ( gdata(GDATA_AREA) == AREA_PALMIA ) {
-							map_reload "palmia"
-						}
-						if ( gdata(GDATA_AREA) == AREA_PORT_KAPUL ) {
-							map_reload "kapul"
-						}
-						if ( gdata(GDATA_AREA) == AREA_YOWYN ) {
-							map_reload "yowyn"
-						}
-						if ( gdata(GDATA_AREA) == AREA_DERPHY ) {
-							map_reload "rogueden"
-						}
-						if ( gdata(GDATA_AREA) == AREA_EIREL ) {
-							map_reload "eirel"
-						}
-						if ( gdata(GDATA_AREA) == AREA_LARNA ) {
-							map_reload "highmountain"
-						}
-						if ( gdata(GDATA_AREA) == AREA_DOJO ) {
-							map_reload "Doujyou"
-						}
-						if ( gdata(GDATA_AREA) == AREA_RUOZA ) {
-							map_reload "ruoza"
-						}
-						if ( gdata(GDATA_AREA) == AREA_MELKAWN ) {
-							map_reload "melkawn1"
-						}
-						if ( gdata(GDATA_AREA) == AREA_KURUALM ) {
-							map_reload "kurualm"
-						}
-						if ( gdata(GDATA_AREA) == AREA_VALM ) {
-							map_reload "valm"
-						}
-						if ( gdata(GDATA_AREA) == AREA_MELUGAS ) {
-							map_reload "melugas"
-						}
-						if ( gdata(GDATA_AREA) == AREA_ARCBELC ) {
-							map_reload "arcbelc"
-						}
-						if ( gdata(GDATA_AREA) == AREA_ULM_LESON ) {
-							map_reload "1iseki"
-						}
-						if ( gdata(GDATA_AREA) == AREA_YLVA_LIBRARY ) {
-							map_reload "3lib"
-						}
-						if ( gdata(GDATA_AREA) == AREA_BLIMP ) {
-							map_reload "4mado"
-						}
-						if ( gdata(GDATA_AREA) == AREA_AMUR_CAGE ) {
-							map_reload "3haka"
-						}
-						if ( gdata(GDATA_AREA) == AREA_MIRAGE_TOWER ) {
-							if ( gdata(GDATA_LEVEL) == 1 ) {
-								map_reload "3sazin"
+						if ( mdata(MDATA_CITY_APPROVAL_RATE) != 1000 ) {
+							if ( gdata(GDATA_AREA) == AREA_SEMINAR ) {
+								map_reload "semi1"
 							}
-						}
-						if ( gdata(GDATA_AREA) == AREA_RUST_PLAZA ) {
-							map_reload "5cave"
-						}
-						if ( gdata(GDATA_AREA) == AREA_GUARDIAN_SHRINE ) {
-							map_reload "6defend"
-						}
-						if ( gdata(GDATA_AREA) == AREA_DOCK ) {
-							if ( gdata(GDATA_LEVEL) == 1 ) {
-								map_reload "7bship"
+							if ( gdata(GDATA_AREA) == AREA_LUMIEST ) {
+								map_reload "lumiest"
 							}
-						}
-						if ( gdata(GDATA_AREA) == AREA_OL_DRAN ) {
-							map_reload "9dran"
-						}
-						if ( gdata(GDATA_AREA) == AREA_IRMA_THALIA_WORKSHOP ) {
-							map_reload "10dwa"
-						}
-						if ( gdata(GDATA_AREA) == AREA_OBLIVION_PALACE ) {
-							map_reload "obli"
-						}
-						if ( gdata(GDATA_AREA) == AREA_ZAILE ) {
-							map_reload "zaile"
-						}
-						if ( gdata(GDATA_AREA) == AREA_SEBI ) {
-							map_reload "sebi"
-						}
-						if ( gdata(GDATA_AREA) == AREA_SOUTH_RASKILIS ) {
-							map_reload "ras_south"
-						}
-						if ( gdata(GDATA_AREA) == AREA_WEST_RASKILIS ) {
-							map_reload "ras0"
-						}
-						if ( gdata(GDATA_AREA) == AREA_LUDUS ) {
-							if ( gdata(GDATA_MONTH) == 8 ) {
-								if ( adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) == 0 ) {
-									adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) = 1
-									gosub *ludus_festival
+							if ( gdata(GDATA_AREA) == AREA_VERNIS ) {
+								map_reload "vernis"
+							}
+							if ( gdata(GDATA_AREA) == AREA_PALMIA ) {
+								map_reload "palmia"
+							}
+							if ( gdata(GDATA_AREA) == AREA_PORT_KAPUL ) {
+								map_reload "kapul"
+							}
+							if ( gdata(GDATA_AREA) == AREA_YOWYN ) {
+								map_reload "yowyn"
+							}
+							if ( gdata(GDATA_AREA) == AREA_DERPHY ) {
+								map_reload "rogueden"
+							}
+							if ( gdata(GDATA_AREA) == AREA_EIREL ) {
+								map_reload "eirel"
+							}
+							if ( gdata(GDATA_AREA) == AREA_LARNA ) {
+								map_reload "highmountain"
+							}
+							if ( gdata(GDATA_AREA) == AREA_DOJO ) {
+								map_reload "Doujyou"
+							}
+							if ( gdata(GDATA_AREA) == AREA_RUOZA ) {
+								map_reload "ruoza"
+							}
+							if ( gdata(GDATA_AREA) == AREA_MELKAWN ) {
+								map_reload "melkawn1"
+							}
+							if ( gdata(GDATA_AREA) == AREA_KURUALM ) {
+								map_reload "kurualm"
+							}
+							if ( gdata(GDATA_AREA) == AREA_VALM ) {
+								map_reload "valm"
+							}
+							if ( gdata(GDATA_AREA) == AREA_MELUGAS ) {
+								map_reload "melugas"
+							}
+							if ( gdata(GDATA_AREA) == AREA_ARCBELC ) {
+								map_reload "arcbelc"
+							}
+							if ( gdata(GDATA_AREA) == AREA_ULM_LESON ) {
+								map_reload "1iseki"
+							}
+							if ( gdata(GDATA_AREA) == AREA_YLVA_LIBRARY ) {
+								map_reload "3lib"
+							}
+							if ( gdata(GDATA_AREA) == AREA_BLIMP ) {
+								map_reload "4mado"
+							}
+							if ( gdata(GDATA_AREA) == AREA_AMUR_CAGE ) {
+								map_reload "3haka"
+							}
+							if ( gdata(GDATA_AREA) == AREA_MIRAGE_TOWER ) {
+								if ( gdata(GDATA_LEVEL) == 1 ) {
+									map_reload "3sazin"
 								}
-								map_reload "ludus_fest"
 							}
-							else {
-								if ( adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) == 1 ) {
-									adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) = 0
-									gosub *ludus_festival
+							if ( gdata(GDATA_AREA) == AREA_RUST_PLAZA ) {
+								map_reload "5cave"
+							}
+							if ( gdata(GDATA_AREA) == AREA_GUARDIAN_SHRINE ) {
+								map_reload "6defend"
+							}
+							if ( gdata(GDATA_AREA) == AREA_DOCK ) {
+								if ( gdata(GDATA_LEVEL) == 1 ) {
+									map_reload "7bship"
 								}
-								map_reload "ludus"
 							}
-						}
-						if ( gdata(GDATA_AREA) == AREA_NOYEL ) {
-							if ( gdata(GDATA_MONTH) == 12 ) {
-								if ( adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) == 0 ) {
-									adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) = 1
-									gosub *noyel_festival
+							if ( gdata(GDATA_AREA) == AREA_OL_DRAN ) {
+								map_reload "9dran"
+							}
+							if ( gdata(GDATA_AREA) == AREA_IRMA_THALIA_WORKSHOP ) {
+								map_reload "10dwa"
+							}
+							if ( gdata(GDATA_AREA) == AREA_OBLIVION_PALACE ) {
+								map_reload "obli"
+							}
+							if ( gdata(GDATA_AREA) == AREA_ZAILE ) {
+								map_reload "zaile"
+							}
+							if ( gdata(GDATA_AREA) == AREA_SEBI ) {
+								map_reload "sebi"
+							}
+							if ( gdata(GDATA_AREA) == AREA_SOUTH_RASKILIS ) {
+								map_reload "ras_south"
+							}
+							if ( gdata(GDATA_AREA) == AREA_WEST_RASKILIS ) {
+								map_reload "ras0"
+							}
+							if ( gdata(GDATA_AREA) == AREA_LUDUS ) {
+								if ( gdata(GDATA_MONTH) == 8 ) {
+									if ( adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) == 0 ) {
+										adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) = 1
+										gosub *ludus_festival
+									}
+									map_reload "ludus_fest"
 								}
-								map_reload "noyel_fest"
-							}
-							else {
-								if ( adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) == 1 ) {
-									adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) = 0
-									gosub *noyel_festival
+								else {
+									if ( adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) == 1 ) {
+										adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) = 0
+										gosub *ludus_festival
+									}
+									map_reload "ludus"
 								}
-								map_reload "noyel"
 							}
-							gdata(GDATA_FLAG_FIRE_GIANT) = 0
+							if ( gdata(GDATA_AREA) == AREA_NOYEL ) {
+								if ( gdata(GDATA_MONTH) == 12 ) {
+									if ( adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) == 0 ) {
+										adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) = 1
+										gosub *noyel_festival
+									}
+									map_reload "noyel_fest"
+								}
+								else {
+									if ( adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) == 1 ) {
+										adata(ADATA_FESTIVAL, gdata(GDATA_AREA)) = 0
+										gosub *noyel_festival
+									}
+									map_reload "noyel"
+								}
+								gdata(GDATA_FLAG_FIRE_GIANT) = 0
+							}
 						}
 					}
 				}
@@ -10690,6 +10716,15 @@
 				cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
 				map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), 1) = 0
 			loop
+		}
+	}
+	if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_GRAVEYARD ) {
+		if ( gdata(GDATA_FLAG_TALKA_IN_TRUCE_GROUND) == 1 ) {
+			if ( findchara(CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF) != 0 ) {
+				chara_vanquish findchara(CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF)
+			}
+			evadd EVENT_SPAWN_EVENT_NPCS
+			gdata(GDATA_FLAG_TALKA_IN_TRUCE_GROUND) = 11
 		}
 	}
 	if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_TRUCE_GROUND ) {
@@ -12396,7 +12431,7 @@
 						}
 					}
 					if ( cdata(CDATA_ID, cnt) == CREATURE_ID_MOTUHEGUI | cdata(CDATA_ID, cnt) == CREATURE_ID_GAKI_MOTUHEGUI ) {
-						if ( cdata(CDATA_RELATION_ORG, cnt) < (-1) ) {
+						if ( cdata(CDATA_ALLIED, cnt) == 0 ) {
 							cdata(CDATA_EXIST, cnt) = CHAR_STATE_DEAD
 							map(cdata(CDATA_X, cnt), cdata(CDATA_Y, cnt), MAP_CHARA_INDEX_PLUS_ONE) = 0
 						}

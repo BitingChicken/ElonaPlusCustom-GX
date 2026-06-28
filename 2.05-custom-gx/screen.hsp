@@ -1227,6 +1227,16 @@
 			bmes "[Reprimand Room]", 250, 250, 50
 		}
 	}
+	if ( cdata(CDATA_FIELD_EFFECT, CHARA_PLAYER) == 7 ) {
+		pos inf_clockw + 6, inf_clocky + 50
+		color 0, 0, 0
+		if ( jp ) {
+			bmes "[破滅同好会]", 250, 100, 170
+		}
+		if ( en ) {
+			bmes "[Destrudo Club]", 250, 100, 170
+		}
+	}
 	if ( gdata(GDATA_FLAG_NEFIA_FEVER_ACTIVE) == 100 ) {
 		pos 10, 0
 		gcopy 3, 1338, 385, 102, 100
@@ -7078,6 +7088,50 @@
 	skillexp r1, CHARA_PLAYER, limit(100 + r2 * 30, 100, 1500)
 	return
 
+#defcfunc calcmagicrit int calcmagicrit_arg1
+	critical = 0
+	mps = 0
+	if ( cbit(CHARA_BIT_AWAKE_NEAR_DEATH_EVASION, cc) ) {
+		if ( cdata(CDATA_HP, cc) >= 0 ) {
+			if ( limit(cdata(CDATA_MAX_HP, cc) / (cdata(CDATA_HP, cc) + 1), 1, 20) > rnd(20) ) {
+				critical = 1
+				return mps
+			}
+		}
+	}
+	if ( cdata(CDATA_CONDITION_DIM, tc) != 0 ) {
+		if ( rnd(8) == 0 ) {
+			critical = 1
+			return mps
+		}
+	}
+	if ( findbuff(cc, BUFF_CHARGE) != (-1) ) {
+		if ( rnd(2) == 0 ) {
+			critical = 1
+			return mps
+		}
+	}
+	if ( cdata(CDATA_CRIT_CHANCE, cc) * 4 + 10 > rnd(400) + cdata(CDATA_DEC_ENEMY_CRIT_CHANCE, tc) * 2 ) {
+		critical = 1
+		if ( findbuff(tc, BUFF_EMERGENCY_EVASION) != (-1) & cdata(CDATA_EQUIP_WEIGHT, tc) < EQUIP_WEIGHT_CLASS_MEDIUM ) {
+			critical = 0
+		}
+	}
+	if ( rnd(5000) < sdata(SKILL_ATTR_PER, cc) + 50 ) {
+		critical = 1
+		if ( cbit(CHARA_BIT_AWAKE_NEAR_DEATH_EVASION, tc) ) {
+			if ( cdata(CDATA_HP, tc) >= 0 ) {
+				if ( limit(cdata(CDATA_MAX_HP, tc) / (cdata(CDATA_HP, tc) + 1), 1, 20) > rnd(5) ) {
+					critical = 0
+				}
+			}
+		}
+		if ( findbuff(tc, BUFF_EMERGENCY_EVASION) != (-1) & cdata(CDATA_EQUIP_WEIGHT, tc) < EQUIP_WEIGHT_CLASS_MEDIUM ) {
+			critical = 0
+		}
+	}
+	return mps
+
 #defcfunc calcattackhit int calcattackhit_arg1
 	critical = 0
 	if ( attackskill == SKILL_WEAPON_MARTIAL_ARTS ) {
@@ -7284,8 +7338,8 @@
 	if ( gdata(GDATA_TIME_STOP_TIME) > 0 | gdata(GDATA_FLAG_STOP_TIME_OTHER) > 0 ) {
 		if ( inv(INV_ITEM_ID, cw) == ITEM_ID_KALPA_HAND ) {
 			critical = 1
+			return 1
 		}
-		return 1
 	}
 	if ( gdata(GDATA_TEMPORARY_FLAGS3) != 0 ) {
 		if ( inv(INV_ITEM_ID, cw) != ITEM_ID_G3_EXA & inv(INV_ITEM_ID, cw) != ITEM_ID_DREADNOUGHT ) {

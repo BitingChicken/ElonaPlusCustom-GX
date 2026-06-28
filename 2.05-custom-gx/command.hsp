@@ -2892,9 +2892,15 @@
 		p += (cdata(CDATA_FAME, CHARA_PLAYER) - 25000) / 100
 	}
 	gold += p
+	sitagau = gdata(GDATA_DEEPEST_LEVEL) + 20
 	noteadd " - Title & Ranking - "
 	noteadd ""
 	noteadd lang("名声: ", "Fame: ") + cdata(CDATA_FAME, CHARA_PLAYER)
+	noteadd lang("最深攻略階層: " + gdata(GDATA_DEEPEST_LEVEL) + "階相当", "Deepest Nefia: " + gdata(GDATA_DEEPEST_LEVEL) + " level.")
+	noteadd lang("[レベル" + sitagau + "までの仲間が戦闘時に従う]", "[Allies up to level." + sitagau)
+	if ( en ) {
+		noteadd " will follow orders in battle.]"
+	}
 	noteadd ""
 	repeat 9
 		if ( gdata(STARTING_GDATA_RANK + cnt) < 10000 ) {
@@ -2953,7 +2959,6 @@
 		noteadd ""
 		if ( jp ) {
 			noteadd "◆ これまでのあなた"
-			noteadd "@BL　最深攻略階層　　: " + gdata(GDATA_DEEPEST_LEVEL) + lang("階相当", " level")
 			noteadd "@BL　ネフィア制覇数  : " + gdata(GDATA_FLAG_NEFIA_CONQUERED) + ""
 			noteadd "@BL　殺害数　　　　  : " + gdata(GDATA_KILLED) + ""
 			noteadd "@BL　決闘の経験　　　: " + gdata(GDATA_FLAG_TIMES_DUELED) + ""
@@ -3462,7 +3467,7 @@
 				continue
 			}
 		}
-		if ( allyctrl == 1 ) {
+		if ( allyctrl == 1 | allyctrl == 7 ) {
 			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_TEMP ) {
 				continue
 			}
@@ -3551,6 +3556,9 @@
 	}
 	if ( allyctrl == 1 ) {
 		s = lang("雇用費(給料)", "Init. Cost(Wage)")
+	}
+	if ( allyctrl == 7 ) {
+		s = lang("志望動機", "Reason")
 	}
 	if ( allyctrl == 3 ) {
 		s = lang("レベル", "Level")
@@ -3681,6 +3689,70 @@
 			}
 			if ( allyctrl == 5 ) {
 				s = "" + cdata(CDATA_CONDITION_BLEED, i)
+				pos wx + 512, wy + 66 + cnt * 19 + 2
+				mes s
+			}
+			if ( allyctrl == 7 ) {
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 0 ) {
+					s = lang("遊ぶ金欲しさ", "Want money to have fun")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 1 ) {
+					s = lang("実家への仕送り", "Parents need the money")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 2 ) {
+					s = lang("借金の返済", "To repay debt")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 3 ) {
+					s = lang("家から近かった", "It's close to home")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 4 ) {
+					s = lang("あなたのファン", "Your biggest fan")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 5 ) {
+					s = lang("どこでもよかった", "Anywhere is fine")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 6 ) {
+					s = lang("むしゃくしゃして応募", "Frustrated")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 7 ) {
+					s = lang("本当は働きたくない", "Don't want to work")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 8 ) {
+					s = lang("社会経験目当て", "Need social experience")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 9 ) {
+					s = lang("自分の成長が目的", "Personal growth")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 10 ) {
+					s = lang("経験を活かすため", "To make use of experience")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 11 ) {
+					s = lang("友達が勝手に応募", "Friend's recommendation")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 12 ) {
+					s = lang("居場所が欲しかった", "Wanted a place to belong")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 13 ) {
+					s = lang("生き残るため", "To survive")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 14 ) {
+					s = lang("簡単そうだから", "Because it looks easy")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 15 ) {
+					s = lang("無回答", "No answer")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 16 ) {
+					s = lang("恥ずかしいので秘密", "Secret")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 17 ) {
+					s = lang("ただなんとなく", "Just because")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 18 ) {
+					s = lang("親が働けとうるさい", "Parents told me to")
+				}
+				if ( cdata(CDATA_MATERIAL3_COUNTER, i) == 19 ) {
+					s = lang("承認欲求を満たすため", "Need for recognition")
+				}
 				pos wx + 512, wy + 66 + cnt * 19 + 2
 				mes s
 			}
@@ -4296,8 +4368,7 @@
 			}
 			txtsetadvmes 6
 			repeat 6
-				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-				promptmax++
+				promptAdd s(cnt), key_select(cnt), promptmax
 			loop
 			val = promptx, prompty, 400, 1
 			gosub *prompt_key
@@ -5773,8 +5844,7 @@
  		if ( gdata(GDATA_RIDER) != 0 ) {
  			txtselectride 2
  			repeat 2
- 				promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
- 				promptmax++
+ 				promptAdd s(cnt), key_select(cnt), promptmax
  			loop
 			val = promptx, prompty, 150, 1
  			gosub *prompt_key
@@ -6850,8 +6920,7 @@
 			txtselectkimoti2 11
 		}
 		repeat 11
-			promptl(0, promptmax) = s(cnt), key_select(cnt), "" + promptmax
-			promptmax++
+			promptAdd s(cnt), key_select(cnt), promptmax
 		loop
 		val = promptx, prompty, 300, 1
 		gosub *prompt_key
@@ -8384,6 +8453,7 @@
 	keyrange = 0
 	key_list(0) = key_enter
 	color 0, 0, 0
+
 *com_book_loop
 	redraw 0
 	page_check
@@ -8416,6 +8486,7 @@
 			mes "- " + (p / 20 + 1) + " -"
 		}
 	loop
+
 *com_book_loop_pgchg
 	redraw 1
 	await cfg_wait1
@@ -8434,6 +8505,7 @@
 	goto *com_book_loop_pgchg
 
 *com_spellbook
+*com_spellbook_2
 	listmax = 0
 	page = 0
 	pagesize = 16
@@ -8561,7 +8633,7 @@
 			s = "" + satusuu + lang("冊作れる ", "books can be produced ")
 		}
 		if ( satusuu == 0 ) {
-			s = lang("ストックが足りない ", "Not enough magic stock ")
+			s = lang("ストックが2000以上必要 ", "Need more than 2000 stock ")
 		}
 		if ( satusuu == (-1) ) {
 			s = lang("魔法書に変換できない ", "Can't produce ")
@@ -8684,20 +8756,7 @@
 			}
 		}
 	}
-	if ( key == key_pageup ) {
-		if ( pagemax != 0 ) {
-			snd SOUNDLIST_POP1
-			page++
-			goto *com_spellbook_loop_pgchk
-		}
-	}
-	if ( key == key_pagedown ) {
-		if ( pagemax != 0 ) {
-			snd SOUNDLIST_POP1
-			page--
-			goto *com_spellbook_loop_pgchk
-		}
-	}
+	page_change *com_spellbook_loop_pgchk
 	if ( key == key_cancel ) {
 		gosub *screen_draw
 		efid = -1
@@ -8705,7 +8764,190 @@
 	}
 	goto *com_spellbook_loop
 
+*com_spellremove
+*com_spellremove_2
+	listmax = 0
+	page = 0
+	pagesize = 16
+	cs = 0
+	cc = CHARA_PLAYER
+	cs_bk = -1
+	cs = commark(1) \ 1000
+	page = commark(1) / 1000
+	curmenu = 0
+	repeat 200
+		if ( spell(cnt) > 0 ) {
+			if ( spells(cnt) == 0 ) {
+				list(0, listmax) = cnt + 400, sdataref(SKILL_DATAREF_USE, 400 + cnt)
+				listmax++
+			}
+		}
+	loop
+	gosub *sort_list
+	if ( TweakData(TWEAK_CONVENIENCE_SORT_SPELL_BY_TYPE, TWEAK_CATEGORY_CONVENIENCE) ) {
+		gosub *custom_spelllist_sort
+	}
+	redraw 0
+	gsel BUFFER_INF
+	pos 960, 96
+	picload exedir + "graphic\\deco_spell.bmp", 1
+	gsel BUFFER_SCREEN
+	windowshadow = 1
+
+*com_spellremove_loop_pgchk
+	redraw 0
+	cs_bk = -1
+	pagemax = (listmax - 1) / pagesize
+	if ( page < 0 ) {
+		page = pagemax
+	}
+	else {
+		if ( page > pagemax ) {
+			page = 0
+		}
+	}
+	drawmenu 1
+
+*com_spellremove_loop
+	if ( 1 == 0 ) {
+		goto *com_spellcast_2
+	}
+	redraw 0
+	s = lang("不要なストックの選択", "Select unnecessary spell stock"), strhint2 + strhint3 + strhint7 + strhint8
+	display_window (windoww - 720) / 2 + inf_screenx, winposy(438), 720, 438
+	display_topic lang("魔法の名称", "Name"), wx + 28, wy + 36
+	display_topic lang("消費MP(ｽﾄｯｸ)　LV/成功　(潜在) ", "Cost(Stock) Lv/Chance (Potential)"), wx + 190, wy + 36
+	display_topic lang("獲得数", "Gain"), wx + 460, wy + 36
+	pos wx + 46, wy - 16
+	gcopy BUFFER_INF, 288 + 13 * 48, 48, 48, 48
+	pos wx + ww - 78, wy
+	gcopy BUFFER_INF, 960, 96, 72, 144
+	pos wx + ww - 180, wy
+	gcopy BUFFER_INF, 1032, 96, 72, 96
+	keyrange = 0
+	repeat pagesize
+		p = pagesize * page + cnt
+		if ( p >= listmax ) {
+			break
+		}
+		key_list(cnt) = key_select(cnt)
+		keyrange++
+		if ( cnt \ 2 == 0 ) {
+			pos wx + 70, wy + 66 + cnt * 19
+			gfini 620, 18
+			gfdec2 12, 14, 16
+		}
+		display_key wx + 58, wy + 66 + cnt * 19 - 2, cnt
+	loop
+	font lang(cfg_font1, cfg_font2), 14 - en * 2, 0
+	cs_listbk
+	repeat pagesize
+		p = pagesize * page + cnt
+		if ( p >= listmax ) {
+			break
+		}
+		i = list(0, p)
+		pos wx + 40, wy + 74 + cnt * 19
+		gmode 2, inf_tiles, inf_tiles
+		grotate BUFFER_ITEM, (sdataref(SKILL_DATAREF_USE, i) - 10) * inf_tiles, 672, 0, inf_tiles, inf_tiles
+		s = ""
+		cs_list skillname(i) + s, wx + 84, wy + 66 + cnt * 19 - 1, 19
+		s = "" + calcspellcostmp(i, cc) + "(" + spell(i - 400) + ")"
+		pos wx + 296 - strlen(s) * 7, wy + 66 + cnt * 19 + 2
+		mes s
+		satusuu = spell(i - 400) / 200
+		if ( i == 465 ) {
+			satusuu = satusuu * 5
+		}
+		if ( i == 441 ) {
+			satusuu = satusuu * 50
+		}
+		if ( satusuu > 0 ) {
+			s = "" + satusuu + lang("の充填用魔力 ", "mana charge ")
+		}
+		if ( satusuu == 0 ) {
+			s = lang("ストックが200以上必要 ", "Need more than 200 stock ")
+		}
+		s = strmid(s, 0, 40)
+		pos wx + 305, wy + 66 + cnt * 19 + 2
+		mes "" + sdata(i, cc) + "/" + calcspellfail(i, cc) + "% (" + sgrowth(i, cc) + "%)"
+		pos wx + 420, wy + 66 + cnt * 19 + 2
+		mes s
+	loop
+	if ( keyrange != 0 ) {
+		cs_bk = cs
+	}
+	redraw 1
+	await cfg_wait1
+	key_check
+	cursor_check
+	/********** MMAHACK - MOUSE OPERATION - BEGINNING **********/
+	if ( cfg_mmah_mouseoperation ) {
+		cursor_check@MMAH wy + 66, 19
+	}
+	/********** MMAHACK - MOUSE OPERATION - ENDING **********/
+	p = -1
+	commark(1) = page * 1000 + cs
+	repeat keyrange
+		if ( key == key_select(cnt) ) {
+			p = list(0, pagesize * page + cnt)
+			break
+		}
+	loop
+	if ( p != (-1) ) {
+		menucycle = 0
+		if ( spell(p - 400) < 200 ) {
+			efid = -1
+			return
+		}
+		efid = p
+		snd SOUNDLIST_ENC
+		return
+	}
+	if ( menucycle == 1 ) {
+		if ( key == key_next | key == key_prev ) {
+			p = curmenu
+			if ( key == key_next ) {
+				curmenu++
+				if ( curmenu > 2 ) {
+					curmenu = 0
+				}
+			}
+			if ( key == key_prev ) {
+				curmenu--
+				if ( curmenu < 0 ) {
+					curmenu = 2
+				}
+			}
+			key = ""
+			if ( p != curmenu ) {
+				screenupdate = -1
+				gosub *screen_draw
+				if ( curmenu == 0 ) {
+					snd SOUNDLIST_SPELL
+					goto *com_spell
+				}
+				if ( curmenu == 1 ) {
+					snd SOUNDLIST_SKILL
+					goto *com_applySkill
+				}
+				if ( curmenu == 2 ) {
+					snd SOUNDLIST_SKILL
+					goto *com_applyWideSkill
+				}
+			}
+		}
+	}
+	page_change *com_spellremove_loop_pgchk
+	if ( key == key_cancel ) {
+		gosub *screen_draw
+		efid = -1
+		return
+	}
+	goto *com_spellremove_loop
+
 *com_spellcast
+*com_spellcast_2
 	tc = cc
 	gosub *cast
 	if ( stat == 0 ) {
@@ -8778,10 +9020,12 @@
 	picload exedir + "graphic\\deco_spell.bmp", 1
 	gsel 0
 	windowshadow = 1
+
 *com_spell_loop_pgchk
 	redraw 0
 	page_check
 	drawmenu 1
+
 *com_spell_loop
 	redraw 0
 	s = lang("魔法の詠唱", "Spell"), strhint2 + strhint3 + strhint7 + strhint8 + lang("  z/x [魔法/詠唱の制限]  ", "  z/x [Spell-Lv/Casting-limit]  ")

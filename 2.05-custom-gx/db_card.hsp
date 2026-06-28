@@ -1,4 +1,95 @@
 *db_card
+	if ( dbid == CREATURE_ID_TOWN_CHILD4 ) {
+		cardreftype = 10
+		cardrefskill = lang("自身が大人よりも賢くて要領が良いと信じて疑わない姿はまさに子供と呼ぶにふさわしい。どれほどの時間が過ぎようとも、それを盲信し続けるかぎり彼等は子供なのである。", "Town children who firmly believe they are wiser and more adept than adults, clinging to that delusion. No matter how much time passes, they are children as long as they continue to believe in it.")
+		cardrefdomain = 6
+		cardrefrare = 100
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("街の子供", "town child")
+		cardrefpic = xy2pic(31, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1150 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_TOWN_CHILD3 ) {
+		cardreftype = 10
+		cardrefskill = lang("自身は何をしても泣けば許されると信じて疑わない姿はまさに子供と呼ぶにふさわしい。どれほどの時間が過ぎようとも、それを盲信し続けるかぎり彼等は子供なのである。", "Town children who believe they can do no wrong, convinced that crying will always earn them forgiveness. No matter how much time passes, they are children as long as they continue to believe in it.")
+		cardrefdomain = 6
+		cardrefrare = 100
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("街の子供", "town child")
+		cardrefpic = xy2pic(29, 35) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1149 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_TOWN_CHILD2 ) {
+		cardreftype = 10
+		cardrefskill = lang("自身をもう充分に大人だと思い込んでいる姿はまさに子供と呼ぶにふさわしい。どれほどの時間が過ぎようとも、それを盲信し続けるかぎり彼等は子供なのである。", "Town children who insist on seeing themselves as fully grown adults, clinging to that delusion. No matter how much time passes, they are children as long as they continue to believe in it.")
+		cardrefdomain = 6
+		cardrefrare = 100
+		cardrefcost = 0
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("街の子供", "town child")
+		cardrefpic = xy2pic(14, 3) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1148 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN ) {
+		cardreftype = 10
+		cardrefskill = lang("湖から出現した精霊。人類が湖のマリモを採取しすぎないように監視しており、度が過ぎると実力行使でマリモを守る。可愛い見た目によらず筋肉モリモリの力自慢であり、敵対すると信じられないくらいの馬鹿力で殴られる。", "A spirit emerged from the lake to monitor human marimo harvesting, using force when necessary to protect the delicate ecosystem. Despite its cute appearance, this entity possesses immense, unexpected strength.")
+		cardrefdomain = 6
+		cardrefrare = 10
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("守毬霊『マリモリ』", "<Marimoll> the marimo guardian")
+		cardrefpic = xy2pic(32, 36) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1147 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE ) {
+		cardreftype = 10
+		cardrefskill = lang("ダルフィに迷い込んできた大人しい大蛇。お腹を空かせて弱っている様子を見た住民がふざけて乾燥クラムベリーを食わせたところ、とってもキマる煙を吐き出した。それからは街のマスコット兼喫煙所として皆に可愛がられている。", "A gentle giant serpent wandered into Derphy, weak from hunger. Locals playfully fed it dried crumble berries, causing it to exhale an enticing smoke. Now, the creature is beloved by all as the town's mascot and unofficial smoking lounge.")
+		cardrefdomain = 6
+		cardrefrare = 10
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("煙吐く『シーシャーペント』", "<Sheesherpent> the smoke snake")
+		cardrefpic = xy2pic(23, 31) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1146 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF ) {
+		cardreftype = 10
+		cardrefskill = lang("口周りのヒゲが特徴的な年老いた銀狼。足腰が弱るのを防ぐため杖で補助しながら二足歩行で散歩しているが、小刻みにぷるぷる震えている。これを寒がっていると勘違いしたルミエスト市民に服を着せられた。", "An elderly silver wolf with distinctive facial hair, using a cane to assist with bipedal walking, trembles slightly as it strolls. Mistaken for being cold by Lumiest citizens, it has been clothed against its will.")
+		cardrefdomain = 6
+		cardrefrare = 10
+		cardrefcost = 0
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("老銀狼の『ジジンガ』", "<Zizinga> the old silver wolf")
+		cardrefpic = xy2pic(32, 28) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1145 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_KETSU_GLIMMER ) {
+		cardreftype = 10
+		cardrefskill = lang("生まれながらにして光属性のお尻を持つ戦士。自分の気をコントロールし、お尻にケッ集させる技を本能レベルで会得している。普段は人里離れた場所で修業しそれぞれの尻を磨いているが、６月になると野外に集まって尻試しを始める。別名おしりひかり虫。", "Born with an innate affinity for light, this warrior has mastered the ability to concentrate their Qi and channel it into their ass at a primal instinct level. While ordinarily they train in secluded region, come June, they gather in the wilderness for a trial known as 'tush-testing' to hone their unique assets. You may know them as, the 'butt-shine bugs' - Ketsu Gimmer.")
+		cardrefdomain = 6
+		cardrefrare = 5
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("ケツピカラー", "ketsu glimmer")
+		cardrefpic = xy2pic(30, 33) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1144 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
 	if ( dbid == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
 		cardreftype = 10
 		cardrefskill = lang("ビッグモスキートの頭や足が変異した特殊個体。人家を訪問し、うっかり招き入れてしまうと大繁殖してアグレッシブに住人を襲う。家に帰れなくなり街にたむろし続ける市民が誕生する原因でもある。招かれないと家に入れないのが弱点。", "Big Mosquito Mutant: A special variant with enlarged head and limbs. If accidentally invited into homes, they breed rapidly and aggressively attack inhabitants. These incidents cause citizens to be unable to return home, congregating in the streets.")

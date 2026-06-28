@@ -169,6 +169,23 @@
 	}
 	return
 
+// Slightly different
+#deffunc modgauge2 int modgauge_charaidx, int modgauge_amount
+	locvar_modgauge_a = modgauge_amount
+	cdata(CDATA_POWER_GAUGE, modgauge_charaidx) += locvar_modgauge_a
+	if ( cdata(CDATA_POWER_GAUGE, modgauge_charaidx) > 100 ) {
+		if ( cdata(CDATA_SHIFT_FORM, modgauge_charaidx) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, modgauge_charaidx) <= 0 | modgauge_charaidx == CHARA_PLAYER) & (cdata(CDATA_QUALITY, modgauge_charaidx) < FIX_QUALITY_MIRACLE | modgauge_charaidx < MAX_CHARA_FOLLOWER) ) {
+			cdata(CDATA_POWER_GAUGE, modgauge_charaidx) = 100
+		}
+	}
+	if ( cdata(CDATA_POWER_GAUGE, modgauge_charaidx) > 200 ) {
+		cdata(CDATA_POWER_GAUGE, modgauge_charaidx) = 200
+	}
+	if ( cdata(CDATA_POWER_GAUGE, modgauge_charaidx) < 0 ) {
+		cdata(CDATA_POWER_GAUGE, modgauge_charaidx) = 0
+	}
+	return
+
 #deffunc modkarma int modkarma_arg1, int modkarma_arg2
 	locvar_modkarma_a = modkarma_arg2
 	if ( trait(TRAIT_OTHER_WICKED) ) {
@@ -2046,7 +2063,7 @@
 				}
 			}
 		}
-		if ( cdata(CDATA_ROW_ACT, CHARA_PLAYER) == ACTION_SEX ) {
+		if ( cdata(CDATA_ROW_ACT, CHARA_PLAYER) == ACTION_SEX | cdata(CDATA_ROW_ACT, CHARA_PLAYER) == ACTION_TUIN_DER_LUSTEN ) {
 			locvar_cell_draw_py -= cdata(CDATA_ACTION_PERIOD, CHARA_PLAYER) \ 5 * 4
 		}
 		if ( cdata(CDATA_ROW_ACT, CHARA_PLAYER) == ACTION_SEX_2 ) {
@@ -2793,6 +2810,12 @@
 		pos cell_draw_arg_dx + locvar_draw_cell_tagyshift * 12, cell_draw_arg_dy - 40
 		gmode 5, inf_tiles, inf_tiles, 100 + rnd(70)
 		gcopy BUFFER_INF, 192 + 48 * 11 + rnd(1) * inf_tiles, 704
+	}
+	// Ketsu glimmer
+	if ( cdata(CDATA_PIC, cell_draw_arg_c) == xy2pic(30, 33) ) {
+		pos cell_draw_arg_dx + locvar_draw_cell_tagyshift * 12, cell_draw_arg_dy - 12
+		gmode 4, inf_tiles, inf_tiles, rnd(4) * 60
+		gcopy BUFFER_INF, 192 + 48 * 22 + rnd(1) * inf_tiles, 704
 	}
 	return
 

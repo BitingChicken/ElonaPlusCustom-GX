@@ -4,6 +4,235 @@
 	}
 	dbsum = 0
 	dbmax = 0
+	if ( 5 > objlv ) {
+		goto *db_creature_TOWN_CHILD3
+	}
+	if ( fltselect != 12 ) {
+		goto *db_creature_TOWN_CHILD3
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_TOWN_CHILD3
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "juere" ) {
+			goto *db_creature_TOWN_CHILD3
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_TOWN_CHILD4 + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_TOWN_CHILD3
+		}
+	}
+	dbsum += 100000 / (500 + abs(objlv - 5) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_TOWN_CHILD4, dbsum
+	dbmax++
+
+*db_creature_TOWN_CHILD3
+	if ( 2 > objlv ) {
+		goto *db_creature_TOWN_CHILD2
+	}
+	if ( fltselect != 12 ) {
+		goto *db_creature_TOWN_CHILD2
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_TOWN_CHILD2
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "juere" ) {
+			goto *db_creature_TOWN_CHILD2
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_TOWN_CHILD3 + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_TOWN_CHILD2
+		}
+	}
+	dbsum += 100000 / (500 + abs(objlv - 2) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_TOWN_CHILD3, dbsum
+	dbmax++
+
+*db_creature_TOWN_CHILD2
+	if ( 3 > objlv ) {
+		goto *db_creature_MARIMOLL_THE_MARIMO_GUARDIAN
+	}
+	if ( fltselect != 11 ) {
+		goto *db_creature_MARIMOLL_THE_MARIMO_GUARDIAN
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_MARIMOLL_THE_MARIMO_GUARDIAN
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "norland" ) {
+			goto *db_creature_MARIMOLL_THE_MARIMO_GUARDIAN
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_TOWN_CHILD2 + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_MARIMOLL_THE_MARIMO_GUARDIAN
+		}
+	}
+	dbsum += 100000 / (500 + abs(objlv - 3) * 400) + 1
+	dblist(0, dbmax) = 1148, dbsum
+	dbmax++
+
+*db_creature_MARIMOLL_THE_MARIMO_GUARDIAN
+	if ( 90 > objlv ) {
+		goto *db_creature_SHEESHERPENT_THE_SMOKE_SNAKE
+	}
+	if ( fltselect != 3 ) {
+		goto *db_creature_SHEESHERPENT_THE_SMOKE_SNAKE
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_SHEESHERPENT_THE_SMOKE_SNAKE
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "spirit" ) {
+			goto *db_creature_SHEESHERPENT_THE_SMOKE_SNAKE
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_SHEESHERPENT_THE_SMOKE_SNAKE
+		}
+	}
+	dbsum += 10000 / (500 + abs(objlv - 90) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN, dbsum
+	dbmax++
+
+*db_creature_SHEESHERPENT_THE_SMOKE_SNAKE
+	if ( 40 > objlv ) {
+		goto *db_creature_ZIZINGA_THE_OLD_SILVER_WOLF
+	}
+	if ( fltselect != 3 ) {
+		goto *db_creature_ZIZINGA_THE_OLD_SILVER_WOLF
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_ZIZINGA_THE_OLD_SILVER_WOLF
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "snake" ) {
+			goto *db_creature_ZIZINGA_THE_OLD_SILVER_WOLF
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_ZIZINGA_THE_OLD_SILVER_WOLF
+		}
+	}
+	dbsum += 10000 / (500 + abs(objlv - 40) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE, dbsum
+	dbmax++
+
+*db_creature_ZIZINGA_THE_OLD_SILVER_WOLF
+	if ( 20 > objlv ) {
+		goto *db_creature_KETSU_GLIMMER
+	}
+	if ( fltselect != 3 ) {
+		goto *db_creature_KETSU_GLIMMER
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_KETSU_GLIMMER
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "dog" ) {
+			goto *db_creature_KETSU_GLIMMER
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_KETSU_GLIMMER
+		}
+	}
+	dbsum += 10000 / (500 + abs(objlv - 20) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF, dbsum
+	dbmax++
+
+*db_creature_KETSU_GLIMMER
+	if ( 77 > objlv ) {
+		goto *db_creature_MOMALARIA_THE_BLOODSUCKER
+	}
+	if ( fltselect != 1 ) {
+		goto *db_creature_MOMALARIA_THE_BLOODSUCKER
+	}
+	if ( flttypemajor != FILTER_NOTHING  ) {
+		if ( flttypemajor != FILTER_NOTHING  ) {
+			goto *db_creature_MOMALARIA_THE_BLOODSUCKER
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "beetle" ) {
+			goto *db_creature_MOMALARIA_THE_BLOODSUCKER
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(CREATURE_ID_KETSU_GLIMMER + 2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_MOMALARIA_THE_BLOODSUCKER
+		}
+	}
+	dbsum += 5000 / (500 + abs(objlv - 77) * 400) + 1
+	dblist(0, dbmax) = CREATURE_ID_KETSU_GLIMMER, dbsum
+	dbmax++
 
 *db_creature_MOMALARIA_THE_BLOODSUCKER
 	if ( 145 > objlv ) {
@@ -27719,7 +27948,7 @@
 	if ( 1 > objlv ) {
 		goto *db_creature_OLD_PERSON
 	}
-	if ( fltselect != 5 ) {
+	if ( fltselect != 11 ) {
 		goto *db_creature_OLD_PERSON
 	}
 	if ( flttypemajor != FILTER_NOTHING ) {
@@ -28400,7 +28629,7 @@
 		}
 	}
 	if ( fltnrace != "" ) {
-		if ( fltnrace != "yerles" ) {
+		if ( fltnrace != "norland" ) {
 			goto *db_creature_CITIZEN2
 		}
 	}
@@ -28432,7 +28661,7 @@
 		}
 	}
 	if ( fltnrace != "" ) {
-		if ( fltnrace != "yerles" ) {
+		if ( fltnrace != "norland" ) {
 			goto *db_creature_CITIZEN_OF_CYBER_DOME
 		}
 	}
@@ -36772,6 +37001,606 @@
 	return
 
 *db_creature2
+	if ( dbid == CREATURE_ID_TOWN_CHILD4 ) {
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「変質者じゃん！」", cnvtalk("Pervert!"))
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「地獄に落ちな！」", cnvtalk("Go to hell!"))
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「コイツよえー」", cnvtalk("Weak! You are weak!"))
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 0
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 100
+			}
+			if ( dbspec == 2 ) {
+				return lang("街の子供", "town child")
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/man/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "juere"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1186
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_TOWN_CHILD4
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 5
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = 0
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 100
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 15
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_INSULT
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("街の子供", "town child")
+			cdatan(CDATAN_NAME, rc) = lang(cdatan(CDATAN_NAME, rc) + "の" + randomname(), randomname() + " the " + cdatan(CDATAN_NAME, rc))
+			cbitmod CHARA_BIT_HAS_NAME, rc, TRUE
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "juere"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "tourist"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(31, 35)
+			if ( cdata(CDATA_SEX, rc) == 1 ) {
+				cdata(CDATA_PIC, rc) = xy2pic(32, 35)
+			}
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_TOWN_CHILD3 ) {
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「変質者だ！」", cnvtalk("Pervert!"))
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「地獄に落ちろよ！」", cnvtalk("Go to hell!"))
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「こいつよっわ」", cnvtalk("Weak! You are weak!"))
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 0
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 100
+			}
+			if ( dbspec == 2 ) {
+				return lang("街の子供", "town child")
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/man/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "juere"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1184
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_TOWN_CHILD3
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 2
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = 0
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 100
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 15
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_BLENDED_LIE
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("街の子供", "town child")
+			cdatan(CDATAN_NAME, rc) = lang(cdatan(CDATAN_NAME, rc) + "の" + randomname(), randomname() + " the " + cdatan(CDATAN_NAME, rc))
+			cbitmod CHARA_BIT_HAS_NAME, rc, TRUE
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "juere"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "tourist"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(29, 35)
+			if ( cdata(CDATA_SEX, rc) == 1 ) {
+				cdata(CDATA_PIC, rc) = xy2pic(30, 35)
+			}
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_TOWN_CHILD2 ) {
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「たすけてよー」", cnvtalk("H-help-!"))
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「おかあさん…」", cnvtalk("Mom...."))
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「この人弱いな」", cnvtalk("Weak! You are weak!"))
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 0
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 100
+			}
+			if ( dbspec == 2 ) {
+				return lang("街の子供", "town child")
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/man/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "norland"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 113
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_TOWN_CHILD2
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 3
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = 0
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 100
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 15
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_HIP_ATTACK
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("街の子供", "town child")
+			cdatan(CDATAN_NAME, rc) = lang(cdatan(CDATAN_NAME, rc) + "の" + randomname(), randomname() + " the " + cdatan(CDATAN_NAME, rc))
+			cbitmod CHARA_BIT_HAS_NAME, rc, TRUE
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "norland"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "tourist"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(14, 3)
+			if ( cdata(CDATA_SEX, rc) == 1 ) {
+				cdata(CDATA_PIC, rc) = xy2pic(15, 3)
+			}
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「マリッ」", cnvtalk("Mari."))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「モリモリ！」", cnvtalk("Mori Mori!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「マモ…リ…」", cnvtalk("Mamo..ri.."))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「マリモー！」", cnvtalk("Marimo!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 6
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 10
+			}
+			if ( dbspec == 2 ) {
+				return lang("守毬霊『マリモリ』", "<Marimoll> the marimo guardian")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "spirit"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1220
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 90
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 2
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 50
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_SHADOW_STEP, SKILL_SPACT_SQUEEZE, SKILL_SPACT_SQUEEZE, ACTION_MELEE
+			cdata(CDATA_ACT_INDEX, rc) = 4
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("守毬霊『マリモリ』", "<Marimoll> the marimo guardian")
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "spirit"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "predator"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 1
+			cdata(CDATA_PIC, rc) = xy2pic(32, 36)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			fixlv = FIX_QUALITY_UNIQUE
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("* シュボー *", "You hear the distinct hiss of smoke, like a kettle coming to a boil.")
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「シャー！」", cnvtalk("Hissssshhhhhh!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("* ゴポポ *", "*gurgling*")
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("* プハー *", "*exhales*")
+			return 1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 6
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 10
+			}
+			if ( dbspec == 2 ) {
+				return lang("煙吐く『シーシャーペント』", "<Sheesherpent> the smoke snake")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "snake"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1046
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 40
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 2
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 30
+			cdata(CDATA_AI_DISTANCE, rc) = 3
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_MIND_BREATH
+			cdata(CDATA_ACT_INDEX, rc) = 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_ACT_HEAL, rc) = 401
+			cdatan(CDATAN_NAME, rc) = lang("煙吐く『シーシャーペント』", "<Sheesherpent> the smoke snake")
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "snake"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "priest"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 0
+			cdata(CDATA_PIC, rc) = xy2pic(23, 31)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			fixlv = FIX_QUALITY_UNIQUE
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 6
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 10
+			}
+			if ( dbspec == 2 ) {
+				return lang("老銀狼の『ジジンガ』", "<Zizinga> the old silver wolf")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "dog"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 956
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 20
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = 98
+			cdata(CDATA_AI_CALM, rc) = 2
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 75
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 10
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_HOLY_SHIELD
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			cdata(CDATA_ACT_HEAL, rc) = 404
+			cdatan(CDATAN_NAME, rc) = lang("老銀狼の『ジジンガ』", "<Zizinga> the old silver wolf")
+			cdata(CDATA_RELATION, rc) = RELATION_NEUTRAL
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_NEUTRAL
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "dog"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "priest"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 0
+			cdata(CDATA_PIC, rc) = xy2pic(32, 28)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			fixlv = FIX_QUALITY_UNIQUE
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_KETSU_GLIMMER ) {
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「光あれ！」", cnvtalk("Illuminate!"))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「違いますゴキブリじゃないです」", cnvtalk("I am not a cockroach..."))
+			return 1
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			txtmore
+			txtef COLOR_SKY_BLUE
+			txt lang("「お前じゃ尻不足だ」", cnvtalk("Your ass is ass."))
+			return 1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 2
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 5
+			}
+			if ( dbspec == 2 ) {
+				return lang("ケツピカラー", "ketsu glimmer")
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "beetle"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1119
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_KETSU_GLIMMER
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 77
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 90
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 10
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE, SKILL_SPACT_HIP_ATTACK, SKILL_SPACT_SAINT_BLADE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_HERO
+			cdata(CDATA_ACT_INDEX, rc) = 13
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdatan(CDATAN_NAME, rc) = lang("ケツピカラー", "ketsu glimmer")
+			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "beetle"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "warrior"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(30, 33)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
 	if ( dbid == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == 3 ) {
@@ -125070,6 +125899,14 @@
 	// This causes weird bugs in almost every version of CGX, so if you don't want to change every reference to "filter_creature".
 	// Just change filter_creature(bullshit_number) to filter_creature(new_creature_id + 2) like the ones below.
 	// Make sure the filter matches or you will get bugs like fairys spawning in lake dungeons or something.
+	filter_creature(CREATURE_ID_TOWN_CHILD4 + 2) = "/man/"
+	filter_creature(CREATURE_ID_TOWN_CHILD3 + 2) = "/man/"
+	filter_creature(CREATURE_ID_TOWN_CHILD2 + 2) = "/man/"
+	filter_creature(CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN + 2) = ""
+	filter_creature(CREATURE_ID_SHEESHERPENT_THE_SMOKE_SNAKE + 2) = ""
+	filter_creature(CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF + 2) = ""
+	filter_creature(CREATURE_ID_KETSU_GLIMMER + 2) = ""
+
 	filter_creature(CREATURE_ID_MOMALARIA_THE_BLOODSUCKER + 2) = ""
 	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_MOMALARIA_THE_BLOODSUCKER), CHARA_BIT_FLOAT \ 32
 	filter_creature(CREATURE_ID_BIG_MOSQUITO + 2) = "/nefia2/"

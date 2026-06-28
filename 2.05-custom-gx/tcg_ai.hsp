@@ -15,6 +15,9 @@
 		}
 		c@tcg = clist@tcg(cnt, ch@tcg)
 		p@tcg = 10
+		if ( cdbit(TCG_BIT_DRUGGED, c@tcg) ) {
+			continue
+		}
 		if ( card@tcg(TCG_CARD_REF_TYPE, c@tcg) == TCG_TYPE_CREATURE ) {
 			p@tcg = 20
 			p@tcg -= abs(cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) - card@tcg(TCG_CARD_COST, c@tcg) + (sac@tcg == 0))
@@ -236,6 +239,9 @@
 		p@tcg = elist@tcg(TCG_EVAL_PROB, cnt)
 		aimaxmana@tcg = limit(aimaxmana@tcg, card@tcg(TCG_CARD_COST, c@tcg), card@tcg(TCG_CARD_COST, c@tcg) + 10)
 		if ( card@tcg(TCG_CARD_LOCATION, c@tcg) != TCG_LOCATION_HAND ) {
+			continue
+		}
+		if ( cdbit(TCG_BIT_NOSACRIFICE, c@tcg) ) {
 			continue
 		}
 		if ( effref@tcg(TCG_SKILL_EFF, card@tcg(TCG_CARD_EFFECT, c@tcg)) == TCG_SKILL_EFF_RESURRECT & card@tcg(TCG_CARD_COST, c@tcg) > cpdata@tcg(TCG_PLAYER_MAX_MANA, cp@tcg) ) { p@tcg += card@tcg(TCG_CARD_COST, c@tcg) * 2 }

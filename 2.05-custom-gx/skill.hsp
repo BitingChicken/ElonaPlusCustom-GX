@@ -1907,10 +1907,18 @@
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_GENUINE_CHEERING) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 10, 3000 + 6, 500
 	skillname(SKILL_SPACT_GENUINE_CHEERING) = lang("響く声援", "Genuine cheering")
 	skilldesc(SKILL_SPACT_GENUINE_CHEERING) = lang("味方ゲージ増加魅力対抗sp回復", "CHA-Check:Ally +Gauge +SP")
+	
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_STANCE_SELECT) = SKILL_ATTR_CHA, SKILL_TYPE_SP, 1, TARGET_TYPE_SELF_ONLY, 0
+	skillname(SKILL_SPACT_STANCE_SELECT) = lang("スタンスセレクト", "Stance Select")
+	skilldesc(SKILL_SPACT_STANCE_SELECT) = lang("気持ちいいこと時のスタンス選択", "Select little tail stance")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_TUIN_DER_LUSTEN) = SKILL_ATTR_CHA, SKILL_TYPE_SP, 10, TARGET_TYPE_SELF + SKILL_TYPE_FOV_BOLT, 500
 	skillname(SKILL_SPACT_TUIN_DER_LUSTEN) = lang("快楽の園", "Tuin der Lusten")
-	skilldesc(SKILL_SPACT_TUIN_DER_LUSTEN) = lang("魅力対抗/広域気持ちいいこと/疲労大", "CHR-Check:Pleasure/Fatigue(Area)")
+	skilldesc(SKILL_SPACT_TUIN_DER_LUSTEN) = lang("魅力意志対抗/広域気持ちいいこと", "CHRvsWIL:Pleasure/Fatigue(Area)")
+
+	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_DESTRUDO_HYPNOTISM) = SKILL_ATTR_CHA, SKILL_TYPE_SP, 18, 3000 + 6, 500
+	skillname(SKILL_SPACT_DESTRUDO_HYPNOTISM) = lang("破滅催眠", "Destrudo Hypnotism")
+	skilldesc(SKILL_SPACT_DESTRUDO_HYPNOTISM) = lang("全域気持ちいいこと中MP減少/ゲージ80％消費", "[80%GaugeDomain] MP-dmg during sex.")
 
 	sdataref(SKILL_DATAREF_USE, SKILL_SPACT_SHADOW_HOP) = SKILL_ATTR_WIL, SKILL_TYPE_SP, 30, TARGET_TYPE_SELF, 200
 	skillname(SKILL_SPACT_SHADOW_HOP) = lang("シャドウホップ", "Shadow Hop")

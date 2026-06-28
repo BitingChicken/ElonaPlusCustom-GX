@@ -239,12 +239,6 @@
 			if ( mdata(MDATA_CITY_PROPERTY_VALUE) < (-300) ) {
 				mdata(MDATA_CITY_PROPERTY_VALUE) = -300
 			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) > 100 ) {
-				mdata(MDATA_CITY_APPROVAL_RATE) = 100
-			}
-			if ( mdata(MDATA_CITY_APPROVAL_RATE) < (-100) ) {
-				mdata(MDATA_CITY_APPROVAL_RATE) = -100
-			}
 			if ( mdata(MDATA_CITY_PROPERTY_VALUE) > (-50) & mdata(MDATA_CITY_PROPERTY_VALUE) < 50 ) {
 				s1 = "Neutral"
 			}
@@ -337,14 +331,18 @@
 			y = wy + 196
 			pos x, y
 			mes lang("観光収入　　　" + mdata(MDATA_CITY_TOURISM_REVENUE) + "cgp　", "Tourism revenue     " + mdata(MDATA_CITY_TOURISM_REVENUE) + " cgp ")
+			cost = mdata(MDATA_CITY_MAINTENANCE_COST)
+			if ( mdata(MDATA_CITY_APPROVAL_RATE) > 0 ) {
+				cost = mdata(MDATA_CITY_MAINTENANCE_COST) / 2
+			}
 			x = wx + 50
 			y = wy + 212
 			pos x, y
-			mes lang("維持費　　　　" + mdata(MDATA_CITY_MAINTENANCE_COST) + "cgp　", "Maintenance costs   " + mdata(MDATA_CITY_MAINTENANCE_COST) + " cgp ")
+			mes lang("維持費　　　　" + cost + "cgp　", "Maintenance costs   " + cost + " cgp ")
 			x = wx + 50
 			y = wy + 228
 			pos x, y
-			mes lang("運営予算　　　" + mdata(MDATA_CITY_BUDGET) + "gp　", "Budget              " + mdata(MDATA_CITY_BUDGET) + "gp ")
+			mes lang("運営予算　　　" + mdata(MDATA_CITY_BUDGET) + "cgp　", "Budget              " + mdata(MDATA_CITY_BUDGET) + " cgp ")
 			if ( mdata(MDATA_CITY_COMPLAINTS) > 0 ) {
 				mdata(MDATA_CITY_COMPLAINTS) = limit(mdata(MDATA_CITY_WATER_POLLUTION) - 15 + mdata(MDATA_CITY_ETHER_CORRUPTION) - 15 + mdata(MDATA_CITY_TAXES), 1, 99)
 				x = wx + 50

@@ -975,6 +975,26 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_ALLIED, cc) == 100 ) {
+		if ( gdata(GDATA_DEEPEST_LEVEL) + 20 <= rnd(cdata(CDATA_LEVEL, cc)) ) {
+			kaiwa = rnd(4)
+			txtef COLOR_PINK
+			if ( kaiwa == 0 ) {
+				txt lang(name(cc) + "は怠けている。", name(cc) + " is being lazy.")
+			}
+			if ( kaiwa == 1 ) {
+				txt lang(name(cc) + "は言うことを聞かない。", name(cc) + " is not listening to your orders.")
+			}
+			if ( kaiwa == 2 ) {
+				txt lang(name(cc) + "は知らんぷりしている。", name(cc) + " is ignoring the fight.")
+			}
+			if ( kaiwa == 3 ) {
+				cdata(CDATA_CONDITION_SLEEP, cc) += 20
+				txt lang(name(cc) + "は居眠りを始めた。", name(cc) + " has begun napping.")
+			}
+			goto *turn_end
+		}
+	}
 
 	/********** ANNA CUSTOM - ENDING **********/
 

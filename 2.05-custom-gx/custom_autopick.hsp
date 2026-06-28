@@ -47,14 +47,12 @@
 	promptmax = 0
 	exist exedir + "save\\" + playerid + "\\" + "autopick.txt"
 	if ( strsize != (-1) ) {
-		promptl(0, promptmax) = "autopick.txt", "null", "" + 0
-		promptmax++
+		promptAdd "autopick.txt", "null", 0
 	}
 	repeat 9, 1
 		exist exedir + "save\\" + playerid + "\\" + "autopick_" + cnt + ".txt"
 		if ( strsize != (-1) ) {
-			promptl(0, promptmax) = "autopick_" + cnt + ".txt", "null", "" + cnt
-			promptmax++
+			promptAdd "autopick_" + cnt + ".txt", "null", cnt
 		}
 	loop
 	if ( promptmax == 0 ) {

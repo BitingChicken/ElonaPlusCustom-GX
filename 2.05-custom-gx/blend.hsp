@@ -1074,6 +1074,13 @@
 	rpdata(RPDATA_SKILL + 0 * 2, rpid) = SKILL_NORMAL_ALCHEMY, 5, SKILL_NORMAL_CARPENTRY, 5
 	rpdata(RPDATA_MAT + 0, rpid) = RF_ANY, RF_REFERENCE_ITEM
 
+	rpid++
+	rplistdef(length(rplistdef)) = 1 * EXT_RECIPES + rpid
+	rpdatan(rpid) = lang("家具の強化合成", "Furniture synthesis")
+	rpdata(RPDATA_ITEM, rpid) = RECIPE_BLEND_ACTION_FURNITURE_SYNTHESIS, 50 + 1 * 10000
+	rpdata(RPDATA_SKILL + 0 * 2, rpid) = SKILL_NORMAL_ALCHEMY, 65, SKILL_NORMAL_CARPENTRY, 55
+	rpdata(RPDATA_MAT + 0, rpid) = RF_REINFORCE_FURNITURE, RF_MATERIAL_FURNITURE, ITEM_ID_MICA_ORE
+
 	rpid = ITEM_ID_POTION_DISASTER + EXT_RP
 	rplistshop(length(rplistshop)) = 30 * EXT_RECIPES + rpid
 	rpdata(RPDATA_ITEM, rpid) = ITEM_ID_POTION_DISASTER, 60 + 3 * 10000
@@ -1146,6 +1153,8 @@
 	rfnameorg(RFNAMEORG_ID, RF_DISINFECTANT - EXT_RF) = "holy", lang("適当な浄化アイテム", "any holy item")
 	rfnameorg(RFNAMEORG_ID, RF_BLANKET - EXT_RF) = "blanket", lang("ブランケット類", "any blanket")
 	rfnameorg(RFNAMEORG_ID, RF_REFERENCE_ITEM - EXT_RF) = "", lang("参考にする物体", "reference item")
+	rfnameorg(RFNAMEORG_ID, RF_REINFORCE_FURNITURE - EXT_RF) = "furniture", lang("強化する家具", "reinforce furniture")
+	rfnameorg(RFNAMEORG_ID, RF_MATERIAL_FURNITURE - EXT_RF) = "furniture", lang("素材にする家具", "material furniture")
 
 	return
 
@@ -3466,6 +3475,32 @@
 		/********** BLOODYSHADE CUSTOM - ENDING **********/
 		
 		goto *blend_act_SWEND1
+	}
+	if ( _switch_val == RECIPE_BLEND_ACTION_FURNITURE_SYNTHESIS | _switch_sw ) {
+		_switch_sw = 0
+		inv(INV_ITEM_VALUE, ci) = inv(INV_ITEM_VALUE, ci) * 100 / (80 + inv(INV_ITEM_SUB_NAME, ci) * 20)
+		if ( inv(INV_ITEM_SUB_NAME, ci) > inv(INV_ITEM_SUB_NAME, ti) ) {
+			para = inv(INV_ITEM_SUB_NAME, ci) + 1
+		}
+		if ( inv(INV_ITEM_SUB_NAME, ti) > inv(INV_ITEM_SUB_NAME, ci) ) {
+			para = inv(INV_ITEM_SUB_NAME, ti) + 1
+		}
+		if ( para > 12 ) {
+			para = 12
+		}
+		inv(INV_ITEM_SUB_NAME, ci) = para
+		txtef COLOR_GREEN
+		txt lang(itemname(ci) + "になった。", "You have created " + itemname(ci) + ".")
+		if ( inv(INV_ITEM_SUB_NAME, ci) == 12 ) {
+			txtef COLOR_BLUE
+			txt lang("これ以上は強化できない。", "It can't rank up any further.")
+		}
+		if ( inv(INV_ITEM_SUB_NAME, ci) != 0 ) {
+			inv(INV_ITEM_VALUE, ci) = inv(INV_ITEM_VALUE, ci) * (80 + inv(INV_ITEM_SUB_NAME, ci) * 20) / 100
+		}
+		snd SOUNDLIST_BUILD1
+		goto *blend_act_SWEND1
+		_switch_sw++
 	}
 	if ( _switch_val == RECIPE_BLEND_ACTION_MEAT_FILLING | _switch_sw ) {
 		_switch_sw = 0

@@ -514,6 +514,9 @@
 	if ( cdata(CDATA_ROLE, calchirecost_charid) == ROLE_GUARD ) {
 		locvar_calcitemvalue_value = 50
 	}
+	if ( cdata(CDATA_ROLE, calchirecost_charid) == ROLE_PART_TIME_WORKER ) {
+		locvar_calcitemvalue_value = cdata(CDATA_LEVEL, calchirecost_charid)
+	}
 	if ( cdata(CDATA_ROLE, calchirecost_charid) == ROLE_TRAINER ) {
 		locvar_calcitemvalue_value = 800
 	}
@@ -805,7 +808,7 @@
 	if ( cdata(CDATA_EXIST, calcresurrectvalue_arg1) != CHAR_STATE_ALLY_DEAD ) {
 		return 100
 	}
-	locvar_calcitemvalue_value = cdata(CDATA_LEVEL, calcresurrectvalue_arg1) * cdata(CDATA_LEVEL, calcresurrectvalue_arg1) * 15
+	locvar_calcitemvalue_value = limit(100 + cdata(CDATA_LEVEL, calcresurrectvalue_arg1) * cdata(CDATA_LEVEL, calcresurrectvalue_arg1) * 5, 100, 50000)
 	return locvar_calcitemvalue_value
 
 #defcfunc calcslavevalue int calcslavevalue_arg1
@@ -1175,6 +1178,9 @@
 	}
 	if ( cdata(CDATA_ID, r1) == CREATURE_ID_ETHERIAN_PLUS ) {
 		skillinit SKILL_NORMAL_SWIMMING, r1, 5
+	}
+	if ( cdata(CDATA_ID, r1) == CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN ) {
+		skillinit SKILL_ATTR_STR, r1, 14
 	}
 	if ( cdata(CDATA_ID, r1) == CREATURE_ID_NERES_THE_AMNESIAC ) {
 		skillinit SKILL_ATTR_STR, r1, 6
