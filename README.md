@@ -20,7 +20,7 @@ This repository is an unofficial continuation of the above repository using Ruin
 ## Building (You don't need this for playing.)
 
 1. Follow the installation instructions above. Rename the `elonaplus2.31` folder to `2.05-custom-gx` and move it to the `assets/` folder of this repository.
-2. Download the HSP3.4 SDK (`hsp34a.zip`) from [here](http://hsp.tv/make/downlist.html) and extract it somewhere.
+2. Download the HSP3.4 SDK (`hsp34a.zip`) from [here](https://www.onionsoft.net/hsp/file/hsp34a.zip) and extract it somewhere.
 3. Copy `hsplua.dll` from the `2.05-custom-gx` folder into the HSP3.4 SDK folder. Otherwise, you'll get an error saying it's missing when running the game from the editor.
 4. Open `2.05-custom-gx/main.hsp` with `hsed3.exe` from the HSP3.4 SDK folder. Press <kbd>F5</kbd> to compile and run under debug mode.
 5. Press <kbd>Ctrl+F9</kbd> to create an executable named `elonapluscgx.exe`. You can then copy it to your Custom-GX install folder.
