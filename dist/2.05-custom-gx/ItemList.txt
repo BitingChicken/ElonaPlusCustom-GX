@@ -1,4 +1,96 @@
 ID	Type	JName	EName	Value
+1320.ID	-	TZ500-K型麻酔銃	TZ500-K	0
+1319.ID	-	TZC-500型麻酔銃	TZC-500	0
+1318.ID	-	TZ30-C型麻酔銃	TZ30-C	0
+1317.ID	-	TZ-30型麻酔銃	TZ-30	0
+1316.ID	-	わりばし	waribasi	0
+1315.ID	-	メス牡蠣	mesugaki	0
+1314.ID	-	《ツラハギ》	<Turahagi>	0
+1313.ID	-	ブランクカード	blank card	0
+1312.ID	-	エクソプロージョン	expoopsion	0
+1311.ID	-	《ジェノサイドテール》	<Genocide Tail>	0
+1310.ID	-	《ヘアメット》	<Hairmet>	0
+1309.ID	-	シュールストレミング	surstromming	0
+1308.ID	-	ミラクリー	mimirrocry	0
+1307.ID	-	雪の大結晶	snow crystal	0
+1306.ID	-	暗黒弾	darknessbang	0
+1305.ID	-	放雷針	lightning discharger	0
+1304.ID	-	エキノボックス	echinobox	0
+1303.ID	-	《骨噛矛》	<Honegum>	0
+1302.ID	-	《金毛発破》	<Konmou Happa>	0
+1301.ID	-	《秘伝魔紙》	<Hiden Mashi>	0
+1300.ID	-	ペット訓練券	pet training ticket	0
+1299.ID	-	ポーションの栓	potion plug	0
+1298.ID	-	労働エナジードリンク	toil-energy drink	0
+1297.ID	-	立派な鎖	splendid chain	0
+1296.ID	deed	収容所の権利書	camp	0
+1295.ID	-	浮遊檻	float cage	0
+1294.ID	-	奴隷グルグル	slave spinner	0
+1293.ID	-	奴隷バタバタ	slave wheel	0
+1292.ID	scroll	収穫の巻物	harvest	0
+1291.ID	scroll	引き寄せの巻物	attract	0
+1290.ID	high potion	阿苦薬	agony	0
+1289.ID	high potion	禍多岐薬	calamity	0
+1288.ID	high potion	強身薬	physical	0
+1287.ID	-	サザエ	sazae	0
+1286.ID	-	ハマグリ	hamaguri	0
+1285.ID	-	ホタテ	hotate	0
+1284.ID	-	もずく	mozuku	0
+1283.ID	-	昆布	kombu	0
+1282.ID	-	ワカメ	wakame	0
+1281.ID	deed	巨大イカダの権利書	huge raft	0
+1280.ID	deed	漁船の権利書	fishing ship	0
+1279.ID	deed	海賊船の権利書	pirate ship	0
+1278.ID	deed	客船の権利書	cruise ship	0
+1277.ID	deed	軍用艦の権利書	warship	0
+1276.ID	deed	潜水艦の権利書	submarine	0
+1275.ID	-	白魔神石	white devil orb	0
+1274.ID	-	覚醒の閃石	awakening stone	0
+1273.ID	-	魔導結石	mana stone	0
+1272.ID	-	闘魂石	fighting stone	0
+1271.ID	-	Resアッパー	Res upper	0
+1270.ID	-	DVフィクサー	DV fixer	0
+1269.ID	-	PVフィクサー	PV fixer	0
+1268.ID	-	Ｘフレーム	X-Frame	0
+1267.ID	-	フカグルミ	fukagurumi	0
+1266.ID	-	構成粘菌	slime mold	0
+1265.ID	-			0
+1264.ID	-	デルネフィアの花	dernefia	0
+1263.ID	-	ボトルキャップ	bottle cap	0
+1262.ID	-	ビーダマ	b-dama	0
+1261.ID	-	コルクパック	cork pack	0
+1260.ID	-	光子バズーカ砲	laser bazooka	0
+1259.ID	-	ダイヤの宝札	master of diamond	0
+1258.ID	-	ハートの宝札	master of heart	0
+1257.ID	-	クラブの宝札	master of club	0
+1256.ID	-	スペードの宝札	master of spade	0
+1255.ID	-	スピリチウム	spiritium	0
+1254.ID	-	SuエクステンダーX	Survivability EXtender X	0
+1253.ID	-	SuエクステンダーY	Survivability EXtender Y	0
+1252.ID	-	強化星維	starfiber	0
+1251.ID	-	アネワッシャー	anering	0
+1250.ID	-	コマンドホイッスル	command whistle	0
+1249.ID	horrible book	アウルテホム	Aurtehom	0
+1248.ID	-	靴下	socks	0
+1247.ID	spellbook	雷霆の渦の魔法書	thunder vortex	0
+1246.ID	spellbook	月蝕の檻の魔法書	eclipse jail	0
+1245.ID	spellbook	冥王の咆哮の魔法書	nether roar	0
+1244.ID	spellbook	猛毒の嵐の魔法書	poison storm	0
+1243.ID	spellbook	泡沫の嵐の魔法書	bubble storm	0
+1242.ID	spellbook	夢幻の咆哮の魔法書	illusion roar	0
+1241.ID	spellbook	苦悶の檻の魔法書	anguish jail	0
+1240.ID	spellbook	ネザーボルトの魔法書	nether bolt	0
+1239.ID	spellbook	ポイズンボルトの魔法書	poison bolt	0
+1238.ID	spellbook	サウンドボルトの魔法書	sound bolt	0
+1237.ID	spellbook	カオスボルトの魔法書	chaos bolt	0
+1236.ID	spellbook	ナーブボルトの魔法書	nerve bolt	0
+1235.ID	spellbook	火炎の爪の魔法書	fire claw	0
+1234.ID	spellbook	冷気の刃の魔法書	cold blade	0
+1233.ID	spellbook	電撃の槍の魔法書	lightning spear	0
+1232.ID	spellbook	幻惑の棘の魔法書	mind thorn	0
+1231.ID	spellbook	毒の粘液の魔法書	poison mucus	0
+1230.ID	spellbook	音の砲弾の魔法書	sound cannonball	0
+1229.ID	spellbook	水の牙の魔法書	hydro fang	0
 1228.ID	-	喪蝉	dying cicada	0
 1227.ID	jewel	M01-真実のガーネット	M01-Garnet	0
 1226.ID	jewel	M02-高貴のアメジスト	M02-Amethyst	0
@@ -29,7 +121,7 @@ ID	Type	JName	EName	Value
 1201.ID	-			0
 1200.ID	-			0
 1199.ID	-	オペレートボード	operating board	0
-1198.ID	-			0
+1198.ID	-	本	book	0
 1197.ID	-	原稿	manuscript	0
 1196.ID	-	翠魔神石	green dark orb	0
 1195.ID	-	蒼魔神石	blue dark orb	0
@@ -50,15 +142,15 @@ ID	Type	JName	EName	Value
 1180.ID	-	ヤカポイントカード	YacaPoint card	0
 1179.ID	-	水草	aquatic plant	0
 1178.ID	-	宝石珊瑚	jewel coral	0
-1177.ID	-	チンアナゴ	spotted garden eel 	0
-1176.ID	mysterious ore	赤竜石	dragon's red	0
-1175.ID	-	木人	<moku-jin>	0
+1177.ID	-	チンアナゴ	spotted garden eel	0
+1176.ID	mysterious stone	赤竜石	red dragon	0
+1175.ID	-	木人	<Moku-Jin>	0
 1174.ID	-	作物管理セット	crop management tools	0
 1173.ID	scroll	ウィッチクラフトの巻物	witchcraft	0
 1172.ID	-	冷吸の勾玉	magaice	0
 1171.ID	-	《エビフライト》	<Fright Prawn>	0
 1170.ID	-	《ライトセーバーっぽい杏仁豆腐》	<ANNINDOFU LIKE A LIGHTSABRE>	0
-1169.ID	-	《カニカマ》	<Kani-kama>	0
+1169.ID	-	《カニカマ》	<Kani-Kama>	0
 1168.ID	-	《伍連華草》	<Go-Renge>	0
 1167.ID	-	《エペクレイル》	<Epeclair>	0
 1166.ID	-	《轟天》	<Gouten>	0
@@ -69,7 +161,7 @@ ID	Type	JName	EName	Value
 1161.ID	-	《電磁炎弩》	<Cross Rail>	0
 1160.ID	-	《ナズナの靴下》	<Nazuna's Sox>	0
 1159.ID	-	《スコル・ピアス》	<Scorpierce>	0
-1158.ID	-	《黄泉戸欠片》	<Yomi-to>	0
+1158.ID	-	《黄泉戸欠片》	<Yomi-To>	0
 1157.ID	-	《リンカルス》	<Rinkhals>	0
 1156.ID	-	《小人の魔法弓》	<Ling's Bow>	0
 1155.ID	-	浄化消毒薬	disinfectant	0
@@ -190,18 +282,18 @@ ID	Type	JName	EName	Value
 1040.ID	-	不思議の国のキノコスープ	soup of wonderland	0
 1039.ID	-	《髑髏三日月》	<Dokuro-Mikaduki>	0
 1038.ID	-	《ヘルティアーレ》	<Heltiarre>	0
-1037.ID	-	エレメントアイズ	Elements Eyes	0
+1037.ID	-	《エレメントアイズ》	<Elements Eyes>	0
 1036.ID	-	揮発油	gasoline	0
 1035.ID	-	精油	essential oil	0
 1034.ID	-	《鎖惨渦》	<Sasanqua Sickle>	0
-1033.ID	spellbook	ハイドロボルトの魔法書	water beam	0
-1032.ID	rod	泡沫の波動の杖	bubble ball	0
+1033.ID	spellbook	ハイドロボルトの魔法書	hydro bolt	0
+1032.ID	rod	泡沫の波動の魔杖	bubble ball	0
 1031.ID	-	アトミックランチャー	atomic launcher	0
 1030.ID	-	M202スペシャル	M202 special	0
 1029.ID	-	パンツァーファウストＸ	panzerfaust X	0
 1028.ID	-	快眠ブランケット	pleasant sleep blanket	0
-1027.ID	rod	マジックレーザーの杖	magic laser	0
-1026.ID	rod	猛毒の波動の杖	poison ball	0
+1027.ID	rod	マジックレーザーの魔杖	magic laser	0
+1026.ID	rod	猛毒の波動の魔杖	poison ball	0
 1025.ID	-	《イェーキュブ・スフィア》	<Amulet of Yekub>	0
 1024.ID	-	《研究員の閻魔帳》	researcher's diary	0
 1023.ID	-	ファーストエイド	first aid kit	0
@@ -211,7 +303,7 @@ ID	Type	JName	EName	Value
 1019.ID	-	ヘヴィダンベル	<Dumbbell of Opatos>	0
 1018.ID	-	健康のお守り	<Amulet of Jure>	0
 1017.ID	-	媚赤蝋燭	<Candle of Lulwy>	0
-1016.ID	-	特殊信号拳銃	<Very pistol of Mani>	0
+1016.ID	-	特殊信号拳銃	<Very Pistol of Mani>	0
 1015.ID	-	レッドアンダーリム	<Glasses of Yacatect>	0
 1014.ID	-	古霜の栞	<Bookmark of Itzpalt>	0
 1013.ID	-	おさかなマグカップ	<Mug of Ehekatl>	0
@@ -222,7 +314,7 @@ ID	Type	JName	EName	Value
 1008.ID	-	暴魔の大剣	violent skull sword	0
 1007.ID	-	《GARMS-2》	<Mighty Arms>	0
 1006.ID	-	《ウィーテハウク》	<The White Hawk>	0
-1005.ID	-			0
+1005.ID	-	ジュース	juice	0
 1004.ID	-	ジュースミキサー	juice mixer	0
 1003.ID	-	アルファ変異殻	alpha shift core	0
 1002.ID	-	ベータ変異殻	beta shift core	0
@@ -293,7 +385,7 @@ ID	Type	JName	EName	Value
 937.ID	-	連弩	repeating bow	0
 936.ID	-	材木	wood material	0
 935.ID	-	常世桜	sakura tree	0
-934.ID	-			0
+934.ID	-	コーヒー	coffee	0
 933.ID	-	麻薬煙管	drug kiseru	0
 932.ID	-	クラムベリー	crimberry	0
 931.ID	black gem stone	覚醒の宝玉	Wake up of nefia	0
@@ -326,7 +418,7 @@ ID	Type	JName	EName	Value
 904.ID	-	《ウォースーツ》	<War Suit>	0
 903.ID	-	闇の棺	coffin of necromancy	0
 902.ID	-	たらばがに	coconut crab	0
-901.ID	rod	雷光の波動の杖	lightning ball	0
+901.ID	rod	雷光の波動の魔杖	lightning ball	0
 900.ID	-	アストラル光筆	astral light pen	0
 899.ID	-	《グラビトンアクス》	<Gravity Axe>	0
 898.ID	-	《ドレイクロッド》	<Drake Rod>	0
@@ -340,7 +432,7 @@ ID	Type	JName	EName	Value
 890.ID	-	マシンルアー	<Super Lure>	0
 889.ID	-	手作りチョコ	handmade chocolate	0
 888.ID	-	《ムーンライトセーバー》	<Moonlight>	0
-887.ID	rod	月蝕の波動の杖	eclipse	0
+887.ID	rod	月蝕の波動の魔杖	eclipse	0
 886.ID	-	魔よけの人形	<Cleaning Doll>	0
 885.ID	high potion	ソーマ	soma	0
 884.ID	high potion	ネクタル	nektar	0
@@ -483,7 +575,7 @@ ID	Type	JName	EName	Value
 747.ID	book	ボコノンの書	Bokonon	0
 746.ID	-	調教鞭	tamer's whip	0
 745.ID	objet	こころ	heart	0
-744.ID	catbox	シュレディンガーの猫	Schrodinger's Cat	0
+744.ID	box	シュレディンガーの猫	Schrodinger's Cat	0
 743.ID	plank	《カルネアデスの板》	Carneades	0
 742.ID	license	すくつ探索許可証	the void explorer	0
 741.ID	-	《飛竜刀》	<Hiryu-To>	0
@@ -530,8 +622,8 @@ ID	Type	JName	EName	Value
 700.ID	-	タウンブック	town book	0
 699.ID	-	リトル捕獲玉	little ball	0
 698.ID	potion	食塩水	salt solution	0
-697.ID	spellbook	魔力の集積の魔法書	magic laser	0
-696.ID	spellbook	魔力の嵐の魔法書	magic ball	0
+697.ID	spellbook	マジックボルトの魔法書	magic bolt	0
+696.ID	spellbook	魔力の嵐の魔法書	magic storm	0
 695.ID	-	《破壊の斧》	<Axe of Destruction>	0
 694.ID	-	間仕切り	eastern partition	0
 693.ID	-	ハープ	harp	0
@@ -567,7 +659,7 @@ ID	Type	JName	EName	Value
 663.ID	-	モンスターハート	monster heart	0
 662.ID	-	マジックフルーツ	magic fruit	0
 661.ID	-	《ダル=イ=サリオン》	<Dal-i-thalion>	0
-660.ID	spellbook	暗黒の矢の魔法書	darkness arrow	0
+660.ID	spellbook	暗黒の楔の魔法書	darkness wedge	0
 659.ID	-	パーティション	partition	0
 658.ID	-	提灯	chochin	0
 657.ID	-	東洋の窓	eastern window	0
@@ -646,7 +738,7 @@ ID	Type	JName	EName	Value
 584.ID	-	キャンドル	candle	0
 583.ID	-	松明	torch	0
 582.ID	spellbook	扉生成の魔法書	make door	0
-581.ID	rod	扉生成の杖	make door	0
+581.ID	rod	扉生成の魔杖	make door	0
 580.ID	-	普通の棚	modern rack	0
 579.ID	-	冷蔵庫	freezer	0
 578.ID	-	貯金箱	kitty bank	0
@@ -657,7 +749,7 @@ ID	Type	JName	EName	Value
 573.ID	-	卵	egg	0
 572.ID	deed	牧場の権利書	ranch	0
 571.ID	-	干し肉	jerky	0
-570.ID	rod	炎の壁の杖	fire wall	0
+570.ID	rod	炎の壁の魔杖	fire wall	0
 569.ID	spellbook	炎の壁の魔法書	fire wall	0
 568.ID	-	耐冷ブランケット	coldproof blanket	0
 567.ID	-	耐火ブランケット	fireproof blanket	0
@@ -676,13 +768,13 @@ ID	Type	JName	EName	Value
 554.ID	-	魔法の木の種	magical seed	0
 553.ID	-	宝石の種	gem seed	0
 552.ID	-	羽	feather	0
-551.ID	rod	癒しの手の杖	healing hands	0
+551.ID	rod	癒しの手の魔杖	healing hands	0
 550.ID	spellbook	癒しの手の魔法書	healing hands	0
 549.ID	scroll	治癒の雨の巻物	healing rain	0
 548.ID	spellbook	治癒の雨の魔法書	healing rain	0
 547.ID	-	給料箱	salary chest	0
 546.ID	spellbook	壁生成の魔法書	wall creation	0
-545.ID	rod	壁生成の杖	wall creation	0
+545.ID	rod	壁生成の魔杖	wall creation	0
 544.ID	-	ディスク	disc	0
 543.ID	deed	倉庫の権利書	storage house	0
 542.ID	deed	畑の権利書	farm	0
@@ -709,8 +801,8 @@ ID	Type	JName	EName	Value
 521.ID	deed	博物館の権利書	museum	0
 520.ID	-	翼	wing	0
 519.ID	bottle	染料	dye	0
-518.ID	rod	錬金術の杖	alchemy	0
-517.ID	rod	変化の杖	change creature	0
+518.ID	rod	錬金術の魔杖	alchemy	0
+517.ID	rod	変化の魔杖	change creature	0
 516.ID	bottle	水	water	0
 515.ID	scroll	充填の巻物	recharge	0
 514.ID	-	《レールガン》	<Rail Gun>	0
@@ -742,12 +834,12 @@ ID	Type	JName	EName	Value
 488.ID	-	トレーニングマシーン	training machine	0
 487.ID	-	コンピューター	computer	0
 486.ID	-	電子機械	machine	0
-485.ID	rod	蜘蛛の巣の杖	web	0
+485.ID	rod	蜘蛛の巣の魔杖	web	0
 484.ID	spellbook	蜘蛛の巣の魔法書	web	0
 483.ID	-	クロスボウの矢束	bolt	0
 482.ID	-	機械弓	crossbow	0
 481.ID	spellbook	支配の魔法書	domination	0
-480.ID	rod	支配の杖	domination	0
+480.ID	rod	支配の魔杖	domination	0
 479.ID	scroll	援軍の巻物	ally	0
 478.ID	-	聴診器	stethoscope	0
 477.ID	-	結婚指輪	engagement ring	0
@@ -815,7 +907,7 @@ ID	Type	JName	EName	Value
 415.ID	-	ガシャポンの玉	treasure ball	0
 414.ID	-	青のガシャポン	blue treasure machine	0
 413.ID	-	赤のガシャポン	red treasure machine	0
-412.ID	rod	解呪の杖	uncurse	0
+412.ID	rod	解呪の魔杖	uncurse	0
 411.ID	scroll	物質感知の巻物	detect objects	0
 410.ID	spellbook	物質感知の魔法書	detect objects	0
 409.ID	-	浮き輪(荷車)	inner tube	0
@@ -836,13 +928,13 @@ ID	Type	JName	EName	Value
 394.ID	-	素材箱	material box	0
 393.ID	-	宝石加工ツール	gem cutter	0
 392.ID	bottle	硫酸	sulfuric	0
-391.ID	rod	魔力の杖	mana	0
+391.ID	rod	魔力の魔杖	mana	0
 390.ID	scroll	魔力の巻物	mana	0
 389.ID	scroll	全浄化の巻物	holy rain	0
 388.ID	scroll	清浄なる光の巻物	holy light	0
 387.ID	spellbook	全浄化の魔法書	holy rain	0
 386.ID	spellbook	清浄なる光の魔法書	holy light	0
-385.ID	rod	浄化の杖	holy light	0
+385.ID	rod	浄化の魔杖	holy light	0
 384.ID	scroll	ホーリーヴェイルの巻物	holy veil	0
 383.ID	spellbook	ホーリーヴェイルの魔法書	holy veil	0
 382.ID	potion	脆弱のポーション	weakness	0
@@ -850,7 +942,7 @@ ID	Type	JName	EName	Value
 380.ID	spellbook	脆弱の霧の魔法書	weakness	0
 379.ID	potion	英雄気分のポーション	hero	0
 378.ID	spellbook	英雄の魔法書	hero	0
-377.ID	rod	加速の杖	speed	0
+377.ID	rod	加速の魔杖	speed	0
 376.ID	potion	鈍足のポーション	slow	0
 375.ID	potion	加速のポーション	speed	0
 374.ID	spellbook	鈍足の魔法書	slow	0
@@ -861,7 +953,7 @@ ID	Type	JName	EName	Value
 369.ID	spellbook	リジェネレーションの魔法書	regeneration	0
 368.ID	potion	沈黙のポーション	silence	0
 367.ID	spellbook	沈黙の霧の魔法書	silence	0
-366.ID	rod	沈黙の杖	silence	0
+366.ID	rod	沈黙の魔杖	silence	0
 365.ID	spellbook	聖なる盾の魔法書	holy shield	0
 364.ID	potion	防衛者のポーション	defender	0
 363.ID	scroll	*解呪*の巻物	vanish curse	0
@@ -937,7 +1029,7 @@ ID	Type	JName	EName	Value
 293.ID	rack	装飾品の棚	accessories	0
 292.ID	rack	日用品の棚	goods	0
 291.ID	-	整備された武具	well kept armor	0
-290.ID	rod	願いの杖	wishing	0
+290.ID	rod	願いの魔杖	wishing	0
 289.ID	spellbook	願いの魔法書	wishing	0
 288.ID	scroll	呪縛の巻物	curse	0
 287.ID	potion	潜在能力のポーション	potential	0
@@ -955,16 +1047,16 @@ ID	Type	JName	EName	Value
 275.ID	-	ほうき	broom	0
 274.ID	-	かかし	scarecrow	0
 273.ID	-	薪	fire wood	0
-272.ID	spellbook	混沌の渦の魔法書	chaos ball	0
-271.ID	spellbook	轟音の波動の魔法書	sound ball	0
-270.ID	spellbook	灼熱の嵐の魔法書	fire ball	0
-269.ID	spellbook	氷結の波動の魔法書	ice ball	0
-268.ID	spellbook	マインドボルトの魔法書	illusion beam	0
-267.ID	spellbook	ダークネスボルトの魔法書	darkness beam	0
+272.ID	spellbook	混沌の渦の魔法書	chaos vortex	0
+271.ID	spellbook	轟音の波動の魔法書	howling wave	0
+270.ID	spellbook	灼熱の嵐の魔法書	burning storm	0
+269.ID	spellbook	氷結の波動の魔法書	freezing wave	0
+268.ID	spellbook	マインドボルトの魔法書	mind bolt	0
+267.ID	spellbook	ダークネスボルトの魔法書	darkness bolt	0
 266.ID	-	忍刀	wakizashi	0
-265.ID	spellbook	麻痺の矢の魔法書	nerve eye	0
+265.ID	spellbook	神経の針の魔法書	nerve needle	0
 264.ID	spellbook	混沌の瞳の魔法書	chaos eye	0
-263.ID	spellbook	地獄の吐息の魔法書	nether eye	0
+263.ID	spellbook	地獄の吐息の魔法書	nether sigh	0
 262.ID	-	毒薬	poison	0
 261.ID	-	はじけ魚	bomb fish	0
 260.ID	sack	小麦粉	flour	0
@@ -1024,8 +1116,8 @@ ID	Type	JName	EName	Value
 206.ID	-	《エーテルダガー》	<Ether Dagger>	0
 205.ID	bottle	ウィスキー	whisky	0
 204.ID	-	死体	corpse	0
-203.ID	rod	癒しの杖	cure	0
-202.ID	rod	千里眼の杖	magic mapping	0
+203.ID	rod	癒しの魔杖	cure	0
+202.ID	rod	千里眼の魔杖	magic mapping	0
 201.ID	-	レッチョ	leccho	0
 200.ID	-	ウリ	melon	0
 199.ID	-	カボチャ	squash	0
@@ -1051,8 +1143,8 @@ ID	Type	JName	EName	Value
 179.ID	-	山菜	edible wild plant	0
 178.ID	-	アロエ	aloe	0
 177.ID	-	クワパナ	quwapana	0
-176.ID	rod	鈍足の杖	slow	0
-175.ID	rod	稲妻の軌跡の杖	lightning bolt	0
+176.ID	rod	鈍足の魔杖	slow	0
+175.ID	rod	稲妻の軌跡の魔杖	lightning bolt	0
 174.ID	-	二段ベッド	bunk bed	0
 173.ID	-	噴水	fountain	0
 172.ID	-	儀式用の祭壇	ceremony altar	0
@@ -1102,13 +1194,13 @@ ID	Type	JName	EName	Value
 128.ID	-	魔法陣	magic circle	0
 127.ID	-	錬金術の道具	alchemy tools	0
 126.ID	-	ビーカー	beaker	0
-125.ID	rod	生命の杖	life	0
+125.ID	rod	生命の魔杖	life	0
 124.ID	-	パンの陳列棚	bread display	0
-123.ID	rod	炎の衝撃の杖	fire bolt	0
-122.ID	rod	氷の視線の杖	ice bolt	0
-121.ID	rod	サモンモンスターの杖	summon monsters	0
-120.ID	rod	マジックミサイルの杖	magic missile	0
-119.ID	rod	軽傷治療の杖	cure minor wound	0
+123.ID	rod	炎の衝撃の魔杖	fire bolt	0
+122.ID	rod	氷の視線の魔杖	ice bolt	0
+121.ID	rod	サモンモンスターの魔杖	summon monsters	0
+120.ID	rod	マジックミサイルの魔杖	magic missile	0
+119.ID	rod	軽傷治療の魔杖	cure minor wound	0
 118.ID	spellbook	モンスター召喚の魔法書	summon monsters	0
 117.ID	-	空のバスケット	empty basket	0
 116.ID	spellbook	ショートテレポートの魔法書	minor teleportation	0
@@ -1208,8 +1300,8 @@ ID	Type	JName	EName	Value
 22.ID	spellbook	解呪の魔法書	uncurse	0
 21.ID	spellbook	鑑定の魔法書	identify	0
 20.ID	spellbook	テレポートの魔法書	teleportation	0
-19.ID	rod	テレポートの杖	teleportation	0
-18.ID	rod	鑑定の杖	identify	0
+19.ID	rod	テレポートの魔杖	teleportation	0
+18.ID	rod	鑑定の魔杖	identify	0
 17.ID	scroll	インコグニートの巻物	incognito	0
 16.ID	scroll	テレポートの巻物	teleportation	0
 15.ID	scroll	神託の巻物	oracle	0
