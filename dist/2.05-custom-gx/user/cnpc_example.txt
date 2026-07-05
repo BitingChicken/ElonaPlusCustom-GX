@@ -1,0 +1,431 @@
+%Elona Custom Npc
+
+// Change the author to your name please.
+// For this example: the original author being No.Vis, you can found him by searching:
+// ラーネイレとノエルが好きすぎる人のElona製作所
+// Portrait art from: scrapiuna
+// Character chip art from: Jack
+// author.		"ノヴィス"
+author.		"everything below is stolen lmao"
+
+// CNPC ID/Name: 
+// Everything before the comma is the CNPC ID, and after that is the JP name of CNPC.
+// In CGX, the .npc file name is used as the EN name of CNPC
+// ID is used to locate image/talk file of pre-existing CNPCs as the image index changes.
+// if you want to modify a pre-existing NPC in game, make sure you use the same ID.
+name.		"Alhazard the Witch of Funeral,葬列の魔女『アルハザード』"
+// male 0, female 1, random -1
+sex.		"1"
+
+// Race/Class: Please use one of the races/classes in game since it decides stat growth rate.
+// CNPC's stat is calculated with it's race-class-level
+// A lich wizard will have 10 times the magic damage than a norland warrior.
+// You can refer to db_race and db_class for this.
+race.		"servant"
+class.		"wizard"
+fixLv.		"6"
+// Quality/FixLv: decides the level of equipment they have when generated.
+// Fixlv 2 good, 3 great, 4 <miracle>, 5 {godly}, 6 Unique
+// Note that in CGX: if you set fixLv to 6: they become unique NPCS
+// Chatting with them will make them ignore you, and 'txtDialog' is not used.
+// However, the 'txt_ucnpc_ev_b' ported from Omake will let them speak like Uniques - see below for example.
+// For more details: search 'txt_ucnpc_ev_b' in google, or ask AI of your choice.
+level.		"100"
+
+// Rarity: Decides how often they spawn in game;
+// Rarity is set to 0 here so they won't spawn everywhere, max 500
+// You can set rarity to 500 to spawn them in game - then re-import the CNPC to change it back to 0.
+rare.		"0"
+// Filter man allow them to be found at slave traders. "nefia1"-"nefia8" allow them to spawn in corresponding nefias.
+// nefia1: dungeon/cave;   nefia2: forest;   nefia3: tower;   nefia4: fortress;   nefia5: nest;   nefia6: cemetary;   
+// nefia7: mines;   nefia8: lake;  nefia0: every nefia with a 1/20 chance; 
+filter.		"/man/cnpc/"
+// Relation: sets relation of CNPC when they SPAWN NATURALLY.
+// -3 hostile, -2 attacked when you walk into them, -1 neutral,  0 can be talked to, 10 ally that follow
+relation.	"-1"
+
+// Ai when not in battle: 0/3 stand still, 1 roam, 2 roam nearby, 4 Follow (Gwen), 5 follow (Used for special npcs - defaults to follow.)
+// 6 Perform, 7 Preach, 8 Fascination Dace, 9 Cleaner, 10 Prostitute, 12 Beggar
+aiCalm.		"0"
+// If not at (aiDist) distance, move with (aiMove)% chance, this overwrites other actions.
+aiMove.		"90"
+aiDist.		"2"
+// Action when low on health. Set it to 0 if you don't want that to override every other action.
+aiHeal.		"403"
+// When needed to attack, (aiActSubFreq)% is checked to pick actions from (aiAct) pool or the (aiActSub) pool.
+// Each pool must have 5 actions. 0: do nothing (-1) melee(or ranged if not in range), (-2) ranged, (-3), melee (do nothing if not in range).
+// For the full list of actions - please refer to the CGX repository.
+aiAct.		"414,652,418"
+aiActSubFreq.	"50"
+aiActSub.	"433,423,410,437"
+
+// Melee element: Unarmed melee element, works like (deals element damage[####+])
+// Used by creatures like wasps to deal poison damage - you can ignore them safely.
+// 100 really weak, 300 somewhat okay, 500 very potent, 2000 gods.
+// RES_FIRE	50 // RES_COLD	51 // RES_LIGHTNING	52 // RES_DARKNESS	53 // RES_MIND	54
+// RES_POISON	55 // RES_NETHER	56 // RES_SOUND	57 // RES_NERVE	58 // RES_CHAOS	59
+// RES_MAGIC	60 // cutting	61 // crushing 64
+meleeElem.	"61,200"
+
+// Resistance use pairs, first number is the element, (second number x 50) is the potency.
+// *Note* that in Plus this will be overwritten by the level/quality value (unless potency >= 400).
+// (Yes this butches the race innate resistances too, due to Ano's weird changes.)
+// So the following line will have no effect unless the value is "negative, 1, >=8"
+resist.		"51,8,53,8,54,8"
+
+// Character bits:
+// RAPID_MAGIC	20 //LAY_HANDS	21
+// RES_CONFUSE	8 //RES_BLIND	9 //RES_FEAR	10 //RES_SLEEP	11 // RES_PARALYZE	12 //RES_POISON	13 //CURE_BLEEDING	29
+// RES_ELEMENTAL	26 //ARMOUR	33 //METAL	28
+// FLOAT	5 // TEMPER	32 // QUICK_SHOOTING	34 //SUICIDE	18 // BREAK_WALLS	30
+// INVISIBLE	6 //SEE_INVISIBLE	7
+// SUPERIOR_RIDING	22 //INFERIOR_RIDING	25
+// SPLIT(always split)	23 //SPLIT(not split if negative status)	27
+// EAT_ROTTEN	14 // RES_STEAL	15 // RES_CURSE	24
+// Add drop_gold if it can steal stuff. Add death_master if it knows death word. Add immune_mine if it can lay traps
+// DROP_GOLD	17 //DEATH_MASTER	19 // IMMUNE_MINE	31
+bitOn.		"7,26,10,20"
+
+// Unique NPC dialogs: ported from MMA.
+
+%txt_ucnpc_ev_b
+%txtevstart,JP
+何か聞きたいことはあるかしら？{c}事態を解決するには%解決策{ev},,,,,{c}ノイエルを覆う霧について%霧{ev},,,,,{c}リリィとパエルの消息%消息{ev},,,,,{c}他に知っていることは？%エルトダウンシャーズ{ev},,,,,{c}聞くことは特にない%忠告{ev},,,,,
+%txt解決策,JP
+ノイエルに向かう道中で、赤い大きな屋敷を見かけなかった？{n}異界へと繋がる門は、あの建造物の奥深くに口を開けているわ。{n}あれをもう一度閉じるには誰かが境界の淵へと赴き、その歪みを正すしかない…。{n}浸食された空間の中、最後まで正気を保っていられればの話だけれど。{c}（戻る）%evstart{ev},,,,,
+%txt霧,JP
+今、この街を満たしているものの正体なら、おおよその見当は付いているの。{n}彼らは"イス"と総称される異世界からの来訪者……あなたほどの冒険者なら、幾度か刃を交えたことがあるのではなくて？{c}（続く）%霧2{ev},,,,,
+%txt霧2,JP
+とはいえ、このおぞましい感覚は…。{n}通常なら、具現化することなどありえない高位の神格が、館の主に力を貸しているようね…。{wgdata62set1} {c}（戻る）%evstart{ev}write1.wav,,,,,
+%txt消息,JP
+リリィ…あの人のことはよく覚えているわ。{n}娘が熱病に侵された…と以前、私のもとを尋ねてきたことがあったの。{n}エーテルによって変わってしまった顔のことをひどく気にしていたけれど、そんなもの問題ならないくらい澄んだ綺麗な目をした人だった…。{c}（続く）%消息2{ev},,,,,
+%txt消息2,JP
+薬のことは専門外だからどれだけ力になれたかは分からないけれど、娘のパエルさんは一応、持ち直したと聞いているわ。{c}（続く）%消息3{ev},,,,,
+%txt消息3,JP
+…そう。そういえば、ちょうど街で彼女の姿を見かけなくなった頃だったかしらね。{n}この小屋の周囲に、異界の眷属たちが姿を現すようになったのも。{c}（戻る）%evstart{ev},,,,,
+%txtエルトダウンシャーズ,JP
+エルトダウン・シャールズという魔導書を知っているかしら？{n}数多の古文書の原典といえる本の一つよ。{n}一度（ひとたび）開けば中から異界が溢れ出すと言われているわ。今回の事件と何か関わりがあるのかもしれない…。{c}（戻る）%evstart{ev},,,,,
+%txt忠告,JP
+…館の奥底で眠るモノはこれまであなたが闘ってきた魔物とはまるで別次元の存在だわ。決して"理解"しようとは思わないで。{n}『混沌（カオス）は混沌のままに捉え、そしてその還るべき場所もまた混沌』――――この言葉を肝に命じておきなさい。{c}さようなら%bye{ev},,,,,
+%txtevstart,EN
+Is there anything you wish to ask?{c}Resolution to the situation. %解決策{ev},,,,,{c}Regarding the mist that shrouds Noyel.%霧{ev},,,,,{c}The current whereabouts of Lily and Pael.%消息{ev},,,,,{c}Is there anything else I need to know? %エルトダウンシャーズ{ev},,,,,{c}I have no further questions.%忠告{ev},,,,,{c}Interested in some bird watching?.%iikoto1{ev}curse2.wav,,,,,
+%txt解決策,EN
+Didn't you see a large red mansion on your way to Noyel?{n}{n}The gate that connects to the otherworld lies deep within that structure.{n}{n}To seal it away once more, someone must journey to the border of the realm and mend its distortions...{n}{n}Whether one can maintain their sanity in a space so corrupted... remains to be seen.{c}(Back.)%evstart{ev},,,,,
+%txt霧,EN
+I have a general idea of what's permeating this city now.{n}{n}Speaking of the race 'Yith'... Surely a seasoned adventurer such as yourself has crossed blades with them before?{c}(Continue.)%霧2{ev},,,,,
+%txt霧2,EN
+Still, this horrid sensation...{n}{n}Under ordinary circumstances, the materialization of such a high-level deity would be impossible... but it appears the master of this estate has gained its favor.{c}(Back.)%evstart{ev}write1.wav,,,,,
+%txt消息,EN
+Lily.. I remember her quite well.{n}{n}In the past, she came to me for help when her daughter was afflicted by a high fever.{n}{n}Despite her face twisted abnormally by her ether disease, she had the most beautiful and clear eyes.{c}(Continue.)%消息2{ev},,,,,
+%txt消息2,EN
+Though I lack expertise in potions, I'm relieved to hear that her daughter Pael seems to have been rallied in the process.{c}(Continue.)%消息3{ev},,,,,
+%txt消息3,EN
+...Yes. Come to think of it, that's around the time I stopped seeing her in town.{n}{n}Strangely, minions of the otherworld have begun to appear around this cabin.{c}(Back.)%evstart{ev},,,,,
+%txtエルトダウンシャーズ,EN
+Do you know of the grimoire 'Eltdown Shards'?{n}{n}This is but one of the many ancient tomes that could be considered a classic.{n}{n}Once opened, it is said that an otherworld will burst forth. It may be related to the current events.{c}(Back.)%evstart{ev},,,,,
+%txt忠告,EN
+...The thing that slumbers in the depths of this estate is a being unlike any of the monsters you've fought before. Do not even attempt to 'understand' it.{n}{n}'Chaos is chaos, and it shall remain as such, returning to its rightful place' - Keep this in mind.{c}Leave.%bye{ev},,,,,
+%txtiikoto1,EN
+...{c}(....)%iikoto2{ev}curse1.wav,,,,,
+%txtiikoto2,EN
+... ...{c}(....)%iikoto3{ev}curse3.wav,,,,,
+%txtiikoto3,EN
+Bring me all 17 of the Ancient Tome circulating in Irva, and perhaps I will consider about it...{c}Fine..%bye{ev},,,,,
+%txt_ucnpc_ev_e
+
+
+
+%txtDialog,JP    //話しかけた時のセリフ
+%txtDialog,EN   //when talked to
+Is there anything you wish to ask?
+Lily.. I remember her quite well.
+When you live too long, you tend to overthink things... It's a bad habit of mine.
+
+%txtCalm,JP    //非戦闘待機時のセリフ
+ハーブの甘い香りが漂ってくる。
+「お茶でもいかがかしら？ちょうど今、淹れたところなの」
+「あなたの持っている古文書、私に見せてくれない？とても興味深いわ」
+時折、古代の呪法を詠唱する音が聞こえる。
+%txtCalm,EN    //when not in combat
+You can smell a sweet aroma of herbs wafting through the air.
+"Care for some tea, by any chance? I've just brewed a pot."
+"May I see the ancient tome you possess? I'm positively intrigued."
+From time to time, echoes of ancient incantations can be heard.
+
+%txtAggro,JP    //交戦時のセリフ
+「フフッ…馬鹿ね、死の概念を持たない私を斃そうというの…？」
+「あなた、自分がどこに向かって攻撃しているか分かってる？」
+黒衣の魔女は幽鬼のようにあなたとの間合いを縮めた。
+魔女の指先から指向性の魔力がほとばしる。
+「脆いのね。さようなら…」
+%txtAggro,EN    //when turning hostile
+"Haha, how naive."
+"You think you can kill one who knows not death?"
+"Are you even aware of what you're attacking?"
+In a ghostly instant, the black-clad witch closes the distance.
+A surge of directed magical energy erupts from the witch's fingertip.
+
+%txtDead,JP    //死亡時のセリフ
+「嘘…これが…死…？」」
+%txtDead,EN    //spoken on death
+"It can't be.. Is this.. Death?"
+
+%txtKilled,JP    //敵殺害時のセリフ
+「また、別の可能性で逢いましょう。お休みなさい、{npc}」
+%txtKilled,EN   //when killing an enemy
+"It's your funeral."
+"How fragile you are."
+"Farewell..."
+"Perhaps we'll meet again under different circumstances."
+"Good night. '{npc}'"
+
+%txtChargeS,JP    //本人がチャージ技能を発動した時のセリフ
+黒衣の魔女は幽鬼のようにあなたとの間合いを縮めた。
+%txtChargeS,EN		//using Charge Attack special action
+"It's your funeral."
+"Perhaps we'll meet again under different circumstances."
+
+%txtChargeA,JP    //本人がチャージ効果の乗った攻撃をする時のセリフ
+魔女の指先から指向性の魔力がほとばしる。
+%txtChargeA,EN	//using an attack powered up by Charge Attack
+"Farewell..."
+"Good night. '{npc}'"
+
+%txtSpecial,JP    //ゲージ技を発動する時のセリフ
+黒衣の魔女は幽鬼のようにあなたとの間合いを縮めた。
+魔女の指先から指向性の魔力がほとばしる。
+%txtSpecial,EN		//using a gauge attack
+In a ghostly instant, the black-clad witch closes the distance.
+A surge of directed magical energy erupts from the witch's fingertip.
+
+%txtShift,JP    //変異殻使用時のセリフ
+黒衣の魔女は幽鬼のようにあなたとの間合いを縮めた。
+%txtShift,EN	//when using a shift core
+Surge of directed magical energy bursts from the black witch.
+
+%txtCharge,JP    //味方がチャージ技能を発動した時のセリフ
+「ふふっ…そうね。あなたが正しいわ。」
+「あら…面白いこともあるものね」
+%txtCharge,EN	//an ally uses Charge Attack special action
+"Don't make me wait too long."
+"Oh... how interesting."
+
+%txtKizuna,JP    //味方が魂のシンクロ技能を発動した時のセリフ
+「フフッ…馬鹿ね、死の概念を持たない私を斃そうというの…？」
+%txtKizuna,EN	//an ally uses Synchro hearts special action
+"You think you can kill one who knows not death?"
+
+%txtMultiple,JP    //多重詠唱魔法に参加する時のセリフ
+魔女の指先から指向性の魔力がほとばしる。
+%txtMultiple,EN	//taking part in an Over-Ray spell
+Surge of directed magical energy bursts from the black witch.
+
+%txtLeading,JP    //個別指導を受けた時のセリフ
+「あら？強引なのね」
+「結構よ」
+%txtLeading,EN	//when receiving Individual Leading
+"Oh my, how forceful of you."
+"That will suffice."
+
+
+
+%txtWelcome,JP    //帰宅出迎えのセリフ
+「怪我はないようね。今、ハーブティーを淹れるわ」
+%txtWelcome,EN    //staying at home and player enters the map
+"I see no injuries. I'll put on some herbal tea."
+
+%txtMeal,JP    		//「一緒に食事する」時のセリフ
+「ハーブティーを淹れるわ」
+%txtMeal,EN		//when having a meal together
+The tea's almost ready...
+
+%txtMaterial,JP    //マテリアル受取時のセリフ
+「少し重すぎるわね」
+%txtMaterial,EN    //when receiving materials
+"It's a little too heavy for me, here, take this."
+
+%txtInsult,JP    //罵倒技能時のセリフ・攻め寄りの状態で鞭で叩いた時のセリフ
+「可哀想な人ね。」
+%txtInsult,EN	//Insult special action, or whipped when low on servant-master value
+"What a pathetic person."
+
+%txtInsult2,JP    //鞭で叩いてもらうようにねだった時のセリフ
+「可哀想な人ね。」
+%txtInsult2,EN	//when asked to whip the player
+"What a pathetic person!"
+
+%txtDiscipline,JP    //鞭でアイテム拾い禁止、拾い食い禁止した時のセリフ
+「やめておきなさい。あなたが冷静な判断を下せる人だと信じているわ。」
+「痛みか…忘れて久しい感覚ね」
+「………。」
+%txtDiscipline,EN	//forbidding items on the ground with whip
+"Stop. I have faith in your ability to make sound judgments."
+"Pain... it's been so long since I've felt that."
+"..."
+
+%txtDiscipline2,JP    //叩き慣れした状態で鞭で叩いた時のセリフ
+「あら、もういいのかしら？」
+「気は済んだ？」
+「気は済んだかしら？」
+%txtDiscipline2,EN	//when whipped, but used to getting whipped
+"Already done, are we?"
+"Did you had your fun?"
+"Did you get it out of your system?"
+
+%txtDisciplineOff,JP    //アイテム拾い禁止解除、拾い食い禁止解除時のセリフ
+%txtDisciplineOff,EN	//when allowing eating/picking items off the ground with whip
+
+%txtDisciplineEat,JP    //拾い食い禁止状態で食事を与えた時のセリフ
+%txtDisciplineEat,EN	//when given food while eating off ground is forbidden
+
+%txtBfast,JP    //朝食イベント発生時のセリフ
+%txtBfast,EN	//breakfast event
+
+%txtNight,JP    //添い寝イベント発生時のセリフ
+%txtNight,EN	//when sleep sharing
+
+%txtEXAct,JP    //添い寝時の専用行動選択肢　変換タグ無効
+%txtEXAct,EN	//custom line during sleep sharing. {tags} won't work.
+
+%txtEXReact,JP    //上記行動を選択した時の反応
+%txtEXReact,EN	//reaction when the above option the selected
+
+%txtLimit,JP    //添い寝時に眠気が限界に来た時のセリフ
+%txtLimit,EN	//reaching limit during sleep sharing
+
+%txtKiss,JP    //口づけされた時のセリフ
+%txtKiss,EN		//when kissed
+
+%txtChoco,JP    //２月にチョコをもらった時のセリフ
+%txtChoco,EN	//giving handmade chocolate in February
+
+%txtNade,JP    //魂の友以上の友好度でＰＣから愛撫の手を受けた時のセリフ
+「…？私の心機能は正常よ」
+%txtNade,EN	//rubbed by player when at Soul Mate or above
+"? My cardiac function is normal."
+
+%txtHug,JP    //魂の友以上の友好度でＰＣからスクイーズを受けた時のセリフ
+%txtHug,EN	//Squeezed by player when at Soul Mate or above
+
+%txtFawnOn,JP    //悩殺攻撃技能に抵抗できずメロメロになってる時のセリフ
+%txtFawnOn,EN	//failing to resist Bewitch special action
+
+%txtMidNight,JP    //強制的に添い寝させられて怒っている時のセリフ
+「…不快だわ。こんなお膳立てをするあなたがね」
+%txtMidNight,EN	//when angry at forced sleep sharing
+"... How unpleasant. I find you, and your choices, quite distasteful."
+
+%txtRideOn,JP    //乗馬開始（ＰＣが乗る場合）時のセリフ
+「少し重すぎるわね」
+「新鮮な体験ではあるけれど…。身動きを取れないのは困りものね」
+%txtRideOn,EN	//player mounts
+"A bit too heavy, you are."
+"New experiences, but this immobility is quite inconvenient."
+
+%txtRideOff,JP    //乗馬解除（ＰＣが乗っている場合）時のセリフ
+「気は済んだ？」
+「気は済んだかしら？」
+%txtRideOff,EN	//when player dismounts after riding
+"Did you had your fun?"
+"Did you get it out of your system?"
+
+%txtRideOnPC,JP    //乗馬開始（ＰＣが乗られる場合）時のセリフ
+「驚いたわ。あなた、とても強靭な肉体を持っているのね」
+%txtRideOnPC,EN	//mounts player
+"How surprising. You possess an remarkably robust physique, don't you?"
+"A splendid ride, thank you kindly."
+
+%txtRideOffPC,JP    //乗馬解除（ＰＣが乗られている場合）時のセリフ
+「気は済んだかしら？」
+%txtRideOffPC,EN	//dismounting player after riding
+"Did you get it out of your system?"
+
+%txtDrain,JP    //友好度：親友以上または主従度：従順以上でＰＣに吸血される時のセリフ
+アルハザードは内なる衝動を抑え込んでいる。
+アルハザードの瞳が赤く輝いている…。
+%txtDrain,EN	//subjected to Drain Blood by player when at Fellow or Amenable
+Alhazard is suppressing her inner urges.
+Alhazard's eyes are glowing red.
+
+%txtCreate,JP    //夜なべして防具作った時のセリフ
+%txtCreate,EN	//made equipment last night for handmade gift event
+
+%txtBtalk,JP    //説得系技能を発動した時のセリフ
+%txtBtalk,EN	//When use persuasive skills
+
+%txtDialogB,JP    //evochat開始時のセリフ
+%txtDialogB,EN	//when evochat is initiated
+
+%txtDialogE,JP    //evochat時、困らせた場合のセリフ
+%txtDialogE,EN	//embarrassed during evochat
+
+%txtDialogF,JP    //evochat時、喜ばせた場合のセリフ
+%txtDialogF,EN	//when happy during evochat
+
+%txtDialogH,JP    //evochat時、機嫌が最大の場合のセリフ
+%txtDialogH,EN	//happiness maxed during evochat
+
+%txtMizuAsobi,JP    //【特別な気持ちいいこと】中のセリフ
+「…っ…」
+「は…ぁっ！…ぁっ…！」
+「どうして…感覚が制御できない…」
+「……だ…め…」
+アルハザードは声を押し殺して震えている。
+%txtMizuAsobi,EN	//when special during evochat
+"...!"
+"Ah...!"
+"Why...can't I control my senses..."
+"...No..."
+Alhazard was trembling, suppressing her voice.
+
+%txtMizuAsobiEnd,JP    //【特別な気持ちいいこと】終了時のセリフ
+「あら、もういいのかしら？」
+「痛みか…忘れて久しい感覚ね」
+「………。」
+%txtMizuAsobiEnd,EN	//when special end of evochat
+Oh, are you done already?
+Pain...It's a feeling I haven't experienced in a long time.
+......
+
+%txtTag,JP    //タッグ間のやりとりを見る時のセリフ
+ふふっ…そうね。あなたが正しいわ。
+%txtTag,EN	//when talking tag team without you
+Hehe... That's right. You're correct.
+
+%txtTagEvo,JP    //タッグ間でevochat時のセリフ
+長く生きすぎていると、どうにも余計なことまで考えてしまって…。私の悪い癖ね。
+%txtTagEvo,EN	//when evochat without you
+When you live too long, you tend to overthink things... It's a bad habit of mine.
+
+%txtClementia,JP    //命乞いする時のセリフ
+「………。あまりみないで」
+%txtClementia,EN	//when ask for forgiveness.
+"......Don't look at me too much."
+
+%txtPleasure,JP    //気持ちいいこと中のセリフ
+「…っ…」
+「は…ぁっ！…ぁっ…！」
+「どうして…感覚が制御できない…」
+「……だ…め…」
+アルハザードは声を押し殺して震えている。
+%txtPleasure,EN	//when action of pleasure.
+"...!"
+"Ah...!"
+"Why...can't I control my senses..."
+"...No..."
+Alhazard was trembling, suppressing her voice.
+
+%txtPleasureHard,JP    //激しく気持ちいいこと中のセリフ
+「私の意識を浸食するとは…大したものね」
+「………。」
+アルハザードは内なる衝動を抑え込んでいる。
+アルハザードの瞳が赤く輝いている…。
+「くだらない…何もかも…」
+%txtPleasureHard,EN	//when action of pleasure hard.
+"To invade my consciousness... impressive."
+"......"
+Alhazard is suppressing her inner impulses.
+Alhazard's eyes are glowing red...
+"How pointless...everything..."
+
+%endTxt
