@@ -60,6 +60,7 @@ msg_trans.	"4"
 msg_addTime.	"1"
 
 title_dialog.	"1"
+operate.	"0"
 
 showFps. "0"
 showTopTileCutoff. "0"
@@ -79,10 +80,11 @@ hide_shopResult.	"0"	0=show all	1=hide msg(no income)	2=hide all msg
 
 Lines below are only applied in English mode.
 
-fontVfix1.	"-1"		fixes vertical position(
+fontVfix1.	"-1"		fixes vertical position
 fontSfix1.	"1"		fixes font size
+fontWSHPad.	"0"            fixes white spaces caused by font's HW ratio
 
-(unavailable)			please do not change	
+(unavailable)			please do not change
 msg_log.	"16"
 wait1.		"30"
 infVerType.	"1"
@@ -158,6 +160,7 @@ key_quick.	"z"	,"3"
 key_trait.	"F"
 key_throw.	"T"
 key_give.	"G"
+key_hijump.	"h"
 key_quickinv.	"x"	,"1"
 key_mode.	"z"
 key_mode2.	"*"
@@ -170,8 +173,17 @@ dmgPopups. "1"
 dmgPopupBuffHex. "1"
 dmgPopupCon. "1"
 dmgPopupEvade. "1"
+dmgPopupChat. "0"
 dmgPopupFontSize. "12"
+dmgPopupFontShift. "0"
 dmgPopupSpeed. "20"
+dmgPopupExplode. "0"
+showNpcName. "0"
+showNameChatMultilined. "1"
+showPetHealth. "0"
+showDamageMeter. "0"
+showDamageMeterTurns. "30"
+autoHideUI. "0"
 
 (Autopickup)
 autopick. "0"
@@ -179,4 +191,3 @@ autopick_sound. "1"
 autodestroy_sound. "1"
 
 (auto fix)
-

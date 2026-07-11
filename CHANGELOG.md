@@ -1,19 +1,33 @@
 # Upcoming
 
-# Fixed
+- Tweak to disable overlevelled pet disobedience in 2.32.
+
+# 2.32.1.0
+
+## Added
+- Ported all changes from Elona+ 2.32.
+
+## Changed
+- Made the repo's documentation slightly better:
+  - Documentation has been updated.
+  - dist has been updated.
+
+## Fixed
 - CNPCs not appearing in slave npc pool.
-- Tweak of Element revert causing bells to be immune to PVDV damage.
+- Tweak of Element revert that caused bells to be immune to PVDV damage.
 - (TCG) Balzak drawing cards not in the game.
+
+Jianmeng Yu handled the porting in the original repo (see (e6854e1)[https://github.com/JianmengYu/ElonaPlusCustom-GX/commit/e6854e1e6cd3a5eafd9ecd41fd93d534e92d31d8]) but hasn't made a release yet.
 
 # 2.31.2.0
 
-# Added
+## Added
 - (MMAH) Tweak to change some animations into Async mode
   - E.g. Death animations are all played at the same time, and no longer causes pause.
 - Tweak to revert Gauge Skill Activation to pre-2.24.
 - Poker-Force indicator for current poker spirits.
 
-# Fixed
+## Fixed
 - (Plus) Fixed ranch breeder receiving EXP from nefia debris, causing lower breed power
 - (Plus) Fixed rain changing into snow on the ocean due to using snow region check of North Tyris
 - (Plus) Astral Light Pen + CNPC => copies a random CNPC.
@@ -25,7 +39,7 @@
 - CGX Deliver Quest tweak causing entire stack of auto-identified item (bronze coin) to be heavier.
 - Damage meter goes into negative due to overflow.
 
-# TCG
+## TCG
 - New effect for most of the Act II/III unique cards. Added VFXs, Shop card packs.
 - Changed effects: [CGX TCG card effect DB Diff](https://elona.fandom.com/wiki/User_blog:JianmengYu/CGX_TCG_card_effect_DB?diff=81339)
 - Random Opponent Decks are now stronger (at higher winstreaks):
@@ -35,70 +49,70 @@
 
 # 2.31.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.31.
 - Option to replace 'control help' screen with in-game log messages.
 - Tweak to disable the 400% skill EXP bonus in 2.31.
 
-# Changed
+## Changed
 - Re-enabled Bear-Invasion and Werewolf event disabled in 2.30.1.1, due to countermeasures being implemented.
 - Level of Bamboo Spirit from monster ball now depends on Deepest Level (min 1, max 70)
   - Same applied to the pirates (1-72), pirate musketeer (1-85), and rough pirate (1-96)
   - If you want to exploit this, you can still use the original `elonaplus.exe`
 
-# Fixed 
+## Fixed 
 - (Plus) Fixed a crash caused by too many 'i'nteract options (at ranch, namely).
 - (Plus) Fixed werewolves not receiving NPC votes for execution after first round.
 - (Plus) Fixed player-shop not giving Yaca Points for selling items (before trading).
 
 # 2.30.1.1
 
-# Changed
+## Changed
 - Disables Bear-Invasion and Werewolf events until Act II.
 - God Wolf and Kyu-Bi now despawns like invading bears.
 
-# Fixed
+## Fixed
 - KamiKakushi consuming necromancy-zombies when they shouldn't.
 
-# TCG
+## TCG
 - Revamped Pirate cards, and gave Zernard and the Pirate NPCs a pirate deck.
 
 
 # 2.30.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.30.
 
-# Fixed
+## Fixed
 - Fixed Custom AI multi-target buff checking targeting the wrong NPC
 - Fixed item mark flip not working for tag-team partner.
 - Fixed a AP gain issue where the wrong checks are used.
 
 # 2.29.1.1
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.29R.
 
 # 2.29.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.29.
 - A misc tweak to draw tag-team-leader slightly to the left to ensure equal spacing.
 
-# Fixed
+## Fixed
 - (Plus) Genocide-tail and Hairmet not in Garok's medal exchange list.
 
 # 2.28.2.1
 
-# Added
+## Added
 - Two UI tweaks to change how item is drawn in inventory.
 - Allows wishing for golden dolls and flesh dolls.
 
-# Changed
+## Changed
 - Golden dolls are now rendered differently.
 - Split longer profile backstories into multi-lines to prevent overlap.
 
-# Fixed
+## Fixed
 - (Plus) Fixed a crash when shift-cores and mimirrocry are used simutaneously.
 - (Plus) Fixed cut-ins of some shape-changed characters not showing up due to not detecting custom image.
 - (Plus) Fixed Item Mark set bug where key check happened before key press, and allows support for 48x96 images.
@@ -108,17 +122,17 @@
 - Fixed GGSMF4 causing non-looping music gets looped, and looping did not skip the beginning of a bgm.
 - Fixed a water tile issue.
 
-# TCG
+## TCG
 - Nerfed Unit-Deads to prevent FTK.
 - 'Copy Card' effect now copy every stat of target card, except Card Cost.
 - Fixed Itzpalt field effect makes you discard one more card.
 
 # 2.28.2.0
 
-# Added
+## Added
 - Extra Gameplay Tweak to allow a (weaker) artifact fusion / disenchantment at blacksmiths.
 
-# TCG
+## TCG
 - Now uses fatigue from Hearthstone instead of instantly lose due to deck out.
 - Card draw effects no longer fire when deck is empty.
 - Added an animation for fatigue and special victories.
@@ -126,37 +140,37 @@
 
 # 2.28.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.28.
 
-# Changed
+## Changed
 - When too many dialog options: split them into 2 columns.
 
-# TCG
+## TCG
 - [Changed some Meshra-related effect, Nerfed some god-killing cards.](https://elona.fandom.com/wiki/User_blog:JianmengYu/CGX_TCG_card_effect_DB?diff=80700)
 
 # 2.27.2.1
 
-# Added
+## Added
 - Tachi-e during Evochat: _HH, _QH, _AH, _BH, _FH, _EH
 
-# Fixed
+## Fixed
 - Fixes bug that causes more than 1 skill fragment to be used.
 - Added missing flavor text for surrendered enemies.
 - Custom AI not using spells due to seal magic.
 
 # 2.27.2.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.27R.
 
 # 2.27.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.27.
 - Tweak to disable the begging for life system for enemies.
 
-# Fixed
+## Fixed
 - (Plus) Fixed reflect damage calculated using the wrong damage number
 - (Plus) Pet target reset due to begging-bitflag bug.
 - (Plus) Fixed crashes due to shared item/material field.
@@ -164,42 +178,42 @@
 
 # 2.26.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.26.
 
-# Fixed
+## Fixed
 - (Plus) Cut-in speed lines not disappearing / not moving during animation.
 - (2025/4/20) Stamina regen is 0.3 lower when wetting.
 - (2025/4/30) (Plus) Sp-act buffs using skill id instead of skill stats during effect power calculation
 
-# TCG
+## TCG
 - Changed effect of Act II ninjas and gave them decks.
 - Fixed Quruiza card logic and buffed her by a little.
 - Fixed crash after winning lethal tcg with 0 hp.
 
 # 2.26.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.26.
 
-# Fixed
+## Fixed
 - (Plus) Cut-in speed lines not disappearing / not moving during animation.
 
-# TCG
+## TCG
 - Changed effect of Act II ninjas and gave them decks.
 - Fixed Quruiza card logic and buffed her by a little.
 - Fixed crash after winning lethal tcg with 0 hp.
 
 # 2.25.1.1
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.25R.
 
-# Fixed
+## Fixed
 - Phychic Wave not working properly
 - (2025/1/3) NPCs aggroed toward player when attacked by NPCs of same alignment/relation.
 
-# TCG
+## TCG
 - Changed starting hand calculation (max 7 with 1 domain and min 5 with 3+ domain.)
 - Changed starting hp calculation (max 40 with 1 domain and min 20 with 5+ domain.)
 - Fixed enemy character card getting created in your deck.
@@ -217,10 +231,10 @@
 
 # 2.25.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.25.
 
-# Fixed
+## Fixed
 - (Plus) Throwing Cicada deleting the wrong item in 2.25.
 - (Plus) Buff strength variable not initialized in 2.25.
 - (Plus) Persuation skills not effective in 2.25.
@@ -229,26 +243,26 @@
 
 # 2.24.2.1
 
-# Added
+## Added
 - (OOMSESTep) Added GuruGuruSMF4 music support. Now you can hear the original version of Elona MIDIs.
 - (OOMSESTepNC) Guards can teleport you to client now.
 - (Elin) Prostitue can guide you to client now, they charge 100 gold like informer
 
-# Fixed
+## Fixed
 - Informer guiding to client doesn't check if you have 100 gold
 - Ambient Sound of Etherwind doesn't stop after Lazasye main quest (removed lpfilewind variable)
 - AI indepedent act tweak causes talking mode allies to stop acting.
 
 # 2.24.2.0
 
-# Added
+## Added
 - Tweak to allow your spells to trigger weapon enchantment.
 
-# Changed
+## Changed
 - Quest text file now supports {n}
 - Reduced CNPC summon piety cost to 1/3.
 
-# TCG
+## TCG
 - Uncapped win-streak ticket earning limit. (Still capped by target level)
 - Win-streak now provides a ticket bonus of 20% per win-streak above 10.
 - You can now view graveyard in game with `g`, and deck with `f`
@@ -258,31 +272,31 @@
 
 # 2.24.1.1
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.24fix.
 - Tweak to revert the Ammo nerf.
 
-# Changed
+## Changed
 - Pet's Other AI settings being confusing.
 
-# TCG
+## TCG
 - Changed Aile's and Fron's effect.
 
 # 2.24.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.24.
 
-# Fixed
+## Fixed
 - MMA staff melee animation crash when animation duration is too low.
 - Omake text coloring causing evochat text not appearing.
 
 # 2.23.1.1
 
-# Added
+## Added
 - Tweak for stronger ambush spawns.
 
-# Fixed
+## Fixed
 - PV/DV fixer messages thanks to @air1068
 - 's'earch not disarming quest traps.
 - Saint blade not being PVDV damage.
@@ -290,13 +304,13 @@
 
 # 2.23.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.23.
 
-# Changed
+## Changed
 - Extra NPC info: You now need the discernment feat to see it.
 
-# Fixed
+## Fixed
 - (2.23) EN text: Shop import having wrong item displayed. Minute text not having a 0 padded like 23:1.
 - (2.23) God sleep text is searched using uninitializd variables. (`txtgoddream`, `locvar_txtgod_txtgoddream`, also `actsummonspirit` for a similar bug)
 - AI independent action: Adventurers not targeting enemies.
@@ -304,7 +318,7 @@
 - Omake showroom: Deep water tiles not displaying.
 - Custom AI: Jumping drop and Diving drill not selectable.
 
-# TCG Change
+## TCG Change
 - Added character pic to TCG interface.
 - Added discover mechanics. Changed Yonorne's effect for that.
 - Added CNPC cards (via discover). Changed Arma's effect for that.
@@ -314,15 +328,15 @@
 
 # 2.22.3.2
 
-# Added
+## Added
 - Tweak to draw translucent overlapping items.
 - Tweak to auto-dig walls when running.
 
-# Fixed
+## Fixed
 - (Plus) Crashing during potioman rendering after using a gene machine.
 - Mistake where player only gain necro-kill AP if the necro-minion can get AP.
 
-# TCG Change
+## TCG Change
 - New decks for the Gods/Neres/Ryutye.
 - Buffed: Defender/Exile/Sophia/Maidsann/Lune/Goose/Gigantes/Mantagoddess/FortressSnail/Werewolves/LastRaven.
 - Buffed Archetypes: Some of the Zaile&Oblivion/Rats/Kobolds/Yith/Orcs/Shell/LizardMan Cards.
@@ -332,14 +346,14 @@
 
 # 2.22.3.1
 
-# Fixed
+## Fixed
 - Text issues, Thanks to @air1068
 - Key_selcect overflow on ranch animals.
 - Smart Cooldown: Fixed wrong necrocoffin used.
 - Unable to turn in quests due to time stop.
 - Chat Pop-up: Wrong picture used for chara height calculation.
 
-# TCG Change
+## TCG Change
 - You can now buy cards at general vendors.
 - Fixed mouse control effect targeting bugs.
 - Deck-out no longer happens with full-hand.
@@ -357,12 +371,12 @@
 
 # 2.22.3.0
 
-# Added
+## Added
 - Challenge Tweak to revert Split Monster behavior to Vanilla.
 - Animated Tachi-e support, and a tweak to draw tachi-e on main screen.
 - Lethal mode for TCG, the loser dies.
 
-# Changed
+## Changed
 - 'z' toggle on equipment now uses MMAh's menu + special enc summary.
 - PVDV/Resistance and other info are displayed when 'l'ooking at them.
 - CNPC drops (hearts, cards, etc.) now have their name shown.
@@ -371,7 +385,7 @@
 - TCG: Buffed some weaker servants. Changed Estork&Saimef effect, mimic effect.
   - Gave some Act I bosses new decks.
 
-# Fixed
+## Fixed
 - Red Book IDs are reset when out of bound.
 - Tachi-e not showing up in interact menu and showed up wrong in evochat.
 - Custom Spell Animation: fixed anim drawn on map/chat buffer.
@@ -380,7 +394,7 @@
 
 # 2.22.2.0
 
-# Added
+## Added
 - (MMA_hack): Added mouse control settings.
 - (MMA): Added a misc tweak to enable melee weapon swing animations.
 - (Omake): Added basic `txt_ucnpc_ev_b` compatiability for CNPC/showrooms.
@@ -390,12 +404,12 @@
 - Spell-level/Casting/Magic limiter in spell window.
 - TCG: Anime Speed config / some wait-time optimization.
 
-# Changed
+## Changed
 - Pop-Up: font size increase is now a hidden config named: "dmgPopupExplode"
 - Revert 2.08 elemental tweak: Removed Constituion-Resist revert.
 - TCG: Buffed some ActI&II cards. And gave some ActI&II Uniques new decks.
 
-# Fixed
+## Fixed
 - (Plus) Critical rate from predator class and magnetism not working.
 - (Plus) Bugs caused by Containing a standby inmate.
 - (Plus) Bugs caused by inmate surviving execution due to Lay Hand.
@@ -405,10 +419,10 @@
 
 # 2.22.1.0
 
-# Added
+## Added
 - Ported all changes from Elona+ 2.22.
 
-# Changed
+## Changed
 - Foes no longer spams angered flavor text when attacked by player.
 - TCG:
   - Added effects for the fossil cards.
@@ -416,7 +430,7 @@
   - Reworked most of the bad/unusable Act I cards.
   - Allow viewing your deck with `/` during game.
 
-# Fixed
+## Fixed
 - Fixed wrong itemname `cw` when leveling a living weapon.
 - TCG: 
   - fixed Exiles effect not working.
@@ -428,10 +442,10 @@
 
 # 2.21.3.2
 
-# Added
+## Added
 - Added a tweak to remove abnormal mode inventory limit.
 
-# Changed
+## Changed
 - Allow using tab to switch between buy/sell.
 - TCG:
   - Added some animation, and changed stat display.
@@ -440,7 +454,7 @@
   - Town NPCs have better card variety.
   - Buffed ent/mandrakes/zombies.
 
-# Fixed
+## Fixed
 - When scrolling is disabled: change rendering order to prevent PC getting covered by tile.
 - Fixes individual leading crashes.
 - Map Item Tweak: fixed crashes in Farms.
@@ -450,10 +464,10 @@
 
 # 2.21.3.1
 
-# Added
+## Added
 - Added a tweak to Revert most of the post-2.08 elemental behavior changes.
 
-# Changed
+## Changed
 - AI Tweak: Ally independent targeting now allows NPC targeting out-of-player-sight NPCs.
 - Usable map tweak: Discovered doors/stairs/traps/gather spots are also shown.
 - TCG/Deck:
@@ -462,7 +476,7 @@
   - Gave Rilian, Poppy, Ajetalio, and Cresce new decks.
   - Fixes some bug that causes crash.
 
-# Fixed
+## Fixed
 - Fixed level-based damage of MPbreath pasted to the Sandcannon formula, thanks to @NekoNou
 - Fixed player master/servant value not increasing without the candle, thanks to CY.
 - Fixed player master/servant value reset to 300 due to love potion.
@@ -472,7 +486,7 @@
 
 # 2.21.3.0
 
-# Added
+## Added
 - Added slot machine minigame for slot machines.
 - Added a tweak to enable Noa's material gathering minigame.
 - Added a tweak to increase random Nefia monster density.
@@ -481,7 +495,7 @@
 - Added a tweak for showing local/global map when using the 'map' item.
 - Added pop-up and text for AP-gains.
 
-# Changed
+## Changed
 - Player's tag-team partner now scroll as well, tag-team partner is drawn behind tag leader.
 - Combined Item-mark set and Item-mark adjust command together. Setting item mark immediately enters edit mode.
 - Werewolves are no longer renamed outside of towns.
@@ -503,7 +517,7 @@
   - Evolving Enemies: Prevent shades from evolving, due to a graphical error.
   - Enable showroom loot: made more furnitures usable.
 
-# Fixed
+## Fixed
 - Player speed are wrong on the first turn due to cargo-load/vehicle. 
   - Speed is re-calculated after entering a map, and before "main_init".
 - Game hang issue when trying to spawn boss when theres too many monsters on the field.
@@ -515,14 +529,14 @@
 
 # 2.21.2.0
 
-# Added
+## Added
 - Added translation for most of the item description.
 - Added a EX setting 2 config to draw pet HP bars on screen.
 - Added a EX setting 2 config to auto hide extra UI elements.
 - Added a Message/Log setting to capitalize/uppercase/lowercase item names.
 - Added a "fontWSHPad." for fonts with bad spacing when not in 1:2 ratio.
 
-# Changed
+## Changed
 - F1 saving now has a 0.3 second pause.
 - Potion is added to ally feed menu, cargo is removed.
 - Fixes Custom's pet squeeze/magic-kiss/drain-blood behavior.
@@ -531,7 +545,7 @@
 - CNPC with no file no longer change name into `garbage`, image is changed to a vestige's.
 - CNPC summon tweak now check their skills for calculating cost.
 
-# Fixed 
+## Fixed 
 - These are bugs Ano plan to fix in 2.22:
   - Ship tax not resetting each month (on land), thanks to @Mirarara.
   - Blackjack cheating with 0 `ikasama` level crashes the game, thanks to jlinBE.
@@ -922,14 +936,14 @@ Thanks to DiscoWitch for fixing these issues.
 
 # 2.08.2.0
 
-# Added
+## Added
 - Added a new "Do Nothing" custom AI action. (#68)
 
-# Changed
+## Changed
 - Hydro Fang now causes wet. (#69)
 - Remove the release-build dependency on `hsplua.dll`. It can be enabled again with a compiler define.
 
-# Fixed
+## Fixed
 - Fixed the subject for the "bored" town citizen dialog lines being incorrect. (#60)
 - Fixed the displayed level of duel opponents being incorrect. (#55)
 - Fixed some elemental damage not causing status effects. (#63)

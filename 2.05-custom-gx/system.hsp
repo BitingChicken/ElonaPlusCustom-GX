@@ -3515,7 +3515,7 @@
 	pos 20, 82
 	mes "Elona+ Custom-G mod created by Glyphy"
 	pos 20, 100
-	mes "Elona+ Custom-GX mod created by Ruin0x11 & JianmengYu"
+	mes "Elona+ Custom-GX mod created by Ruin0x11, maintained by Ruin0x11 & JianmengYu"
 	pos 20, 118
 
 	/********** ANNA CUSTOM - ENDING **********/
