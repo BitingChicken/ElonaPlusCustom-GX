@@ -976,7 +976,12 @@
 		}
 	}
 	if ( cdata(CDATA_ALLIED, cc) == 100 ) {
+		/********** ORIGINAL - BEGINNING **********
 		if ( gdata(GDATA_DEEPEST_LEVEL) + 20 <= rnd(cdata(CDATA_LEVEL, cc)) ) {
+		 ********** ORIGINAL - ENDING **********/
+		/********** CHICKEN CUSTOM - BEGINNING **********/
+		if ( gdata(GDATA_DEEPEST_LEVEL) + 20 <= rnd(cdata(CDATA_LEVEL, cc)) & TweakData(TWEAK_GAMEPLAY_REVERT_POST_232_PET_CHANGES, TWEAK_CATEGORY_GAMEPLAY) == 0 ) {
+		/********** CHICKEN CUSTOM - ENDING **********/
 			kaiwa = rnd(4)
 			txtef COLOR_PINK
 			if ( kaiwa == 0 ) {
@@ -1482,7 +1487,7 @@
 				}
 				if ( rnd(4) == 0 ) {
 					txtef COLOR_BLUE
-					txt lang(" *ﾋﾟﾛﾘ〜ﾋﾟﾛﾘ〜* ", " *whistle-whistle* ")
+					txt lang(" *ﾋﾟﾛﾘ～ﾋﾟﾛﾘ～* ", " *whistle-whistle* ")
 					goto *ai_calmMove_WEND1
 				}
 				txt lang("「マイアヒー♪」", cnvtalk("Mai-Ya-Hi♪")), lang("「マイアフゥー♪」", cnvtalk("Mai-Ya-Hoo♪")), lang("「マイアホー♪」", cnvtalk("Mai-Ya-Ha Ma Mi A♪"))

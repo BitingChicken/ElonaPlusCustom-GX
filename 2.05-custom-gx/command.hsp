@@ -55,7 +55,7 @@
 		}
 		if ( inv(INV_ITEM_ID, rtval(1)) == ITEM_ID_POTION_NEKTAR ) {
 			if ( cdatan(CDATAN_FAKE_CLASS, CHARA_PLAYER) == "錬金術士" | instr(cdatan(CDATAN_FAKE_CLASS, CHARA_PLAYER), 0, "lchemist") != (-1) ) {
-				bedtxt += lang("「たる〜」", " \"It's a Barrel~\"")
+				bedtxt += lang("「たる～」", " \"It's a Barrel~\"")
 			}
 		}
 		if ( inv(INV_ITEM_ID, rtval(1)) == ITEM_ID_SNOW_BARREL ) {
@@ -2897,10 +2897,20 @@
 	noteadd ""
 	noteadd lang("名声: ", "Fame: ") + cdata(CDATA_FAME, CHARA_PLAYER)
 	noteadd lang("最深攻略階層: " + gdata(GDATA_DEEPEST_LEVEL) + "階相当", "Deepest Nefia: " + gdata(GDATA_DEEPEST_LEVEL) + " level.")
+	/********** ORIGINAL - BEGINNING **********
 	noteadd lang("[レベル" + sitagau + "までの仲間が戦闘時に従う]", "[Allies up to level." + sitagau)
 	if ( en ) {
 		noteadd " will follow orders in battle.]"
 	}
+	 ********** ORIGINAL - ENDING **********/
+	/********** CHICKEN CUSTOM - BEGINNING **********/
+	if ( TweakData(TWEAK_GAMEPLAY_REVERT_POST_232_PET_CHANGES, TWEAK_CATEGORY_GAMEPLAY) == 0 ) {
+		noteadd lang("[レベル" + sitagau + "までの仲間が戦闘時に従う]", "[Allies up to level." + sitagau)
+		if ( en ) {
+			noteadd " will follow orders in battle.]"
+		}
+	}
+	/********** CHICKEN CUSTOM - ENDING **********/
 	noteadd ""
 	repeat 9
 		if ( gdata(STARTING_GDATA_RANK + cnt) < 10000 ) {
@@ -7398,7 +7408,7 @@
 			cdata(CDATA_PIC_ORG, tc) = cdata(CDATA_PIC, tc)
 		}
 		txtef COLOR_YELLOW
-		txt lang("対応する画像の番号は？（48*48は2〜16、48*96は17〜32で入力。1を入力するとデフォルトに。）", "Input the number of Pic_ . (48*48→2-16 48*96→17-32)")
+		txt lang("対応する画像の番号は？（48*48は2～16、48*96は17～32で入力。1を入力するとデフォルトに。）", "Input the number of Pic_ . (48*48→2-16 48*96→17-32)")
 		val = (windoww - 100) / 2 + inf_screenx, winposy(90), 5, 0, 0
 		inputlog = ""
 		gosub *prompt_word
@@ -14772,7 +14782,7 @@
 				}
 			}
 			if ( inv(INV_ITEM_NUM, ci) > 1 ) {
-				txt lang(itemname(ci, 1) + "をいくつ落とす？ (1〜" + inv(INV_ITEM_NUM, ci) + ") ", "How many? (1 to " + inv(INV_ITEM_NUM, ci) + ")")
+				txt lang(itemname(ci, 1) + "をいくつ落とす？ (1～" + inv(INV_ITEM_NUM, ci) + ") ", "How many? (1 to " + inv(INV_ITEM_NUM, ci) + ")")
 				display_msg screenmsgy, 1
 				val = (windoww - 200) / 2 + inf_screenx, winposy(60), 8, 1, inv(INV_ITEM_NUM, ci)
 				inputlog = "" + inv(INV_ITEM_NUM, ci)
@@ -14884,10 +14894,10 @@
 			page_save
 			if ( mode == MODELIST_SHOP & inv(INV_ITEM_NUM, ci) > 1 & invctrl != 22 ) {
 				if ( invctrl == 11 ) {
-					txt lang(itemname(ci, 1) + "をいくつ買う？ (1〜" + inv(INV_ITEM_NUM, ci) + ") ", "How many? (1 to " + inv(INV_ITEM_NUM, ci) + ")")
+					txt lang(itemname(ci, 1) + "をいくつ買う？ (1～" + inv(INV_ITEM_NUM, ci) + ") ", "How many? (1 to " + inv(INV_ITEM_NUM, ci) + ")")
 				}
 				if ( invctrl == 12 ) {
-					txt lang(itemname(ci, 1) + "をいくつ売る？ (1〜" + inv(INV_ITEM_NUM, ci) + ") ", "How many? (1 to " + inv(INV_ITEM_NUM, ci) + ")")
+					txt lang(itemname(ci, 1) + "をいくつ売る？ (1～" + inv(INV_ITEM_NUM, ci) + ") ", "How many? (1 to " + inv(INV_ITEM_NUM, ci) + ")")
 				}
 				display_msg screenmsgy, 2
 				val = (windoww - 200) / 2 + inf_screenx, winposy(60), 8, 1, inv(INV_ITEM_NUM, ci)
@@ -15382,7 +15392,7 @@
 			if ( cbit(CHARA_BIT_BIRTHED_CHILD, tc) == TRUE & cdata(CDATA_SPRITE_SIZE_MILK, tc) == (-4) ) {
 				f = rnd(8) + 1
 				if ( f <= 4 ) {
-					s = "", lang("イヤぁぁあ！", "Nooooo!"), lang("イヤ〜！", "No!"), lang("イヤ♪", "No! No!"), lang("イヤッ！", "No!!!!!!")
+					s = "", lang("イヤぁぁあ！", "Nooooo!"), lang("イヤ～！", "No!"), lang("イヤ♪", "No! No!"), lang("イヤッ！", "No!!!!!!")
 					snd SOUNDLIST_FAIL1
 					txt lang(name(tc) + "「" + s(f) + "」", cnvtalk(s(f)))
 					goto *pc_turn
@@ -15845,7 +15855,7 @@
 			if ( cbit(CHARA_BIT_BIRTHED_CHILD, tc) == TRUE & cdata(CDATA_SPRITE_SIZE_MILK, tc) == (-4) ) {
 				f = rnd(8) + 1
 				if ( f <= 4 ) {
-					s = "", lang("イヤぁぁあ！", "Nooooo!"), lang("イヤ〜！", "No!"), lang("イヤ♪", "No! No!"), lang("イヤッ！", "No!!!!!!")
+					s = "", lang("イヤぁぁあ！", "Nooooo!"), lang("イヤ～！", "No!"), lang("イヤ♪", "No! No!"), lang("イヤッ！", "No!!!!!!")
 					snd SOUNDLIST_FAIL1
 					txt lang(name(tc) + "「" + s(f) + "」", cnvtalk(s(f)))
 					goto *pc_turn

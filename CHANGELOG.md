@@ -1,5 +1,6 @@
-# Upcoming
+# 2.32.1.1
 
+## Added
 - Tweak to disable overlevelled pet disobedience in 2.32.
 
 # 2.32.1.0

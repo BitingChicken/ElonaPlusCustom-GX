@@ -820,7 +820,7 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	
 	listn(0, 16) = "Revert Gauge-Release Toggle post-2.24." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_GAUGE_MECHANICS)
 	listn(0, 17) = "Disable Mob begging-for-life System post-2.27." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_DISABLE_CLEMENTIA)
-	listn(0, 18) = "" 
+	listn(0, 18) = "Disable Pet disobedience mechanics post-2.32." + GetTStatus(TWEAK_CATEGORY_GAMEPLAY, TWEAK_GAMEPLAY_REVERT_POST_232_PET_CHANGES)
 	listn(0, 19) = "" 
 	listn(0, 20) = "" 
 	listn(0, 21) = "=== EXP/Progression related changes ==="
@@ -930,6 +930,9 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 			}
 			if ( p == 17 ) {
 				s = "Revert Post-2.27 Begging-for-life-Flag setting.\nThis flag will change hostile mob NPCs into a pacified state.\nWhere your bump melee is changed into dialog with the pacified mob."
+			}
+			if ( p == 18 ) {
+				s = "Revert Post-2.32 changes to pets.\nThis removes the chance of pets disobeying you."
 			}
 			if ( p == 22 ) {
 				s = "Sandbagged monsters will give experience."
@@ -1101,6 +1104,11 @@ TweakData(54, 4) = "Display Day/Night Cycle Everywhere."
 	if ( p == 17 ) {
 		tc = TWEAK_CATEGORY_GAMEPLAY
 		tn = TWEAK_GAMEPLAY_DISABLE_CLEMENTIA
+		gosub *ToggleTweak
+	}
+	if ( p == 18 ) {
+		tc = TWEAK_CATEGORY_GAMEPLAY
+		tn = TWEAK_GAMEPLAY_REVERT_POST_232_PET_CHANGES
 		gosub *ToggleTweak
 	}
 	if ( p == 22 ) {
