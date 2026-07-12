@@ -18,8 +18,8 @@
 #include "mock_defines.hsp"
 #endif
 
-#define global VARIANT_NAME "ElonaPlus Custom-GX 2.32.1.0"
-#define global VARIANT_TITLE "Elona+ Custom-GX 2.32.1.0"
+#define global VARIANT_NAME "ElonaPlus Custom-GX 2.32.1.1"
+#define global VARIANT_TITLE "Elona+ Custom-GX 2.32.1.1"
 #define global VERSION_STRING "6.42"
 #define global VERSION_NUMBER int(double(VERSION_STRING) * 1000)
 #define global NET_VERSION	200000
@@ -6063,7 +6063,7 @@
 			haretu = 0
 			snd SOUNDLIST_STAB
 			chatc@DP = tc
-			txt lang("「〜〜〜〜〜〜〜〜〜っ！！！！！？？」", cnvtalk("!!!???")), lang("「耳が、耳がぁ〜！！」", cnvtalk("Eeeeeeeeeek!"))
+			txt lang("「～～～～～～～～～っ！！！！！？？」", cnvtalk("!!!???")), lang("「耳が、耳がぁ～！！」", cnvtalk("Eeeeeeeeeek!"))
 			modimp tc, -20
 			dmghp tc, rnd(sdata(SKILL_ATTR_STR, CHARA_PLAYER) * sqrt(sdata(SKILL_ATTR_STR, CHARA_PLAYER)) + sdata(SKILL_ATTR_STR, CHARA_PLAYER)), tc, SKILL_RES_SOUND, 1000
 			goto *event_SWEND1
@@ -8167,7 +8167,7 @@
 		if ( allitemfind(ITEM_ID_PAINTING_OF_EHEKATL_AND_SWORDFISH) != (-1) ) {
 			kaiwa = rnd(4)
 			if ( kaiwa == 0 ) {
-				txt lang("「うみゅ〜!」", cnvtalk("Meow!"))
+				txt lang("「うみゅ～!」", cnvtalk("Meow!"))
 			}
 			if ( kaiwa == 1 ) {
 				txt lang("「うっみゅ!」", cnvtalk("Mew mew!"))
