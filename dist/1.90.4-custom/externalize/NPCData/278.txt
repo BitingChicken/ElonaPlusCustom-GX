@@ -1,4 +1,4 @@
-npcname_JP.	ƒ~ƒ…[ƒ^ƒ“ƒg
+npcname_JP.	ãƒŸãƒ¥ãƒ¼ã‚¿ãƒ³ãƒˆ
 npcname_EN.	mutant
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

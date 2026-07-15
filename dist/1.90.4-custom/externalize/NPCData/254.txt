@@ -1,4 +1,4 @@
-npcname_JP.	�Ñ�̊�
+npcname_JP.	古代の棺
 npcname_EN.	ancient coffin
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

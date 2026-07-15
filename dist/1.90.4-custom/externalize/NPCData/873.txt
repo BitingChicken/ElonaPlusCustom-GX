@@ -1,4 +1,4 @@
-npcname_JP.	ルナテイーク
+npcname_JP.	繝ｫ繝翫ユ繧､繝ｼ繧ｯ
 npcname_EN.	lunatyeek
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

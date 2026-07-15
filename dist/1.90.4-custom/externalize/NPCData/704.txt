@@ -1,4 +1,4 @@
-npcname_JP.	ナイトメアシャーク
+npcname_JP.	繝翫う繝医Γ繧｢繧ｷ繝｣繝ｼ繧ｯ
 npcname_EN.	nightmare shark
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

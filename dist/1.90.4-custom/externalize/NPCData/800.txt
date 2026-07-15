@@ -1,4 +1,4 @@
-npcname_JP.	¹—…™ÖÖ
+npcname_JP.	æ²™ç¾…æ›¼è›‡
 npcname_EN.	salamander
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	クイックリング
+npcname_JP.	繧ｯ繧､繝�繧ｯ繝ｪ繝ｳ繧ｰ
 npcname_EN.	quickling
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

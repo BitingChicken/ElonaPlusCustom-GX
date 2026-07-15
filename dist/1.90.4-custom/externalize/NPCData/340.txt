@@ -1,4 +1,4 @@
-npcname_JP.	ƒWƒ‰
+npcname_JP.	ã‚¸ãƒ©
 npcname_EN.	zilla
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒgƒ[ƒ‹
+npcname_JP.	ãƒˆãƒ­ãƒ¼ãƒ«
 npcname_EN.	troll
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

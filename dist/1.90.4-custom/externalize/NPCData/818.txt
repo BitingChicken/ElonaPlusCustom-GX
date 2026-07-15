@@ -1,4 +1,4 @@
-npcname_JP.	モー・ショボー
+npcname_JP.	繝｢繝ｼ繝ｻ繧ｷ繝ｧ繝懊�ｼ
 npcname_EN.	mayu sibayu
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

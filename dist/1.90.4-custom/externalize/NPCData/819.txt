@@ -1,4 +1,4 @@
-npcname_JP.	ブラックウィング
+npcname_JP.	繝悶Λ繝�繧ｯ繧ｦ繧｣繝ｳ繧ｰ
 npcname_EN.	black wing
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

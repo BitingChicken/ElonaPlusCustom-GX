@@ -1,4 +1,4 @@
-npcname_JP.	ƒKƒ‹[ƒ_
+npcname_JP.	ã‚¬ãƒ«ãƒ¼ãƒ€
 npcname_EN.	garuda
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	‘åH‚¢ƒgƒh
+npcname_JP.	å¤§é£Ÿã„ãƒˆãƒ‰
 npcname_EN.	hungry sea lion
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ミラージュグリフォン
+npcname_JP.	繝溘Λ繝ｼ繧ｸ繝･繧ｰ繝ｪ繝輔か繝ｳ
 npcname_EN.	mirage gryphon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

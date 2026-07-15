@@ -1,4 +1,4 @@
-npcname_JP.	ƒqƒƒC[ƒN
+npcname_JP.	ãƒ’ãƒ­ã‚¤ãƒ¼ã‚¯
 npcname_EN.	heroyeek
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒpƒs[
+npcname_JP.	ãƒ‘ãƒ”ãƒ¼
 npcname_EN.	puppy
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

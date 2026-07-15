@@ -1,4 +1,4 @@
-npcname_JP.	ƒ‚ƒ‚ƒcƒJ
+npcname_JP.	ãƒ¢ãƒ¢ãƒ„ã‚«
 npcname_EN.	momotuka
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

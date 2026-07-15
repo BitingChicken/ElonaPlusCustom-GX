@@ -1,4 +1,4 @@
-npcname_JP.	スクーグスロー
+npcname_JP.	繧ｹ繧ｯ繝ｼ繧ｰ繧ｹ繝ｭ繝ｼ
 npcname_EN.	skogsra
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	シューティングスター
+npcname_JP.	繧ｷ繝･繝ｼ繝�繧｣繝ｳ繧ｰ繧ｹ繧ｿ繝ｼ
 npcname_EN.	shooting hamster
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒ‰ƒXƒgƒŒƒCƒ”ƒ“
+npcname_JP.	ãƒ©ã‚¹ãƒˆãƒ¬ã‚¤ãƒ´ãƒ³
 npcname_EN.	last raven
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

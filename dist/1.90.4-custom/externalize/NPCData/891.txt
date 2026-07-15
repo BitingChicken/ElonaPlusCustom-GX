@@ -1,4 +1,4 @@
-npcname_JP.	[—Î—³÷
+npcname_JP.	æ·±ç·‘ç«œæ¨¹
 npcname_EN.	dragon tree
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

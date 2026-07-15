@@ -1,5 +1,5 @@
 item_id.	25
-name_identJP.	ƒoƒO‚Ì–{
+name_identJP.	ãƒã‚°ã®æœ¬
 name_identEN.	bugged book
 item_desc1JP.	
 item_desc2JP.	

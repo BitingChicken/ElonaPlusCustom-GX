@@ -1,4 +1,4 @@
-npcname_JP.	‰Î‰Š÷
+npcname_JP.	ç«ç‚æ¨¹
 npcname_EN.	fire ent
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

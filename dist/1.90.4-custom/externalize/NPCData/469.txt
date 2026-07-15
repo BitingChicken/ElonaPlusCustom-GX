@@ -1,4 +1,4 @@
-npcname_JP.	ブレイドキング
+npcname_JP.	繝悶Ξ繧､繝峨く繝ｳ繧ｰ
 npcname_EN.	blade king
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

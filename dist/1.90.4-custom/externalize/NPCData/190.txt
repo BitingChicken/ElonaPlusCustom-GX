@@ -1,4 +1,4 @@
-npcname_JP.	�s��Ȃ铵
+npcname_JP.	不浄なる瞳
 npcname_EN.	impure eye
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

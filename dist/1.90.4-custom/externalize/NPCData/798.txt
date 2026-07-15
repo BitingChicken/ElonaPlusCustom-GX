@@ -1,4 +1,4 @@
-npcname_JP.	‰¹–‚Ûq
+npcname_JP.	éŸ³é­”æ“å­
 npcname_EN.	musical notadpole
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

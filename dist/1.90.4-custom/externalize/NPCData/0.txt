@@ -1,4 +1,4 @@
-npcname_JP.	ƒoƒO
+npcname_JP.	ãƒã‚°
 npcname_EN.	bug
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

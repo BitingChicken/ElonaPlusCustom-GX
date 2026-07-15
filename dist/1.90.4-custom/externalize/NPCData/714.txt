@@ -1,4 +1,4 @@
-npcname_JP.	|‘Ì‹¥’
+npcname_JP.	é‹¼ä½“å‡¶è™«
 npcname_EN.	steel armor spider
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ゴールデンアーマー
+npcname_JP.	繧ｴ繝ｼ繝ｫ繝�繝ｳ繧｢繝ｼ繝槭�ｼ
 npcname_EN.	golden armor
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

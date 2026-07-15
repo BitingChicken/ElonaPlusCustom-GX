@@ -1,4 +1,4 @@
-npcname_JP.	‰¤Š¥å³
+npcname_JP.	ç‹å† èŸ²
 npcname_EN.	king woodlouse
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

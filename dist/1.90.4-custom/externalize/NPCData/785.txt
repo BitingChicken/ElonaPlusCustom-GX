@@ -1,4 +1,4 @@
-npcname_JP.	バニーグール
+npcname_JP.	繝舌ル繝ｼ繧ｰ繝ｼ繝ｫ
 npcname_EN.	bunny ghoul
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

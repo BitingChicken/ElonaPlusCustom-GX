@@ -1,4 +1,4 @@
-npcname_JP.	’Ç•úŽÒ
+npcname_JP.	è¿½æ”¾è€…
 npcname_EN.	exile
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	‹lH‚¢‰Ô
+npcname_JP.	å·¨äººé£Ÿã„èŠ±
 npcname_EN.	giant eater flower
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒŒƒNƒCƒGƒ€
+npcname_JP.	ãƒ¬ã‚¯ã‚¤ã‚¨ãƒ 
 npcname_EN.	requiem
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

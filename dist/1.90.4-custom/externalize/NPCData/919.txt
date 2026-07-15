@@ -1,4 +1,4 @@
-npcname_JP.	フォームレス
+npcname_JP.	繝輔か繝ｼ繝繝ｬ繧ｹ
 npcname_EN.	formless spawn
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

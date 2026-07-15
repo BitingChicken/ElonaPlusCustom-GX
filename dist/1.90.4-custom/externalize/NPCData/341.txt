@@ -1,4 +1,4 @@
-npcname_JP.	’n—‹Œ¢
+npcname_JP.	åœ°é›·çŠ¬
 npcname_EN.	mine dog
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	‰ì‹S
+npcname_JP.	é¤“é¬¼
 npcname_EN.	hungry demon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,8 +1,8 @@
-npcname_JP.	オオアメフラシ
+npcname_JP.	繧ｪ繧ｪ繧｢繝｡繝輔Λ繧ｷ
 npcname_EN.	big sea hare
 numflavor_passiveJP.	1
 numflavor_passiveEN.	1
-flavorpassive_JP.0	ズルズル…
+flavorpassive_JP.0	繧ｺ繝ｫ繧ｺ繝ｫ窶ｦ
 flavorpassive_EN.0	*Zzzzle*
 numflavor_angeredJP.	0
 numflavor_angeredEN.	0

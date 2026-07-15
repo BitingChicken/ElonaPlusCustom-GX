@@ -1,4 +1,4 @@
-npcname_JP.	ƒGƒŒƒA‚Ì–‚Œ•m
+npcname_JP.	ã‚¨ãƒ¬ã‚¢ã®é­”å‰£å£«
 npcname_EN.	knight of Elea
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

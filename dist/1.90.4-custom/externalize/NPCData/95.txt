@@ -1,4 +1,4 @@
-npcname_JP.	ƒRƒuƒ‰
+npcname_JP.	ã‚³ãƒ–ãƒ©
 npcname_EN.	cobra
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

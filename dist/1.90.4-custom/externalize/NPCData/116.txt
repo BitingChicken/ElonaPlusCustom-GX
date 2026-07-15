@@ -1,4 +1,4 @@
-npcname_JP.	ƒXƒeƒ“ƒm
+npcname_JP.	ã‚¹ãƒ†ãƒ³ãƒŽ
 npcname_EN.	stheno
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

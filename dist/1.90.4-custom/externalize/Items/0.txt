@@ -1,5 +1,5 @@
 item_id.	0
-name_identJP.	‰©‹à
+name_identJP.	é»„é‡‘
 name_identEN.	gold bar
 item_desc1JP.	
 item_desc2JP.	

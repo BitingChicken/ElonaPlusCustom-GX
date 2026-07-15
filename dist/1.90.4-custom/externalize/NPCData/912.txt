@@ -1,4 +1,4 @@
-npcname_JP.	主人殺しのオオアリクイ
+npcname_JP.	荳ｻ莠ｺ谿ｺ縺励�ｮ繧ｪ繧ｪ繧｢繝ｪ繧ｯ繧､
 npcname_EN.	killing anteater
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

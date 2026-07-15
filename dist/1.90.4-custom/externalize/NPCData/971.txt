@@ -1,4 +1,4 @@
-npcname_JP.	ピースメーカー
+npcname_JP.	繝斐�ｼ繧ｹ繝｡繝ｼ繧ｫ繝ｼ
 npcname_EN.	peace maker
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

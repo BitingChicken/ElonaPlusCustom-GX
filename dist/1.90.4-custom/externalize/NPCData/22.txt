@@ -1,4 +1,4 @@
-npcname_JP.	‚©‚Ô‚Æ’
+npcname_JP.	ã‹ã¶ã¨è™«
 npcname_EN.	beetle
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

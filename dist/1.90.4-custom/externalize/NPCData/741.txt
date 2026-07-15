@@ -1,4 +1,4 @@
-npcname_JP.	•ú˜Qƒyƒ“ƒMƒ“
+npcname_JP.	æ”¾æµªãƒšãƒ³ã‚®ãƒ³
 npcname_EN.	wandering penguin
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

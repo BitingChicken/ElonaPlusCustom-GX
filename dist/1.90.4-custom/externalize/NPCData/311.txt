@@ -1,4 +1,4 @@
-npcname_JP.	ƒ”ƒ@ƒ‹ƒi
+npcname_JP.	ãƒ´ã‚¡ãƒ«ãƒŠ
 npcname_EN.	varuna
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

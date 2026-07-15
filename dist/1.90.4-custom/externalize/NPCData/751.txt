@@ -1,8 +1,8 @@
-npcname_JP.	酸性雨フラシ
+npcname_JP.	驟ｸ諤ｧ髮ｨ繝輔Λ繧ｷ
 npcname_EN.	acid sea hare
 numflavor_passiveJP.	1
 numflavor_passiveEN.	1
-flavorpassive_JP.0	ズルズル…
+flavorpassive_JP.0	繧ｺ繝ｫ繧ｺ繝ｫ窶ｦ
 flavorpassive_EN.0	*Zzzzle*
 numflavor_angeredJP.	0
 numflavor_angeredEN.	0

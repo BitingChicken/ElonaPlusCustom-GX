@@ -1,4 +1,4 @@
-npcname_JP.	サイクロプス
+npcname_JP.	繧ｵ繧､繧ｯ繝ｭ繝励せ
 npcname_EN.	cyclops
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

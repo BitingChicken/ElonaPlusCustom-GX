@@ -1,4 +1,4 @@
-npcname_JP.	ˆ¢C—…
+npcname_JP.	é˜¿ä¿®ç¾…
 npcname_EN.	asura
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

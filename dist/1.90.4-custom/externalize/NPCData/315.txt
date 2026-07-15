@@ -1,4 +1,4 @@
-npcname_JP.	カオスアイ
+npcname_JP.	繧ｫ繧ｪ繧ｹ繧｢繧､
 npcname_EN.	chaos eye
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

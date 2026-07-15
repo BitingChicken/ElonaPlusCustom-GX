@@ -1,4 +1,4 @@
-npcname_JP.	‰…”O
+npcname_JP.	æ€¨å¿µ
 npcname_EN.	grudge
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

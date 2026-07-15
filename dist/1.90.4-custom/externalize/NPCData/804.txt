@@ -1,4 +1,4 @@
-npcname_JP.	�V�g
+npcname_JP.	堕天使
 npcname_EN.	fallen angel
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒLƒŠƒ“‚³‚ñ
+npcname_JP.	ã‚­ãƒªãƒ³ã•ã‚“
 npcname_EN.	giraffe
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

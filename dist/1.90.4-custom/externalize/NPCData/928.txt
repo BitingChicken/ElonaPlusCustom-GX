@@ -1,4 +1,4 @@
-npcname_JP.	O•Ò
+npcname_JP.	æœ§æ­¦è€…
 npcname_EN.	musha soul
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

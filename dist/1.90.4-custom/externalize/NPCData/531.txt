@@ -1,4 +1,4 @@
-npcname_JP.	”’‹â—´å³
+npcname_JP.	ç™½éŠ€é¾èŸ²
 npcname_EN.	dragon centipede
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

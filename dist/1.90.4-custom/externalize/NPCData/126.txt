@@ -1,4 +1,4 @@
-npcname_JP.	ƒPƒ‹ƒxƒƒX
+npcname_JP.	ã‚±ãƒ«ãƒ™ãƒ­ã‚¹
 npcname_EN.	cerberus
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

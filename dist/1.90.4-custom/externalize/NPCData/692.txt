@@ -1,4 +1,4 @@
-npcname_JP.	ネクロダンサー
+npcname_JP.	繝阪け繝ｭ繝繝ｳ繧ｵ繝ｼ
 npcname_EN.	necro dancer
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

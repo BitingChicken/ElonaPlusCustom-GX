@@ -1,4 +1,4 @@
-npcname_JP.	ƒRƒEƒ‚ƒŠ
+npcname_JP.	ã‚³ã‚¦ãƒ¢ãƒª
 npcname_EN.	bat
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

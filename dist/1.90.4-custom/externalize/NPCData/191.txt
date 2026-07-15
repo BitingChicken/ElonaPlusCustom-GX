@@ -1,4 +1,4 @@
-npcname_JP.	ÉEÉBÉXÉv
+npcname_JP.	„Ç¶„Ç£„Çπ„Éó
 npcname_EN.	wisp
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

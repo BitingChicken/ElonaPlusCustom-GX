@@ -1,4 +1,4 @@
-npcname_JP.	”p–Yb
+npcname_JP.	å»ƒå¿˜ç£
 npcname_EN.	oblivion beast
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

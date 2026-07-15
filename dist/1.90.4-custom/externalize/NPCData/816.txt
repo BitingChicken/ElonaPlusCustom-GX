@@ -1,4 +1,4 @@
-npcname_JP.	”g“®—³ím
+npcname_JP.	æ³¢å‹•ç«œæˆ¦å£«
 npcname_EN.	draco eques
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒKƒWƒ…ƒ}ƒ‹‚Ì‰ö
+npcname_JP.	ã‚¬ã‚¸ãƒ¥ãƒãƒ«ã®æ€ª
 npcname_EN.	banyan monster
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

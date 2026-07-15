@@ -1,4 +1,4 @@
-npcname_JP.	Œ¶˜fƒnƒEƒ“ƒh
+npcname_JP.	å¹»æƒ‘ãƒã‚¦ãƒ³ãƒ‰
 npcname_EN.	illusion hound
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	�ٌ`�̖�
+npcname_JP.	異形の目
 npcname_EN.	deformed eye
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

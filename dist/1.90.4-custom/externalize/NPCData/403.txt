@@ -1,4 +1,4 @@
-npcname_JP.	¢ŠE÷
+npcname_JP.	ä¸–ç•Œæ¨¹
 npcname_EN.	grand ent
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ÉVÉFÉCÉh
+npcname_JP.	„Ç∑„Çß„Ç§„Éâ
 npcname_EN.	shade
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

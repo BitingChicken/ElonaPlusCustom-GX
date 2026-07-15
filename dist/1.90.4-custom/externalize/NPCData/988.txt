@@ -1,4 +1,4 @@
-npcname_JP.	ハイウルク
+npcname_JP.	繝上う繧ｦ繝ｫ繧ｯ
 npcname_EN.	uruk-hai
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

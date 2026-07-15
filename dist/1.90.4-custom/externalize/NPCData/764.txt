@@ -1,4 +1,4 @@
-npcname_JP.	r‹S‰Î
+npcname_JP.	è’é¬¼ç«
 npcname_EN.	araonibi
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

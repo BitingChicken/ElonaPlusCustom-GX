@@ -1,4 +1,4 @@
-npcname_JP.	デスゲイズ
+npcname_JP.	繝�繧ｹ繧ｲ繧､繧ｺ
 npcname_EN.	death gaze
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

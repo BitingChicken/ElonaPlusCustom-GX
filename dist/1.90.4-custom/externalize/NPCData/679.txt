@@ -1,4 +1,4 @@
-npcname_JP.	ƒoƒTƒ^ƒ“
+npcname_JP.	ãƒã‚µã‚¿ãƒ³
 npcname_EN.	basatan
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

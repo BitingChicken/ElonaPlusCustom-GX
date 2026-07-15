@@ -1,4 +1,4 @@
-npcname_JP.	ƒwƒJƒg
+npcname_JP.	ãƒ˜ã‚«ãƒˆ
 npcname_EN.	heqet
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

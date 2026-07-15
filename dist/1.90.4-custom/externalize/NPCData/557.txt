@@ -1,4 +1,4 @@
-npcname_JP.	ƒIƒVƒŠƒX
+npcname_JP.	ã‚ªã‚·ãƒªã‚¹
 npcname_EN.	osiris
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

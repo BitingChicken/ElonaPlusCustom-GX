@@ -1,4 +1,4 @@
-npcname_JP.	ツァトゥグァ
+npcname_JP.	繝�繧｡繝医ぇ繧ｰ繧｡
 npcname_EN.	tsathoggua
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

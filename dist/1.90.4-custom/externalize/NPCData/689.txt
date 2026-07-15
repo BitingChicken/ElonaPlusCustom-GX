@@ -1,4 +1,4 @@
-npcname_JP.	ƒUƒiƒ“d‘••º
+npcname_JP.	ã‚¶ãƒŠãƒ³é‡è£…å…µ
 npcname_EN.	Zanan heavily armed
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

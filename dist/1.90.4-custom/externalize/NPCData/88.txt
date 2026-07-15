@@ -1,4 +1,4 @@
-npcname_JP.	�S�҂̎�
+npcname_JP.	亡者の手
 npcname_EN.	hand of the dead
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	カオス・シャーマン
+npcname_JP.	繧ｫ繧ｪ繧ｹ繝ｻ繧ｷ繝｣繝ｼ繝槭Φ
 npcname_EN.	chaos shaman
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

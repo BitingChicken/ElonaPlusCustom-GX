@@ -1,4 +1,4 @@
-npcname_JP.	ネクロランサー
+npcname_JP.	繝阪け繝ｭ繝ｩ繝ｳ繧ｵ繝ｼ
 npcname_EN.	necro lancer
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ドラゴンズペットハーピー
+npcname_JP.	繝峨Λ繧ｴ繝ｳ繧ｺ繝壹ャ繝医ワ繝ｼ繝斐�ｼ
 npcname_EN.	dragon's pet harpy
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒGƒŒƒƒ“ƒgƒhƒ‰ƒSƒ“
+npcname_JP.	ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ‰ãƒ©ã‚´ãƒ³
 npcname_EN.	element dragon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

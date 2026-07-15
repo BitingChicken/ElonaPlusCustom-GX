@@ -1,4 +1,4 @@
-npcname_JP.	ヴァイフコア
+npcname_JP.	繝ｴ繧｡繧､繝輔さ繧｢
 npcname_EN.	moai core
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ビッグシスター
+npcname_JP.	繝薙ャ繧ｰ繧ｷ繧ｹ繧ｿ繝ｼ
 npcname_EN.	Big sister
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

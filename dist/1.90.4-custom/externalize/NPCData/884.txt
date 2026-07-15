@@ -1,4 +1,4 @@
-npcname_JP.	ƒ]ƒCƒ{
+npcname_JP.	ã‚¾ã‚¤ãƒœ
 npcname_EN.	zoibo
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

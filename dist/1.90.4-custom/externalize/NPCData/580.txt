@@ -1,4 +1,4 @@
-npcname_JP.	カースドレイク
+npcname_JP.	繧ｫ繝ｼ繧ｹ繝峨Ξ繧､繧ｯ
 npcname_EN.	curse drake
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

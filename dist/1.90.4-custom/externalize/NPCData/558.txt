@@ -1,4 +1,4 @@
-npcname_JP.	カマソッツ
+npcname_JP.	繧ｫ繝槭た繝�繝�
 npcname_EN.	camazotz
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

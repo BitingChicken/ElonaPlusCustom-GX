@@ -1,4 +1,4 @@
-npcname_JP.	リザードメイジ
+npcname_JP.	繝ｪ繧ｶ繝ｼ繝峨Γ繧､繧ｸ
 npcname_EN.	lizard mage
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

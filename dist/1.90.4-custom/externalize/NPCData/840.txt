@@ -1,4 +1,4 @@
-npcname_JP.	ƒZƒp
+npcname_JP.	ã‚»ãƒ‘
 npcname_EN.	sepa
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒf[ƒ‚ƒ“
+npcname_JP.	ãƒ‡ãƒ¼ãƒ¢ãƒ³
 npcname_EN.	demon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

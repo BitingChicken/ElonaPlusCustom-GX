@@ -1,4 +1,4 @@
-npcname_JP.	ƒƒCƒ_
+npcname_JP.	ãƒ¡ã‚¤ãƒ€
 npcname_EN.	meida
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	–‚pm
+npcname_JP.	é­”è¡“å£«
 npcname_EN.	wizard
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

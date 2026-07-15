@@ -1,8 +1,8 @@
-npcname_JP.	マジカルゴ
+npcname_JP.	繝槭ず繧ｫ繝ｫ繧ｴ
 npcname_EN.	magicargot
 numflavor_passiveJP.	1
 numflavor_passiveEN.	1
-flavorpassive_JP.0	ズルズル…
+flavorpassive_JP.0	繧ｺ繝ｫ繧ｺ繝ｫ窶ｦ
 flavorpassive_EN.0	*Zzzzle*
 numflavor_angeredJP.	0
 numflavor_angeredEN.	0

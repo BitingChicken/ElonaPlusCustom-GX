@@ -1,4 +1,4 @@
-npcname_JP.	•XŒ‹÷
+npcname_JP.	æ°·çµæ¨¹
 npcname_EN.	ice ent
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

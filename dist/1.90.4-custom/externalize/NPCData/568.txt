@@ -1,4 +1,4 @@
-npcname_JP.	カオスミミック
+npcname_JP.	繧ｫ繧ｪ繧ｹ繝溘Α繝�繧ｯ
 npcname_EN.	chaos mimic
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	—ÂŒ¢
+npcname_JP.	çŒŸçŠ¬
 npcname_EN.	hound
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

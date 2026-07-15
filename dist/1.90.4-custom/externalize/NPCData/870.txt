@@ -1,4 +1,4 @@
-npcname_JP.	アルカイーク
+npcname_JP.	繧｢繝ｫ繧ｫ繧､繝ｼ繧ｯ
 npcname_EN.	archayeek
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

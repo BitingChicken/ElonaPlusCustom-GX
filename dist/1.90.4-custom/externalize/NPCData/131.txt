@@ -1,10 +1,10 @@
-npcname_JP.	‹zŒŒ’wå
+npcname_JP.	å¸è¡€èœ˜è››
 npcname_EN.	blood spider
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0
 numflavor_angeredJP.	1
 numflavor_angeredEN.	1
-flavorangered_JP.0	 *ƒJƒTƒJƒT* 
+flavorangered_JP.0	 *ã‚«ã‚µã‚«ã‚µ* 
 flavorangered_EN.0	 *Hiss* 
 numflavor_deathJP.	0
 numflavor_deathEN.	0

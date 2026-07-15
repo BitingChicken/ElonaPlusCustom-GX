@@ -1,4 +1,4 @@
-npcname_JP.	ˆÃ•“y—³
+npcname_JP.	æš—é»’åœŸç«œ
 npcname_EN.	talpidae
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0
@@ -8,6 +8,6 @@ numflavor_deathJP.	0
 numflavor_deathEN.	0
 numflavor_killJP.	1
 numflavor_killEN.	0
-flavorkill_JP.0	u‚à‚®‚à‚®v
+flavorkill_JP.0	ã€Œã‚‚ãã‚‚ãã€
 numflavor_welcomeJP.	0
 numflavor_welcomeEN.	0

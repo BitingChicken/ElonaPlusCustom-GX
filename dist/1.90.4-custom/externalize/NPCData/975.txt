@@ -1,4 +1,4 @@
-npcname_JP.	コボルトブルー
+npcname_JP.	繧ｳ繝懊Ν繝医ヶ繝ｫ繝ｼ
 npcname_EN.	kobold blue
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

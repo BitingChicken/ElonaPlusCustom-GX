@@ -1,4 +1,4 @@
-npcname_JP.	ナイトセラス
+npcname_JP.	繝翫う繝医そ繝ｩ繧ｹ
 npcname_EN.	knightceros
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

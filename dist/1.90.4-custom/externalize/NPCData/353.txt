@@ -1,4 +1,4 @@
-npcname_JP.	ƒLƒƒƒ‰ƒoƒ“‚Ì‘à’·
+npcname_JP.	ã‚­ãƒ£ãƒ©ãƒãƒ³ã®éšŠé•·
 npcname_EN.	caravan master
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

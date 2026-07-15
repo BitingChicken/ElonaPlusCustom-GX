@@ -1,4 +1,4 @@
-npcname_JP.	ƒhƒrƒGƒ‹
+npcname_JP.	ãƒ‰ãƒ“ã‚¨ãƒ«
 npcname_EN.	dobiel
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

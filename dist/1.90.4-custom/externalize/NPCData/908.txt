@@ -1,4 +1,4 @@
-npcname_JP.	�򒎍c
+npcname_JP.	飛虫皇
 npcname_EN.	black hopper X
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

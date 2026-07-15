@@ -1,4 +1,4 @@
-npcname_JP.	“ì‰Z‚Ì‰ö•¨
+npcname_JP.	å—ç“œã®æ€ªç‰©
 npcname_EN.	greater pumpkin
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

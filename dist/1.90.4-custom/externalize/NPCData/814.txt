@@ -1,4 +1,4 @@
-npcname_JP.	ドラゴクレイモア
+npcname_JP.	繝峨Λ繧ｴ繧ｯ繝ｬ繧､繝｢繧｢
 npcname_EN.	claymore dragonewt
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

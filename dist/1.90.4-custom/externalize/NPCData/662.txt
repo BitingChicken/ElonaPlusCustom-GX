@@ -1,4 +1,4 @@
-npcname_JP.	ラストファントム
+npcname_JP.	繝ｩ繧ｹ繝医ヵ繧｡繝ｳ繝医Β
 npcname_EN.	phantom of end
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

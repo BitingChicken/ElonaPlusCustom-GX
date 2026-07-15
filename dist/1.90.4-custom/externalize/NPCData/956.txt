@@ -1,4 +1,4 @@
-npcname_JP.	’–
+npcname_JP.	çŒª
 npcname_EN.	boar
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

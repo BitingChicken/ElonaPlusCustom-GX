@@ -1,4 +1,4 @@
-npcname_JP.	アイスドレイク
+npcname_JP.	繧｢繧､繧ｹ繝峨Ξ繧､繧ｯ
 npcname_EN.	ice drake
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

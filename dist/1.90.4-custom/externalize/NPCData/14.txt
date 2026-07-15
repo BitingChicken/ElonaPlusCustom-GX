@@ -1,4 +1,4 @@
-npcname_JP.	ƒ€ƒJƒf
+npcname_JP.	ãƒ ã‚«ãƒ‡
 npcname_EN.	centipede
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

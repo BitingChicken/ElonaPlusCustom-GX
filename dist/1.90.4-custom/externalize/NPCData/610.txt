@@ -1,4 +1,4 @@
-npcname_JP.	デルピュネー
+npcname_JP.	繝�繝ｫ繝斐Η繝阪�ｼ
 npcname_EN.	delphyne
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

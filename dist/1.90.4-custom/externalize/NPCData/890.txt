@@ -1,4 +1,4 @@
-npcname_JP.	r_÷
+npcname_JP.	è’ç¥æ¨¹
 npcname_EN.	tree incarnation
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

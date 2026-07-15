@@ -1,4 +1,4 @@
-npcname_JP.	–»ŠEŠI
+npcname_JP.	å†¥ç•ŒèŸ¹
 npcname_EN.	hell crab
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0
@@ -6,7 +6,7 @@ numflavor_angeredJP.	0
 numflavor_angeredEN.	0
 numflavor_deathJP.	1
 numflavor_deathEN.	0
-flavordeath_JP.0	u‚ ‚¶‚á‚Ï[v
+flavordeath_JP.0	ã€Œã‚ã˜ã‚ƒã±ãƒ¼ã€
 numflavor_killJP.	0
 numflavor_killEN.	0
 numflavor_welcomeJP.	0

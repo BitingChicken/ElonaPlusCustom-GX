@@ -1,4 +1,4 @@
-npcname_JP.	マスターリッチ
+npcname_JP.	繝槭せ繧ｿ繝ｼ繝ｪ繝�繝�
 npcname_EN.	master lich
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

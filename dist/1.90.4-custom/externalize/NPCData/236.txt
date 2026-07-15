@@ -1,4 +1,4 @@
-npcname_JP.	ÉCÅ[ÉN
+npcname_JP.	„Ç§„Éº„ÇØ
 npcname_EN.	yeek
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

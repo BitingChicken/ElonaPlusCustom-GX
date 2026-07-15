@@ -1,4 +1,4 @@
-npcname_JP.	ím
+npcname_JP.	æˆ¦å£«
 npcname_EN.	warrior
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

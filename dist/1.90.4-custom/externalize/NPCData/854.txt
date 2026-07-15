@@ -1,4 +1,4 @@
-npcname_JP.	€ƒ’µƒL
+npcname_JP.	æ­»ãƒ²æ‹›ã‚­
 npcname_EN.	death maneki
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

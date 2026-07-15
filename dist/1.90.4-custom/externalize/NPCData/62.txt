@@ -1,4 +1,4 @@
-npcname_JP.	ElƒŠƒX
+npcname_JP.	æ®ºäººãƒªã‚¹
 npcname_EN.	killer squirrel
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

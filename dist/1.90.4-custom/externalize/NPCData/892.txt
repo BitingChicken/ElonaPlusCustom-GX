@@ -1,4 +1,4 @@
-npcname_JP.	Žô–Ø‰¤
+npcname_JP.	å‘ªæœ¨çŽ‹
 npcname_EN.	curse wood king
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ミノタウロスの闘士
+npcname_JP.	繝溘ヮ繧ｿ繧ｦ繝ｭ繧ｹ縺ｮ髣伜｣ｫ
 npcname_EN.	minotaur boxer
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

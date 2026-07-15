@@ -1,12 +1,12 @@
-npcname_JP.	プラチナベル
+npcname_JP.	繝励Λ繝√リ繝吶Ν
 npcname_EN.	platina bell
 numflavor_passiveJP.	1
 numflavor_passiveEN.	1
-flavorpassive_JP.0	 *リン* 
+flavorpassive_JP.0	 *繝ｪ繝ｳ* 
 flavorpassive_EN.0	 *ring* 
 numflavor_angeredJP.	1
 numflavor_angeredEN.	1
-flavorangered_JP.0	 *リン* 
+flavorangered_JP.0	 *繝ｪ繝ｳ* 
 flavorangered_EN.0	 *ring* 
 numflavor_deathJP.	0
 numflavor_deathEN.	0

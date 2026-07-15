@@ -1,4 +1,4 @@
-npcname_JP.	パペット
+npcname_JP.	繝代�壹ャ繝�
 npcname_EN.	puppet
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

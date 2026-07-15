@@ -1,4 +1,4 @@
-npcname_JP.	タカトビウオ
+npcname_JP.	繧ｿ繧ｫ繝医ン繧ｦ繧ｪ
 npcname_EN.	flight fish
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

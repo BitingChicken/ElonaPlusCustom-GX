@@ -1,4 +1,4 @@
-npcname_JP.	–‚‰¤
+npcname_JP.	é­”çŽ‹
 npcname_EN.	demon's ruler
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

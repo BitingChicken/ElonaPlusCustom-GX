@@ -1,4 +1,4 @@
-npcname_JP.	フェアリーゴラス
+npcname_JP.	繝輔ぉ繧｢繝ｪ繝ｼ繧ｴ繝ｩ繧ｹ
 npcname_EN.	yousei gorath
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

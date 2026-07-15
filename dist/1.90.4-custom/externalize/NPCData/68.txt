@@ -1,4 +1,4 @@
-npcname_JP.	ƒƒCƒo[ƒ“
+npcname_JP.	ãƒ¯ã‚¤ãƒãƒ¼ãƒ³
 npcname_EN.	wyvern
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

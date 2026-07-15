@@ -1,4 +1,4 @@
-npcname_JP.	ƒhƒ‰ƒSƒ“ƒ]ƒ“ƒr
+npcname_JP.	ãƒ‰ãƒ©ã‚´ãƒ³ã‚¾ãƒ³ãƒ“
 npcname_EN.	dragon zombie
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

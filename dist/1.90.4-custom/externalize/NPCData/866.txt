@@ -1,4 +1,4 @@
-npcname_JP.	ストームブリング
+npcname_JP.	繧ｹ繝医�ｼ繝繝悶Μ繝ｳ繧ｰ
 npcname_EN.	stormbling
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

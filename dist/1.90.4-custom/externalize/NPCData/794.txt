@@ -1,4 +1,4 @@
-npcname_JP.	ƒŒƒMƒIƒ“ƒƒCƒW
+npcname_JP.	ãƒ¬ã‚®ã‚ªãƒ³ãƒ¡ã‚¤ã‚¸
 npcname_EN.	legion mage
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	“{““‚ÌL
+npcname_JP.	æ€’æ¶›ã®é®«
 npcname_EN.	raging shark
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

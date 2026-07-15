@@ -1,4 +1,4 @@
-npcname_JP.	‹‘åƒŠƒX
+npcname_JP.	å·¨å¤§ãƒªã‚¹
 npcname_EN.	giant squirrel
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	“S‰ò
+npcname_JP.	é‰„å¡Š
 npcname_EN.	steel mass
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

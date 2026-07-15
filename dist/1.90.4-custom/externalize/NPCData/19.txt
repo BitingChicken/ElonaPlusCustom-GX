@@ -1,4 +1,4 @@
-npcname_JP.	マンドレイク
+npcname_JP.	繝槭Φ繝峨Ξ繧､繧ｯ
 npcname_EN.	mandrake
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

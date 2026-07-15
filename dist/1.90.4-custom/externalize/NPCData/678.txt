@@ -1,4 +1,4 @@
-npcname_JP.	ブラックボックス
+npcname_JP.	繝悶Λ繝�繧ｯ繝懊ャ繧ｯ繧ｹ
 npcname_EN.	black box
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

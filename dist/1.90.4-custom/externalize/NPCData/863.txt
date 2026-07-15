@@ -1,4 +1,4 @@
-npcname_JP.	ƒUƒiƒ“‹­‰»•º
+npcname_JP.	ã‚¶ãƒŠãƒ³å¼·åŒ–å…µ
 npcname_EN.	zanan enhanced soldier
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

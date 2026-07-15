@@ -1,4 +1,4 @@
-npcname_JP.	‰»‚¯’K
+npcname_JP.	åŒ–ã‘ç‹¸
 npcname_EN.	badger
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

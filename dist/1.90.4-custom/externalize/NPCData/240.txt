@@ -1,4 +1,4 @@
-npcname_JP.	マスター・イーク
+npcname_JP.	繝槭せ繧ｿ繝ｼ繝ｻ繧､繝ｼ繧ｯ
 npcname_EN.	master yeek
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

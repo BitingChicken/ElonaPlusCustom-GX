@@ -1,4 +1,4 @@
-npcname_JP.	エフェクトバタフライ
+npcname_JP.	繧ｨ繝輔ぉ繧ｯ繝医ヰ繧ｿ繝輔Λ繧､
 npcname_EN.	effect butterfly
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

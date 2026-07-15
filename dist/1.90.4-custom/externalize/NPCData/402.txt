@@ -1,4 +1,4 @@
-npcname_JP.	ƒEƒƒ{ƒƒX
+npcname_JP.	ã‚¦ãƒ­ãƒœãƒ­ã‚¹
 npcname_EN.	ouroboros
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

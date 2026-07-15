@@ -1,8 +1,8 @@
-npcname_JP.	インフェルノフラワー
+npcname_JP.	繧､繝ｳ繝輔ぉ繝ｫ繝弱ヵ繝ｩ繝ｯ繝ｼ
 npcname_EN.	hell fire flower
 numflavor_passiveJP.	1
 numflavor_passiveEN.	1
-flavorpassive_JP.0	*ズルズル*
+flavorpassive_JP.0	*繧ｺ繝ｫ繧ｺ繝ｫ*
 flavorpassive_EN.0	*Zzzzle*
 numflavor_angeredJP.	0
 numflavor_angeredEN.	0

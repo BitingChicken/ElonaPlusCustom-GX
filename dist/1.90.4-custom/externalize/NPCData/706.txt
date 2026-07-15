@@ -1,4 +1,4 @@
-npcname_JP.	キャプテンシャーク
+npcname_JP.	繧ｭ繝｣繝励ユ繝ｳ繧ｷ繝｣繝ｼ繧ｯ
 npcname_EN.	captain shark
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

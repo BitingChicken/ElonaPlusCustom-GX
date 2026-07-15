@@ -1,4 +1,4 @@
-npcname_JP.	‹†‘l
+npcname_JP.	ç©¶é¼ 
 npcname_EN.	kyuso
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

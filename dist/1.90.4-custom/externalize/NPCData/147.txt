@@ -1,4 +1,4 @@
-npcname_JP.	�ΊI
+npcname_JP.	火蟹
 npcname_EN.	fire crab
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

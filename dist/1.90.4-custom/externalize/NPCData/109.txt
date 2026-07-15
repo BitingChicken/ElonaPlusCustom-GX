@@ -1,4 +1,4 @@
-npcname_JP.	ƒOƒŠƒYƒŠ[
+npcname_JP.	ã‚°ãƒªã‚ºãƒªãƒ¼
 npcname_EN.	grizzly
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

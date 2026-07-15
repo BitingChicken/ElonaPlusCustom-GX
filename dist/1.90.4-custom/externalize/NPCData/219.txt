@@ -1,4 +1,4 @@
-npcname_JP.	ÉKÉO
+npcname_JP.	„Ç¨„Ç∞
 npcname_EN.	gagu
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

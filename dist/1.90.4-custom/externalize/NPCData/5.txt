@@ -1,4 +1,4 @@
-npcname_JP.	–ì‚¤‚³‚¬
+npcname_JP.	é‡ã†ã•ã
 npcname_EN.	wild rabbit
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

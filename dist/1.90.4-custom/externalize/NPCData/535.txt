@@ -1,4 +1,4 @@
-npcname_JP.	ŽeƒOƒŠƒtƒHƒ“
+npcname_JP.	ä»”ã‚°ãƒªãƒ•ã‚©ãƒ³
 npcname_EN.	gryffon child
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

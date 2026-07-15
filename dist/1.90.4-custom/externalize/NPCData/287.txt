@@ -1,4 +1,4 @@
-npcname_JP.	‰ò‚Ì‰ö•¨
+npcname_JP.	å¡Šã®æ€ªç‰©
 npcname_EN.	mass monster
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

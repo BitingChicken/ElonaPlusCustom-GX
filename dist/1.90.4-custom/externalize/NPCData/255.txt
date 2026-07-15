@@ -1,4 +1,4 @@
-npcname_JP.	ƒTƒ\ƒŠ
+npcname_JP.	ã‚µã‚½ãƒª
 npcname_EN.	scorpion
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

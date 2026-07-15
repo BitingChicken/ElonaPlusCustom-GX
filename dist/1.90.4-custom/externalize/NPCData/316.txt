@@ -1,4 +1,4 @@
-npcname_JP.	マッドゲイズ
+npcname_JP.	繝槭ャ繝峨ご繧､繧ｺ
 npcname_EN.	mad gaze
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

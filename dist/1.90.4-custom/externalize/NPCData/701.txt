@@ -1,4 +1,4 @@
-npcname_JP.	–°‚ê‚é‹l
+npcname_JP.	çœ ã‚Œã‚‹å·¨äºº
 npcname_EN.	sleeping giant
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

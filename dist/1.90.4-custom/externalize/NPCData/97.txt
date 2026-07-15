@@ -1,4 +1,4 @@
-npcname_JP.	ファイアドレイク
+npcname_JP.	繝輔ぃ繧､繧｢繝峨Ξ繧､繧ｯ
 npcname_EN.	fire drake
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

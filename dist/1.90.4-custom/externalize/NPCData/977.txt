@@ -1,4 +1,4 @@
-npcname_JP.	ƒ‰ƒCƒgƒjƒ“ƒOƒRƒ{ƒ‹ƒg
+npcname_JP.	ãƒ©ã‚¤ãƒˆãƒ‹ãƒ³ã‚°ã‚³ãƒœãƒ«ãƒˆ
 npcname_EN.	lightning kobold
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

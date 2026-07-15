@@ -1,4 +1,4 @@
-npcname_JP.	クレイモアイ
+npcname_JP.	繧ｯ繝ｬ繧､繝｢繧｢繧､
 npcname_EN.	claymoai
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

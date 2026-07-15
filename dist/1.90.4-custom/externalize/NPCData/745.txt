@@ -1,4 +1,4 @@
-npcname_JP.	サヴァントクイーン
+npcname_JP.	繧ｵ繝ｴ繧｡繝ｳ繝医け繧､繝ｼ繝ｳ
 npcname_EN.	zombie queen
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

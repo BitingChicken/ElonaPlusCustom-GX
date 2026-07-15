@@ -1,4 +1,4 @@
-npcname_JP.	”’“e_
+npcname_JP.	ç™½å…ç¥
 npcname_EN.	hakutoshin
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

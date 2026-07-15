@@ -1,8 +1,8 @@
-npcname_JP.	ƒwƒ‹
+npcname_JP.	ãƒ˜ãƒ«
 npcname_EN.	hel
 numflavor_passiveJP.	1
 numflavor_passiveEN.	1
-flavorpassive_JP.0	*ƒYƒ‹ƒYƒ‹*
+flavorpassive_JP.0	*ã‚ºãƒ«ã‚ºãƒ«*
 flavorpassive_EN.0	*Zzzzle*
 numflavor_angeredJP.	0
 numflavor_angeredEN.	0

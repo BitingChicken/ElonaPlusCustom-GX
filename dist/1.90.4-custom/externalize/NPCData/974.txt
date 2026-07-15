@@ -1,4 +1,4 @@
-npcname_JP.	ƒRƒ{ƒŠƒi
+npcname_JP.	ã‚³ãƒœãƒªãƒŠ
 npcname_EN.	kobolina
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

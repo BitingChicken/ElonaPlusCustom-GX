@@ -1,4 +1,4 @@
-npcname_JP.	アステリオス
+npcname_JP.	繧｢繧ｹ繝�繝ｪ繧ｪ繧ｹ
 npcname_EN.	asterios
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

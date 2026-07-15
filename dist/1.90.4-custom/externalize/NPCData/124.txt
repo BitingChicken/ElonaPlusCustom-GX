@@ -1,4 +1,4 @@
-npcname_JP.	–»ŠEƒhƒ‰ƒSƒ“
+npcname_JP.	å†¥ç•Œãƒ‰ãƒ©ã‚´ãƒ³
 npcname_EN.	nether dragon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

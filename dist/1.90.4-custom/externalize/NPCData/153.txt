@@ -1,4 +1,4 @@
-npcname_JP.	ƒƒ|[ƒ“„
+npcname_JP.	ï¼œãƒãƒ¼ãƒ³ï¼
 npcname_EN.	<Pawn>
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	_ŒoƒnƒEƒ“ƒh
+npcname_JP.	ç¥çµŒãƒã‚¦ãƒ³ãƒ‰
 npcname_EN.	nerve hound
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

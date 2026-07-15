@@ -1,4 +1,4 @@
-npcname_JP.	コボルトブラスター
+npcname_JP.	繧ｳ繝懊Ν繝医ヶ繝ｩ繧ｹ繧ｿ繝ｼ
 npcname_EN.	kobold blaster
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

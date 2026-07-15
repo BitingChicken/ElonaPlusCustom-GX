@@ -1,4 +1,4 @@
-npcname_JP.	アロマカリス
+npcname_JP.	繧｢繝ｭ繝槭き繝ｪ繧ｹ
 npcname_EN.	aroma-locaris
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒ[ƒp[
+npcname_JP.	ãƒ­ãƒ¼ãƒ‘ãƒ¼
 npcname_EN.	roper
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

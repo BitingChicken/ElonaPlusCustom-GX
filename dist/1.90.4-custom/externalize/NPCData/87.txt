@@ -1,4 +1,4 @@
-npcname_JP.	ƒJƒIƒXƒCƒ“ƒv
+npcname_JP.	ã‚«ã‚ªã‚¹ã‚¤ãƒ³ãƒ—
 npcname_EN.	chaos imp
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	‘©”›‚Ì–‚å³
+npcname_JP.	æŸç¸›ã®é­”èŸ²
 npcname_EN.	bind devil worm
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

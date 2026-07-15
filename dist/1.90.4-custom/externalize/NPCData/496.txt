@@ -1,4 +1,4 @@
-npcname_JP.	フライング・ヒル
+npcname_JP.	繝輔Λ繧､繝ｳ繧ｰ繝ｻ繝偵Ν
 npcname_EN.	flying leech
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

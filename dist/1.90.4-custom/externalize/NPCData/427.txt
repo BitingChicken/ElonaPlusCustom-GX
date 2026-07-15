@@ -1,4 +1,4 @@
-npcname_JP.	ƒIƒƒO
+npcname_JP.	ã‚ªãƒ­ã‚°
 npcname_EN.	olog
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

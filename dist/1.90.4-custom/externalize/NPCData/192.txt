@@ -1,4 +1,4 @@
-npcname_JP.	ƒnƒŠ‚Ë‚¸‚İ
+npcname_JP.	ãƒãƒªã­ãšã¿
 npcname_EN.	hedgehog
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

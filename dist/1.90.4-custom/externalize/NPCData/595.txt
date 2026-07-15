@@ -1,4 +1,4 @@
-npcname_JP.	ƒJƒsƒoƒ‰
+npcname_JP.	ã‚«ãƒ”ãƒãƒ©
 npcname_EN.	capybara
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

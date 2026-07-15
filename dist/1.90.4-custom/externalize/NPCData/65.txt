@@ -1,4 +1,4 @@
-npcname_JP.	•ú“d‰_
+npcname_JP.	æ”¾é›»é›²
 npcname_EN.	electric cloud
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

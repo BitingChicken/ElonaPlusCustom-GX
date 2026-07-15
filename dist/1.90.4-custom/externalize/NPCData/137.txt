@@ -1,10 +1,10 @@
-npcname_JP.	スカイゴーレム
+npcname_JP.	繧ｹ繧ｫ繧､繧ｴ繝ｼ繝ｬ繝
 npcname_EN.	sky golem
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0
 numflavor_angeredJP.	1
 numflavor_angeredEN.	1
-flavorangered_JP.0	 *ガチャ* 
+flavorangered_JP.0	 *繧ｬ繝√Ε* 
 flavorangered_EN.0	 *THUNK* 
 numflavor_deathJP.	0
 numflavor_deathEN.	0

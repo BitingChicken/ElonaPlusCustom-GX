@@ -1,4 +1,4 @@
-npcname_JP.	ƒƒ‹[ƒN„
+npcname_JP.	ï¼œãƒ«ãƒ¼ã‚¯ï¼
 npcname_EN.	<Rook>
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

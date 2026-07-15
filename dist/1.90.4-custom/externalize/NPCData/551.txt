@@ -1,4 +1,4 @@
-npcname_JP.	ウルフヘズナル
+npcname_JP.	繧ｦ繝ｫ繝輔�倥ぜ繝翫Ν
 npcname_EN.	ulfheoinn
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	Ô‚Ìô—çÒ
+npcname_JP.	èµ¤ã®æ´—ç¤¼è€…
 npcname_EN.	red baptist
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

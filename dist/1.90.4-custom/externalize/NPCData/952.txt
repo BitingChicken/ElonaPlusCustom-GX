@@ -1,4 +1,4 @@
-npcname_JP.	Œ³‹âsˆõ
+npcname_JP.	å…ƒéŠ€è¡Œå“¡
 npcname_EN.	former bank clerk
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

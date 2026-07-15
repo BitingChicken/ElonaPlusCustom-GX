@@ -1,4 +1,4 @@
-npcname_JP.	j’n–‚Ë‚¸‚İ
+npcname_JP.	é‡åœ°ç„ã­ãšã¿
 npcname_EN.	hell needle hedgehog
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

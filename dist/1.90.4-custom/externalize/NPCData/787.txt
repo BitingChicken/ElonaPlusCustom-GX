@@ -1,4 +1,4 @@
-npcname_JP.	ƒCƒŠƒX
+npcname_JP.	ã‚¤ãƒªã‚¹
 npcname_EN.	iris
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

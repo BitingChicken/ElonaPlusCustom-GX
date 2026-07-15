@@ -1,4 +1,4 @@
-npcname_JP.	スペースジラ
+npcname_JP.	繧ｹ繝壹�ｼ繧ｹ繧ｸ繝ｩ
 npcname_EN.	space zilla
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ÀŒ±‘ä
+npcname_JP.	å®Ÿé¨“å°
 npcname_EN.	tester
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

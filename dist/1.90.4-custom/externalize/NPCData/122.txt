@@ -1,4 +1,4 @@
-npcname_JP.	ホワイトドラゴン
+npcname_JP.	繝帙Ρ繧､繝医ラ繝ｩ繧ｴ繝ｳ
 npcname_EN.	white dragon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

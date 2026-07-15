@@ -1,4 +1,4 @@
-npcname_JP.	ƒ”ƒ@ƒ“ƒvƒLƒ“
+npcname_JP.	ãƒ´ã‚¡ãƒ³ãƒ—ã‚­ãƒ³
 npcname_EN.	vampkin
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

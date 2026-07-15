@@ -1,4 +1,4 @@
-npcname_JP.	ナインダツフィッシュ
+npcname_JP.	繝翫う繝ｳ繝繝�繝輔ぅ繝�繧ｷ繝･
 npcname_EN.	nine dart garfish
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

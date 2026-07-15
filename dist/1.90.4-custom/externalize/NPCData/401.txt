@@ -1,4 +1,4 @@
-npcname_JP.	ヴィーアシヴァン
+npcname_JP.	繝ｴ繧｣繝ｼ繧｢繧ｷ繝ｴ繧｡繝ｳ
 npcname_EN.	viashivan
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ギガントフェアリー
+npcname_JP.	繧ｮ繧ｬ繝ｳ繝医ヵ繧ｧ繧｢繝ｪ繝ｼ
 npcname_EN.	gigantic fairy
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

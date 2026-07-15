@@ -1,4 +1,4 @@
-npcname_JP.	ƒOƒŠ[ƒ“ƒhƒ‰ƒSƒ“
+npcname_JP.	ã‚°ãƒªãƒ¼ãƒ³ãƒ‰ãƒ©ã‚´ãƒ³
 npcname_EN.	green dragon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

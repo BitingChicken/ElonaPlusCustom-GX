@@ -1,4 +1,4 @@
-npcname_JP.	‰Î‰Šƒ€ƒJƒf
+npcname_JP.	ç«ç‚ãƒ ã‚«ãƒ‡
 npcname_EN.	fire centipede
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

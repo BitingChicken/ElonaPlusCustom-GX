@@ -1,4 +1,4 @@
-npcname_JP.	ƒI[ƒN‚Ìím
+npcname_JP.	ã‚ªãƒ¼ã‚¯ã®æˆ¦å£«
 npcname_EN.	orc warrior
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

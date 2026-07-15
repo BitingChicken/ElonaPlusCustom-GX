@@ -1,4 +1,4 @@
-npcname_JP.	デスアーマー
+npcname_JP.	繝�繧ｹ繧｢繝ｼ繝槭�ｼ
 npcname_EN.	death armor
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

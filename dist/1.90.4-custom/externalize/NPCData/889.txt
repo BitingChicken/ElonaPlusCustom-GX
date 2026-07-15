@@ -1,4 +1,4 @@
-npcname_JP.	アールキング
+npcname_JP.	繧｢繝ｼ繝ｫ繧ｭ繝ｳ繧ｰ
 npcname_EN.	erlkonig
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

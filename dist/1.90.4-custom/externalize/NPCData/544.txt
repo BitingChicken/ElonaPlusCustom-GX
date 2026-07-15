@@ -1,10 +1,10 @@
-npcname_JP.	ベヒモス
+npcname_JP.	繝吶ヲ繝｢繧ｹ
 npcname_EN.	behemoth
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0
 numflavor_angeredJP.	1
 numflavor_angeredEN.	1
-flavorangered_JP.0	 *ドスン* 
+flavorangered_JP.0	 *繝峨せ繝ｳ* 
 flavorangered_EN.0	 *THUMP* 
 numflavor_deathJP.	0
 numflavor_deathEN.	0

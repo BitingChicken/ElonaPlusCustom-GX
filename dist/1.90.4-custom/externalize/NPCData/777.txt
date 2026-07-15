@@ -1,4 +1,4 @@
-npcname_JP.	ディザスター
+npcname_JP.	繝�繧｣繧ｶ繧ｹ繧ｿ繝ｼ
 npcname_EN.	disaster
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

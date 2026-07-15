@@ -1,4 +1,4 @@
-npcname_JP.	ƒOƒŒƒA
+npcname_JP.	ã‚°ãƒ¬ã‚¢
 npcname_EN.	glare tiger
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

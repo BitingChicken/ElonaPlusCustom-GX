@@ -1,4 +1,4 @@
-npcname_JP.	lH‚¢‰Ô
+npcname_JP.	äººé£Ÿã„èŠ±
 npcname_EN.	man eater flower
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

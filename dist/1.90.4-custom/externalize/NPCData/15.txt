@@ -1,4 +1,4 @@
-npcname_JP.	‚«‚Ì‚±
+npcname_JP.	ãã®ã“
 npcname_EN.	mushroom
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒEƒ‹ƒN
+npcname_JP.	ã‚¦ãƒ«ã‚¯
 npcname_EN.	uruk
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

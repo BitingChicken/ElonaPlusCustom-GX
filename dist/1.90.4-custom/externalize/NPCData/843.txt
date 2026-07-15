@@ -1,4 +1,4 @@
-npcname_JP.	ƒKƒ“ƒ}ƒ“ƒ{ƒE
+npcname_JP.	ã‚¬ãƒ³ãƒžãƒ³ãƒœã‚¦
 npcname_EN.	gunfish
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒpƒ“ƒvƒLƒ“
+npcname_JP.	ãƒ‘ãƒ³ãƒ—ã‚­ãƒ³
 npcname_EN.	pumpkin
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

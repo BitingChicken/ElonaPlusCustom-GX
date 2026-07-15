@@ -1,4 +1,4 @@
-npcname_JP.	グレイターマミー
+npcname_JP.	繧ｰ繝ｬ繧､繧ｿ繝ｼ繝槭Α繝ｼ
 npcname_EN.	greater mummy
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

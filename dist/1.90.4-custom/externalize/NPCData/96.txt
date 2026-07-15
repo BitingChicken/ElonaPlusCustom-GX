@@ -1,4 +1,4 @@
-npcname_JP.	キングコブラ
+npcname_JP.	繧ｭ繝ｳ繧ｰ繧ｳ繝悶Λ
 npcname_EN.	king cobra
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

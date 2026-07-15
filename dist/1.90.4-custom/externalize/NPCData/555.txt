@@ -1,8 +1,8 @@
-npcname_JP.	ÉoÉYÉE
+npcname_JP.	„Éê„Ç∫„Ç¶
 npcname_EN.	nemain
 numflavor_passiveJP.	1
 numflavor_passiveEN.	0
-flavorpassive_JP.0	*ÇŒÇ≥Ç¡ÇŒÇ≥Ç¡*
+flavorpassive_JP.0	*„Å∞„Åï„Å£„Å∞„Åï„Å£*
 numflavor_angeredJP.	0
 numflavor_angeredEN.	0
 numflavor_deathJP.	0

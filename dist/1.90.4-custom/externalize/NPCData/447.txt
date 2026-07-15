@@ -1,16 +1,16 @@
-npcname_JP.	”Lƒ]ƒ“ƒr
+npcname_JP.	çŒ«ã‚¾ãƒ³ãƒ“
 npcname_EN.	cat zombie
 numflavor_passiveJP.	1
 numflavor_passiveEN.	0
-flavorpassive_JP.0	‚®‚¿‚å‚®‚¿‚åc
+flavorpassive_JP.0	ãã¡ã‚‡ãã¡ã‚‡â€¦
 numflavor_angeredJP.	1
 numflavor_angeredEN.	0
-flavorangered_JP.0	u‚®‚µ‚á‚ ‚ ‚ ‚ ‚ ‚ v
+flavorangered_JP.0	ã€Œãã—ã‚ƒã‚ã‚ã‚ã‚ã‚ã‚ã€
 numflavor_deathJP.	0
 numflavor_deathEN.	0
 numflavor_killJP.	1
 numflavor_killEN.	1
-flavorkill_JP.0	 *‚Ó‚µ‚ã‚£* 
+flavorkill_JP.0	 *ãµã—ã‚…ã…* 
 flavorkill_EN.0	 *fwhoosh* 
 numflavor_welcomeJP.	0
 numflavor_welcomeEN.	0

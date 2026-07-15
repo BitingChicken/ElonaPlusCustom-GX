@@ -1,4 +1,4 @@
-npcname_JP.	ƒVƒ…ƒK[ƒ‹
+npcname_JP.	ã‚·ãƒ¥ã‚¬ãƒ¼ãƒ«
 npcname_EN.	sugaar
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

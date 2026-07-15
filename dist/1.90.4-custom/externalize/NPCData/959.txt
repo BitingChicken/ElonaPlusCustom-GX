@@ -1,4 +1,4 @@
-npcname_JP.	ÉEÉTÉM
+npcname_JP.	„Ç¶„Çµ„ÇÆ
 npcname_EN.	rabbit
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

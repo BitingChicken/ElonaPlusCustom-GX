@@ -1,4 +1,4 @@
-npcname_JP.	‹|–îƒKƒ‚
+npcname_JP.	å¼“çŸ¢ã‚¬ãƒ¢
 npcname_EN.	arrow duck
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ダークエレア
+npcname_JP.	繝繝ｼ繧ｯ繧ｨ繝ｬ繧｢
 npcname_EN.	dark elea
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

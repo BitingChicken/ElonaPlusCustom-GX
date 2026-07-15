@@ -71,7 +71,7 @@ music.		"1"
 heartbeat.	"1"
 
 (Font)
-font1.		"‚l‚r ƒSƒVƒbƒN"	used in Japanese	/Please use monospace fonts
+font1.		"ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯"	used in Japanese	/Please use monospace fonts
 font2.		"Courier New"	used in English		/like Lucida Console font.
 
 (message)

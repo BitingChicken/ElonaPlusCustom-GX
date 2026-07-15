@@ -1,4 +1,4 @@
-npcname_JP.	ミノタウロスの戦士
+npcname_JP.	繝溘ヮ繧ｿ繧ｦ繝ｭ繧ｹ縺ｮ謌ｦ螢ｫ
 npcname_EN.	minotaur king
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

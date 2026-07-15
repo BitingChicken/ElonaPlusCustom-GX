@@ -1,4 +1,4 @@
-npcname_JP.	‰îŒì‰é
+npcname_JP.	ä»‹è­·è›¾
 npcname_EN.	nursing moth
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

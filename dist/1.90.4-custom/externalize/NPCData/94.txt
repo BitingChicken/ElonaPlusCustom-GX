@@ -1,4 +1,4 @@
-npcname_JP.	カオスフラワー
+npcname_JP.	繧ｫ繧ｪ繧ｹ繝輔Λ繝ｯ繝ｼ
 npcname_EN.	chaos flower
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

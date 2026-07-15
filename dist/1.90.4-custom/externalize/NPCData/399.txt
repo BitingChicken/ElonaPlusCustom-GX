@@ -1,4 +1,4 @@
-npcname_JP.	•‚Ìô—çÒ
+npcname_JP.	é»’ã®æ´—ç¤¼è€…
 npcname_EN.	black baptist
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

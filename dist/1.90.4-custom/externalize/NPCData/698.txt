@@ -1,4 +1,4 @@
-npcname_JP.	Œ¶’±‚Ìh‹q
+npcname_JP.	å¹»è¶ã®åˆºå®¢
 npcname_EN.	butterspy
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

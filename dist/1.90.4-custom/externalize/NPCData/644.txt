@@ -1,4 +1,4 @@
-npcname_JP.	デススター
+npcname_JP.	繝�繧ｹ繧ｹ繧ｿ繝ｼ
 npcname_EN.	death hamster
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

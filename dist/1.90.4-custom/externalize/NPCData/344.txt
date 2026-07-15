@@ -1,4 +1,4 @@
-npcname_JP.	ƒ}ƒ“ƒ‚ƒX
+npcname_JP.	ãƒžãƒ³ãƒ¢ã‚¹
 npcname_EN.	Mammoth
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

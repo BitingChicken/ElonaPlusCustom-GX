@@ -1,4 +1,4 @@
-npcname_JP.	Œ‰¹ƒnƒEƒ“ƒh
+npcname_JP.	è½ŸéŸ³ãƒã‚¦ãƒ³ãƒ‰
 npcname_EN.	sound hound
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

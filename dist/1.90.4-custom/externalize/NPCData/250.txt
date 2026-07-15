@@ -1,4 +1,4 @@
-npcname_JP.	ódê∏
+npcname_JP.	Â¶ñÁ≤æ
 npcname_EN.	fairy
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

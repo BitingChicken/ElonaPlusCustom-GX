@@ -1,4 +1,4 @@
-npcname_JP.	ƒ}[ƒ‰
+npcname_JP.	ãƒãƒ¼ãƒ©
 npcname_EN.	mra
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

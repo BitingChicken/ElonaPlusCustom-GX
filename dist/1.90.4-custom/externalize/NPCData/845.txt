@@ -1,4 +1,4 @@
-npcname_JP.	ビッグアビスター
+npcname_JP.	繝薙ャ繧ｰ繧｢繝薙せ繧ｿ繝ｼ
 npcname_EN.	abysstar
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

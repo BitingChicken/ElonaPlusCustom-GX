@@ -1,4 +1,4 @@
-npcname_JP.	Œõ‹P‚Ì—d¸
+npcname_JP.	å…‰è¼ã®å¦–ç²¾
 npcname_EN.	fairy the shining
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

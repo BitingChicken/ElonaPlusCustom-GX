@@ -1,12 +1,12 @@
-npcname_JP.	ƒMƒƒƒ‰ƒ‹ƒxƒ‹
+npcname_JP.	ã‚®ãƒ£ãƒ©ãƒ«ãƒ™ãƒ«
 npcname_EN.	bell of termination
 numflavor_passiveJP.	1
 numflavor_passiveEN.	1
-flavorpassive_JP.0	 *ƒŠƒ“* 
+flavorpassive_JP.0	 *ãƒªãƒ³* 
 flavorpassive_EN.0	 *ring* 
 numflavor_angeredJP.	1
 numflavor_angeredEN.	1
-flavorangered_JP.0	 *ƒŠƒ“* 
+flavorangered_JP.0	 *ãƒªãƒ³* 
 flavorangered_EN.0	 *ring* 
 numflavor_deathJP.	0
 numflavor_deathEN.	0

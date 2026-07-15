@@ -1,4 +1,4 @@
-npcname_JP.	ƒtƒ@ƒCƒuEƒwƒbƒhEƒSƒbƒh
+npcname_JP.	ãƒ•ã‚¡ã‚¤ãƒ–ãƒ»ãƒ˜ãƒƒãƒ‰ãƒ»ã‚´ãƒƒãƒ‰
 npcname_EN.	five head god
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

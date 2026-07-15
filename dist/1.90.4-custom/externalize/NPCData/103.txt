@@ -1,4 +1,4 @@
-npcname_JP.	ƒSƒuƒŠƒ“‚Ìím
+npcname_JP.	ã‚´ãƒ–ãƒªãƒ³ã®æˆ¦å£«
 npcname_EN.	goblin warrior
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

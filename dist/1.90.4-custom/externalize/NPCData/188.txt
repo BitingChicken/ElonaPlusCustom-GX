@@ -1,4 +1,4 @@
-npcname_JP.	ƒuƒŒƒCƒhƒ¶
+npcname_JP.	ãƒ–ãƒ¬ã‚¤ãƒ‰Î©
 npcname_EN.	blade omega
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

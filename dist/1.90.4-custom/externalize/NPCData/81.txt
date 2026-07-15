@@ -1,4 +1,4 @@
-npcname_JP.	ƒƒXƒv
+npcname_JP.	ãƒ¯ã‚¹ãƒ—
 npcname_EN.	wasp
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

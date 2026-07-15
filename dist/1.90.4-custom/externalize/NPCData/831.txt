@@ -1,4 +1,4 @@
-npcname_JP.	–‚‰¤‚Ìë•º
+npcname_JP.	é­”ç‹ã®å°–å…µ
 npcname_EN.	demon's commander
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

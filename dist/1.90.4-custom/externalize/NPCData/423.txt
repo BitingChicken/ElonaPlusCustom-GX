@@ -1,4 +1,4 @@
-npcname_JP.	ƒfƒrƒ‹ƒRƒ{ƒ‹ƒg
+npcname_JP.	ãƒ‡ãƒ“ãƒ«ã‚³ãƒœãƒ«ãƒˆ
 npcname_EN.	dark kobold
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,10 +1,10 @@
-npcname_JP.	パラライザー
+npcname_JP.	繝代Λ繝ｩ繧､繧ｶ繝ｼ
 npcname_EN.	paralyzer
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0
 numflavor_angeredJP.	1
 numflavor_angeredEN.	1
-flavorangered_JP.0	 *カサカサ* 
+flavorangered_JP.0	 *繧ｫ繧ｵ繧ｫ繧ｵ* 
 flavorangered_EN.0	 *Hiss* 
 numflavor_deathJP.	0
 numflavor_deathEN.	0

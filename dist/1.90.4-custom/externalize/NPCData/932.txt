@@ -1,4 +1,4 @@
-npcname_JP.	Š[–‚b
+npcname_JP.	éª¸é­”ç£
 npcname_EN.	skull beast
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

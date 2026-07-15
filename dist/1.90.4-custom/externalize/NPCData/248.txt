@@ -1,4 +1,4 @@
-npcname_JP.	ティラノサウルス
+npcname_JP.	繝�繧｣繝ｩ繝弱し繧ｦ繝ｫ繧ｹ
 npcname_EN.	Tyrannosaurus
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒtƒ@ƒCƒAƒnƒEƒ“ƒh
+npcname_JP.	ãƒ•ã‚¡ã‚¤ã‚¢ãƒã‚¦ãƒ³ãƒ‰
 npcname_EN.	fire hound
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

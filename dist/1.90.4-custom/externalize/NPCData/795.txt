@@ -1,4 +1,4 @@
-npcname_JP.	アークレイス
+npcname_JP.	繧｢繝ｼ繧ｯ繝ｬ繧､繧ｹ
 npcname_EN.	arch wraith
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

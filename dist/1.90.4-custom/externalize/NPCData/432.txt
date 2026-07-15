@@ -1,4 +1,4 @@
-npcname_JP.	�鐝
+npcname_JP.	朱雀
 npcname_EN.	suzaku
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

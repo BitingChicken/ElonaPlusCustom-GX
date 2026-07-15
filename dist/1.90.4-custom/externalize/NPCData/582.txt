@@ -1,4 +1,4 @@
-npcname_JP.	ブルーモアイ
+npcname_JP.	繝悶Ν繝ｼ繝｢繧｢繧､
 npcname_EN.	blue moai
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

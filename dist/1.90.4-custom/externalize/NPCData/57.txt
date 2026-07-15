@@ -1,4 +1,4 @@
-npcname_JP.	ƒ|ƒCƒYƒ“ƒnƒEƒ“ƒh
+npcname_JP.	ãƒã‚¤ã‚ºãƒ³ãƒã‚¦ãƒ³ãƒ‰
 npcname_EN.	poison hound
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

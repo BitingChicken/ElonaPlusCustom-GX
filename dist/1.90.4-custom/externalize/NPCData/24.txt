@@ -1,4 +1,4 @@
-npcname_JP.	ƒGƒŒƒA‚Ì–‚pm
+npcname_JP.	ã‚¨ãƒ¬ã‚¢ã®é­”è¡“å£«
 npcname_EN.	wizard of Elea
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

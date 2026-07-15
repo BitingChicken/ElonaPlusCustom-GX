@@ -1,4 +1,4 @@
-npcname_JP.	ミスト・ドラゴン
+npcname_JP.	繝溘せ繝医�ｻ繝峨Λ繧ｴ繝ｳ
 npcname_EN.	mist dragon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

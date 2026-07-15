@@ -1,4 +1,4 @@
-npcname_JP.	ミノタウロスの術士
+npcname_JP.	繝溘ヮ繧ｿ繧ｦ繝ｭ繧ｹ縺ｮ陦灘｣ｫ
 npcname_EN.	minotaur magician
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

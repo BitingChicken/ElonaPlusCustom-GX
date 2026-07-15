@@ -1,4 +1,4 @@
-npcname_JP.	Š[œím
+npcname_JP.	éª¸éª¨æˆ¦å£«
 npcname_EN.	skeleton warrior
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

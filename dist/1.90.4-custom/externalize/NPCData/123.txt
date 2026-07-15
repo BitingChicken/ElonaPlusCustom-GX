@@ -1,4 +1,4 @@
-npcname_JP.	ƒGƒŒƒLƒhƒ‰ƒSƒ“
+npcname_JP.	ã‚¨ãƒ¬ã‚­ãƒ‰ãƒ©ã‚´ãƒ³
 npcname_EN.	elec dragon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

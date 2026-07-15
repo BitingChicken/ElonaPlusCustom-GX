@@ -1,4 +1,4 @@
-npcname_JP.	Š[œ‹¶ím
+npcname_JP.	éª¸éª¨ç‹‚æˆ¦å£«
 npcname_EN.	skeleton berserker
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

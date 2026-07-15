@@ -1,4 +1,4 @@
-npcname_JP.	r‚Ì‰p—Y
+npcname_JP.	å±ã®è‹±é›„
 npcname_EN.	skeleton hero
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

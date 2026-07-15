@@ -1,4 +1,4 @@
-npcname_JP.	‹à‚Ì–SÒ
+npcname_JP.	é‡‘ã®äº¡è€…
 npcname_EN.	money deceased
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

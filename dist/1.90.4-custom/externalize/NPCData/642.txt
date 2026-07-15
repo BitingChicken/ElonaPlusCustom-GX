@@ -1,4 +1,4 @@
-npcname_JP.	ハムスター
+npcname_JP.	繝上Β繧ｹ繧ｿ繝ｼ
 npcname_EN.	hamster
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

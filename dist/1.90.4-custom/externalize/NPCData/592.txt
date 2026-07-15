@@ -1,4 +1,4 @@
-npcname_JP.	ラグナロック
+npcname_JP.	繝ｩ繧ｰ繝翫Ο繝�繧ｯ
 npcname_EN.	Ragnarock
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-﻿ID	Type	JName	EName	Value
+ID	Type	JName	EName	Value
 1168.ID	-	《伍連華草》	<Go-Renge>	0
 1167.ID	-	《エペクレイル》	<Epeclair>	0
 1166.ID	-	《轟天》	<Gouten>	0

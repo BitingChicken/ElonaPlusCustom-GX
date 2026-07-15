@@ -1,4 +1,4 @@
-npcname_JP.	ƒGƒCƒŠƒAƒ“
+npcname_JP.	ã‚¨ã‚¤ãƒªã‚¢ãƒ³
 npcname_EN.	alien
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

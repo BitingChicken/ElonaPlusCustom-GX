@@ -1,4 +1,4 @@
-npcname_JP.	電動ヒポポタマス
+npcname_JP.	髮ｻ蜍輔ヲ繝昴�昴ち繝槭せ
 npcname_EN.	electric hippopotamus
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

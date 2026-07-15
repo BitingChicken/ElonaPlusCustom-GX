@@ -1,4 +1,4 @@
-npcname_JP.	ƒ}ƒiƒ‚ƒmƒŠƒX
+npcname_JP.	ãƒãƒŠãƒ¢ãƒãƒªã‚¹
 npcname_EN.	mana monolith
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

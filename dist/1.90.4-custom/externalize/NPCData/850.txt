@@ -1,4 +1,4 @@
-npcname_JP.	“§–¾ƒjƒ“ƒQƒ“
+npcname_JP.	é€æ˜ãƒ‹ãƒ³ã‚²ãƒ³
 npcname_EN.	sea fallen angel
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

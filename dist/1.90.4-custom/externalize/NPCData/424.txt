@@ -1,4 +1,4 @@
-npcname_JP.	タイターニア
+npcname_JP.	繧ｿ繧､繧ｿ繝ｼ繝九い
 npcname_EN.	titania
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

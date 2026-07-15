@@ -1,4 +1,4 @@
-npcname_JP.	ダークレイダー
+npcname_JP.	繝繝ｼ繧ｯ繝ｬ繧､繝繝ｼ
 npcname_EN.	dark raider
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

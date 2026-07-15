@@ -1,4 +1,4 @@
-npcname_JP.	デモンズソウル
+npcname_JP.	繝�繝｢繝ｳ繧ｺ繧ｽ繧ｦ繝ｫ
 npcname_EN.	demon's soul
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

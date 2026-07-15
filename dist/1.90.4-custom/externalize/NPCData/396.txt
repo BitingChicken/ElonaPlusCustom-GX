@@ -1,4 +1,4 @@
-npcname_JP.	ボーパルバニー
+npcname_JP.	繝懊�ｼ繝代Ν繝舌ル繝ｼ
 npcname_EN.	vorpal bunny
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒGƒEƒŠƒ…ƒAƒŒ
+npcname_JP.	ã‚¨ã‚¦ãƒªãƒ¥ã‚¢ãƒ¬
 npcname_EN.	euryale
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

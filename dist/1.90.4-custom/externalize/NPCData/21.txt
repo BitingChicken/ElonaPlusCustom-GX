@@ -1,4 +1,4 @@
-npcname_JP.	ƒ]ƒ“ƒr
+npcname_JP.	ã‚¾ãƒ³ãƒ“
 npcname_EN.	zombie
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

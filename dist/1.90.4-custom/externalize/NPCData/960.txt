@@ -1,4 +1,4 @@
-npcname_JP.	Žc‰e
+npcname_JP.	æ®‹å½±
 npcname_EN.	vestige
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

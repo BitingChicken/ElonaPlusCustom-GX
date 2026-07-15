@@ -1,32 +1,32 @@
-npcname_JP.	•”L
+npcname_JP.	é»’çŒ«
 npcname_EN.	black cat
 numflavor_passiveJP.	4
 numflavor_passiveEN.	4
-flavorpassive_JP.0	u‚¤‚İ‚İ‚áv
-flavorpassive_JP.1	u‚İ‚ã[v
-flavorpassive_JP.2	u‚İ‚áv
-flavorpassive_JP.3	 *‚²‚ë‚²‚ë* 
+flavorpassive_JP.0	ã€Œã†ã¿ã¿ã‚ƒã€
+flavorpassive_JP.1	ã€Œã¿ã‚…ãƒ¼ã€
+flavorpassive_JP.2	ã€Œã¿ã‚ƒã€
+flavorpassive_JP.3	 *ã”ã‚ã”ã‚* 
 flavorpassive_EN.0	"Mimya"
 flavorpassive_EN.1	"Mew"
 flavorpassive_EN.2	"Mya"
 flavorpassive_EN.3	 *purr* 
 numflavor_angeredJP.	3
 numflavor_angeredEN.	3
-flavorangered_JP.0	uƒtƒVƒ…[ƒbv
-flavorangered_JP.1	u‚¤‚İ‚İ‚áIv
-flavorangered_JP.2	u‚İ‚áIv
+flavorangered_JP.0	ã€Œãƒ•ã‚·ãƒ¥ãƒ¼ãƒƒã€
+flavorangered_JP.1	ã€Œã†ã¿ã¿ã‚ƒï¼ã€
+flavorangered_JP.2	ã€Œã¿ã‚ƒï¼ã€
 flavorangered_EN.0	"Prrrr"
 flavorangered_EN.1	"Mimya!"
 flavorangered_EN.2	"Mya!"
 numflavor_deathJP.	1
 numflavor_deathEN.	1
-flavordeath_JP.0	u‚¤‚İc‚İ‚ácv
+flavordeath_JP.0	ã€Œã†ã¿â€¦ã¿ã‚ƒâ€¦ã€
 flavordeath_EN.0	"Mi...Mya..."
 numflavor_killJP.	1
 numflavor_killEN.	1
-flavorkill_JP.0	•”L‚ÍK”ö‚ğ‚Ó‚Á‚½B
+flavorkill_JP.0	é»’çŒ«ã¯å°»å°¾ã‚’ãµã£ãŸã€‚
 flavorkill_EN.0	The black cat shook its tail.
 numflavor_welcomeJP.	1
 numflavor_welcomeEN.	1
-flavorwelcome_JP.0	u‚¨‚©‚¦‚è‚İ‚á[v
+flavorwelcome_JP.0	ã€ŒãŠã‹ãˆã‚Šã¿ã‚ƒãƒ¼ã€
 flavorwelcome_EN.0	"Welcome homeow..."

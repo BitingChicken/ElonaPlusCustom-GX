@@ -1,4 +1,4 @@
-npcname_JP.	×ƒGƒiƒK
+npcname_JP.	é‚ªã‚¨ãƒŠã‚¬
 npcname_EN.	yokoshima enaga
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

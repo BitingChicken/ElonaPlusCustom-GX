@@ -1,4 +1,4 @@
-npcname_JP.	ƒCƒFƒ‹ƒXŽ©‘––C
+npcname_JP.	ã‚¤ã‚§ãƒ«ã‚¹è‡ªèµ°ç ²
 npcname_EN.	yerles self-propelled gun
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

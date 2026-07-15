@@ -1,4 +1,4 @@
-npcname_JP.	–h‰qŽÒ
+npcname_JP.	é˜²è¡›è€…
 npcname_EN.	defender
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

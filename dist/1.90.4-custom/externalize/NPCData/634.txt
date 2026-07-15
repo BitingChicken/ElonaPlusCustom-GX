@@ -1,4 +1,4 @@
-npcname_JP.	ƒTƒ“ƒhƒ[ƒ€
+npcname_JP.	ã‚µãƒ³ãƒ‰ãƒ¯ãƒ¼ãƒ 
 npcname_EN.	sand worm
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

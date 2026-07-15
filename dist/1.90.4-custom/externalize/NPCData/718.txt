@@ -1,4 +1,4 @@
-npcname_JP.	�ؗ�S
+npcname_JP.	切裂鬼
 npcname_EN.	slash ogre
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

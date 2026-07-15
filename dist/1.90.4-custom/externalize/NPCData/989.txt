@@ -1,4 +1,4 @@
-npcname_JP.	ハイネスウルク
+npcname_JP.	繝上う繝阪せ繧ｦ繝ｫ繧ｯ
 npcname_EN.	uruk-highness
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

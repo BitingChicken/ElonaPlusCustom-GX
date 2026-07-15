@@ -1,4 +1,4 @@
-npcname_JP.	ゴブリンシャーマン
+npcname_JP.	繧ｴ繝悶Μ繝ｳ繧ｷ繝｣繝ｼ繝槭Φ
 npcname_EN.	goblin shaman
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

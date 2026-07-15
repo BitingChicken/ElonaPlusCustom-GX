@@ -1,4 +1,4 @@
-npcname_JP.	ƒ‰ƒCƒIƒ“
+npcname_JP.	ãƒ©ã‚¤ã‚ªãƒ³
 npcname_EN.	lion
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

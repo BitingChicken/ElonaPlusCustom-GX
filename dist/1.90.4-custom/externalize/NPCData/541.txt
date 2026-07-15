@@ -1,4 +1,4 @@
-npcname_JP.	ƒIƒƒKƒwƒ‰ƒNƒŒƒX
+npcname_JP.	ã‚ªãƒ¡ã‚¬ãƒ˜ãƒ©ã‚¯ãƒ¬ã‚¹
 npcname_EN.	omega herakles
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

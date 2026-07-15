@@ -1,4 +1,4 @@
-npcname_JP.	‘Â’¹
+npcname_JP.	å •é³¥
 npcname_EN.	fallen bird
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

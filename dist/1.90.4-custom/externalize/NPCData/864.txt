@@ -1,4 +1,4 @@
-npcname_JP.	グラスダンサー
+npcname_JP.	繧ｰ繝ｩ繧ｹ繝繝ｳ繧ｵ繝ｼ
 npcname_EN.	grass dancer
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

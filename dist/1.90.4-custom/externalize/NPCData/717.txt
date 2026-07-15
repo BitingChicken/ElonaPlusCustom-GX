@@ -1,4 +1,4 @@
-npcname_JP.	�ӋS
+npcname_JP.	砕鬼
 npcname_EN.	smash ogre
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

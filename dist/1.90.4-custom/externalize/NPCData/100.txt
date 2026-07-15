@@ -1,4 +1,4 @@
-npcname_JP.	ƒ}ƒ~[
+npcname_JP.	ãƒãƒŸãƒ¼
 npcname_EN.	mummy
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

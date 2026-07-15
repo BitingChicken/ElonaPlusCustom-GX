@@ -1,4 +1,4 @@
-npcname_JP.	ÉSÉVÉbÉN
+npcname_JP.	„Ç¥„Ç∑„ÉÉ„ÇØ
 npcname_EN.	gothic
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

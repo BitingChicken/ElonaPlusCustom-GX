@@ -1,4 +1,4 @@
-npcname_JP.	ボムスロアー
+npcname_JP.	繝懊Β繧ｹ繝ｭ繧｢繝ｼ
 npcname_EN.	bomb thrower
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

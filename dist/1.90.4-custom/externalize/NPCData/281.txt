@@ -1,4 +1,4 @@
-npcname_JP.	リザードマン
+npcname_JP.	繝ｪ繧ｶ繝ｼ繝峨�槭Φ
 npcname_EN.	lizard man
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

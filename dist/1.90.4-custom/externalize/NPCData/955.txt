@@ -1,4 +1,4 @@
-npcname_JP.	˜T
+npcname_JP.	ç‹¼
 npcname_EN.	wolf
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

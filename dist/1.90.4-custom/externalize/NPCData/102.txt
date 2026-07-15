@@ -1,4 +1,4 @@
-npcname_JP.	ƒSƒuƒŠƒ“
+npcname_JP.	ã‚´ãƒ–ãƒªãƒ³
 npcname_EN.	goblin
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

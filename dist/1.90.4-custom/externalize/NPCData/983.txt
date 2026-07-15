@@ -1,10 +1,10 @@
-npcname_JP.	ƒ|[ƒN
+npcname_JP.	ãƒãƒ¼ã‚¯
 npcname_EN.	porc
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0
 numflavor_angeredJP.	0
 numflavor_angeredEN.	0
-flavordeath_JP.0	u‚Õ‚¬‚¡v
+flavordeath_JP.0	ã€Œã·ããƒã€
 numflavor_deathJP.	1
 numflavor_deathEN.	0
 numflavor_killJP.	0

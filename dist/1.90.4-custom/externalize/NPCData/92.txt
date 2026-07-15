@@ -1,4 +1,4 @@
-npcname_JP.	ƒjƒ“ƒt
+npcname_JP.	ãƒ‹ãƒ³ãƒ•
 npcname_EN.	nymph
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

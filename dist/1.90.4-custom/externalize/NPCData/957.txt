@@ -1,4 +1,4 @@
-npcname_JP.	ƒlƒYƒ~
+npcname_JP.	ãƒã‚ºãƒŸ
 npcname_EN.	rat
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

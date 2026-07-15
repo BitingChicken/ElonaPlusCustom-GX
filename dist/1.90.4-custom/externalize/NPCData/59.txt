@@ -1,4 +1,4 @@
-npcname_JP.	’n–ƒnƒEƒ“ƒh
+npcname_JP.	åœ°ç„ãƒã‚¦ãƒ³ãƒ‰
 npcname_EN.	nether hound
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

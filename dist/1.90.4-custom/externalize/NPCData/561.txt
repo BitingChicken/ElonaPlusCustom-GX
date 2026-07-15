@@ -1,4 +1,4 @@
-npcname_JP.	ƒoƒ[ƒ‹‚Ì–‚Šá
+npcname_JP.	ãƒãƒ­ãƒ¼ãƒ«ã®é­”çœ¼
 npcname_EN.	eye of balor
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

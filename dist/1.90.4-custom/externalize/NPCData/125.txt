@@ -1,4 +1,4 @@
-npcname_JP.	カオスドラゴン
+npcname_JP.	繧ｫ繧ｪ繧ｹ繝峨Λ繧ｴ繝ｳ
 npcname_EN.	chaos dragon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ウェンカムイ
+npcname_JP.	繧ｦ繧ｧ繝ｳ繧ｫ繝繧､
 npcname_EN.	wenkamui
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

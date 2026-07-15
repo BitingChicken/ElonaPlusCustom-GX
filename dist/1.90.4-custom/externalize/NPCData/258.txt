@@ -1,4 +1,4 @@
-npcname_JP.	“S‚Ìˆ—
+npcname_JP.	é‰„ã®å‡¦å¥³
 npcname_EN.	iron maiden
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ƒNƒ‰[ƒQƒ“
+npcname_JP.	ã‚¯ãƒ©ãƒ¼ã‚²ãƒ³
 npcname_EN.	jellyfish kraken
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

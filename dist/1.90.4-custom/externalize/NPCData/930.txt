@@ -1,4 +1,4 @@
-npcname_JP.	ŒÃ‚Ì’²¸•º
+npcname_JP.	å¤ã®èª¿æŸ»å…µ
 npcname_EN.	skeleton magician
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	Š ‚èæ‚éÒ
+npcname_JP.	åˆˆã‚Šå–ã‚‹è€…
 npcname_EN.	grim reaper
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

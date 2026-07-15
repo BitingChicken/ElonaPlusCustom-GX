@@ -1,4 +1,4 @@
-npcname_JP.	—†ù‚Ì‰¤
+npcname_JP.	èºæ—‹ã®ç‹
 npcname_EN.	spiral king
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

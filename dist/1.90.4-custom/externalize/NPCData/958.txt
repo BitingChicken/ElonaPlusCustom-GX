@@ -1,4 +1,4 @@
-npcname_JP.	ŒÏ
+npcname_JP.	ç‹
 npcname_EN.	fox
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

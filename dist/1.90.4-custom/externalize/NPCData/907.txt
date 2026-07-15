@@ -1,4 +1,4 @@
-npcname_JP.	“ËŒ‚Ôå‘åx
+npcname_JP.	çªæ’ƒèµ¤èœ»è›‰
 npcname_EN.	assault red dragonfly
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

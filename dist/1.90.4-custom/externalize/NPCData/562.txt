@@ -1,4 +1,4 @@
-npcname_JP.	ƒJ[ƒŠ[
+npcname_JP.	ã‚«ãƒ¼ãƒªãƒ¼
 npcname_EN.	kali
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

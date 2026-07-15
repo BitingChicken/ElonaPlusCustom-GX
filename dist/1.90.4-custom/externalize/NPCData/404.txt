@@ -1,4 +1,4 @@
-npcname_JP.	ヘブンズビートル
+npcname_JP.	繝倥ヶ繝ｳ繧ｺ繝薙�ｼ繝医Ν
 npcname_EN.	kabuto
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

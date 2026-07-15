@@ -1,4 +1,4 @@
-npcname_JP.	ˆÅ‹òƒRƒAƒ‰
+npcname_JP.	é—‡å–°ã‚³ã‚¢ãƒ©
 npcname_EN.	dark koala
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

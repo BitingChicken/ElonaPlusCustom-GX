@@ -1,4 +1,4 @@
-npcname_JP.	ƒ†ƒiƒCƒfƒbƒhEƒLƒ“ƒO
+npcname_JP.	ãƒ¦ãƒŠã‚¤ãƒ‡ãƒƒãƒ‰ãƒ»ã‚­ãƒ³ã‚°
 npcname_EN.	unitdead-king
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

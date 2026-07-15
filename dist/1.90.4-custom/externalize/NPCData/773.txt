@@ -1,16 +1,16 @@
-npcname_JP.	ƒuƒ‹[ƒuƒ‹
+npcname_JP.	ãƒ–ãƒ«ãƒ¼ãƒ–ãƒ«
 npcname_EN.	blue bull
 numflavor_passiveJP.	2
 numflavor_passiveEN.	0
-flavorpassive_JP.0	uƒ‚ƒEv
-flavorpassive_JP.1	uƒ‚ƒH[v
+flavorpassive_JP.0	ã€Œãƒ¢ã‚¦ã€
+flavorpassive_JP.1	ã€Œãƒ¢ã‚©ãƒ¼ã€
 numflavor_angeredJP.	0
 numflavor_angeredEN.	0
 numflavor_deathJP.	1
 numflavor_deathEN.	0
-flavordeath_JP.0	uƒ‚[ƒCƒ„v
+flavordeath_JP.0	ã€Œãƒ¢ãƒ¼ã‚¤ãƒ¤ã€
 numflavor_killJP.	1
 numflavor_killEN.	0
-flavorkill_JP.0	uƒ“ƒ‚[v
+flavorkill_JP.0	ã€Œãƒ³ãƒ¢ãƒ¼ã€
 numflavor_welcomeJP.	0
 numflavor_welcomeEN.	0

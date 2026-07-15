@@ -1,4 +1,4 @@
-npcname_JP.	Ç‚Ç«Ç©ÇË
+npcname_JP.	„ÇÑ„Å©„Åã„Çä
 npcname_EN.	hermit crab
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

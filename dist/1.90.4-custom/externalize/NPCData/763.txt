@@ -1,4 +1,4 @@
-npcname_JP.	ƒNƒ‰ƒEƒhƒ‰ƒSƒ“
+npcname_JP.	ã‚¯ãƒ©ã‚¦ãƒ‰ãƒ©ã‚´ãƒ³
 npcname_EN.	cloudragon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

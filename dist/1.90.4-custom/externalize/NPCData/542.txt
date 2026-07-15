@@ -1,4 +1,4 @@
-npcname_JP.	アルクトゥルス
+npcname_JP.	繧｢繝ｫ繧ｯ繝医ぇ繝ｫ繧ｹ
 npcname_EN.	arktouros
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

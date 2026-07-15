@@ -1,4 +1,4 @@
-npcname_JP.	’´‹‰–Ïl
+npcname_JP.	è¶…ç´šå¦„äºº
 npcname_EN.	wangnin
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

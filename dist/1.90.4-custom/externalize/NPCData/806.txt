@@ -1,4 +1,4 @@
-npcname_JP.	ピクシー
+npcname_JP.	繝斐け繧ｷ繝ｼ
 npcname_EN.	pixie
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

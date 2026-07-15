@@ -1,4 +1,4 @@
-npcname_JP.	オヤウカムイ
+npcname_JP.	繧ｪ繝､繧ｦ繧ｫ繝繧､
 npcname_EN.	oyaukamui
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

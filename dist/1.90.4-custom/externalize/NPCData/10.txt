@@ -1,16 +1,16 @@
-npcname_JP.	—r
+npcname_JP.	ç¾Š
 npcname_EN.	wild sheep
 numflavor_passiveJP.	2
 numflavor_passiveEN.	2
-flavorpassive_JP.0	u‚ß‚¥‚ß‚¥v
-flavorpassive_JP.1	u‚ß‚¥‚¦[v
+flavorpassive_JP.0	ã€Œã‚ã‡ã‚ã‡ã€
+flavorpassive_JP.1	ã€Œã‚ã‡ãˆãƒ¼ã€
 flavorpassive_EN.0	"Baa"
 flavorpassive_EN.1	"Baaaaa"
 numflavor_angeredJP.	0
 numflavor_angeredEN.	0
 numflavor_deathJP.	1
 numflavor_deathEN.	1
-flavordeath_JP.0	u‚ß‚¦‚Ácv
+flavordeath_JP.0	ã€Œã‚ãˆã£â€¦ã€
 flavordeath_EN.0	"Baa..."
 numflavor_killJP.	0
 numflavor_killEN.	0

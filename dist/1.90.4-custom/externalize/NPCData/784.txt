@@ -1,4 +1,4 @@
-npcname_JP.	ƒeƒƒŠƒX
+npcname_JP.	ãƒ†ãƒ­ãƒªã‚¹
 npcname_EN.	terrorism squirrel
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

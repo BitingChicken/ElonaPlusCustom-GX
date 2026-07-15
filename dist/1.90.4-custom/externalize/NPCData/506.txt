@@ -1,4 +1,4 @@
-npcname_JP.	オリオンキラー
+npcname_JP.	繧ｪ繝ｪ繧ｪ繝ｳ繧ｭ繝ｩ繝ｼ
 npcname_EN.	Orion killer
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

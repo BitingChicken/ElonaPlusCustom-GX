@@ -1,4 +1,4 @@
-npcname_JP.	‰¤‹{–‚“±Žm
+npcname_JP.	çŽ‹å®®é­”å°Žå£«
 npcname_EN.	palace magician
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

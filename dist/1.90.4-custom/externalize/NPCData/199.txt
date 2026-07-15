@@ -1,4 +1,4 @@
-npcname_JP.	�Ŏq
+npcname_JP.	闇子
 npcname_EN.	stalker
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	Â—´
+npcname_JP.	é’é¾
 npcname_EN.	sei-ryu
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

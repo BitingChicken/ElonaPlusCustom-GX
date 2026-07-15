@@ -1,4 +1,4 @@
-npcname_JP.	ƒVƒ†ƒE
+npcname_JP.	ã‚·ãƒ¦ã‚¦
 npcname_EN.	chihyu
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

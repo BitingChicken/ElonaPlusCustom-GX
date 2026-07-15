@@ -1,4 +1,4 @@
-npcname_JP.	’´—³l
+npcname_JP.	è¶…ç«œäºº
 npcname_EN.	super-dragonewt
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	�ł̘V�t
+npcname_JP.	闇の老師
 npcname_EN.	shadow stalker
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

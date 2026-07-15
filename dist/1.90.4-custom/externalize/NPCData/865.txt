@@ -1,4 +1,4 @@
-npcname_JP.	グラスキラー
+npcname_JP.	繧ｰ繝ｩ繧ｹ繧ｭ繝ｩ繝ｼ
 npcname_EN.	grass killer
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	€ŒY·sl
+npcname_JP.	æ­»åˆ‘åŸ·è¡Œäºº
 npcname_EN.	executioner
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

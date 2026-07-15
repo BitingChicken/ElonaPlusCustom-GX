@@ -1,4 +1,4 @@
-npcname_JP.	ƒƒNƒB[ƒ“„
+npcname_JP.	ï¼œã‚¯ã‚£ãƒ¼ãƒ³ï¼
 npcname_EN.	<Queen>
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

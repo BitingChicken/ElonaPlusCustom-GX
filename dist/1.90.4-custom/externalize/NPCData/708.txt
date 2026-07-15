@@ -1,4 +1,4 @@
-npcname_JP.	�|�̖ҋ�
+npcname_JP.	鋼の猛牛
 npcname_EN.	steel minotaur
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

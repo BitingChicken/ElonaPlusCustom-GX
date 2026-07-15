@@ -1,4 +1,4 @@
-npcname_JP.	‰ÔXŒè
+npcname_JP.	èŠ±çŠç‘š
 npcname_EN.	flower coral
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

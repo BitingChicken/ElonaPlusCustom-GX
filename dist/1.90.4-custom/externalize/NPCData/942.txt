@@ -1,4 +1,4 @@
-npcname_JP.	トリケラトプス
+npcname_JP.	繝医Μ繧ｱ繝ｩ繝医�励せ
 npcname_EN.	triceratops
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ハロウィンナイトメア
+npcname_JP.	繝上Ο繧ｦ繧｣繝ｳ繝翫う繝医Γ繧｢
 npcname_EN.	halloween nightmare
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	カオス・ハンター
+npcname_JP.	繧ｫ繧ｪ繧ｹ繝ｻ繝上Φ繧ｿ繝ｼ
 npcname_EN.	chaos hunter
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

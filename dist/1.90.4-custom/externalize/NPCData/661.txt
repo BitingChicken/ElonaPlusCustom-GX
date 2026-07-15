@@ -1,4 +1,4 @@
-npcname_JP.	ƒSƒbƒhƒnƒ“ƒh
+npcname_JP.	ã‚´ãƒƒãƒ‰ãƒãƒ³ãƒ‰
 npcname_EN.	hand of the god
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

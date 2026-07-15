@@ -1,4 +1,4 @@
-npcname_JP.	ÉÇÉAÉC
+npcname_JP.	„É¢„Ç¢„Ç§
 npcname_EN.	moai
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	êi—Ù
+npcname_JP.	éº’éºŸ
 npcname_EN.	kirin
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

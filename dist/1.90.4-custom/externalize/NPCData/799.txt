@@ -1,4 +1,4 @@
-npcname_JP.	ƒkƒIƒE
+npcname_JP.	ãƒŒã‚ªã‚¦
 npcname_EN.	nuou
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

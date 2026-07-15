@@ -1,4 +1,4 @@
-npcname_JP.	–S—ì
+npcname_JP.	äº¡éœŠ
 npcname_EN.	ghost
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

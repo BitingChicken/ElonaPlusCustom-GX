@@ -1,4 +1,4 @@
-npcname_JP.	ƒC[ƒN‚Ìím
+npcname_JP.	ã‚¤ãƒ¼ã‚¯ã®æˆ¦å£«
 npcname_EN.	yeek warrior
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	‚ª‚µ‚á‚Ç‚­‚ë
+npcname_JP.	ãŒã—ã‚ƒã©ãã‚
 npcname_EN.	gasyadokuro
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

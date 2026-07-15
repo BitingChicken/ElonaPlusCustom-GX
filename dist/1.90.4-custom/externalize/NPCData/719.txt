@@ -1,4 +1,4 @@
-npcname_JP.	‹P‹S
+npcname_JP.	è¼é¬¼
 npcname_EN.	shine ogre
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ŒŒõ’±
+npcname_JP.	æœˆå…‰è¶
 npcname_EN.	moonlit papillon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

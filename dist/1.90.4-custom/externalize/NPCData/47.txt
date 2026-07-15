@@ -1,4 +1,4 @@
-npcname_JP.	ƒŠƒbƒ`
+npcname_JP.	ãƒªãƒƒãƒ
 npcname_EN.	lich
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

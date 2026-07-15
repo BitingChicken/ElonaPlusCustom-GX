@@ -1,4 +1,4 @@
-npcname_JP.	“¬’“‰Î‘
+npcname_JP.	é—˜é§ç«è‰
 npcname_EN.	red mushroom
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

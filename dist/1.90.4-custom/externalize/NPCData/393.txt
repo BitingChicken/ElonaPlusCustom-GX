@@ -1,4 +1,4 @@
-npcname_JP.	ƒOƒ‰ƒ“ƒhƒhƒ‰ƒSƒ“
+npcname_JP.	ã‚°ãƒ©ãƒ³ãƒ‰ãƒ‰ãƒ©ã‚´ãƒ³
 npcname_EN.	grand dragon
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

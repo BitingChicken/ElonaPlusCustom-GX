@@ -1,4 +1,4 @@
-npcname_JP.	ヒポミケス
+npcname_JP.	繝偵�昴Α繧ｱ繧ｹ
 npcname_EN.	hypomyces
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

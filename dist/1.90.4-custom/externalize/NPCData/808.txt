@@ -1,4 +1,4 @@
-npcname_JP.	ƒyƒŠ
+npcname_JP.	ãƒšãƒª
 npcname_EN.	peri
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

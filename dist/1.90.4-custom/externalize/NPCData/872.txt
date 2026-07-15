@@ -1,4 +1,4 @@
-npcname_JP.	マスター・アルカイーク
+npcname_JP.	繝槭せ繧ｿ繝ｼ繝ｻ繧｢繝ｫ繧ｫ繧､繝ｼ繧ｯ
 npcname_EN.	master archayeek
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ˆ«–²‚Ì‰»g
+npcname_JP.	æ‚ªå¤¢ã®åŒ–èº«
 npcname_EN.	nightmare sheep
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0

@@ -1,4 +1,4 @@
-npcname_JP.	ミノタウロス
+npcname_JP.	繝溘ヮ繧ｿ繧ｦ繝ｭ繧ｹ
 npcname_EN.	minotaur
 numflavor_passiveJP.	0
 numflavor_passiveEN.	0
