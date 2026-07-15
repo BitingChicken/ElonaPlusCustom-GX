@@ -79,6 +79,7 @@ all ore:sound24
 # cursed item
 # doomed item
 # alive item
+# evolution item
 
 # all equipment
 # all melee weapon
@@ -135,6 +136,7 @@ all ore:sound24
 # 呪われたアイテム
 # 堕落したアイテム
 # 生きているアイテム
+# 進化アイテム
 
 # すべての装備品
 # すべての近接武器

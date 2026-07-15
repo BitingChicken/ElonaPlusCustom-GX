@@ -795,8 +795,10 @@ The gods run away from the sight of a chainsaw.
 エウダーナは、他のどの国よりも先に、ネフィアの探索と研究をはじめた{のだ}。
 店の主人は不死身なの{かな}。
 どうやら、アーティファクトの所在を知る方法があるみたい{だ}。
+何度かやれば命乞いが通用するモンスターもいるみたい{だ}。逆に、人間でも命乞いが通用しない相手もいる{よ}。
 大食いトドは魚が好きみたい{だ}。
 病気や体調が悪い時は、十分に睡眠をとって休むのが大事{だ}。祝福された回復のポーションも病気に効くと、昔からよくいわれてい{る}。
+６月になると、野外にお尻の光る虫が出没する{よ}。夜に見るとキレイ{だろ}。
 %END
 
 %PERSONALITY,0,EN		/dull character
@@ -809,7 +811,9 @@ Eulderna was the first country to explore and research the ruins of Nefia.
 I wonder if the shopkeepers really are invincible...
 Apparently, there is a way to learn the location of artifacts after all.
 Hungry sea lions love to eat fish.
+Even if you're dealing with a monster, it seems that begging for your life can sometimes work if you do it a few times. On the other hand, there are also humans who won't respond to pleading for your life.
 Sleep and rest well when you are sick! My grandma told me that blessed healing potion also works.
+In June, insects with glowing rear ends start appearing wilderness. They must look beautiful at night.
 %END
 
 %APERSONALITY,0,JP		/dull character
@@ -841,6 +845,9 @@ If you keep drinking blessed healing potions, blessed milk will start coming out
 エウダーナの財政は、少し苦しいらしい{よ}。
 聞いたところによると、職業を変えるアイテムがあるみたい{だ}。
 戦後のザナンは形式こそ王国制をとるものの、実質的にはエイス・テールの諸国をモデルにした経済国家{だ}。
+机のうちのいくつかは、インスピレーションを消費して原稿を書くのに使える{よ}。大作ができればお金になるかもしれない{な}。
+冒険を進めていけばいくほど、同じ出来事でも得られる経験値は増える{のだ}。
+技術や能力が最深攻略階層の値に追いつくまでは、得られる経験値が増えるらしい{よ}。
 %END
 
 %PERSONALITY,1,EN		/economist
@@ -851,6 +858,9 @@ I'm very much into economics.
 Platinum coins are a lot rarer than gold.  Spend them wisely. 
 Eulderna always suffers from huge deficits, but it never really seems to slow them down.  They can't just invent money like that forever.
 Zanan's postwar system is a monarchy, but internally the country still operates on the outdated systems used during Eyth Terre.
+Some of the desks can be used to consume inspiration and write manuscripts. If you can make a masterpiece, you might make money.
+The further you progress in your adventure, the more experience points you'll gain even by taking the same action.
+It seems that the experience points gained will increase until the skills and abilities catch up with the values of the deepest cleared floor.
 %END
 
 %APERSONALITY,1,JP		/economist
@@ -880,6 +890,8 @@ Zanan's postwar system is a monarchy, but the entire country is actually control
 科学について語るのが好き{だ}。
 ヴェルニースはパルミアで一番大きな炭鉱街{だ}。
 ルミエストは芸術の街として有名{だな}。
+ダルフィのならずものはスリが得意{だ}。すれ違っただけで金貨を盗まれるから、気をつけるべき{だな}。
+畑や牧場や収容所といった物件は5日おきに状況が変わるから、たまに様子を見に行くといい{よ}。
 %END
 
 %PERSONALITY,2,EN		/scientist
@@ -888,9 +900,11 @@ Are you on drugs? Irva is our world, of course.
 The land of Tyris has countless ruins and dungeons on it.  They are part of a long lost civilization called Nefia.
 Science in the seventh era of Eyth Terre was far more advanced than ours.
 In Eyth Terre, magic and science were thought to be opposites.
-I like talking about science. 
+I like talking about science.
 Vernis is the biggest coal-mining town in the Palmian Kingdom.
-Lumiest is the famous city of art. 
+Lumiest is the famous city of art.
+Derphy rogues are good at pickpocketing. You should be careful because your gold coins will be stolen just by passing each other.
+Properties such as crops, ranches, and camps change status every five days, so it's a good idea to check in on them every now and then.
 %END
 
 %APERSONALITY,2,JP		/scientist 
@@ -1666,8 +1680,8 @@ Hiddening my ears and tail while I was disguised as a citizen was stressful.
 %END%
 
 %INOTIGOI,EN			/surrender
-({npcc} looks at you trembling.)
-({npcc} glances at you and goes pale.)
+({nptc} looks at you trembling.)
+({nptc} glances at you and goes pale.)
 %END
 
 
