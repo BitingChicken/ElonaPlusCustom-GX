@@ -1,7 +1,10 @@
-# Upcoming
+# 2.32.1.2
+
+## Fixed
+- Fixed encodings of in-repo .txt files (the old encodings caused errors when used by the game unmodified, e.g. DivideByZero error when interacting with an NPC due to talk.txt not being processed correctly).
 
 ## Changed
-- Updated talk.txt
+- Updated talk.txt.
 
 # 2.32.1.1
 
