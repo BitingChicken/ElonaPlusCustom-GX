@@ -19714,8 +19714,8 @@
 			chatList 15, lang("全て鑑定してほしい", "Identify all of my stuff.") + " (" + calcidentifyvalue(1) + strgold + ")"
 			chatList 16, lang("調査したい", "Investigate an item.") + " (" + calcidentifyvalue(2) + strgold + ")"
 			chatList 75, lang("魔法実習を受けたい", "Attend a magic practice.")
-			chatList 158, lang("不要な魔法ストックの交換", "Exchange unnecessary magic stocks.")
-			chatList 159, lang("不要な魔法ストックまとめて交換", "Exchange unnecessary all magic stocks.")
+			chatList 158, lang("不要な魔法ストックの交換", "Exchange unwanted magic stocks.")
+			chatList 159, lang("不要な魔法ストックまとめて交換", "Exchange all unwanted magic stocks.")
 		}
 		if ( cdata(CDATA_ROLE, tc) == ROLE_TRAINER ) {
 			chatList 17, lang("訓練したい", "Train me.")
@@ -24337,9 +24337,9 @@
 		goto *chat_end
 	}
 	if ( chatval == 158 ) {
-		chatMore lang("不要な魔法はある" + _kana(3) + "？ストックを半分くれれば、その量に応じて充填用魔力をあげる" + _yo(), "If you give me half of the specified magic stock, I will give you mana charge to that amount."), strmore
+		chatMore lang("不要な魔法はある" + _kana(3) + "？ストックを半分くれれば、その量に応じて充填用魔力をあげる" + _yo(), "If you give me half of the specified magic stock, I will give you 1 mana charge for every 200 stock over 200."), strmore
 		efid = -1
-		gosub *com_spell_loop_pgchk
+		gosub *com_spellremove
 		if ( efid > SKILL_NONE ) {
 			darkness2 = spell(efid - 400) / 200
 			if ( efid == SKILL_SPELL_METEOR ) {

@@ -533,66 +533,66 @@
 	loop
 	return
 
-	#deffunc txtsetstance int txtsetstance_count
-		repeat 17
-			i = cnt
-			p(cnt) = p(i)
-			p(i) = cnt
-		loop
-		repeat txtsetstance_count
-			if ( p(cnt) == 0 ) {
-				s(cnt) = lang("気の向くまま（スタンス解除）", "As you please [Default Stance]")
-			}
-			if ( p(cnt) == 1 ) {
-				s(cnt) = lang("荒々しく攻める　　（自身の筋力依存）", "Give it raw, animalisticly [STR check]")
-			}
-			if ( p(cnt) == 2 ) {
-				s(cnt) = lang("焦らしながら攻める（自身の耐久依存）", "Give it slowly, passionately [END check]")
-			}
-			if ( p(cnt) == 3 ) {
-				s(cnt) = lang("テクニカルに攻める（自身の器用依存）", "Give it teasingly, skillfully [DEX check]")
-			}
-			if ( p(cnt) == 4 ) {
-				s(cnt) = lang("囁きながら攻める　（自身の感覚依存）", "Give it sensually, with whisperings [PER check]")
-			}
-			if ( p(cnt) == 5 ) {
-				s(cnt) = lang("マニアックに攻める（自身の習得依存）", "Give it experimentally, manically [LER check]")
-			}
-			if ( p(cnt) == 6 ) {
-				s(cnt) = lang("ねちっこく攻める　（自身の意志依存）", "Give it intensely, dominantly [WIL check]")
-			}
-			if ( p(cnt) == 7 ) {
-				s(cnt) = lang("魔力を使って攻める（自身の魔力依存）", "Give it with magic [MAG check]")
-			}
-			if ( p(cnt) == 8 ) {
-				s(cnt) = lang("甘えるように攻める（自身の魅力依存）", "Give it romantically [CHR check]")
-			}
-			if ( p(cnt) == 9 ) {
-				s(cnt) = lang("荒々しく攻められる　　（相手の筋力依存）", "Take it raw, animalisticly [opponent's STR check]")
-			}
-			if ( p(cnt) == 10 ) {
-				s(cnt) = lang("焦らしながら攻められる（相手の耐久依存）", "Take it slowly, passionately [opponent's END check]")
-			}
-			if ( p(cnt) == 11 ) {
-				s(cnt) = lang("テクニカルに攻められる（自身の器用依存）", "Take it teasingly, skillfully [opponent's DEX check]")
-			}
-			if ( p(cnt) == 12 ) {
-				s(cnt) = lang("囁きながら攻められる　（自身の感覚依存）", "Take it sensually, with whisperings [opponent's PER check]")
-			}
-			if ( p(cnt) == 13 ) {
-				s(cnt) = lang("マニアックに攻められる（自身の習得依存）", "Take it experimentally [opponent's LER check]")
-			}
-			if ( p(cnt) == 14 ) {
-				s(cnt) = lang("ねちっこく攻められる　（自身の意志依存）", "Take it intensely, dominantly [opponent's WIL check]")
-			}
-			if ( p(cnt) == 15 ) {
-				s(cnt) = lang("魔力を使って攻められる（自身の魔力依存）", "Take it with magic [opponent's MAG check]")
-			}
-			if ( p(cnt) == 16 ) {
-				s(cnt) = lang("甘えるように攻められる（自身の魅力依存）", "Take it romantically [opponent's CHR check]")
-			}
-		loop
-		return
+#deffunc txtsetstance int txtsetstance_count
+	repeat 17
+		i = cnt
+		p(cnt) = p(i)
+		p(i) = cnt
+	loop
+	repeat txtsetstance_count
+		if ( p(cnt) == 0 ) {
+			s(cnt) = lang("気の向くまま（スタンス解除）", "As you please [Default Stance]")
+		}
+		if ( p(cnt) == 1 ) {
+			s(cnt) = lang("荒々しく攻める　　（自身の筋力依存）", "Give it raw, animalisticly [STR check]")
+		}
+		if ( p(cnt) == 2 ) {
+			s(cnt) = lang("焦らしながら攻める（自身の耐久依存）", "Give it slowly, passionately [END check]")
+		}
+		if ( p(cnt) == 3 ) {
+			s(cnt) = lang("テクニカルに攻める（自身の器用依存）", "Give it teasingly, skillfully [DEX check]")
+		}
+		if ( p(cnt) == 4 ) {
+			s(cnt) = lang("囁きながら攻める　（自身の感覚依存）", "Give it sensually, with whisperings [PER check]")
+		}
+		if ( p(cnt) == 5 ) {
+			s(cnt) = lang("マニアックに攻める（自身の習得依存）", "Give it experimentally, manically [LER check]")
+		}
+		if ( p(cnt) == 6 ) {
+			s(cnt) = lang("ねちっこく攻める　（自身の意志依存）", "Give it intensely, dominantly [WIL check]")
+		}
+		if ( p(cnt) == 7 ) {
+			s(cnt) = lang("魔力を使って攻める（自身の魔力依存）", "Give it with magic [MAG check]")
+		}
+		if ( p(cnt) == 8 ) {
+			s(cnt) = lang("甘えるように攻める（自身の魅力依存）", "Give it romantically [CHR check]")
+		}
+		if ( p(cnt) == 9 ) {
+			s(cnt) = lang("荒々しく攻められる　　（相手の筋力依存）", "Take it raw, animalisticly [opponent's STR check]")
+		}
+		if ( p(cnt) == 10 ) {
+			s(cnt) = lang("焦らしながら攻められる（相手の耐久依存）", "Take it slowly, passionately [opponent's END check]")
+		}
+		if ( p(cnt) == 11 ) {
+			s(cnt) = lang("テクニカルに攻められる（自身の器用依存）", "Take it teasingly, skillfully [opponent's DEX check]")
+		}
+		if ( p(cnt) == 12 ) {
+			s(cnt) = lang("囁きながら攻められる　（自身の感覚依存）", "Take it sensually, with whisperings [opponent's PER check]")
+		}
+		if ( p(cnt) == 13 ) {
+			s(cnt) = lang("マニアックに攻められる（自身の習得依存）", "Take it experimentally [opponent's LER check]")
+		}
+		if ( p(cnt) == 14 ) {
+			s(cnt) = lang("ねちっこく攻められる　（自身の意志依存）", "Take it intensely, dominantly [opponent's WIL check]")
+		}
+		if ( p(cnt) == 15 ) {
+			s(cnt) = lang("魔力を使って攻められる（自身の魔力依存）", "Take it with magic [opponent's MAG check]")
+		}
+		if ( p(cnt) == 16 ) {
+			s(cnt) = lang("甘えるように攻められる（自身の魅力依存）", "Take it romantically [opponent's CHR check]")
+		}
+	loop
+	return
 
 #deffunc txtsetquiz0 int txtsetquiz0_arg1
 	repeat 4

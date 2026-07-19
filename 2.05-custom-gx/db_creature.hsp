@@ -4,6 +4,8 @@
 	}
 	dbsum = 0
 	dbmax = 0
+	
+*db_creature_TOWN_CHILD4
 	if ( 5 > objlv ) {
 		goto *db_creature_TOWN_CHILD3
 	}
@@ -37018,19 +37020,19 @@
 			txt lang("「コイツよえー」", cnvtalk("Weak! You are weak!"))
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 0
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("街の子供", "town child")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/man/"
 			}
 			return 0
@@ -37105,19 +37107,19 @@
 			txt lang("「こいつよっわ」", cnvtalk("Weak! You are weak!"))
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 0
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("街の子供", "town child")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/man/"
 			}
 			return 0
@@ -37192,19 +37194,19 @@
 			txt lang("「この人弱いな」", cnvtalk("Weak! You are weak!"))
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 0
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("街の子供", "town child")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/man/"
 			}
 			return 0
@@ -37288,19 +37290,19 @@
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 6
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("守毬霊『マリモリ』", "<Marimoll> the marimo guardian")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -37381,19 +37383,19 @@
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 6
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("煙吐く『シーシャーペント』", "<Sheesherpent> the smoke snake")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -37429,7 +37431,7 @@
 			cdata(CDATA_TXT, rc) += 1
 			cdata(CDATA_TXT, rc) += 1
 			cdata(CDATA_TXT, rc) += 1
-			cdata(CDATA_ACT_HEAL, rc) = 401
+			cdata(CDATA_ACT_HEAL, rc) = SKILL_SPELL_HEAL_CRITICAL
 			cdatan(CDATAN_NAME, rc) = lang("煙吐く『シーシャーペント』", "<Sheesherpent> the smoke snake")
 			cdata(CDATA_RELATION, rc) = RELATION_DISLIKE
 			cdata(CDATA_RELATION_ORG, rc) = RELATION_DISLIKE
@@ -37451,19 +37453,19 @@
 	}
 	if ( dbid == CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 6
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("老銀狼の『ジジンガ』", "<Zizinga> the old silver wolf")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -37496,7 +37498,7 @@
 			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
 			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_HOLY_SHIELD
 			cdata(CDATA_ACT_INDEX, rc) = 11
-			cdata(CDATA_ACT_HEAL, rc) = 404
+			cdata(CDATA_ACT_HEAL, rc) = SKILL_SPELL_HEALING_RAIN
 			cdatan(CDATAN_NAME, rc) = lang("老銀狼の『ジジンガ』", "<Zizinga> the old silver wolf")
 			cdata(CDATA_RELATION, rc) = RELATION_NEUTRAL
 			cdata(CDATA_RELATION_ORG, rc) = RELATION_NEUTRAL
@@ -37536,19 +37538,19 @@
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 2
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("ケツピカラー", "ketsu glimmer")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -37603,19 +37605,19 @@
 	}
 	if ( dbid == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 6
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("吸血妊婦『ママラリア』", "<Momalaria> the bloodsucker")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -37673,19 +37675,19 @@
 	}
 	if ( dbid == CREATURE_ID_BIG_MOSQUITO ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 1
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("ビッグモスキート", "big mosquito")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia2/"
 			}
 			return 0
@@ -37760,19 +37762,19 @@
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 6
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("帆娘の『クイーン・セドナ』", "<Queen Sedona> the sail girl")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -37857,19 +37859,19 @@
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 6
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("機動宣伝『プロパ・ガンダー』", "<Propa-gandar> the mobile advertiser")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -37955,19 +37957,19 @@
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 6
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("道を外れた『問題トロッコ』", "<Deviant Minecart>")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -38024,19 +38026,19 @@
 	}
 	if ( dbid == CREATURE_ID_MASKED_MUSANGOD ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 1
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("白鼻神", "masked musangod")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/wild/nefia6/"
 			}
 			return 0
@@ -38094,19 +38096,19 @@
 	}
 	if ( dbid == CREATURE_ID_KAKOI_ANAGUMA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 1
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("囲い穴熊", "kakoi anaguma")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia1/"
 			}
 			return 0
@@ -38162,19 +38164,19 @@
 	}
 	if ( dbid == CREATURE_ID_MADEER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 1
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("マジカ", "madeer")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -38230,19 +38232,19 @@
 	}
 	if ( dbid == CREATURE_ID_MATICK ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 2
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("魔ダニ", "matick")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -38295,19 +38297,19 @@
 	}
 	if ( dbid == CREATURE_ID_VICIOUS_RACCOON ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 1
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("気性あらいぐま", "vicious raccoon")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -38381,19 +38383,19 @@
 			return -1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 3
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("泥棒軽トラ", "thief light truck")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -38472,19 +38474,19 @@
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 1
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("モツヘグイ", "motuhegui")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -38564,19 +38566,19 @@
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
 				return 1
 			}
-			if ( dbspec == 5 ) {
+			if ( dbspec == DBSPEC_CHARA_COL ) {
 				return 0
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				return lang("ガキモツヘグイ", "gaki-motuhegui")
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0

@@ -848,18 +848,20 @@
 						gcopy BUFFER_INF, 1239, 390
 						gmode 2
 					}
-					if ( cdbit(TCG_BIT_GLIMMER, tcgdrawcard_arg1) ) {
-						pos x@tcg + 13, y@tcg + 32 - 6
-						gmode 4, 48, 48, rnd(4) * 60
-						gcopy BUFFER_INF, 192 + 48 * 22 + rnd(1) * inf_tiles, 704
-						gmode 2
-					}
-					if ( cdbit(TCG_BIT_DRUGGED, tcgdrawcard_arg1) ) {
-						pos x@tcg + 13, y@tcg + 32 - 6
-						gmode 2, 48, 48
-						gcopy BUFFER_ITEM, 48 * (6 + rnd(2)), 48 * 29, 48, 48
-						gmode 2
-					}
+				}
+			}
+			if ( cnt == 0 ) {
+				if ( cdbit(TCG_BIT_GLIMMER, tcgdrawcard_arg1) ) {
+					pos x@tcg + 13, y@tcg + 32 - 6
+					gmode 4, 48, 48, rnd(4) * 60
+					gcopy BUFFER_INF, 192 + 48 * 22 + rnd(1) * inf_tiles, 704
+					gmode 2
+				}
+				if ( cdbit(TCG_BIT_DRUGGED, tcgdrawcard_arg1) ) {
+					pos x@tcg + 13, y@tcg + 32 - 6
+					gmode 2, 48, 48
+					gcopy BUFFER_ITEM, 48 * (6 + rnd(2)), 48 * 29, 48, 48
+					gmode 2
 				}
 			}
 			if ( cnt == 0 ) {

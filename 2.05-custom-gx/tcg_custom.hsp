@@ -12864,7 +12864,7 @@
 		cardrefclass = "warrior"
 		cardreflvl = 77
 		cardrefquality = FIX_QUALITY_GOOD
-		cardrefdomain = 1
+		cardrefdomain = 4
 		cardrefcost = 3
 		cardrefattack = 2
 		cardrefhp = 4

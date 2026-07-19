@@ -8564,7 +8564,7 @@
 	display_window (windoww - 720) / 2 + inf_screenx, winposy(438), 720, 438
 	display_topic lang("魔法の名称", "Name"), wx + 28, wy + 36
 	display_topic lang("消費MP(ｽﾄｯｸ)　LV/成功　(潜在) ", "Cost(Stock) Lv/Chance"), wx + 190, wy + 36
-	display_topic lang("冊数", "Number"), wx + 460, wy + 36
+	display_topic lang("冊数", "Produce"), wx + 460, wy + 36
 	pos wx + 46, wy - 16
 	gcopy BUFFER_INF, 288 + 13 * 48, 48, 48, 48
 	pos wx + ww - 78, wy
@@ -8640,7 +8640,7 @@
 			satusuu = -1
 		}
 		if ( satusuu > 0 ) {
-			s = "" + satusuu + lang("冊作れる ", "books can be produced ")
+			s = "" + satusuu + lang("冊作れる ", " book produced ")
 		}
 		if ( satusuu == 0 ) {
 			s = lang("ストックが2000以上必要 ", "Need more than 2000 stock ")
@@ -8873,7 +8873,7 @@
 			satusuu = satusuu * 50
 		}
 		if ( satusuu > 0 ) {
-			s = "" + satusuu + lang("の充填用魔力 ", "mana charge ")
+			s = "" + satusuu + lang("の充填用魔力 ", " mana charge ")
 		}
 		if ( satusuu == 0 ) {
 			s = lang("ストックが200以上必要 ", "Need more than 200 stock ")
