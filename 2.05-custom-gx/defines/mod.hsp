@@ -4747,6 +4747,15 @@
 #define global	VEHICLE_MAGIC_LOCOMOTIVE	3
 #define global	VEHICLE_LAND_BATTLESHIP	4
 
+// Ships
+#define global  SHIP_NONE   0
+#define global  SHIP_HUGE_RAFT  1
+#define global  SHIP_FISHING_SHIP   2
+#define global  SHIP_PIRATE_SHIP    3
+#define global  SHIP_CRUISE_SHIP    4
+#define global  SHIP_WARSHIP    5
+#define global  SHIP_SUBMARINE  6
+
 // Items
 #define global	ITEM_ID_DUMMY	0
 #define global	ITEM_ID_LONG_SWORD	1

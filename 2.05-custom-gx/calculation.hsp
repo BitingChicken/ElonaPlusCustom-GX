@@ -744,16 +744,16 @@
 
 #defcfunc calccargoupdatecost
 	locvar_calccargoupdatecost_cargo = gdata(GDATA_CARGO_LIMIT)
-	if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 1 ) {
+	if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_CARRIAGE ) {
 		locvar_calccargoupdatecost_cargo -= 10 * 1000
 	}
-	if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 2 ) {
+	if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_TRUCK ) {
 		locvar_calccargoupdatecost_cargo -= 20 * 1000
 	}
-	if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 3 ) {
+	if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_MAGIC_LOCOMOTIVE ) {
 		locvar_calccargoupdatecost_cargo -= 30 * 1000
 	}
-	if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 4 ) {
+	if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_LAND_BATTLESHIP ) {
 		locvar_calccargoupdatecost_cargo -= 100 * 1000
 	}
 	locvar_calccosthire_cost = (locvar_calccargoupdatecost_cargo - gdata(GDATA_CARGO_LIMIT_ORG)) / 10000 + 1
@@ -1784,7 +1784,7 @@
 		}
 	}
 	if ( gdata(GDATA_AREA) == AREA_OCEAN ) {
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 0 ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_NONE ) {
 			if ( cdata(CDATA_CONDITION_WET, r1) < 5 ) {
 				cdata(CDATA_CONDITION_WET, r1) = 5
 			}

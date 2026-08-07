@@ -1292,26 +1292,26 @@
 				bmes "Opponent's Ship-Condition < " + _shiphp(enemyhp) + " > ", 15, 215, 215
 			}
 		}
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 0 ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_NONE ) {
 			gdata(GDATA_FLAG_SAVED_DRIFTERS) = 0
 			maxship = 0
 		}
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 1 ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_HUGE_RAFT ) {
 			maxship = 2
 		}
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 2 ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_FISHING_SHIP ) {
 			maxship = 5
 		}
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 3 ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_PIRATE_SHIP ) {
 			maxship = 10
 		}
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 4 ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_CRUISE_SHIP ) {
 			maxship = 100
 		}
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 5 ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_WARSHIP ) {
 			maxship = 20
 		}
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 6 ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_SUBMARINE ) {
 			maxship = 5
 		}
 		pos inf_clockw + 230, inf_clocky + 57
@@ -1571,7 +1571,7 @@
 		gdata(GDATA_FLAG_CUT_IN_MESSAGE_2)++
 		pos inf_clockw + 80, inf_clocky + 95
 		color 0, 0, 0
-		bmes lang("ミーア「にゃんこ溢れるこの世界を〜守ってほしいでありますぅ！」", "Mia prays, " + cnvtalk("Mia want nyou to protect this world full of cats!")), 235, 235, 35
+		bmes lang("ミーア「にゃんこ溢れるこの世界を～守ってほしいでありますぅ！」", "Mia prays, " + cnvtalk("Mia want nyou to protect this world full of cats!")), 235, 235, 35
 	}
 	if ( gdata(GDATA_FLAG_CUT_IN_MESSAGE_2) >= 3100 & gdata(GDATA_FLAG_CUT_IN_MESSAGE_2) < 3190 ) {
 		gdata(GDATA_FLAG_CUT_IN_MESSAGE_2)++

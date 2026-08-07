@@ -50,7 +50,7 @@
 		}
 	}
 	else {
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) > 0 & mdata(MDATA_TYPE) == MAP_TYPE_WORLD & gdata(GDATA_AREA) == AREA_OCEAN ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) > SHIP_NONE & mdata(MDATA_TYPE) == MAP_TYPE_WORLD & gdata(GDATA_AREA) == AREA_OCEAN ) {
 			if ( create_pcpic_arg1 == 0 ) {
 				pccSet("worldship", gdata(GDATA_FLAG_SHIP_IMAGE))
 			}

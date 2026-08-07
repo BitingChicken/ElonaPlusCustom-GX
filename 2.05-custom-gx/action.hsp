@@ -2507,7 +2507,7 @@
 							loop
 						}
 					}
-					if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 4 ) {
+					if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_LAND_BATTLESHIP ) {
 						if ( encounter == ENCOUNTER_ROGUE ) {
 							snd SOUNDLIST_ATTACK00
 							encounter = 0
@@ -2833,7 +2833,7 @@
 				if ( gdata(GDATA_AREA) != AREA_OCEAN ) {
 					if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) > VEHICLE_NONE ) {
 						snd SOUNDLIST_DRAG01
-						if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 3 ) {
+						if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_MAGIC_LOCOMOTIVE ) {
 							if ( cdata(CDATA_MP, CHARA_PLAYER) > (-9999) ) {
 								cdata(CDATA_MP, CHARA_PLAYER) -= limit(cdata(CDATA_MAX_MP, CHARA_PLAYER) / 200, 1, 100)
 							}
@@ -6156,16 +6156,16 @@
 		if ( gdata(GDATA_AREA) == AREA_OCEAN ) {
 		}
 		else {
-			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 1 ) {
+			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_CARRIAGE ) {
 				snd SOUNDLIST_INANAKI
 			}
-			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 2 ) {
+			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_TRUCK ) {
 				snd SOUNDLIST_CAR_HORN1
 			}
-			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 3 ) {
+			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_MAGIC_LOCOMOTIVE ) {
 				snd SOUNDLIST_LOCOMO
 			}
-			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == 4 ) {
+			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_LAND_BATTLESHIP ) {
 				snd SOUNDLIST_SIREN
 			}
 		}
@@ -8367,7 +8367,7 @@
 					if ( inv(INV_ITEM_COL, ci) >= 29 | inv(INV_ITEM_COL, ci) <= 1 ) {
 						txtef COLOR_PINK
 						txtmore
-						txt lang("「おお、わかってるねぇ〜」", name(tc) + " states, " + cnvtalk("Wow, you know my tastes really well."))
+						txt lang("「おお、わかってるねぇ～」", name(tc) + " states, " + cnvtalk("Wow, you know my tastes really well."))
 					}
 					addbuff tc, BUFF_BOOST, 20, 3
 				}

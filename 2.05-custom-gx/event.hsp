@@ -306,8 +306,8 @@
 						gosub *random_event
 					}
 				}
-				if ( gdata(GDATA_FLAG_SHIP_TYPE) > 0 ) {
-					if ( gdata(GDATA_FLAG_SHIP_TYPE) < 6 ) {
+				if ( gdata(GDATA_FLAG_SHIP_TYPE) > SHIP_NONE ) {
+					if ( gdata(GDATA_FLAG_SHIP_TYPE) < SHIP_SUBMARINE ) {
 						if ( rnd(10) == 0 ) {
 							id = RANDOM_EVENT_SEA_AERIAL_THREAT
 							goto *random_eventProc
@@ -1505,7 +1505,7 @@
 		}
 		if ( rtval == 3 ) {
 			if ( jp ) {
-				txt cdatan(CDATAN_NAME, child) + "「じゃあやめとく」", cdatan(CDATAN_NAME, child) + "「ええ〜？」"
+				txt cdatan(CDATAN_NAME, child) + "「じゃあやめとく」", cdatan(CDATAN_NAME, child) + "「ええ～？」"
 			}
 			if ( en ) {
 				txt cdatan(CDATAN_NAME, child) + " " + cnvtalk("I'll stop then"), cdatan(CDATAN_NAME, child) + " " + cnvtalk("Huh?")
@@ -1648,7 +1648,7 @@
 		}
 		if ( rtval == 2 ) {
 			if ( jp ) {
-				txt cdatan(CDATAN_NAME, child) + "「コウノトリさんは" + _ore(3) + "をどこから運んで来たの" + _kana(3) + "」", cdatan(CDATAN_NAME, child) + "「絶対ウソだ〜」"
+				txt cdatan(CDATAN_NAME, child) + "「コウノトリさんは" + _ore(3) + "をどこから運んで来たの" + _kana(3) + "」", cdatan(CDATAN_NAME, child) + "「絶対ウソだ～」"
 			}
 			if ( en ) {
 				txt cdatan(CDATAN_NAME, child) + " " + cnvtalk("Where does the white stork bring the baby from?"), cdatan(CDATAN_NAME, child) + " " + cnvtalk("It's a lie!")
@@ -3665,7 +3665,7 @@
 				snd SOUNDLIST_CRUSH1
 				snd SOUNDLIST_CRUSH1
 				snd SOUNDLIST_CRUSH1
-				gdata(GDATA_FLAG_SHIP_TYPE) = 0
+				gdata(GDATA_FLAG_SHIP_TYPE) = SHIP_NONE
 				create_pcpic 0, 1
 			}
 		}
@@ -3707,7 +3707,7 @@
 			snd SOUNDLIST_MIZU
 			kaiwa = rnd(2)
 			kazu = rnd(6) + 8
-			if ( gdata(GDATA_FLAG_SHIP_TYPE) == 2 ) {
+			if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_FISHING_SHIP ) {
 				kazu = rnd(11) + 16
 				txt lang("あなたは漁船の網を使った。", "You used the net of fishing ship.")
 			}
@@ -3790,7 +3790,7 @@
 		file = "bg_re24"
 		buff = lang("前方に船影を発見した。ここからでは何の船かよく分からない。", "You spot a ship's shadow ahead. You don't quite know what ship it is from here.")
 		chatList 1, lang("近づいてみる", "(Get closer)")
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) == 3 | gdata(GDATA_FLAG_SHIP_TYPE) >= 5 ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_PIRATE_SHIP | gdata(GDATA_FLAG_SHIP_TYPE) >= SHIP_WARSHIP ) {
 			chatList 2, lang("とりあえず先制攻撃", "(Strike first)")
 		}
 		chatList 3, lang("立ち去る", "(Leave)")
@@ -3831,11 +3831,11 @@
 				txt lang("攻撃に驚き、船は慌てて逃げていった。", "Surprised by the attack, the ship fled in a panic.")
 				goto *random_eventProc_SWEND1
 			}
-			if ( gdata(GDATA_FLAG_SHIP_TYPE) == 3 | gdata(GDATA_FLAG_SHIP_TYPE) == 5 ) {
+			if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_PIRATE_SHIP | gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_WARSHIP ) {
 				txtef COLOR_GREEN
 				txt lang("砲撃が命中！相手の船耐久が減少した。", "Artillery hit! Opponent's ship durability has decreased.")
 			}
-			if ( gdata(GDATA_FLAG_SHIP_TYPE) == 6 ) {
+			if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_SUBMARINE ) {
 				txtef COLOR_GREEN
 				txt lang("魚雷が命中！相手の船耐久が減少した。", "Torpedoes hit! Opponent's ship durability has decreased.")
 			}
@@ -4037,7 +4037,7 @@
 			}
 		}
 		if ( rtval == 2 ) {
-			if ( gdata(GDATA_FLAG_SHIP_TYPE) == 3 | gdata(GDATA_FLAG_SHIP_TYPE) == 5 ) {
+			if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_PIRATE_SHIP | gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_WARSHIP ) {
 				txt lang("大きな損傷を受ける前に大砲で追い払うことができた。", "Your ship was able to drive off the seabirds with its cannon before it was severely damaged.")
 				snd SOUNDLIST_BALL1
 			}
@@ -4053,7 +4053,7 @@
 			snd SOUNDLIST_CRUSH1
 			snd SOUNDLIST_CRUSH1
 			snd SOUNDLIST_CRUSH1
-			gdata(GDATA_FLAG_SHIP_TYPE) = 0
+			gdata(GDATA_FLAG_SHIP_TYPE) = SHIP_NONE
 			create_pcpic 0, 1
 		}
 		goto *random_eventProc_SWEND1
@@ -4088,7 +4088,7 @@
 			}
 		}
 		if ( rtval == 2 ) {
-			if ( gdata(GDATA_FLAG_SHIP_TYPE) >= 5 ) {
+			if ( gdata(GDATA_FLAG_SHIP_TYPE) >= SHIP_WARSHIP ) {
 				txt lang("大きな損傷を受ける前に魚雷でサメを爆殺した。", "Your ship was able to kill the shark with torpedoes before it was severely damaged.")
 				snd SOUNDLIST_BALL1
 			}
@@ -4104,7 +4104,7 @@
 			snd SOUNDLIST_CRUSH1
 			snd SOUNDLIST_CRUSH1
 			snd SOUNDLIST_CRUSH1
-			gdata(GDATA_FLAG_SHIP_TYPE) = 0
+			gdata(GDATA_FLAG_SHIP_TYPE) = SHIP_NONE
 			create_pcpic 0, 1
 		}
 		goto *random_eventProc_SWEND1

@@ -2140,7 +2140,7 @@
 #deffunc cell_draw_vehicle int cell_draw_arg_c, int cell_draw_arg_dx, int cell_draw_arg_dy, int cell_draw_arg_g, int cell_draw_arg_a
 	if ( cell_draw_arg_c == CHARA_PLAYER ) {
 		// Draw vehicle.
-		if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) > 0 & gdata(GDATA_AREA) != AREA_OCEAN ) {
+		if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) > VEHICLE_NONE & gdata(GDATA_AREA) != AREA_OCEAN ) {
 			locvar_cell_draw_wide = 1 + 1 * (gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_LAND_BATTLESHIP)
 			// Draw the trailing train.
 			if ( gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) == VEHICLE_MAGIC_LOCOMOTIVE ) {
@@ -2168,11 +2168,11 @@
 			return 1
 		}
 		// Draw ocean vehicle
-		if ( gdata(GDATA_FLAG_SHIP_TYPE) > 0 & gdata(GDATA_AREA) == AREA_OCEAN ) {
+		if ( gdata(GDATA_FLAG_SHIP_TYPE) > SHIP_NONE & gdata(GDATA_AREA) == AREA_OCEAN ) {
 			locvar_cell_draw_wide = 1 + 1 * (gdata(GDATA_FLAG_SHIP_TYPE) >= 3)
 			color 0, 0, 0
 			// Draw submarine with transparency, else draw shadow
-			if ( gdata(GDATA_FLAG_SHIP_TYPE) == 6 ) {
+			if ( gdata(GDATA_FLAG_SHIP_TYPE) == SHIP_SUBMARINE ) {
 				gmode 4, 32, 48, 146
 			} else {
 				gmode 6, , , 110

@@ -8919,7 +8919,7 @@
 		}
 	}
 	if ( charaIsVisible_charidx != CHARA_PLAYER ) {
-		if ( ((gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) > 0 & gdata(GDATA_WORLD) != AREA_OCEAN) | (gdata(GDATA_FLAG_SHIP_TYPE) > 0 & gdata(GDATA_WORLD) == AREA_OCEAN)) & mdata(MDATA_TYPE) == MAP_TYPE_WORLD & cdata(CDATA_RELATION, locvar_cell_show_c) == RELATION_ALLY ) {
+		if ( ((gdata(GDATA_FLAG_WORLD_MAP_VEHICLE_KIND) > VEHICLE_NONE & gdata(GDATA_WORLD) != AREA_OCEAN) | (gdata(GDATA_FLAG_SHIP_TYPE) > SHIP_NONE & gdata(GDATA_WORLD) == AREA_OCEAN)) & mdata(MDATA_TYPE) == MAP_TYPE_WORLD & cdata(CDATA_RELATION, locvar_cell_show_c) == RELATION_ALLY ) {
 			return 0
 		}
 	}
