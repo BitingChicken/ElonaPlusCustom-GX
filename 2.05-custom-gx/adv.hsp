@@ -138,7 +138,7 @@
 		cbitmod CHARA_BIT_AWAKE_ZERO_SHOOT, rc, 0
 		cbitmod CHARA_BIT_AWAKE_TACTICAL_THROW, rc, 0
 		cdata(CDATA_ADVENTURER_MESSAGE_RECEIVED, rc) = ADVENTURER_MESSAGE_NONE
-		cdata(CDATA_PLATINUM, rc) = 0
+		cdata(CDATA_ANALYSIS_GAUGE, rc) = 0
 		cdata(CDATA_AP_CURRENT, rc) = 0
 		if ( cdata(CDATA_LEVEL, rc) >= 10 ) {
 			cdata(CDATA_LEVEL, rc) = 10

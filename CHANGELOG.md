@@ -1,3 +1,9 @@
+# Upcoming
+
+## Changed
+- Spell menu now shows adjusted spell cost when Advanced Casting is active.
+- Over-cast warning now accounts for whether or not Advanced Casting is active.
+
 # 2.32.1.3
 All of these came from (aebe0d8)[https://github.com/JianmengYu/ElonaPlusCustom-GX/commit/aebe0d8b1941ec2b664bbad87659e54cc3b8eb35] by JianmengYu.
 

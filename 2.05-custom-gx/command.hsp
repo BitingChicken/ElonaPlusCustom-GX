@@ -9087,8 +9087,16 @@
 			}
 		loop
 		cs_list skillname(i) + s, wx + 84, wy + 66 + cnt * 19 - 1, 19
+		/********** ORIGINAL - BEGINNING **********
 		s = "" + calcspellcostmp(i, cc) + "(" + spell(i - STARTING_SKILL_SPELL) + ")"
-
+		 ********** ORIGINAL - BEGINNING **********/
+		/********** CHICKEN CUSTOM - BEGINNING **********/
+		if ( cdata(CDATA_ADVANCED_CASTING_ENABLED, CHARA_PLAYER) == 0 ) {
+			s = "" + calcspellcostmp(i, cc) + "(" + spell(i - STARTING_SKILL_SPELL) + ")"
+		} else {
+			s = "" + calcspellcostmp(i, cc) * 3 + "(" + spell(i - STARTING_SKILL_SPELL) + ")"
+		}
+		/********** CHICKEN CUSTOM - ENDING **********/
 		/********** ANNA CUSTOM - BEGINNING **********/
 
 		repeat 15
