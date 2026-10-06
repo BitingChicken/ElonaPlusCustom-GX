@@ -17,5 +17,5 @@ git push origin 2.05.1.1
 - `ADDT.dll` and `GuruGuruSMF4.hpi` from `2.05-custom-gx/`,
 - `config.txt` from `dist/2.05-custom-gx/original`, and everything in `dist/2.05-custom-gx`
 to the downloaded release archive.
-8. Make a new release using GitHub under the newly pushed tag.
-9. Download the new release and test it under a fresh install of Elona+ to make sure everything works.
+8. Test under a fresh install of Elona+ to make sure everything works.
+9. Make a new release using GitHub under the newly pushed tag.

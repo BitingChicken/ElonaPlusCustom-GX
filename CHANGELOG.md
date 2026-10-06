@@ -1,4 +1,7 @@
-# Upcoming
+# 2.33R.1.0
+
+## Added
+- Ported all changes from 2.33R.
 
 ## Changed
 - Spell menu now shows adjusted spell cost when Advanced Casting is active.

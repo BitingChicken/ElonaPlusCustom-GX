@@ -1506,6 +1506,24 @@ Hullo adventurer! Adventurer hullo! Have a look! Caw!
 Cheap! Cheep! Cheap!
 %END
 
+
+%PIGEON,JP			/crow
+ハトに働かせるなんてシンプルに頭がおかしい{よ}。
+方角は磁気で分かるけど、住所はガードに尋ねないと分からない{な}。
+郵政鳥営化しやがってこんちきしょう！
+給料の補給品はペリカンが運ぶから管轄外{だ}。
+コウノトリの奴が赤ちゃん配達しているって言うんだけどホント{かな}？
+%END
+
+%PIGEON,EN			/crow
+Making pigeons do the work is just plain insane.
+I can tell directions by magnetism, but I can't figure out an address without asking a guard.
+The nerve of them, letting a bird run the postal service!
+Pelicans handle the delivery of salary supplies, so that's outside my jurisdiction.
+They say storks deliver babies, but is that really true?
+%END
+
+
 %OBLIVION,JP			/obli
 巫女様は個人の記憶だけでなく、その個人に関する他者の記憶や記録も消せる{のだ}。素晴らしい。素晴らしい。
 記憶消去の際に余計なことを考えていると、発狂したり余計な記憶まで消えてしま{う}。
