@@ -9942,7 +9942,7 @@
 			flt
 			itemcreate -1, ITEM_ID_POT_OF_ALCHEMIST, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 		}
 		kamen10 = 0
 	}
@@ -9951,7 +9951,7 @@
 			flt
 			itemcreate -1, ITEM_ID_MIMIRROCRY, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 		}
 		kamen11 = 0
 	}
@@ -9960,25 +9960,25 @@
 			flt
 			itemcreate -1, ITEM_ID_EGELMAIL, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 		}
 		if ( gdata(GDATA_FLAG_SUB_REGULUS_KIKKASU) >= 100 ) {
 			flt
 			itemcreate -1, ITEM_ID_ROATONING, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 		}
 		if ( gdata(GDATA_FLAG_SUB_REGULUS_EULDERNA) >= 100 ) {
 			flt
 			itemcreate -1, ITEM_ID_INQTUAFFLER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 		}
 		if ( gdata(GDATA_FLAG_SUB_REGULUS_MAYROON) >= 100 ) {
 			flt
 			itemcreate -1, ITEM_ID_LAZASYEEL, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 		}
 		kamen6430 = 0
 	}

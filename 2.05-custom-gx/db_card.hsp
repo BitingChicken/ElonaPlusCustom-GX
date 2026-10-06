@@ -5292,7 +5292,7 @@
 	}
 	if ( dbid == CREATURE_ID_SHURAIDA_THE_EXPERT_MERC ) {
 		cardreftype = 10
-		cardrefskill = lang("国同士の抗争で使い潰されていくことに疑問を持ち、同志を集めて傭兵団を結成した。優れたサバイバリティで戦友達を何度も救っており、彼を師と仰ぐ傭兵も多い。傭兵の仕事がない時は実家で農業をしている。", "Concerned about being consumed by the war between the nations he gathered his comrades and formed a mercenary group. He has saved his comrades many times with his superior survivorship and many mercenaries look up to him as a mentor. When he's not working as a mercenary he's farming at his parents' house.")
+		cardrefskill = lang("国同士の抗争で使い潰されていくことに疑問を持ち、同志を集めて傭兵団を結成した。優れたサバイバビリティで戦友達を何度も救っており、彼を師と仰ぐ傭兵も多い。傭兵の仕事がない時は実家で農業をしている。", "Concerned about being consumed by the war between the nations he gathered his comrades and formed a mercenary group. He has saved his comrades many times with his superior survivorship and many mercenaries look up to him as a mentor. When he's not working as a mercenary he's farming at his parents' house.")
 		cardrefdomain = 5
 		cardrefrare = 30
 		cardrefcost = 0
@@ -12304,11 +12304,11 @@
 		cardrefskill = lang("暗黒をもたらす息吹を放つ犬。対象が見えなければ多くの魔法は発動できないため、多くの魔法使いの天敵と言える。性格もダークで、かわいそうなインド象をもそそのかし暗黒面に叩き落とすという。", "A dog that releases breath that brings darkness. It is the natural enemy of many wizards, as it cannot perform many of its magic if it cannot see its target. It has a dark personality and is said to seduce poor Indian elephants and bring them down to the dark side.")
 		cardrefdomain = 0
 		cardrefrare = 70
-		cardrefcost = 0
+		cardrefcost = 1
 		cardrefattack = 690
 		cardrefhp = 3
 		cardrefn = lang("ダークハウンド", "dark hound")
-		cardrefpic = xy2pic(5, 6) + COLOR_BLUE * COLOR_TINT_MULT
+		cardrefpic = xy2pic(6, 38) + COLOR_BLUE * COLOR_TINT_MULT
 		cardrefrace = "54 effect:" + skillname(cardrefattack) + " "
 		return 1
 	}
@@ -12317,11 +12317,11 @@
 		cardrefskill = lang("幻覚成分を含む息吹を放つ犬。その息吹は少し吸い込むだけでインド象でも昏倒してしまう。混乱した獲物がふらふらになる様を眺めるのが好きらしい。", "Dogs that release breath containing hallucinogenic ingredients. The breath can cause even an Indian elephant to fall into a stupor if it inhales just a little. They like to watch their confused prey become flustered.")
 		cardrefdomain = 0
 		cardrefrare = 50
-		cardrefcost = 0
+		cardrefcost = 1
 		cardrefattack = 690
 		cardrefhp = 3
 		cardrefn = lang("幻惑ハウンド", "illusion hound")
-		cardrefpic = xy2pic(5, 6) + COLOR_PINK * COLOR_TINT_MULT
+		cardrefpic = xy2pic(6, 38) + COLOR_PINK * COLOR_TINT_MULT
 		cardrefrace = "55 effect:" + skillname(cardrefattack) + " "
 		return 1
 	}
@@ -12330,11 +12330,11 @@
 		cardrefskill = lang("神経を麻痺させる息吹を放つ犬。麻痺して動けなくなった獲物に思う存分食らいつく戦法をとる。インド象であろうと息吹を吸い込んでしまったら卒倒は免れない。", "A dog that releases a breath that paralyses the nerves. It will bite its paralysed, immobilised prey to its heart's content. Even an Indian elephant cannot escape a stroke if it inhales the breath.")
 		cardrefdomain = 0
 		cardrefrare = 50
-		cardrefcost = 0
+		cardrefcost = 1
 		cardrefattack = 690
 		cardrefhp = 3
 		cardrefn = lang("神経ハウンド", "nerve hound")
-		cardrefpic = xy2pic(5, 6) + COLOR_SKY_BLUE * COLOR_TINT_MULT
+		cardrefpic = xy2pic(6, 38) + COLOR_SKY_BLUE * COLOR_TINT_MULT
 		cardrefrace = "56 effect:" + skillname(cardrefattack) + " "
 		return 1
 	}
@@ -12343,11 +12343,11 @@
 		cardrefskill = lang("猛毒の息吹を放つ犬。その毒は致命的ではないものの、時間とともに確実に命を蝕む。記録によれば、インド象の多くがこの毒によって命を落としたとされている。", "The dog releases a highly poisonous breath. The poison is not fatal, but it certainly eats away at their lives over time. Records indicate that many Indian elephants have lost their lives to this poison.")
 		cardrefdomain = 0
 		cardrefrare = 50
-		cardrefcost = 0
+		cardrefcost = 1
 		cardrefattack = 690
 		cardrefhp = 3
 		cardrefn = lang("ポイズンハウンド", "poison hound")
-		cardrefpic = xy2pic(5, 6) + COLOR_GREEN * COLOR_TINT_MULT
+		cardrefpic = xy2pic(6, 38) + COLOR_GREEN * COLOR_TINT_MULT
 		cardrefrace = "57 effect:" + skillname(cardrefattack) + " "
 		return 1
 	}
@@ -12356,11 +12356,11 @@
 		cardrefskill = lang("轟音を伴う息吹を放つ犬。耳元で叫ばれると、インド象でも簡単に失神してしまう。高い身体能力も持っており、その一撃は音速を超える。", "A dog releases a roaring breath. Even Indian elephants easily faint when it is shouted in their ears. They also have high physical capabilities, and their blows exceed the speed of sound.")
 		cardrefdomain = 0
 		cardrefrare = 40
-		cardrefcost = 0
+		cardrefcost = 1
 		cardrefattack = 690
 		cardrefhp = 3
 		cardrefn = lang("轟音ハウンド", "sound hound")
-		cardrefpic = xy2pic(5, 6) + COLOR_ORANGE * COLOR_TINT_MULT
+		cardrefpic = xy2pic(6, 38) + COLOR_ORANGE * COLOR_TINT_MULT
 		cardrefrace = "58 effect:" + skillname(cardrefattack) + " "
 		return 1
 	}
@@ -12369,11 +12369,11 @@
 		cardrefskill = lang("冥界の瘴気を帯びた息吹を放つ犬。まともに浴びればインド象でも昇天間違いなしとされる。長らくケルベロスと同一視されていたが、種として全くの別物であることが最近わかった。", "A dog that releases a breath tinged with the miasma of the underworld. It is said that even an Indian elephant would surely ascend to heaven if exposed to it. For a long time it was considered identical to Cerberus, but it has recently been discovered that they are completely different species.")
 		cardrefdomain = 0
 		cardrefrare = 40
-		cardrefcost = 0
+		cardrefcost = 1
 		cardrefattack = 690
 		cardrefhp = 3
 		cardrefn = lang("地獄ハウンド", "nether hound")
-		cardrefpic = xy2pic(5, 6) + COLOR_GRAY * COLOR_TINT_MULT
+		cardrefpic = xy2pic(6, 38) + COLOR_GRAY * COLOR_TINT_MULT
 		cardrefrace = "59 effect:" + skillname(cardrefattack) + " "
 		return 1
 	}
@@ -12382,11 +12382,11 @@
 		cardrefskill = lang("混沌の息吹を放つ犬。混沌とは調和の取れていない様であり、その息を浴びればインド象でも複数の異常を併発して苦しんだ末に死んでしまう。", "A dog that emits the breath of chaos. Chaos is an appearance of lack of harmony, and if exposed to its breath, even an Indian elephant will suffer multiple anomalies and die after suffering from them. ")
 		cardrefdomain = 0
 		cardrefrare = 40
-		cardrefcost = 0
+		cardrefcost = 1
 		cardrefattack = 690
 		cardrefhp = 3
 		cardrefn = lang("カオスハウンド", "chaos hound")
-		cardrefpic = xy2pic(5, 6) + COLOR_LIGHT_PURPLE * COLOR_TINT_MULT
+		cardrefpic = xy2pic(6, 38) + COLOR_LIGHT_PURPLE * COLOR_TINT_MULT
 		cardrefrace = "60 effect:" + skillname(cardrefattack) + " "
 		return 1
 	}

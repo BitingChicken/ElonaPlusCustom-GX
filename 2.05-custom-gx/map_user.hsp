@@ -1248,7 +1248,7 @@
 				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 				goto *com_home_SWEND1
 			}
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 200
 			flt
 			itemcreate -1, ITEM_ID_FLOAT_CAGE, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 3
@@ -1260,7 +1260,7 @@
 				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 				goto *com_home_SWEND1
 			}
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 300
 			flt
 			itemcreate -1, ITEM_ID_SLAVE_SPINNER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1275,7 +1275,7 @@
 				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 				goto *com_home_SWEND1
 			}
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 600
 			repeat 10
 				flt
@@ -1289,7 +1289,7 @@
 				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 				goto *com_home_SWEND1
 			}
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 1000
 			repeat 10
 				flt
@@ -1303,7 +1303,7 @@
 				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 				goto *com_home_SWEND1
 			}
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 1500
 			repeat 10
 				flt
@@ -1317,7 +1317,7 @@
 				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 				goto *com_home_SWEND1
 			}
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 2000
 			flt
 			itemcreate -1, ITEM_ID_SURVIVABILITY_EXTENDER_X, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1332,7 +1332,7 @@
 				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 				goto *com_home_SWEND1
 			}
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 2500
 			flt
 			itemcreate -1, ITEM_ID_SPLENDID_CHAIN, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 3
@@ -1344,7 +1344,7 @@
 				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 				goto *com_home_SWEND1
 			}
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 3000
 			flt
 			itemcreate -1, ITEM_ID_BOTTLE_WATER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 2
@@ -1356,7 +1356,7 @@
 				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 				goto *com_home_SWEND1
 			}
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 4000
 			flt
 			itemcreate -1, ITEM_ID_TOIL_ENERGY_DRINK, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 10
@@ -1681,7 +1681,7 @@
 			adata(ADATA_ICON_ORG, gdata(GDATA_AREA)) = adata(ADATA_ICON, gdata(GDATA_AREA))
 		}
 		txtef COLOR_YELLOW
-		txt lang("対応する画像の番号は？（1〜33で入力。0を入力するとデフォルトに。）", "Input the number of map_ . (1-33) / If input 0, undo.")
+		txt lang("対応する画像の番号は？（1～33で入力。0を入力するとデフォルトに。）", "Input the number of map_ . (1-33) / If input 0, undo.")
 		val = (windoww - 100) / 2 + inf_screenx, winposy(90), 5, 0, 0
 		inputlog = ""
 		gosub *prompt_word

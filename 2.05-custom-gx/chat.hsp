@@ -934,6 +934,7 @@
 				}
 				chatList 2, lang("空飛ぶのが夢ってずっと言ってたじゃん", "You've always said your dream was to fly, remember?")
 				buff = lang("今なら、5000goldあれば治療を受けて元に戻れるんだ！もうお前しか頼れないんだよ！一生のお願いだ、5000gold用意してくれ…！", "Right now, with 5000 gold, I can get treatment and return to normal! You're the only one I can rely on now! I'm begging you?this is a once-in-a-lifetime favor...please prepare 5000 gold for me...!")
+				chatesc = 0
 				gosub *chat_select
 				if ( chatval == 0 ) {
 					chatMore lang("はは…そうだよな、信じるわけないよな。お前を頼ったオレが馬鹿だったよ…。", "Haha... yeah, you're right. There's no way you'd believe it. I was a fool to count on you...")
@@ -957,6 +958,7 @@
 				}
 				chatList 2, lang("わけを話してガードに借りてください", "Please explain the situation to the guard and ask them to lend you some money.")
 				buff = lang("うう…家に帰るためのお金が足りなくってねぇ…後日、必ず返しに来るから、800goldだけ貸してもらえないかい？", "Oh dear... I don't have enough money to get home...I promise to come back and pay you back later...could you lend me just 800 gold?")
+				chatesc = 0
 				gosub *chat_select
 				if ( chatval == 0 ) {
 					chatMore lang("困っている相手になんて酷い態度なんだい！近頃の冒険者ときたら！", "How awful your attitude is towards someone in distress! Adventurers these days...")
@@ -980,6 +982,7 @@
 				}
 				chatList 2, lang("ギルドで直接払うから一緒に来て", "I'll pay directly at the Guild, so come along with me.")
 				buff = lang("冒険者ギルドのほうから来ました。現在、あなたは冒険者ギルドの会費を12000gold滞納しています。もしも今回支払っていただけない場合、冒険者の資格が剥奪され今まで受けてきた各種サービスも受けられなくなります。", "I’m here from the Adventurers' Guild. You are currently 12000 gold behind on your Adventurer's Guild membership fees. If you do not pay this time, your adventurer status will be revoked, and you will no longer be able to receive any of the services you have been receiving up until now.")
+				chatesc = 0
 				gosub *chat_select
 				if ( chatval == 0 ) {
 					chatMore lang("お支払いの意志がないようで。では後日、正式な通知を出させていただきます。さようなら。", "It seems you have no intention of paying. We will send out a formal notification at a later date. Goodbye.")
@@ -1007,6 +1010,7 @@
 				chatList 1, lang("まぁいいか、よろしくな", "Oh well. I'm counting on you.")
 				chatList 2, lang("せめて女の子に化けて来いよ", "The least you could do is transform into a girl.")
 				buff = lang("これから、一生をかけてあなたへの恩を返していきます！ですが、決して給料箱のお金は数えないでくださいね。", "From now on, I will spend my entire life repaying your kindness! But never count the money in your salary chest.")
+				chatesc = 0
 				gosub *chat_select
 				if ( chatval == 0 ) {
 					chatMore lang("今日のところは帰ります。ですが、誰かを信じる心をいつか思い出してくださいね。", "I'm going home for today. But please remember to trust someone.")
@@ -1909,7 +1913,7 @@
 
 			txt lang("二人は荷物をまとめ洞窟を後にした。", "Lomias and Larnneire packed their belongings and left the cave.")
 			txtvalid = 0
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			autosave = 1 * (gdata(GDATA_AREA) != AREA_SHOW_HOUSE)
 			flt
 			itemcreate -1, ITEM_ID_POTION_CURE_CORRUPTION, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -8413,7 +8417,7 @@
 					flt
 					itemcreate -1, ITEM_ID_X_FRAME, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 					cdata(CDATA_MATERIAL3_COUNTER, tc) = 1
-					txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+					txt_questitem
 					goto *chat_end
 				}
 			}
@@ -16049,11 +16053,11 @@
 		buff = lang("よいか、この墓所の中心の枯れ木から右3歩のところで8月に鏡台を使った直後にtabキーで「アソボウヨ」と絶対に発言してはならんぞ。言い伝えによると恐ろしいことが起きるとされておる。（未実装）", "Listen carefully, you must absolutely not say <Let's play> by pressing the tab key immediately after using the dressing table three steps to the right of the dead tree in the center of this tomb in August. Legend has it that something terrible will happen if you do.[under development]")
 		gosub *chat_select
 		if ( chatval == 0 ) {
-			chatMore lang("そういえば…わしはこの話を誰から聞いたんじゃったか？歳のせいなのか、どうしても思い出せんのう。", "Come to think of it... who was it that told me this story? Maybe it's because of my age, but I just can't remember.")
+			chatMore lang("そういえば…わしはこの話を誰から聞いたんじゃったか？歳のせいなのか、どうしても思い出せんのう。", "Come to think of it... who was it that told me this story? Maybe it's because of my age, but I just can't remember."), strbye
 			goto *chat_end
 		}
 		if ( chatval == 1 ) {
-			chatMore lang("それならよいが…。いつの時代もふざけて馬鹿なことをする奴はおるからのう。", "Well, that's fine then... But there are always people who mess around and do stupid things, no matter the era.")
+			chatMore lang("それならよいが…。いつの時代もふざけて馬鹿なことをする奴はおるからのう。", "Well, that's fine then... But there are always people who mess around and do stupid things, no matter the era."), strbye
 			goto *chat_end
 		}
 		goto *chat_end
@@ -16065,18 +16069,18 @@
 		chatList 0, lang("やっぱりサギでは？", "Isn't it a fraud after all?")
 		chatList 1, lang("羽で織物とか作ってくれないの？", "Wouldn't it be nice if they could make textiles from the feathers?")
 		chatList 2, lang("給料箱のお金が少ないような気がする", "I feel like there's not enough money in the pay box.")
-		buff = lang("よいか、この墓所の中心の枯れ木から右3歩のところで8月に鏡台を使った直後にtabキーで「アソボウヨ」と絶対に発言してはならんぞ。言い伝えによると恐ろしいことが起きるとされておる。（未実装）", "Listen carefully, you must absolutely not say <Let's play> by pressing the tab key immediately after using the dressing table three steps to the right of the dead tree in the center of this tomb in August. Legend has it that something terrible will happen if you do.[under development]")
+		buff = lang("いやぁ、恩返しも楽じゃないですね。ですが何年かかってでも必ず恩を返しますので！", "Well, repaying a debt of gratitude is no easy task. But I will definitely repay your kindness, no matter how many years it takes!")
 		gosub *chat_select
 		if ( chatval == 0 ) {
-			chatMore lang("そういえば…わしはこの話を誰から聞いたんじゃったか？歳のせいなのか、どうしても思い出せんのう。", "Come to think of it... who was it that told me this story? Maybe it's because of my age, but I just can't remember.")
+			chatMore lang("やだなぁ！どこからどう見ても、私はただの義理堅いツルじゃないですか。", "No matter how you look at it, I’m a crane that values ??loyalty and obligation, aren't I?"), strbye
 			goto *chat_end
 		}
 		if ( chatval == 1 ) {
-			chatMore lang("それならよいが…。いつの時代もふざけて馬鹿なことをする奴はおるからのう。", "Well, that's fine then... But there are always people who mess around and do stupid things, no matter the era.")
+			chatMore lang("エグくないですか？人間に自分の髪の毛抜いてロープ作れって言ってるようなものですよ、それ。", "Wow! Are you okay to say that? Can you change my rating? Kukuku...I don't think you can."), strbye
 			goto *chat_end
 		}
 		if ( chatval == 2 ) {
-			chatMore lang("それは問題ですね…収支を把握できるように、私が家計を管理してあげましょうか？", "Well, didn't you realize it? Or did you believe in the rank of the house?...Oh, I'm sorry! Even you don't believe in a sloppy assessment of the presence or absence of expensive furniture, right?")
+			chatMore lang("それは問題ですね…収支を把握できるように、私が家計を管理してあげましょうか？", "Well, didn't you realize it? Or did you believe in the rank of the house?...Oh, I'm sorry! Even you don't believe in a sloppy assessment of the presence or absence of expensive furniture, right?"), strbye
 			goto *chat_end
 		}
 		goto *chat_end
@@ -16132,7 +16136,7 @@
 			snd SOUNDLIST_DROP1
 			inv(INV_ITEM_NUM, ci) -= 1
 			chatMore lang("やったぁー！…コホン。褒美をくれてやろう、有効活用するがよい。そして、油揚げを手に入れたらまた献上するのじゃ。", "Yay!...Oops. Offer it to me as many times as you like. I'll give you a reward, so make good use of it. Return to me when you've got more tofu in your pockets."), strbye
-			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+			txt_questitem
 			flt
 			itemcreate -1, ITEM_ID_ECHINOBOX, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL

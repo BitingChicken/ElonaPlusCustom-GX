@@ -846,7 +846,7 @@
 		flt
 		itemcreate -1, ITEM_ID_SCROLL_TELEPORTATION, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 		inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
-		txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+		txt_questitem
 		goto *random_eventProc_SWEND1
 		_switch_sw++
 	}

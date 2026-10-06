@@ -1,4 +1,17 @@
 ID	Type	JName	EName	Value
+1333.ID	-	《デビルシュート》	<Devil Shoot>	0
+1332.ID	-	メガネ	glasses	0
+1331.ID	-	招待状	invitation letter	0
+1330.ID	-	ラブレター	love letter	0
+1329.ID	-	当選通知	winning notification	0
+1328.ID	-	ビジネスレター	business letter	0
+1327.ID	-	ファンレター	fan letter	0
+1326.ID	-	怪文書	suspicious letter	0
+1325.ID	-	不幸の手紙	chain letter of misfortune	0
+1324.ID	-	《エゲル・メイル》	<Egelmail>	0
+1323.ID	-	《ロアト・ニング》	<Roatoning>	0
+1322.ID	-	《インク・ツァフラ》	<Inqtuaffler>	0
+1321.ID	-	《ラジャ・シェール》	<Lazasyeel>	0
 1320.ID	-	TZ500-K型麻酔銃	TZ500-K	0
 1319.ID	-	TZC-500型麻酔銃	TZC-500	0
 1318.ID	-	TZ30-C型麻酔銃	TZ30-C	0

@@ -1433,6 +1433,7 @@
 #define global	EFFECT_GENOCIDE_TAIL	152
 #define global	EFFECT_WARIBASI	153
 #define global	EFFECT_TRANQ_RIFLE	154
+#define global  EFFECT_GLASSES  155
 
 // Traits (feats)
 #define global	TRAIT_NORMAL_OTHER_MUTANT	0

@@ -1400,6 +1400,59 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_ID, rc) == CREATURE_ID_SPIRIT_OF_PANJAN ) {
+		if ( rnd(10) == 0 ) {
+			if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {
+				flt
+				itemcreate -1, ITEM_ID_DEVIL_SHOOT, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+		}
+	}
+	if ( cdata(CDATA_ID, rc) == CREATURE_ID_SPIRIT_OF_PANTY ) {
+		if ( rnd(20) == 0 ) {
+			if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {
+				flt
+				itemcreate -1, ITEM_ID_PANTY, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+				inv(INV_ITEM_COL, ci) = (cdata(CDATA_PIC, rc) - cdata(CDATA_CHARA_PIC, rc) * 1000) / 1000
+			}
+		}
+	}
+	if ( cdata(CDATA_ID, rc) == CREATURE_ID_JAVA_SPOORROWRITER ) {
+		flt
+		itemcreate -1, ITEM_ID_MANUSCRIPT, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 3
+	}
+	if ( cdata(CDATA_ID, rc) == CREATURE_ID_CARRIER_PIGEON ) {
+		if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {
+			if ( rnd(3) == 0 ) {
+				flt
+				itemcreate -1, ITEM_ID_INVITATION_LETTER, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+			if ( rnd(3) == 0 ) {
+				flt
+				itemcreate -1, ITEM_ID_LOVE_LETTER, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+			if ( rnd(3) == 0 ) {
+				flt
+				itemcreate -1, ITEM_ID_WINNING_NOTIFICATION, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+			if ( rnd(3) == 0 ) {
+				flt
+				itemcreate -1, ITEM_ID_BUSINESS_LETTER, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+			if ( rnd(3) == 0 ) {
+				flt
+				itemcreate -1, ITEM_ID_FAN_LETTER, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+			if ( rnd(3) == 0 ) {
+				flt
+				itemcreate -1, ITEM_ID_SUSPICIOUS_LETTER, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+			if ( rnd(3) == 0 ) {
+				flt
+				itemcreate -1, ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE, cdata(CDATA_X, rc), cdata(CDATA_Y, rc), 0
+			}
+		}
+	}
 	if ( cdata(CDATA_ID, rc) == CREATURE_ID_FAIRY ) {
 		if ( rnd(20) == 0 ) {
 			if ( gdata(GDATA_FLAG_RARE_DROP) == 100 ) {
@@ -2289,6 +2342,9 @@
 				inv(INV_ITEM_COL, ci) = COLOR_DARK_GRAY2
 			}
 		}
+		if ( inv(INV_ITEM_ID, ci) == ITEM_ID_GLASSES ) {
+			inv(INV_ITEM_PIC, ci) += rnd(11)
+		}
 	}
 	if ( inv(INV_ITEM_ID, ci) == ITEM_ID_BOTTLE_DYE ) {
 		inv(INV_ITEM_COL, ci) = rnd(MAX_COLOR)
@@ -2711,6 +2767,14 @@
 	}
 	gosub *item_fix
 	if ( reftype == FILTER_FURNITURE ) {
+		if ( rnd(3) == 0 ) {
+			inv(INV_ITEM_SUB_NAME, ci) = rnd(rnd(12) + 1)
+		}
+		else {
+			inv(INV_ITEM_SUB_NAME, ci) = 0
+		}
+	}
+	if ( inv(INV_ITEM_ID, ci) >= ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE & inv(INV_ITEM_ID, ci) <= ITEM_ID_INVITATION_LETTER ) {
 		if ( rnd(3) == 0 ) {
 			inv(INV_ITEM_SUB_NAME, ci) = rnd(rnd(12) + 1)
 		}
@@ -4324,6 +4388,20 @@
 			txt lang("[HAPPY BIRTHDAY！！]　フェイズ2が完了した。", "[HAPPY BIRTHDAY!!] Phase 2 completed.")
 			ccbk = cc
 			evadd EVENT_BIRTH
+		}
+	}
+	if ( cdata(CDATA_HUNGER, cc) >= 12000 ) {
+		if ( gdata(GDATA_WORLD) == AREA_SOUTH_TYRIS ) {
+			if ( rnd(100) == 0 ) {
+				snd SOUNDLIST_BOLT1
+				if ( synccheck(cc, -1) ) {
+					txt lang("なぜかキツツキが飛んできた！", "For some reason, a woodpecker flew in!")
+				}
+				flt
+				characreate -1, CREATURE_ID_CLASHING_WOODPECKER, cdata(CDATA_X, cc), cdata(CDATA_Y, cc)
+				cdata(CDATA_AI_AGGRO, rc) = 80
+				cdata(CDATA_TARGET, rc) = cc
+			}
 		}
 	}
 	eatstatusfood inv(INV_ITEM_STATUS, cieat), cc
