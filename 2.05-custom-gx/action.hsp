@@ -9089,6 +9089,48 @@
 		goto *act_use_SWEND1
 		_switch_sw++
 	}
+	if ( _switch_val == 155 | _switch_sw ) {
+		_switch_sw = 0
+		if ( cdata(CDATA_POWER_GAUGE, cc) != 0 ) {
+			txt lang("何もおきない… ", "Nothing happens...")
+			goto *act_use_SWEND1
+		}
+		snd SOUNDLIST_ENC
+		animeload 96, cc
+		repeat 5
+			item_find ITEM_ID_GLASSES, ITEM_FIND_MODE_DBID, ITEM_FIND_LOCATION_CHARAS
+			if ( stat != (-1) ) {
+				ci = stat
+				if ( inv(INV_ITEM_NUM, ci) >= 1 ) {
+					inv(INV_ITEM_NUM, ci)--
+					cdata(CDATA_POWER_GAUGE, cc) += 11
+				}
+			}
+		loop
+		gosub *calcBurdenPc
+		if ( cdata(CDATA_POWER_GAUGE, cc) == 11 ) {
+			txtef COLOR_YELLOW2
+			txt lang("1メガネ!", "1 megane!")
+		}
+		if ( cdata(CDATA_POWER_GAUGE, cc) == 22 ) {
+			txtef COLOR_YELLOW2
+			txt lang("2メガネ!!", "2 megane!!")
+		}
+		if ( cdata(CDATA_POWER_GAUGE, cc) == 33 ) {
+			txtef COLOR_YELLOW2
+			txt lang("3メガネ!!!", "3 megane!!!")
+		}
+		if ( cdata(CDATA_POWER_GAUGE, cc) == 44 ) {
+			txtef COLOR_YELLOW2
+			txt lang("4メガネ!!!!", "4 megane!!!!")
+		}
+		if ( cdata(CDATA_POWER_GAUGE, cc) == 55 ) {
+			txtef COLOR_YELLOW2
+			txt lang("5メガネ!!!!!", "5 megane!!!!!")
+		}
+		goto *act_use_SWEND1
+		_switch_sw++
+	}
 	if ( _switch_val == EFFECT_WARIBASI | _switch_sw ) {
 		_switch_sw = 0
 		if ( mdata(MDATA_TYPE) == MAP_TYPE_WORLD ) {

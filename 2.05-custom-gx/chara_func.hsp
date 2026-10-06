@@ -7340,398 +7340,403 @@
 			if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE & gdata(GDATA_AREA) != AREA_AMUR_CAGE & gdata(GDATA_AREA) != AREA_VOID & gdata(GDATA_AREA) != AREA_PET_ARENA ) {
 				if ( cbit(CHARA_BIT_LIVESTOCK, dmghp_charid) != 1 ) {
 					if ( dmghp_charid >= MAX_CHARA_FOLLOWER ) {
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ZEOME_THE_FALSE_PROPHET ) {
-							evadd EVENT_WIN_LESIMAS
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ORPHE_THE_CHAOS_CHILD ) {
-							locvar_dmghp_flagorphe++
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ISSIZZLE_THE_DARK_ABOMINATION ) {
-							txtef COLOR_GREEN
-							txt lang("[愚者の魔石]を手に入れた！", "You obtain the [Fool's Magic Stone]!")
-							snd SOUNDLIST_COMPLETE1
-							gdata(GDATA_FLAG_MAIN_FOOL) = 1
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_WYNAN_THE_LORD_OF_THE_ANCIENT_CASTLE ) {
-							txtef COLOR_GREEN
-							txt lang("[覇者の魔石]を手に入れた！", "You obtain the [King's Magic Stone]!")
-							snd SOUNDLIST_COMPLETE1
-							gdata(GDATA_FLAG_MAIN_KING) = 1
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_QURUIZA_THE_RED_EYED_DECEIVER ) {
-							txtef COLOR_GREEN
-							txt lang("[賢者の魔石]を手に入れた！", "You obtain the [Sage's Magic Stone]!")
-							snd SOUNDLIST_COMPLETE1
-							gdata(GDATA_FLAG_MAIN_SAGE) = 1
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_REVLUS_THE_MAGE_GUILDMASTER ) {
-							if ( gdata(GDATA_FLAG_SUB_GUILD_WARS3) == 1 ) {
-								gdata(GDATA_FLAG_SUB_GUILD_WARS3) = 2
-								txt_questupdate
+						if ( cdata(CDATA_ALLIED, dmghp_charid) == 0 ) {
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ZEOME_THE_FALSE_PROPHET ) {
+								evadd EVENT_WIN_LESIMAS
 							}
-							if ( gdata(GDATA_FLAG_SUB_GUILD_WARS2) == 1 ) {
-								gdata(GDATA_FLAG_SUB_GUILD_WARS2) = 2
-								txt_questupdate
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_HERAUDSTERON ) {
+								cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) = 0
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_FRAY_THE_FIGHTER_GUILDMASTER ) {
-							if ( gdata(GDATA_FLAG_SUB_GUILD_WARS1) == 1 ) {
-								gdata(GDATA_FLAG_SUB_GUILD_WARS1) = 2
-								txt_questupdate
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ORPHE_THE_CHAOS_CHILD ) {
+								locvar_dmghp_flagorphe++
 							}
-							if ( gdata(GDATA_FLAG_SUB_GUILD_WARS2) == 1 ) {
-								gdata(GDATA_FLAG_SUB_GUILD_WARS2) = 2
-								txt_questupdate
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_SIN_THE_THIEF_GUILDMASTER ) {
-							if ( gdata(GDATA_FLAG_SUB_GUILD_WARS3) == 1 ) {
-								gdata(GDATA_FLAG_SUB_GUILD_WARS3) = 2
-								txt_questupdate
-							}
-							if ( gdata(GDATA_FLAG_SUB_GUILD_WARS1) == 1 ) {
-								gdata(GDATA_FLAG_SUB_GUILD_WARS1) = 2
-								txt_questupdate
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_RODLOB_THE_YEEK_CHIEF ) {
-							if ( gdata(GDATA_FLAG_SUB_YEEK) < 1000 ) {
-								gdata(GDATA_FLAG_SUB_YEEK) = 2
-								txt_questupdate
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID ) {
-							if ( gdata(GDATA_FLAG_SUB_PYRAMID) < 1000 ) {
-								gdata(GDATA_FLAG_SUB_PYRAMID) = 1000
-								txt_questupdate
-								txt_questcompleted
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNGAGA_THE_MINOTAUR_KING ) {
-							if ( gdata(GDATA_FLAG_SUB_MINOTAUR) < 1000 ) {
-								gdata(GDATA_FLAG_SUB_MINOTAUR) = 2
-								txt_questupdate
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_VANSESDA_THE_ANCIENT_FIRE ) {
-							if ( gdata(GDATA_FLAG_SUB_WHEN_THE_FLAME_BURNS_OUT) < 1000 ) {
-								gdata(GDATA_FLAG_SUB_WHEN_THE_FLAME_BURNS_OUT) = 2
-								txt_questupdate
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_BIG_DADDY & dmghp_source >= DAMAGE_FROM_CHARA ) {
-							if ( dmghp_source == DAMAGE_FROM_CHARA | dmghp_source < MAX_CHARA_FOLLOWER | cbit(CHARA_BIT_NECRO, dmghp_source) == TRUE | dmghp_source == DAMAGE_FROM_PERSUASION_LOW | dmghp_source == DAMAGE_FROM_PERSUASION_HIGH ) {
-								evadd EVENT_LITTLE_SISTER, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
-							}
-							else {
-								txt lang("ビッグダディは既にリトルシスターを何処かへ逃がしていた。", "The Big Daddy had already evacuated the Little Sister somewhere.")
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_LITTLE_SISTER ) {
-							if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-								gdata(GDATA_SISTER_KILLED)++
-								txtef COLOR_RED
-								txt lang("リトルシスター殺害" + gdata(GDATA_SISTER_KILLED) + "回、救出" + gdata(GDATA_SISTER_SAVED) + "回。", "You have saved Little Sisters " + gdata(GDATA_SISTER_SAVED) + " times and killed them " + gdata(GDATA_SISTER_KILLED) + " times.")
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_H_SISTER ) {
-							if ( gdata(GDATA_FLAG_SUB_H_SISTER) < 1000 ) {
-								gdata(GDATA_FLAG_SUB_H_SISTER) = 2
-								txt_questupdate
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_EBARTH_THE_PIRATE_BOSS ) {
-							if ( gdata(GDATA_FLAG_SUB_PIRATE_HUNTING) < 1000 ) {
-								gdata(GDATA_FLAG_SUB_PIRATE_HUNTING) = 1000
-								txt_questupdate
-								txt_questcompleted
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ANUBIS_THE_MASTER_OF_DEATH ) {
-							txtef COLOR_GREEN
-							txt lang("[太陽のアンク]を手に入れた！", "You obtain the [Ankh of The Sun]!")
-							snd SOUNDLIST_COMPLETE1
-							gdata(GDATA_FLAG_MAIN_ANKH) = 1
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_METAL_VESDA_THE_FIRE_MACHINE ) {
-							txtef COLOR_GREEN
-							txt lang("[データチップ]を手に入れた！", "You obtain the [Data Chip]!")
-							snd SOUNDLIST_COMPLETE1
-							gdata(GDATA_FLAG_MAIN_DATA_CHIP) = 1
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_EXOSSIL_THE_CHAOS_WING ) {
-							txtef COLOR_GREEN
-							txt lang("[混沌の翼]を手に入れた！", "You obtain the [Chaos Wings]!")
-							snd SOUNDLIST_COMPLETE1
-							gdata(GDATA_FLAG_MAIN_CHAOS_WINGS) = 1
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_CHAOS_UNICORN_KING_OF_CHAOS ) {
-							if ( gdata(GDATA_FLAG_MAIN) < 270 ) {
-								gdata(GDATA_FLAG_MAIN) = 270
-								snd SOUNDLIST_CHEST1
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MOBILE_COMMUNICATION_EQUIPMENT ) {
-							if ( gdata(GDATA_FLAG_MAIN) < 266 ) {
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ISSIZZLE_THE_DARK_ABOMINATION ) {
 								txtef COLOR_GREEN
-								txt lang("[データレジスタ]を手に入れた！", "You obtain the [Data Register]!")
+								txt lang("[愚者の魔石]を手に入れた！", "You obtain the [Fool's Magic Stone]!")
 								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_MAIN) = 266
-								txt_questupdate
+								gdata(GDATA_FLAG_MAIN_FOOL) = 1
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MESHERA_PLANT ) {
-							evadd EVENT_MESHERA_ALPHA, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MESHERA_ALPHA_THE_DEFORMED_ANGEL ) {
-							evadd EVENT_WIN_REMIDO
-						}
-						if ( gdata(GDATA_LEVEL) == adata(ADATA_MAX_LEVEL, gdata(GDATA_AREA)) | gdata(GDATA_AREA) == AREA_VOID ) {
-							if ( adata(ADATA_BOSS, gdata(GDATA_AREA)) == dmghp_charid ) {
-								evadd EVENT_WIN_BOSS_RANDOM
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_GWEN_THE_PITILESS ) {
-							gdata(GDATA_GWEN_PITILESS_LVL)++
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ETHER_GENERATOR ) {
-							if ( gdata(GDATA_FLAG_MAIN) >= 300 & gdata(GDATA_FLAG_MAIN) < 310 ) {
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_WYNAN_THE_LORD_OF_THE_ANCIENT_CASTLE ) {
 								txtef COLOR_GREEN
-								txt lang("回収用カプセルに高純度のエーテル塊を入れた。", "You place the lump of purified ether into the recovery capsule.")
+								txt lang("[覇者の魔石]を手に入れた！", "You obtain the [King's Magic Stone]!")
 								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_MAIN) = 310
+								gdata(GDATA_FLAG_MAIN_KING) = 1
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ESTORK_THE_DOGGOD ) {
-							if ( gdata(GDATA_FLAG_SUB_DOGS_TAIL) < 3 ) {
-								gdata(GDATA_FLAG_SUB_DOGS_TAIL) = 3
-								snd SOUNDLIST_COMPLETE1
-								txt_questupdate
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_KING_COCKROACH ) {
-							if ( gdata(GDATA_FLAG_SUB_MANSION_FOR_SALE) == 1002 ) {
-								gdata(GDATA_FLAG_SUB_MANSION_FOR_SALE) = 1003
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_QURUIZA_THE_RED_EYED_DECEIVER ) {
 								txtef COLOR_GREEN
-								txt lang("清掃完了！", "Cleaning completed!")
+								txt lang("[賢者の魔石]を手に入れた！", "You obtain the [Sage's Magic Stone]!")
 								snd SOUNDLIST_COMPLETE1
+								gdata(GDATA_FLAG_MAIN_SAGE) = 1
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_NINE_HEAD_DRAGON_THE_ABYSS ) {
-							if ( gdata(GDATA_FLAG_MAIN) < 400 & gdata(GDATA_FLAG_MAIN) >= 398 ) {
-								gdata(GDATA_FLAG_MAIN) = 400
-								gdata(STARTING_GDATA_FLAG + 275) = 1
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_REVLUS_THE_MAGE_GUILDMASTER ) {
+								if ( gdata(GDATA_FLAG_SUB_GUILD_WARS3) == 1 ) {
+									gdata(GDATA_FLAG_SUB_GUILD_WARS3) = 2
+									txt_questupdate
+								}
+								if ( gdata(GDATA_FLAG_SUB_GUILD_WARS2) == 1 ) {
+									gdata(GDATA_FLAG_SUB_GUILD_WARS2) = 2
+									txt_questupdate
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_FRAY_THE_FIGHTER_GUILDMASTER ) {
+								if ( gdata(GDATA_FLAG_SUB_GUILD_WARS1) == 1 ) {
+									gdata(GDATA_FLAG_SUB_GUILD_WARS1) = 2
+									txt_questupdate
+								}
+								if ( gdata(GDATA_FLAG_SUB_GUILD_WARS2) == 1 ) {
+									gdata(GDATA_FLAG_SUB_GUILD_WARS2) = 2
+									txt_questupdate
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_SIN_THE_THIEF_GUILDMASTER ) {
+								if ( gdata(GDATA_FLAG_SUB_GUILD_WARS3) == 1 ) {
+									gdata(GDATA_FLAG_SUB_GUILD_WARS3) = 2
+									txt_questupdate
+								}
+								if ( gdata(GDATA_FLAG_SUB_GUILD_WARS1) == 1 ) {
+									gdata(GDATA_FLAG_SUB_GUILD_WARS1) = 2
+									txt_questupdate
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_RODLOB_THE_YEEK_CHIEF ) {
+								if ( gdata(GDATA_FLAG_SUB_YEEK) < 1000 ) {
+									gdata(GDATA_FLAG_SUB_YEEK) = 2
+									txt_questupdate
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_TUWEN_THE_MASTER_OF_THE_PYRAMID ) {
+								if ( gdata(GDATA_FLAG_SUB_PYRAMID) < 1000 ) {
+									gdata(GDATA_FLAG_SUB_PYRAMID) = 1000
+									txt_questupdate
+									txt_questcompleted
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNGAGA_THE_MINOTAUR_KING ) {
+								if ( gdata(GDATA_FLAG_SUB_MINOTAUR) < 1000 ) {
+									gdata(GDATA_FLAG_SUB_MINOTAUR) = 2
+									txt_questupdate
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_VANSESDA_THE_ANCIENT_FIRE ) {
+								if ( gdata(GDATA_FLAG_SUB_WHEN_THE_FLAME_BURNS_OUT) < 1000 ) {
+									gdata(GDATA_FLAG_SUB_WHEN_THE_FLAME_BURNS_OUT) = 2
+									txt_questupdate
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_BIG_DADDY & dmghp_source >= DAMAGE_FROM_CHARA ) {
+								if ( dmghp_source == DAMAGE_FROM_CHARA | dmghp_source < MAX_CHARA_FOLLOWER | cbit(CHARA_BIT_NECRO, dmghp_source) == TRUE | dmghp_source == DAMAGE_FROM_PERSUASION_LOW | dmghp_source == DAMAGE_FROM_PERSUASION_HIGH ) {
+									evadd EVENT_LITTLE_SISTER, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+								}
+								else {
+									txt lang("ビッグダディは既にリトルシスターを何処かへ逃がしていた。", "The Big Daddy had already evacuated the Little Sister somewhere.")
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_LITTLE_SISTER ) {
+								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+									gdata(GDATA_SISTER_KILLED)++
+									txtef COLOR_RED
+									txt lang("リトルシスター殺害" + gdata(GDATA_SISTER_KILLED) + "回、救出" + gdata(GDATA_SISTER_SAVED) + "回。", "You have saved Little Sisters " + gdata(GDATA_SISTER_SAVED) + " times and killed them " + gdata(GDATA_SISTER_KILLED) + " times.")
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_H_SISTER ) {
+								if ( gdata(GDATA_FLAG_SUB_H_SISTER) < 1000 ) {
+									gdata(GDATA_FLAG_SUB_H_SISTER) = 2
+									txt_questupdate
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_EBARTH_THE_PIRATE_BOSS ) {
+								if ( gdata(GDATA_FLAG_SUB_PIRATE_HUNTING) < 1000 ) {
+									gdata(GDATA_FLAG_SUB_PIRATE_HUNTING) = 1000
+									txt_questupdate
+									txt_questcompleted
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ANUBIS_THE_MASTER_OF_DEATH ) {
+								txtef COLOR_GREEN
+								txt lang("[太陽のアンク]を手に入れた！", "You obtain the [Ankh of The Sun]!")
 								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 0
-								evadd EVENT_BOSS_MUSIC
+								gdata(GDATA_FLAG_MAIN_ANKH) = 1
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_BEILGENA_THE_ARTIFICIAL_DRAGON ) {
-							if ( gdata(STARTING_GDATA_FLAG + 371) < 1000 ) {
-								gdata(STARTING_GDATA_FLAG + 371) = 1000
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_METAL_VESDA_THE_FIRE_MACHINE ) {
+								txtef COLOR_GREEN
+								txt lang("[データチップ]を手に入れた！", "You obtain the [Data Chip]!")
 								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 0
-								evadd EVENT_BOSS_MUSIC
+								gdata(GDATA_FLAG_MAIN_DATA_CHIP) = 1
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_GRAVEED_THE_GRAVITY_VALLEY ) {
-							if ( gdata(STARTING_GDATA_FLAG + 370) < 1000 ) {
-								gdata(STARTING_GDATA_FLAG + 370) = 1000
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_EXOSSIL_THE_CHAOS_WING ) {
+								txtef COLOR_GREEN
+								txt lang("[混沌の翼]を手に入れた！", "You obtain the [Chaos Wings]!")
 								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 0
-								evadd EVENT_BOSS_MUSIC
+								gdata(GDATA_FLAG_MAIN_CHAOS_WINGS) = 1
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_DOROTHIA_STANDING_IN_THE_WETLAND ) {
-							if ( gdata(STARTING_GDATA_FLAG + 369) < 1000 ) {
-								gdata(STARTING_GDATA_FLAG + 369) = 1000
-								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 0
-								evadd EVENT_BOSS_MUSIC
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_CHAOS_UNICORN_KING_OF_CHAOS ) {
+								if ( gdata(GDATA_FLAG_MAIN) < 270 ) {
+									gdata(GDATA_FLAG_MAIN) = 270
+									snd SOUNDLIST_CHEST1
+								}
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_INQTUAL_THE_REVENGE ) {
-							if ( gdata(GDATA_FLAG_SUB_REGULUS_EULDERNA) < 100 ) {
-								gdata(GDATA_FLAG_SUB_REGULUS_EULDERNA) = 100
-								txt_questupdate
-								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 0
-								evadd EVENT_BOSS_MUSIC
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_LAZASYE_THE_DESTROY ) {
-							if ( gdata(GDATA_FLAG_SUB_REGULUS_MAYROON) < 100 ) {
-								gdata(GDATA_FLAG_SUB_REGULUS_MAYROON) = 100
-								txt_questupdate
-								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 0
-								evadd EVENT_BOSS_MUSIC
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ROATONIS_THE_INFECTIONS ) {
-							if ( gdata(GDATA_FLAG_SUB_REGULUS_KIKKASU) < 100 ) {
-								gdata(GDATA_FLAG_SUB_REGULUS_KIKKASU) = 100
-								txt_questupdate
-								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 0
-								evadd EVENT_BOSS_MUSIC
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_EGELVEIL_THE_BIND ) {
-							if ( gdata(GDATA_FLAG_MAIN) == 470 ) {
-								gdata(GDATA_FLAG_MAIN) = 480
-								txt_questupdate
-								snd SOUNDLIST_COMPLETE1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 0
-								evadd EVENT_BOSS_MUSIC
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ALSAPIA_THE_MURDERER_MASK ) {
-							if ( gdata(STARTING_GDATA_FLAG + 361) == 30 ) {
-								gdata(STARTING_GDATA_FLAG + 361) = 35
-								snd SOUNDLIST_CHEST1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 6
-								evadd EVENT_BOSS_MUSIC
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_GILPHEM_THE_MAGIC_STEEL ) {
-							if ( gdata(STARTING_GDATA_FLAG + 361) == 50 ) {
-								gdata(STARTING_GDATA_FLAG + 361) = 55
-								snd SOUNDLIST_CHEST1
-								gdata(GDATA_FLAG_BOSS_MUSIC) = 6
-								evadd EVENT_BOSS_MUSIC
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_LANKATA_THE_LIGHTNING_OF_BLUE ) {
-							if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
-								if ( gdata(GDATA_LEVEL) == 164 ) {
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MOBILE_COMMUNICATION_EQUIPMENT ) {
+								if ( gdata(GDATA_FLAG_MAIN) < 266 ) {
 									txtef COLOR_GREEN
-									txt lang("[錆びついた鈴]を手に入れた！", "You obtain the [Rusted Bell]!")
+									txt lang("[データレジスタ]を手に入れた！", "You obtain the [Data Register]!")
 									snd SOUNDLIST_COMPLETE1
-									gdata(GDATA_FLAG_MAIN_CHAOS_CRADLE_25) = 1000
+									gdata(GDATA_FLAG_MAIN) = 266
+									txt_questupdate
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MESHERA_PLANT ) {
+								evadd EVENT_MESHERA_ALPHA, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MESHERA_ALPHA_THE_DEFORMED_ANGEL ) {
+								evadd EVENT_WIN_REMIDO
+							}
+							if ( gdata(GDATA_LEVEL) == adata(ADATA_MAX_LEVEL, gdata(GDATA_AREA)) | gdata(GDATA_AREA) == AREA_VOID ) {
+								if ( adata(ADATA_BOSS, gdata(GDATA_AREA)) == dmghp_charid ) {
+									evadd EVENT_WIN_BOSS_RANDOM
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_GWEN_THE_PITILESS ) {
+								gdata(GDATA_GWEN_PITILESS_LVL)++
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ETHER_GENERATOR ) {
+								if ( gdata(GDATA_FLAG_MAIN) >= 300 & gdata(GDATA_FLAG_MAIN) < 310 ) {
+									txtef COLOR_GREEN
+									txt lang("回収用カプセルに高純度のエーテル塊を入れた。", "You place the lump of purified ether into the recovery capsule.")
+									snd SOUNDLIST_COMPLETE1
+									gdata(GDATA_FLAG_MAIN) = 310
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ESTORK_THE_DOGGOD ) {
+								if ( gdata(GDATA_FLAG_SUB_DOGS_TAIL) < 3 ) {
+									gdata(GDATA_FLAG_SUB_DOGS_TAIL) = 3
+									snd SOUNDLIST_COMPLETE1
+									txt_questupdate
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_KING_COCKROACH ) {
+								if ( gdata(GDATA_FLAG_SUB_MANSION_FOR_SALE) == 1002 ) {
+									gdata(GDATA_FLAG_SUB_MANSION_FOR_SALE) = 1003
+									txtef COLOR_GREEN
+									txt lang("清掃完了！", "Cleaning completed!")
+									snd SOUNDLIST_COMPLETE1
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_NINE_HEAD_DRAGON_THE_ABYSS ) {
+								if ( gdata(GDATA_FLAG_MAIN) < 400 & gdata(GDATA_FLAG_MAIN) >= 398 ) {
+									gdata(GDATA_FLAG_MAIN) = 400
+									gdata(STARTING_GDATA_FLAG + 275) = 1
 									snd SOUNDLIST_COMPLETE1
 									gdata(GDATA_FLAG_BOSS_MUSIC) = 0
 									evadd EVENT_BOSS_MUSIC
 								}
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ALFRED_THE_CANGNAN_WIND ) {
-							if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
-								if ( gdata(GDATA_LEVEL) == 173 ) {
-									chara_vanquish dmghp_charid
-									gdata(GDATA_FLAG_MAIN) = 640
-									gdata(GDATA_FLAG_MAIN_CHAOS_CRADLE_34) = 1
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_BEILGENA_THE_ARTIFICIAL_DRAGON ) {
+								if ( gdata(STARTING_GDATA_FLAG + 371) < 1000 ) {
+									gdata(STARTING_GDATA_FLAG + 371) = 1000
+									snd SOUNDLIST_COMPLETE1
+									gdata(GDATA_FLAG_BOSS_MUSIC) = 0
+									evadd EVENT_BOSS_MUSIC
 								}
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNITDEAD_KING | cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNITDEAD_QUEEN | cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNITDEAD_JACK | cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNITDEAD_JOKER ) {
-							if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
-								gdata(GDATA_FLAG_MAIN_CHAOS_CRADLE_30)++
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_GRAVEED_THE_GRAVITY_VALLEY ) {
+								if ( gdata(STARTING_GDATA_FLAG + 370) < 1000 ) {
+									gdata(STARTING_GDATA_FLAG + 370) = 1000
+									snd SOUNDLIST_COMPLETE1
+									gdata(GDATA_FLAG_BOSS_MUSIC) = 0
+									evadd EVENT_BOSS_MUSIC
+								}
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ORPHE_THE_CHAOS_DISCPLE ) {
-							if ( gdata(GDATA_FLAG_MAIN) == 855 ) {
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_DOROTHIA_STANDING_IN_THE_WETLAND ) {
+								if ( gdata(STARTING_GDATA_FLAG + 369) < 1000 ) {
+									gdata(STARTING_GDATA_FLAG + 369) = 1000
+									snd SOUNDLIST_COMPLETE1
+									gdata(GDATA_FLAG_BOSS_MUSIC) = 0
+									evadd EVENT_BOSS_MUSIC
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_INQTUAL_THE_REVENGE ) {
+								if ( gdata(GDATA_FLAG_SUB_REGULUS_EULDERNA) < 100 ) {
+									gdata(GDATA_FLAG_SUB_REGULUS_EULDERNA) = 100
+									txt_questupdate
+									snd SOUNDLIST_COMPLETE1
+									gdata(GDATA_FLAG_BOSS_MUSIC) = 0
+									evadd EVENT_BOSS_MUSIC
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_LAZASYE_THE_DESTROY ) {
+								if ( gdata(GDATA_FLAG_SUB_REGULUS_MAYROON) < 100 ) {
+									gdata(GDATA_FLAG_SUB_REGULUS_MAYROON) = 100
+									txt_questupdate
+									snd SOUNDLIST_COMPLETE1
+									gdata(GDATA_FLAG_BOSS_MUSIC) = 0
+									evadd EVENT_BOSS_MUSIC
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ROATONIS_THE_INFECTIONS ) {
+								if ( gdata(GDATA_FLAG_SUB_REGULUS_KIKKASU) < 100 ) {
+									gdata(GDATA_FLAG_SUB_REGULUS_KIKKASU) = 100
+									txt_questupdate
+									snd SOUNDLIST_COMPLETE1
+									gdata(GDATA_FLAG_BOSS_MUSIC) = 0
+									evadd EVENT_BOSS_MUSIC
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_EGELVEIL_THE_BIND ) {
+								if ( gdata(GDATA_FLAG_MAIN) == 470 ) {
+									gdata(GDATA_FLAG_MAIN) = 480
+									txt_questupdate
+									snd SOUNDLIST_COMPLETE1
+									gdata(GDATA_FLAG_BOSS_MUSIC) = 0
+									evadd EVENT_BOSS_MUSIC
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ALSAPIA_THE_MURDERER_MASK ) {
+								if ( gdata(STARTING_GDATA_FLAG + 361) == 30 ) {
+									gdata(STARTING_GDATA_FLAG + 361) = 35
+									snd SOUNDLIST_CHEST1
+									gdata(GDATA_FLAG_BOSS_MUSIC) = 6
+									evadd EVENT_BOSS_MUSIC
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_GILPHEM_THE_MAGIC_STEEL ) {
+								if ( gdata(STARTING_GDATA_FLAG + 361) == 50 ) {
+									gdata(STARTING_GDATA_FLAG + 361) = 55
+									snd SOUNDLIST_CHEST1
+									gdata(GDATA_FLAG_BOSS_MUSIC) = 6
+									evadd EVENT_BOSS_MUSIC
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_LANKATA_THE_LIGHTNING_OF_BLUE ) {
 								if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
-									evadd EVENT_CHAOS_CRADLE_CHAT_YAYAUHQUI
-								}
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_JALDABAOTH_THE_CHAOS_CHILD ) {
-							if ( gdata(GDATA_FLAG_MAIN) == 900 ) {
-								if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
-									evadd EVENT_CHAOS_CRADLE_SPAWN_JALDABAOTH
-								}
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_BELL_OF_EMERGENCY ) {
-							txtef COLOR_RED
-							txt lang("けたたましい警報が鳴り響いた！", "*beeeeeep!* An alarm sounds loudly!")
-							repeat MAX_CHARA_TOTAL
-								if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
-									continue
-								}
-								if ( cdata(CDATA_RELATION, cnt) != (-3) ) {
-									continue
-								}
-								cdata(CDATA_TARGET, cnt) = 0
-								cdata(CDATA_AI_AGGRO, cnt) = 250
-							loop
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_GODA_THE_CAPTAIN_OF_ORC ) {
-							if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-								locvar_dmghp_f = get_freeally()
-								if ( locvar_dmghp_f != 0 ) {
-									evadd EVENT_JOIN_GODA, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
-								}
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MAD_SCIENTIST ) {
-							if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-								locvar_dmghp_f = get_freeally()
-								if ( locvar_dmghp_f != 0 ) {
-									evadd EVENT_JOIN_MAD_SCIENTIST, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
-								}
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ISCA_THE_FALLEN_ANGEL ) {
-							if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-								locvar_dmghp_f = get_freeally()
-								if ( locvar_dmghp_f != 0 ) {
-									evadd EVENT_JOIN_ISCA, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
-								}
-							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_DUNGEON_CLEANER ) {
-							if ( cdata(CDATA_ROLE, dmghp_charid) != ROLE_SPECIAL ) {
-								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-									locvar_dmghp_f = get_freeally()
-									if ( locvar_dmghp_f != 0 ) {
-										evadd EVENT_JOIN_DUNGEON_CLEANER, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+									if ( gdata(GDATA_LEVEL) == 164 ) {
+										txtef COLOR_GREEN
+										txt lang("[錆びついた鈴]を手に入れた！", "You obtain the [Rusted Bell]!")
+										snd SOUNDLIST_COMPLETE1
+										gdata(GDATA_FLAG_MAIN_CHAOS_CRADLE_25) = 1000
+										snd SOUNDLIST_COMPLETE1
+										gdata(GDATA_FLAG_BOSS_MUSIC) = 0
+										evadd EVENT_BOSS_MUSIC
 									}
 								}
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_LITYOU ) {
-							if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-								locvar_dmghp_f = get_freeally()
-								if ( locvar_dmghp_f != 0 ) {
-									evadd EVENT_JOIN_LITYOU, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ALFRED_THE_CANGNAN_WIND ) {
+								if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
+									if ( gdata(GDATA_LEVEL) == 173 ) {
+										chara_vanquish dmghp_charid
+										gdata(GDATA_FLAG_MAIN) = 640
+										gdata(GDATA_FLAG_MAIN_CHAOS_CRADLE_34) = 1
+									}
 								}
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_SUNRISE_THE_ARCHIPELAGO_DRAGON ) {
-							if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-								locvar_dmghp_f = get_freeally()
-								if ( locvar_dmghp_f != 0 ) {
-									evadd EVENT_JOIN_SUNRISE, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNITDEAD_KING | cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNITDEAD_QUEEN | cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNITDEAD_JACK | cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_UNITDEAD_JOKER ) {
+								if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
+									gdata(GDATA_FLAG_MAIN_CHAOS_CRADLE_30)++
 								}
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MURDER_KNIGHT ) {
-							if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-								locvar_dmghp_f = get_freeally()
-								if ( locvar_dmghp_f != 0 ) {
-									evadd EVENT_JOIN_MUDER_KNIGHT, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ORPHE_THE_CHAOS_DISCPLE ) {
+								if ( gdata(GDATA_FLAG_MAIN) == 855 ) {
+									if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
+										evadd EVENT_CHAOS_CRADLE_CHAT_YAYAUHQUI
+									}
 								}
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_WING_SNAIL ) {
-							if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-								locvar_dmghp_f = get_freeally()
-								if ( locvar_dmghp_f != 0 ) {
-									evadd EVENT_JOIN_WING_SNAIL, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_JALDABAOTH_THE_CHAOS_CHILD ) {
+								if ( gdata(GDATA_FLAG_MAIN) == 900 ) {
+									if ( gdata(GDATA_AREA) == AREA_CHAOS_CRADLE ) {
+										evadd EVENT_CHAOS_CRADLE_SPAWN_JALDABAOTH
+									}
 								}
 							}
-						}
-						if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_PASCAL ) {
-							if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
-								locvar_dmghp_f = get_freeally()
-								if ( locvar_dmghp_f != 0 ) {
-									evadd EVENT_JOIN_PASCAL, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_BELL_OF_EMERGENCY ) {
+								txtef COLOR_RED
+								txt lang("けたたましい警報が鳴り響いた！", "*beeeeeep!* An alarm sounds loudly!")
+								repeat MAX_CHARA_TOTAL
+									if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
+										continue
+									}
+									if ( cdata(CDATA_RELATION, cnt) != (-3) ) {
+										continue
+									}
+									cdata(CDATA_TARGET, cnt) = 0
+									cdata(CDATA_AI_AGGRO, cnt) = 250
+								loop
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_GODA_THE_CAPTAIN_OF_ORC ) {
+								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+									locvar_dmghp_f = get_freeally()
+									if ( locvar_dmghp_f != 0 ) {
+										evadd EVENT_JOIN_GODA, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+									}
 								}
 							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MAD_SCIENTIST ) {
+								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+									locvar_dmghp_f = get_freeally()
+									if ( locvar_dmghp_f != 0 ) {
+										evadd EVENT_JOIN_MAD_SCIENTIST, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+									}
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_ISCA_THE_FALLEN_ANGEL ) {
+								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+									locvar_dmghp_f = get_freeally()
+									if ( locvar_dmghp_f != 0 ) {
+										evadd EVENT_JOIN_ISCA, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+									}
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_DUNGEON_CLEANER ) {
+								if ( cdata(CDATA_ROLE, dmghp_charid) != ROLE_SPECIAL ) {
+									if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+										locvar_dmghp_f = get_freeally()
+										if ( locvar_dmghp_f != 0 ) {
+											evadd EVENT_JOIN_DUNGEON_CLEANER, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+										}
+									}
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_LITYOU ) {
+								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+									locvar_dmghp_f = get_freeally()
+									if ( locvar_dmghp_f != 0 ) {
+										evadd EVENT_JOIN_LITYOU, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+									}
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_SUNRISE_THE_ARCHIPELAGO_DRAGON ) {
+								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+									locvar_dmghp_f = get_freeally()
+									if ( locvar_dmghp_f != 0 ) {
+										evadd EVENT_JOIN_SUNRISE, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+									}
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_MURDER_KNIGHT ) {
+								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+									locvar_dmghp_f = get_freeally()
+									if ( locvar_dmghp_f != 0 ) {
+										evadd EVENT_JOIN_MUDER_KNIGHT, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+									}
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_WING_SNAIL ) {
+								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+									locvar_dmghp_f = get_freeally()
+									if ( locvar_dmghp_f != 0 ) {
+										evadd EVENT_JOIN_WING_SNAIL, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+									}
+								}
+							}
+							if ( cdata(CDATA_ID, dmghp_charid) == CREATURE_ID_PASCAL ) {
+								if ( dmghp_charid > MAX_CHARA_FOLLOWER ) {
+									locvar_dmghp_f = get_freeally()
+									if ( locvar_dmghp_f != 0 ) {
+										evadd EVENT_JOIN_PASCAL, cdata(CDATA_X, dmghp_charid), cdata(CDATA_Y, dmghp_charid)
+									}
+								}
+							}
+							check_quest
 						}
-						check_quest
 					}
 				}
 			}
@@ -8017,13 +8022,24 @@
 	return
 
 #deffunc dmgmp int dmgmp_charid, int dmgmp_arg2
-	cdata(CDATA_MP, dmgmp_charid) -= dmgmp_arg2
+	locvar_dmgmp_mpoi = 0
+	if ( cdata(CDATA_CONDITION_MPOISON, dmgmp_charid) > 0 ) {
+		if ( cdata(CDATA_CONDITION_MPOISON, dmgmp_charid) > 100 ) {
+			cdata(CDATA_CONDITION_MPOISON, dmgmp_charid) = 100
+		}
+		locvar_dmgmp_mpoi = cdata(CDATA_CONDITION_MPOISON, dmgmp_charid) * 50
+		if ( locvar_dmgmp_ammoproc == 0 ) {
+			locvar_dmgmp_mpoi = locvar_dmgmp_mpoi / 5
+		}
+		locvar_dmgmp_mdmg = dmgmp_arg2 + locvar_dmgmp_mpoi
+	}
+	cdata(CDATA_MP, dmgmp_charid) -= locvar_dmgmp_mdmg
 	if ( cdata(CDATA_MP, dmgmp_charid) < (-99999) ) {
 		cdata(CDATA_MP, dmgmp_charid) = -99999
 	}
 	if ( cfg_dhyouji == 1 ) {
 		txtef COLOR_LIGHT_BLUE2
-		txt "<" + dmgmp_arg2 + ">"
+		txt "<" + locvar_dmgmp_mdmg + ">"
 	}
 	if ( cdata(CDATA_MP, dmgmp_charid) < 0 ) {
 		r1 = dmgmp_charid

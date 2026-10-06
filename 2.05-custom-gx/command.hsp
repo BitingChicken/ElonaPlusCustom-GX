@@ -15406,6 +15406,104 @@
 					goto *pc_turn
 				}
 			}
+			if ( inv(INV_ITEM_ID, ci) <= ITEM_ID_INVITATION_LETTER & inv(INV_ITEM_ID, ci) >= ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE ) {
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE & (cdata(CDATA_ID, tc) != CREATURE_ID_SINAHA | cdata(CDATA_ALLIED, tc) != 0) ) {
+					txt lang("「悪い予感がする…」", cnvtalk("I have a bad feeling about this letter..."))
+					snd SOUNDLIST_FAIL1
+					goto *com_inventory
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE & cdata(CDATA_ID, tc) == CREATURE_ID_SINAHA & cdata(CDATA_ALLIED, tc) == 0 & gdata(GDATA_FLAG_SUB_SINAHA) == 0 ) {
+					txt lang("「アタシの出した手紙じゃないニャ！」", cnvtalk("That’s not a letter I sent!"))
+					cdata(CDATA_EMO_ICON, tc) = 18 + 100 * 2
+					snd SOUNDLIST_FAIL1
+					goto *com_inventory
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE & cdata(CDATA_ID, tc) == CREATURE_ID_SINAHA & cdata(CDATA_ALLIED, tc) == 0 & gdata(GDATA_FLAG_SUB_SINAHA) == 31 ) {
+					txt lang("「先にご褒美を受け取れニャ」", cnvtalk("Get your reward first, meow."))
+					snd SOUNDLIST_FAIL1
+					goto *com_inventory
+				}
+				txt lang("あなたは" + name(tc) + "に" + itemname(ci, 1) + "を渡した。", "You give " + name(tc) + " " + itemname(ci, 1) + ".")
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_INVITATION_LETTER ) {
+					snd SOUNDLIST_CRACK2
+					txt lang(name(tc) + "は手紙を破り捨て、あなたに宣言した。「お前を殺す」", name(tc) + " tore up the letter and declared to you, " + cnvtalk("I'm going to kill you."))
+					if ( cdata(CDATA_ALLIED, tc) == 0 & tc >= MAX_CHARA_FOLLOWER ) {
+						cdata(CDATA_RELATION, tc) = RELATION_ENEMY
+						cdata(CDATA_AI_AGGRO, tc) = 80
+						cdata(CDATA_TARGET, tc) = cc
+					}
+					inv(INV_ITEM_NUM, ci)--
+					gosub *calcBurdenPc
+					goto *com_inventory
+				}
+				snd SOUNDLIST_EQUIP1
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_LOVE_LETTER ) {
+					if ( cdata(CDATA_IMPRESSION, tc) >= 150 ) {
+						txt lang("「なんだか意識しちゃう" + _yo(3) + "…」", cnvtalk("Let me think about it for a bit..."))
+						modimp tc, 15
+					}
+					else {
+						txt lang("「興味のない人から向けられる好意ほど、気持ちの悪いものってない" + _daro(3) + "？」", cnvtalk("There’s nothing quite as off-putting as unwanted affection from someone you aren't interested in, is there?"))
+						modimp tc, -15
+					}
+					inv(INV_ITEM_NUM, ci)--
+					gosub *calcBurdenPc
+					goto *com_inventory
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE & cdata(CDATA_ID, tc) == CREATURE_ID_SINAHA & cdata(CDATA_ALLIED, tc) == 0 ) {
+					gdata(GDATA_FLAG_SUB_SINAHA)++
+					if ( gdata(GDATA_FLAG_SUB_SINAHA) < 31 ) {
+						txt lang("「あと" + (31 - gdata(GDATA_FLAG_SUB_SINAHA)) + "通ニャ」", cnvtalk("Also, bring " + (31 - gdata(GDATA_FLAG_SUB_SINAHA)) + " letters."))
+					}
+					if ( gdata(GDATA_FLAG_SUB_SINAHA) == 31 ) {
+						snd SOUNDLIST_ENC
+						txt lang("「ニャメイジング！！」", cnvtalk("NyAmazing!!"))
+					}
+					inv(INV_ITEM_NUM, ci)--
+					gosub *calcBurdenPc
+					goto *com_inventory
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_WINNING_NOTIFICATION ) {
+					txt lang("「やった！まるで夢みたい" + _dana(3) + "…！」", cnvtalk("Yay! It's like a dream!"))
+					cdata(CDATA_POWER_GAUGE, tc) += 20
+					if ( cdata(CDATA_POWER_GAUGE, tc) > 100 ) {
+						if ( cdata(CDATA_SHIFT_FORM, tc) <= SHIFT_FORM_NONE & (cdata(CDATA_EVOLUTION_STAGE, tc) <= 0 | tc == CHARA_PLAYER) & (cdata(CDATA_QUALITY, tc) < FIX_QUALITY_MIRACLE | tc <= MAX_CHARA_FOLLOWER) ) {
+							cdata(CDATA_POWER_GAUGE, tc) = 100
+						}
+					}
+					if ( cdata(CDATA_POWER_GAUGE, tc) > 200 ) {
+						cdata(CDATA_POWER_GAUGE, tc) = 200
+					}
+					inv(INV_ITEM_NUM, ci)--
+					gosub *calcBurdenPc
+					goto *com_inventory
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_FAN_LETTER ) {
+					txt lang("「まぁ、悪い気はしない" + _na(3) + "」", cnvtalk("I feel good..."))
+					txtmore
+					txtef COLOR_GREEN
+					txt lang(name(tc) + "のあなたへの興味が回復した。", name(tc) + " became interested in you.")
+					cdata(CDATA_INTEREST, tc) += 50
+					if ( cdata(CDATA_INTEREST, tc) > 100 ) {
+						cdata(CDATA_INTEREST, tc) = 100
+					}
+					inv(INV_ITEM_NUM, ci)--
+					gosub *calcBurdenPc
+					goto *com_inventory
+				}
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_SUSPICIOUS_LETTER ) {
+					txt lang("「難解" + _da(3) + "！」", cnvtalk("It's too difficult!"))
+					if ( cdata(CDATA_CONDITION_CONFUSE, tc) < 1 ) {
+						cdata(CDATA_CONDITION_CONFUSE, tc) = 1
+					}
+					txtmore
+					txtef COLOR_PURPLE
+					txt lang(name(tc) + "は混乱した。", name(tc) + " " + is(tc) + " confused.")
+					inv(INV_ITEM_NUM, ci)--
+					gosub *calcBurdenPc
+					goto *com_inventory
+				}
+			}
 			f = 0
 			p = sdata(SKILL_ATTR_STR, tc) * 500 + sdata(SKILL_ATTR_CON, tc) * 500 + sdata(SKILL_NORMAL_WEIGHT_LIFTING, tc) * 2500 + 25000
 			if ( cdata(CDATA_ID, tc) == CREATURE_ID_GOLDEN_KNIGHT ) {
@@ -15423,7 +15521,7 @@
 					}
 				}
 				if ( reftype == FILTER_JUNK ) {
-					if ( inv(INV_ITEM_ID, ci) != ITEM_ID_MAGATAMA & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGAQUA & inv(INV_ITEM_ID, ci) != ITEM_ID_SKILL_TICKET & inv(INV_ITEM_ID, ci) != ITEM_ID_BIO_BATTERY & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGAICE & inv(INV_ITEM_ID, ci) != ITEM_ID_SPLENDID_CHAIN & inv(INV_ITEM_ID, ci) != ITEM_ID_TRAINING_TICKET ) {
+					if ( inv(INV_ITEM_ID, ci) != ITEM_ID_MAGATAMA & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGAQUA & inv(INV_ITEM_ID, ci) != ITEM_ID_SKILL_TICKET & inv(INV_ITEM_ID, ci) != ITEM_ID_BIO_BATTERY & inv(INV_ITEM_ID, ci) != ITEM_ID_MAGAICE & inv(INV_ITEM_ID, ci) != ITEM_ID_SPLENDID_CHAIN & inv(INV_ITEM_ID, ci) != ITEM_ID_TRAINING_TICKET & inv(INV_ITEM_ID, ci) != ITEM_ID_BUSINESS_LETTER ) {
 						f = 3
 					}
 				}
@@ -15507,9 +15605,15 @@
 					}
 				}
 			}
+			if ( inv(INV_ITEM_ID, ci) == ITEM_ID_BUSINESS_LETTER ) {
+				f = 1
+			}
 			if ( f ) {
 				snd SOUNDLIST_EQUIP1
 				txt lang(itemname(ci, 1) + "を渡した。", "You hand " + itemname(ci, 1) + " to " + name(tc) + ".")
+				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_BUSINESS_LETTER ) {
+					txt lang("「あー…後で読んでおく" + _yo(3) + "」", cnvtalk("Ah... I'll read it later..."))
+				}
 				if ( inv(INV_ITEM_ID, ci) == ITEM_ID_ENGAGEMENT_RING | inv(INV_ITEM_ID, ci) == ITEM_ID_ENGAGEMENT_AMULET ) {
 					txtef COLOR_GREEN
 					txt lang(name(tc) + "は顔を赤らめた。", name(tc) + " blushes.")

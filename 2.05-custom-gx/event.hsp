@@ -4285,6 +4285,9 @@
 		}
 		p = calcincome(cnt) + rnd(calcincome(cnt) / 3 + 1) - rnd(calcincome(cnt) / 3 + 1)
 		income += p
+		if ( cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) == 10 ) {
+			p = p / 100 * 95
+		}
 		flt
 		itemcreate -1, ITEM_ID_GOLD_PIECE, -1, -1, p
 		if ( cnt == 5 | cnt == 6 ) {
@@ -4451,6 +4454,9 @@
 			p += (cdata(CDATA_FAME, CHARA_PLAYER) - 25000) / 100
 		}
 		income += p
+		if ( cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) == 10 ) {
+			p = p / 100 * 95
+		}
 		flt
 		itemcreate -1, ITEM_ID_GOLD_PIECE, -1, -1, p
 	}

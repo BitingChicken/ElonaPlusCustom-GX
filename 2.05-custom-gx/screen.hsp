@@ -1337,6 +1337,38 @@
 			}
 		}
 	}
+	if ( gdata(GDATA_AREA) == AREA_OL_DRAN ) {
+		if ( gdata(GDATA_LEVEL) == 5 ) {
+			if ( gdata(GDATA_FLAG_KAMIKAZE) <= 500 ) {
+				if ( jp ) {
+					pos inf_clockw + 230, inf_clocky + 37
+					color 0, 0, 0
+					bmes "進行度[ " + gdata(GDATA_FLAG_KAMIKAZE) + " / 500 ]", 235, 135, 235
+				}
+				if ( en ) {
+					pos inf_clockw + 230, inf_clocky + 37
+					color 0, 0, 0
+					bmes "Progress[ " + gdata(GDATA_FLAG_KAMIKAZE) + " / 500 ]", 235, 135, 235
+				}
+			}
+		}
+	}
+	if ( gdata(GDATA_AREA) == AREA_PORT_KAPUL ) {
+		if ( gdata(GDATA_LEVEL) == 25 ) {
+			if ( gdata(GDATA_FLAG_KAMIKAZE) <= 250 ) {
+				if ( jp ) {
+					pos inf_clockw + 230, inf_clocky + 37
+					color 0, 0, 0
+					bmes "進行度[ " + gdata(GDATA_FLAG_KAMIKAZE) + " / 250 ]", 235, 135, 235
+				}
+				if ( en ) {
+					pos inf_clockw + 230, inf_clocky + 37
+					color 0, 0, 0
+					bmes "Progress[ " + gdata(GDATA_FLAG_KAMIKAZE) + " / 250 ]", 235, 135, 235
+				}
+			}
+		}
+	}
 	if ( gdata(GDATA_AREA) == AREA_AMUR_CAGE ) {
 		if ( gdata(GDATA_LEVEL) >= 10 ) {
 			if ( soulimit > 0 ) {
@@ -3352,7 +3384,7 @@
 				preparePicItem inv(INV_ITEM_PIC, aniref), inv(INV_ITEM_COL, aniref)
 			}
 			kaiten = 0
-			if ( inv(INV_ITEM_ID, aniref) == ITEM_ID_ION_CAKRAM | inv(INV_ITEM_ID, aniref) == ITEM_ID_SLASH_JOKER | inv(INV_ITEM_ID, aniref) == ITEM_ID_GERBERA_CROSS | inv(INV_ITEM_ID, aniref) == ITEM_ID_SHENAS_PANTY | inv(INV_ITEM_ID, aniref) == ITEM_ID_SHURIKEN | inv(INV_ITEM_ID, aniref) == ITEM_ID_PANTY | inv(INV_ITEM_ID, aniref) == ITEM_ID_HIDEN_MASHI ) {
+			if ( inv(INV_ITEM_ID, aniref) == ITEM_ID_ION_CAKRAM | inv(INV_ITEM_ID, aniref) == ITEM_ID_SLASH_JOKER | inv(INV_ITEM_ID, aniref) == ITEM_ID_GERBERA_CROSS | inv(INV_ITEM_ID, aniref) == ITEM_ID_SHENAS_PANTY | inv(INV_ITEM_ID, aniref) == ITEM_ID_SHURIKEN | inv(INV_ITEM_ID, aniref) == ITEM_ID_PANTY | inv(INV_ITEM_ID, aniref) == ITEM_ID_HIDEN_MASHI | inv(INV_ITEM_ID, aniref) == ITEM_ID_DEVIL_SHOOT ) {
 				kaiten = 1
 			}
 			if ( refitem(inv(INV_ITEM_ID, aniref), DBSPEC_TYPE_MINOR) == FILTER_SHIELD_SMALL | refitem(inv(INV_ITEM_ID, aniref), DBSPEC_TYPE_MINOR) == FILTER_WEAPON_SMALL_AXE | refitem(inv(INV_ITEM_ID, aniref), DBSPEC_TYPE_MINOR) == FILTER_WEAPON_LARGE_AXE | refitem(inv(INV_ITEM_ID, aniref), DBSPEC_TYPE_MINOR) == FILTER_WEAPON_SICKLE ) {

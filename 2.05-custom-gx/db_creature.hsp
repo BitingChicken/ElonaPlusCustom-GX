@@ -4,7 +4,403 @@
 	}
 	dbsum = 0
 	dbmax = 0
-	
+
+*db_creature_SPIRIT_OF_PANJAN
+	if ( 113 > objlv ) {
+		goto *db_creature_SPIRIT_OF_PANTY
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_SPIRIT_OF_PANTY
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_SPIRIT_OF_PANTY
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "spirit" ) {
+			goto *db_creature_SPIRIT_OF_PANTY
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(2), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_SPIRIT_OF_PANTY
+		}
+	}
+	dbsum += 5000 / (500 + abs(objlv - 113) * 400) + 1
+	dblist(0, dbmax) = 1162, dbsum
+	dbmax++
+
+*db_creature_SPIRIT_OF_PANTY
+	if ( 98 > objlv ) {
+		goto *db_creature_ULTIMATE_PHOENIX
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_ULTIMATE_PHOENIX
+	}
+	if ( flttypemajor != FILTER_NOTHING) {
+		if ( flttypemajor != FILTER_RACE_SPIRIT_OF_PANTY ) {
+			goto *db_creature_ULTIMATE_PHOENIX
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "spirit" ) {
+			goto *db_creature_ULTIMATE_PHOENIX
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(3), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_ULTIMATE_PHOENIX
+		}
+	}
+	dbsum += 5000 / (500 + abs(objlv - 98) * 400) + 1
+	dblist(0, dbmax) = 1161, dbsum
+	dbmax++
+
+*db_creature_ULTIMATE_PHOENIX
+	if ( 193 > objlv ) {
+		goto *db_creature_THOUSAND_CRANE
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_THOUSAND_CRANE
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_THOUSAND_CRANE
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_THOUSAND_CRANE
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(4), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_THOUSAND_CRANE
+		}
+	}
+	dbsum += 5000 / (500 + abs(objlv - 193) * 400) + 1
+	dblist(0, dbmax) = 1160, dbsum
+	dbmax++
+
+*db_creature_THOUSAND_CRANE
+	if ( 173 > objlv ) {
+		goto *db_creature_MULTI_PEALOCK
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_MULTI_PEALOCK
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_MULTI_PEALOCK
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_MULTI_PEALOCK
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(5), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_MULTI_PEALOCK
+		}
+	}
+	dbsum += 20000 / (500 + abs(objlv - 173) * 400) + 1
+	dblist(0, dbmax) = 1159, dbsum
+	dbmax++
+
+*db_creature_MULTI_PEALOCK
+	if ( 57 > objlv ) {
+		goto *db_creature_CARRIER_PIGEON
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_CARRIER_PIGEON
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_CARRIER_PIGEON
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_CARRIER_PIGEON
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(6), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_CARRIER_PIGEON
+		}
+	}
+	dbsum += 100000 / (500 + abs(objlv - 57) * 400) + 1
+	dblist(0, dbmax) = 1158, dbsum
+	dbmax++
+
+*db_creature_CARRIER_PIGEON
+	if ( 46 > objlv ) {
+		goto *db_creature_CLASHING_WOODPECKER
+	}
+	if ( fltselect != 1 ) {
+		goto *db_creature_CLASHING_WOODPECKER
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_CLASHING_WOODPECKER
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_CLASHING_WOODPECKER
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(7), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_CLASHING_WOODPECKER
+		}
+	}
+	dbsum += 40000 / (500 + abs(objlv - 46) * 400) + 1
+	dblist(0, dbmax) = 1157, dbsum
+	dbmax++
+
+*db_creature_CLASHING_WOODPECKER
+	if ( 38 > objlv ) {
+		goto *db_creature_DANCING_SWAN
+	}
+	if ( fltselect != 1 ) {
+		goto *db_creature_DANCING_SWAN
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_DANCING_SWAN
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_DANCING_SWAN
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(8), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_DANCING_SWAN
+		}
+	}
+	dbsum += 5000 / (500 + abs(objlv - 38) * 400) + 1
+	dblist(0, dbmax) = 1156, dbsum
+	dbmax++
+
+*db_creature_DANCING_SWAN
+	if ( 33 > objlv ) {
+		goto *db_creature_MADUCK
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_MADUCK
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_MADUCK
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_MADUCK
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(9), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_MADUCK
+		}
+	}
+	dbsum += 100000 / (500 + abs(objlv - 33) * 400) + 1
+	dblist(0, dbmax) = 1155, dbsum
+	dbmax++
+
+*db_creature_MADUCK
+	if ( 22 > objlv ) {
+		goto *db_creature_MOHAWK_PARROT
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_MOHAWK_PARROT
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_MOHAWK_PARROT
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_MOHAWK_PARROT
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(10), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_MOHAWK_PARROT
+		}
+	}
+	dbsum += 100000 / (500 + abs(objlv - 22) * 400) + 1
+	dblist(0, dbmax) = 1154, dbsum
+	dbmax++
+
+*db_creature_MOHAWK_PARROT
+	if ( 17 > objlv ) {
+		goto *db_creature_JAVA_SPOORROWRITER
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_JAVA_SPOORROWRITER
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_JAVA_SPOORROWRITER
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_JAVA_SPOORROWRITER
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(11), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_JAVA_SPOORROWRITER
+		}
+	}
+	dbsum += 100000 / (500 + abs(objlv - 17) * 400) + 1
+	dblist(0, dbmax) = 1153, dbsum
+	dbmax++
+
+*db_creature_JAVA_SPOORROWRITER
+	if ( 9 > objlv ) {
+		goto *db_creature_HERAUDSTERON
+	}
+	if ( fltselect != 0 ) {
+		goto *db_creature_HERAUDSTERON
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_HERAUDSTERON
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_HERAUDSTERON
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(12), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_HERAUDSTERON
+		}
+	}
+	dbsum += 50000 / (500 + abs(objlv - 9) * 400) + 1
+	dblist(0, dbmax) = 1152, dbsum
+	dbmax++
+
+*db_creature_HERAUDSTERON
+	if ( 73 > objlv ) {
+		goto *db_creature_TOWN_CHILD4
+	}
+	if ( fltselect != 3 ) {
+		goto *db_creature_TOWN_CHILD4
+	}
+	if ( flttypemajor != FILTER_NOTHING ) {
+		if ( flttypemajor != FILTER_NOTHING ) {
+			goto *db_creature_TOWN_CHILD4
+		}
+	}
+	if ( fltnrace != "" ) {
+		if ( fltnrace != "bird" ) {
+			goto *db_creature_TOWN_CHILD4
+		}
+	}
+	if ( filtermax != 0 ) {
+		dbtmp = 1
+		repeat filtermax
+			if ( instr(filter_creature(13), 0, filtern(cnt)) == (-1) ) {
+				dbtmp = 0
+				break
+			}
+		loop
+		if ( dbtmp == 0 ) {
+			goto *db_creature_TOWN_CHILD4
+		}
+	}
+	dbsum += 20000 / (500 + abs(objlv - 73) * 400) + 1
+	dblist(0, dbmax) = 1151, dbsum
+	dbmax++
+
 *db_creature_TOWN_CHILD4
 	if ( 5 > objlv ) {
 		goto *db_creature_TOWN_CHILD3
@@ -37003,6 +37399,994 @@
 	return
 
 *db_creature2
+	if ( dbid == CREATURE_ID_SPIRIT_OF_PANJAN ) {
+		if ( dbmode == DBMODE_ON_EAT ) {
+			gosub *eatHard
+			return -1
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 2
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 5
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "パンジャンの精霊"
+				}
+				else {
+					return "spirit of panjan"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia8/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "spirit"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1228
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_SPIRIT_OF_PANJAN
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 113
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 2
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 80
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_RANDOM_MOVE, ACTION_MELEE, ACTION_MELEE, ACTION_MELEE
+			cdata(CDATA_ACT_INDEX, rc) = 4
+			cdata(CDATA_ACT_HEAL, rc) = 644
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "パンジャンの精霊"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "spirit of panjan"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "spirit"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "predator"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(7, 37)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_SPIRIT_OF_PANTY ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 2
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 5
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "パンティーの精霊"
+				}
+				else {
+					return "spirit of panty"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia8/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "spirit"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1229
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_SPIRIT_OF_PANTY
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 98
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 20
+			cdata(CDATA_AI_DISTANCE, rc) = 4
+			cdata(CDATA_AI_SUB, rc) = 8
+			creaturepack = 55
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPELL_CHAOS_EYE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_FEATHER
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "パンティーの精霊"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "spirit of panty"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "spirit"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "wizard"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 1
+			cdata(CDATA_PIC, rc) = xy2pic(8, 37)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_ULTIMATE_PHOENIX ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 5
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 5
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "アルティメットフェニックス"
+				}
+				else {
+					return "ultimate phoenix"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia2/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1221
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_ULTIMATE_PHOENIX
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 193
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 30
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE, ACTION_RANGE, ACTION_RANGE, ACTION_RANGE
+			cdata(CDATA_ACT_INDEX, rc) = 4
+			cdata(CDATA_ACT_HEAL, rc) = 677
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "アルティメットフェニックス"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "ultimate phoenix"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "predator"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 0
+			cdata(CDATA_PIC, rc) = xy2pic(0, 37)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 1
+			return
+		}
+		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
+			eqrange = 939, 5
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_THOUSAND_CRANE ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 20
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "千刃鶴"
+				}
+				else {
+					return "thousand crane"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia2/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1258
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_THOUSAND_CRANE
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 173
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 30
+			cdata(CDATA_AI_DISTANCE, rc) = 3
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_JUMPING_DROP, SKILL_SPACT_DISTANT_ATTACK, SKILL_SPACT_DISTANT_ATTACK
+			cdata(CDATA_ACT_INDEX, rc) = 3
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "千刃鶴"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "thousand crane"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "warrior"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(4, 38)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_MULTI_PEALOCK ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 100
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "マルチロックジャク"
+				}
+				else {
+					return "multi pealock"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia2/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1255
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_MULTI_PEALOCK
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 57
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 10
+			cdata(CDATA_AI_DISTANCE, rc) = 5
+			cdata(CDATA_AI_SUB, rc) = 10
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_RANGE, ACTION_RANGE, SKILL_SPACT_HOMING_LASER
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_GUIDED_BOMBING
+			cdata(CDATA_ACT_INDEX, rc) = 13
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "マルチロックジャク"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "multi pealock"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "gunner"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(1, 38)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_CARRIER_PIGEON ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 40
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "伝書鳩"
+				}
+				else {
+					return "carrier pigeon"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1256
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_CARRIER_PIGEON
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 46
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 90
+			cdata(CDATA_AI_DISTANCE, rc) = 5
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(CDATA_ACT_INDEX, rc) = 1
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "伝書鳩"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "carrier pigeon"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_NEUTRAL
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_NEUTRAL
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "tourist"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(2, 38)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_CLASHING_WOODPECKER ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 5
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "激突キツツキ"
+				}
+				else {
+					return "clashing woodpecker"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1257
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_CLASHING_WOODPECKER
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 38
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 50
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 0
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPACT_CLASH_RUSH
+			cdata(CDATA_ACT_INDEX, rc) = 1
+			cdata(CDATA_ACT_HEAL, rc) = 744
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "激突キツツキ"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "clashing woodpecker"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "predator"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(3, 38)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_DANCING_SWAN ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 3
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 100
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "ダンスワン"
+				}
+				else {
+					return "dancing swan"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia2/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1226
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_DANCING_SWAN
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 33
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 30
+			cdata(CDATA_AI_DISTANCE, rc) = 3
+			cdata(CDATA_AI_SUB, rc) = 10
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPELL_MAGIC_DART, SKILL_SPELL_MAGIC_DART, SKILL_SPELL_MAGIC_DART, SKILL_SPELL_MAGIC_DART, SKILL_SPACT_FASCINATION_DANCE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_KILLING_DANCE
+			cdata(CDATA_ACT_INDEX, rc) = 15
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "ダンスワン"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "dancing swan"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "warmage"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(5, 37)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_MADUCK ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "「ぐわぐわ」"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "「ぐぐわッ！」"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "地面に白い羽が散らばった。"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "「ぐわッぐッぐぐ！」"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 100
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "魔ヒル"
+				}
+				else {
+					return "maduck"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia2/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1225
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_MADUCK
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 22
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 80
+			cdata(CDATA_AI_DISTANCE, rc) = 4
+			cdata(CDATA_AI_SUB, rc) = 8
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = SKILL_SPELL_HYDRO_FANG
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPELL_SPEED
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "魔ヒル"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "maduck"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "wizard"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(4, 37)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_MOHAWK_PARROT ) {
+		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "「ヒャッハー！」"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "「汚物ハ消毒ダ～！！」"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "「アギエエエー！」"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 100
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "モヒカンオウム"
+				}
+				else {
+					return "mohawk parrot"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia2/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1224
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_MOHAWK_PARROT
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 17
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 70
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 20
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_FIRE_BREATH
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "モヒカンオウム"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "mohawk parrot"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "warrior"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(3, 37)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_JAVA_SPOORROWRITER ) {
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 50
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "駄文鳥"
+				}
+				else {
+					return "java spoorrowriter"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + "/nefia2/"
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1223
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_JAVA_SPOORROWRITER
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 9
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 90
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 10
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_INSULT
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "駄文鳥"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "java spoorrowriter"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_ENEMY
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_ENEMY
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "claymore"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_PIC, rc) = xy2pic(2, 37)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
+	if ( dbid == CREATURE_ID_HERAUDSTERON ) {
+		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "「騙されるやつがアホウドリなのさ！」"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "「助けて！私は被害者です！」"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_FLAVOR_KILL ) {
+			if ( jp ) {
+				txtmore
+				txtef COLOR_SKY_BLUE
+				txt "「こいつがいきなり襲いかかってきたんです！恐怖を感じました！」"
+				return 1
+			}
+		}
+		if ( dbmode == DBMODE_REF_SPEC ) {
+			if ( dbspec == 3 ) {
+				return 1
+			}
+			if ( dbspec == 5 ) {
+				return 0
+			}
+			if ( dbspec == 6 ) {
+				return 20
+			}
+			if ( dbspec == 2 ) {
+				if ( jp ) {
+					return "『鷺野郎』"
+				}
+				else {
+					return "<Heraudsteron>"
+				}
+			}
+			if ( dbspec == 8 ) {
+				return "" + ""
+			}
+			return 0
+		}
+		if ( dbmode == DBMODE_REF ) {
+			dbidn = "bird"
+			dbmode = DBMODE_REF
+			gosub *db_race
+			cpicref = 1222
+			cpicref += 0 * 1000
+			return
+		}
+		if ( dbmode == DBMODE_SET ) {
+			cdata(CDATA_ID, rc) = CREATURE_ID_HERAUDSTERON
+			if ( initlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = initlv
+			}
+			else {
+				cdata(CDATA_LEVEL, rc) = 73
+			}
+			if ( voidlv != 0 ) {
+				cdata(CDATA_LEVEL, rc) = voidlv * (100 + cdata(CDATA_LEVEL, rc) * 2) / 100
+			}
+			cdata(CDATA_PORTRAIT, rc) = -1
+			cdata(CDATA_AI_CALM, rc) = 1
+			cdata(CDATA_AI_MOVE_FREQ, rc) = 80
+			cdata(CDATA_AI_DISTANCE, rc) = 1
+			cdata(CDATA_AI_SUB, rc) = 30
+			creaturepack = FILTER_NOTHING
+			cdata(STARTING_CDATA_ACT_MAIN, rc) = ACTION_MELEE
+			cdata(STARTING_CDATA_ACT_SUB, rc) = SKILL_SPACT_BLENDED_LIE
+			cdata(CDATA_ACT_INDEX, rc) = 11
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			cdata(CDATA_TXT, rc) += 1
+			if ( jp ) {
+				cdatan(CDATAN_NAME, rc) = "『鷺野郎』"
+			}
+			else {
+				cdatan(CDATAN_NAME, rc) = "<Heraudsteron>"
+			}
+			cdata(CDATA_RELATION, rc) = RELATION_NEUTRAL
+			cdata(CDATA_RELATION_ORG, rc) = RELATION_NEUTRAL
+			cdata(CDATA_ALIGNMENT, rc) = -10000
+			dbidn = "bird"
+			dbmode = DBMODE_SET
+			gosub *db_race
+			dbidn = "thief"
+			dbmode = DBMODE_SET
+			gosub *db_class
+			cdata(CDATA_SEX, rc) = 0
+			cdata(CDATA_PIC, rc) = xy2pic(1, 37)
+			cdata(CDATA_PIC, rc) += 0 * 1000
+			fixlv = FIX_QUALITY_UNIQUE
+			cspecialeq = 0
+			return
+		}
+		return 0
+	}
 	if ( dbid == CREATURE_ID_TOWN_CHILD4 ) {
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
 			txtmore
@@ -37953,7 +39337,7 @@
 		if ( dbmode == DBMODE_FLAVOR_KILL ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「弱すぎて轢くわ〜」", cnvtalk("I felt nothing running over you~"))
+			txt lang("「弱すぎて轢くわ～」", cnvtalk("I felt nothing running over you~"))
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
@@ -38977,7 +40361,7 @@
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「また石に逆戻りじゃ〜…とほほ」", cnvtalk("I'm back to being a stone again..."))
+			txt lang("「また石に逆戻りじゃ～…とほほ」", cnvtalk("I'm back to being a stone again..."))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_WELCOME ) {
@@ -44445,7 +45829,7 @@
 		if ( dbmode == DBMODE_FLAVOR_WELCOME ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「おおやさ〜ん！おかえりなさ〜い！」", cnvtalk("Paaapa! Welcome home~"))
+			txt lang("「おおやさ～ん！おかえりなさ～い！」", cnvtalk("Paaapa! Welcome home~"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_KILL ) {
@@ -44792,13 +46176,13 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「プッ！なんですかそれ〜」", cnvtalk("Pfft! What's that~?")), lang("「笑えるんですけどｗｗｗ」", cnvtalk("Oh, wow, lmao")), lang("「くすくすっ！」", cnvtalk("This ain't it, chief!"))
+			txt lang("「プッ！なんですかそれ～」", cnvtalk("Pfft! What's that~?")), lang("「笑えるんですけどｗｗｗ」", cnvtalk("Oh, wow, lmao")), lang("「くすくすっ！」", cnvtalk("This ain't it, chief!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「やだ〜ｗｗｗ」", cnvtalk("Been acting kinda sus lately~")), lang("「うっわ〜」", cnvtalk("Rent-free lmao.")), lang("「あははっ死んでくださいｗ」", cnvtalk("Big yikes!"))
+			txt lang("「やだ～ｗｗｗ」", cnvtalk("Been acting kinda sus lately~")), lang("「うっわ～」", cnvtalk("Rent-free lmao.")), lang("「あははっ死んでくださいｗ」", cnvtalk("Big yikes!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
@@ -44810,13 +46194,13 @@
 		if ( dbmode == DBMODE_FLAVOR_WELCOME ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「どうせセンスのない家具を買ってきたんですよねｗｗｗ」", cnvtalk("Garage sale! Welcome to the house of tasteless furnitures!")), lang("「いつまでこんなダッサダサな家に住ませる気ですか〜？？」", cnvtalk("Landlords hate 'em, living rent-free with this one simple trick!"))
+			txt lang("「どうせセンスのない家具を買ってきたんですよねｗｗｗ」", cnvtalk("Garage sale! Welcome to the house of tasteless furnitures!")), lang("「いつまでこんなダッサダサな家に住ませる気ですか～？？」", cnvtalk("Landlords hate 'em, living rent-free with this one simple trick!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_KILL ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「ざっこざこｗｗｗｗ」", cnvtalk("Zako~ zako!")), lang("「よっわすぎて笑えます〜」", cnvtalk("Oh no no no no no!"))
+			txt lang("「ざっこざこｗｗｗｗ」", cnvtalk("Zako~ zako!")), lang("「よっわすぎて笑えます～」", cnvtalk("Oh no no no no no!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
@@ -44898,7 +46282,7 @@
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「悪い虫は排除しちゃいますよ〜」", cnvtalk("I'll get rid of the bad bugs!")), lang("「家以外はどうでもいい」", cnvtalk("Compared to this house? You are nothing!"))
+			txt lang("「悪い虫は排除しちゃいますよ～」", cnvtalk("I'll get rid of the bad bugs!")), lang("「家以外はどうでもいい」", cnvtalk("Compared to this house? You are nothing!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
@@ -44910,13 +46294,13 @@
 		if ( dbmode == DBMODE_FLAVOR_WELCOME ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「ちゃああああんと家を守ってましたよぉ〜♪」", cnvtalk("Welcommmme! I was protecting the house!"))
+			txt lang("「ちゃああああんと家を守ってましたよぉ～♪」", cnvtalk("Welcommmme! I was protecting the house!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_KILL ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「守りたい家があるんだぁぁぁ！」", cnvtalk("I have a house to protect!")), lang("「あはぁ〜♪」", cnvtalk("Aha~"))
+			txt lang("「守りたい家があるんだぁぁぁ！」", cnvtalk("I have a house to protect!")), lang("「あはぁ～♪」", cnvtalk("Aha~"))
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
@@ -47541,7 +48925,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「〜♪」", cnvtalk("~")), lang("「♪1〜！」", cnvtalk("~ ~"))
+			txt lang("「～♪」", cnvtalk("~")), lang("「♪1～！」", cnvtalk("~ ~"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
@@ -50806,7 +52190,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「さーてどこ行く？」", cnvtalk("Where are we going next?")), lang("「世界最強になるのが夢だ！」", cnvtalk("I will be the the world's strongest!")), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "さん早く行こうよ〜」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "! Let's go already!\""), lang("少年はせわしなく体を動かしている。", "The boy is moving his body impatiently.")
+			txt lang("「さーてどこ行く？」", cnvtalk("Where are we going next?")), lang("「世界最強になるのが夢だ！」", cnvtalk("I will be the the world's strongest!")), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "さん早く行こうよ～」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "! Let's go already!\""), lang("少年はせわしなく体を動かしている。", "The boy is moving his body impatiently.")
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -64283,7 +65667,7 @@
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
 			eqmultiweapon = ITEM_ID_KITE_SHIELD, FIX_QUALITY_MIRACLE
 			eqrange = ITEM_ID_GRENADE, FIX_QUALITY_GODLY
-			eqarmor = ITEM_ID_PLATE_MAIL, FIX_QUALITY_GREAT
+			eqarmor = ITEM_ID_EGELMAIL
 			eqboots = ITEM_ID_ARMORED_BOOTS, FIX_QUALITY_MIRACLE
 			return
 		}
@@ -66812,6 +68196,7 @@
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
 			eqmultiweapon = ITEM_ID_STAFF, FIX_QUALITY_GODLY
+			eqring1 = ITEM_ID_ROATONING
 			return
 		}
 		return 0
@@ -67740,6 +69125,7 @@
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
 			eqmultiweapon = ITEM_ID_CLAW, FIX_QUALITY_GODLY
+			eqamulet1 = ITEM_ID_INQTUAFFLER
 			return
 		}
 		return 0
@@ -70180,6 +71566,7 @@
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
 			eqweapon1 = ITEM_ID_CLAYMORE, FIX_QUALITY_GODLY
 			eqtwohand = 1
+			eqboots = ITEM_ID_LAZASYEEL
 			return
 		}
 		return 0
@@ -72840,7 +74227,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「ときめくぜっ」", cnvtalk("It's exciting!")), lang("「みんな〜」", cnvtalk("Everyone~")), lang("「おひねりもよろしく！」", cnvtalk("Thank you for your support!"))
+			txt lang("「ときめくぜっ」", cnvtalk("It's exciting!")), lang("「みんな～」", cnvtalk("Everyone~")), lang("「おひねりもよろしく！」", cnvtalk("Thank you for your support!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -72864,7 +74251,7 @@
 		if ( dbmode == DBMODE_FLAVOR_KILL ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「いやっほう！」", cnvtalk("Yahoooo!")), lang("「応援、ありがと〜」", cnvtalk("Thank you for your support!"))
+			txt lang("「いやっほう！」", cnvtalk("Yahoooo!")), lang("「応援、ありがと～」", cnvtalk("Thank you for your support!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
@@ -85726,7 +87113,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「お花綺麗だなー」", cnvtalk("Your flowers are beautiful.")), lang("「〜♪」", cnvtalk("~♪"))
+			txt lang("「お花綺麗だなー」", cnvtalk("Your flowers are beautiful.")), lang("「～♪」", cnvtalk("~♪"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -87115,7 +88502,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「〜♪」", cnvtalk("~♪"))
+			txt lang("「～♪」", cnvtalk("~♪"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -94361,7 +95748,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "〜」", "\"" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "〜", _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~"), lang("「用事はありませんか♪」", cnvtalk("Don't you have any tasks for me? ♪")), lang("メイドの熱い視線を感じる…", "You can feel the maid's passion-fueled gaze...")
+			txt lang("「" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "～」", "\"" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "～", _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~"), lang("「用事はありませんか♪」", cnvtalk("Don't you have any tasks for me? ♪")), lang("メイドの熱い視線を感じる…", "You can feel the maid's passion-fueled gaze...")
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -94379,7 +95766,7 @@
 		if ( dbmode == DBMODE_FLAVOR_WELCOME ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「おかえりなさいませ、" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "〜」", "\"Welcome back, " + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("「おかえりなさいまし〜」", cnvtalk("Welcome baack~"))
+			txt lang("「おかえりなさいませ、" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "～」", "\"Welcome back, " + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("「おかえりなさいまし～」", cnvtalk("Welcome baack~"))
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
@@ -96969,7 +98356,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「タラララララー♪」", cnvtalk("Talalalalalaa♪")), lang("「チキチキ♪」", cnvtalk("Tchic-Tchic♪")), lang("「ドナドナドナ〜♪」", cnvtalk("Donna-Donnaaa♪")), lang("「ダバダ〜♪」", cnvtalk("Dabadaa♪"))
+			txt lang("「タラララララー♪」", cnvtalk("Talalalalalaa♪")), lang("「チキチキ♪」", cnvtalk("Tchic-Tchic♪")), lang("「ドナドナドナ～♪」", cnvtalk("Donna-Donnaaa♪")), lang("「ダバダ～♪」", cnvtalk("Dabadaa♪"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -100320,7 +101707,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「お酒いかが〜」", cnvtalk("Come on in! The ale is flowing well tonight!")), lang("「やだっ。どこ触ってるんですか」", cnvtalk("Hey! Keep yer stinking hands of the serving ladies!")), lang(" *ざわざわ* ", "The rowdy crowd is making a fair bit of noise tonight"), lang("盃を交わす音が聞こえる。", "You hear the sound of tankards striking in a toast")
+			txt lang("「お酒いかが～」", cnvtalk("Come on in! The ale is flowing well tonight!")), lang("「やだっ。どこ触ってるんですか」", cnvtalk("Hey! Keep yer stinking hands of the serving ladies!")), lang(" *ざわざわ* ", "The rowdy crowd is making a fair bit of noise tonight"), lang("盃を交わす音が聞こえる。", "You hear the sound of tankards striking in a toast")
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -100610,7 +101997,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang(" *ぶ〜ん* ", " *bzzzz*whirrrrrrr*click* "), lang("何かが高速で回転している。", "Something is buffing the floor at an inhuman speed")
+			txt lang(" *ぶ～ん* ", " *bzzzz*whirrrrrrr*click* "), lang("何かが高速で回転している。", "Something is buffing the floor at an inhuman speed")
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -103706,7 +105093,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「タラララララー♪」", cnvtalk("Oh I once heard of a place called Nantucket...")), lang("「チキチキ♪」", cnvtalk("Ninety-nine Yeeks in a dank hole. Ninety-nine Yeeks in a Hole!")), lang("「ドナドナドナ〜♪」", cnvtalk("Crawling in my Robes! These wounds will need a Healer!")), lang("「ダバダ〜♪」", cnvtalk("If you go down to the woods today. You're sure of a big surprise. If you go down to the woods today. You'd better go in disguise."))
+			txt lang("「タラララララー♪」", cnvtalk("Oh I once heard of a place called Nantucket...")), lang("「チキチキ♪」", cnvtalk("Ninety-nine Yeeks in a dank hole. Ninety-nine Yeeks in a Hole!")), lang("「ドナドナドナ～♪」", cnvtalk("Crawling in my Robes! These wounds will need a Healer!")), lang("「ダバダ～♪」", cnvtalk("If you go down to the woods today. You're sure of a big surprise. If you go down to the woods today. You'd better go in disguise."))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -103944,7 +105331,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「今なら無料でジュア様の抱き枕が手に入るよ〜」", cnvtalk("For a limited time, get Lady Jure's body pillow for FREE!")), lang("「見てらっしゃい、よってらっしゃい」", cnvtalk("Step right up, step right up!")), lang("「そこの君、清楚で綺麗なお姉さんが君を待ってるよ」", cnvtalk("You there lucky one, a beautiful and sweet woman awaits for you!")), lang("「この荒れすさんだ世に咲く一輪の花、気高く汚れを知らぬ純白の乙女、その名も癒しのジュア！」", cnvtalk("A flower growing in the desert, fragile yet most noble... A maiden pure in heart with compassion and indomitable will to vanquish evil... Her name is Jure of Healing!"))
+			txt lang("「今なら無料でジュア様の抱き枕が手に入るよ～」", cnvtalk("For a limited time, get Lady Jure's body pillow for FREE!")), lang("「見てらっしゃい、よってらっしゃい」", cnvtalk("Step right up, step right up!")), lang("「そこの君、清楚で綺麗なお姉さんが君を待ってるよ」", cnvtalk("You there lucky one, a beautiful and sweet woman awaits for you!")), lang("「この荒れすさんだ世に咲く一輪の花、気高く汚れを知らぬ純白の乙女、その名も癒しのジュア！」", cnvtalk("A flower growing in the desert, fragile yet most noble... A maiden pure in heart with compassion and indomitable will to vanquish evil... Her name is Jure of Healing!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
@@ -109449,7 +110836,7 @@
 			dbidn = "dog"
 			dbmode = DBMODE_REF
 			gosub *db_race
-			cpicref = xy2pic(5, 6)
+			cpicref = xy2pic(6, 38)
 			cpicref += COLOR_BLUE * COLOR_TINT_MULT
 			return
 		}
@@ -109484,7 +110871,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			sdata(SKILL_RES_DARKNESS, rc) = 500
-			cdata(CDATA_PIC, rc) = xy2pic(5, 6)
+			cdata(CDATA_PIC, rc) = xy2pic(6, 38)
 			cdata(CDATA_PIC, rc) += COLOR_BLUE * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
@@ -109514,7 +110901,7 @@
 			dbidn = "dog"
 			dbmode = DBMODE_REF
 			gosub *db_race
-			cpicref = xy2pic(5, 6)
+			cpicref = xy2pic(6, 38)
 			cpicref += COLOR_PINK * COLOR_TINT_MULT
 			return
 		}
@@ -109549,7 +110936,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			sdata(SKILL_RES_MIND, rc) = 500
-			cdata(CDATA_PIC, rc) = xy2pic(5, 6)
+			cdata(CDATA_PIC, rc) = xy2pic(6, 38)
 			cdata(CDATA_PIC, rc) += COLOR_PINK * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
@@ -109579,7 +110966,7 @@
 			dbidn = "dog"
 			dbmode = DBMODE_REF
 			gosub *db_race
-			cpicref = xy2pic(5, 6)
+			cpicref = xy2pic(6, 38)
 			cpicref += COLOR_SKY_BLUE * COLOR_TINT_MULT
 			return
 		}
@@ -109614,7 +111001,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			sdata(SKILL_RES_NERVE, rc) = 500
-			cdata(CDATA_PIC, rc) = xy2pic(5, 6)
+			cdata(CDATA_PIC, rc) = xy2pic(6, 38)
 			cdata(CDATA_PIC, rc) += COLOR_SKY_BLUE * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
@@ -109644,7 +111031,7 @@
 			dbidn = "dog"
 			dbmode = DBMODE_REF
 			gosub *db_race
-			cpicref = xy2pic(5, 6)
+			cpicref = xy2pic(6, 38)
 			cpicref += COLOR_GREEN * COLOR_TINT_MULT
 			return
 		}
@@ -109679,7 +111066,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			sdata(SKILL_RES_POISON, rc) = 500
-			cdata(CDATA_PIC, rc) = xy2pic(5, 6)
+			cdata(CDATA_PIC, rc) = xy2pic(6, 38)
 			cdata(CDATA_PIC, rc) += COLOR_GREEN * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
@@ -109709,7 +111096,7 @@
 			dbidn = "dog"
 			dbmode = DBMODE_REF
 			gosub *db_race
-			cpicref = xy2pic(5, 6)
+			cpicref = xy2pic(6, 38)
 			cpicref += COLOR_ORANGE * COLOR_TINT_MULT
 			return
 		}
@@ -109744,7 +111131,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			sdata(SKILL_RES_SOUND, rc) = 500
-			cdata(CDATA_PIC, rc) = xy2pic(5, 6)
+			cdata(CDATA_PIC, rc) = xy2pic(6, 38)
 			cdata(CDATA_PIC, rc) += COLOR_ORANGE * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
@@ -109774,7 +111161,7 @@
 			dbidn = "dog"
 			dbmode = DBMODE_REF
 			gosub *db_race
-			cpicref = xy2pic(5, 6)
+			cpicref = xy2pic(6, 38)
 			cpicref += COLOR_GRAY * COLOR_TINT_MULT
 			return
 		}
@@ -109809,7 +111196,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			sdata(SKILL_RES_NETHER, rc) = 500
-			cdata(CDATA_PIC, rc) = xy2pic(5, 6)
+			cdata(CDATA_PIC, rc) = xy2pic(6, 38)
 			cdata(CDATA_PIC, rc) += COLOR_GRAY * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
@@ -109839,7 +111226,7 @@
 			dbidn = "dog"
 			dbmode = DBMODE_REF
 			gosub *db_race
-			cpicref = xy2pic(5, 6)
+			cpicref = xy2pic(6, 38)
 			cpicref += COLOR_LIGHT_PURPLE * COLOR_TINT_MULT
 			return
 		}
@@ -109941,7 +111328,7 @@
 			dbidn = "predator"
 			dbmode = DBMODE_SET
 			gosub *db_class
-			cdata(CDATA_PIC, rc) = xy2pic(6, 6)
+			cdata(CDATA_PIC, rc) = xy2pic(6, 38)
 			cdata(CDATA_PIC, rc) += COLOR_BROWN * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
@@ -117430,7 +118817,7 @@
 		if ( dbmode == DBMODE_FLAVOR_KILL ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「あぁ〜ビックリしたぁ」", cnvtalk("That scared me!"))
+			txt lang("「あぁ～ビックリしたぁ」", cnvtalk("That scared me!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_ON_EAT ) {
@@ -117886,7 +119273,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「くぅ〜」", "You hear the high pitched yips of a young dog"), lang("「ぁぅぁぅ」", "A plaintive howl is heard in the distance"), lang("「ぅ〜」", "Rowf!")
+			txt lang("「くぅ～」", "You hear the high pitched yips of a young dog"), lang("「ぁぅぁぅ」", "A plaintive howl is heard in the distance"), lang("「ぅ～」", "Rowf!")
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
@@ -117975,7 +119362,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「ポピー！」", cnvtalk("Poppy!")), lang("「わん〜わん〜」", cnvtalk("Wuff wuff."))
+			txt lang("「ポピー！」", cnvtalk("Poppy!")), lang("「わん～わん～」", cnvtalk("Wuff wuff."))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -118533,13 +119920,13 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「あそぼーよ" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんー」", "\"Let's play, " + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんだいすき！」", "\"I love you " + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃ〜ん♪！」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + " ♪!\""), lang("妹は甘えるような声を出している。", "The younger sister hums happily."), lang("「うー…無視しないでよぉ」", cnvtalk("Uhmm... don't ignore me.")), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん☆」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + " ☆\"")
+			txt lang("「あそぼーよ" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんー」", "\"Let's play, " + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんだいすき！」", "\"I love you " + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃ～ん♪！」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + " ♪!\""), lang("妹は甘えるような声を出している。", "The younger sister hums happily."), lang("「うー…無視しないでよぉ」", cnvtalk("Uhmm... don't ignore me.")), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん☆」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + " ☆\"")
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「すっごーい」", cnvtalk("Wonderful.")), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんにいいとこ見せるぞ〜！」", "\"I'll show you someplace nice, " + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「けしとんじゃえ」", cnvtalk("Isn't this a pity?"))
+			txt lang("「すっごーい」", cnvtalk("Wonderful.")), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんにいいとこ見せるぞ～！」", "\"I'll show you someplace nice, " + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「けしとんじゃえ」", cnvtalk("Isn't this a pity?"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
@@ -118632,7 +120019,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんー」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "...\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん！」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃ〜ん」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんっ」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん？」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "?\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "〜ちゃん」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "~!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん♪」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "♪\"")
+			txt lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんー」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "...\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん！」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃ～ん」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんっ」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん？」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "?\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "～ちゃん」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "~!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん♪」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "♪\"")
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
@@ -118730,7 +120117,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんー」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "...\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん！」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃ〜ん」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんっ」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん？」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "?\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "〜ちゃん」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "~!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん♪」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "♪\"")
+			txt lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんー」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "...\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん！」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃ～ん」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃんっ」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "!!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん？」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "?\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "～ちゃん」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "~!\""), lang("「" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "ちゃん♪」", "\"" + _onii(cdata(CDATA_SEX, CHARA_PLAYER)) + "♪\"")
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
@@ -119219,7 +120606,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「今日のご飯はなんにしよう」", cnvtalk("Oh, what to make for dinner.")), lang("「ガロクの作品には遊びがないね」", cnvtalk("All work and no play makes Miral a dull boy.")), lang("「暇だぬ」", cnvtalk("There's never enough time in the world to get everything done.")), lang("「おお、客人かな？」", cnvtalk("Guests? Goodness it has been a while indeed.")), lang("「猫 イズ フリ〜ダ〜ム♪ 猫 イズ フリ〜ダ〜ム♪」", cnvtalk("I've got a cat I wanna frame! And now nothing shall ever be the same."))
+			txt lang("「今日のご飯はなんにしよう」", cnvtalk("Oh, what to make for dinner.")), lang("「ガロクの作品には遊びがないね」", cnvtalk("All work and no play makes Miral a dull boy.")), lang("「暇だぬ」", cnvtalk("There's never enough time in the world to get everything done.")), lang("「おお、客人かな？」", cnvtalk("Guests? Goodness it has been a while indeed.")), lang("「猫 イズ フリ～ダ～ム♪ 猫 イズ フリ～ダ～ム♪」", cnvtalk("I've got a cat I wanna frame! And now nothing shall ever be the same."))
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
@@ -121402,7 +122789,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "〜」", "\"" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "〜", "" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~"), lang("「用事はありませんか♪」", cnvtalk("Don't you have any tasks for me? ♪")), lang("メイドの熱い視線を感じる…", "You can feel the maid's passion-fueled gaze...")
+			txt lang("「" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "～」", "\"" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "～", "" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~"), lang("「用事はありませんか♪」", cnvtalk("Don't you have any tasks for me? ♪")), lang("メイドの熱い視線を感じる…", "You can feel the maid's passion-fueled gaze...")
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_ANGERED ) {
@@ -121420,7 +122807,7 @@
 		if ( dbmode == DBMODE_FLAVOR_WELCOME ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「おかえりなさいませ、" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "〜」", "\"Welcome back, " + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("「おかえりなさいまし〜」", cnvtalk("Welcome baack~"))
+			txt lang("「おかえりなさいませ、" + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "～」", "\"Welcome back, " + _syujin(cdata(CDATA_SEX, CHARA_PLAYER)) + "~\""), lang("「おかえりなさいまし～」", cnvtalk("Welcome baack~"))
 			return 1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
@@ -121576,7 +122963,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「あー…かわいいお花！」", cnvtalk("Oh my! Such pretty flowers♪")), lang("「ついていっていい？」", cnvtalk("Can I tag along? I won't be a bother♪")), lang("「サンドラさんの赤いケープほしい…」", cnvtalk("I hope Sandra's red cape...♪")), lang("「ざっつあぷりちーふらわー」", cnvtalk("Eat flowers evil-doer!♪")), lang("「赤って好きな色なの〜」", cnvtalk("Red is the color of love, of blood, and of roses♪")), lang("「この花の冠はお母さんに編んでもらったの」", cnvtalk("A crown of flowers did his mother weave with all her heart...♪")), lang("「るるる♪」", cnvtalk("♪La, laaaah, la, la-la. Lah, la-la, la la...♪"))
+			txt lang("「あー…かわいいお花！」", cnvtalk("Oh my! Such pretty flowers♪")), lang("「ついていっていい？」", cnvtalk("Can I tag along? I won't be a bother♪")), lang("「サンドラさんの赤いケープほしい…」", cnvtalk("I hope Sandra's red cape...♪")), lang("「ざっつあぷりちーふらわー」", cnvtalk("Eat flowers evil-doer!♪")), lang("「赤って好きな色なの～」", cnvtalk("Red is the color of love, of blood, and of roses♪")), lang("「この花の冠はお母さんに編んでもらったの」", cnvtalk("A crown of flowers did his mother weave with all her heart...♪")), lang("「るるる♪」", cnvtalk("♪La, laaaah, la, la-la. Lah, la-la, la la...♪"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
@@ -122118,7 +123505,7 @@
 		if ( dbmode == DBMODE_FLAVOR_PASSIVE ) {
 			txtmore
 			txtef COLOR_SKY_BLUE
-			txt lang("「るんるんるん♪」", cnvtalk("I nyo talk funny, nyou talk funny♪")), lang("「うみみゃ？」", cnvtalk("Nyah! Water! I hates it so.")), lang("「にしし！」", cnvtalk("Pug!")), lang("「ふ〜んふ〜んふ〜ん♪1」", cnvtalk("Nyo touching! No Bump-Bump for nyou.")), lang("「きのこのこのこげんきのこぉ〜♪ 」", cnvtalk("♪Nyobody knyows the touble Mia's seen, nyobody knyows Mia's Tru-bull♪")), lang("「おー。えりんぎまいたけぶなしめじぃ〜」", "You hear the oddest voice in the crowd, it is lilting and... cat-like?"), lang("「フーン　フンフン　フーン　フンフン　ネコのフ〜ン♪　フーン　フンフン　フーン　フンフン　かたい♪」", cnvtalk("Meow♪!"))
+			txt lang("「るんるんるん♪」", cnvtalk("I nyo talk funny, nyou talk funny♪")), lang("「うみみゃ？」", cnvtalk("Nyah! Water! I hates it so.")), lang("「にしし！」", cnvtalk("Pug!")), lang("「ふ～んふ～んふ～ん♪1」", cnvtalk("Nyo touching! No Bump-Bump for nyou.")), lang("「きのこのこのこげんきのこぉ～♪ 」", cnvtalk("♪Nyobody knyows the touble Mia's seen, nyobody knyows Mia's Tru-bull♪")), lang("「おー。えりんぎまいたけぶなしめじぃ～」", "You hear the oddest voice in the crowd, it is lilting and... cat-like?"), lang("「フーン　フンフン　フーン　フンフン　ネコのフ～ン♪　フーン　フンフン　フーン　フンフン　かたい♪」", cnvtalk("Meow♪!"))
 			return 1
 		}
 		if ( dbmode == DBMODE_FLAVOR_DEATH ) {
@@ -125901,6 +127288,34 @@
 	// This causes weird bugs in almost every version of CGX, so if you don't want to change every reference to "filter_creature".
 	// Just change filter_creature(bullshit_number) to filter_creature(new_creature_id + 2) like the ones below.
 	// Make sure the filter matches or you will get bugs like fairys spawning in lake dungeons or something.
+	filter_creature(CREATURE_ID_SPIRIT_OF_PANJAN + 2) = "/nefia8/"
+	filter_creature(CREATURE_ID_SPIRIT_OF_PANTY + 2) = "/nefia8/"
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_SPIRIT_OF_PANTY), CHARA_BIT_FLOAT \ 32
+	HMMBITON cbitorg(CHARA_BIT_SUICIDE / 32, CREATURE_ID_SPIRIT_OF_PANTY), CHARA_BIT_SUICIDE \ 32
+	filter_creature(CREATURE_ID_ULTIMATE_PHOENIX + 2) = "/nefia2/"
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_ULTIMATE_PHOENIX), CHARA_BIT_FLOAT \ 32
+	HMMBITON cbitorg(CHARA_BIT_RES_CONFUSE / 32, CREATURE_ID_ULTIMATE_PHOENIX), CHARA_BIT_RES_CONFUSE \ 32
+	HMMBITON cbitorg(CHARA_BIT_RES_BLIND / 32, CREATURE_ID_ULTIMATE_PHOENIX), CHARA_BIT_RES_BLIND \ 32
+	filter_creature(CREATURE_ID_THOUSAND_CRANE + 2) = "/nefia2/"
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_THOUSAND_CRANE), CHARA_BIT_FLOAT \ 32
+	HMMBITON cbitorg(CHARA_BIT_RES_FEAR / 32, CREATURE_ID_THOUSAND_CRANE), CHARA_BIT_RES_FEAR \ 32
+	HMMBITON cbitorg(CHARA_BIT_RES_PARALYZE / 32, CREATURE_ID_THOUSAND_CRANE), CHARA_BIT_RES_PARALYZE \ 32
+	filter_creature(CREATURE_ID_MULTI_PEALOCK + 2) = "/nefia2/"
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_MULTI_PEALOCK), CHARA_BIT_FLOAT \ 32
+	filter_creature(CREATURE_ID_CARRIER_PIGEON + 2) = ""
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_CARRIER_PIGEON), CHARA_BIT_FLOAT \ 32
+	filter_creature(CREATURE_ID_CLASHING_WOODPECKER + 2) = ""
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_CLASHING_WOODPECKER), CHARA_BIT_FLOAT \ 32
+	filter_creature(CREATURE_ID_DANCING_SWAN + 2) = "/nefia2/"
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_DANCING_SWAN), CHARA_BIT_FLOAT \ 32
+	filter_creature(CREATURE_ID_MADUCK + 2) = "/nefia2/"
+	filter_creature(CREATURE_ID_MOHAWK_PARROT + 2) = "/nefia2/"
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_MOHAWK_PARROT), CHARA_BIT_FLOAT \ 32
+	filter_creature(CREATURE_ID_JAVA_SPOORROWRITER + 2) = "/nefia2/"
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_JAVA_SPOORROWRITER), CHARA_BIT_FLOAT \ 32
+	filter_creature(CREATURE_ID_HERAUDSTERON + 2) = ""
+	HMMBITON cbitorg(CHARA_BIT_FLOAT / 32, CREATURE_ID_HERAUDSTERON), CHARA_BIT_FLOAT \ 32
+
 	filter_creature(CREATURE_ID_TOWN_CHILD4 + 2) = "/man/"
 	filter_creature(CREATURE_ID_TOWN_CHILD3 + 2) = "/man/"
 	filter_creature(CREATURE_ID_TOWN_CHILD2 + 2) = "/man/"

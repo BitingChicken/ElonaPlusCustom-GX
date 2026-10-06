@@ -982,22 +982,24 @@
 		/********** CHICKEN CUSTOM - BEGINNING **********/
 		if ( gdata(GDATA_DEEPEST_LEVEL) + 20 <= rnd(cdata(CDATA_LEVEL, cc)) & TweakData(TWEAK_GAMEPLAY_REVERT_POST_232_PET_CHANGES, TWEAK_CATEGORY_GAMEPLAY) == 0 ) {
 		/********** CHICKEN CUSTOM - ENDING **********/
-			kaiwa = rnd(4)
-			txtef COLOR_PINK
-			if ( kaiwa == 0 ) {
-				txt lang(name(cc) + "は怠けている。", name(cc) + " is being lazy.")
+			if ( cdata(CDATA_MASTER_SERVANT, cc) + 500 <= rnd(2000) ) {
+				kaiwa = rnd(4)
+				txtef COLOR_PINK
+				if ( kaiwa == 0 ) {
+					txt lang(name(cc) + "は怠けている。", name(cc) + " is lazy.")
+				}
+				if ( kaiwa == 1 ) {
+					txt lang(name(cc) + "は言うことを聞かない。", name(cc) + " not follow instructions.")
+				}
+				if ( kaiwa == 2 ) {
+					txt lang(name(cc) + "は知らんぷりしている。", name(cc) + " ignores the fight.")
+				}
+				if ( kaiwa == 3 ) {
+					cdata(CDATA_CONDITION_SLEEP, cc) += 20
+					txt lang(name(cc) + "は居眠りを始めた。", name(cc) + " started to doze off.")
+				}
+				goto *turn_end
 			}
-			if ( kaiwa == 1 ) {
-				txt lang(name(cc) + "は言うことを聞かない。", name(cc) + " is not listening to your orders.")
-			}
-			if ( kaiwa == 2 ) {
-				txt lang(name(cc) + "は知らんぷりしている。", name(cc) + " is ignoring the fight.")
-			}
-			if ( kaiwa == 3 ) {
-				cdata(CDATA_CONDITION_SLEEP, cc) += 20
-				txt lang(name(cc) + "は居眠りを始めた。", name(cc) + " has begun napping.")
-			}
-			goto *turn_end
 		}
 	}
 
@@ -3320,6 +3322,13 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_ULTIMATE_PHOENIX ) {
+		if ( rnd(3) == 0 ) {
+			if ( findbuff(cc, BUFF_OVERLIMIT_THROW) == (-1) ) {
+				act = SKILL_SPACT_OVERLIMIT_THROW
+			}
+		}
+	}
 	if ( cdata(CDATA_ID, cc) == CREATURE_ID_DEVIANT_MINECART ) {
 		if ( rnd(3) == 0 ) {
 			if ( findbuff(cc, BUFF_HYPER_DASH) == (-1) ) {
@@ -3361,6 +3370,13 @@
 			}
 		}
 	}
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_SPIRIT_OF_PANJAN ) {
+		if ( findbuff(cc, BUFF_BOOST) == (-1) ) {
+			if ( rnd(2) == 0 ) {
+				act = SKILL_SPACT_ROCKET_BOOST
+			}
+		}
+	}
 	if ( cdata(CDATA_ID, cc) == CREATURE_ID_WORKER_02 | cdata(CDATA_ID, cc) == CREATURE_ID_YERLESWOOD_TYPE_M | cdata(CDATA_ID, cc) == CREATURE_ID_YERLESWOOD_NEO | cdata(CDATA_ID, cc) == CREATURE_ID_METAL_VESDA_THE_FIRE_MACHINE | cdata(CDATA_ID, cc) == CREATURE_ID_YERLESWOOD_THE_SAVAGE_MACHINE | cdata(CDATA_ID, cc) == CREATURE_ID_CHAOSHAPRINCESS_VARGM ) {
 		if ( cdata(CDATA_MP, cc) >= cdata(CDATA_MAX_MP, cc) / 2 ) {
 			if ( rnd(5) == 0 ) {
@@ -3368,7 +3384,7 @@
 			}
 		}
 	}
-	if ( cdata(CDATA_ID, cc) == CREATURE_ID_STERSHA_THE_QUEEN_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_XABI_THE_KING_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_SILVIA_THE_PRINCESS | cdata(CDATA_ID, cc) == CREATURE_ID_HAND_OF_THE_CATGOD | cdata(CDATA_ID, cc) == CREATURE_ID_RICH_PERSON | cdata(CDATA_ID, cc) == CREATURE_ID_PALMIAN_ELITE_SOLDIER | cdata(CDATA_ID, cc) == CREATURE_ID_KARAVIKA | cdata(CDATA_ID, cc) == CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL ) {
+	if ( cdata(CDATA_ID, cc) == CREATURE_ID_STERSHA_THE_QUEEN_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_XABI_THE_KING_OF_PALMIA | cdata(CDATA_ID, cc) == CREATURE_ID_SILVIA_THE_PRINCESS | cdata(CDATA_ID, cc) == CREATURE_ID_HAND_OF_THE_CATGOD | cdata(CDATA_ID, cc) == CREATURE_ID_RICH_PERSON | cdata(CDATA_ID, cc) == CREATURE_ID_PALMIAN_ELITE_SOLDIER | cdata(CDATA_ID, cc) == CREATURE_ID_KARAVIKA | cdata(CDATA_ID, cc) == CREATURE_ID_QUEEN_SEDONA_THE_SAIL_GIRL | cdata(CDATA_ID, cc) == CREATURE_ID_HERAUDSTERON | cdata(CDATA_ID, cc) == CREATURE_ID_CARRIER_PIGEON ) {
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 80 ) {
 			if ( cdata(CDATA_POWER_GAUGE, cc) >= 30 ) {
 				if ( rnd(10) == 0 ) {

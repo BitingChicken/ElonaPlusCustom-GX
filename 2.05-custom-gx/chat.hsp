@@ -587,6 +587,68 @@
 		chatMore lang("ケチ！", "You're so cheap!")
 		goto *chat_event_SWEND1
 	}
+	if ( _switch_val == ROLE_GUEST_CARRIER | _switch_sw ) {
+		_switch_sw = 0
+		chatList 1, lang("伝書鳩も大変ね", "Being a carrier pigeon must be tough work.")
+		chatList 0, lang("いらないから捨てておいて", "I don't need it, so please throw it away.")
+		buff = lang("どうもー。" + cdatan(CDATAN_AKA, CHARA_PLAYER) + cdatan(CDATAN_NAME, CHARA_PLAYER) + "さんにお手紙でーす。", "Hello there. This is a letter for " + cdatan(CDATAN_AKA, CHARA_PLAYER) + cdatan(CDATAN_NAME, CHARA_PLAYER) + ".")
+		gosub *chat_select
+		if ( chatval == 0 ) {
+			chatMore lang("大事に運んできたのにひどいや。", "I carried it so carefully, and now this happens.")
+			chara_vanquish tc
+			goto *chat_event_SWEND1
+		}
+		if ( chatval == 1 ) {
+			chatMore lang("鳩はこの仕事に向いているのかなあ…。", "Am I really suitable for this job...?")
+		}
+		snd SOUNDLIST_GET1
+		kaiwa = rnd(7)
+		if ( kaiwa == 0 ) {
+			flt
+			itemcreate -1, ITEM_ID_INVITATION_LETTER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		}
+		if ( kaiwa == 1 ) {
+			flt
+			itemcreate -1, ITEM_ID_LOVE_LETTER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		}
+		if ( kaiwa == 2 ) {
+			flt
+			itemcreate -1, ITEM_ID_WINNING_NOTIFICATION, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		}
+		if ( kaiwa == 3 ) {
+			flt
+			itemcreate -1, ITEM_ID_BUSINESS_LETTER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		}
+		if ( kaiwa == 4 ) {
+			flt
+			itemcreate -1, ITEM_ID_FAN_LETTER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		}
+		if ( kaiwa == 5 ) {
+			flt
+			itemcreate -1, ITEM_ID_SUSPICIOUS_LETTER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		}
+		if ( kaiwa == 6 ) {
+			flt
+			itemcreate -1, ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		}
+		if ( rnd(sdata(SKILL_ATTR_CHA, CHARA_PLAYER)) > rnd(2000) ) {
+			flt
+			itemcreate -1, ITEM_ID_LOVE_LETTER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		}
+		if ( rnd(cdata(CDATA_FAME, CHARA_PLAYER)) > rnd(100000) ) {
+			flt
+			itemcreate -1, ITEM_ID_FAN_LETTER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+		}
+		if ( findbuff(CHARA_PLAYER, BUFF_LUCK) == (-1) ) {
+			if ( rnd(5) == 0 ) {
+				flt
+				itemcreate -1, ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+			}
+		}
+		chara_vanquish tc
+		goto *chat_event_SWEND1
+		_switch_sw++
+	}
 	if ( _switch_val == ROLE_GUEST_HALLOWEEN | _switch_sw ) {
 		_switch_sw = 0
 		tri3 = -1
@@ -854,6 +916,123 @@
 				chatMore lang("マって！10リットル！いヤ、8リットルでイイからぁあ！", "Wait a moment...10 liters...no, even 8 liters would be fine...!"), strbye
 				chara_vanquish tc
 				goto *chat_event_SWEND1
+			}
+		}
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_HERAUDSTERON ) {
+			cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER)++
+			if ( cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) \ 4 == 1 ) {
+				cdatan(CDATAN_NAME, tc) = lang("『オレオレ鷺』", "<Heraudsteron> the saying it's me")
+				chatList 0, lang("誰だよ", "Who are you?")
+				chatList 1, lang("ロミアス！？ロミアスなのかい？", "Lomias!? Is that you, Lomias?")
+				chatList 2, lang("その声は我が友ではないか？", "That voice... could it be my friend?")
+				buff = lang("オレだよオレ！助けてくれ！どこかの馬鹿が井戸におかしな液体を混ぜやがったせいでこんな姿になっちまった！", "It's me, it's me! Help me out! Some idiot mixed a weird liquid into the well, and now I've ended up looking like this!")
+				chatesc = 0
+				gosub *chat_select
+				chatList 0, lang("サギじゃん", "It's a fraud, isn't it?")
+				if ( cdata(CDATA_GOLD, CHARA_PLAYER) >= 5000 ) {
+					chatList 1, lang("一生のお願いなら仕方ない", "If it's a once-in-a-lifetime favor, I guess I have no choice.")
+				}
+				chatList 2, lang("空飛ぶのが夢ってずっと言ってたじゃん", "You've always said your dream was to fly, remember?")
+				buff = lang("今なら、5000goldあれば治療を受けて元に戻れるんだ！もうお前しか頼れないんだよ！一生のお願いだ、5000gold用意してくれ…！", "Right now, with 5000 gold, I can get treatment and return to normal! You're the only one I can rely on now! I'm begging you?this is a once-in-a-lifetime favor...please prepare 5000 gold for me...!")
+				gosub *chat_select
+				if ( chatval == 0 ) {
+					chatMore lang("はは…そうだよな、信じるわけないよな。お前を頼ったオレが馬鹿だったよ…。", "Haha... yeah, you're right. There's no way you'd believe it. I was a fool to count on you...")
+				}
+				if ( chatval == 1 ) {
+					chatMore lang("助かった、恩に着る！元に戻れたら酒でも奢るよ！", "You're a lifesaver! I owe you one! If I manage to get back to normal, I'll treat you to a drink!")
+					snd SOUNDLIST_PAYGOLD1
+					cdata(CDATA_GOLD, CHARA_PLAYER) -= 5000
+				}
+				if ( chatval == 2 ) {
+					chatMore lang("！？…そ、そうだったなぁ。ちょっと飛行テストしてくるわ。", "!?...Y-yeah, that's true. I'm gonna go run a quick flight test.")
+				}
+				chara_vanquish tc
+				goto *chat_event_SWEND1
+			}
+			if ( cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) \ 4 == 2 ) {
+				cdatan(CDATAN_NAME, tc) = lang("『寸借鷺』", "<Heraudsteron> the saying I can't go home")
+				chatList 0, lang("サギだろ", "It's a fraud, isn't it?")
+				if ( cdata(CDATA_GOLD, CHARA_PLAYER) >= 800 ) {
+					chatList 1, lang("まぁそのくらいなら…", "Well, if it's just that much...")
+				}
+				chatList 2, lang("わけを話してガードに借りてください", "Please explain the situation to the guard and ask them to lend you some money.")
+				buff = lang("うう…家に帰るためのお金が足りなくってねぇ…後日、必ず返しに来るから、800goldだけ貸してもらえないかい？", "Oh dear... I don't have enough money to get home...I promise to come back and pay you back later...could you lend me just 800 gold?")
+				gosub *chat_select
+				if ( chatval == 0 ) {
+					chatMore lang("困っている相手になんて酷い態度なんだい！近頃の冒険者ときたら！", "How awful your attitude is towards someone in distress! Adventurers these days...")
+				}
+				if ( chatval == 1 ) {
+					chatMore lang("ありがとうねぇ！本当に親切な方！必ず返しに来ますねぇ！", "Thank you so much! You’re so kind! I’ll definitely come back to return it!")
+					snd SOUNDLIST_PAYGOLD1
+					cdata(CDATA_GOLD, CHARA_PLAYER) -= 800
+				}
+				if ( chatval == 2 ) {
+					chatMore lang("…。そうねぇ！ガードさんに借りればしっかり記録も残るし、安心よねぇ！邪魔してしまってごめんなさいねぇ。", "...That's a great idea! Borrowing one from the guard ensures a proper record is kept, so that gives me peace of mind. Sorry for the interruption!")
+				}
+				chara_vanquish tc
+				goto *chat_event_SWEND1
+			}
+			if ( cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) \ 4 == 3 ) {
+				cdatan(CDATAN_NAME, tc) = lang("『請求鷺』", "<Heraudsteron> the demanding payment")
+				chatList 0, lang("サギだよね", "It's a fraud, isn't it?")
+				if ( cdata(CDATA_GOLD, CHARA_PLAYER) >= 12000 ) {
+					chatList 1, lang("知らなかった！今払います", "I didn't know that! I'll pay right now.")
+				}
+				chatList 2, lang("ギルドで直接払うから一緒に来て", "I'll pay directly at the Guild, so come along with me.")
+				buff = lang("冒険者ギルドのほうから来ました。現在、あなたは冒険者ギルドの会費を12000gold滞納しています。もしも今回支払っていただけない場合、冒険者の資格が剥奪され今まで受けてきた各種サービスも受けられなくなります。", "I’m here from the Adventurers' Guild. You are currently 12000 gold behind on your Adventurer's Guild membership fees. If you do not pay this time, your adventurer status will be revoked, and you will no longer be able to receive any of the services you have been receiving up until now.")
+				gosub *chat_select
+				if ( chatval == 0 ) {
+					chatMore lang("お支払いの意志がないようで。では後日、正式な通知を出させていただきます。さようなら。", "It seems you have no intention of paying. We will send out a formal notification at a later date. Goodbye.")
+				}
+				if ( chatval == 1 ) {
+					chatMore lang("はい、確かに。また滞納があった場合は請求に来ますからね。", "If there are any further overdue payments, I'll be coming to collect.")
+					snd SOUNDLIST_PAYGOLD1
+					cdata(CDATA_GOLD, CHARA_PLAYER) -= 12000
+				}
+				if ( chatval == 2 ) {
+					chatMore lang("…おおっと！別の冒険者の家と間違えていたようです。失礼～。", "...Whoops! It looks like I mistook this for another adventurer's home. My apologies!")
+				}
+				chara_vanquish tc
+				goto *chat_event_SWEND1
+			}
+			if ( cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) \ 4 == 0 ) {
+				cdatan(CDATAN_NAME, tc) = lang("『ロマンス鷺』", "<Heraudsteron> the grateful to you")
+				chatList 0, lang("サギでは？", "It's a fraud, isn't it?")
+				chatList 1, lang("ツルなんて助けたっけ？", "Did I really save a crane?")
+				chatList 2, lang("なんかツルっぽくないような？", "You doesn't quite seem like a crane, somehow...")
+				buff = lang("先日あなたに助けていただいたツルです。", "I'm the crane you helped the other day.")
+				chatesc = 0
+				gosub *chat_select
+				chatList 0, lang("サギじゃん帰れよ", "It's a fraud! just go home.")
+				chatList 1, lang("まぁいいか、よろしくな", "Oh well. I'm counting on you.")
+				chatList 2, lang("せめて女の子に化けて来いよ", "The least you could do is transform into a girl.")
+				buff = lang("これから、一生をかけてあなたへの恩を返していきます！ですが、決して給料箱のお金は数えないでくださいね。", "From now on, I will spend my entire life repaying your kindness! But never count the money in your salary chest.")
+				gosub *chat_select
+				if ( chatval == 0 ) {
+					chatMore lang("今日のところは帰ります。ですが、誰かを信じる心をいつか思い出してくださいね。", "I'm going home for today. But please remember to trust someone.")
+					cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) = 0
+					chara_vanquish tc
+					goto *chat_event_SWEND1
+				}
+				if ( chatval == 1 ) {
+					chatMore lang("はいっ！必ずあなたのお役に立ってみせます！", "Yes! I’ll definitely make myself useful to you!")
+					snd SOUNDLIST_ENC2
+					cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) = 10
+				}
+				if ( chatval == 2 ) {
+					gsel BUFFER_BUF
+					pos 0, 0
+					picload exedir + "graphic\\face2" + devfile + ".bmp", 1
+					gsel BUFFER_SCREEN
+					cdatan(CDATAN_NEWSEX, tc) = lang("自称女性", "female?")
+					cdata(CDATA_HEIGHT, tc) = rnd(10) + 145
+					cdata(CDATA_WEIGHT, tc) = rnd(10) + 40
+					cdata(CDATA_PIC, tc) = xy2pic(31, 36)
+					snd SOUNDLIST_OFFER2
+					cdata(CDATA_SPINDLE_COMBINATION_A, CHARA_PLAYER) = 10
+					cdata(CDATA_PORTRAIT, tc) = 99
+					chatMore lang("ツルです。よろしくお願いします♪", "OK! Thank you in advance!"), strquestion2
+				}
 			}
 		}
 		cbitmod CHARA_BIT_GUEST, tc, FALSE
@@ -10994,6 +11173,7 @@
 		_switch_sw = 0
 		chatList 0, lang("不幸度を見てほしい", "Please tell me my misfortune.")
 		chatList 1, lang("ごめんなさい", "Sorry.")
+		chatList 2, lang("猫様の役に立ちたいだけなんです！", "I just want to be of help to the cats!")
 		buff = lang("むにゃあ…。アタシのごろごろを邪魔して、いったい何のつもりなんだニャ？", "Mreow... You daring to disturb my laze meow, what's the meaning of this meow?")
 		gosub *chat_select
 		if ( chatval == 0 ) {
@@ -11019,6 +11199,58 @@
 		}
 		if ( chatval == 1 ) {
 			chatMore lang("分かればいいのニャ。許してやるからさっさとあっち行くのニャ。", "Good if you understand meow. I'll forgive you so hurry up and get out of here meow."), strbye
+			goto *chat_end
+		}
+		if ( chatval == 2 ) {
+			if ( gdata(GDATA_FLAG_SUB_SINAHA) == 31 ) {
+				chatMore lang("不幸の手紙もずいぶん溜まったニャ。どーれ…。", "Quite a pile of chain lettersof misfortune has built up meow. Well, then...")
+				chatMore lang("ビーーー！バリリ！！ビリリ！バリリリリリ！！！こんなモノ！こんなモノ！こんなモノ…ビリビリビリビリ！フーッ、フーッ…。ニャハハ！ざまぁみろニャ！", "And this... *huff* *huff* Myahaha! Divine punishment, meow!")
+				txtef COLOR_YELLOW
+				txt lang("エヘカトル「うみゃ～？」", cnvtalk("Mew?"))
+				chatMore lang("こんなロクに呪術もかけていないような手紙が不幸を名乗っているから、アタシがエヘカトルにバカにされるのニャ！…子分にはちゃんと今回のご褒美をくれてやるニャ。他に出回っている不幸の手紙を見かけたらまた持ってこいニャ。", "It's because letters like this, which barely even have any magic spells cast on them, are claiming to bring misfortune that Ehekatl makes fun of me! ...I'll make sure to give my subordinates a proper reward, meow. Go and collect all the other chain letter of misfortune that are circulating."), strbye
+				if ( cbit(CHARA_BIT_BRUSHED, tc) != TRUE ) {
+					cbitmod CHARA_BIT_BRUSHED, tc, TRUE
+					flt
+					itemcreate -1, ITEM_ID_GUR_BAGH_NAKH, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+				}
+				if ( gdata(GDATA_MIN) >= 0 & gdata(GDATA_MIN) < 15 ) {
+					flt
+					itemcreate -1, ITEM_ID_TEAR_OF_GOD, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+					inv(INV_ITEM_PARAM1, ci) = 32
+					encadd ci, ENCHANT_EXTRA_MELEE, 150, 0, 1, 0, 1
+				}
+				if ( gdata(GDATA_MIN) >= 15 & gdata(GDATA_MIN) < 30 ) {
+					flt
+					itemcreate -1, ITEM_ID_TEAR_OF_GOD, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+					inv(INV_ITEM_PARAM1, ci) = 33
+					encadd ci, ENCHANT_PROXIMITY_ASSIST, 150, 0, 1, 0, 1
+				}
+				if ( gdata(GDATA_MIN) >= 30 & gdata(GDATA_MIN) < 45 ) {
+					flt
+					itemcreate -1, ITEM_ID_TEAR_OF_GOD, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+					inv(INV_ITEM_PARAM1, ci) = 34
+					encadd ci, ENCHANT_ENHANCE_BREATH, 200, 0, 1, 0, 1
+				}
+				if ( gdata(GDATA_MIN) >= 45 & gdata(GDATA_MIN) < 60 ) {
+					flt
+					itemcreate -1, ITEM_ID_TEAR_OF_GOD, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+					inv(INV_ITEM_PARAM1, ci) = 35
+					encadd ci, ENCHANT_POISON_AND_NERVE, 150, 0, 1, 0, 1
+				}
+				txt_questcompleted
+				txtmore
+				txt_questitem
+				txt_questupdate
+				gdata(GDATA_FLAG_SUB_SINAHA) = 1
+			}
+			else {
+				if ( gdata(GDATA_FLAG_SUB_SINAHA) == 0 ) {
+					gdata(GDATA_FLAG_SUB_SINAHA) = 1
+					txt_questupdate
+					chatMore lang("いい心がけニャン。ちょうど困っていることがあったのニャ。最近、また不幸の手紙が流行り出しているらしいニャ？アタシに話も通さず勝手に不幸をばらまこうなんて、許せんよニャア！", "Oho, that’s the right attitude! As a matter of fact, I’ve got a bit of a problem right now. Apparently, those chain letter of misfortune are making a comeback lately, meow? I can't forgive someone for spreading misfortune without even consulting me!")
+				}
+				chatMore lang("出回っている不幸の手紙をとりあえず30通ほど回収してアタシに渡せば、ご褒美をやるニャ。早く集めてこいニャ。", "If you gather about thirty of those chain letter of misfortune that are circulating and hand them over to me, I'll give you a reward. Go and collect them quickly, meow."), strbye
+			}
 			goto *chat_end
 		}
 		goto *chat_end
@@ -11764,6 +11996,18 @@
 						}
 						if ( inv(INV_ITEM_PARAM1, ci) == 31 ) {
 							encadd cibk, ENCHANT_EXTRA_RANGED, 150, 0, 1, 0, 1
+						}
+						if ( inv(INV_ITEM_PARAM1, ci) == 32 ) {
+							encadd cibk, ENCHANT_EXTRA_MELEE, 150, 0, 1, 0, 1
+						}
+						if ( inv(INV_ITEM_PARAM1, ci) == 33 ) {
+							encadd cibk, ENCHANT_PROXIMITY_ASSIST, 150, 0, 1, 0, 1
+						}
+						if ( inv(INV_ITEM_PARAM1, ci) == 34 ) {
+							encadd cibk, ENCHANT_ENHANCE_BREATH, 200, 0, 1, 0, 1
+						}
+						if ( inv(INV_ITEM_PARAM1, ci) == 35 ) {
+							encadd cibk, ENCHANT_POISON_AND_NERVE, 150, 0, 1, 0, 1
 						}
 					}
 					inv(INV_ITEM_NUM, ci)--
@@ -15800,22 +16044,39 @@
 	}
 	if ( _switch_val == CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF | _switch_sw ) {
 		_switch_sw = 0
-		chatList 0, lang("未実装", "under development")
-		chatList 1, lang("未実装", "under development")
-		chatList 2, lang("未実装", "under development")
-		chatList 3, lang("未実装", "under development")
-		buff = lang("なんじゃあ、ジロジロと…わしの顔に何かついとるんか？", "Why are you staring at me like that... Is there something on my face?")
+		chatList 0, lang("ただの言い伝えでしょ", "It's just a legend, isn't it?")
+		chatList 1, lang("そんな面倒なことするわけない", "There's no way I'd do something that troublesome.")
+		buff = lang("よいか、この墓所の中心の枯れ木から右3歩のところで8月に鏡台を使った直後にtabキーで「アソボウヨ」と絶対に発言してはならんぞ。言い伝えによると恐ろしいことが起きるとされておる。（未実装）", "Listen carefully, you must absolutely not say <Let's play> by pressing the tab key immediately after using the dressing table three steps to the right of the dead tree in the center of this tomb in August. Legend has it that something terrible will happen if you do.[under development]")
 		gosub *chat_select
 		if ( chatval == 0 ) {
+			chatMore lang("そういえば…わしはこの話を誰から聞いたんじゃったか？歳のせいなのか、どうしても思い出せんのう。", "Come to think of it... who was it that told me this story? Maybe it's because of my age, but I just can't remember.")
 			goto *chat_end
 		}
 		if ( chatval == 1 ) {
+			chatMore lang("それならよいが…。いつの時代もふざけて馬鹿なことをする奴はおるからのう。", "Well, that's fine then... But there are always people who mess around and do stupid things, no matter the era.")
+			goto *chat_end
+		}
+		goto *chat_end
+		goto *chat_unique_SWEND1
+		_switch_sw++
+	}
+	if ( _switch_val == CREATURE_ID_HERAUDSTERON | _switch_sw ) {
+		_switch_sw = 0
+		chatList 0, lang("やっぱりサギでは？", "Isn't it a fraud after all?")
+		chatList 1, lang("羽で織物とか作ってくれないの？", "Wouldn't it be nice if they could make textiles from the feathers?")
+		chatList 2, lang("給料箱のお金が少ないような気がする", "I feel like there's not enough money in the pay box.")
+		buff = lang("よいか、この墓所の中心の枯れ木から右3歩のところで8月に鏡台を使った直後にtabキーで「アソボウヨ」と絶対に発言してはならんぞ。言い伝えによると恐ろしいことが起きるとされておる。（未実装）", "Listen carefully, you must absolutely not say <Let's play> by pressing the tab key immediately after using the dressing table three steps to the right of the dead tree in the center of this tomb in August. Legend has it that something terrible will happen if you do.[under development]")
+		gosub *chat_select
+		if ( chatval == 0 ) {
+			chatMore lang("そういえば…わしはこの話を誰から聞いたんじゃったか？歳のせいなのか、どうしても思い出せんのう。", "Come to think of it... who was it that told me this story? Maybe it's because of my age, but I just can't remember.")
+			goto *chat_end
+		}
+		if ( chatval == 1 ) {
+			chatMore lang("それならよいが…。いつの時代もふざけて馬鹿なことをする奴はおるからのう。", "Well, that's fine then... But there are always people who mess around and do stupid things, no matter the era.")
 			goto *chat_end
 		}
 		if ( chatval == 2 ) {
-			goto *chat_end
-		}
-		if ( chatval == 3 ) {
+			chatMore lang("それは問題ですね…収支を把握できるように、私が家計を管理してあげましょうか？", "Well, didn't you realize it? Or did you believe in the rank of the house?...Oh, I'm sorry! Even you don't believe in a sloppy assessment of the presence or absence of expensive furniture, right?")
 			goto *chat_end
 		}
 		goto *chat_end
@@ -18744,6 +19005,31 @@
 	skillmod csskillinit, CHARA_PLAYER, 9000
 	modgrowth CHARA_PLAYER, csskillinit, 83
 	csskillinit = 0
+	if ( core3 == 1 ) {
+		cdata(CDATA_AP_CURRENT, CHARA_PLAYER) = 2000
+		gdata(GDATA_ABSORB_CHARGE) = 10000
+	}
+	if ( core2 == 1 ) {
+		cdata(CDATA_FAME, CHARA_PLAYER) = 20000
+		gdata(GDATA_FLAG_ABYSS_POWER) = 20000
+	}
+	if ( core1 == 1 ) {
+		repeat 112 - 100, 100
+			skillgain CHARA_PLAYER, cnt, 1
+			skillmod cnt, CHARA_PLAYER, 29000
+			modgrowth CHARA_PLAYER, cnt, 200
+		loop
+		repeat 191 - 150, 150
+			skillgain CHARA_PLAYER, cnt, 1
+			skillmod cnt, CHARA_PLAYER, 29000
+			modgrowth CHARA_PLAYER, cnt, 200
+		loop
+		repeat 302 - 300, 300
+			skillgain CHARA_PLAYER, cnt, 1
+			skillmod cnt, CHARA_PLAYER, 29000
+			modgrowth CHARA_PLAYER, cnt, 200
+		loop
+	}
 	autosave = 1 * (gdata(GDATA_AREA) != AREA_SHOW_HOUSE)
 	if ( lomiaseaster ) {
 		cdata(CDATA_CONDITION_BLIND, CHARA_PLAYER) = 100
@@ -24431,7 +24717,7 @@
 					}
 				}
 				if ( zisyu == 4 ) {
-					if ( sdataref(SKILL_DATAREF_TYPE, cnt) != SKILL_TYPE_HEAL & cnt != SKILL_SPELL_HOLY_LIGHT & cnt != SKILL_SPELL_VANQUISH_HEX & cnt != SKILL_SPELL_UNCURSE & cnt != SKILL_SPELL_HEALING_RAIN & cnt != SKILL_SPELL_SENSE_OBJECT & cnt != SKILL_SPELL_RESTORE_BODY & cnt != SKILL_SPELL_RESTORE_SPIRIT & cnt != SKILL_SPELL_RESURRECTION ) {
+					if ( sdataref(SKILL_DATAREF_TYPE, cnt) != 4 & cnt != 406 & cnt != 407 & cnt != 412 & cnt != 404 & cnt != 439 & cnt != 440 & cnt != 461 ) {
 						continue
 					}
 				}
@@ -24441,7 +24727,7 @@
 					}
 				}
 				if ( zisyu == 6 ) {
-					if ( sdataref(SKILL_DATAREF_TYPE, cnt) != SKILL_TYPE_TELEPORT & sdataref(SKILL_DATAREF_TYPE, cnt) != SKILL_TYPE_SP | cnt == SKILL_SPELL_WIZARDS_HARVEST | cnt == SKILL_SPELL_WISH | cnt == SKILL_SPELL_HOLY_LIGHT | cnt == SKILL_SPELL_VANQUISH_HEX | cnt == SKILL_SPELL_UNCURSE | cnt == SKILL_SPELL_SENSE_OBJECT | cnt == SKILL_SPELL_RESTORE_BODY | cnt == SKILL_SPELL_RESTORE_SPIRIT | cnt == SKILL_SPELL_RESURRECTION | cnt == SKILL_SPELL_METEOR | cnt == SKILL_SPELL_MUTATION | cnt == SKILL_SPELL_FIRE_WALL | cnt == SKILL_SPELL_ACID_GROUND | cnt == SKILL_SPELL_MIST_OF_DARKNESS | cnt == SKILL_SPELL_MIST_OF_DAZZLING | cnt == SKILL_SPELL_WEB | cnt == SKILL_SPELL_ORACLE | cnt == SKILL_SPELL_DOMINATE ) {
+					if ( sdataref(SKILL_DATAREF_TYPE, cnt) != 5 & sdataref(SKILL_DATAREF_TYPE, cnt) != 0 | cnt == 464 | cnt == 441 | cnt == 406 | cnt == 407 | cnt == 412 | cnt == 439 | cnt == 440 | cnt == 461 | cnt == 465 | cnt == 454 | cnt == 456 | cnt == 455 | cnt == 437 | cnt == 472 | cnt == 436 | cnt == 413 | cnt == 435 ) {
 						continue
 					}
 				}
@@ -24475,7 +24761,7 @@
 						}
 					}
 					if ( zisyu == 4 ) {
-						if ( sdataref(SKILL_DATAREF_TYPE, cnt) != SKILL_TYPE_HEAL & cnt != SKILL_SPELL_HOLY_LIGHT & cnt != SKILL_SPELL_VANQUISH_HEX & cnt != SKILL_SPELL_UNCURSE & cnt != SKILL_SPELL_HEALING_RAIN & cnt != SKILL_SPELL_SENSE_OBJECT & cnt != SKILL_SPELL_RESTORE_BODY & cnt != SKILL_SPELL_RESTORE_SPIRIT & cnt != SKILL_SPELL_RESURRECTION ) {
+						if ( sdataref(SKILL_DATAREF_TYPE, cnt) != 4 & cnt != 406 & cnt != 407 & cnt != 412 & cnt != 404 & cnt != 439 & cnt != 440 & cnt != 461 ) {
 							continue
 						}
 					}
@@ -24485,7 +24771,7 @@
 						}
 					}
 					if ( zisyu == 6 ) {
-						if ( sdataref(SKILL_DATAREF_TYPE, cnt) != SKILL_TYPE_TELEPORT & sdataref(SKILL_DATAREF_TYPE, cnt) != SKILL_TYPE_SP | cnt == SKILL_SPELL_WIZARDS_HARVEST | cnt == SKILL_SPELL_WISH | cnt == SKILL_SPELL_HOLY_LIGHT | cnt == SKILL_SPELL_VANQUISH_HEX | cnt == SKILL_SPELL_UNCURSE | cnt == SKILL_SPELL_SENSE_OBJECT | cnt == SKILL_SPELL_RESTORE_BODY | cnt == SKILL_SPELL_RESTORE_SPIRIT | cnt == SKILL_SPELL_RESURRECTION | cnt == SKILL_SPELL_METEOR | cnt == SKILL_SPELL_MUTATION | cnt == SKILL_SPELL_FIRE_WALL | cnt == SKILL_SPELL_ACID_GROUND | cnt == SKILL_SPELL_MIST_OF_DARKNESS | cnt == SKILL_SPELL_MIST_OF_DAZZLING | cnt == SKILL_SPELL_WEB | cnt == SKILL_SPELL_ORACLE | cnt == SKILL_SPELL_DOMINATE ) {
+						if ( sdataref(SKILL_DATAREF_TYPE, cnt) != 5 & sdataref(SKILL_DATAREF_TYPE, cnt) != 0 | cnt == 464 | cnt == 441 | cnt == 406 | cnt == 407 | cnt == 412 | cnt == 439 | cnt == 440 | cnt == 461 | cnt == 465 | cnt == 454 | cnt == 456 | cnt == 455 | cnt == 437 | cnt == 472 | cnt == 436 | cnt == 413 | cnt == 435 ) {
 							continue
 						}
 					}

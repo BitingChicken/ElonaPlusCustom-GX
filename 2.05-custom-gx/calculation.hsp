@@ -2062,8 +2062,12 @@
 		if ( cdata(CDATA_CONDITION_BLEED, r1) > 100 ) {
 			cdata(CDATA_CONDITION_BLEED, r1) = 100
 		}
+		mpoi = 0
+		if ( cdata(CDATA_CONDITION_POISON, r1) > 0 ) {
+			mpoi = cdata(CDATA_CONDITION_POISON, r1) / 8
+		}
 		if ( cdata(CDATA_HP, r1) != 0 ) {
-			dmghp r1, rnd(limit(cdata(CDATA_HP, r1) / 10, 1, 20000) * (1 + cdata(CDATA_CONDITION_BLEED, r1) / 4) / 10 + 3) + 1, DAMAGE_FROM_BLEED
+			dmghp r1, rnd(limit(cdata(CDATA_HP, r1) / 10, 1, 20000) * (mpoi + 1 + cdata(CDATA_CONDITION_BLEED, r1) / 4) / 10 + 3) + 1, DAMAGE_FROM_BLEED
 		}
 		healcon r1, CONDITION_BLEED, 1 + cbit(CHARA_BIT_CURE_BLEEDING, r1) * 3
 		if ( cdata(CDATA_CONDITION_BLEED, r1) > 0 ) {

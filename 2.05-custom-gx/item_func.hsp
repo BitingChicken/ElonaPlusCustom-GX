@@ -1078,6 +1078,16 @@
 				}
 			}
 		}
+		if ( inv(INV_ITEM_ID, itemowner_itemid) >= ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE & inv(INV_ITEM_ID, itemowner_itemid) <= ITEM_ID_INVITATION_LETTER ) {
+			if ( jp ) {
+				if ( inv(INV_ITEM_SUB_NAME, itemowner_itemid) >= 13 ) {
+					inv(INV_ITEM_SUB_NAME, itemowner_itemid) = 0
+				}
+				else {
+					locvar_itemowner_s += _furniture(inv(INV_ITEM_SUB_NAME, itemowner_itemid))
+				}
+			}
+		}
 		if ( inv(INV_ITEM_ID, itemowner_itemid) == ITEM_ID_DEED ) {
 			locvar_itemowner_s += lang("", " of ") + _homename(inv(INV_ITEM_PARAM1, itemowner_itemid)) + lang("の", "")
 		}
@@ -1179,6 +1189,9 @@
 			}
 			if ( inv(INV_ITEM_ID, itemname_itemid) == ITEM_ID_FISH ) {
 				locvar_itemname_s2 = "匹の"
+			}
+			if ( inv(INV_ITEM_ID, itemname_itemid) >= ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE & inv(INV_ITEM_ID, itemname_itemid) <= ITEM_ID_INVITATION_LETTER ) {
+				locvar_itemname_s2 = "通の"
 			}
 			locvar_itemowner_s = "" + locvar_itemowner_num2 + locvar_itemname_s2
 		}
@@ -1323,6 +1336,14 @@
 				else {
 					locvar_itemowner_s += _furniture(inv(INV_ITEM_SUB_NAME, itemname_itemid)) + " "
 				}
+			}
+			if ( inv(INV_ITEM_ID, itemname_itemid) >= ITEM_ID_CHAIN_LETTER_OF_MISFORTUNE & inv(INV_ITEM_ID, itemname_itemid) <= ITEM_ID_INVITATION_LETTER ) {
+				if ( inv(INV_ITEM_SUB_NAME, itemname_itemid) >= 13 ) {
+					inv(INV_ITEM_SUB_NAME, itemname_itemid) = 0
+				}
+				else {
+					locvar_itemowner_s += _furniture(inv(INV_ITEM_SUB_NAME, itemname_itemid)) + " "
+ 				}
 			}
 		}
 		if ( inv(INV_ITEM_ID, itemname_itemid) == ITEM_ID_ANCIENT_BOOK ) {

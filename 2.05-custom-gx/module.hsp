@@ -2817,6 +2817,18 @@
 		gmode 4, inf_tiles, inf_tiles, rnd(4) * 60
 		gcopy BUFFER_INF, 192 + 48 * 22 + rnd(1) * inf_tiles, 704
 	}
+	if ( cdata(CDATA_PIC, locvar_cell_draw_c) == xy2pic(3, 37) ) {
+		if ( cdata(CDATA_POWER_GAUGE, locvar_cell_draw_c) >= 100 ) {
+			pos locvar_cell_draw_dx + 15 + cdata(CDATA_IN_TAGTEAM, locvar_cell_draw_c) * 12, locvar_cell_draw_dy - 17
+			gmode 2, 16, 16
+			gcopy BUFFER_INF, 1280, 705
+		}
+		if ( cdata(CDATA_POWER_GAUGE, locvar_cell_draw_c) >= 50 & cdata(CDATA_POWER_GAUGE, locvar_cell_draw_c) < 100 ) {
+			pos locvar_cell_draw_dx + 15 + cdata(CDATA_IN_TAGTEAM, locvar_cell_draw_c) * 12, locvar_cell_draw_dy - 17
+			gmode 2, 16, 16
+			gcopy BUFFER_INF, 1264, 705
+		}
+	}
 	return
 
 #deffunc cell_draw_item_simple int cell_draw_arg_dx, int cell_draw_arg_dy, int cell_draw_arg_p, int cell_draw_arg_i, int cell_draw_arg_fp

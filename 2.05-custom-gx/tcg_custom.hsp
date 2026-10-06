@@ -1711,7 +1711,7 @@
 					txt "You got an ultra rare card!"
 					chatc@dp = (-1)
 					txtef COLOR_YELLOW
-					txt lang("「うみゃ〜？たらばがに！」", "\"Mewmewmew? Coconut crab!\"")
+					txt lang("「うみゃ～？たらばがに！」", "\"Mewmewmew? Coconut crab!\"")
 					spawnCard CREATURE_ID_EHEKATL
 					if ( rnd(1) == 0 ) { cardno = CREATURE_ID_THE_ELEMENT }
 					if ( rnd(2) == 0 ) { cardno = CREATURE_ID_BUILDUP_OPATOS }
@@ -1726,7 +1726,7 @@
 					txt "You got a super rare card!"
 					chatc@dp = (-1)
 					txtef COLOR_YELLOW
-					txt lang("「うみゃ〜？」", "\"Mew?\"")
+					txt lang("「うみゃ～？」", "\"Mew?\"")
 				}
 				spawnCard cardno
 				continue
@@ -7974,6 +7974,136 @@
 		return 1
 	}
 	// bird
+	if ( dbid == CREATURE_ID_ULTIMATE_PHOENIX ) {
+		cardrefrace = "bird"
+		cardrefclass = "predator"
+		cardreflvl = 193
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_THOUSAND_CRANE ) {
+		cardrefrace = "bird"
+		cardrefclass = "warrior"
+		cardreflvl = 173
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MULTI_PEALOCK ) {
+		cardrefrace = "bird"
+		cardrefclass = "gunner"
+		cardreflvl = 57
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_CARRIER_PIGEON ) {
+		cardrefrace = "bird"
+		cardrefclass = "tourist"
+		cardreflvl = 33
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_CLASHING_WOODPECKER ) {
+		cardrefrace = "bird"
+		cardrefclass = "predator"
+		cardreflvl = 38
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_DANCING_SWAN ) {
+		cardrefrace = "bird"
+		cardrefclass = "warmage"
+		cardreflvl = 33
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MADUCK ) {
+		cardrefrace = "bird"
+		cardrefclass = "wizard"
+		cardreflvl = 22
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MOHAWK_PARROT ) {
+		cardrefrace = "bird"
+		cardrefclass = "warrior"
+		cardreflvl = 17
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_JAVA_SPOORROWRITER ) {
+		cardrefrace = "bird"
+		cardrefclass = "claymore"
+		cardreflvl = 9
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_HERAUDSTERON ) {
+		cardrefrace = "bird"
+		cardrefclass = "thief"
+		cardreflvl = 73
+		cardrefquality = FIX_QUALITY_UNIQUE
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_RESTOROID_TOKI ) {
 		cardrefrace = "bird"
 		cardrefclass = "predator"
@@ -18979,6 +19109,32 @@
 		return 1
 	}
 	// spirit
+	if ( dbid == CREATURE_ID_SPIRIT_OF_PANJAN ) {
+		cardrefrace = "spirit"
+		cardrefclass = "predator"
+		cardreflvl = 113
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
+	if ( dbid == CREATURE_ID_SPIRIT_OF_PANTY ) {
+		cardrefrace = "spirit"
+		cardrefclass = "wizard"
+		cardreflvl = 98
+		cardrefquality = FIX_QUALITY_GOOD
+		cardrefdomain = 0
+		cardrefcost = 1
+		cardrefattack = 1
+		cardrefhp = 2
+		cardrefskillid = TCG_EFF_NONE
+		cardrefbits = ""
+		return 1
+	}
 	if ( dbid == CREATURE_ID_MARIMOLL_THE_MARIMO_GUARDIAN ) {
 		cardrefrace = "spirit"
 		cardrefclass = "predator"

@@ -118,7 +118,7 @@
 	strhint5 = "" + key_identify + lang(" [既知の情報]  ", " [Known info]  ")
 	strhint5b = "" + key_mode + lang(" [情報切替]  ", " [Mode]  ")
 	strhint6 = lang("p [ポートレイト変更]  ", "p [Portrait]  ")
-	strhint7 = lang("0〜9 [ショートカット]  ", "0~9 [Shortcut]  ")
+	strhint7 = lang("0～9 [ショートカット]  ", "0~9 [Shortcut]  ")
 	strhint8 = lang("* [非表示]　/ [全表示]", "* [OFF] / [ALL-ON]")
 	strmale = lang("男性", "male")
 	strfemale = lang("女性", "female")
@@ -128,6 +128,7 @@
 	strbyea = lang("さよならだ", "Bye bye.")
 	strmada = lang("まだお礼もできていないのに！", "I haven't thank you yet...")
 	strquestion = lang("？？？", "What???")
+	strquestion2 = lang("～～ッ！？", "!?!?!?")
 	strbaby = lang("ベイベー！", "Party time!")
 	strmore = lang("(続く)", "(More)")
 	strnogold = lang("(所持金が足りない！)", "(You don't have enough money!)")
@@ -4462,8 +4463,8 @@
 			locvar__yoro__tone = locvar__yoro__tone(rnd(locvar__yoro_p)) + _mark(_yoro_arg1)
 		}
 		else {
-			locvar__yoro__tone = "よろしくねっ", "よろしく〜", "", "", ""
-			locvar__yoro_p = 1 + ("よろしく〜" != "") + ("" != "") + ("" != "") + ("" != "")
+			locvar__yoro__tone = "よろしくねっ", "よろしく～", "", "", ""
+			locvar__yoro_p = 1 + ("よろしく～" != "") + ("" != "") + ("" != "") + ("" != "")
 			locvar__yoro__tone = locvar__yoro__tone(rnd(locvar__yoro_p)) + _mark(_yoro_arg1)
 		}
 	}
@@ -4636,7 +4637,7 @@
 			locvar__yoro__tone = locvar__yoro__tone(rnd(locvar__yoro_p)) + _mark(_thanks_arg1)
 		}
 		else {
-			locvar__yoro__tone = "ありがとう〜", "感謝するわ", "", "", ""
+			locvar__yoro__tone = "ありがとう～", "感謝するわ", "", "", ""
 			locvar__yoro_p = 1 + ("感謝するわ" != "") + ("" != "") + ("" != "") + ("" != "")
 			locvar__yoro__tone = locvar__yoro__tone(rnd(locvar__yoro_p)) + _mark(_thanks_arg1)
 		}
@@ -4723,7 +4724,7 @@
 			locvar__yoro__tone = locvar__yoro__tone(rnd(locvar__yoro_p)) + _mark(_birth_arg1)
 		}
 		else {
-			locvar__yoro__tone = "おめでと〜", "おめでとうですね", "", "", ""
+			locvar__yoro__tone = "おめでと～", "おめでとうですね", "", "", ""
 			locvar__yoro_p = 1 + ("おめでとうですね" != "") + ("" != "") + ("" != "") + ("" != "")
 			locvar__yoro__tone = locvar__yoro__tone(rnd(locvar__yoro_p)) + _mark(_birth_arg1)
 		}
@@ -4810,8 +4811,8 @@
 			locvar__yoro__tone = locvar__yoro__tone(rnd(locvar__yoro_p)) + _mark(_rob_arg1)
 		}
 		else {
-			locvar__yoro__tone = "やめて", "傭兵さんたち〜出番ですよ", "", "", ""
-			locvar__yoro_p = 1 + ("傭兵さんたち〜出番ですよ" != "") + ("" != "") + ("" != "") + ("" != "")
+			locvar__yoro__tone = "やめて", "傭兵さんたち～出番ですよ", "", "", ""
+			locvar__yoro_p = 1 + ("傭兵さんたち～出番ですよ" != "") + ("" != "") + ("" != "") + ("" != "")
 			locvar__yoro__tone = locvar__yoro__tone(rnd(locvar__yoro_p)) + _mark(_rob_arg1)
 		}
 	}
@@ -9504,6 +9505,10 @@
 				break
 			}
 		}
+		if ( cdata(CDATA_ID, tc) == CREATURE_ID_CARRIER_PIGEON ) {
+			p = instr(buff, 0, "%PIGEON," + lang("JP", "EN"))
+			break
+		}
 		if ( cdata(CDATA_ID, tc) == CREATURE_ID_DEVOTEE_OF_OBLIVION ) {
 			p = instr(buff, 0, "%OBLIVION," + lang("JP", "EN"))
 			break
@@ -10054,7 +10059,7 @@
 		buff += s4
 	}
 	noteadd ""
-	s5 = lang("・21：00〜23：59に就寝しよう。", "I will go to sleep between 21:00 and 23:59.")
+	s5 = lang("・21：00～23：59に就寝しよう。", "I will go to sleep between 21:00 and 23:59.")
 	talk_conv s5, 40 - en * 4
 	buff += s5
 	noteadd ""
@@ -11286,6 +11291,24 @@
 			noteadd ""
 		}
 	}
+	p = 0
+	if ( gdata(GDATA_FLAG_SUB_SINAHA) != 0 ) {
+		s = lang("不幸のシナア 150階相当", "Mission from Sinaha Lv150")
+		p = gdata(GDATA_FLAG_SUB_SINAHA)
+		if ( val == 1 ) {
+			if ( p >= 1000 ) {
+				noteadd lang("[達成]", "[Done]") + s
+			}
+		}
+	}
+	if ( val == 0 ) {
+		if ( p == gdata(GDATA_FLAG_SUB_SINAHA) ) {
+			s1 = lang("陽牢の塔にいるシナアから不幸の手紙30通の調達を頼まれている。あと" + (31 - gdata(GDATA_FLAG_SUB_SINAHA)) + "通の手紙を届ける必要がある。", "The guild master told me to assassinate the master of either of the other two guilds.")
+			talk_conv s1, 40 - en * 4
+			buff += "(" + s + ")\n" + s1
+			noteadd ""
+		}
+	}
 	if ( gdata(GDATA_FLAG_SUB_SOPHIA_THE_WISE) != 0 ) {
 		p = 0
 		if ( gdata(GDATA_FLAG_SUB_SOPHIA_THE_WISE) != 0 ) {
@@ -12263,7 +12286,7 @@
 			txt lang("「ちょ…バカっ！ま、待ちなさいよ…そっちはまだ開発中なのよ！」", cnvtalk("W-w... Y-you dummy! Wait a little bit... It's in development!"))
 		}
 		if ( txtgod_godid == GOD_YACATECT ) {
-			txt lang("「まだあかんよ〜。今は開発中なんやて！」", cnvtalk("Can't do that yet~ It's in development!"))
+			txt lang("「まだあかんよ～。今は開発中なんやて！」", cnvtalk("Can't do that yet~ It's in development!"))
 		}
 		if ( txtgod_godid == GOD_KUMIROMI ) {
 			txt lang("「まだ開発中…。駄目…いけない…」", cnvtalk("Still... in development. You can't... go..."))
@@ -12290,7 +12313,7 @@
 			txt lang("「や、やるじゃない」", cnvtalk("N-Not bad, for you.")), lang("「や、やめてよ。気持ち悪い」", cnvtalk("S-Stop it. Disgusting...")), lang("「こっち来ないで！」", cnvtalk("Don't look at me!"))
 		}
 		if ( txtgod_godid == GOD_YACATECT ) {
-			txt lang("「ああ〜もったいないわぁ」", cnvtalk("Aah, what a waste...")), lang("「ようやった！お姉ちゃん感激やで」", cnvtalk("You did it! I'm inspired by you~!")), lang("「じぶん、なかなかやるなぁ」", cnvtalk("We're pretty good..."))
+			txt lang("「ああ～もったいないわぁ」", cnvtalk("Aah, what a waste...")), lang("「ようやった！お姉ちゃん感激やで」", cnvtalk("You did it! I'm inspired by you~!")), lang("「じぶん、なかなかやるなぁ」", cnvtalk("We're pretty good..."))
 		}
 		if ( txtgod_godid == GOD_KUMIROMI ) {
 			txt lang("「汚れたね」", cnvtalk("You got dirty.")), lang("「ほどほどに」", cnvtalk("Don't kill too much.")), lang("「…これが…君の望んでいた結果？」", cnvtalk("...are you satisfied now?"))
@@ -12316,7 +12339,7 @@
 			txt lang("「なによ…ジロジロ見ないで！」", cnvtalk("What...don't stare at me!")), lang("「ち、ちゃんと寝てるか確認しに来ただけなんだから！」", cnvtalk("I was just making sure you were sleeping properly!")), lang("「深い眠りで心と体を癒しなさいよ」", cnvtalk("Heal your body and mind with deep sleep."))
 		}
 		if ( txtgod_godid == GOD_YACATECT ) {
-			txt lang("「どぉも！夢の中まで見回りヤカちゃんやで〜」", cnvtalk("Do-mo! Yaca-chan patrols even in your dreams~.")), lang("「ちゃんと休んどるやん。よしよーし」", cnvtalk("You're resting properly. Okay, okay.")), lang("「ねぇんねん〜ころりよ〜♪おこぉろ〜りよ〜♪」", cnvtalk("Twinkle twinkle little coin~ How I wonder where you are..."))
+			txt lang("「どぉも！夢の中まで見回りヤカちゃんやで～」", cnvtalk("Do-mo! Yaca-chan patrols even in your dreams~.")), lang("「ちゃんと休んどるやん。よしよーし」", cnvtalk("You're resting properly. Okay, okay.")), lang("「ねぇんねん～ころりよ～♪おこぉろ～りよ～♪」", cnvtalk("Twinkle twinkle little coin~ How I wonder where you are..."))
 		}
 		if ( txtgod_godid == GOD_KUMIROMI ) {
 			txt lang("「今…君の寝顔も見ているよ…」", cnvtalk("Now... I'm watching your sleeping face...")), lang("「ねぇ…夢でも…逢えたね…」", cnvtalk("Hey...even in a dream...we met...")), lang("「…眠っていたら抵抗できない…よね？」", cnvtalk("...If you're asleep, you can't resist...right?"))
@@ -12385,7 +12408,7 @@
 			txt lang("「我が期待に応えて見せよ」", cnvtalk("Do not fail me, servant."))
 		}
 		if ( txtgod_godid == GOD_EHEKATL ) {
-			txt lang("「わ〜ほんとに信じてくれるの？くれるの？」", cnvtalk("Wheee! You really have faith in me? Do you really?"))
+			txt lang("「わ～ほんとに信じてくれるの？くれるの？」", cnvtalk("Wheee! You really have faith in me? Do you really?"))
 		}
 		if ( txtgod_godid == GOD_OPATOS ) {
 			txt lang("「フハッハハハハ。逃がさんぞ！」", cnvtalk("Muwahahahahaha. You're mine!"))

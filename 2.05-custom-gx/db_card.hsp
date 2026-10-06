@@ -1,4 +1,160 @@
 *db_card
+	if ( dbid == CREATURE_ID_SPIRIT_OF_PANJAN ) {
+		cardreftype = 10
+		cardrefskill = lang("爆発四散した陸上自走爆雷がイルヴァに転生してきた。転生の際に無限にロケットブーストできるチート能力を得たが、結局は爆発四散する。", "")
+		cardrefdomain = 6
+		cardrefrare = 5
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("パンジャンの精霊", "spirit of panjan")
+		cardrefpic = xy2pic(7, 37) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1162 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_SPIRIT_OF_PANTY ) {
+		cardreftype = 10
+		cardrefskill = lang("鳥のように羽ばたいて広大なイルヴァの空を飛び回っている種類のパンティー。気味悪がった術士によって身体を爆弾に変えられており、下手に触ると爆発する。", "")
+		cardrefdomain = 6
+		cardrefrare = 5
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("パンティーの精霊", "spirit of panty")
+		cardrefpic = xy2pic(8, 37) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1161 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_ULTIMATE_PHOENIX ) {
+		cardreftype = 10
+		cardrefskill = lang("特徴的な三本爪を持つ不死鳥。世代を超え何度もガッツで蘇ってくる。身体のあちこちを金属化しているがこれは相手の攻撃に耐えるためではなく、強すぎる自身の力で自壊しないための進化なのだ。", "")
+		cardrefdomain = 6
+		cardrefrare = 5
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("アルティメットフェニックス", "ultimate phoenix")
+		cardrefpic = xy2pic(0, 37) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1160 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_THOUSAND_CRANE ) {
+		cardreftype = 10
+		cardrefskill = lang("千の刃を持つツル。長く生きたツルほど刃のコントールが熟達しており、千年生きたツルの刃は1万年生きた亀の甲羅さえ両断するという。", "")
+		cardrefdomain = 6
+		cardrefrare = 20
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("千刃鶴", "thousand crane")
+		cardrefpic = xy2pic(4, 38) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1159 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MULTI_PEALOCK ) {
+		cardreftype = 10
+		cardrefskill = lang("ド派手なミサイル・レーザー複合ユニットを背負ったクジャク。大昔はオスだけが背負っていたのだが、オスだけ着飾ってズルいと感じたメスも背負い始めた。結果としてメスも目立って外敵に襲われやすくなったのだが、なぜか外敵ではなくオスが恨まれている。", "")
+		cardrefdomain = 6
+		cardrefrare = 100
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("マルチロックジャク", "multi pealock")
+		cardrefpic = xy2pic(1, 38) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1158 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_CARRIER_PIGEON ) {
+		cardreftype = 10
+		cardrefskill = lang("品種改良されて結構な知能とフィジカルを得たハト。危険地帯にも手紙を届ける使命があるためそこそこ強いし、豆程度の誘惑には激しく頭を振って耐えることができる。", "")
+		cardrefdomain = 6
+		cardrefrare = 40
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("伝書鳩", "carrier pigeon")
+		cardrefpic = xy2pic(2, 38) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1157 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_CLASHING_WOODPECKER ) {
+		cardreftype = 10
+		cardrefskill = lang("食べすぎた者の元へなぜか飛んできて腹に激突し、相手を爆死させる怪鳥。かつてサウスティリスで大飢饉が起きて以降サウスティリスにのみ現れるようになったため、餓死者の怨念が宿っていて食べ過ぎを戒めているのだ、とウワサされる。", "")
+		cardrefdomain = 6
+		cardrefrare = 5
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("激突キツツキ", "clashing woodpecker")
+		cardrefpic = xy2pic(3, 38) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1156 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_DANCING_SWAN ) {
+		cardreftype = 10
+		cardrefskill = lang("悪魔の呪いで白鳥に変えられてしまった元人間。人間としての矜持を忘れておらず、優雅に踊るだけなく誰も見ていない水面下でも静かに足を動かしている。", "")
+		cardrefdomain = 6
+		cardrefrare = 100
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("ダンスワン", "dancing swan")
+		cardrefpic = xy2pic(5, 37) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1155 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MADUCK ) {
+		cardreftype = 10
+		cardrefskill = lang("魔法の力を得たアヒル。魔法で加速して高速でお尻を振りながら走る姿はとってもキュート。ガチョウと間違われがちだが、見比べると結構な違いがあるしそもそも祖先から違う。", "")
+		cardrefdomain = 6
+		cardrefrare = 100
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("魔ヒル", "maduck")
+		cardrefpic = xy2pic(4, 37) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1154 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_MOHAWK_PARROT ) {
+		cardreftype = 10
+		cardrefskill = lang("音楽が大好きな不良オウム。リズムに合わせてノリノリで身体を揺らす。テンションが高くなればなるほどモヒカンがそそりたつ。", "")
+		cardrefdomain = 6
+		cardrefrare = 100
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("モヒカンオウム", "mohawk parrot")
+		cardrefpic = xy2pic(3, 37) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1153 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_JAVA_SPOORROWRITER ) {
+		cardreftype = 10
+		cardrefskill = lang("好きになったものへの執着が強く、気性も荒いヤンデレ鳥。狂ったように夢小説を書いているが、所詮は文鳥なので文章が稚拙。馬鹿にしてきた相手は体格差があっても躊躇なく攻撃する。", "")
+		cardrefdomain = 6
+		cardrefrare = 50
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("駄文鳥", "java spoorrowriter")
+		cardrefpic = xy2pic(2, 37) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1152 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
+	if ( dbid == CREATURE_ID_HERAUDSTERON ) {
+		cardreftype = 10
+		cardrefskill = lang("人間を見ているうちにズルさを身に着けたサギ。自己の利益のために他者を騙すのが賢さの証明だと思っているし、騙せる状況下でも騙そうとしない誠実な者のことは馬鹿だと思っている。", "")
+		cardrefdomain = 6
+		cardrefrare = 20
+		cardrefcost = 1
+		cardrefattack = 690
+		cardrefhp = 3
+		cardrefn = lang("『鷺野郎』", "<Heraudsteron>")
+		cardrefpic = xy2pic(1, 37) + COLOR_DEFAULT * COLOR_TINT_MULT
+		cardrefrace = "1151 effect:" + skillname(cardrefattack) + " "
+		return 1
+	}
 	if ( dbid == CREATURE_ID_TOWN_CHILD4 ) {
 		cardreftype = 10
 		cardrefskill = lang("自身が大人よりも賢くて要領が良いと信じて疑わない姿はまさに子供と呼ぶにふさわしい。どれほどの時間が過ぎようとも、それを盲信し続けるかぎり彼等は子供なのである。", "Town children who firmly believe they are wiser and more adept than adults, clinging to that delusion. No matter how much time passes, they are children as long as they continue to believe in it.")
@@ -105,7 +261,7 @@
 	}
 	if ( dbid == CREATURE_ID_BIG_MOSQUITO ) {
 		cardreftype = 10
-		cardrefskill = lang("現代イルヴァにおける人間ぶっ殺しナンバーワン生物。目立たないだけで死因の7〜8割が蚊。ほぼビッグモスキートに自宅で襲われて死ぬ。インド象とかマンモスとか関係なく鉄拳で叩きのめし、性別とか産卵時期とか関係なく吸血する。", "Mosquito: The number one human killer in modern Irva. Most deaths occur at home, crushed by these unassuming insects. Even an Indian Elephant or mammoth is no match, as mosquitoes don't discriminate by gender or breeding season.")
+		cardrefskill = lang("現代イルヴァにおける人間ぶっ殺しナンバーワン生物。目立たないだけで死因の7～8割が蚊。ほぼビッグモスキートに自宅で襲われて死ぬ。インド象とかマンモスとか関係なく鉄拳で叩きのめし、性別とか産卵時期とか関係なく吸血する。", "Mosquito: The number one human killer in modern Irva. Most deaths occur at home, crushed by these unassuming insects. Even an Indian Elephant or mammoth is no match, as mosquitoes don't discriminate by gender or breeding season.")
 		cardrefdomain = 6
 		cardrefrare = 30
 		cardrefcost = 1

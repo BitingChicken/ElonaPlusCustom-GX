@@ -539,6 +539,11 @@
 		}
 		if ( charaIsShadowhopSummon(cnt) ) {
 			chara_vanquish cnt
+		}		
+		if ( cdata(CDATA_ID, cnt) == CREATURE_ID_CARRIER_PIGEON ) {
+			if ( cdata(CDATA_ALLIED, cnt) == 0 ) {
+				chara_vanquish cnt
+			}
 		}
 		if ( cdata(CDATA_ROLE, cnt) == ROLE_PART_TIME_WORKER ) {
 			if ( cdata(CDATA_HIRE_DATE, cnt) < gdata(GDATA_HOUR) + gdata(GDATA_DAY) * 24 + gdata(GDATA_MONTH) * 24 * 30 + gdata(GDATA_YEAR) * 24 * 30 * 12 ) {
@@ -9950,6 +9955,33 @@
 		}
 		kamen11 = 0
 	}
+	if ( kamen6430 == 1 ) {
+		if ( gdata(GDATA_FLAG_MAIN) >= 480 ) {
+			flt
+			itemcreate -1, ITEM_ID_EGELMAIL, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+		}
+		if ( gdata(GDATA_FLAG_SUB_REGULUS_KIKKASU) >= 100 ) {
+			flt
+			itemcreate -1, ITEM_ID_ROATONING, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+		}
+		if ( gdata(GDATA_FLAG_SUB_REGULUS_EULDERNA) >= 100 ) {
+			flt
+			itemcreate -1, ITEM_ID_INQTUAFFLER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+		}
+		if ( gdata(GDATA_FLAG_SUB_REGULUS_MAYROON) >= 100 ) {
+			flt
+			itemcreate -1, ITEM_ID_LAZASYEEL, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
+			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
+			txt lang("何かが足元に転がってきた。", "Something is put on the ground.")
+		}
+		kamen6430 = 0
+	}
 	if ( tuikabui == 100 ) {
 		flt
 		itemcreate -1, ITEM_ID_WONDER_BODY_FORMER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 6
@@ -10530,6 +10562,11 @@
 					}
 				}
 			}
+		}
+	}
+	if ( mdata(MDATA_TYPE) == MAP_TYPE_TOWN ) {
+		if ( rnd(5) == 0 ) {
+			evadd EVENT_CARRIER_PIGEON
 		}
 	}
 	if ( gdata(GDATA_AREA) == AREA_AMUR_CAGE ) {

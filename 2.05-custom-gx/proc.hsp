@@ -19032,7 +19032,9 @@
 			snd SOUNDLIST_BOLT1
 		loop
 		cfg_animewait = waitbk
-		dmgmp tc, cdata(CDATA_MAX_MP, tc) / 2
+		if ( cdata(CDATA_ID, tc) != CREATURE_ID_SPIRIT_OF_PANJAN ) {
+			dmgmp tc, cdata(CDATA_MAX_MP, tc) / 2
+		}
 		txt lang(name(tc) + "は各部から爆炎を噴き出した。", "Flames began to burst out all over " + name(tc) + "'s body.")
 		addbuff tc, BUFF_BOOST, 20, 150
 		addbuff tc, BUFF_SPEED, sdata(SKILL_ATTR_CHA, cc) * 3 + 50, 150

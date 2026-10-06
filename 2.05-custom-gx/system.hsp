@@ -997,6 +997,10 @@
 			cdata(CDATA_INCAPACITATED, cnt) = 0
 		loop
 	}
+	if ( gdata(GDATA_VERSION) < 6430 ) {
+		kamen6430 = 1
+		gdata(GDATA_FLAG_BOMB_BARRELS_EXPLODED) = 0
+	}
 	if ( gdata(GDATA_VERSION) != VERSION_NUMBER ) {
 		gdata(GDATA_WORLD_RENEW) = 1
 	}
@@ -1156,6 +1160,15 @@
 		}
 		if ( inv(INV_ITEM_ID, cnt) == ITEM_ID_SECRET_EXP_LOMIAS ) {
 			lomiaseaster = 1
+		}
+		if ( inv(INV_ITEM_ID, cnt) == ITEM_ID_CHAOS_FRAGMENT ) {
+			core3 = 1
+		}
+		if ( inv(INV_ITEM_ID, cnt) == ITEM_ID_REMIDO_FRAGMENT ) {
+			core2 = 1
+		}
+		if ( inv(INV_ITEM_ID, cnt) == ITEM_ID_LESIMAS_FRAGMENT ) {
+			core1 = 1
 		}
 		if ( inv(INV_ITEM_ID, cnt) == ITEM_ID_DEED_HEIRSHIP | refitem(inv(INV_ITEM_ID, cnt), DBSPEC_TYPE_MINOR) == FILTER_ITEM_DEED ) {
 			continue
@@ -3480,6 +3493,9 @@
 
 	mode = MODELIST_TITLE
 	lomiaseaster = 0
+	core3 = 0
+	core2 = 0
+	core1 = 0
 	music = MUSICLIST_MCOPENING
 	gosub *music_play
 	cs = 0
