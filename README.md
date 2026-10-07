@@ -7,7 +7,7 @@ Elona+ Custom-GX is a new variant of Elona+ based on Elona+ Custom-G, updated wi
 It is originally created and maintained by [Ruin0x11](https://github.com/Ruin0x11), on [this repository](https://github.com/Ruin0x11/ElonaPlusCustom-GX), and maintained by [JianmengYu](https://github.com/JianmengYu), on [this repository](https://github.com/JianmengYu/ElonaPlusCustom-GX).
 This repository is an unofficial continuation of the above repository using Ruin0x11's [borscht/erystia](https://github.com/Ruin0x11/borscht) decompiler.
 
-### **[Download the latest release here.](https://github.com/JianmengYu/ElonaPlusCustom-GX/releases/)**
+### **[Download the latest release here.](https://github.com/BitingChicken/ElonaPlusCustom-GX/releases)**
 
 ## Installation
 
