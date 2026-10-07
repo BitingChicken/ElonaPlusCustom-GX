@@ -43644,7 +43644,7 @@
 			if ( dbspec == DBSPEC_RARE_LEVEL ) {
 				return 150
 			}
-			if ( dbspec == 12 ) {
+			if ( dbspec == DBSPEC_OFFER ) {
 				if ( cdata(CDATA_GOD, CHARA_PLAYER) == GOD_MANI ) {
 					return 1
 				}
@@ -43720,7 +43720,7 @@
 			if ( dbspec == DBSPEC_RARE_LEVEL ) {
 				return 150
 			}
-			if ( dbspec == 12 ) {
+			if ( dbspec == DBSPEC_OFFER ) {
 				if ( cdata(CDATA_GOD, CHARA_PLAYER) == GOD_MANI ) {
 					return 1
 				}
@@ -43796,7 +43796,7 @@
 			if ( dbspec == DBSPEC_RARE_LEVEL ) {
 				return 150
 			}
-			if ( dbspec == 12 ) {
+			if ( dbspec == DBSPEC_OFFER ) {
 				if ( cdata(CDATA_GOD, CHARA_PLAYER) == GOD_MANI ) {
 					return 1
 				}
@@ -43872,7 +43872,7 @@
 			if ( dbspec == DBSPEC_RARE_LEVEL ) {
 				return 150
 			}
-			if ( dbspec == 12 ) {
+			if ( dbspec == DBSPEC_OFFER ) {
 				if ( cdata(CDATA_GOD, CHARA_PLAYER) == GOD_MANI ) {
 					return 1
 				}
@@ -44011,7 +44011,7 @@
 			if ( dbspec == DBSPEC_RARE_LEVEL ) {
 				return 100
 			}
-			if ( dbspec == 12 ) {
+			if ( dbspec == DBSPEC_OFFER ) {
 				if ( cdata(CDATA_GOD, CHARA_PLAYER) == GOD_EHEKATL ) {
 					return 1
 				}

@@ -37405,16 +37405,16 @@
 			return -1
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 2
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_MAGE
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "パンジャンの精霊"
 				}
@@ -37422,7 +37422,7 @@
 					return "spirit of panjan"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia8/"
 			}
 			return 0
@@ -37432,7 +37432,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1228
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -37471,7 +37471,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(7, 37)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -37479,16 +37479,16 @@
 	}
 	if ( dbid == CREATURE_ID_SPIRIT_OF_PANTY ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 2
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_MAGE
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "パンティーの精霊"
 				}
@@ -37496,7 +37496,7 @@
 					return "spirit of panty"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia8/"
 			}
 			return 0
@@ -37506,7 +37506,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1229
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -37546,7 +37546,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(8, 37)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -37554,16 +37554,16 @@
 	}
 	if ( dbid == CREATURE_ID_ULTIMATE_PHOENIX ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_WARMAGE
+			}
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
+			}
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
 			}
-			if ( dbspec == 5 ) {
-				return 0
-			}
-			if ( dbspec == 6 ) {
-				return 5
-			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "アルティメットフェニックス"
 				}
@@ -37571,7 +37571,7 @@
 					return "ultimate phoenix"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia2/"
 			}
 			return 0
@@ -37581,7 +37581,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1221
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -37621,7 +37621,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(0, 37)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -37633,16 +37633,16 @@
 	}
 	if ( dbid == CREATURE_ID_THOUSAND_CRANE ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 1
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_WARRIOR
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "千刃鶴"
 				}
@@ -37650,7 +37650,7 @@
 					return "thousand crane"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia2/"
 			}
 			return 0
@@ -37660,7 +37660,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1258
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -37698,7 +37698,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(4, 38)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -37706,16 +37706,16 @@
 	}
 	if ( dbid == CREATURE_ID_MULTI_PEALOCK ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 1
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_WARRIOR
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "マルチロックジャク"
 				}
@@ -37723,7 +37723,7 @@
 					return "multi pealock"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia2/"
 			}
 			return 0
@@ -37733,7 +37733,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1255
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -37772,7 +37772,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(1, 38)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -37780,16 +37780,16 @@
 	}
 	if ( dbid == CREATURE_ID_CARRIER_PIGEON ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 1
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_WARRIOR
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 40
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "伝書鳩"
 				}
@@ -37797,7 +37797,7 @@
 					return "carrier pigeon"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -37807,7 +37807,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1256
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -37845,7 +37845,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(2, 38)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -37853,16 +37853,16 @@
 	}
 	if ( dbid == CREATURE_ID_CLASHING_WOODPECKER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 1
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_WARRIOR
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "激突キツツキ"
 				}
@@ -37870,7 +37870,7 @@
 					return "clashing woodpecker"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -37880,7 +37880,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1257
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -37919,7 +37919,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(3, 38)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -37927,16 +37927,16 @@
 	}
 	if ( dbid == CREATURE_ID_DANCING_SWAN ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 3
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_ARCHER
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "ダンスワン"
 				}
@@ -37944,7 +37944,7 @@
 					return "dancing swan"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia2/"
 			}
 			return 0
@@ -37954,7 +37954,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1226
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -37993,7 +37993,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(5, 37)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -38033,16 +38033,16 @@
 			}
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 1
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_WARRIOR
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "魔ヒル"
 				}
@@ -38050,7 +38050,7 @@
 					return "maduck"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia2/"
 			}
 			return 0
@@ -38060,7 +38060,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1225
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38103,7 +38103,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(4, 37)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -38135,16 +38135,16 @@
 			}
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 1
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_WARRIOR
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "モヒカンオウム"
 				}
@@ -38152,7 +38152,7 @@
 					return "mohawk parrot"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia2/"
 			}
 			return 0
@@ -38162,7 +38162,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1224
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38204,7 +38204,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(3, 37)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -38212,16 +38212,16 @@
 	}
 	if ( dbid == CREATURE_ID_JAVA_SPOORROWRITER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 1
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_WARRIOR
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "駄文鳥"
 				}
@@ -38229,7 +38229,7 @@
 					return "java spoorrowriter"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + "/nefia2/"
 			}
 			return 0
@@ -38239,7 +38239,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1223
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38278,7 +38278,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(2, 37)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -38310,16 +38310,16 @@
 			}
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
-			if ( dbspec == 3 ) {
-				return 1
+			if ( dbspec == DBSPEC_CHARA_LOOT ) {
+				return EQUIP_TYPE_WARRIOR
 			}
-			if ( dbspec == 5 ) {
-				return 0
+			if ( dbspec == DBSPEC_CHARA_COL ) {
+				return COLOR_DEFAULT
 			}
-			if ( dbspec == 6 ) {
+			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
 			}
-			if ( dbspec == 2 ) {
+			if ( dbspec == DBSPEC_CHARA_NAME_ORG ) {
 				if ( jp ) {
 					return "『鷺野郎』"
 				}
@@ -38327,7 +38327,7 @@
 					return "<Heraudsteron>"
 				}
 			}
-			if ( dbspec == 8 ) {
+			if ( dbspec == DBSPEC_CHARA_FILTER ) {
 				return "" + ""
 			}
 			return 0
@@ -38337,7 +38337,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1222
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38380,7 +38380,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(1, 37)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -38405,10 +38405,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 0
+				return EQUIP_TYPE_NOTHING
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
@@ -38426,7 +38426,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1186
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38468,7 +38468,7 @@
 			if ( cdata(CDATA_SEX, rc) == 1 ) {
 				cdata(CDATA_PIC, rc) = xy2pic(32, 35)
 			}
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -38492,10 +38492,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 0
+				return EQUIP_TYPE_NOTHING
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
@@ -38513,7 +38513,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1184
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38555,7 +38555,7 @@
 			if ( cdata(CDATA_SEX, rc) == 1 ) {
 				cdata(CDATA_PIC, rc) = xy2pic(30, 35)
 			}
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -38579,10 +38579,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 0
+				return EQUIP_TYPE_NOTHING
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
@@ -38600,7 +38600,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 113
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38642,7 +38642,7 @@
 			if ( cdata(CDATA_SEX, rc) == 1 ) {
 				cdata(CDATA_PIC, rc) = xy2pic(15, 3)
 			}
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -38675,10 +38675,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -38696,7 +38696,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1220
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38734,7 +38734,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(32, 36)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -38768,10 +38768,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -38789,7 +38789,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1046
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38828,7 +38828,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(23, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -38838,10 +38838,10 @@
 	if ( dbid == CREATURE_ID_ZIZINGA_THE_OLD_SILVER_WOLF ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -38859,7 +38859,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 956
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38895,7 +38895,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(32, 28)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -38923,10 +38923,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
@@ -38944,7 +38944,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1119
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -38981,7 +38981,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(30, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -38990,10 +38990,10 @@
 	if ( dbid == CREATURE_ID_MOMALARIA_THE_BLOODSUCKER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -39011,7 +39011,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1182
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39046,7 +39046,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(27, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -39060,10 +39060,10 @@
 	if ( dbid == CREATURE_ID_BIG_MOSQUITO ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -39081,7 +39081,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1181
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39114,7 +39114,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(26, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -39147,10 +39147,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -39168,7 +39168,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1180
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39206,7 +39206,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(25, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -39244,10 +39244,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -39265,7 +39265,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1212
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39304,7 +39304,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(24, 36)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -39342,10 +39342,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -39363,7 +39363,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1179
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39401,7 +39401,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(24, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -39411,10 +39411,10 @@
 	if ( dbid == CREATURE_ID_MASKED_MUSANGOD ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
@@ -39432,7 +39432,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1209
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39472,7 +39472,7 @@
 				sdata(rsres0, rc) = 800
 			}
 			cdata(CDATA_PIC, rc) = xy2pic(21, 36)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -39481,10 +39481,10 @@
 	if ( dbid == CREATURE_ID_KAKOI_ANAGUMA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
@@ -39502,7 +39502,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1178
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39536,7 +39536,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(23, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -39549,10 +39549,10 @@
 	if ( dbid == CREATURE_ID_MADEER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
@@ -39570,7 +39570,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1210
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39608,7 +39608,7 @@
 			if ( cdata(CDATA_SEX, rc) == 1 ) {
 				cdata(CDATA_PIC, rc) = xy2pic(23, 36)
 			}
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -39617,10 +39617,10 @@
 	if ( dbid == CREATURE_ID_MATICK ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -39638,7 +39638,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1177
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39673,7 +39673,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(22, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -39682,10 +39682,10 @@
 	if ( dbid == CREATURE_ID_VICIOUS_RACCOON ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
@@ -39703,7 +39703,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1175
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39737,7 +39737,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(20, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -39768,10 +39768,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
@@ -39789,7 +39789,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1176
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39826,7 +39826,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(21, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -39859,10 +39859,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -39880,7 +39880,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1174
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -39918,7 +39918,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(19, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -39951,10 +39951,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
@@ -39972,7 +39972,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1208
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40010,7 +40010,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(20, 36)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -40019,10 +40019,10 @@
 	if ( dbid == CREATURE_ID_HEART_WITCH ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -40040,7 +40040,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1171
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40074,7 +40074,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(16, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -40083,10 +40083,10 @@
 	if ( dbid == CREATURE_ID_DIAMOND_EYES ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -40104,7 +40104,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1169
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40137,7 +40137,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(14, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -40146,10 +40146,10 @@
 	if ( dbid == CREATURE_ID_CLUB_FEATHER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -40167,7 +40167,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1167
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40200,7 +40200,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(12, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -40209,10 +40209,10 @@
 	if ( dbid == CREATURE_ID_SPADE_WARRIOR ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -40230,7 +40230,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1165
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40263,7 +40263,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(10, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -40289,10 +40289,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 17
+				return COLOR_LIGHT_BLUE
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -40310,7 +40310,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 875
-			cpicref += 17 * 1000
+			cpicref += COLOR_LIGHT_BLUE * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40346,7 +40346,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(17, 26)
-			cdata(CDATA_PIC, rc) += 17 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_LIGHT_BLUE * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -40378,10 +40378,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -40399,7 +40399,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 935
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40436,7 +40436,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(11, 28)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -40450,10 +40450,10 @@
 	if ( dbid == CREATURE_ID_KAMIKAKUSHI_THE_HIDDEN_SHIKIORIGAMI ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 40
@@ -40471,7 +40471,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1163
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40505,7 +40505,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(8, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -40526,10 +40526,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -40547,7 +40547,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1154
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40582,7 +40582,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(32, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -40616,10 +40616,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 7
+				return COLOR_BLACK
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 3
@@ -40637,7 +40637,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1151
-			cpicref += 7 * 1000
+			cpicref += COLOR_BLACK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40674,7 +40674,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(29, 34)
-			cdata(CDATA_PIC, rc) += 7 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLACK * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -40683,10 +40683,10 @@
 	if ( dbid == CREATURE_ID_MOUNTAIN_SHAKER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 7
+				return COLOR_BLACK
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
@@ -40704,7 +40704,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1152
-			cpicref += 7 * 1000
+			cpicref += COLOR_BLACK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40737,7 +40737,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(30, 34)
-			cdata(CDATA_PIC, rc) += 7 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLACK * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -40771,10 +40771,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 90
@@ -40792,7 +40792,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1151
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40830,7 +40830,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(29, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -40839,10 +40839,10 @@
 	if ( dbid == CREATURE_ID_GUNDEGU ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 6
+				return COLOR_BROWN
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
@@ -40860,7 +40860,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1150
-			cpicref += 6 * 1000
+			cpicref += COLOR_BROWN * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40893,7 +40893,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(28, 34)
-			cdata(CDATA_PIC, rc) += 6 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BROWN * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -40907,10 +40907,10 @@
 	if ( dbid == CREATURE_ID_RUSH_RAT ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
@@ -40928,7 +40928,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1153
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -40962,7 +40962,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(31, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -40971,10 +40971,10 @@
 	if ( dbid == CREATURE_ID_HIGH_JUMP_RAT ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
@@ -40992,7 +40992,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1152
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41025,7 +41025,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(30, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41034,10 +41034,10 @@
 	if ( dbid == CREATURE_ID_HUGE_CHINCHILLA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
@@ -41055,7 +41055,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1150
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41089,7 +41089,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(28, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41098,10 +41098,10 @@
 	if ( dbid == CREATURE_ID_KAMIHIKOUKI ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -41119,7 +41119,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1149
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41159,7 +41159,7 @@
 				sdata(rsres0, rc) = 50
 			}
 			cdata(CDATA_PIC, rc) = xy2pic(27, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41168,10 +41168,10 @@
 	if ( dbid == CREATURE_ID_KAMISHURIKEN ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -41189,7 +41189,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1148
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41230,7 +41230,7 @@
 				sdata(rsres0, rc) = 50
 			}
 			cdata(CDATA_PIC, rc) = xy2pic(26, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41239,10 +41239,10 @@
 	if ( dbid == CREATURE_ID_KAMIORIDURU ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -41260,7 +41260,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1147
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41301,7 +41301,7 @@
 				sdata(rsres0, rc) = 50
 			}
 			cdata(CDATA_PIC, rc) = xy2pic(25, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41310,10 +41310,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_KAPPA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41331,7 +41331,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1146
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41365,7 +41365,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(24, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41374,10 +41374,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_SABER_TIGER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41395,7 +41395,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1145
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41429,7 +41429,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(23, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41438,10 +41438,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_DIRE_WOLF ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41459,7 +41459,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1144
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41493,7 +41493,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(22, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41502,10 +41502,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_GIANT_PANDA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41523,7 +41523,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1143
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41557,7 +41557,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(21, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41566,10 +41566,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_MEGA_KANGAROO ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41587,7 +41587,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1030
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41622,7 +41622,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(7, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41631,10 +41631,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_GOAT ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41652,7 +41652,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1142
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41686,7 +41686,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(20, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41695,10 +41695,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_SEA_COW ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41716,7 +41716,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1141
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41750,7 +41750,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(19, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41759,10 +41759,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_TOKI ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41780,7 +41780,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1140
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41814,7 +41814,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(18, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41823,10 +41823,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_PASSENGER_PIGEON ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41844,7 +41844,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1139
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41878,7 +41878,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(17, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41887,10 +41887,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_GAREFOWL ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41908,7 +41908,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1138
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -41942,7 +41942,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(16, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -41951,10 +41951,10 @@
 	if ( dbid == CREATURE_ID_RESTOROID_DODO ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 1
@@ -41972,7 +41972,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1137
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42006,7 +42006,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(15, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42015,10 +42015,10 @@
 	if ( dbid == CREATURE_ID_BAMBOO_SPEAR_SPIRIT ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -42036,7 +42036,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1134
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42070,7 +42070,7 @@
 			gosub *db_class
 			cdata(CDATA_ELEMENT, rc) = SKILL_RESDMG_CUT * 100000 + 50
 			cdata(CDATA_PIC, rc) = xy2pic(12, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42097,10 +42097,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 6
+				return COLOR_BROWN
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -42118,7 +42118,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1135
-			cpicref += 6 * 1000
+			cpicref += COLOR_BROWN * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42157,7 +42157,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(13, 34)
-			cdata(CDATA_PIC, rc) += 6 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BROWN * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -42170,10 +42170,10 @@
 	if ( dbid == CREATURE_ID_JUMP_LANDMINE_GIRL ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 6
+				return COLOR_BROWN
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 40
@@ -42191,7 +42191,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1136
-			cpicref += 6 * 1000
+			cpicref += COLOR_BROWN * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42226,7 +42226,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(14, 34)
-			cdata(CDATA_PIC, rc) += 6 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BROWN * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42247,10 +42247,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -42268,7 +42268,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1136
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42305,7 +42305,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(14, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -42318,10 +42318,10 @@
 	if ( dbid == CREATURE_ID_LANDMINE_GIRL ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -42339,7 +42339,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1135
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42375,7 +42375,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(13, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42384,10 +42384,10 @@
 	if ( dbid == CREATURE_ID_WORM_HOLER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 14
+				return COLOR_DARK_GREEN
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
@@ -42405,7 +42405,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 562
-			cpicref += 14 * 1000
+			cpicref += COLOR_DARK_GREEN * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42439,7 +42439,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(1, 17)
-			cdata(CDATA_PIC, rc) += 14 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DARK_GREEN * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42448,10 +42448,10 @@
 	if ( dbid == CREATURE_ID_VINDALIAN_DEATHWORM ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 8
@@ -42469,7 +42469,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1162
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42503,7 +42503,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(7, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42530,10 +42530,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 25
+				return COLOR_YELLOW2
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -42551,7 +42551,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 239
-			cpicref += 25 * 1000
+			cpicref += COLOR_YELLOW2 * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42589,7 +42589,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(8, 7)
-			cdata(CDATA_PIC, rc) += 25 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_YELLOW2 * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42602,10 +42602,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 4
+				return COLOR_BLUE
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
@@ -42623,7 +42623,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 173
-			cpicref += 4 * 1000
+			cpicref += COLOR_BLUE * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42658,7 +42658,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(8, 5)
-			cdata(CDATA_PIC, rc) += 4 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLUE * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42667,10 +42667,10 @@
 	if ( dbid == CREATURE_ID_MEGA_GORDIAN_WORM ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 28
+				return COLOR_DARK_GRAY2
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -42688,7 +42688,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1162
-			cpicref += 28 * 1000
+			cpicref += COLOR_DARK_GRAY2 * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42722,7 +42722,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(7, 35)
-			cdata(CDATA_PIC, rc) += 28 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DARK_GRAY2 * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42731,10 +42731,10 @@
 	if ( dbid == CREATURE_ID_ANABOLIC_RESISTANCE ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -42752,7 +42752,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1129
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42787,7 +42787,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(7, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42796,10 +42796,10 @@
 	if ( dbid == CREATURE_ID_MONSTER_BACTERIA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 4
+				return COLOR_BLUE
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 90
@@ -42817,7 +42817,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1128
-			cpicref += 4 * 1000
+			cpicref += COLOR_BLUE * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42850,7 +42850,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(6, 34)
-			cdata(CDATA_PIC, rc) += 4 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLUE * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42859,10 +42859,10 @@
 	if ( dbid == CREATURE_ID_MESHERA_UNFINISHED ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 3
+				return COLOR_RED
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
@@ -42880,7 +42880,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1129
-			cpicref += 3 * 1000
+			cpicref += COLOR_RED * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42915,7 +42915,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(7, 34)
-			cdata(CDATA_PIC, rc) += 3 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_RED * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42924,10 +42924,10 @@
 	if ( dbid == CREATURE_ID_BOUNCTERIA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
@@ -42945,7 +42945,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1128
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -42978,7 +42978,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(6, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -42987,10 +42987,10 @@
 	if ( dbid == CREATURE_ID_ROUGH_PIRATE ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 3
+				return COLOR_RED
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 5
@@ -43008,7 +43008,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 76
-			cpicref += 3 * 1000
+			cpicref += COLOR_RED * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43046,7 +43046,7 @@
 			if ( cdata(CDATA_SEX, rc) == 1 ) {
 				cdata(CDATA_PIC, rc) = xy2pic(11, 2)
 			}
-			cdata(CDATA_PIC, rc) += 3 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_RED * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43055,10 +43055,10 @@
 	if ( dbid == CREATURE_ID_PIRATE_MUSKETEER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -43076,7 +43076,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1130
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43112,7 +43112,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(8, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -43132,10 +43132,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 25
@@ -43153,7 +43153,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1131
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43194,7 +43194,7 @@
 			if ( cdata(CDATA_SEX, rc) == 1 ) {
 				cdata(CDATA_PIC, rc) = xy2pic(10, 34)
 			}
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -43204,10 +43204,10 @@
 	if ( dbid == CREATURE_ID_MOB_OF_ELEA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 3
+				return COLOR_RED
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -43225,7 +43225,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 83
-			cpicref += 3 * 1000
+			cpicref += COLOR_RED * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43264,7 +43264,7 @@
 			if ( cdata(CDATA_SEX, rc) == 1 ) {
 				cdata(CDATA_PIC, rc) = xy2pic(18, 2)
 			}
-			cdata(CDATA_PIC, rc) += 3 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_RED * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43273,10 +43273,10 @@
 	if ( dbid == CREATURE_ID_AVENGER_OF_ELEA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 7
+				return COLOR_BLACK
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 40
@@ -43294,7 +43294,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 47
-			cpicref += 7 * 1000
+			cpicref += COLOR_BLACK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43333,7 +43333,7 @@
 			if ( cdata(CDATA_SEX, rc) == 1 ) {
 				cdata(CDATA_PIC, rc) = xy2pic(9, 1)
 			}
-			cdata(CDATA_PIC, rc) += 7 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLACK * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43342,10 +43342,10 @@
 	if ( dbid == CREATURE_ID_WANDERER_OF_ELEA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
@@ -43363,7 +43363,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1133
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43400,7 +43400,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(11, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43409,10 +43409,10 @@
 	if ( dbid == CREATURE_ID_CHAOSHAPRINCESS_ZEHLS ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
@@ -43430,7 +43430,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1161
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43466,7 +43466,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(6, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43475,10 +43475,10 @@
 	if ( dbid == CREATURE_ID_CHAOSHAPRINCESS_DIBWL ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 4
+				return EQUIP_TYPE_GUNNER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -43496,7 +43496,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1160
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43531,7 +43531,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(5, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43540,10 +43540,10 @@
 	if ( dbid == CREATURE_ID_CHAOSHAPRINCESS_VARGM ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 40
@@ -43561,7 +43561,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1159
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43595,7 +43595,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(4, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -43609,10 +43609,10 @@
 	if ( dbid == CREATURE_ID_ETHERIAN_PLUS ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -43630,7 +43630,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1127
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43663,7 +43663,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(5, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			cdata(CDATA_BARRIER, rc) = 61 + 250 * 1000
 			return
@@ -43673,10 +43673,10 @@
 	if ( dbid == CREATURE_ID_CHAOSHAPRINCESS_CHRDH ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -43694,7 +43694,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1158
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43729,7 +43729,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(3, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43738,10 +43738,10 @@
 	if ( dbid == CREATURE_ID_CHAOSHAPRINCESS_FSSSY ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -43759,7 +43759,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1157
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43794,7 +43794,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(2, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43803,10 +43803,10 @@
 	if ( dbid == CREATURE_ID_CHAOSHAPRINCESS_FWBS ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
@@ -43824,7 +43824,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1156
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43858,7 +43858,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(1, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43867,10 +43867,10 @@
 	if ( dbid == CREATURE_ID_CHAOSHAPRINCESS_MEM ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 80
@@ -43888,7 +43888,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1155
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43923,7 +43923,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(0, 35)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43932,10 +43932,10 @@
 	if ( dbid == CREATURE_ID_ETHERIAN ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -43953,7 +43953,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1126
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -43987,7 +43987,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(4, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -43996,10 +43996,10 @@
 	if ( dbid == CREATURE_ID_SP_CHAMPION ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -44017,7 +44017,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1055
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44050,7 +44050,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(32, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -44059,10 +44059,10 @@
 	if ( dbid == CREATURE_ID_DAGANOTOSUS ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -44080,7 +44080,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1054
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44114,7 +44114,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(31, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -44123,10 +44123,10 @@
 	if ( dbid == CREATURE_ID_MOSTMUSCYLLA ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 80
@@ -44144,7 +44144,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1125
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44178,7 +44178,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(3, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -44192,10 +44192,10 @@
 	if ( dbid == CREATURE_ID_DOSUKEBE_SEA_ANEMONE ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 90
@@ -44213,7 +44213,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1124
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44247,7 +44247,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(2, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -44274,10 +44274,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -44295,7 +44295,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1123
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44331,7 +44331,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(1, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -44363,10 +44363,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 90
@@ -44384,7 +44384,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1122
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44421,7 +44421,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(0, 34)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -44460,10 +44460,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -44481,7 +44481,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1121
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44520,7 +44520,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(32, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -44530,10 +44530,10 @@
 	if ( dbid == CREATURE_ID_HELRAUNE ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 10
+				return COLOR_PINK
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
@@ -44551,7 +44551,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 989
-			cpicref += 10 * 1000
+			cpicref += COLOR_PINK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44585,7 +44585,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(32, 29)
-			cdata(CDATA_PIC, rc) += 10 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_PINK * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -44594,10 +44594,10 @@
 	if ( dbid == CREATURE_ID_KING_HOGWEEDER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 7
+				return COLOR_BLACK
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 80
@@ -44615,7 +44615,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 988
-			cpicref += 7 * 1000
+			cpicref += COLOR_BLACK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44649,7 +44649,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(31, 29)
-			cdata(CDATA_PIC, rc) += 7 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLACK * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -44658,10 +44658,10 @@
 	if ( dbid == CREATURE_ID_HOGWEEDER ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 90
@@ -44679,7 +44679,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 988
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44713,7 +44713,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(31, 29)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -44722,10 +44722,10 @@
 	if ( dbid == CREATURE_ID_ALRAUNE ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 100
@@ -44743,7 +44743,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 989
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44779,7 +44779,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(32, 29)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -44788,10 +44788,10 @@
 	if ( dbid == CREATURE_ID_KUSOSUGI ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 6
+				return COLOR_BROWN
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -44809,7 +44809,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1053
-			cpicref += 6 * 1000
+			cpicref += COLOR_BROWN * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44843,7 +44843,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(30, 31)
-			cdata(CDATA_PIC, rc) += 6 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BROWN * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -44857,10 +44857,10 @@
 	if ( dbid == CREATURE_ID_HINOCCHIO ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -44878,7 +44878,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1053
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44912,7 +44912,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(30, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -44926,10 +44926,10 @@
 	if ( dbid == CREATURE_ID_GREEN_DARK_GUARDIAN ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -44947,7 +44947,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1052
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -44983,7 +44983,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(29, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -44997,10 +44997,10 @@
 	if ( dbid == CREATURE_ID_BLUE_DARK_GUARDIAN ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -45018,7 +45018,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1051
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45054,7 +45054,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(28, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -45063,10 +45063,10 @@
 	if ( dbid == CREATURE_ID_CRIMSON_DARK_GUARDIAN ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -45084,7 +45084,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1050
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45119,7 +45119,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(27, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -45128,10 +45128,10 @@
 	if ( dbid == CREATURE_ID_TALKA_THE_LONG_TWINTAIL ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -45149,7 +45149,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 955
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45185,7 +45185,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(31, 28)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -45195,10 +45195,10 @@
 	if ( dbid == CREATURE_ID_DARK_ARTIFICIAL_GIANT ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -45216,7 +45216,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1048
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45251,7 +45251,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(25, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -45266,10 +45266,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 7
+				return COLOR_BLACK
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
@@ -45287,7 +45287,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 351
-			cpicref += 7 * 1000
+			cpicref += COLOR_BLACK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45321,7 +45321,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(21, 10)
-			cdata(CDATA_PIC, rc) += 7 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLACK * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -45347,10 +45347,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 4
+				return COLOR_BLUE
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 80
@@ -45368,7 +45368,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 232
-			cpicref += 4 * 1000
+			cpicref += COLOR_BLUE * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45403,7 +45403,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(1, 7)
-			cdata(CDATA_PIC, rc) += 4 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLUE * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -45436,10 +45436,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -45457,7 +45457,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1049
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45495,7 +45495,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(26, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -45512,10 +45512,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 1
+				return COLOR_RANDOM
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
@@ -45533,7 +45533,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1120
-			cpicref += 1 * 1000
+			cpicref += COLOR_RANDOM * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45567,7 +45567,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(31, 33)
-			cdata(CDATA_PIC, rc) += 1 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_RANDOM * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -45584,10 +45584,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 6
+				return COLOR_BROWN
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 40
@@ -45605,7 +45605,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1047
-			cpicref += 6 * 1000
+			cpicref += COLOR_BROWN * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45638,7 +45638,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(24, 31)
-			cdata(CDATA_PIC, rc) += 6 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BROWN * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -45656,10 +45656,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 60
@@ -45677,7 +45677,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1047
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45710,7 +45710,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(24, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -45747,10 +45747,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
@@ -45768,7 +45768,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1118
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45801,7 +45801,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_race
 			cdata(CDATA_PIC, rc) = xy2pic(29, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -45840,10 +45840,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 70
@@ -45861,7 +45861,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1116
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45900,7 +45900,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(27, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -45909,10 +45909,10 @@
 	if ( dbid == CREATURE_ID_YONORNE_THE_ROOKIE_GUIDE ) {
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 3
+				return EQUIP_TYPE_ARCHER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -45930,7 +45930,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1119
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -45965,7 +45965,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(30, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -46005,10 +46005,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -46026,7 +46026,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1117
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46065,7 +46065,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(28, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -46105,10 +46105,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 2
+				return EQUIP_TYPE_MAGE
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -46126,7 +46126,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1045
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46165,7 +46165,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(22, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -46205,10 +46205,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 6
+				return EQUIP_TYPE_PRIEST
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -46226,7 +46226,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1115
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46265,7 +46265,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(26, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -46305,10 +46305,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 4
+				return EQUIP_TYPE_GUNNER
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -46326,7 +46326,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1114
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46365,7 +46365,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(25, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -46405,10 +46405,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 18
+				return COLOR_LIGHT_PURPLE
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 10
@@ -46426,7 +46426,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1113
-			cpicref += 18 * 1000
+			cpicref += COLOR_LIGHT_PURPLE * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46465,7 +46465,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(24, 33)
-			cdata(CDATA_PIC, rc) += 18 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_LIGHT_PURPLE * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -46504,10 +46504,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 10
+				return COLOR_PINK
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 20
@@ -46525,7 +46525,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1113
-			cpicref += 10 * 1000
+			cpicref += COLOR_PINK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46562,7 +46562,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(24, 33)
-			cdata(CDATA_PIC, rc) += 10 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_PINK * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -46601,10 +46601,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 15
+				return COLOR_GRAY
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 30
@@ -46622,7 +46622,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1113
-			cpicref += 15 * 1000
+			cpicref += COLOR_GRAY * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46660,7 +46660,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(24, 33)
-			cdata(CDATA_PIC, rc) += 15 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_GRAY * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -46704,10 +46704,10 @@
 		}
 		if ( dbmode == DBMODE_REF_SPEC ) {
 			if ( dbspec == DBSPEC_CHARA_LOOT ) {
-				return 1
+				return EQUIP_TYPE_WARRIOR
 			}
 			if ( dbspec == DBSPEC_CHARA_COL ) {
-				return 0
+				return COLOR_DEFAULT
 			}
 			if ( dbspec == DBSPEC_CHARA_RARE ) {
 				return 50
@@ -46725,7 +46725,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1113
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46763,7 +46763,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(24, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -46810,7 +46810,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1044
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46847,7 +46847,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(21, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -46877,7 +46877,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1112
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46911,7 +46911,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(23, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -46953,7 +46953,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1043
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -46989,7 +46989,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(20, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47031,7 +47031,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 104
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47066,7 +47066,7 @@
 			if ( cdata(CDATA_SEX, rc) == 1 ) {
 				cdata(CDATA_PIC, rc) = xy2pic(27, 10)
 			}
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47096,7 +47096,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 936
-			cpicref += 25 * 1000
+			cpicref += COLOR_YELLOW2 * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47130,7 +47130,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(12, 28)
-			cdata(CDATA_PIC, rc) += 25 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_YELLOW2 * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47160,7 +47160,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 929
-			cpicref += 7 * 1000
+			cpicref += COLOR_BLACK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47201,7 +47201,7 @@
 				sdata(rsres0, rc) = 800
 			}
 			cdata(CDATA_PIC, rc) = xy2pic(5, 28)
-			cdata(CDATA_PIC, rc) += 7 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLACK * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47231,7 +47231,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 936
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47264,7 +47264,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(12, 28)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47294,7 +47294,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 929
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47328,7 +47328,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(5, 28)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47363,7 +47363,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1042
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47396,7 +47396,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(19, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -47430,7 +47430,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1109
-			cpicref += 24 * 1000
+			cpicref += COLOR_DARK_GRAY * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47463,7 +47463,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(20, 33)
-			cdata(CDATA_PIC, rc) += 24 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DARK_GRAY * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -47498,7 +47498,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1111
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47531,7 +47531,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(22, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -47565,7 +47565,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1110
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47600,7 +47600,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(21, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47659,7 +47659,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1109
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47696,7 +47696,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(20, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47750,7 +47750,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1108
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47788,7 +47788,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(19, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -47819,7 +47819,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1039
-			cpicref += 5 * 1000
+			cpicref += COLOR_YELLOW * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47853,7 +47853,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(16, 31)
-			cdata(CDATA_PIC, rc) += 5 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_YELLOW * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47883,7 +47883,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1038
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47918,7 +47918,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(15, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -47952,7 +47952,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1040
-			cpicref += 19 * 1000
+			cpicref += COLOR_LIGHT_GREEN * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -47993,7 +47993,7 @@
 				sdata(rsres0, rc) = 500
 			}
 			cdata(CDATA_PIC, rc) = xy2pic(17, 31)
-			cdata(CDATA_PIC, rc) += 19 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_LIGHT_GREEN * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -48023,7 +48023,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1039
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48058,7 +48058,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(16, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -48093,7 +48093,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1106
-			cpicref += 6 * 1000
+			cpicref += COLOR_BROWN * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48129,7 +48129,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(17, 33)
-			cdata(CDATA_PIC, rc) += 6 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BROWN * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -48159,7 +48159,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 931
-			cpicref += 7 * 1000
+			cpicref += COLOR_BLACK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48194,7 +48194,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(7, 28)
-			cdata(CDATA_PIC, rc) += 7 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLACK * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -48233,7 +48233,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 945
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48274,7 +48274,7 @@
 			}
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(21, 28)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -48334,7 +48334,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 331
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48373,7 +48373,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(1, 10)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -48409,7 +48409,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 331
-			cpicref += 24 * 1000
+			cpicref += COLOR_DARK_GRAY * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48451,7 +48451,7 @@
 			}
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(1, 10)
-			cdata(CDATA_PIC, rc) += 24 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DARK_GRAY * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -48505,7 +48505,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1037
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48543,7 +48543,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(14, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -48579,7 +48579,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 593
-			cpicref += 22 * 1000
+			cpicref += COLOR_RED2 * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48621,7 +48621,7 @@
 			}
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(32, 17)
-			cdata(CDATA_PIC, rc) += 22 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_RED2 * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -48657,7 +48657,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 593
-			cpicref += 25 * 1000
+			cpicref += COLOR_YELLOW2 * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48699,7 +48699,7 @@
 			}
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(32, 17)
-			cdata(CDATA_PIC, rc) += 25 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_YELLOW2 * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -48733,7 +48733,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 593
-			cpicref += 14 * 1000
+			cpicref += COLOR_DARK_GREEN * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48768,7 +48768,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(32, 17)
-			cdata(CDATA_PIC, rc) += 14 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DARK_GREEN * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -48802,7 +48802,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 954
-			cpicref += 21 * 1000
+			cpicref += COLOR_LIGHT_BLUE2 * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48836,7 +48836,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(30, 28)
-			cdata(CDATA_PIC, rc) += 21 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_LIGHT_BLUE2 * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -48870,7 +48870,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 954
-			cpicref += 7 * 1000
+			cpicref += COLOR_BLACK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48911,7 +48911,7 @@
 			}
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(30, 28)
-			cdata(CDATA_PIC, rc) += 7 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLACK * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -48957,7 +48957,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1104
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -48994,7 +48994,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(15, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -49028,7 +49028,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1103
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49063,7 +49063,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(14, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -49093,7 +49093,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 583
-			cpicref += 24 * 1000
+			cpicref += COLOR_DARK_GRAY * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49133,7 +49133,7 @@
 				sdata(rsres0, rc) = 50
 			}
 			cdata(CDATA_PIC, rc) = xy2pic(22, 17)
-			cdata(CDATA_PIC, rc) += 24 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DARK_GRAY * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -49181,7 +49181,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1036
-			cpicref += 7 * 1000
+			cpicref += COLOR_BLACK * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49219,7 +49219,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(13, 31)
-			cdata(CDATA_PIC, rc) += 7 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_BLACK * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -49254,7 +49254,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1102
-			cpicref += 21 * 1000
+			cpicref += COLOR_LIGHT_BLUE2 * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49287,7 +49287,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(13, 33)
-			cdata(CDATA_PIC, rc) += 21 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_LIGHT_BLUE2 * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -49317,7 +49317,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1036
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49350,7 +49350,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(13, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -49380,7 +49380,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1102
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49414,7 +49414,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(13, 33)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -49444,7 +49444,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1058
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49478,7 +49478,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(2, 32)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -49525,7 +49525,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 952
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49561,7 +49561,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(28, 28)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -49607,7 +49607,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1023
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49643,7 +49643,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(0, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -49677,7 +49677,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1067
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49714,7 +49714,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(11, 32)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
 		}
@@ -49748,7 +49748,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1035
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49783,7 +49783,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(12, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -49823,7 +49823,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1068
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49857,7 +49857,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(12, 32)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -49892,7 +49892,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 106
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49927,7 +49927,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(7, 3)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 1
 			return
@@ -49962,7 +49962,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 979
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -49997,7 +49997,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			cdata(CDATA_PIC, rc) = xy2pic(22, 29)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			cspecialeq = 1
 			return
 		}
@@ -50031,7 +50031,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1027
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -50065,7 +50065,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(4, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -50096,7 +50096,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1034
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -50131,7 +50131,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 1
 			cdata(CDATA_PIC, rc) = xy2pic(11, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -50162,7 +50162,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1025
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -50196,7 +50196,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(2, 31)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
@@ -50227,7 +50227,7 @@
 			dbmode = DBMODE_REF
 			gosub *db_race
 			cpicref = 1066
-			cpicref += 0 * 1000
+			cpicref += COLOR_DEFAULT * COLOR_TINT_MULT
 			return
 		}
 		if ( dbmode == DBMODE_SET ) {
@@ -50261,7 +50261,7 @@
 			gosub *db_class
 			cdata(CDATA_SEX, rc) = 0
 			cdata(CDATA_PIC, rc) = xy2pic(10, 32)
-			cdata(CDATA_PIC, rc) += 0 * 1000
+			cdata(CDATA_PIC, rc) += COLOR_DEFAULT * COLOR_TINT_MULT
 			fixlv = FIX_QUALITY_UNIQUE
 			cspecialeq = 0
 			return
