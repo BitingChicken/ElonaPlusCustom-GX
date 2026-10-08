@@ -9876,13 +9876,11 @@
 			if ( spact(SKILL_SPACT_WIN - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_WIN - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_WIN) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_WIN) + ".")
+				txt_skilllearned(SKILL_SPACT_WIN)
 				if ( spact(SKILL_SPACT_PURGE - STARTING_SKILL_SPACT) == 0 ) {
 					spact(SKILL_SPACT_PURGE - STARTING_SKILL_SPACT) = 1
 					txtmore
-					txtef COLOR_YELLOW
-					txt lang("あなたは「" + skillname(SKILL_SPACT_PURGE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_PURGE) + ".")
+					txt_skilllearned(SKILL_SPACT_PURGE)
 				}
 			}
 			kamen4 = 0

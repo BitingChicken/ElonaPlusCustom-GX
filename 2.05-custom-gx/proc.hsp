@@ -4408,8 +4408,7 @@
 		if ( spact(SKILL_SPACT_SERIOUS_BEGGING - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SERIOUS_BEGGING - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SERIOUS_BEGGING) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SERIOUS_BEGGING) + ".")
+			txt_skilllearned(SKILL_SPACT_SERIOUS_BEGGING)
 		}
 	}
 	if ( gdata(GDATA_SLEEP_GENE) != 0 ) {

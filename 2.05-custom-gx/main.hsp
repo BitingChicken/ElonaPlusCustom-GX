@@ -3166,8 +3166,7 @@
 			if ( spact(SKILL_SPACT_CLEMENTIA - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_CLEMENTIA - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_CLEMENTIA) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_CLEMENTIA) + ".")
+				txt_skilllearned(SKILL_SPACT_CLEMENTIA)
 			}
 		}
 	}
@@ -7005,8 +7004,7 @@
 		if ( spact(SKILL_SPACT_CLEMENTIA - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_CLEMENTIA - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_CLEMENTIA) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_CLEMENTIA) + ".")
+			txt_skilllearned(SKILL_SPACT_CLEMENTIA)
 		}
 		/********** JAMES CUSTOM - CHALLENGE - PERMANENT ETHERWIND - BEGINNING **********/
 		if ( TweakData(TWEAK_CHALLENGE_ALWAYS_ETHERWIND, TWEAK_CATEGORY_CHALLENGE) > 0 ) {

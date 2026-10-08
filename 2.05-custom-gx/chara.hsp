@@ -12,8 +12,7 @@
 		if ( spact(SKILL_SPACT_UNISON_IMPACT - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_UNISON_IMPACT - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_UNISON_IMPACT) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_UNISON_IMPACT) + ".")
+			txt_skilllearned(SKILL_SPACT_UNISON_IMPACT)
 		}
 	}
 	overp = 0
@@ -21,916 +20,801 @@
 		if ( spact(SKILL_SPACT_BLOOD_STREAM - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_BLOOD_STREAM - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_BLOOD_STREAM) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_BLOOD_STREAM) + ".")
+			txt_skilllearned(SKILL_SPACT_BLOOD_STREAM)
 		}
 	}
 	if ( sorg(SKILL_ATTR_WIL, CHARA_PLAYER) > 1 ) {
 		if ( spact(SKILL_SPACT_GAUGE_RELEASE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_GAUGE_RELEASE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_GAUGE_RELEASE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_GAUGE_RELEASE) + ".")
+			txt_skilllearned(SKILL_SPACT_GAUGE_RELEASE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_SENSE_QUALITY, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_DATA_SCAN - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DATA_SCAN - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DATA_SCAN) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_DATA_SCAN) + ".")
+			txt_skilllearned(SKILL_SPACT_DATA_SCAN)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_MAGIC_DEVICE, CHARA_PLAYER) > 19 ) {
 		if ( spact(SKILL_SPACT_DRAW_CHARGE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DRAW_CHARGE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DRAW_CHARGE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_DRAW_CHARGE) + ".")
+			txt_skilllearned(SKILL_SPACT_DRAW_CHARGE)
 		}
 		if ( spact(SKILL_SPACT_FILL_CHARGE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_FILL_CHARGE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_FILL_CHARGE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_FILL_CHARGE) + ".")
+			txt_skilllearned(SKILL_SPACT_FILL_CHARGE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_TACTICS, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_SWARM - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SWARM - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SWARM) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SWARM) + ".")
+			txt_skilllearned(SKILL_SPACT_SWARM)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_TACTICS, CHARA_PLAYER) > 49 & sorg(SKILL_WEAPON_MARTIAL_ARTS, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_HIP_ATTACK - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_HIP_ATTACK - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_HIP_ATTACK) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_HIP_ATTACK) + ".")
+			txt_skilllearned(SKILL_SPACT_HIP_ATTACK)
 		}
 	}
 	if ( trait(TRAIT_NORMAL_SPACT_VINDALIAN_JIUJITSU) != 0 ) {
 		if ( spact(SKILL_SPACT_VINDALIAN_JIUJITSU - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_VINDALIAN_JIUJITSU - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_VINDALIAN_JIUJITSU) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_VINDALIAN_JIUJITSU) + ".")
+			txt_skilllearned(SKILL_SPACT_VINDALIAN_JIUJITSU)
 		}
 	}
 	if ( trait(TRAIT_NORMAL_SPACT_UNCONTROL) != 0 ) {
 		if ( spact(SKILL_SPACT_UNCONTROL - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_UNCONTROL - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_UNCONTROL) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_UNCONTROL) + ".")
+			txt_skilllearned(SKILL_SPACT_UNCONTROL)
 		}
 	}
 	if ( trait(TRAIT_NORMAL_SPACT_FASCINATION_DANCE) != 0 ) {
 		if ( spact(SKILL_SPACT_FASCINATION_DANCE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_FASCINATION_DANCE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_FASCINATION_DANCE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_FASCINATION_DANCE) + ".")
+			txt_skilllearned(SKILL_SPACT_FASCINATION_DANCE)
 		}
 	}
 	if ( trait(TRAIT_NORMAL_SPACT_GRAVITY_ACCEL) != 0 ) {
 		if ( spact(SKILL_SPACT_GRAVITY_ACCEL - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_GRAVITY_ACCEL - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_GRAVITY_ACCEL) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_GRAVITY_ACCEL) + ".")
+			txt_skilllearned(SKILL_SPACT_GRAVITY_ACCEL)
 		}
 	}
 	if ( trait(TRAIT_NORMAL_SPACT_BLADE_STRINGS) != 0 ) {
 		if ( spact(SKILL_SPACT_BLADE_STRINGS - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_BLADE_STRINGS - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_BLADE_STRINGS) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_BLADE_STRINGS) + ".")
+			txt_skilllearned(SKILL_SPACT_BLADE_STRINGS)
 		}
 	}
 	if ( trait(TRAIT_NORMAL_SKILL_NEGOTIATION) != 0 ) {
 		if ( spact(SKILL_SPACT_PERSUASION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_PERSUASION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_PERSUASION) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_PERSUASION) + ".")
+			txt_skilllearned(SKILL_SPACT_PERSUASION)
 		}
 	}
 	if ( trait(TRAIT_NORMAL_SKILL_NEGOTIATION) != 0 ) {
 		if ( spact(SKILL_SPACT_PECULIAR_JOKE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_PECULIAR_JOKE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_PECULIAR_JOKE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_PECULIAR_JOKE) + ".")
+			txt_skilllearned(SKILL_SPACT_PECULIAR_JOKE)
 		}
 	}
 	if ( trait(TRAIT_NORMAL_STAT_PV) != 0 ) {
 		if ( spact(SKILL_SPACT_SAND_CANNON - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SAND_CANNON - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SAND_CANNON) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_SAND_CANNON) + ".")
+			txt_skilllearned(SKILL_SPACT_SAND_CANNON)
 		}
 	}
 	if ( cdata(CDATA_LEVEL, CHARA_PLAYER) >= 50 & trait(TRAIT_NORMAL_SPACT_DIMENSIONAL_MOVE) != 0 ) {
 		if ( spact(SKILL_SPACT_SPACE_RETENTION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SPACE_RETENTION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SPACE_RETENTION) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_SPACE_RETENTION) + ".")
+			txt_skilllearned(SKILL_SPACT_SPACE_RETENTION)
 		}
 	}
 	if ( cdata(CDATA_LEVEL, CHARA_PLAYER) >= 20 ) {
 		if ( spact(SKILL_SPACT_LIMIT_POWER - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_LIMIT_POWER - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_LIMIT_POWER) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_LIMIT_POWER) + ".")
+			txt_skilllearned(SKILL_SPACT_LIMIT_POWER)
 		}
 		if ( spact(SKILL_SPACT_LIMITER_VANISH - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_LIMITER_VANISH - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_LIMITER_VANISH) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_LIMITER_VANISH) + ".")
+			txt_skilllearned(SKILL_SPACT_LIMITER_VANISH)
 		}
 	}
 	if ( sorg(SKILL_ATTR_LER, CHARA_PLAYER) > 29 & trait(TRAIT_NORMAL_SPACT_CHEER) != 0 ) {
 		if ( spact(SKILL_SPACT_INDIVIDUAL_LEADING - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_INDIVIDUAL_LEADING - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_INDIVIDUAL_LEADING) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_INDIVIDUAL_LEADING) + ".")
+			txt_skilllearned(SKILL_SPACT_INDIVIDUAL_LEADING)
 		}
 	}
 	if ( sorg(SKILL_ATTR_STR, CHARA_PLAYER) > 39 & trait(TRAIT_NORMAL_STAT_PV) != 0 ) {
 		if ( spact(SKILL_SPACT_SMASH_GROUND - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SMASH_GROUND - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SMASH_GROUND) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_SMASH_GROUND) + ".")
+			txt_skilllearned(SKILL_SPACT_SMASH_GROUND)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CON, CHARA_PLAYER) > 69 & trait(TRAIT_NORMAL_STAT_PV) != 0 ) {
 		if ( spact(SKILL_SPACT_ROCRUSHER - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ROCRUSHER - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ROCRUSHER) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_ROCRUSHER) + ".")
+			txt_skilllearned(SKILL_SPACT_ROCRUSHER)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CON, CHARA_PLAYER) > 89 & trait(TRAIT_NORMAL_STAT_PV) != 0 ) {
 		if ( spact(SKILL_SPACT_MOGRANIC_AURA - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_MOGRANIC_AURA - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_MOGRANIC_AURA) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_MOGRANIC_AURA) + ".")
+			txt_skilllearned(SKILL_SPACT_MOGRANIC_AURA)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CHA, CHARA_PLAYER) > 29 & trait(TRAIT_NORMAL_SKILL_NEGOTIATION) != 0 ) {
 		if ( spact(SKILL_SPACT_GENUINE_CHEERING - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_GENUINE_CHEERING - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_GENUINE_CHEERING) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_GENUINE_CHEERING) + ".")
+			txt_skilllearned(SKILL_SPACT_GENUINE_CHEERING)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_NEGOTIATION, CHARA_PLAYER) > 19 & trait(TRAIT_NORMAL_SKILL_NEGOTIATION) != 0 ) {
 		if ( spact(SKILL_SPACT_BLENDED_LIE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_BLENDED_LIE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_BLENDED_LIE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_BLENDED_LIE) + ".")
+			txt_skilllearned(SKILL_SPACT_BLENDED_LIE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_NEGOTIATION, CHARA_PLAYER) > 29 & trait(TRAIT_NORMAL_SKILL_NEGOTIATION) != 0 ) {
 		if ( spact(SKILL_SPACT_INTIMIDATION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_INTIMIDATION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_INTIMIDATION) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_INTIMIDATION) + ".")
+			txt_skilllearned(SKILL_SPACT_INTIMIDATION)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_NEGOTIATION, CHARA_PLAYER) > 39 & trait(TRAIT_NORMAL_SKILL_NEGOTIATION) != 0 ) {
 		if ( spact(SKILL_SPACT_MYSTERIOUS_SONG - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_MYSTERIOUS_SONG - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_MYSTERIOUS_SONG) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_MYSTERIOUS_SONG) + ".")
+			txt_skilllearned(SKILL_SPACT_MYSTERIOUS_SONG)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_NEGOTIATION, CHARA_PLAYER) > 49 & sorg(SKILL_NORMAL_SENSE_QUALITY, CHARA_PLAYER) > 29 & trait(TRAIT_NORMAL_SKILL_NEGOTIATION) != 0 ) {
 		if ( spact(SKILL_SPACT_HARMONIC_ASSAULT - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_HARMONIC_ASSAULT - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_HARMONIC_ASSAULT) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_HARMONIC_ASSAULT) + ".")
+			txt_skilllearned(SKILL_SPACT_HARMONIC_ASSAULT)
 		}
 	}
 	if ( sorg(SKILL_ATTR_PER, CHARA_PLAYER) > 39 & trait(TRAIT_NORMAL_SKILL_CASTING) != 0 ) {
 		if ( spact(SKILL_SPACT_LINEAR_LAUNCHER - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_LINEAR_LAUNCHER - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_LINEAR_LAUNCHER) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_LINEAR_LAUNCHER) + ".")
+			txt_skilllearned(SKILL_SPACT_LINEAR_LAUNCHER)
 		}
 	}
 	if ( sorg(SKILL_ATTR_PER, CHARA_PLAYER) > 69 & trait(TRAIT_NORMAL_SKILL_CASTING) != 0 ) {
 		if ( spact(SKILL_SPACT_E_MAG_CAGE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_E_MAG_CAGE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_E_MAG_CAGE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_E_MAG_CAGE) + ".")
+			txt_skilllearned(SKILL_SPACT_E_MAG_CAGE)
 		}
 	}
 	if ( sorg(SKILL_ATTR_PER, CHARA_PLAYER) > 99 & trait(TRAIT_NORMAL_SKILL_CASTING) != 0 ) {
 		if ( spact(SKILL_SPACT_E_MAG_TORNADO - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_E_MAG_TORNADO - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_E_MAG_TORNADO) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_E_MAG_TORNADO) + ".")
+			txt_skilllearned(SKILL_SPACT_E_MAG_TORNADO)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_TACTICS, CHARA_PLAYER) > 39 & trait(TRAIT_NORMAL_SPACT_BLADE_STRINGS) != 0 ) {
 		if ( spact(SKILL_SPACT_DANCING_WIRE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DANCING_WIRE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DANCING_WIRE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_DANCING_WIRE) + ".")
+			txt_skilllearned(SKILL_SPACT_DANCING_WIRE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) > 29 & trait(TRAIT_NORMAL_SPACT_BLADE_STRINGS) != 0 ) {
 		if ( spact(SKILL_SPACT_THREAD_OF_INNERVATION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_THREAD_OF_INNERVATION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_THREAD_OF_INNERVATION) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_THREAD_OF_INNERVATION) + ".")
+			txt_skilllearned(SKILL_SPACT_THREAD_OF_INNERVATION)
 		}
 	}
 	if ( sorg(SKILL_ATTR_DEX, CHARA_PLAYER) > 69 & trait(TRAIT_NORMAL_SPACT_BLADE_STRINGS) != 0 ) {
 		if ( spact(SKILL_SPACT_WIRE_WORLD - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_WIRE_WORLD - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_WIRE_WORLD) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_WIRE_WORLD) + ".")
+			txt_skilllearned(SKILL_SPACT_WIRE_WORLD)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_EVASION, CHARA_PLAYER) > 59 & trait(TRAIT_NORMAL_SPACT_FASCINATION_DANCE) != 0 ) {
 		if ( spact(SKILL_SPACT_KILLING_DANCE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_KILLING_DANCE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_KILLING_DANCE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_KILLING_DANCE) + ".")
+			txt_skilllearned(SKILL_SPACT_KILLING_DANCE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_FAITH, CHARA_PLAYER) > 29 & trait(TRAIT_NORMAL_SPACT_SAINT) != 0 ) {
 		if ( spact(SKILL_SPACT_PURIFICATION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_PURIFICATION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_PURIFICATION) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_PURIFICATION) + ".")
+			txt_skilllearned(SKILL_SPACT_PURIFICATION)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_FAITH, CHARA_PLAYER) > 59 & trait(TRAIT_NORMAL_SPACT_SAINT) != 0 ) {
 		if ( spact(SKILL_SPACT_ANGEL_HALO - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ANGEL_HALO - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ANGEL_HALO) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_ANGEL_HALO) + ".")
+			txt_skilllearned(SKILL_SPACT_ANGEL_HALO)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_FAITH, CHARA_PLAYER) > 79 & trait(TRAIT_NORMAL_SPACT_SAINT) != 0 ) {
 		if ( spact(SKILL_SPACT_REPRIMAND - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_REPRIMAND - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_REPRIMAND) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_REPRIMAND) + ".")
+			txt_skilllearned(SKILL_SPACT_REPRIMAND)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_LITERACY, CHARA_PLAYER) > 19 & trait(TRAIT_NORMAL_SPACT_SHIKI_ORIGAMI) != 0 ) {
 		if ( spact(SKILL_SPACT_SHIKIORIGAMI_AIRPLANE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SHIKIORIGAMI_AIRPLANE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SHIKIORIGAMI_AIRPLANE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_SHIKIORIGAMI_AIRPLANE) + ".")
+			txt_skilllearned(SKILL_SPACT_SHIKIORIGAMI_AIRPLANE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_LITERACY, CHARA_PLAYER) > 59 & trait(TRAIT_NORMAL_SPACT_SHIKI_ORIGAMI) != 0 ) {
 		if ( spact(SKILL_SPACT_SHIKIORIGAMI_CRANE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SHIKIORIGAMI_CRANE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SHIKIORIGAMI_CRANE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_SHIKIORIGAMI_CRANE) + ".")
+			txt_skilllearned(SKILL_SPACT_SHIKIORIGAMI_CRANE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_LITERACY, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_KIJIN_SHIBARI - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_KIJIN_SHIBARI - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_KIJIN_SHIBARI) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_KIJIN_SHIBARI) + ".")
+			txt_skilllearned(SKILL_SPACT_KIJIN_SHIBARI)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_LITERACY, CHARA_PLAYER) > 39 ) {
 		if ( spact(SKILL_SPACT_BURN_SCROLLS - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_BURN_SCROLLS - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_BURN_SCROLLS) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_BURN_SCROLLS) + ".")
+			txt_skilllearned(SKILL_SPACT_BURN_SCROLLS)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_THROWING, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_STRUCK_OUT - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_STRUCK_OUT - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_STRUCK_OUT) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_STRUCK_OUT) + ".")
+			txt_skilllearned(SKILL_SPACT_STRUCK_OUT)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_THROWING, CHARA_PLAYER) > 39 ) {
 		if ( spact(SKILL_SPACT_DESTINY_DICE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DESTINY_DICE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DESTINY_DICE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_DESTINY_DICE) + ".")
+			txt_skilllearned(SKILL_SPACT_DESTINY_DICE)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_THROWING, CHARA_PLAYER) > 39 | trait(TRAIT_NORMAL_SPACT_VINDALIAN_JIUJITSU) != 0 & sorg(SKILL_ATTR_DEX, CHARA_PLAYER) > 59 ) {
 		if ( spact(SKILL_SPACT_DISPATCH_FLYING_BEAST - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DISPATCH_FLYING_BEAST - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DISPATCH_FLYING_BEAST) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_DISPATCH_FLYING_BEAST) + ".")
+			txt_skilllearned(SKILL_SPACT_DISPATCH_FLYING_BEAST)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_THROWING, CHARA_PLAYER) > 49 ) {
 		if ( spact(SKILL_SPACT_SHINING_THROW - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SHINING_THROW - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SHINING_THROW) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SHINING_THROW) + ".")
+			txt_skilllearned(SKILL_SPACT_SHINING_THROW)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_THROWING, CHARA_PLAYER) > 59 & sorg(SKILL_NORMAL_MEDITATION, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_OVERLIMIT_THROW - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_OVERLIMIT_THROW - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_OVERLIMIT_THROW) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_OVERLIMIT_THROW) + ".")
+			txt_skilllearned(SKILL_SPACT_OVERLIMIT_THROW)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_CASTING, CHARA_PLAYER) > 9 & sorg(SKILL_NORMAL_MEMORIZATION, CHARA_PLAYER) > 9 ) {
 		if ( spact(SKILL_SPACT_ADVANCED_CASTING - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ADVANCED_CASTING - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ADVANCED_CASTING) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_ADVANCED_CASTING) + ".")
+			txt_skilllearned(SKILL_SPACT_ADVANCED_CASTING)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_MAGIC_DEVICE, CHARA_PLAYER) + sorg(SKILL_WEAPON_THROWING, CHARA_PLAYER) + sorg(SKILL_NORMAL_ALCHEMY, CHARA_PLAYER) + sorg(SKILL_NORMAL_LITERACY, CHARA_PLAYER) > 149 ) {
 		if ( spact(SKILL_SPACT_QUICK_USE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_QUICK_USE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_QUICK_USE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_QUICK_USE) + ".")
+			txt_skilllearned(SKILL_SPACT_QUICK_USE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_TACTICS, CHARA_PLAYER) > 59 ) {
 		if ( spact(SKILL_SPACT_SHINING_WAVE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SHINING_WAVE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SHINING_WAVE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SHINING_WAVE) + ".")
+			txt_skilllearned(SKILL_SPACT_SHINING_WAVE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_TACTICS, CHARA_PLAYER) > 99 ) {
 		if ( spact(SKILL_SPACT_SHADOW_RUSH - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SHADOW_RUSH - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SHADOW_RUSH) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SHADOW_RUSH) + ".")
+			txt_skilllearned(SKILL_SPACT_SHADOW_RUSH)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_MINING, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_HOUZANHA - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_HOUZANHA - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_HOUZANHA) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_HOUZANHA) + ".")
+			txt_skilllearned(SKILL_SPACT_HOUZANHA)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_MARKSMAN, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_RAMPAGE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_RAMPAGE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_RAMPAGE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_RAMPAGE) + ".")
+			txt_skilllearned(SKILL_SPACT_RAMPAGE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_MARKSMAN, CHARA_PLAYER) > 49 ) {
 		if ( spact(SKILL_SPACT_ZERO_SHOOT - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ZERO_SHOOT - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ZERO_SHOOT) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_ZERO_SHOOT) + ".")
+			txt_skilllearned(SKILL_SPACT_ZERO_SHOOT)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_MARKSMAN, CHARA_PLAYER) > 39 ) {
 		if ( spact(SKILL_SPACT_FIRE_A_VOLLEY - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_FIRE_A_VOLLEY - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_FIRE_A_VOLLEY) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_FIRE_A_VOLLEY) + ".")
+			txt_skilllearned(SKILL_SPACT_FIRE_A_VOLLEY)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_CASTING, CHARA_PLAYER) > 39 ) {
 		if ( spact(SKILL_SPACT_MANA_BURST - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_MANA_BURST - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_MANA_BURST) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_MANA_BURST) + ".")
+			txt_skilllearned(SKILL_SPACT_MANA_BURST)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_STEALTH, CHARA_PLAYER) > 19 ) {
 		if ( spact(SKILL_SPACT_SHADOW_HOP - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SHADOW_HOP - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SHADOW_HOP) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_SHADOW_HOP) + ".")
+			txt_skilllearned(SKILL_SPACT_SHADOW_HOP)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_STEALTH, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_SHADOW_STEP - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SHADOW_STEP - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SHADOW_STEP) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SHADOW_STEP) + ".")
+			txt_skilllearned(SKILL_SPACT_SHADOW_STEP)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_STEALTH, CHARA_PLAYER) > 39 ) {
 		if ( spact(SKILL_SPACT_SHADOW_JUMP - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SHADOW_JUMP - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SHADOW_JUMP) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_SHADOW_JUMP) + ".")
+			txt_skilllearned(SKILL_SPACT_SHADOW_JUMP)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_STEALTH, CHARA_PLAYER) > 49 ) {
 		if ( spact(SKILL_SPACT_CURTAIN_OF_SMOKE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_CURTAIN_OF_SMOKE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_CURTAIN_OF_SMOKE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_CURTAIN_OF_SMOKE) + ".")
+			txt_skilllearned(SKILL_SPACT_CURTAIN_OF_SMOKE)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_AXE, CHARA_PLAYER) > 9 ) {
 		if ( spact(SKILL_SPACT_CUT_TREE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_CUT_TREE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_CUT_TREE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_CUT_TREE) + ".")
+			txt_skilllearned(SKILL_SPACT_CUT_TREE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_FAITH, CHARA_PLAYER) > 9 ) {
 		if ( spact(SKILL_SPACT_PREACHING - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_PREACHING - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_PREACHING) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_PREACHING) + ".")
+			txt_skilllearned(SKILL_SPACT_PREACHING)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_MAGIC_CAPACITY, CHARA_PLAYER) > 19 ) {
 		if ( spact(SKILL_SPACT_MAGIC_KISS - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_MAGIC_KISS - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_MAGIC_KISS) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_MAGIC_KISS) + ".")
+			txt_skilllearned(SKILL_SPACT_MAGIC_KISS)
 		}
 	}
 	if ( sorg(SKILL_ATTR_PER, CHARA_PLAYER) > 59 ) {
 		if ( spact(SKILL_SPACT_MIRROR - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_MIRROR - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_MIRROR) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_MIRROR) + ".")
+			txt_skilllearned(SKILL_SPACT_MIRROR)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CHA, CHARA_PLAYER) > 9 ) {
 		if ( spact(SKILL_SPACT_DIRECTIVE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DIRECTIVE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DIRECTIVE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_DIRECTIVE) + ".")
+			txt_skilllearned(SKILL_SPACT_DIRECTIVE)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CHA, CHARA_PLAYER) > 4 ) {
 		if ( spact(SKILL_SPACT_RUBBING - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_RUBBING - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_RUBBING) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_RUBBING) + ".")
+			txt_skilllearned(SKILL_SPACT_RUBBING)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CHA, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_CALL_FAMILIAR - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_CALL_FAMILIAR - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_CALL_FAMILIAR) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_CALL_FAMILIAR) + ".")
+			txt_skilllearned(SKILL_SPACT_CALL_FAMILIAR)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CHA, CHARA_PLAYER) > 49 ) {
 		if ( spact(SKILL_SPACT_BEWITCH - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_BEWITCH - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_BEWITCH) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_BEWITCH) + ".")
+			txt_skilllearned(SKILL_SPACT_BEWITCH)
 		}
 	}
 	if ( sorg(SKILL_ATTR_STR, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_SQUEEZE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SQUEEZE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SQUEEZE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SQUEEZE) + ".")
+			txt_skilllearned(SKILL_SPACT_SQUEEZE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_LOCK_PICKING, CHARA_PLAYER) > 29 | sorg(SKILL_ATTR_STR, CHARA_PLAYER) > 59 ) {
 		if ( spact(SKILL_SPACT_LOCK_BREAK - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_LOCK_BREAK - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_LOCK_BREAK) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_LOCK_BREAK) + ".")
+			txt_skilllearned(SKILL_SPACT_LOCK_BREAK)
 		}
 	}
 	if ( sorg(SKILL_ATTR_DEX, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_TICKLING_HELL - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_TICKLING_HELL - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_TICKLING_HELL) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_TICKLING_HELL) + ".")
+			txt_skilllearned(SKILL_SPACT_TICKLING_HELL)
 		}
 	}
 	if ( sorg(SKILL_ATTR_DEX, CHARA_PLAYER) > 39 ) {
 		if ( spact(SKILL_SPACT_DISTURBANCE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DISTURBANCE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DISTURBANCE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_DISTURBANCE) + ".")
+			txt_skilllearned(SKILL_SPACT_DISTURBANCE)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_MARTIAL_ARTS, CHARA_PLAYER) > 99 ) {
 		if ( spact(SKILL_SPACT_CLEAR_MIND - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_CLEAR_MIND - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_CLEAR_MIND) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_CLEAR_MIND) + ".")
+			txt_skilllearned(SKILL_SPACT_CLEAR_MIND)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_GARDENING, CHARA_PLAYER) >= 30 & trait(TRAIT_NORMAL_SPACT_MISTELTEIN) != 0 ) {
 		if ( spact(SKILL_SPACT_VIOLENT_GARDEN - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_VIOLENT_GARDEN - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_VIOLENT_GARDEN) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_VIOLENT_GARDEN) + ".")
+			txt_skilllearned(SKILL_SPACT_VIOLENT_GARDEN)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_GARDENING, CHARA_PLAYER) >= 60 & trait(TRAIT_NORMAL_SPACT_MISTELTEIN) != 0 ) {
 		if ( spact(SKILL_SPACT_AROMAGEDDON - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_AROMAGEDDON - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_AROMAGEDDON) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_AROMAGEDDON) + ".")
+			txt_skilllearned(SKILL_SPACT_AROMAGEDDON)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) > 19 & trait(TRAIT_NORMAL_SPACT_EYE_OF_MANA) != 0 ) {
 		if ( spact(SKILL_SPACT_EYE_OF_ILLUSION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_EYE_OF_ILLUSION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_EYE_OF_ILLUSION) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_EYE_OF_ILLUSION) + ".")
+			txt_skilllearned(SKILL_SPACT_EYE_OF_ILLUSION)
 		}
 	}
 	if ( sorg(SKILL_ATTR_MAG, CHARA_PLAYER) > 59 & trait(TRAIT_NORMAL_SPACT_EYE_OF_MANA) != 0 ) {
 		if ( spact(SKILL_SPACT_ABYSS_IN_THE_EYE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ABYSS_IN_THE_EYE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ABYSS_IN_THE_EYE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_ABYSS_IN_THE_EYE) + ".")
+			txt_skilllearned(SKILL_SPACT_ABYSS_IN_THE_EYE)
 		}
 	}
 	if ( sorg(SKILL_ATTR_MAG, CHARA_PLAYER) > 39 & trait(TRAIT_NORMAL_SPACT_BOMBER) != 0 ) {
 		if ( spact(SKILL_SPACT_ROCKET_BOOST - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ROCKET_BOOST - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ROCKET_BOOST) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_ROCKET_BOOST) + ".")
+			txt_skilllearned(SKILL_SPACT_ROCKET_BOOST)
 		}
 	}
 	if ( sorg(SKILL_ATTR_MAG, CHARA_PLAYER) > 69 & trait(TRAIT_NORMAL_SPACT_BOMBER) != 0 ) {
 		if ( spact(SKILL_SPACT_GUIDED_BOMBING - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_GUIDED_BOMBING - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_GUIDED_BOMBING) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_GUIDED_BOMBING) + ".")
+			txt_skilllearned(SKILL_SPACT_GUIDED_BOMBING)
 		}
 	}
 	if ( sorg(SKILL_ATTR_MAG, CHARA_PLAYER) > 99 & trait(TRAIT_NORMAL_SPACT_BOMBER) != 0 ) {
 		if ( spact(SKILL_SPACT_SUICIDE_ATTACK - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SUICIDE_ATTACK - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SUICIDE_ATTACK) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_SUICIDE_ATTACK) + ".")
+			txt_skilllearned(SKILL_SPACT_SUICIDE_ATTACK)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) > 9 & sorg(SKILL_ATTR_DEX, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_DIRECT_TRANSFUSION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DIRECT_TRANSFUSION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DIRECT_TRANSFUSION) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_DIRECT_TRANSFUSION) + ".")
+			txt_skilllearned(SKILL_SPACT_DIRECT_TRANSFUSION)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) > 24 & sorg(SKILL_ATTR_MAG, CHARA_PLAYER) > 49 ) {
 		if ( spact(SKILL_SPACT_ELECTRIC_SHOCK - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ELECTRIC_SHOCK - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ELECTRIC_SHOCK) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_ELECTRIC_SHOCK) + ".")
+			txt_skilllearned(SKILL_SPACT_ELECTRIC_SHOCK)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) > 44 & sorg(SKILL_NORMAL_TAILORING, CHARA_PLAYER) > 44 ) {
 		if ( spact(SKILL_SPACT_INSTANT_SUTURE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_INSTANT_SUTURE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_INSTANT_SUTURE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_INSTANT_SUTURE) + ".")
+			txt_skilllearned(SKILL_SPACT_INSTANT_SUTURE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) > 19 & trait(TRAIT_NORMAL_SPACT_TOUCH_OF_POISON) != 0 ) {
 		if ( spact(SKILL_SPACT_HAZARD_RECIPE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_HAZARD_RECIPE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_HAZARD_RECIPE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_HAZARD_RECIPE) + ".")
+			txt_skilllearned(SKILL_SPACT_HAZARD_RECIPE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) > 39 & trait(TRAIT_NORMAL_SPACT_TOUCH_OF_POISON) != 0 ) {
 		if ( spact(SKILL_SPACT_ANAPHYLAXIS - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ANAPHYLAXIS - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ANAPHYLAXIS) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_ANAPHYLAXIS) + ".")
+			txt_skilllearned(SKILL_SPACT_ANAPHYLAXIS)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_GENE_ENGINEER, CHARA_PLAYER) > 49 & sorg(SKILL_NORMAL_TACTICS, CHARA_PLAYER) > 19 & trait(TRAIT_NORMAL_SPACT_TOUCH_OF_POISON) != 0 ) {
 		if ( spact(SKILL_SPACT_VENOTRATE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_VENOTRATE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_VENOTRATE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_VENOTRATE) + ".")
+			txt_skilllearned(SKILL_SPACT_VENOTRATE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) > 59 ) {
 		if ( spact(SKILL_SPACT_FORMLESS_FETTER - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_FORMLESS_FETTER - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_FORMLESS_FETTER) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_FORMLESS_FETTER) + ".")
+			txt_skilllearned(SKILL_SPACT_FORMLESS_FETTER)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) > 79 ) {
 		if ( spact(SKILL_SPACT_OVERRAY - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_OVERRAY - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_OVERRAY) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_OVERRAY) + ".")
+			txt_skilllearned(SKILL_SPACT_OVERRAY)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_MARTIAL_ARTS, CHARA_PLAYER) > 19 ) {
 		if ( spact(SKILL_SPACT_BODY_BLOW - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_BODY_BLOW - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_BODY_BLOW) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_BODY_BLOW) + ".")
+			txt_skilllearned(SKILL_SPACT_BODY_BLOW)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_MARTIAL_ARTS, CHARA_PLAYER) > 39 ) {
 		if ( spact(SKILL_SPACT_ATTRIBUTE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ATTRIBUTE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ATTRIBUTE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_ATTRIBUTE) + ".")
+			txt_skilllearned(SKILL_SPACT_ATTRIBUTE)
 		}
 	}
 	if ( sorg(SKILL_WEAPON_MARTIAL_ARTS, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_EXPLOSIVE_FIST - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_EXPLOSIVE_FIST - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_EXPLOSIVE_FIST) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_EXPLOSIVE_FIST) + ".")
+			txt_skilllearned(SKILL_SPACT_EXPLOSIVE_FIST)
 		}
 	}
 	if ( sorg(SKILL_ATTR_WIL, CHARA_PLAYER) > 39 ) {
 		if ( spact(SKILL_SPACT_PRESSURE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_PRESSURE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_PRESSURE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_PRESSURE) + ".")
+			txt_skilllearned(SKILL_SPACT_PRESSURE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_ALCHEMY, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_DUPLICANE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DUPLICANE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DUPLICANE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_DUPLICANE) + ".")
+			txt_skilllearned(SKILL_SPACT_DUPLICANE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_ALCHEMY, CHARA_PLAYER) > 19 & (trait(TRAIT_NORMAL_SPACT_TOUCH_OF_SLEEP) != 0 | trait(TRAIT_NORMAL_SPACT_TOUCH_OF_POISON) != 0) ) {
 		if ( spact(SKILL_SPACT_RESOLUTION_HAND - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_RESOLUTION_HAND - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_RESOLUTION_HAND) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_RESOLUTION_HAND) + ".")
+			txt_skilllearned(SKILL_SPACT_RESOLUTION_HAND)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) > 39 & trait(TRAIT_NORMAL_SPACT_TOUCH_OF_SLEEP) != 0 ) {
 		if ( spact(SKILL_SPACT_GROUP_HYPNOSIS - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_GROUP_HYPNOSIS - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_GROUP_HYPNOSIS) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_GROUP_HYPNOSIS) + ".")
+			txt_skilllearned(SKILL_SPACT_GROUP_HYPNOSIS)
 		}
 	}
 	if ( gdata(GDATA_FLAG_PROSTITUTION_COUNTER) > 0 ) {
 		if ( spact(SKILL_SPACT_STANCE_SELECT - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_STANCE_SELECT - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_STANCE_SELECT) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_STANCE_SELECT) + ".")
+			txt_skilllearned(SKILL_SPACT_STANCE_SELECT)
 		}
 	}
 	if ( gdata(GDATA_FLAG_PROSTITUTION_COUNTER) > 4 & trait(TRAIT_NORMAL_SPACT_TOUCH_OF_SLEEP) != 0 ) {
 		if ( spact(SKILL_SPACT_TUIN_DER_LUSTEN - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_TUIN_DER_LUSTEN - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_TUIN_DER_LUSTEN) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_TUIN_DER_LUSTEN) + ".")
+			txt_skilllearned(SKILL_SPACT_TUIN_DER_LUSTEN)
 		}
 	}
 	if ( gdata(GDATA_FLAG_PROSTITUTION_COUNTER) > 9 & trait(TRAIT_NORMAL_SPACT_TOUCH_OF_SLEEP) != 0 ) {
 		if ( spact(SKILL_SPACT_DESTRUDO_HYPNOTISM - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DESTRUDO_HYPNOTISM - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DESTRUDO_HYPNOTISM) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_DESTRUDO_HYPNOTISM) + ".")
+			txt_skilllearned(SKILL_SPACT_DESTRUDO_HYPNOTISM)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_ALCHEMY, CHARA_PLAYER) > 39 & sorg(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_LIQUID_MANIPULATION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_LIQUID_MANIPULATION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_LIQUID_MANIPULATION) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_LIQUID_MANIPULATION) + ".")
+			txt_skilllearned(SKILL_SPACT_LIQUID_MANIPULATION)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_ALCHEMY, CHARA_PLAYER) > 59 ) {
 		if ( spact(SKILL_SPACT_ALCHEMICAL_RAIN - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ALCHEMICAL_RAIN - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ALCHEMICAL_RAIN) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_ALCHEMICAL_RAIN) + ".")
+			txt_skilllearned(SKILL_SPACT_ALCHEMICAL_RAIN)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_PERFORMER, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_ENSEMBLE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ENSEMBLE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ENSEMBLE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_ENSEMBLE) + ".")
+			txt_skilllearned(SKILL_SPACT_ENSEMBLE)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_FISHING, CHARA_PLAYER) > 29 ) {
 		if ( spact(SKILL_SPACT_DIMENSION_FISHING - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_DIMENSION_FISHING - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_DIMENSION_FISHING) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_DIMENSION_FISHING) + ".")
+			txt_skilllearned(SKILL_SPACT_DIMENSION_FISHING)
 		}
 	}
 	if ( sorg(SKILL_ATTR_LER, CHARA_PLAYER) > 39 ) {
 		if ( spact(SKILL_SPACT_READING_PARTY - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_READING_PARTY - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_READING_PARTY) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_READING_PARTY) + ".")
+			txt_skilllearned(SKILL_SPACT_READING_PARTY)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_INVESTING, CHARA_PLAYER) > 49 ) {
 		if ( spact(SKILL_SPACT_GOLDEN_STORM - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_GOLDEN_STORM - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_GOLDEN_STORM) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_GOLDEN_STORM) + ".")
+			txt_skilllearned(SKILL_SPACT_GOLDEN_STORM)
 		}
 	}
 	if ( sorg(SKILL_ACTIVE_RIDING, CHARA_PLAYER) > 79 ) {
 		if ( spact(SKILL_SPACT_HYPER_DASH - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_HYPER_DASH - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_HYPER_DASH) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_HYPER_DASH) + ".")
+			txt_skilllearned(SKILL_SPACT_HYPER_DASH)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_LIGHT_ARMOR, CHARA_PLAYER) > 34 & gdata(GDATA_FLAG_MAIN) >= 200 ) {
 		if ( spact(SKILL_SPACT_EMERGENCY_EVASION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_EMERGENCY_EVASION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_EMERGENCY_EVASION) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_EMERGENCY_EVASION) + ".")
+			txt_skilllearned(SKILL_SPACT_EMERGENCY_EVASION)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_MEDIUM_ARMOR, CHARA_PLAYER) > 34 & gdata(GDATA_FLAG_MAIN) >= 200 ) {
 		if ( spact(SKILL_SPACT_MAGIC_EQUIP - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_MAGIC_EQUIP - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_MAGIC_EQUIP) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_MAGIC_EQUIP) + ".")
+			txt_skilllearned(SKILL_SPACT_MAGIC_EQUIP)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_HEAVY_ARMOR, CHARA_PLAYER) > 34 & gdata(GDATA_FLAG_MAIN) >= 200 ) {
 		if ( spact(SKILL_SPACT_SUPER_ARMOR - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SUPER_ARMOR - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SUPER_ARMOR) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SUPER_ARMOR) + ".")
+			txt_skilllearned(SKILL_SPACT_SUPER_ARMOR)
 		}
 	}
 	if ( sorg(SKILL_NORMAL_SHIELD, CHARA_PLAYER) >= 34 & trait(TRAIT_NORMAL_OTHER_SHIELD_BASH) != 0 ) {
 		if ( spact(SKILL_SPACT_SHIELD_PARRY - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SHIELD_PARRY - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SHIELD_PARRY) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SHIELD_PARRY) + ".")
+			txt_skilllearned(SKILL_SPACT_SHIELD_PARRY)
 		}
 	}
 	if ( sorg(SKILL_ATTR_WIL, CHARA_PLAYER) >= 40 & trait(TRAIT_NORMAL_OTHER_GENTLE_FACE) != 0 ) {
 		if ( spact(SKILL_SPACT_SMILE_FIELD - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_SMILE_FIELD - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_SMILE_FIELD) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SMILE_FIELD) + ".")
+			txt_skilllearned(SKILL_SPACT_SMILE_FIELD)
 		}
 	}
 	if ( sorg(SKILL_ATTR_WIL, CHARA_PLAYER) >= 80 & trait(TRAIT_NORMAL_OTHER_GENTLE_FACE) != 0 ) {
 		if ( spact(SKILL_SPACT_COWERING_SMILE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_COWERING_SMILE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_COWERING_SMILE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_COWERING_SMILE) + ".")
+			txt_skilllearned(SKILL_SPACT_COWERING_SMILE)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CON, CHARA_PLAYER) >= 60 & trait(TRAIT_NORMAL_SPACT_GRAVITY_ACCEL) != 0 ) {
 		if ( spact(SKILL_SPACT_GRAVITY_SPHERE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_GRAVITY_SPHERE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_GRAVITY_SPHERE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_GRAVITY_SPHERE) + ".")
+			txt_skilllearned(SKILL_SPACT_GRAVITY_SPHERE)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CON, CHARA_PLAYER) >= 100 & trait(TRAIT_NORMAL_SPACT_GRAVITY_ACCEL) != 0 ) {
 		if ( spact(SKILL_SPACT_GIGA_GRAVITATION - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_GIGA_GRAVITATION - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_GIGA_GRAVITATION) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_GIGA_GRAVITATION) + ".")
+			txt_skilllearned(SKILL_SPACT_GIGA_GRAVITATION)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CON, CHARA_PLAYER) >= 30 & trait(TRAIT_NORMAL_SPACT_FIRE_BREATH) != 0 ) {
 		if ( spact(SKILL_SPACT_VARIABLE_BREATH - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_VARIABLE_BREATH - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_VARIABLE_BREATH) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_VARIABLE_BREATH) + ".")
+			txt_skilllearned(SKILL_SPACT_VARIABLE_BREATH)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CON, CHARA_PLAYER) >= 60 & sorg(SKILL_ATTR_MAG, CHARA_PLAYER) >= 60 & trait(TRAIT_NORMAL_SPACT_FIRE_BREATH) != 0 ) {
 		if ( spact(SKILL_SPACT_MP_BREATH - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_MP_BREATH - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_MP_BREATH) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_MP_BREATH) + ".")
+			txt_skilllearned(SKILL_SPACT_MP_BREATH)
 		}
 	}
 	if ( sorg(SKILL_ATTR_CON, CHARA_PLAYER) >= 80 & sorg(SKILL_NORMAL_CONTROL_MAGIC, CHARA_PLAYER) >= 40 & trait(TRAIT_NORMAL_SPACT_FIRE_BREATH) != 0 ) {
 		if ( spact(SKILL_SPACT_EXTERMINATION_BREATH - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_EXTERMINATION_BREATH - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_EXTERMINATION_BREATH) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_EXTERMINATION_BREATH) + ".")
+			txt_skilllearned(SKILL_SPACT_EXTERMINATION_BREATH)
 		}
 	}
 	return
@@ -4547,13 +4431,11 @@
 		if ( spact(SKILL_SPACT_WIN - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_WIN - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_WIN) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_WIN) + ".")
+			txt_skilllearned(SKILL_SPACT_WIN)
 			if ( spact(SKILL_SPACT_PURGE - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_PURGE - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_PURGE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_PURGE) + ".")
+				txt_skilllearned(SKILL_SPACT_PURGE)
 			}
 		}
 	}

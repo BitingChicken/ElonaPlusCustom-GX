@@ -3165,8 +3165,7 @@
 		if ( spact(SKILL_SPACT_ACCEL_NECRO - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_ACCEL_NECRO - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_ACCEL_NECRO) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_ACCEL_NECRO) + ".")
+			txt_skilllearned(SKILL_SPACT_ACCEL_NECRO)
 		}
 		goto *blend_act_SWEND1
 	}

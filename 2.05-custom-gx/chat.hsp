@@ -6861,8 +6861,7 @@
 			if ( spact(SKILL_SPACT_EYE_OF_ANE - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_EYE_OF_ANE - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_EYE_OF_ANE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_EYE_OF_ANE) + ".")
+				txt_skilllearned(SKILL_SPACT_EYE_OF_ANE)
 			}
 			cdata(CDATA_SISTER_ENERGY_TYPE, CHARA_PLAYER) = 1
 			goto *chat_end
@@ -17613,13 +17612,11 @@
 		if ( spact(SKILL_SPACT_WIN - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_WIN - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_WIN) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_WIN) + ".")
+			txt_skilllearned(SKILL_SPACT_WIN)
 			if ( spact(SKILL_SPACT_PURGE - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_PURGE - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_PURGE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_PURGE) + ".")
+				txt_skilllearned(SKILL_SPACT_PURGE)
 			}
 		}
 	}
@@ -18145,8 +18142,7 @@
 			if ( spact(SKILL_SPACT_CONTINUOUS_ATTACKS - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_CONTINUOUS_ATTACKS - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_CONTINUOUS_ATTACKS) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_CONTINUOUS_ATTACKS) + ".")
+				txt_skilllearned(SKILL_SPACT_CONTINUOUS_ATTACKS)
 			}
 		}
 		if ( leoap == 300 ) {
@@ -18154,8 +18150,7 @@
 			if ( spact(SKILL_SPACT_PROVOKE - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_PROVOKE - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_PROVOKE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_PROVOKE) + ".")
+				txt_skilllearned(SKILL_SPACT_PROVOKE)
 			}
 		}
 		if ( leoap == 500 ) {
@@ -18163,8 +18158,7 @@
 			if ( spact(SKILL_SPACT_METAL_GUARD - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_METAL_GUARD - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_METAL_GUARD) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_METAL_GUARD) + ".")
+				txt_skilllearned(SKILL_SPACT_METAL_GUARD)
 			}
 		}
 		if ( leoap == 800 ) {
@@ -18172,8 +18166,7 @@
 			if ( spact(SKILL_SPACT_SYNCHRO_HEARTS - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_SYNCHRO_HEARTS - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_SYNCHRO_HEARTS) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_SYNCHRO_HEARTS) + ".")
+				txt_skilllearned(SKILL_SPACT_SYNCHRO_HEARTS)
 			}
 		}
 		if ( leoap == 1000 ) {
@@ -18181,8 +18174,7 @@
 			if ( spact(SKILL_SPACT_CHARGE - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_CHARGE - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_CHARGE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_CHARGE) + ".")
+				txt_skilllearned(SKILL_SPACT_CHARGE)
 			}
 		}
 		leoap = 0

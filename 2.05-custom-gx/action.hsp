@@ -12028,8 +12028,7 @@
 							if ( spact(SKILL_SPACT_BLAME_PAIN - STARTING_SKILL_SPACT) == 0 ) {
 								spact(SKILL_SPACT_BLAME_PAIN - STARTING_SKILL_SPACT) = 1
 								txtmore
-								txtef COLOR_YELLOW
-								txt lang("あなたは「" + skillname(SKILL_SPACT_BLAME_PAIN) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_BLAME_PAIN) + ".")
+								txt_skilllearned(SKILL_SPACT_BLAME_PAIN)
 							}
 						}
 					}
@@ -13016,8 +13015,7 @@
 			if ( spact(SKILL_SPACT_CUSTOM_CHANGE - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_CUSTOM_CHANGE - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_CUSTOM_CHANGE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_CUSTOM_CHANGE) + ".")
+				txt_skilllearned(SKILL_SPACT_CUSTOM_CHANGE)
 			}
 		}
 		goto *act_use_SWEND1
@@ -14857,8 +14855,7 @@
 		if ( spact(SKILL_SPACT_POKER_FORCE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_POKER_FORCE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_POKER_FORCE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_POKER_FORCE) + ".")
+			txt_skilllearned(SKILL_SPACT_POKER_FORCE)
 		}
 		np = 0
 		joker = 0

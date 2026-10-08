@@ -30,6 +30,8 @@
 #define global txt_travelxp txtef COLOR_LIGHT_GREEN:txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You gained a good amount of travel experience. [Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 #define global txt_notenoughtoilenergy snd SOUNDLIST_FAIL1:txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 
+#define global txt_skilllearned(%1) txtef COLOR_YELLOW:txt lang("あなたは「" + skillname(%1) + "」の能力を得た。", "You have learned a new ability, " + skillname(%1) + ".")
+
 #deffunc text_set
 	sdim bodyn, 4, 15
 	bodyn = "", "頭", "首", "背中", "胴体", "手", "指", "腕", "腰", "足", "遠隔", "矢弾"

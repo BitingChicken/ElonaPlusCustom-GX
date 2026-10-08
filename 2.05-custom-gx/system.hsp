@@ -592,8 +592,7 @@
 		if ( spact(SKILL_SPACT_GAUGE_RELEASE - STARTING_SKILL_SPACT) == 0 ) {
 			spact(SKILL_SPACT_GAUGE_RELEASE - STARTING_SKILL_SPACT) = 1
 			txtmore
-			txtef COLOR_YELLOW
-			txt lang("あなたは「" + skillname(SKILL_SPACT_GAUGE_RELEASE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_GAUGE_RELEASE) + ".")
+			txt_skilllearned(SKILL_SPACT_GAUGE_RELEASE)
 		}
 		repeat MAX_CHARA_SAVE
 			if ( cbit(CHARA_BIT_AWAKE_NEAR_DEATH_DAMAGE, cnt) ) {
@@ -841,8 +840,7 @@
 			if ( spact(SKILL_SPACT_MAGNECOAT - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_MAGNECOAT - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_MAGNECOAT) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_MAGNECOAT) + ".")
+				txt_skilllearned(SKILL_SPACT_MAGNECOAT)
 			}
 		}
 		repeat MAX_CHARA_TOTAL
@@ -937,8 +935,7 @@
 			if ( spact(SKILL_SPACT_EYE_OF_ANE - STARTING_SKILL_SPACT) == 0 ) {
 				spact(SKILL_SPACT_EYE_OF_ANE - STARTING_SKILL_SPACT) = 1
 				txtmore
-				txtef COLOR_YELLOW
-				txt lang("あなたは「" + skillname(SKILL_SPACT_EYE_OF_ANE) + "」の能力を得た。", "You have learned new ability, " + skillname(SKILL_SPACT_EYE_OF_ANE) + ".")
+				txt_skilllearned(SKILL_SPACT_EYE_OF_ANE)
 			}
 		}
 	}

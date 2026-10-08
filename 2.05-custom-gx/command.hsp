@@ -7291,8 +7291,7 @@
 				if ( spact(SKILL_SPACT_TAG_FORCE - STARTING_SKILL_SPACT) == 0 ) {
 					spact(SKILL_SPACT_TAG_FORCE - STARTING_SKILL_SPACT) = 1
 					txtmore
-					txtef COLOR_YELLOW
-					txt lang("あなたは「" + skillname(SKILL_SPACT_TAG_FORCE) + "」の能力を得た。", "You have learned a new ability, " + skillname(SKILL_SPACT_TAG_FORCE) + ".")
+					txt_skilllearned(SKILL_SPACT_TAG_FORCE)
 				}
 				gosub *screen_draw
 				goto *turn_end
