@@ -901,9 +901,7 @@
 		cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER) = 0
 		cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) = 1
 		cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) = 1
-		snd SOUNDLIST_WRITE1
-		txtef COLOR_GREEN
-		txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+		txt_questupdate
 		if ( gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) > 0 ) {
 			gdata(GDATA_FLAG_GUILD_FIGHTER_THIEF) = 15
 			gdata(GDATA_FLAG_FIGHTER_GUILD_NEFIA_TYPE) = rnd(8)

@@ -1210,17 +1210,13 @@
 	}
 	if ( adata(ADATA_ID, gdata(GDATA_AREA)) == AREA_RANDOM_DUNGEON ) {
 		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 6 ) {
-			snd SOUNDLIST_WRITE1
-			txtef COLOR_GREEN
-			txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+			txt_questupdate
 			cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 		}
 	}
 	if ( gdata(GDATA_AREA) == AREA_WILDERNESS ) {
 		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 7 ) {
-			snd SOUNDLIST_WRITE1
-			txtef COLOR_GREEN
-			txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+			txt_questupdate
 			cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 		}
 	}
@@ -14890,7 +14886,7 @@
 								if ( rnd(cdata(CDATA_HP, tc) + 1) < rnd(cdata(CDATA_HP, cdata(CDATA_TAGTEAM_PARTNER, tc)) + 1) ) {
 									tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 								}
-								txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
+								txt_guard
 							}
 						}
 						dmg = 1000

@@ -247,9 +247,7 @@
 	}
 	kaiwaev = 0
 	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 3 ) {
-		snd SOUNDLIST_WRITE1
-		txtef COLOR_GREEN
-		txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+		txt_questupdate
 		cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 	}
 	if ( cdata(CDATA_ID, tc) == CREATURE_ID_ALFRED_THE_CANGNAN_WIND & gdata(GDATA_AREA) == AREA_CHAOS_CRADLE & gdata(GDATA_LEVEL) == 173 & cdata(CDATA_ALLIED, tc) == 0 ) {
@@ -495,9 +493,7 @@
 			chatc@DP = tc
 			txt lang("「うぃっ！」", "*Hic*"), lang("「うまいぜ」", cnvtalk("Ah, good booze.")), lang("「らららー♪」", cnvtalk("La-la-la-la.")), lang("「ひっく」", cnvtalk("I'm going to heaven.")), lang("「ふぅ」", cnvtalk("Whew!")), lang("「たまらないわ」", cnvtalk("I'm revived!")), lang("「んまっ♪」", cnvtalk("Awesome."))
 			if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
-				snd SOUNDLIST_WRITE1
-				txtef COLOR_GREEN
-				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+				txt_questupdate
 				cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 			}
 			dmgcon tc, CONDITION_DRUNK, 1000
@@ -5117,9 +5113,7 @@
 				}
 				if ( chatval == 10 ) {
 					chatMore lang("…意志は固いようですね。わかりました。私があなたの脱退を認めます。", "...You seem to have a strong will. Understood, I shall accept your request of withdrawal."), strbye
-					snd SOUNDLIST_WRITE1
-					txtef COLOR_GREEN
-					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+					txt_questupdate
 					txtef COLOR_RED
 					txt lang("魔術士ギルドを脱退した！", "You left the Mage Guild...")
 					gdata(GDATA_FLAG_GUILD_MAGE) = 0
@@ -5273,9 +5267,7 @@
 				}
 				if ( chatval == 10 ) {
 					chatMore lang("…さらば、戦士よ！今までご苦労だった！", "...Farewell, Warrior! Thank you for your hard work!"), strbye
-					snd SOUNDLIST_WRITE1
-					txtef COLOR_GREEN
-					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+					txt_questupdate
 					txtef COLOR_RED
 					txt lang("戦士ギルドを脱退した！", "You left the Fighter Guild...")
 					gdata(GDATA_FLAG_GUILD_FIGHTER) = 0
@@ -5429,9 +5421,7 @@
 				}
 				if ( chatval == 10 ) {
 					chatMore lang("…達者でな。", "...Take care."), strbye
-					snd SOUNDLIST_WRITE1
-					txtef COLOR_GREEN
-					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+					txt_questupdate
 					txtef COLOR_RED
 					txt lang("盗賊ギルドを脱退した！", "You left the Thieves Guild...")
 					gdata(GDATA_FLAG_GUILD_THIEF) = 0
@@ -20458,9 +20448,7 @@
 		cdata(CDATA_GOLD, CHARA_PLAYER) -= calcmealvalued()
 		snd SOUNDLIST_DRINK1
 		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
-			snd SOUNDLIST_WRITE1
-			txtef COLOR_GREEN
-			txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+			txt_questupdate
 			cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 		}
 		if ( TweakData(TWEAK_GAMEPLAY_CG_DISABLE_THIRST, TWEAK_CATEGORY_GAMEPLAY) == FALSE ) {
@@ -20527,9 +20515,7 @@
 					}
 				loop
 				if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
-					snd SOUNDLIST_WRITE1
-					txtef COLOR_GREEN
-					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+					txt_questupdate
 					cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 				}
 				txtef COLOR_GREEN

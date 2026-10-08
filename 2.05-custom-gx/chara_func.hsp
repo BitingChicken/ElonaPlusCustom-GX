@@ -3968,9 +3968,7 @@
 		if ( check_talk_arg1 == 0 | cdata(CDATA_RELATION, check_talk_arg1) >= 10 ) {
 			if ( cdata(CDATA_LEVEL, CHARA_PLAYER) < cdata(CDATA_LEVEL, check_talk_arg2) ) {
 				if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 4 ) {
-					snd SOUNDLIST_WRITE1
-					txtef COLOR_GREEN
-					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+					txt_questupdate
 					cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 				}
 			}
@@ -4061,9 +4059,7 @@
 		if ( check_kill_arg1 == 0 | cdata(CDATA_RELATION, check_kill_arg1) >= 10 ) {
 			if ( cdata(CDATA_LEVEL, CHARA_PLAYER) < cdata(CDATA_LEVEL, check_kill_arg2) ) {
 				if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 4 ) {
-					snd SOUNDLIST_WRITE1
-					txtef COLOR_GREEN
-					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+					txt_questupdate
 					cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 				}
 			}

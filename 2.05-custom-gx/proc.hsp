@@ -4327,9 +4327,7 @@
 		txtgod cdata(CDATA_GOD, CHARA_PLAYER), GOD_TEXT_SLEEP
 	}
 	if ( gdata(GDATA_HOUR) >= 21 & gdata(GDATA_HOUR) < 24 ) {
-		snd SOUNDLIST_WRITE1
-		txtef COLOR_GREEN
-		txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+		txt_questupdate
 		cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER)++
 	}
 	redraw 0
@@ -4913,9 +4911,7 @@
 		return
 	}
 	if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 2 ) {
-		snd SOUNDLIST_WRITE1
-		txtef COLOR_GREEN
-		txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+		txt_questupdate
 		cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 	}
 	if ( cdata(CDATA_HUNGER, CHARA_PLAYER) <= 1600 & rnd(10) == 0 ) {
@@ -5936,9 +5932,7 @@
 			cdata(CDATA_THIRST, cc) += 2000
 			if ( cc == CHARA_PLAYER ) {
 				if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
-					snd SOUNDLIST_WRITE1
-					txtef COLOR_GREEN
-					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+					txt_questupdate
 					cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 				}
 			}
@@ -6581,7 +6575,7 @@
 								if ( rnd(cdata(CDATA_HP, tc) + 1) < rnd(cdata(CDATA_HP, cdata(CDATA_TAGTEAM_PARTNER, tc)) + 1) ) {
 									tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 								}
-								txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
+								txt_guard
 							}
 						}
 						wet tc, 5
@@ -6938,9 +6932,7 @@
 	}
 	if ( tc == CHARA_PLAYER ) {
 		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
-			snd SOUNDLIST_WRITE1
-			txtef COLOR_GREEN
-			txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+			txt_questupdate
 			cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 		}
 	}
@@ -7067,9 +7059,7 @@
 	}
 	if ( cc == CHARA_PLAYER ) {
 		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
-			snd SOUNDLIST_WRITE1
-			txtef COLOR_GREEN
-			txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+			txt_questupdate
 			cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 		}
 	}
@@ -8958,9 +8948,7 @@
 					refreshspeed tc
 					if ( cc == CHARA_PLAYER ) {
 						if ( cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) == 1 ) {
-							snd SOUNDLIST_WRITE1
-							txtef COLOR_GREEN
-							txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+							txt_questupdate
 							cdata(CDATA_MATERIAL1_COUNTER, CHARA_PLAYER) += 1000
 						}
 					}
@@ -12185,13 +12173,11 @@
 		cdata(CDATA_POWER_GAUGE, cc) -= 100
 		snd SOUNDLIST_CHEST1
 		animeload 42, cc
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( cc == CHARA_PLAYER ) {
 			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
 		}
-		txtef COLOR_SKY_BLUE
-		txt lang(name(cc) + "は時を止めた。", name(cc) + " stop" + _s(cc) + " time.")
+		txt_stoptime
 		gdata(GDATA_TIME_STOP_TIME) = 8
 		snd SOUNDLIST_CHEST1
 		if ( cdata(CDATA_POWER_GAUGE, cc) >= 100 ) {
@@ -12215,7 +12201,7 @@
 			}
 		}
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 100 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		cdata(CDATA_POWER_GAUGE, cc) -= 100
@@ -12308,7 +12294,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( cc == CHARA_PLAYER ) {
 			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
@@ -12698,11 +12683,11 @@
 	if ( _switch_val == SKILL_SPACT_SHADOW_HOP | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_HP, cc) < cdata(CDATA_MAX_HP, cc) / 2 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		if ( cbit(CHARA_BIT_SHADOW_CLONE, cc) ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		cost = cdata(CDATA_MAX_HP, cc) / 2
@@ -12870,7 +12855,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( cc == CHARA_PLAYER ) {
 			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
@@ -13053,7 +13037,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_SCYTHE, cc)
@@ -13124,7 +13107,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_LONGSWORD, cc)
@@ -13206,7 +13188,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_SHORTSWORD, cc)
@@ -13276,7 +13257,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_AXE, cc)
@@ -13353,7 +13333,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_BOW, cc)
@@ -13468,7 +13447,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_CROSSBOW, cc)
@@ -13538,7 +13516,7 @@
 	if ( _switch_val == SKILL_SPACT_HYPER_PLUG_BURST | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 100 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		cdata(CDATA_POWER_GAUGE, cc) -= 100
@@ -13628,7 +13606,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_FIREARM, cc)
@@ -13699,7 +13676,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_FIREARM, cc)
@@ -13769,7 +13745,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		snd SOUNDLIST_ENC
 		animeload 40, cc
@@ -13924,7 +13899,7 @@
 							if ( rnd(cdata(CDATA_HP, tc) + 1) < rnd(cdata(CDATA_HP, cdata(CDATA_TAGTEAM_PARTNER, tc)) + 1) ) {
 								tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 							}
-							txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
+							txt_guard
 						}
 					}
 					if ( synccheck(tc, -1) ) {
@@ -14003,7 +13978,7 @@
 								if ( rnd(cdata(CDATA_HP, tc) + 1) < rnd(cdata(CDATA_HP, cdata(CDATA_TAGTEAM_PARTNER, tc)) + 1) ) {
 									tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 								}
-								txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
+								txt_guard
 							}
 						}
 					}
@@ -14114,7 +14089,7 @@
 							if ( rnd(cdata(CDATA_HP, tc) + 1) < rnd(cdata(CDATA_HP, cdata(CDATA_TAGTEAM_PARTNER, tc)) + 1) ) {
 								tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 							}
-							txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
+							txt_guard
 						}
 					}
 					if ( synccheck(tc, -1) ) {
@@ -14167,7 +14142,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_BLUNT, cc)
@@ -14236,7 +14210,6 @@
 			}
 		}
 		chara_cutin cc
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_POLEARM, cc)
@@ -14312,7 +14285,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_MARTIAL_ARTS, cc)
@@ -14390,7 +14362,6 @@
 					gdata(GDATA_TIME_STOP_TIME) = 2
 				}
 			}
-			txtef COLOR_YELLOW
 			txt_skillname
 			if ( weap == 0 ) {
 				weap = sdata(SKILL_NORMAL_SHIELD, cc)
@@ -14455,7 +14426,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( weap == 0 ) {
 			weap = sdata(SKILL_WEAPON_MARTIAL_ARTS, cc)
@@ -15671,7 +15641,7 @@
 			goto *effect_end
 		}
 		if ( cc != CHARA_PLAYER ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			obvious = 0
 			goto *effect_end
 		}
@@ -16938,7 +16908,7 @@
 							if ( rnd(cdata(CDATA_HP, tc) + 1) < rnd(cdata(CDATA_HP, cdata(CDATA_TAGTEAM_PARTNER, tc)) + 1) ) {
 								tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 							}
-							txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
+							txt_guard
 						}
 					}
 					dmg = role(dice1, dice2, bonus)
@@ -18082,7 +18052,6 @@
 	}
 	if ( _switch_val == SKILL_SPACT_SUPER_REGEN | _switch_sw ) {
 		_switch_sw = 0
-		txtef COLOR_YELLOW
 		txt_skillname
 		healhp tc, cdata(CDATA_MAX_HP, tc) / 10 + 1
 		addbuff tc, BUFF_SUPER_REGEN, 4000, 20
@@ -20367,7 +20336,7 @@
 				txtef COLOR_YELLOW2
 				txt lang(cdatan(CDATAN_NAME, tc) + "は《ヴァリアブルジョーカー》に変化した。ジョーカーは干渉メニューからスートとランクを任意に変化せることができる。この効果を使用した時、ターンは経過しない。", cdatan(CDATAN_NAME, tc) + " transformed into the {Variable Joker}. You can change the suit and rank of the joker at will in the interaction menu. When you use this effect, no turn passes.")
 				cdatan(CDATAN_NAME, tc) = lang("《ヴァリアブルジョーカー》", "{Variable Joker}") + " Lv" + cdata(CDATA_LEVEL, tc)
-				txt lang("何もおきない… ", "Nothing happens...")
+				txt_nothinghappens
 			}
 			raise = 0
 			pair = 0
@@ -20500,7 +20469,7 @@
 								if ( rnd(cdata(CDATA_HP, tc) + 1) < rnd(cdata(CDATA_HP, cdata(CDATA_TAGTEAM_PARTNER, tc)) + 1) ) {
 									tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 								}
-								txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
+								txt_guard
 							}
 						}
 						if ( synccheck(tc, -1) ) {
@@ -21312,7 +21281,6 @@
 		if ( cdata(CDATA_TAGTEAM_PARTNER, cc) > 0 ) {
 			healhp 0, cdata(CDATA_MAX_HP, cc) * (cdata(CDATA_POWER_GAUGE, cc) + 40) / 200
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		repeat MAX_CHARA_TOTAL
 			if ( cdata(CDATA_EXIST, cnt) != CHAR_STATE_ALIVE ) {
@@ -21397,7 +21365,7 @@
 	if ( _switch_val == SKILL_SPACT_DYNAMIC_YELL | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 100 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		cdata(CDATA_POWER_GAUGE, cc) -= 100
@@ -22329,7 +22297,7 @@
 	if ( _switch_val == 878 | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 80 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		snd SOUNDLIST_ENC
@@ -23546,7 +23514,7 @@
 								if ( rnd(cdata(CDATA_HP, tc) + 1) < rnd(cdata(CDATA_HP, cdata(CDATA_TAGTEAM_PARTNER, tc)) + 1) ) {
 									tc = cdata(CDATA_TAGTEAM_PARTNER, tc)
 								}
-								txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
+								txt_guard
 							}
 						}
 						dmg = (sdata(SKILL_ATTR_DEX, cc) / 5 + 5) * ((sdata(SKILL_NORMAL_TACTICS, cc) + 1) / 5 + 5) + rnd(sdata(SKILL_NORMAL_TACTICS, cc) * 2 + 5) + (calcLevelDmg(cc) + 1) / 2
@@ -24674,7 +24642,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( cc == CHARA_PLAYER ) {
 			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
@@ -25085,7 +25052,7 @@
 			goto *effect_end
 		}
 		if ( tc != CHARA_PLAYER & cdata(CDATA_ALLIED, tc) != 100 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		txtsetlimitp 10
@@ -25127,7 +25094,7 @@
 			goto *effect_end
 		}
 		if ( tc != CHARA_PLAYER & cdata(CDATA_ALLIED, tc) != 100 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		if ( cdata(CDATA_HIRE_DATE, tc) <= 0 | cdata(CDATA_HIRE_DATE, tc) >= 10 ) {
@@ -25135,7 +25102,7 @@
 			goto *effect_end
 		}
 		if ( cdata(CDATA_POWER_GAUGE, tc) < 50 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		if ( synccheck(tc, -1) ) {
@@ -25214,7 +25181,7 @@
 	if ( _switch_val == SKILL_SPACT_REPRIMAND | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 80 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		snd SOUNDLIST_ENC
@@ -25296,7 +25263,7 @@
 	if ( _switch_val == SKILL_SPACT_ANGEL_HALO | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_POWER_GAUGE, cc) < 15 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *effect_end
 		}
 		txtef COLOR_PURPLE
@@ -25859,7 +25826,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( cc == CHARA_PLAYER ) {
 			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
@@ -26366,7 +26332,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( cc == CHARA_PLAYER ) {
 			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
@@ -26436,7 +26401,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( cc == CHARA_PLAYER ) {
 			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0
@@ -26568,7 +26532,6 @@
 				gdata(GDATA_TIME_STOP_TIME) = 2
 			}
 		}
-		txtef COLOR_YELLOW
 		txt_skillname
 		if ( cc == CHARA_PLAYER ) {
 			cdata(CDATA_EVOLUTION_STAGE, CHARA_PLAYER) = 0

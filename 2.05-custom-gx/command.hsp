@@ -6943,9 +6943,7 @@
 			cdata(CDATA_EMO_ICON, tc) = 21 + 100 * 3
 		}
 		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 5 ) {
-			snd SOUNDLIST_WRITE1
-			txtef COLOR_GREEN
-			txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+			txt_questupdate
 			cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 		}
 		cdata(CDATA_INTEREST, tc) -= 80
@@ -13188,13 +13186,13 @@
 				if ( feat(FEAT_CELL_FEATURE_ID) == CELL_FEATURE_WARIBASI ) {
 					if ( gdata(GDATA_AREA) != AREA_SHOW_HOUSE ) {
 						if ( inv_getspace(CHARA_PLAYER) == 0 ) {
-							txt lang("バックパックが一杯だ。", "Your inventory is full.")
+							txt_invfull
 							gosub *screen_draw
 							goto *pc_turn
 						}
 						if ( gdata(GDATA_FLAG_GAME_MODE) == 1 ) {
 							if ( inv_sum(CHARA_PLAYER) > 20 ) {
-								txt lang("バックパックが一杯だ。", "Your inventory is full.")
+								txt_invfull
 								gosub *screen_draw
 								goto *pc_turn
 							}

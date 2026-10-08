@@ -8,8 +8,8 @@
 #define global txt_globalarea txt lang("その行為は、ワールドマップにいる間はできない。", "You can't do that while you're in a global area.")
 #define global txt_impossible txt lang("それは無理だ。", "It's impossible.")
 #define global txt_shortcut txt lang("{" + sc + "}キーにショートカットを割り当てた。", "You have assigned the shortcut to {" + sc + "} key.")
-#define global txt_createitem txt lang(itemname(ci, 1) + "の作成に成功した！", "You successfully create " + itemname(ci, 1) + "!")
-#define global txt_skillname txt "*" + skillname(efid) + lang("* ", "*")
+#define global txt_createitem txtef COLOR_GREEN:txt lang(itemname(ci, 1) + "の作成に成功した！", "You successfully create " + itemname(ci, 1) + "!")
+#define global txt_skillname txtef COLOR_YELLOW:txt "*" + skillname(efid) + lang("* ", "*")
 #define global txt_guard txt lang(name(tc) + "は" + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + "をかばった！", name(tc) + " guarded " + name(cdata(CDATA_TAGTEAM_PARTNER, tc)) + ".")
 #define global txt_invfull txt lang("バックパックが一杯だ。", "Your inventory is full.")
 #define global txt_invfull2 txt lang("バックパックには、もうアイテムを入れる余裕がない。", "Your inventory is full.")
@@ -25,6 +25,10 @@
 #define global txt_cantusehere txt lang("ここでは使えない。", "You can't use it here.")
 #define global txt_targetwho txt lang("誰を対象にする？", "Who is the target?")
 #define global txt_notyours txt lang("それはあなたの物ではない。", "It's not your property."), lang("盗むなんてとんでもない。", "You can't just take it."), lang("それは拾えない。", "It's not yours.")
+#define global txt_stoptime txtef COLOR_SKY_BLUE:txt lang(name(cc) + "は時を止めた。", name(cc) + " stop" + _s(cc) + " time.")
+#define global txt_inspired txtef COLOR_ORANGE:txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired. [Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
+#define global txt_travelxp txtef COLOR_LIGHT_GREEN:txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You gained a good amount of travel experience. [Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
+#define global txt_notenoughtoilenergy snd SOUNDLIST_FAIL1:txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
 
 #deffunc text_set
 	sdim bodyn, 4, 15

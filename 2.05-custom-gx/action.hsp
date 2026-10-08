@@ -6001,8 +6001,7 @@
 				if ( rnd(25) == 0 ) {
 					snd SOUNDLIST_CHEST1
 					animeload 42, cc
-					txtef COLOR_SKY_BLUE
-					txt lang(name(cc) + "は時を止めた。", name(cc) + " stop" + _s(cc) + " time.")
+					txt_stoptime
 					gdata(GDATA_TIME_STOP_TIME) = limit(inv(STARTING_INV_ITEM_ENCHANT + cnt * 2 + 1, cw) / 100 + 1 + 1, 2, 6)
 					await
 					snd SOUNDLIST_CHEST1
@@ -6015,8 +6014,7 @@
 				if ( rnd(30) == 0 ) {
 					snd SOUNDLIST_CHEST1
 					animeload 42, cc
-					txtef COLOR_SKY_BLUE
-					txt lang(name(cc) + "は時を止めた。", name(cc) + " stop" + _s(cc) + " time.")
+					txt_stoptime
 					gdata(GDATA_TIME_STOP_TIME) = 4
 					await
 					snd SOUNDLIST_CHEST1
@@ -6125,8 +6123,7 @@
 		if ( gdata(GDATA_TIME_STOP_TIME) == 0 & gdata(GDATA_FLAG_STOP_TIME_OTHER) == 0 ) {
 			snd SOUNDLIST_CHEST1
 			animeload 42, cc
-			txtef COLOR_SKY_BLUE
-			txt lang(name(cc) + "は時を止めた。", name(cc) + " stop" + _s(cc) + " time.")
+			txt_stoptime
 			gdata(GDATA_TIME_STOP_TIME) = 4
 			await
 			snd SOUNDLIST_CHEST1
@@ -8269,9 +8266,7 @@
 			}
 			if ( cc == CHARA_PLAYER ) {
 				if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 1 ) {
-					snd SOUNDLIST_WRITE1
-					txtef COLOR_GREEN
-					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+					txt_questupdate
 					cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 				}
 			}
@@ -8802,7 +8797,7 @@
 		val = 0
 		gosub *prompt_direction
 		if ( stat == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -8810,7 +8805,7 @@
 			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
 		}
 		else {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -8921,7 +8916,7 @@
 			goto *act_use_SWEND1
 		}
 		if ( map(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), MAP_FEATS_ON_TILE) != 0 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *act_use_SWEND1
 		}
 		snd SOUNDLIST_AMMO
@@ -8942,7 +8937,7 @@
 		val = 0
 		gosub *prompt_direction
 		if ( stat == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -8950,7 +8945,7 @@
 			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
 		}
 		else {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -8999,7 +8994,7 @@
 		val = 0
 		gosub *prompt_direction
 		if ( stat == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -9007,7 +9002,7 @@
 			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
 		}
 		else {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -9049,7 +9044,7 @@
 		val = 0
 		gosub *prompt_direction
 		if ( stat == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -9057,7 +9052,7 @@
 			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
 		}
 		else {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -9092,7 +9087,7 @@
 	if ( _switch_val == EFFECT_GLASSES | _switch_sw ) {
 		_switch_sw = 0
 		if ( cdata(CDATA_POWER_GAUGE, cc) != 0 ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *act_use_SWEND1
 		}
 		snd SOUNDLIST_ENC
@@ -9141,7 +9136,7 @@
 		val = 0
 		gosub *prompt_direction
 		if ( stat == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -9149,7 +9144,7 @@
 			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
 		}
 		else {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -9238,7 +9233,7 @@
 		val = 0
 		gosub *prompt_direction
 		if ( stat == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -9246,7 +9241,7 @@
 			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
 		}
 		else {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -10991,7 +10986,7 @@
 			}
 		}
 		if ( f == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 		}
 		goto *act_use_SWEND1
 		_switch_sw++
@@ -12893,7 +12888,7 @@
 	if ( _switch_val == EFFECT_STARFIBER | _switch_sw ) {
 		_switch_sw = 0
 		if ( cc != CHARA_PLAYER ) {
-			txt lang("何もおきない… ", "Nothing happens...")
+			txt_nothinghappens
 			goto *act_use_SWEND1
 		}
 		cibk = ci
@@ -13391,7 +13386,7 @@
 		val = 0
 		gosub *prompt_direction
 		if ( stat == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -13399,7 +13394,7 @@
 			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
 		}
 		else {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -13467,7 +13462,7 @@
 		val = 0
 		gosub *prompt_direction
 		if ( stat == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -13475,7 +13470,7 @@
 			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
 		}
 		else {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -13535,7 +13530,7 @@
 		val = 0
 		gosub *prompt_direction
 		if ( stat == 0 ) {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}
@@ -13543,7 +13538,7 @@
 			tc = map(x, y, MAP_CHARA_INDEX_PLUS_ONE) - 1
 		}
 		else {
-			txt lang("それは無理だ。", "It's impossible.")
+			txt_impossible
 			gosub *screen_draw
 			goto *pc_turn
 		}

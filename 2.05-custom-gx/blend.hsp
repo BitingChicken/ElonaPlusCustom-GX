@@ -1626,7 +1626,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_BLACK_TEA, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 2
@@ -1668,7 +1667,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_STRAW, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1681,7 +1679,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_BROKEN_VASE, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1694,7 +1691,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_BOTTLE_DIRTY_WATER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1722,7 +1718,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_BUTTER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1735,7 +1730,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_YOGURT, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1764,7 +1758,6 @@
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
 			if ( picp != ITEM_ID_SOCKS ) {
-				txtef COLOR_GREEN
 				txt_createitem
 				picp = inv(INV_ITEM_ID, rpref(10 + 0 * 2))
 				flt , 4
@@ -1780,7 +1773,6 @@
 
 				if ( picp != ITEM_ID_SPEED_RING & picp != ITEM_ID_PANTY & picp != ITEM_ID_AURORA_RING & picp != ITEM_ID_VINDALE_CLOAK & picp != ITEM_ID_SEVEN_LEAGUE_BOOTS ) {
 					await 100
-					txtef COLOR_GREEN
 					txt_createitem
 					picp = inv(INV_ITEM_ID, rpref(10 + 0 * 2))
 					flt , 4
@@ -1849,7 +1841,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_FRIED_POTATO, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 6
@@ -1862,7 +1853,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_POP_CORN, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 6
@@ -1888,7 +1878,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_OSIRUKO, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1939,7 +1928,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_TOFU, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1953,7 +1941,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_NATTO, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1967,7 +1954,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_BOTTLE_SOY_SAUCE, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -1993,7 +1979,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_POTION_BLINDNESS, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -2006,7 +1991,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_POTION_CONFUSION, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -2019,7 +2003,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_POTION_PARALYSIS, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -2032,7 +2015,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_SLEEPING_DRUG, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -2080,7 +2062,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_RAW_NOODLE, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 2
@@ -2094,7 +2075,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_BOTTLE_BEER, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 2
@@ -2107,7 +2087,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_BOTTLE_WHISKY, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 2
@@ -2120,7 +2099,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_BARLEY_TEA, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 2
@@ -2219,8 +2197,7 @@
 			inv(INV_ITEM_PARAM1, ci) = necrop
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
 			item_identify ci, ITEM_KNOWN_FULL
-			txtef COLOR_GREEN
-			txt lang(itemname(ci, 1) + "の作成に成功した！", "You successfully create " + itemname(ci, 1) + "!")
+			txt_createitem
 			necrop = rnd(5)
 			if ( sdata(SKILL_NORMAL_DISARM_TRAP, CHARA_PLAYER) < 40 ) {
 				necrop = rnd(4)
@@ -2236,8 +2213,7 @@
 			inv(INV_ITEM_PARAM1, ci) = necrop
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
 			item_identify ci, ITEM_KNOWN_FULL
-			txtef COLOR_GREEN
-			txt lang(itemname(ci, 1) + "の作成に成功した！", "You successfully create " + itemname(ci, 1) + "!")
+			txt_createitem
 			necrop = rnd(5)
 			if ( sdata(SKILL_NORMAL_DISARM_TRAP, CHARA_PLAYER) < 40 ) {
 				necrop = rnd(4)
@@ -2253,15 +2229,13 @@
 			inv(INV_ITEM_PARAM1, ci) = necrop
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
 			item_identify ci, ITEM_KNOWN_FULL
-			txtef COLOR_GREEN
-			txt lang(itemname(ci, 1) + "の作成に成功した！", "You successfully create " + itemname(ci, 1) + "!")
+			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_WHITE_DARK_ORB, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
 			inv(INV_ITEM_PARAM1, ci) = rnd(6)
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
 			item_identify ci, ITEM_KNOWN_FULL
-			txtef COLOR_GREEN
-			txt lang(itemname(ci, 1) + "の作成に成功した！", "You successfully create " + itemname(ci, 1) + "!")
+			txt_createitem
 
 			/********** RUIN0X11 CUSTOM - BEGINNING **********/
 
@@ -2395,7 +2369,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_HAMAKI, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -2409,7 +2382,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_TOBACCO_PIPE, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -2423,7 +2395,6 @@
 
 			/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_KISERU, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -2445,7 +2416,6 @@
 			inv(INV_ITEM_LEVEL, ci) = picp
 			inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_NORMAL
 			item_identify ci, ITEM_KNOWN_FULL
-			txtef COLOR_GREEN
 			txt_createitem
 			flt
 			itemcreate -1, ITEM_ID_EMPTY_BOTTLE, cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 0
@@ -2475,7 +2445,6 @@
 
 		}
 		if ( rpdata(RPDATA_ITEM, rpid) < STARTING_RECIPE_BLEND_ACTION ) {
-			txtef COLOR_GREEN
 			txt_createitem
 
 			/********** BLOODYSHADE CUSTOM - BEGINNING **********/
@@ -2597,7 +2566,6 @@
 	if ( _switch_val == RECIPE_BLEND_ACTION_HERBED_FOOD | _switch_sw ) {
 		_switch_sw = 0
 		ibitmod ITEM_BIT_HERBED_IN, ci, 1
-		txtef COLOR_GREEN
 		txt_createitem
 		txt lang("あなたは食べ物にハーブを擦り込んだ。", "You blend herbs with the food.")
 		snd SOUNDLIST_OFFER1
@@ -3171,7 +3139,6 @@
 		inv(INV_ITEM_PARAM1, ci) = necrop
 		inv(INV_ITEM_WEIGHT, ci) += necrop * 1000
 		item_identify ci, ITEM_KNOWN_FULL
-		txtef COLOR_GREEN
 		txt_createitem
 		snd SOUNDLIST_CURSE2
 
@@ -3193,7 +3160,6 @@
 			}
 		}
 		item_stack CHARA_PLAYER, ci
-		txtef COLOR_GREEN
 		txt_createitem
 		snd SOUNDLIST_CURSE3
 		if ( spact(SKILL_SPACT_ACCEL_NECRO - STARTING_SKILL_SPACT) == 0 ) {
@@ -3294,7 +3260,6 @@
 		mokub = 0
 		mokua = 0
 		autosave = 1 * (gdata(GDATA_AREA) != AREA_SHOW_HOUSE)
-		txtef COLOR_GREEN
 		txt_createitem
 
 		/********** BLOODYSHADE CUSTOM - BEGINNING **********/
@@ -3338,7 +3303,6 @@
 		mokub = 0
 		mokua = 0
 		autosave = 1 * (gdata(GDATA_AREA) != AREA_SHOW_HOUSE)
-		txtef COLOR_GREEN
 		txt_createitem
 
 		/********** BLOODYSHADE CUSTOM - BEGINNING **********/
@@ -3385,7 +3349,6 @@
 		mokub = 0
 		mokua = 0
 		autosave = 1 * (gdata(GDATA_AREA) != AREA_SHOW_HOUSE)
-		txtef COLOR_GREEN
 		txt_createitem
 
 		/********** BLOODYSHADE CUSTOM - BEGINNING **********/
@@ -3403,7 +3366,6 @@
 		inv(INV_ITEM_NUM, ci) = 5
 		inv(INV_ITEM_STATUS, ci) = ITEM_STATUS_BLESSED
 		item_identify ci, ITEM_KNOWN_FULL
-		txtef COLOR_GREEN
 		txt_createitem
 
 		/********** BLOODYSHADE CUSTOM - BEGINNING **********/
@@ -3517,7 +3479,6 @@
 
 		/********** BLOODYSHADE CUSTOM - ENDING **********/
 
-		txtef COLOR_GREEN
 		txt_createitem
 		goto *blend_act_SWEND1
 	}

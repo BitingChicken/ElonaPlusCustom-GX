@@ -1487,9 +1487,7 @@
 		if ( cdata(CDATA_DAILY_QUEST2, CHARA_PLAYER) >= 1000 ) {
 			cdata(CDATA_DAILY_QUEST_CURRENT_COUNT, CHARA_PLAYER)++
 		}
-		snd SOUNDLIST_WRITE1
-		txtef COLOR_GREEN
-		txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+		txt_questupdate
 		repeat 10
 			randomize gdata(GDATA_DAY) + gdata(GDATA_MONTH) + gdata(GDATA_YEAR) + cnt
 			daily = rnd(8) + 1
@@ -1742,9 +1740,7 @@
 						}
 						snd SOUNDLIST_AMMO
 						gdata(GDATA_FLAG_SUB_MISSION_FROM_GARZIEM)++
-						snd SOUNDLIST_WRITE1
-						txtef COLOR_GREEN
-						txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+						txt_questupdate
 						txtef COLOR_RED
 						txt lang("ガルジエムからの救援要請が入った。", "You have received a request for help from <Garziem>.")
 					}
@@ -1762,9 +1758,7 @@
 					}
 					snd SOUNDLIST_ENC
 					gdata(GDATA_FLAG_SUB_AMURDAD)++
-					snd SOUNDLIST_WRITE1
-					txtef COLOR_GREEN
-					txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+					txt_questupdate
 					txtef COLOR_GREEN
 					txt lang("ネヘルタードから依頼の電波を受けた。", "You have received a rescue request from <Amurdad>.")
 				}
@@ -2638,9 +2632,7 @@
 		}
 		if ( cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) == 8 ) {
 			if ( cdata(CDATA_SP, CHARA_PLAYER) < 50 ) {
-				snd SOUNDLIST_WRITE1
-				txtef COLOR_GREEN
-				txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+				txt_questupdate
 				cdata(CDATA_DAILY_QUEST1, CHARA_PLAYER) += 1000
 			}
 		}
@@ -6631,9 +6623,7 @@
 				if ( gdata(GDATA_FLAG_FIGHTER_GUILD_QUEST_LEVEL) + 20 == adata(ADATA_TYPE, gdata(GDATA_AREA)) ) {
 					if ( gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA) > 0 ) {
 						gdata(GDATA_FLAG_GUILD_FIGHTER_NORMA)--
-						snd SOUNDLIST_WRITE1
-						txtef COLOR_GREEN
-						txt lang("ジャーナルが更新された。", "Your journal has been updated.")
+						txt_questupdate
 					}
 				}
 			}

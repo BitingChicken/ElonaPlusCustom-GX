@@ -1244,8 +1244,7 @@
 		}
 		if ( rtval == 1 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 200 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			txt_questitem
@@ -1256,8 +1255,7 @@
 		}
 		if ( rtval == 2 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 300 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			txt_questitem
@@ -1271,8 +1269,7 @@
 		}
 		if ( rtval == 3 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 600 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			txt_questitem
@@ -1285,8 +1282,7 @@
 		}
 		if ( rtval == 4 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 1000 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			txt_questitem
@@ -1299,8 +1295,7 @@
 		}
 		if ( rtval == 5 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 1500 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			txt_questitem
@@ -1313,8 +1308,7 @@
 		}
 		if ( rtval == 6 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 2000 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			txt_questitem
@@ -1328,8 +1322,7 @@
 		}
 		if ( rtval == 7 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 2500 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			txt_questitem
@@ -1340,8 +1333,7 @@
 		}
 		if ( rtval == 8 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 3000 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			txt_questitem
@@ -1352,8 +1344,7 @@
 		}
 		if ( rtval == 9 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 4000 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			txt_questitem
@@ -1364,8 +1355,7 @@
 		}
 		if ( rtval == 10 ) {
 			if ( adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) < 10000 ) {
-				snd SOUNDLIST_FAIL1
-				txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+				txt_notenoughtoilenergy
 				goto *com_home_SWEND1
 			}
 			adata(ADATA_LABOR_CAMP_TOIL_ENERGY, gdata(GDATA_AREA)) -= 10000
