@@ -37626,7 +37626,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 939, 5
+			eqrange = ITEM_ID_ROCK, FIX_QUALITY_GODLY
 			return
 		}
 		return 0
@@ -39052,7 +39052,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqammo = 25030, 3
+			eqammo = FILTER_AMMO_ENERGY, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -39212,7 +39212,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 714
+			eqrange = ITEM_ID_GRENADE
 			return
 		}
 		return 0
@@ -39310,7 +39310,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 759, 3
+			eqweapon1 = ITEM_ID_LIGHTSABRE, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -39541,7 +39541,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 453, 3
+			eqmultiweapon = ITEM_ID_KITE_SHIELD, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -40268,7 +40268,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 759
+			eqweapon1 = ITEM_ID_LIGHTSABRE
 			eqtwohand = 1
 			return
 		}
@@ -40352,7 +40352,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 1303
+			eqweapon1 = ITEM_ID_HONEGUM
 			return
 		}
 		return 0
@@ -40442,7 +40442,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 1302
+			eqrange = ITEM_ID_KONMOU_HAPPA
 			return
 		}
 		return 0
@@ -40512,7 +40512,7 @@
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
 			eqtwohand = 1
-			eqweapon1 = 224
+			eqweapon1 = ITEM_ID_KATANA
 			return
 		}
 		return 0
@@ -40898,8 +40898,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 231, 3
-			eqammo = 25020, 3
+			eqrange = ITEM_ID_MACHINE_GUN, FIX_QUALITY_GREAT
+			eqammo = FILTER_AMMO_BULLET, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -42162,7 +42162,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 817
+			eqrange = ITEM_ID_SNIPER_RIFLE
 			return
 		}
 		return 0
@@ -42310,7 +42310,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 496
+			eqrange = ITEM_ID_SHOT_GUN
 			return
 		}
 		return 0
@@ -43117,8 +43117,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 60, 3
-			eqammo = 25020, 3
+			eqrange = ITEM_ID_PISTOL, FIX_QUALITY_GREAT
+			eqammo = FILTER_AMMO_BULLET, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -43600,8 +43600,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 231, 3
-			eqammo = 513, 3
+			eqrange = ITEM_ID_MACHINE_GUN, FIX_QUALITY_GREAT
+			eqammo = ITEM_ID_ENERGY_CELL, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -44183,7 +44183,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 1145
+			eqweapon1 = ITEM_ID_STAR_HAMMER
 			eqtwohand = 1
 			return
 		}
@@ -44336,8 +44336,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 231, 3
-			eqammo = 513, 3
+			eqrange = ITEM_ID_MACHINE_GUN, FIX_QUALITY_GREAT
+			eqammo = ITEM_ID_ENERGY_CELL, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -44848,8 +44848,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 817, 3
-			eqammo = 513, 3
+			eqrange = ITEM_ID_SNIPER_RIFLE, FIX_QUALITY_GREAT
+			eqammo = ITEM_ID_ENERGY_CELL, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -44917,7 +44917,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 1146
+			eqweapon1 = ITEM_ID_WAR_HAMMER
 			eqtwohand = 1
 			return
 		}
@@ -44988,8 +44988,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 512
-			eqammo = 25030
+			eqrange = ITEM_ID_LASER_GUN
+			eqammo = FILTER_AMMO_ENERGY
 			return
 		}
 		return 0
@@ -45326,9 +45326,9 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 1
+			eqweapon1 = ITEM_ID_LONG_SWORD
 			eqtwohand = 1
-			eqrange = 714, 3
+			eqrange = ITEM_ID_GRENADE, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -45408,9 +45408,9 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 227
+			eqweapon1 = ITEM_ID_HAMMER
 			eqtwohand = 1
-			eqrange = 939, 3
+			eqrange = ITEM_ID_ROCK, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -45500,7 +45500,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 938, 3
+			eqmultiweapon = ITEM_ID_CLAW, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -45572,7 +45572,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 939, 4
+			eqrange = ITEM_ID_ROCK, FIX_QUALITY_MIRACLE
 			return
 		}
 		return 0
@@ -45643,8 +45643,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 231, 3
-			eqammo = 62, 3
+			eqrange = ITEM_ID_MACHINE_GUN, FIX_QUALITY_GREAT
+			eqammo = ITEM_ID_BULLET, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -45715,7 +45715,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 939, 3
+			eqrange = ITEM_ID_ROCK, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -46665,8 +46665,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 231, 3
-			eqammo = 62, 3
+			eqrange = ITEM_ID_MACHINE_GUN, FIX_QUALITY_GREAT
+			eqammo = ITEM_ID_BULLET, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -46768,8 +46768,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 496, 3
-			eqammo = 62, 3
+			eqrange = ITEM_ID_SHOT_GUN, FIX_QUALITY_GREAT
+			eqammo = ITEM_ID_BULLET, FIX_QUALITY_GREAT
 			return
 		}
 		return 0
@@ -47401,7 +47401,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 454, 4
+			eqmultiweapon = ITEM_ID_TOWER_SHIELD, FIX_QUALITY_MIRACLE
 			return
 		}
 		return 0
@@ -47468,8 +47468,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 58
-			eqammo = 25001
+			eqrange = ITEM_ID_LONG_BOW
+			eqammo = FILTER_AMMO_ARROW
 			return
 		}
 		return 0
@@ -47536,7 +47536,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 938, 4
+			eqmultiweapon = ITEM_ID_CLAW, FIX_QUALITY_MIRACLE
 			return
 		}
 		return 0
@@ -48200,7 +48200,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 938, 4
+			eqmultiweapon = ITEM_ID_CLAW, FIX_QUALITY_MIRACLE
 			return
 		}
 		return 0
@@ -48280,8 +48280,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 64
-			eqweapon2 = 810
+			eqweapon1 = ITEM_ID_MOURNBLADE
+			eqweapon2 = ITEM_ID_STORM_BRINGER
 			return
 		}
 		return 0
@@ -48379,7 +48379,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 1184
+			eqweapon1 = ITEM_ID_RAVENBRAND
 			eqtwohand = 1
 			return
 		}
@@ -48457,7 +48457,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 1184
+			eqweapon1 = ITEM_ID_RAVENBRAND
 			eqtwohand = 1
 			return
 		}
@@ -48549,7 +48549,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 1182
+			eqweapon1 = ITEM_ID_KALPA_HAND
 			eqtwohand = 1
 			return
 		}
@@ -48626,9 +48626,9 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 3
-			eqrange = 58
-			eqammo = 25001
+			eqmultiweapon = ITEM_ID_HAND_AXE
+			eqrange = ITEM_ID_LONG_BOW
+			eqammo = FILTER_AMMO_ARROW
 			return
 		}
 		return 0
@@ -48704,7 +48704,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 450
+			eqmultiweapon = ITEM_ID_ROUND_SHIELD
 			return
 		}
 		return 0
@@ -48773,7 +48773,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 454
+			eqmultiweapon = ITEM_ID_TOWER_SHIELD
 			return
 		}
 		return 0
@@ -48841,7 +48841,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 225
+			eqmultiweapon = ITEM_ID_SCIMITAR
 			return
 		}
 		return 0
@@ -48916,7 +48916,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 224
+			eqmultiweapon = ITEM_ID_KATANA
 			return
 		}
 		return 0
@@ -49224,8 +49224,8 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqrange = 512
-			eqammo = 25030
+			eqrange = ITEM_ID_LASER_GUN
+			eqammo = FILTER_AMMO_ENERGY
 			return
 		}
 		return 0
@@ -49788,9 +49788,9 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 938
-			eqrange = 512
-			eqammo = 25030
+			eqmultiweapon = ITEM_ID_CLAW
+			eqrange = ITEM_ID_LASER_GUN
+			eqammo = FILTER_AMMO_ENERGY
 			return
 		}
 		return 0
@@ -49862,7 +49862,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 228
+			eqweapon1 = ITEM_ID_TRIDENT
 			eqtwohand = 1
 			return
 		}
@@ -49933,7 +49933,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 212, 4
+			eqmultiweapon = ITEM_ID_STAFF, FIX_QUALITY_MIRACLE
 			return
 		}
 		return 0
@@ -50002,7 +50002,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 938, 4
+			eqmultiweapon = ITEM_ID_CLAW, FIX_QUALITY_MIRACLE
 			return
 		}
 		return 0
@@ -50332,7 +50332,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqweapon1 = 1
+			eqweapon1 = ITEM_ID_LONG_SWORD
 			eqtwohand = 1
 			return
 		}
@@ -50400,7 +50400,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = 3
+			eqmultiweapon = ITEM_ID_HAND_AXE
 			return
 		}
 		return 0
@@ -78176,7 +78176,7 @@
 			return
 		}
 		if ( dbmode == DBMODE_INITIAL_EQUIP ) {
-			eqmultiweapon = ITEM_ID_STAFF, 4
+			eqmultiweapon = ITEM_ID_STAFF, FIX_QUALITY_MIRACLE
 			return
 		}
 		return 0
