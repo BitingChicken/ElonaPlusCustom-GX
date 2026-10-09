@@ -29,6 +29,8 @@
 #define global txt_inspired txtef COLOR_ORANGE:txt lang("インスピレーションを得た（現在" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "）", " You got inspired. [Currently:" + gdata(GDATA_FLAG_MANUSCRIPT_IDEAS) + "]")
 #define global txt_travelxp txtef COLOR_LIGHT_GREEN:txt lang("旅経験を得た（現在" + gdata(GDATA_TRAVEL_DISTANCE) + "）", " You gained a good amount of travel experience. [Currently:" + gdata(GDATA_TRAVEL_DISTANCE) + "]")
 #define global txt_notenoughtoilenergy snd SOUNDLIST_FAIL1:txt lang("労働エナジーが足りない…", "You don't have enough Toil-Energy...")
+#define global txt_criticalhit txt lang("会心の一撃！ ", "Critical Hit!")
+#define global txt_outofrange txt lang("範囲外だ。", "It's out of range.")
 
 #define global txt_skilllearned(%1) txtef COLOR_YELLOW:txt lang("あなたは「" + skillname(%1) + "」の能力を得た。", "You have learned a new ability, " + skillname(%1) + ".")
 
@@ -290,7 +292,7 @@
 		if ( cdata(CDATA_ROLE, tc) == ROLE_GUARD | cdata(CDATA_ROLE, tc) == ROLE_BOUNTY_HUNTER | cdata(CDATA_ID, tc) == CREATURE_ID_CLEANER ) {
 			s = lang("相手がこの町の安全を守っている。", cnven(he(tc, 1)) + " " + is(tc) + " keeping this town safe and clean.")
 		}
-		if ( cdata(CDATA_ROLE, tc) >= 1000 & cdata(CDATA_ROLE, tc) < 2000 ) {
+		if ( cdata(CDATA_ROLE, tc) >= ROLE_SHOP_MIN & cdata(CDATA_ROLE, tc) < ROLE_GUEST_MIN ) {
 			s = lang("相手が各種商品の販売業者。", cnven(he(tc, 1)) + " " + is(tc) + " a hard-working vender of assorted goods.")
 		}
 		if ( cdata(CDATA_QUALITY, tc) > FIX_QUALITY_MIRACLE ) {

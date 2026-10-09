@@ -4524,12 +4524,12 @@
 		if ( critical ) {
 			if ( cc == CHARA_PLAYER ) {
 				txtef COLOR_RED
-				txt lang("会心の一撃！ ", "Critical Hit!")
+				txt_criticalhit
 				txtmore
 			}
 			if ( cc != CHARA_PLAYER ) {
 				txtef COLOR_BLUE
-				txt lang("会心の一撃！ ", "Critical Hit!")
+				txt_criticalhit
 				txtmore
 			}
 			if ( cdata(CDATA_FIELD_EFFECT, CHARA_PLAYER) == 4 ) {
@@ -9954,7 +9954,7 @@
 		if ( dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) > 6 | fov_los(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) == 0 ) {
 			if ( cc == CHARA_PLAYER ) {
 				msgdup++
-				txt lang("範囲外だ。", "It's out of range.")
+				txt_outofrange
 			}
 			goto *act_use_SWEND1
 		}
@@ -10237,7 +10237,7 @@
 		if ( dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) > 6 | fov_los(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) == 0 ) {
 			if ( cc == CHARA_PLAYER ) {
 				msgdup++
-				txt lang("範囲外だ。", "It's out of range.")
+				txt_outofrange
 			}
 			goto *act_use_SWEND1
 		}
@@ -10362,7 +10362,7 @@
 		if ( dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) > 6 | fov_los(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) == 0 ) {
 			if ( cc == CHARA_PLAYER ) {
 				msgdup++
-				txt lang("範囲外だ。", "It's out of range.")
+				txt_outofrange
 			}
 			goto *act_use_SWEND1
 		}
@@ -10432,7 +10432,7 @@
 		if ( dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) > 6 | fov_los(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) == 0 ) {
 			if ( cc == CHARA_PLAYER ) {
 				msgdup++
-				txt lang("範囲外だ。", "It's out of range.")
+				txt_outofrange
 			}
 			goto *act_use_SWEND1
 		}
@@ -10521,7 +10521,7 @@
 			if ( dist(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) > 6 | fov_los(cdata(CDATA_X, tc), cdata(CDATA_Y, tc), cdata(CDATA_X, cc), cdata(CDATA_Y, cc)) == 0 ) {
 				if ( cc == CHARA_PLAYER ) {
 					msgdup++
-					txt lang("範囲外だ。", "It's out of range.")
+					txt_outofrange
 				}
 				goto *act_use_SWEND1
 			}

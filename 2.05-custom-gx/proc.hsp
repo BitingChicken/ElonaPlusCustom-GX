@@ -7940,12 +7940,12 @@
 								snd SOUNDLIST_ATK2
 								if ( cc == CHARA_PLAYER ) {
 									txtef COLOR_RED
-									txt lang("会心の一撃！ ", "Critical Hit!")
+									txt_criticalhit
 									txtmore
 								}
 								if ( cc != CHARA_PLAYER ) {
 									txtef COLOR_BLUE
-									txt lang("会心の一撃！ ", "Critical Hit!")
+									txt_criticalhit
 									txtmore
 								}
 								critical = 0
@@ -8374,12 +8374,12 @@
 								snd SOUNDLIST_ATK2
 								if ( cc == CHARA_PLAYER ) {
 									txtef COLOR_RED
-									txt lang("会心の一撃！ ", "Critical Hit!")
+									txt_criticalhit
 									txtmore
 								}
 								if ( cc != CHARA_PLAYER ) {
 									txtef COLOR_BLUE
-									txt lang("会心の一撃！ ", "Critical Hit!")
+									txt_criticalhit
 									txtmore
 								}
 								critical = 0
@@ -8641,12 +8641,12 @@
 					snd SOUNDLIST_ATK2
 					if ( cc == CHARA_PLAYER ) {
 						txtef COLOR_RED
-						txt lang("会心の一撃！ ", "Critical Hit!")
+						txt_criticalhit
 						txtmore
 					}
 					if ( cc != CHARA_PLAYER ) {
 						txtef COLOR_BLUE
-						txt lang("会心の一撃！ ", "Critical Hit!")
+						txt_criticalhit
 						txtmore
 					}
 					critical = 0
@@ -26905,12 +26905,12 @@
 		dy = cdata(CDATA_Y, tc)
 		if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG, SKILL_SPACT_CHEER) \ 1000 + 1 ) {
 			snd SOUNDLIST_FAIL1
-			txt lang("範囲外だ。", "Out of range.")
+			txt_outofrange
 			goto *individual_leading
 		}
 		if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
 			snd SOUNDLIST_FAIL1
-			txt lang("範囲外だ。", "Out of range.")
+			txt_outofrange
 			goto *individual_leading
 		}
 		if ( cdata(CDATA_GUARD_BREAK, tc) >= 100 ) {
@@ -26963,12 +26963,12 @@
 			dy = cdata(CDATA_Y, tc)
 			if ( dist(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) > sdataref(SKILL_DATAREF_TG_RANGE, SKILL_SPACT_CHEER) \ EXT_SDATAREF + 1 ) {
 				snd SOUNDLIST_FAIL1
-				txt lang("範囲外だ。", "Out of range.")
+				txt_outofrange
 				goto *effect_directive
 			}
 			if ( fov_los(cdata(CDATA_X, cc), cdata(CDATA_Y, cc), dx, dy) == 0 ) {
 				snd SOUNDLIST_FAIL1
-				txt lang("範囲外だ。", "Out of range.")
+				txt_outofrange
 				goto *effect_directive
 			}
 		}
