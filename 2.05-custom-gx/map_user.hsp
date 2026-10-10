@@ -688,19 +688,19 @@
 					continue
 				}
 				skillexp SKILL_NORMAL_TRAVELING, tc, limit(gdata(GDATA_TRAVEL_DISTANCE) / 10 + 500, 0, 2000), 9999
-				repeat 112 - 100, 100
+				repeat MAX_SKILL_WEAPON - STARTING_SKILL_WEAPON, STARTING_SKILL_WEAPON
 					if ( sorg(cnt, tc) == 0 ) {
 						continue
 					}
 					skillexp cnt, tc, gain2, 9999
 				loop
-				repeat 191 - 150, 150
+				repeat MAX_SKILL_NORMAL - STARTING_SKILL_NORMAL, STARTING_SKILL_NORMAL
 					if ( sorg(cnt, tc) == 0 ) {
 						continue
 					}
 					skillexp cnt, tc, gain2, 9999
 				loop
-				repeat 302 - 300, 300
+				repeat MAX_SKILL_ACTIVE - STARTING_SKILL_ACTIVE, STARTING_SKILL_ACTIVE
 					if ( sorg(cnt, tc) == 0 ) {
 						continue
 					}

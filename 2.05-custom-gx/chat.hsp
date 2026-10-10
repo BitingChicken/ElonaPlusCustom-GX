@@ -19000,17 +19000,17 @@
 		gdata(GDATA_FLAG_ABYSS_POWER) = 20000
 	}
 	if ( core1 == 1 ) {
-		repeat 112 - 100, 100
+		repeat MAX_SKILL_WEAPON - STARTING_SKILL_WEAPON, STARTING_SKILL_WEAPON
 			skillgain CHARA_PLAYER, cnt, 1
 			skillmod cnt, CHARA_PLAYER, 29000
 			modgrowth CHARA_PLAYER, cnt, 200
 		loop
-		repeat 191 - 150, 150
+		repeat MAX_SKILL_NORMAL - STARTING_SKILL_NORMAL, STARTING_SKILL_NORMAL
 			skillgain CHARA_PLAYER, cnt, 1
 			skillmod cnt, CHARA_PLAYER, 29000
 			modgrowth CHARA_PLAYER, cnt, 200
 		loop
-		repeat 302 - 300, 300
+		repeat MAX_SKILL_ACTIVE - STARTING_SKILL_ACTIVE, STARTING_SKILL_ACTIVE
 			skillgain CHARA_PLAYER, cnt, 1
 			skillmod cnt, CHARA_PLAYER, 29000
 			modgrowth CHARA_PLAYER, cnt, 200
@@ -24609,14 +24609,14 @@
 		efid = -1
 		gosub *com_spellremove
 		if ( efid > SKILL_NONE ) {
-			darkness2 = spell(efid - 400) / 200
+			darkness2 = spell(efid - STARTING_SKILL_SPELL) / 200
 			if ( efid == SKILL_SPELL_METEOR ) {
 				darkness2 = darkness2 * 5
 			}
 			if ( efid == SKILL_SPELL_WISH ) {
 				darkness2 = darkness2 * 50
 			}
-			spell(efid - 400) /= 2
+			spell(efid - STARTING_SKILL_SPELL) /= 2
 			gdata(GDATA_ABSORB_CHARGE) += darkness2
 			txt lang("充填用魔力を" + darkness2 + "獲得した(魔力の貯蓄：" + gdata(GDATA_ABSORB_CHARGE) + ")", "You get " + darkness2 + " mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
 		}
@@ -24628,15 +24628,15 @@
 	if ( chatval == 159 ) {
 		darkness = 0
 		darkness2 = 0
-		repeat 492 - 400, 400
-			if ( spell(cnt - 400) < 200 ) {
+		repeat MAX_SPELL - STARTING_SKILL_SPELL, STARTING_SKILL_SPELL
+			if ( spell(cnt - STARTING_SKILL_SPELL) < 200 ) {
 				continue
 			}
-			darkness = spell(cnt - 400) / 200
-			if ( cnt == 465 ) {
+			darkness = spell(cnt - STARTING_SKILL_SPELL) / 200
+			if ( cnt == SKILL_SPELL_METEOR ) {
 				darkness = darkness * 5
 			}
-			if ( cnt == 441 ) {
+			if ( cnt == SKILL_SPELL_WISH ) {
 				darkness = darkness * 50
 			}
 			darkness2 += darkness
@@ -24653,11 +24653,11 @@
 			snd SOUNDLIST_ENC
 			gdata(GDATA_ABSORB_CHARGE) += darkness2
 			txt lang("充填用魔力を" + darkness2 + "獲得した(魔力の貯蓄：" + gdata(GDATA_ABSORB_CHARGE) + ")", "You get " + darkness2 + " mana charge. (Total:" + gdata(GDATA_ABSORB_CHARGE) + ")")
-			repeat 492 - 400, 400
-				if ( spell(cnt - 400) <= 200 ) {
+			repeat MAX_SPELL - STARTING_SKILL_SPELL, STARTING_SKILL_SPELL
+				if ( spell(cnt - STARTING_SKILL_SPELL) <= 200 ) {
 					continue
 				}
-				spell(cnt - 400) /= 2
+				spell(cnt - STARTING_SKILL_SPELL) /= 2
 			loop
 		}
 		else {

@@ -1926,19 +1926,19 @@
 						modgrowth cc, SKILL_ATTR_WIL, 15
 						modgrowth cc, SKILL_ATTR_MAG, 15
 						modgrowth cc, SKILL_ATTR_CHA, 15
-						repeat 112 - 100, 100
+						repeat MAX_SKILL_WEAPON - STARTING_SKILL_WEAPON, STARTING_SKILL_WEAPON
 							if ( sorg(cnt, cc) == 0 ) {
 								continue
 							}
 							modgrowth cc, cnt, 20
 						loop
-						repeat 191 - 150, 150
+						repeat MAX_SKILL_NORMAL - STARTING_SKILL_NORMAL, STARTING_SKILL_NORMAL
 							if ( sorg(cnt, cc) == 0 ) {
 								continue
 							}
 							modgrowth cc, cnt, 20
 						loop
-						repeat 302 - 300, 300
+						repeat MAX_SKILL_ACTIVE - STARTING_SKILL_ACTIVE, STARTING_SKILL_ACTIVE
 							if ( sorg(cnt, cc) == 0 ) {
 								continue
 							}
@@ -1972,19 +1972,19 @@
 							modgrowth cc, SKILL_ATTR_WIL, 15
 							modgrowth cc, SKILL_ATTR_MAG, 15
 							modgrowth cc, SKILL_ATTR_CHA, 15
-							repeat 112 - 100, 100
+							repeat MAX_SKILL_WEAPON - STARTING_SKILL_WEAPON, STARTING_SKILL_WEAPON
 								if ( sorg(cnt, cc) == 0 ) {
 									continue
 								}
 								modgrowth cc, cnt, 20
 							loop
-							repeat 191 - 150, 150
+							repeat MAX_SKILL_NORMAL - STARTING_SKILL_NORMAL, STARTING_SKILL_NORMAL
 								if ( sorg(cnt, cc) == 0 ) {
 									continue
 								}
 								modgrowth cc, cnt, 20
 							loop
-							repeat 302 - 300, 300
+							repeat MAX_SKILL_ACTIVE - STARTING_SKILL_ACTIVE, STARTING_SKILL_ACTIVE
 								if ( sorg(cnt, cc) == 0 ) {
 									continue
 								}
