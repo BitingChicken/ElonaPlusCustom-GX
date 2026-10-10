@@ -17202,7 +17202,7 @@
 						break
 					}
 					else {
-						txt lang(name(r1) + "は新たな" + bodyn(EQUIP_SLOT_HEAD) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(EQUIP_SLOT_HEAD) + "!")
+						txt_growpart(EQUIP_SLOT_HEAD)
 						break
 					}
 				}
@@ -17212,7 +17212,7 @@
 						break
 					}
 					else {
-						txt lang(name(r1) + "は新たな" + bodyn(EQUIP_SLOT_NECK) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(EQUIP_SLOT_NECK) + "!")
+						txt_growpart(EQUIP_SLOT_NECK)
 						break
 					}
 				}
@@ -17222,7 +17222,7 @@
 						break
 					}
 					else {
-						txt lang(name(r1) + "は新たな" + bodyn(EQUIP_SLOT_BACK) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(EQUIP_SLOT_BACK) + "!")
+						txt_growpart(EQUIP_SLOT_BACK)
 						break
 					}
 				}
@@ -17232,7 +17232,7 @@
 						break
 					}
 					else {
-						txt lang(name(r1) + "は新たな" + bodyn(EQUIP_SLOT_BODY) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(EQUIP_SLOT_BODY) + "!")
+						txt_growpart(EQUIP_SLOT_BODY)
 						break
 					}
 				}
@@ -17242,7 +17242,7 @@
 						break
 					}
 					else {
-						txt lang(name(r1) + "は新たな" + bodyn(EQUIP_SLOT_HAND) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(EQUIP_SLOT_HAND) + "!")
+						txt_growpart(EQUIP_SLOT_HAND)
 						break
 					}
 				}
@@ -17252,7 +17252,7 @@
 						break
 					}
 					else {
-						txt lang(name(r1) + "は新たな" + bodyn(EQUIP_SLOT_RING) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(EQUIP_SLOT_RING) + "!")
+						txt_growpart(EQUIP_SLOT_RING)
 						break
 					}
 				}
@@ -17262,7 +17262,7 @@
 						break
 					}
 					else {
-						txt lang(name(r1) + "は新たな" + bodyn(EQUIP_SLOT_ARM) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(EQUIP_SLOT_ARM) + "!")
+						txt_growpart(EQUIP_SLOT_ARM)
 						break
 					}
 				}
@@ -17272,7 +17272,7 @@
 						break
 					}
 					else {
-						txt lang(name(r1) + "は新たな" + bodyn(EQUIP_SLOT_WAIST) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(EQUIP_SLOT_WAIST) + "!")
+						txt_growpart(EQUIP_SLOT_WAIST)
 						break
 					}
 				}
@@ -17282,7 +17282,7 @@
 						break
 					}
 					else {
-						txt lang(name(r1) + "は新たな" + bodyn(EQUIP_SLOT_LEG) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(EQUIP_SLOT_LEG) + "!")
+						txt_growpart(EQUIP_SLOT_LEG)
 						break
 					}
 				}

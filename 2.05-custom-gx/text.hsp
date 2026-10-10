@@ -33,6 +33,7 @@
 #define global txt_outofrange txt lang("範囲外だ。", "It's out of range.")
 
 #define global txt_skilllearned(%1) txtef COLOR_YELLOW:txt lang("あなたは「" + skillname(%1) + "」の能力を得た。", "You have learned a new ability, " + skillname(%1) + ".")
+#define global txt_growpart(%1) txt lang(name(r1) + "は新たな" + bodyn(%1) + "を獲得した！", name(r1) + " grow" + _s(r1) + " a new " + bodyn(%1) + "!")
 
 #deffunc text_set
 	sdim bodyn, 4, 15
