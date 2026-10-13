@@ -8022,6 +8022,7 @@
 
 #deffunc dmgmp int dmgmp_charid, int dmgmp_arg2
 	locvar_dmgmp_mpoi = 0
+	locvar_dmgmp_mdmg = dmgmp_arg2
 	if ( cdata(CDATA_CONDITION_MPOISON, dmgmp_charid) > 0 ) {
 		if ( cdata(CDATA_CONDITION_MPOISON, dmgmp_charid) > 100 ) {
 			cdata(CDATA_CONDITION_MPOISON, dmgmp_charid) = 100
@@ -8030,7 +8031,7 @@
 		if ( locvar_dmgmp_ammoproc == 0 ) {
 			locvar_dmgmp_mpoi = locvar_dmgmp_mpoi / 5
 		}
-		locvar_dmgmp_mdmg = dmgmp_arg2 + locvar_dmgmp_mpoi
+		locvar_dmgmp_mdmg += locvar_dmgmp_mpoi
 	}
 	cdata(CDATA_MP, dmgmp_charid) -= locvar_dmgmp_mdmg
 	if ( cdata(CDATA_MP, dmgmp_charid) < (-99999) ) {
