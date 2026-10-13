@@ -1703,7 +1703,10 @@
 	cdata(CDATA_EXIST, chara_vanquish_charid) = CHAR_STATE_DEAD
 	cdata(CDATA_ROLE, chara_vanquish_charid) = ROLE_NONE
 	if ( cbit(CHARA_BIT_NECRO, chara_vanquish_charid) != 1 ) {
-		check_quest
+		/*** CHICKEN CUSTOM - 2.33 hunting quest fix ***/
+		if ( cbit(CHARA_BIT_GUEST, chara_vanquish_charid) != 1 ) {
+			check_quest
+		}
 	}
 	if ( chara_vanquish_charid >= MAX_CHARA_FOLLOWER ) {
 		AllyID = chara_vanquish_charid
