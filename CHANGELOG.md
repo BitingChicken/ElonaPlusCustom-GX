@@ -1,3 +1,9 @@
+# 2.33R.1.1
+
+## Fixed
+- (Plus) Fixed glitch where hunting/panic quests are completed before map spawn (unintentional consequence of carrier pigeons despawning on map change triggering check_quest before enemies are spawned in).
+- (Plus) Fixed mana damage calculations (specifically in cases where user is not affected by MPoison).
+
 # 2.33R.1.0
 
 ## Added
