@@ -14474,7 +14474,7 @@
 			}
 			if ( gdata(STARTING_GDATA_FLAG + 329) == 4 ) {
 				chatMore lang("最後となる第４回では、装備についてもう少し説明するわよ。", "In the 4th and final course I will explain a bit more about equipment.")
-				chatMore lang("自然鑑定が発動するとわかるんだけど、装備には粗悪、良質、高品質、奇跡、神器、特別の６種があるわ。完全に鑑定すると、高品質には接頭語、奇跡には☆と『』、神器には☆と《》、特別には★と《》がつくの。", "There are six classes of equipment: bad, normal, great, miracle, godly, and unique. Great items have prefixes or suffixes, miracle and unique items have their names enclosed by <>, and godly items have their names enclosed by {}.")
+				chatMore lang("分析が発動するとわかるんだけど、装備には粗悪、良質、高品質、奇跡、神器、特別の６種があるわ。完全に鑑定すると、高品質には接頭語、奇跡には☆と『』、神器には☆と《》、特別には★と《》がつくの。", "There are six classes of equipment: bad, normal, great, miracle, godly, and unique. Great items have prefixes or suffixes, miracle and unique items have their names enclosed by <>, and godly items have their names enclosed by {}.")
 				chatMore lang("高品質、奇跡、神器には特別な力…エンチャントがランダムで付与されるわ。奇跡と神器はランダムアーティファクトと呼ばれていて、高品質以下よりも本体性能もエンチャント面も上限が上なの。特別は固定アーティファクトと呼ばれ、性能が固定されているわ。", "Great, miracle, and godly items have random enchantments. Miracle and godly items are called \"random artifacts\" or \"randarts\", and are stronger than other items of the same type. Unique items are called \"fixed artifacts\" or \"fixedarts\", and their effects never vary.")
 				chatMore lang("最終的には奇跡以降で装備欄を埋めることになるわね。高品質は奇跡にランクアップさせる方法もあるから、いいエンチャントがついていたら取っておいてね。", "It's possible to upgrade a great item to a miracle item, so if you see a great item with a nice enchantment, save it. Someday you'll be equipped with nothing but powerful artifacts...")
 			}
@@ -14567,7 +14567,7 @@
 		}
 		if ( chatval == 12 ) {
 			chatMore lang("エンチャントはランダムだから、とにかく数が重要ね。店や依頼で手に入れるだけじゃ足りないわ。こつこつネフィアで拾ったり、誰かから奪ったりしないと。その場合は、高品質以上を狙いましょう。鑑定できる道具を持っていれば、その場で確かめてもいいわね。", "Enchantments are random, but the number is important. It's not enough to just get everything from blacksmiths or requests. You can trade with other adventurers, but the best gear can be found in high-level Nefia. Spells, scrolls, or rods of identify let you examine items as you find them.")
-			chatMore lang("軽い装備品なら、粗悪や良質でも自然鑑定上げに使えるかもしれないわね。でも重い装備はよっぽど重量と枠に余裕がない限り、高品質未満だとわかった瞬間捨てたほうがいいわ。その分他のものを拾いましょう。", "If equipment you find is light enough, you might want to keep it with you and identify it passively with Analysis. But unless a heavy item is at least Great quality, you should probably just leave it behind so you can carry more valuable loot.")
+			chatMore lang("軽い装備品なら、粗悪や良質でも分析上げに使えるかもしれないわね。でも重い装備はよっぽど重量と枠に余裕がない限り、高品質未満だとわかった瞬間捨てたほうがいいわ。その分他のものを拾いましょう。", "If equipment you find is light enough, you might want to keep it with you and identify it passively with Analysis. But unless a heavy item is at least Great quality, you should probably just leave it behind so you can carry more valuable loot.")
 			chatMore lang("結婚指輪・首輪、羽、ソックス、スピードの指輪、パンティー、オーロラリング、ヴィンデールクローク、セブンリーグブーツ、フェアリーハットは軽くて固有効果も強いから、粗悪や良質でも拾い集めておきたいわね。特に結婚指輪・首輪は友好を深めるのにも使えるわ。", "Engagement rings and amulets, wings and feathers, sox, speed rings, panties, aurora rings, vindale cloaks, seven league boots, and fairy hats are lightweight and have unique, useful effects, so I'd pick them up regardless of quality. Especially engagement rings and amulets, since they can improve a relationship.")
 			gdata(GDATA_FLAG_TRAINING_COURSE_STATE)++
 		}
@@ -14649,7 +14649,7 @@
 		gosub *chat_select
 		if ( chatval == 0 ) {
 			chatMore lang("むうー…どのスキルも使い道があるからなぁ。優先的に取るべきなのは、生存力・成長力に関わる料理、持てる重量を増やす重量挙げ、出費を抑える交渉、他スキルの成長を助ける旅歩き、かな。", "Don't think like that. It's important to get every single skill. Still, you should prioritize some over others. Cooking to increase your stats, Weight Lifting to carry more items, Negotiation to help your finances, and Traveling to help all your skills grow.")
-			chatMore lang("そこまで揃ったら、探索に役立つ自然鑑定、鍵開け、採掘、魔道具などのスキルを、そして目指すスタイルが決まったらそれに合わせたスキルを取ろうか。…まぁ、難しいことは考えず、全部取っても構わないぞ。早期から持っておけば他のスタイルに切り換えるのも楽だろうな。", "Once you have those, you might want adventure-related skills like Analysis, Lockpicking, Mining, Magic Device, and whatever sort of fighting style you prefer. ...Well, don't worry about it too much. Like I said, you want to get every skill eventually, so even switching your fighting style entirely wouldn't be a problem.")
+			chatMore lang("そこまで揃ったら、探索に役立つ分析、鍵開け、採掘、魔道具などのスキルを、そして目指すスタイルが決まったらそれに合わせたスキルを取ろうか。…まぁ、難しいことは考えず、全部取っても構わないぞ。早期から持っておけば他のスタイルに切り換えるのも楽だろうな。", "Once you have those, you might want adventure-related skills like Analysis, Lockpicking, Mining, Magic Device, and whatever sort of fighting style you prefer. ...Well, don't worry about it too much. Like I said, you want to get every skill eventually, so even switching your fighting style entirely wouldn't be a problem.")
 			chatMore lang("街ごとにトレイナーの教えてくれるスキルは違うんだ。今挙げたスキルならここからすぐ北にあるヴェルニース、東南東にあるヨウィン、西北西にあるポート・カプールで全部揃うけれど、他の街のトレイナーにも確認してみるといいぞ。", "Each town's trainer teaches different skills. The skills I was talking about before can be learned in Vernis just north of here, Yowyn to the southeast, and Port Kapul to the northwest, but you should also check out the trainers in other cities.")
 			gdata(GDATA_FLAG_TRAINING_COURSE_STATE)++
 		}

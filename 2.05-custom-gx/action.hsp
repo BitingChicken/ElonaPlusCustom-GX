@@ -7277,7 +7277,7 @@
 			if ( taisei \ 12 == 11 ) {
 				list(0, listmax) = -8
 				listmax++
-				s = lang("自然鑑定スキル上昇***を獲得する", "Add Sense Quality Skill Bonus")
+				s = lang("分析スキル上昇***を獲得する", "Add Analysis Skill Bonus")
 				promptAdd s
 			}
 			if ( taisei \ 12 == 0 ) {

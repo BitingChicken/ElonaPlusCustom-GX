@@ -314,7 +314,7 @@
 	if ( inv(INV_ITEM_GOD, ci) == GOD_YACATECT ) {
 		buff = lang("ヤカテクトは富の女神です。ヤカテクトを信仰した者は、高い交渉技術を身につけ莫大な富を築き上げます。<p><p>", "Yacatect is a god of wealth.<p><p>")
 		buff += lang("　捧げ物: 死体  / 首飾り / 指輪<p>", "Offering: Corpses/Accessories<p>")
-		buff += lang("ボーナス: 感覚 / 耐久 / 交渉 / 自然鑑定 / 旅歩き / 錬金術 / 投資<p>", "Bonus   : PER/CON/Negotiation/Sense Quality/Traveling/Alchemy/Investing<p>")
+		buff += lang("ボーナス: 感覚 / 耐久 / 交渉 / 分析 / 旅歩き / 錬金術 / 投資<p>", "Bonus   : PER/CON/Negotiation/Analysis/Traveling/Alchemy/Investing<p>")
 		buff += lang("特殊能力: オールコレクション(自動：アイテムドロップ判定増加)<p>", "Ability : All collection (Passive: Increase chances of get loot.)<p>")
 	}
 	return
