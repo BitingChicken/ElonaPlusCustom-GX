@@ -111261,7 +111261,7 @@
 			dbmode = DBMODE_SET
 			gosub *db_class
 			sdata(SKILL_RES_CHAOS, rc) = 500
-			cdata(CDATA_PIC, rc) = xy2pic(5, 6)
+			cdata(CDATA_PIC, rc) = xy2pic(6, 38)
 			cdata(CDATA_PIC, rc) += COLOR_LIGHT_PURPLE * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
@@ -111328,7 +111328,7 @@
 			dbidn = "predator"
 			dbmode = DBMODE_SET
 			gosub *db_class
-			cdata(CDATA_PIC, rc) = xy2pic(6, 38)
+			cdata(CDATA_PIC, rc) = xy2pic(6, 6)
 			cdata(CDATA_PIC, rc) += COLOR_BROWN * COLOR_TINT_MULT
 			cspecialeq = 0
 			return
