@@ -12076,7 +12076,7 @@
 		if ( inv(INV_ITEM_ID, ci) == ITEM_ID_BREAD_DISPLAY ) {
 			inv(INV_ITEM_CHARGE, ci) = 11
 		}
-		if ( inv(INV_ITEM_ID, ci) == ITEM_ID_LARGE_BOOKSHELF | inv(INV_ITEM_ID, ci) == ITEM_ID_OLD_BOOKSHELF | inv(INV_ITEM_ID, ci) == ITEM_ID_CRAFT_BOOK_SHELF | inv(INV_ITEM_ID, ci) == ITEM_ID_BOOKSHELF ) {
+		if ( inv(INV_ITEM_ID, ci) == ITEM_ID_LARGE_BOOKSHELF | inv(INV_ITEM_ID, ci) == ITEM_ID_OLD_BOOKSHELF | inv(INV_ITEM_ID, ci) == ITEM_ID_CRAFT_BOOK_SHELF | inv(INV_ITEM_ID, ci) == ITEM_ID_BOOKSHELF | inv(INV_ITEM_ID, ci) == ITEM_ID_TIDY_BOOKSHELF ) {
 			inv(INV_ITEM_CHARGE, ci) = 12
 		}
 		goto *act_open

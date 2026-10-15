@@ -80616,7 +80616,7 @@
 				description(0) = "A bookcase that could hold all kinds of books. According to the story, it all started when a retired historian ordered the ideal furniture to organize his stacks of books. \n# ~Great Encyclopedia of North Tyris Furnitures~"
 				description(1) = ""
 				description(2) = ""
-				description(3) = "(Openable) large bookshelf for up to 100 different types of books."
+				description(3) = "(Reusable) large bookshelf for up to 100 different types of books."
 			}
 			return
 		}
@@ -111216,7 +111216,7 @@
 				description(0) = "The bookshelves are so old that even the books in them seem to have a certain charm. The unique damage to the bookshelf is said to be irresistible to antique lovers. \n# ~Great Encyclopedia of North Tyris Furnitures~"
 				description(1) = ""
 				description(2) = ""
-				description(3) = "(Openable) shelf for up to 100 different types of books."
+				description(3) = "(Reusable) shelf for up to 100 different types of books."
 			}
 			return
 		}
@@ -122386,7 +122386,7 @@
 				description(0) = "A bookshelf created by professionals who put their heart and soul into their work. At first glance, it looks simple, but the playful spirit of a master craftsman is hidden in parts that are not usually seen. \n# ~Great Encyclopedia of North Tyris Furnitures~"
 				description(1) = ""
 				description(2) = ""
-				description(3) = "(Openable) craftsman bookshelf for up to 100 different types of books."
+				description(3) = "(Reusable) craftsman bookshelf for up to 100 different types of books."
 			}
 			return
 		}
@@ -124134,7 +124134,7 @@
 				description(0) = "Shelves for the bakery, designed to be placed in an easy-to-see position. The price tags are posted so large that it would be better not to pick them up. \n# ~Great Encyclopedia of North Tyris Furnitures~"
 				description(1) = ""
 				description(2) = ""
-				description(3) = "(Openable) shelf for displaying up to 20 different types of bread."
+				description(3) = "(Reusable) shelf for displaying up to 20 different types of bread."
 			}
 			return
 		}
@@ -125390,6 +125390,7 @@
 			reftypeminor = FILTER_NOTHING
 			inv(INV_ITEM_NUM, ci) = 1
 			fixeditemenc = 0
+			inv(INV_ITEM_EFFECT, ci) = EFFECT_DD_CEMETERY_KEY
 			inv(INV_ITEM_IDENTIFY_LEVEL, ci) = 0
 			return
 		}
@@ -125434,7 +125435,7 @@
 				description(0) = "Shelves made to hold books as well. It is a highly flexible piece of furniture that allows the purchaser's sense of style to shine through in its storage. \n# ~Great Encyclopedia of North Tyris Furnitures~"
 				description(1) = ""
 				description(2) = ""
-				description(3) = "It is a shelf with a book stand."
+				description(3) = "(Reusable) shelf with a book stand for up to 100 different types of books."
 			}
 			return
 		}
@@ -125747,7 +125748,7 @@
 				description(0) = "A rather small shelf made for storing potions. Only the person who lays them out knows which potion is which, so it's best not to take them out too badly. \n# ~Great Encyclopedia of North Tyris Furnitures~"
 				description(1) = ""
 				description(2) = ""
-				description(3) = "(Openable) rack for up to 60 different types of potions."
+				description(3) = "(Reusable) rack for up to 60 different types of potions."
 			}
 			return
 		}
@@ -127123,7 +127124,7 @@
 				description(0) = "Shelves to hold books, often sold in furniture stores. There is nothing particularly bad or good about it, and it is a safe workmanship. \n# ~Great Encyclopedia of North Tyris Furnitures~"
 				description(1) = ""
 				description(2) = ""
-				description(3) = "(Openable) simple shelf for up to 100 different types of books."
+				description(3) = "(Reusable) simple shelf for up to 100 different types of books."
 			}
 			return
 		}

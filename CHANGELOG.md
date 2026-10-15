@@ -1,3 +1,12 @@
+# Upcoming
+
+## Changed
+- Tidy bookshelves can now be used to store books.
+- Changed descriptions of bookshelves, potion racks, and bread displays to use "Reusable" rather than "Openable."
+
+## Fixed
+- Chaos hounds and killer squirrels having the wrong sprites.
+
 # 2.33R.1.1
 
 ## Fixed
